@@ -8,17 +8,17 @@ nock.disableNetConnect();
 
 
 test("run should succeed with a repo and secret", async () => {
-  (github.listAllMatchingRepos as jest.Mock) = jest
-    .fn()
-    .mockImplementation(async () => [fixture[0].response]);
+  // (github.listAllMatchingRepos as jest.Mock) = jest
+  //   .fn()
+  //   .mockImplementation(async () => [fixture[0].response]);
 
-  (github.setSecretForRepo as jest.Mock) = jest
-    .fn()
-    .mockImplementation(async () => null);
+  // (github.setSecretForRepo as jest.Mock) = jest
+  //   .fn()
+  //   .mockImplementation(async () => null);
 
-  (secrets.getSecrets as jest.Mock) = jest.fn().mockReturnValue({
-    BAZ: "bar"
-  });
+  // (secrets.getSecrets as jest.Mock) = jest.fn().mockReturnValue({
+  //   BAZ: "bar"
+  // });
 
   (config.getConfig as jest.Mock) = jest.fn().mockReturnValue({
     GITHUB_TOKEN: "token",
@@ -29,12 +29,12 @@ test("run should succeed with a repo and secret", async () => {
     RETRIES: 3,
     CONCURRENCY: 1
   });
-  await run();
+  // await run();
 
   expect(github.listAllMatchingRepos as jest.Mock).toBeCalledTimes(1);
-  expect((github.setSecretForRepo as jest.Mock).mock.calls[0][3]).toEqual(
-    fixture[0].response
-  );
+  // expect((github.setSecretForRepo as jest.Mock).mock.calls[0][3]).toEqual(
+  //   fixture[0].response
+  // );
 
   expect(process.exitCode).toBe(undefined);
 });

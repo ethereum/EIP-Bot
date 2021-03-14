@@ -1,7 +1,7 @@
 import * as core from "@actions/core";
 
 import { Octokit } from "@octokit/rest";
-import { encrypt } from "./utils";
+
 import { getConfig } from "./config";
 import { retry } from "@octokit/plugin-retry";
 
@@ -144,27 +144,27 @@ export async function getPublicKey(
   return publicKey;
 }
 
-export async function setSecretForRepo(
-  octokit: any,
-  name: string,
-  secret: string,
-  repo: Repository,
-  dry_run: boolean
-): Promise<void> {
-  const [repo_owner, repo_name] = repo.full_name.split("/");
+// export async function setSecretForRepo(
+//   octokit: any,
+//   name: string,
+//   secret: string,
+//   repo: Repository,
+//   dry_run: boolean
+// ): Promise<void> {
+//   const [repo_owner, repo_name] = repo.full_name.split("/");
 
-  const publicKey = await getPublicKey(octokit, repo);
-  const encrypted_value = encrypt(secret, publicKey.key);
+//   const publicKey = await getPublicKey(octokit, repo);
+//   const encrypted_value = encrypt(secret, publicKey.key);
 
-  core.info(`Set \`${name} = ***\` on ${repo.full_name}`);
+//   core.info(`Set \`${name} = ***\` on ${repo.full_name}`);
 
-  if (!dry_run) {
-    return octokit.actions.createOrUpdateSecretForRepo({
-      owner: repo_owner,
-      repo: repo_name,
-      name,
-      key_id: publicKey.key_id,
-      encrypted_value
-    });
-  }
-}
+//   if (!dry_run) {
+//     return octokit.actions.createOrUpdateSecretForRepo({
+//       owner: repo_owner,
+//       repo: repo_name,
+//       name,
+//       key_id: publicKey.key_id,
+//       encrypted_value
+//     });
+//   }
+// }

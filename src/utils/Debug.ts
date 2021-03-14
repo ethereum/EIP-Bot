@@ -31,11 +31,19 @@ const setDebugContext = (debugEnv?: NodeJS.ProcessEnv) => {
     },
     number: parseInt(env.PULL_NUMBER || "") || 0
   };
-  // @ts-ignore
-  context.repo = {
-    owner: env.REPO_OWNER_NAME,
-    repo: env.REPO_NAME
+
+  if (env.NODE_ENV === "test") {
+    context.repo = {
+      owner: env.REPO_OWNER_NAME,
+      repo: env.REPO_NAME
+    }
+  } else {
+    // @ts-ignore
+    context.repo.owner = env.REPO_OWNER_NAME;
+    // @ts-ignore
+    context.repo.repo = env.REPO_NAME
   }
+
   context.payload.repository = {
     // @ts-ignore
     name: env.REPO_NAME,
