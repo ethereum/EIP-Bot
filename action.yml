@@ -9,5 +9,5 @@ inputs:
 runs:
   using: "composite"
   steps:
-    - run: ls && find / -name package.json && cd EIPS && ls && npm ci && npm run build && GITHUB_TOKEN=${{ inputs.GITHUB-TOKEN }} node build/index.js
+    - run: pwd && ls && cd .. && pwd && ls && cd .. && pwd && ls && cd _actions && pwd && ls && cd alita-moore && pwd && ls && EIP-Bot && pwd && ls && cd 1.0.4 && pwd && ls && npm ci && npm run build && GITHUB_TOKEN=${{ inputs.GITHUB-TOKEN }} node build/index.js
       shell: bash
