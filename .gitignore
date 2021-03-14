@@ -89,3 +89,4 @@ typings/
 
 # build
 build/
+*.DS_Store
