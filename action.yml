@@ -5,9 +5,12 @@ inputs:
     description: |-
       The Github token to be used by this bot when merging, posting comments, or requesting reviewers
     required: true
+  VERSION:
+    description: version of the action; this is required because of how actions work
+    required: true
 
 runs:
   using: "composite"
   steps:
-    - run: pwd && ls && cd .. && pwd && ls && cd .. && pwd && ls && cd _actions && pwd && ls && cd alita-moore && pwd && ls && cd EIP-Bot && pwd && ls && cd 1.0.6 && pwd && ls && npm ci && npm run build && GITHUB_TOKEN=${{ inputs.GITHUB-TOKEN }} node build/index.js
+    - run: cd /home/runner/work/_actions/alita-moore/EIP-Bot/${{ inputs.VERSION }} && npm ci && npm run build && GITHUB_TOKEN=${{ inputs.GITHUB-TOKEN }} node build/index.js
       shell: bash
