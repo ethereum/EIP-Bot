@@ -43,5 +43,14 @@
   },
   "_moduleAliases": {
     "src": "build"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/alita-moore/EIP-Bot.git"
+  },
+  "keywords": [],
+  "bugs": {
+    "url": "https://github.com/alita-moore/EIP-Bot/issues"
+  },
+  "homepage": "https://github.com/alita-moore/EIP-Bot#readme"
 }
