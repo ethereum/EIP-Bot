@@ -12,5 +12,5 @@ inputs:
 runs:
   using: "composite"
   steps:
-    - run: cd /home/runner/work/_actions/alita-moore/EIP-Bot/${{ inputs.VERSION }} && npm ci && npm run build && GITHUB_TOKEN=${{ inputs.GITHUB-TOKEN }} node build/index.js
+    - run: cd ${{github.action_path}} && npm ci && npm run build && GITHUB_TOKEN=${{ inputs.GITHUB-TOKEN }} node build/index.js
       shell: bash
