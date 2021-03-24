@@ -66,7 +66,8 @@ export const main = async () => {
     }
 
     if (ERRORS.length > 0) {
-      return await postComment();
+      await postComment();
+      throw "would not have merged"
     }
   } catch (error) {
     console.error(error);
