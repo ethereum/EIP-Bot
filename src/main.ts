@@ -61,7 +61,8 @@ export const main = async () => {
 
     // if no errors, then merge
     if (ERRORS.length === 0) {
-      return await merge(fileDiffs);
+      // disabled initially to test behavior
+      // return await merge(fileDiffs);
     }
 
     if (ERRORS.length > 0) {
