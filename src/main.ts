@@ -2,7 +2,7 @@ import { setFailed } from "@actions/core";
 import { context, getOctokit } from "@actions/github";
 import {
   assertPr,
-  merge,
+  // merge,
   postComment,
   getFileDiff,
   isFilePreexisting,
