@@ -7,13 +7,12 @@ import {
   File,
   ContentFile,
   EipStatus,
-  getFilenameEipNum,
   FileStatus,
   ERRORS
 } from "src/utils";
 import frontmatter, { FrontMatterResult } from "front-matter";
 import { context } from "@actions/github/lib/utils";
-import { assertPr, assertEncoding } from "./Assertions";
+import { assertPr, assertEncoding, assertFilenameEipNum } from "./Assertions";
 
 export type FileDiff = {
   head: FormattedFile;
@@ -43,7 +42,7 @@ export type FormattedFile = {
 };
 
 const formatFile = async (file: ParsedContent): Promise<FormattedFile> => {
-  const filenameEipNum = getFilenameEipNum(file.name);
+  const filenameEipNum = assertFilenameEipNum(file.name);
   if (!filenameEipNum) {
     throw `Failed to extract eip number from file "${file.path}"`;
   }

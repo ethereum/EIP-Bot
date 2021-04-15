@@ -2,9 +2,9 @@ import {
   FILE_RE,
   ALLOWED_STATUSES,
   File,
-  getFilenameEipNum,
   ERRORS
 } from "src/utils";
+import { assertFilenameEipNum } from "./Assertions";
 import { FileDiff } from "./GetFileDiff";
 
 export const checkEIP = ({ head, base }: FileDiff) => {
@@ -53,7 +53,7 @@ export const isValidEipFilename = (file: NonNullable<File>) => {
   }
 
   // EIP number is defined within the filename and can be parsed
-  const filenameEipNum = getFilenameEipNum(filename);
+  const filenameEipNum = assertFilenameEipNum(filename);
   if (!filenameEipNum) {
     ERRORS.push(
       `No EIP number was found to be associated with filename ${filename}`

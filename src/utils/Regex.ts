@@ -24,13 +24,3 @@ export const matchAll = (
   }
   return matches;
 };
-
-/**
- * Extracts the EIP number from a given filename (or returns null)
- * @param filename EIP filename
- */
-export const getFilenameEipNum = (filename: string) => {
-  const eipNumMatch = filename.match(EIP_NUM_RE);
-  if (eipNumMatch === null || eipNumMatch[0] === undefined) throw new Error(`EIP file name must be eip-###.md`)
-  return eipNumMatch && parseInt(eipNumMatch[0]);
-};
