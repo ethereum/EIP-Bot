@@ -1,73 +1,126 @@
 import { setFailed } from "@actions/core";
-import { context, getOctokit } from "@actions/github";
 import {
-  assertPr,
   // merge,
   postComment,
+  requireEvent,
+  assertFilePreexisting,
+  assertValidFilename,
+  requirePullNumber,
+  requirePr,
+  requireFiles,
   getFileDiff,
-  isFilePreexisting,
-  isValidEipFilename,
-  checkEIP,
-  assertEvent,
-  assertPullNumber,
-  assertAuthors,
-  removeApproved,
+  assertFilenameAndFileNumbersMatch,
+  assertConstantEipNumber,
+  assertConstantAndValidStatus,
+  assertHasAuthors,
+  assertIsApprovedByAuthors,
+  requireAuthors,
   requestReviewers
 } from "./lib";
-import { CompareCommits, GITHUB_TOKEN, ERRORS } from "./utils";
+import { ERRORS, File } from "./utils";
+
+/** If array length is 0 then this is undefined */
+const nullableStringArray = <A extends (string | undefined)[]>(array: A) => {
+  const filtered = array.filter(Boolean);
+  if (filtered.length !== 0) {
+    return filtered as string[]
+  } else return;
+}
+// type NullableStringArray = ReturnType<typeof nullableStringArray>;
+
+const testFile = async (file: File) => {
+  const fileErrors = nullableStringArray([
+    assertFilePreexisting(file),
+    assertValidFilename(file)
+  ]);
+
+  if (fileErrors) {
+    return {
+      fileErrors
+    };
+  }
+
+  const fileDiff = await getFileDiff(file);
+
+  const headerErrors = nullableStringArray([
+    assertFilenameAndFileNumbersMatch(fileDiff),
+    assertConstantEipNumber(fileDiff),
+    assertConstantAndValidStatus(fileDiff)
+  ]);
+
+  const authorErrors = nullableStringArray([assertHasAuthors(fileDiff)]);
+
+  if (authorErrors) {
+    return {
+      fileErrors,
+      headerErrors,
+      authorErrors
+    };
+  }
+
+  const approvalErrors = nullableStringArray(
+    await Promise.all([assertIsApprovedByAuthors(fileDiff)])
+  );
+
+  return {
+    fileErrors,
+    headerErrors,
+    authorErrors,
+    approvalErrors,
+    authors: requireAuthors(fileDiff)
+  };
+};
 
 export const main = async () => {
   try {
-    const Github = getOctokit(GITHUB_TOKEN);
+    // Verify correct enviornment and request context
+    requireEvent();
+    requirePullNumber();
+    await requirePr();
 
-    // Verifies correct enviornment and request context
-    assertEvent();
-    assertPullNumber();
-    await assertPr();
+    // Collect the changes made in the given PR from base <-> head for eip files
+    const files = await requireFiles();
+    if (files.length !== 1) {
+      throw "sorry only 1 file is supported right now";
+    }
+    const file = files[0] as File;
 
-    // Collect the changes made in the given PR from base <-> head
-    const comparison: CompareCommits = await Github.repos
-      .compareCommits({
-        base: context.payload.pull_request?.base?.sha,
-        head: context.payload.pull_request?.head?.sha,
-        owner: context.repo.owner,
-        repo: context.repo.repo
-      })
-      .then((res) => {
-        return res.data;
-      });
+    // Collect errors for each file
+    const {
+      fileErrors,
+      authorErrors,
+      headerErrors,
+      approvalErrors,
+      authors
+    } = await testFile(file);
 
-    // Filter PR's files to get EIP files only
-    const allFiles = comparison.files;
-    const editedFiles = allFiles.filter(isFilePreexisting);
-    const eipFiles = editedFiles.filter(isValidEipFilename);
+    if (!fileErrors && !headerErrors && !authorErrors && !!approvalErrors && authors) {
+      await requestReviewers(authors)
+    }
 
-    // Extracts relevant information from file at base and head of PR
-    const fileDiffs = await Promise.all(eipFiles.map(getFileDiff));
+    if (fileErrors || headerErrors || authorErrors || approvalErrors) {
+      const errors = [
+        fileErrors,
+        authorErrors,
+        headerErrors,
+        approvalErrors
+      ].filter(Boolean).flat() as string[];
 
-    // Check each EIP content
-    fileDiffs.map(checkEIP);
+      let mentions: string | undefined;
+      if (!fileErrors && !authorErrors && !headerErrors && approvalErrors && authors) {
+        mentions = authors.join(" ")
+      }
+      await postComment(errors, mentions);
 
-    // Check each approval list
-    const notApproved = await Promise.all(fileDiffs.map(removeApproved));
-    const authors = notApproved.map((file) => file && assertAuthors(file));
-
-    // all other tests passed except missing reviewers, request reviews
-    if (ERRORS.length === authors.length) {
-      for (const eipAuthors of authors) {
-        eipAuthors && (await requestReviewers(eipAuthors));
+      if (!process.env.SHOULD_MERGE) {
+        throw "would not have merged";
       }
     }
 
     // if no errors, then merge
-    if (ERRORS.length === 0) {
+    if (!fileErrors && !headerErrors && !authorErrors && !approvalErrors) {
       // disabled initially to test behavior
-      // return await merge(fileDiffs);
-    }
-
-    if (ERRORS.length > 0) {
-      await postComment();
-      throw "would not have merged"
+      // return await merge(file);
     }
   } catch (error) {
     console.error(error);

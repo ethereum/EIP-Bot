@@ -1,4 +1,4 @@
-import { getOctokit } from "@actions/github";
+import { getOctokit, context } from "@actions/github";
 import {
   GITHUB_TOKEN,
   FrontMatterAttributes,
@@ -6,21 +6,24 @@ import {
   AUTHOR_RE,
   File,
   ContentFile,
-  EipStatus,
-  FileStatus,
-  ERRORS
+  FormattedFile,
+  ParsedContent,
+  FileDiff
 } from "src/utils";
-import frontmatter, { FrontMatterResult } from "front-matter";
-import { context } from "@actions/github/lib/utils";
-import { assertPr, assertEncoding, assertFilenameEipNum } from "./Assertions";
+import frontmatter from "front-matter";
+import { requireEncoding, requireFilenameEipNum, requirePr } from "./Assertions";
 
-export type FileDiff = {
-  head: FormattedFile;
-  base: FormattedFile;
-};
-
-export const getFileDiff = async (file: NonNullable<File>): Promise<FileDiff> => {
-  const pr = await assertPr();
+/**
+ * Accepts a file and returns the information of that file at the beginning
+ * and current state of the PR; can be used to verify changes
+ *
+ * @param file given file name + diff to be done
+ * @returns the formatted file content at the head and base of the PR
+ */
+export const getFileDiff = async (
+  file: NonNullable<File>
+): Promise<FileDiff> => {
+  const pr = await requirePr();
   const filename = file.filename;
   // Get and parse head and base file
   const base = await getParsedContent(filename, pr.base.sha);
@@ -33,16 +36,8 @@ export const getFileDiff = async (file: NonNullable<File>): Promise<FileDiff> =>
   };
 };
 
-export type FormattedFile = {
-  eipNum: number;
-  status: EipStatus;
-  authors?: Set<string>;
-  name: string;
-  filenameEipNum: number;
-};
-
 const formatFile = async (file: ParsedContent): Promise<FormattedFile> => {
-  const filenameEipNum = assertFilenameEipNum(file.name);
+  const filenameEipNum = requireFilenameEipNum(file.name);
   if (!filenameEipNum) {
     throw `Failed to extract eip number from file "${file.path}"`;
   }
@@ -58,12 +53,6 @@ const formatFile = async (file: ParsedContent): Promise<FormattedFile> => {
   };
 };
 
-export type ParsedContent = {
-  path: string;
-  name: string;
-  content: FrontMatterResult<any>;
-};
-
 const getParsedContent = async (
   filename: string,
   sha: string
@@ -71,7 +60,7 @@ const getParsedContent = async (
   const Github = getOctokit(GITHUB_TOKEN);
   const decodeData = (data: ContentFile) => {
     const encoding = data.encoding;
-    assertEncoding(encoding, filename);
+    requireEncoding(encoding, filename);
     return Buffer.from(data.content, encoding).toString();
   };
 
@@ -132,14 +121,4 @@ const getAuthors = async (rawAuthorList?: string) => {
   const authors = matchAll(rawAuthorList, AUTHOR_RE, 1);
   const resolved = await Promise.all(authors.map(resolveAuthor));
   return new Set(resolved);
-};
-
-export const isFilePreexisting = (file: NonNullable<File>) => {
-  if (file.status === FileStatus.added) {
-    ERRORS.push(
-      `File with name ${file.filename} is new and new files must be reviewed`
-    );
-    return false; // filters the files out
-  }
-  return true;
 };

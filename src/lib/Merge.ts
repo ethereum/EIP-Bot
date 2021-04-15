@@ -1,13 +1,22 @@
 import { getOctokit, context } from "@actions/github";
-import { GITHUB_TOKEN, MERGE_MESSAGE } from "src/utils";
-import { assertPr } from "./Assertions";
-import { FileDiff } from "./GetFileDiff";
+import { FileDiff, GITHUB_TOKEN, MERGE_MESSAGE } from "src/utils";
+import { requirePr } from "./Assertions";
 
 export const merge = async (diffs: FileDiff[]) => {
-  const pr = await assertPr();
+  const pr = await requirePr();
   const Github = getOctokit(GITHUB_TOKEN);
   const eips = diffs.map((diff) => diff.head.eipNum);
   const eipNumbers = eips.join(", ");
+
+  const {SHOULD_MERGE, NODE_ENV} = process.env;
+  if (!SHOULD_MERGE || !NODE_ENV) {
+    return {
+      response: [
+        `PR would have been merged but wasn't because env variable`,
+        `SHOULD_MERGE has either not been set or is deliberately false`
+      ].join(" ")
+    }
+  }
 
   await Github.pulls.merge({
     pull_number: pr.number,
