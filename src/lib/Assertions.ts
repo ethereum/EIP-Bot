@@ -240,14 +240,18 @@ export const assertConstantEipNumber = ({ head, base }: FileDiff) => {
  *
  * @returns error or undefined
  */
-export const assertConstantAndValidStatus = ({ head, base }: FileDiff) => {
+export const assertConstantStatus = ({ head, base }: FileDiff) => {
   if (head.status !== base.status) {
     return [
       `EIP ${base.eipNum} state was changed from ${base.status}`,
       `to ${head.status}`
     ].join(" ");
-  } else if (!ALLOWED_STATUSES.has(head.status)) {
+  } else return;
+};
+
+export const assertValidStatus = ({head, base}: FileDiff) => {
+  if (!ALLOWED_STATUSES.has(head.status)) {
     const allowedStatus = [...ALLOWED_STATUSES].join(" or ");
     return `${head.name} is in state ${head.status}, not ${allowedStatus}`;
   } else return;
-};
+}

@@ -11,22 +11,14 @@ import {
   getFileDiff,
   assertFilenameAndFileNumbersMatch,
   assertConstantEipNumber,
-  assertConstantAndValidStatus,
+  assertConstantStatus,
   assertHasAuthors,
   assertIsApprovedByAuthors,
   requireAuthors,
-  requestReviewers
+  requestReviewers,
+  assertValidStatus
 } from "./lib";
 import { ERRORS, File } from "./utils";
-
-/** If array length is 0 then this is undefined */
-const nullableStringArray = <A extends (string | undefined)[]>(array: A) => {
-  const filtered = array.filter(Boolean);
-  if (filtered.length !== 0) {
-    return filtered as string[]
-  } else return;
-}
-// type NullableStringArray = ReturnType<typeof nullableStringArray>;
 
 const testFile = async (file: File) => {
   const fileErrors = {
@@ -45,12 +37,13 @@ const testFile = async (file: File) => {
   const headerErrors = {
     matchingEIPNum: assertFilenameAndFileNumbersMatch(fileDiff),
     constantEIPNum: assertConstantEipNumber(fileDiff),
-    constantValidStatus: assertConstantAndValidStatus(fileDiff)
+    constantStatus: assertConstantStatus(fileDiff),
+    validStatus: assertValidStatus(fileDiff)
   };
 
   const authorErrors = {
     hasAuthors: assertHasAuthors(fileDiff)
-  }
+  };
 
   if (authorErrors.hasAuthors) {
     return {
@@ -96,34 +89,51 @@ export const main = async () => {
       authors
     } = await testFile(file);
 
-    if (!fileErrors.filePreexisting && !fileErrors.) {
-      await requestReviewers(authors)
+    // TODO (alita): clean this up
+    const shouldRequestReviews =
+      !fileErrors.filePreexisting &&
+      !fileErrors.validFilename &&
+      !authorErrors?.hasAuthors &&
+      !headerErrors?.constantEIPNum &&
+      !headerErrors?.validStatus &&
+      !headerErrors?.matchingEIPNum &&
+      approvalErrors?.isApproved;
+    if (shouldRequestReviews && authors) {
+      await requestReviewers(authors);
     }
 
-    if (fileErrors || headerErrors || authorErrors || approvalErrors) {
+    // only acceptable error is changing status
+    const shouldMerge = 
+      !fileErrors.filePreexisting &&
+      !fileErrors.validFilename &&
+      !authorErrors?.hasAuthors &&
+      !headerErrors?.constantEIPNum &&
+      !headerErrors?.validStatus &&
+      !headerErrors?.matchingEIPNum &&
+      !approvalErrors?.isApproved;
+    if (!shouldMerge) {
       const errors = [
         fileErrors.filePreexisting,
         fileErrors.validFilename,
         authorErrors?.hasAuthors,
         headerErrors?.constantEIPNum,
-        headerErrors?.constantValidStatus,
+        headerErrors?.constantStatus,
+        headerErrors?.validStatus,
         headerErrors?.matchingEIPNum,
         approvalErrors?.isApproved
       ].filter(Boolean) as string[];
 
+      // TODO (alita): authors is implictly defined if shouldRequestReviews
       let mentions: string | undefined;
-      if (!fileErrors && !authorErrors && headerErrors && approvalErrors && authors) {
-        mentions = authors.join(" ")
+      if (shouldRequestReviews && authors) {
+        mentions = authors.join(" ");
       }
       await postComment(errors, mentions);
 
       if (!process.env.SHOULD_MERGE) {
         throw "would not have merged";
       }
-    }
-
-    // if no errors, then merge
-    if (!fileErrors && !headerErrors && !authorErrors && !approvalErrors) {
+    } else {
       // disabled initially to test behavior
       // return await merge(file);
     }
