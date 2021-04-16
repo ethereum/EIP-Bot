@@ -29,12 +29,12 @@ const nullableStringArray = <A extends (string | undefined)[]>(array: A) => {
 // type NullableStringArray = ReturnType<typeof nullableStringArray>;
 
 const testFile = async (file: File) => {
-  const fileErrors = nullableStringArray([
-    assertFilePreexisting(file),
-    assertValidFilename(file)
-  ]);
+  const fileErrors = {
+    filePreexisting: assertFilePreexisting(file),
+    validFilename: assertValidFilename(file)
+  };
 
-  if (fileErrors) {
+  if (fileErrors.filePreexisting || fileErrors.validFilename) {
     return {
       fileErrors
     };
@@ -42,15 +42,17 @@ const testFile = async (file: File) => {
 
   const fileDiff = await getFileDiff(file);
 
-  const headerErrors = nullableStringArray([
-    assertFilenameAndFileNumbersMatch(fileDiff),
-    assertConstantEipNumber(fileDiff),
-    assertConstantAndValidStatus(fileDiff)
-  ]);
+  const headerErrors = {
+    matchingEIPNum: assertFilenameAndFileNumbersMatch(fileDiff),
+    constantEIPNum: assertConstantEipNumber(fileDiff),
+    constantValidStatus: assertConstantAndValidStatus(fileDiff)
+  };
 
-  const authorErrors = nullableStringArray([assertHasAuthors(fileDiff)]);
+  const authorErrors = {
+    hasAuthors: assertHasAuthors(fileDiff)
+  }
 
-  if (authorErrors) {
+  if (authorErrors.hasAuthors) {
     return {
       fileErrors,
       headerErrors,
@@ -58,9 +60,9 @@ const testFile = async (file: File) => {
     };
   }
 
-  const approvalErrors = nullableStringArray(
-    await Promise.all([assertIsApprovedByAuthors(fileDiff)])
-  );
+  const approvalErrors = {
+    isApproved: await assertIsApprovedByAuthors(fileDiff)
+  };
 
   return {
     fileErrors,
@@ -94,20 +96,23 @@ export const main = async () => {
       authors
     } = await testFile(file);
 
-    if (!fileErrors && !headerErrors && !authorErrors && !!approvalErrors && authors) {
+    if (!fileErrors.filePreexisting && !fileErrors.) {
       await requestReviewers(authors)
     }
 
     if (fileErrors || headerErrors || authorErrors || approvalErrors) {
       const errors = [
-        fileErrors,
-        authorErrors,
-        headerErrors,
-        approvalErrors
-      ].filter(Boolean).flat() as string[];
+        fileErrors.filePreexisting,
+        fileErrors.validFilename,
+        authorErrors?.hasAuthors,
+        headerErrors?.constantEIPNum,
+        headerErrors?.constantValidStatus,
+        headerErrors?.matchingEIPNum,
+        approvalErrors?.isApproved
+      ].filter(Boolean) as string[];
 
       let mentions: string | undefined;
-      if (!fileErrors && !authorErrors && !headerErrors && approvalErrors && authors) {
+      if (!fileErrors && !authorErrors && headerErrors && approvalErrors && authors) {
         mentions = authors.join(" ")
       }
       await postComment(errors, mentions);
