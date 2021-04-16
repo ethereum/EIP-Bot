@@ -16,7 +16,7 @@ import { getApprovals, getJustLogin } from "./CheckApprovals";
 export const requireEvent = () => {
   const event = context.eventName;
 
-  if (event !== EVENTS.pullRequest) {
+  if (!(event === EVENTS.pullRequest || event === EVENTS.pullRequestTarget)) {
     throw `Only events of type ${EVENTS.pullRequest} are allowed`;
   }
 
@@ -86,9 +86,9 @@ export const assertIsApprovedByAuthors = async (fileDiff: FileDiff) => {
     return [
       `${fileDiff.head.name} requires approval from one of`,
       `(${authors.map(getJustLogin).join(", ")})`
-    ].join(" ")
+    ].join(" ");
   } else return;
-}
+};
 
 /**
  * requires that authors exist and returns them else throw error
