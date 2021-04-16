@@ -55,5 +55,5 @@ const setDebugContext = (debugEnv?: NodeJS.ProcessEnv) => {
     },
     full_name: `${env.REPO_OWNER}/${env.REPO_NAME}`
   };
-  context.eventName = EVENTS.pullRequest;
+  context.eventName = EVENTS.pullRequestTarget;
 }
