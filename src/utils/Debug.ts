@@ -1,6 +1,4 @@
 
-import { EVENTS } from "./Constants";
-
 export const __MAIN__ = async (debugEnv?: NodeJS.ProcessEnv) => {
   const isDebug = process.env.NODE_ENV === "development" || process.env.NODE_ENV === "test"
 
@@ -55,5 +53,5 @@ const setDebugContext = (debugEnv?: NodeJS.ProcessEnv) => {
     },
     full_name: `${env.REPO_OWNER}/${env.REPO_NAME}`
   };
-  context.eventName = EVENTS.pullRequestTarget;
+  context.eventName = env.EVENT_TYPE;
 }

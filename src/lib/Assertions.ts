@@ -16,7 +16,9 @@ import { getApprovals, getJustLogin } from "./CheckApprovals";
 export const requireEvent = () => {
   const event = context.eventName;
 
-  if (event !== EVENTS.pullRequestTarget) {
+  const isPullRequestReview = event === EVENTS.pullRequestReview;
+  const isPullRequestTarget = event === EVENTS.pullRequestTarget;
+  if (!(isPullRequestReview || isPullRequestTarget)) {
     throw `Only events of type ${EVENTS.pullRequest} are allowed`;
   }
 

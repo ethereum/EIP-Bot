@@ -25,5 +25,6 @@ export enum FileStatus {
 
 export enum EVENTS {
   pullRequest = "pull_request",
-  pullRequestTarget = "pull_request_target"
+  pullRequestTarget = "pull_request_target",
+  pullRequestReview = "pull_request_review"
 }
