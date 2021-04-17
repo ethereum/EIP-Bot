@@ -157,7 +157,7 @@ const checkCIStatus = async () => {
   }).then(res => res.data.state)
 
   console.log(`status is '${status}'...`)
-  if (status === "error") {
+  if (status === "failure") {
     throw "CI checks failed; bot can only merge if CI checks pass"
   }
 
