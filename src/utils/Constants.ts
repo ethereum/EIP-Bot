@@ -28,3 +28,5 @@ export enum EVENTS {
   pullRequestTarget = "pull_request_target",
   pullRequestReview = "pull_request_review"
 }
+
+export const CHECK_STATUS_INTERVAL = 30000
