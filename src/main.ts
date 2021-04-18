@@ -174,5 +174,5 @@ export const pauseInterval = (checker, next, timeout) => async () => {
   }
 }
 
-// only runs the bot if the CI statuses pass; checks every 30 seconds
+// run until CI all passes or one fails or timeout occurs
 export const main = pauseInterval(checkCIStatus, _main, CHECK_STATUS_INTERVAL)
