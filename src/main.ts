@@ -1,5 +1,4 @@
 import { setFailed } from "@actions/core";
-import { context, getOctokit } from "@actions/github";
 import {
   // merge,
   postComment,
@@ -19,7 +18,7 @@ import {
   requestReviewers,
   assertValidStatus
 } from "./lib";
-import { CHECK_STATUS_INTERVAL, ERRORS, File, GITHUB_TOKEN } from "./utils";
+import { ERRORS, File } from "./utils";
 
 const testFile = async (file: File) => {
   const fileErrors = {
@@ -67,7 +66,7 @@ const testFile = async (file: File) => {
   };
 };
 
-export const _main = async () => {
+export const main = async () => {
   try {
     // Verify correct enviornment and request context
     requireEvent();
@@ -145,34 +144,3 @@ export const _main = async () => {
     setFailed(error.message);
   }
 };
-
-// HACK (alita): check the CI status and only continue if the CI is successful
-const checkCIStatus = async () => {
-  const Github = getOctokit(GITHUB_TOKEN);
-  const pr = await requirePr()
-  const status = await Github.repos.getCombinedStatusForRef({
-    owner: context.repo.owner,
-    repo: context.repo.repo,
-    ref: pr.head.ref
-  }).then(res => res.data.state)
-
-  console.log(`status is '${status}'...`)
-  if (status === "failure") {
-    setFailed("CI checks failed; bot can only merge if CI checks pass")
-    throw "CI checks failed; bot can only merge if CI checks pass"
-  }
-
-  return status === "success";
-}
-
-export const pauseInterval = (checker, next, timeout) => async () => {
-  const status = await checker();
-  if (!status) {
-    setTimeout(pauseInterval(checker, next, timeout), timeout);
-  } else {
-    return next()
-  }
-}
-
-// only runs the bot if the CI statuses pass; checks every 30 seconds
-export const main = pauseInterval(checkCIStatus, _main, CHECK_STATUS_INTERVAL)
