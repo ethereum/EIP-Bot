@@ -89,6 +89,17 @@ export const main = async () => {
       authors
     } = await testFile(file);
 
+    const errors = [
+      fileErrors.filePreexisting,
+      fileErrors.validFilename,
+      authorErrors?.hasAuthors,
+      headerErrors?.constantEIPNum,
+      headerErrors?.constantStatus,
+      headerErrors?.validStatus,
+      headerErrors?.matchingEIPNum,
+      approvalErrors?.isApproved
+    ].filter(Boolean) as string[];
+
     // TODO (alita): clean this up
     const shouldRequestReviews =
       !fileErrors.filePreexisting &&
@@ -112,17 +123,6 @@ export const main = async () => {
       !headerErrors?.matchingEIPNum &&
       !approvalErrors?.isApproved;
     if (!shouldMerge) {
-      const errors = [
-        fileErrors.filePreexisting,
-        fileErrors.validFilename,
-        authorErrors?.hasAuthors,
-        headerErrors?.constantEIPNum,
-        headerErrors?.constantStatus,
-        headerErrors?.validStatus,
-        headerErrors?.matchingEIPNum,
-        approvalErrors?.isApproved
-      ].filter(Boolean) as string[];
-
       // TODO (alita): authors is implictly defined if shouldRequestReviews
       let mentions: string | undefined;
       if (shouldRequestReviews && authors) {
@@ -131,7 +131,7 @@ export const main = async () => {
       await postComment(errors, mentions);
 
       if (!process.env.SHOULD_MERGE) {
-        throw "would not have merged";
+        throw `would not have merged for the following reasons ${errors.join("\n\t - ")}`;
       }
     } else {
       // disabled initially to test behavior
