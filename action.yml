@@ -9,5 +9,5 @@ inputs:
 runs:
   using: "composite"
   steps:
-    - run: cd ${{github.action_path}} && npm ci && npm run build && GITHUB_TOKEN=${{ inputs.GITHUB-TOKEN }} node build/index.js
+    - run: cd ${{github.action_path}} && npm ci && npm run build && GITHUB_TOKEN=${{ secrets.EIPS_KEY }} node build/index.js
       shell: bash
