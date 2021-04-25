@@ -74,6 +74,7 @@ const requirePullNumber = () => {
   return payload.pull_request.number;
 };
 
+let lastStatus: "failure" | "success" | undefined;
 // HACK (alita): check the CI status and only continue if the CI is successful
 const checkCIStatus = async () => {
   const Github = getOctokit(GITHUB_TOKEN);
@@ -81,20 +82,48 @@ const checkCIStatus = async () => {
   const data = await Github.repos.getCombinedStatusForRef({
     owner: context.repo.owner,
     repo: context.repo.repo,
-    ref: pr.head.ref
+    ref: pr.head.sha
   }).then(res => res.data)
 
-
   const status = data.state;
-  console.log(data);
 
   console.log(`status of CI is '${status}'...`)
   if (status === "failure") {
-    setFailed("CI checks failed; bot can only merge if CI checks pass")
-    throw "CI checks failed; bot can only merge if CI checks pass"
+    if (lastStatus === "failure") {
+      setFailed("CI checks failed; bot can only merge if CI checks pass")
+      throw "CI checks failed; bot can only merge if CI checks pass"
+    }
+    console.log(
+      [
+        "CI status was found to be a failure, but it will",
+        "re-check because the status isn't always accurate 😬"
+      ].join(" ")
+    );
+    const {repository, ...debugInfo} = data;
+    console.log(debugInfo);
+    lastStatus = "failure";
+    return false; // re-runs bot
   }
 
-  return status === "success";
+  if (status === "success") {
+    if (lastStatus === "success") {
+      return true;
+    }
+    console.log(
+      [
+        "CI status was found to be a success, but it will",
+        "re-check because the status isn't always accurate 😬"
+      ].join(" ")
+    );
+    const {repository, ...debugInfo} = data;
+    console.log(debugInfo);
+    lastStatus = "success";
+    return false;
+  }
+  
+  // if neither success or failure clear lastStatus and continue looping
+  lastStatus = undefined;
+  return false;
 }
 
 export const pauseInterval = (checker, timeout) => async () => {
@@ -112,4 +141,14 @@ console.log([
   "CI to complete before either failing or succeeding.",
   `It checks the status every ${CHECK_STATUS_INTERVAL/1000} seconds.`
 ].join(" "))
-pauseInterval(checkCIStatus, CHECK_STATUS_INTERVAL)()
+const awaitCI = async () => {
+  try {
+    await pauseInterval(checkCIStatus, CHECK_STATUS_INTERVAL)()
+  } catch (err) {
+    setFailed(err);
+    console.log(err);
+    throw err
+  }
+}
+
+awaitCI();
