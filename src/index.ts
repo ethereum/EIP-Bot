@@ -78,11 +78,15 @@ const requirePullNumber = () => {
 const checkCIStatus = async () => {
   const Github = getOctokit(GITHUB_TOKEN);
   const pr = await requirePr()
-  const status = await Github.repos.getCombinedStatusForRef({
+  const data = await Github.repos.getCombinedStatusForRef({
     owner: context.repo.owner,
     repo: context.repo.repo,
     ref: pr.head.ref
-  }).then(res => res.data.state)
+  }).then(res => res.data)
+
+
+  const status = data.state;
+  console.log(data);
 
   console.log(`status of CI is '${status}'...`)
   if (status === "failure") {
