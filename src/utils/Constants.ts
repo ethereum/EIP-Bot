@@ -16,7 +16,10 @@ export enum FrontMatterAttributes {
 }
 
 export enum EipStatus {
-  draft = "draft"
+  draft = "draft",
+  withdrawn = "withdrawn",
+  lastCall = "last call",
+  review = "review"
 }
 
 export enum FileStatus {

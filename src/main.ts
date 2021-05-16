@@ -18,7 +18,7 @@ import {
   requestReviewers,
   assertValidStatus
 } from "./lib";
-import { ERRORS, File } from "./utils";
+import { EipStatus, ERRORS, File} from "./utils";
 
 const testFile = async (file: File) => {
   const fileErrors = {
@@ -62,6 +62,7 @@ const testFile = async (file: File) => {
     headerErrors,
     authorErrors,
     approvalErrors,
+    fileDiff,
     authors: requireAuthors(fileDiff)
   };
 };
@@ -86,49 +87,44 @@ export const main = async () => {
       authorErrors,
       headerErrors,
       approvalErrors,
-      authors
+      authors,
+      fileDiff
     } = await testFile(file);
+
+    const isStateChangeAllowed =
+      fileDiff?.head.status === EipStatus.withdrawn ||
+      (fileDiff?.base.status === EipStatus.lastCall && fileDiff?.head.status === EipStatus.review)
 
     const errors = [
       fileErrors.filePreexisting,
       fileErrors.validFilename,
       authorErrors?.hasAuthors,
       headerErrors?.constantEIPNum,
-      headerErrors?.constantStatus,
-      headerErrors?.validStatus,
+      !isStateChangeAllowed && headerErrors?.constantStatus,
+      !isStateChangeAllowed && headerErrors?.validStatus,
       headerErrors?.matchingEIPNum,
       approvalErrors?.isApproved
     ].filter(Boolean) as string[];
 
-    // TODO (alita): clean this up
-    const shouldRequestReviews =
+    // errors are truthy if they exist (are the error description)
+    const shouldMerge =
       !fileErrors.filePreexisting &&
       !fileErrors.validFilename &&
       !authorErrors?.hasAuthors &&
       !headerErrors?.constantEIPNum &&
       !headerErrors?.validStatus &&
       !headerErrors?.matchingEIPNum &&
-      approvalErrors?.isApproved;
-    if (shouldRequestReviews && authors) {
-      await requestReviewers(authors);
-    }
+      !approvalErrors?.isApproved &&
+      (isStateChangeAllowed || !headerErrors?.constantStatus);
 
-    // only acceptable error is changing status
-    const shouldMerge = 
-      !fileErrors.filePreexisting &&
-      !fileErrors.validFilename &&
-      !authorErrors?.hasAuthors &&
-      !headerErrors?.constantEIPNum &&
-      !headerErrors?.validStatus &&
-      !headerErrors?.matchingEIPNum &&
-      !approvalErrors?.isApproved;
     if (!shouldMerge) {
-      // TODO (alita): authors is implictly defined if shouldRequestReviews
-      let mentions: string | undefined;
-      if (shouldRequestReviews && authors) {
-        mentions = authors.join(" ");
+      if (authors) {
+        const mentions = authors.join(" ");
+        await requestReviewers(authors);
+        await postComment(errors, mentions)
+      } else {
+        await postComment(errors);
       }
-      await postComment(errors, mentions);
 
       if (!process.env.SHOULD_MERGE) {
         throw `would not have merged for the following reasons ${errors.join("\n\t - ")}`;
