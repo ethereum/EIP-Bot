@@ -1,9 +1,9 @@
-
 export const __MAIN__ = async (debugEnv?: NodeJS.ProcessEnv) => {
-  const isDebug = process.env.NODE_ENV === "development" || process.env.NODE_ENV === "test"
+  const isDebug =
+    process.env.NODE_ENV === "development" || process.env.NODE_ENV === "test";
 
   if (!isDebug) throw new Error("trying to run debug without proper auth");
-  
+
   // setup debug env
   setDebugContext(debugEnv);
 
@@ -11,10 +11,10 @@ export const __MAIN__ = async (debugEnv?: NodeJS.ProcessEnv) => {
   // it allows for a custom environment that's setup programmatically
   const main = require("src/main").main;
   return await main();
-}
+};
 
 const setDebugContext = (debugEnv?: NodeJS.ProcessEnv) => {
-  const env = {...process.env, ...debugEnv};
+  const env = { ...process.env, ...debugEnv };
   process.env = env;
 
   // By instantiating after above it allows it to initialize with custom env
@@ -34,12 +34,12 @@ const setDebugContext = (debugEnv?: NodeJS.ProcessEnv) => {
     context.repo = {
       owner: env.REPO_OWNER_NAME,
       repo: env.REPO_NAME
-    }
+    };
   } else {
     // @ts-ignore
     context.repo.owner = env.REPO_OWNER_NAME;
     // @ts-ignore
-    context.repo.repo = env.REPO_NAME
+    context.repo.repo = env.REPO_NAME;
   }
 
   context.payload.repository = {
@@ -54,4 +54,4 @@ const setDebugContext = (debugEnv?: NodeJS.ProcessEnv) => {
     full_name: `${env.REPO_OWNER}/${env.REPO_NAME}`
   };
   context.eventName = env.EVENT_TYPE;
-}
+};

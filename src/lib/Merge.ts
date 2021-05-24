@@ -8,14 +8,14 @@ export const merge = async (diffs: FileDiff[]) => {
   const eips = diffs.map((diff) => diff.head.eipNum);
   const eipNumbers = eips.join(", ");
 
-  const {SHOULD_MERGE, NODE_ENV} = process.env;
+  const { SHOULD_MERGE, NODE_ENV } = process.env;
   if (!SHOULD_MERGE || !NODE_ENV) {
     return {
       response: [
         `PR would have been merged but wasn't because env variable`,
         `SHOULD_MERGE has either not been set or is deliberately false`
       ].join(" ")
-    }
+    };
   }
 
   await Github.pulls.merge({

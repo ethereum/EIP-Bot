@@ -17,7 +17,7 @@ export const matchAll = (
   let match = regex.exec(rawString);
   let matches: string[] = [];
   while (match != null) {
-    const matchedGroup = match[group]
+    const matchedGroup = match[group];
     if (matchedGroup === undefined) continue;
     matches.push(matchedGroup);
     match = regex.exec(rawString);

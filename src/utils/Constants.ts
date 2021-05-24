@@ -32,4 +32,40 @@ export enum EVENTS {
   pullRequestReview = "pull_request_review"
 }
 
-export const CHECK_STATUS_INTERVAL = 30000
+export const EIP_EDITORS = ["@MicahZoltu", "@lightclient"];
+
+export type ERRORS = {
+  fileErrors: {
+    filePreexistingError?: string;
+    validFilenameError?: string;
+  };
+  headerErrors: {
+    matchingEIPNumError?: string;
+    constantEIPNumError?: string;
+    constantStatusError?: string;
+    validStatusError?: string;
+  };
+  authorErrors: {
+    hasAuthorsError?: string;
+  };
+  approvalErrors: {
+    isAuthorApprovedError?: string;
+    isEditorApprovedError?: string;
+  };
+};
+
+/**
+ *  A collection of error strings, although confusing the error strings are
+ *  define if an error exists and undefined if not; i.e.
+ *  `ERRORS.approvalErrors.isAuthorApproved` is truthy if authors have NOT
+ *  approved the PR and falsey if they have because in the case that they
+ *  have approved the PR no error exists
+ */
+export const DEFAULT_ERRORS: ERRORS = {
+  fileErrors: {},
+  headerErrors: {},
+  authorErrors: {},
+  approvalErrors: {}
+};
+
+export const CHECK_STATUS_INTERVAL = 30000;

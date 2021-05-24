@@ -6,7 +6,6 @@ import nock from "nock";
 
 nock.disableNetConnect();
 
-
 test("run should succeed with a repo and secret", async () => {
   // (github.listAllMatchingRepos as jest.Mock) = jest
   //   .fn()
@@ -41,7 +40,6 @@ test("run should succeed with a repo and secret", async () => {
 
 describe("jest should run", () => {
   const OLD_ENV = process.env;
-
 
   beforeEach(() => {
     jest.resetModules(); // Most important - it clears the cache

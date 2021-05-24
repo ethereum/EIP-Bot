@@ -11,7 +11,11 @@ import {
   FileDiff
 } from "src/utils";
 import frontmatter from "front-matter";
-import { requireEncoding, requireFilenameEipNum, requirePr } from "./Assertions";
+import {
+  requireEncoding,
+  requireFilenameEipNum,
+  requirePr
+} from "./Assertions";
 
 /**
  * Accepts a file and returns the information of that file at the beginning
@@ -25,9 +29,12 @@ export const getFileDiff = async (
 ): Promise<FileDiff> => {
   const pr = await requirePr();
   const filename = file.filename;
+
   // Get and parse head and base file
-  const base = await getParsedContent(filename, pr.base.sha);
   const head = await getParsedContent(filename, pr.head.sha);
+  // if the base file is new but was approved it will error, so instead
+  // use the head file as both
+  const base = await getParsedContent(filename, pr.base.sha).catch(() => head);
 
   // Organize information cleanly
   return {

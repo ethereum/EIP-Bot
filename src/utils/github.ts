@@ -80,7 +80,7 @@ export async function listAllMatchingRepos({
   });
 
   core.info(
-    `Available repositories: ${JSON.stringify(repos.map(r => r.full_name))}`
+    `Available repositories: ${JSON.stringify(repos.map((r) => r.full_name))}`
   );
 
   return filterReposByPatterns(repos, patterns);
@@ -109,17 +109,17 @@ export async function listAllReposForAuthenticatedUser({
       break;
     }
   }
-  return repos.filter(r => !r.archived);
+  return repos.filter((r) => !r.archived);
 }
 
 export function filterReposByPatterns(
   repos: Repository[],
   patterns: string[]
 ): Repository[] {
-  const regexPatterns = patterns.map(s => new RegExp(s));
+  const regexPatterns = patterns.map((s) => new RegExp(s));
 
   return repos.filter(
-    repo => regexPatterns.filter(r => r.test(repo.full_name)).length
+    (repo) => regexPatterns.filter((r) => r.test(repo.full_name)).length
   );
 }
 

@@ -9,13 +9,17 @@ const Github = getOctokit("fake");
 type UnPromisify<T> = T extends Promise<infer U> ? U : T;
 type UnArrayify<T> = T extends (infer U)[] ? U : T;
 
-export type CompareCommits = UnPromisify<ReturnType<typeof Github.repos.compareCommits>>["data"];
+export type CompareCommits = UnPromisify<
+  ReturnType<typeof Github.repos.compareCommits>
+>["data"];
 export type PR = UnPromisify<ReturnType<typeof Github.pulls.get>>["data"];
-export type Commit = UnPromisify<ReturnType<typeof Github.repos.getCommit>>["data"];
-export type Files = CompareCommits["files"]
+export type Commit = UnPromisify<
+  ReturnType<typeof Github.repos.getCommit>
+>["data"];
+export type Files = CompareCommits["files"];
 export type File = UnArrayify<CompareCommits["files"]>;
 export type CommitFiles = CompareCommits["base_commit"]["files"];
-export type CommitFile = UnArrayify<NonNullable<CommitFiles>>
+export type CommitFile = UnArrayify<NonNullable<CommitFiles>>;
 export type Repo = UnPromisify<ReturnType<typeof Github.repos.get>>["data"];
 
 // This was extracted directly from Octokit repo

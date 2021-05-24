@@ -1,7 +1,9 @@
 import { context, getOctokit } from "@actions/github";
+import { RequestError } from "@octokit/types";
 import {
   ALLOWED_STATUSES,
   CompareCommits,
+  EIP_EDITORS,
   EIP_NUM_RE,
   EVENTS,
   File,
@@ -176,12 +178,6 @@ export const requireFiles = async () => {
   return comparison.files as Files;
 };
 
-export const assertFilePreexisting = (file: NonNullable<File>) => {
-  if (file.status === FileStatus.added) {
-    return `File with name ${file.filename} is new and new files must be reviewed`;
-  } else return;
-};
-
 /**
  * Accepts a file and returns whether or not its name is valid
  *
@@ -251,9 +247,45 @@ export const assertConstantStatus = ({ head, base }: FileDiff) => {
   } else return;
 };
 
-export const assertValidStatus = ({head, base}: FileDiff) => {
+export const assertValidStatus = ({ head, base }: FileDiff) => {
   if (!ALLOWED_STATUSES.has(head.status)) {
     const allowedStatus = [...ALLOWED_STATUSES].join(" or ");
     return `${head.name} is in state ${head.status}, not ${allowedStatus}`;
   } else return;
-}
+};
+
+/**
+ *  accepts a standard File object and throws an error if the status is new or
+ *  it does not exist at the base commit; uses the file's previous_filename if
+ *  it exists.
+ */
+export const requireFilePreexisting = async (file: File) => {
+  const Github = getOctokit(GITHUB_TOKEN);
+  const pr = await requirePr();
+  const filename = file.previous_filename || file.filename;
+  const error = await Github.repos
+    .getContent({
+      owner: context.repo.owner,
+      repo: context.repo.repo,
+      path: filename,
+      ref: pr.base.sha
+    })
+    .catch((err) => err as RequestError);
+
+  if ((error && error.status === 404) || file.status === FileStatus.added) {
+    throw `File with name ${filename} is new and new files must be reviewed`;
+  }
+
+  return file;
+};
+
+/** returns an error string if the PR does NOT have editor approval */
+export const assertEIPEditorApproval = async (file: File) => {
+  const approvals = await getApprovals();
+  const isApproved = approvals.find((approver) =>
+    EIP_EDITORS.includes(approver)
+  );
+  if (!isApproved) {
+    return `This PR requires review from one of [${EIP_EDITORS.join(", ")}]`;
+  } else return;
+};

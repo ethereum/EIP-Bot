@@ -21,7 +21,7 @@ export const requestReviewers = async (reviewers: string[]) => {
   const requestReview = async (reviewer: string) => {
     const Github = getOctokit(GITHUB_TOKEN);
     const pr = await requirePr();
-  
+
     const res = await Github.pulls
       .requestReviewers({
         owner: context.repo.owner,
@@ -31,7 +31,7 @@ export const requestReviewers = async (reviewers: string[]) => {
       })
       // if an error occurs return undefined
       .catch((err) => {});
-  
+
     return !res && reviewer;
   };
 

@@ -3,7 +3,6 @@ import {
   // merge,
   postComment,
   requireEvent,
-  assertFilePreexisting,
   assertValidFilename,
   requirePullNumber,
   requirePr,
@@ -16,52 +15,63 @@ import {
   assertIsApprovedByAuthors,
   requireAuthors,
   requestReviewers,
-  assertValidStatus
+  assertValidStatus,
+  requireFilePreexisting,
+  assertEIPEditorApproval
 } from "./lib";
-import { EipStatus, ERRORS, File} from "./utils";
+import {
+  DEFAULT_ERRORS,
+  EipStatus,
+  EIP_EDITORS,
+  ERRORS,
+  File,
+  FileDiff
+} from "./utils";
 
-const testFile = async (file: File) => {
-  const fileErrors = {
-    filePreexisting: assertFilePreexisting(file),
-    validFilename: assertValidFilename(file)
-  };
+const testFile = async (
+  file: File
+): Promise<ERRORS & { fileDiff?: FileDiff; authors?: string[] }> => {
+  // we need to define this here because the below logic can get very complicated otherwise
+  const errors = DEFAULT_ERRORS;
 
-  if (fileErrors.filePreexisting || fileErrors.validFilename) {
-    return {
-      fileErrors
-    };
+  // file testing is not compatible (yet) with an initialy undefined file
+  // so instead it's required here. It throws an exception for consistency
+  try {
+    file = await requireFilePreexisting(file);
+  } catch (err) {
+    errors.fileErrors.filePreexistingError = err;
+    errors.approvalErrors.isEditorApprovedError = await assertEIPEditorApproval(
+      file
+    );
+    // new files are acceptable if an editor has approved
+    if (errors.approvalErrors.isEditorApprovedError) {
+      return errors;
+    }
   }
+  errors.fileErrors.validFilenameError = assertValidFilename(file);
 
   const fileDiff = await getFileDiff(file);
+  errors.headerErrors.matchingEIPNumError = assertFilenameAndFileNumbersMatch(
+    fileDiff
+  );
+  errors.headerErrors.constantEIPNumError = assertConstantEipNumber(fileDiff);
+  errors.headerErrors.constantStatusError = assertConstantStatus(fileDiff);
+  errors.headerErrors.validStatusError = assertValidStatus(fileDiff);
+  errors.authorErrors.hasAuthorsError = assertHasAuthors(fileDiff);
 
-  const headerErrors = {
-    matchingEIPNum: assertFilenameAndFileNumbersMatch(fileDiff),
-    constantEIPNum: assertConstantEipNumber(fileDiff),
-    constantStatus: assertConstantStatus(fileDiff),
-    validStatus: assertValidStatus(fileDiff)
-  };
-
-  const authorErrors = {
-    hasAuthors: assertHasAuthors(fileDiff)
-  };
-
-  if (authorErrors.hasAuthors) {
+  // if no authors then remaining items aren't relevant to check
+  if (errors.authorErrors.hasAuthorsError) {
     return {
-      fileErrors,
-      headerErrors,
-      authorErrors
+      ...errors,
+      fileDiff
     };
   }
 
-  const approvalErrors = {
-    isApproved: await assertIsApprovedByAuthors(fileDiff)
-  };
-
+  errors.approvalErrors.isAuthorApprovedError = await assertIsApprovedByAuthors(
+    fileDiff
+  );
   return {
-    fileErrors,
-    headerErrors,
-    authorErrors,
-    approvalErrors,
+    ...errors,
     fileDiff,
     authors: requireAuthors(fileDiff)
   };
@@ -93,50 +103,61 @@ export const main = async () => {
 
     const isStateChangeAllowed =
       fileDiff?.head.status === EipStatus.withdrawn ||
-      (fileDiff?.base.status === EipStatus.lastCall && fileDiff?.head.status === EipStatus.review)
+      (fileDiff?.base.status === EipStatus.lastCall &&
+        fileDiff?.head.status === EipStatus.review);
 
     const errors = [
-      fileErrors.filePreexisting,
-      fileErrors.validFilename,
-      authorErrors?.hasAuthors,
-      headerErrors?.constantEIPNum,
-      !isStateChangeAllowed && headerErrors?.constantStatus,
-      !isStateChangeAllowed && headerErrors?.validStatus,
-      headerErrors?.matchingEIPNum,
-      approvalErrors?.isApproved
+      approvalErrors.isEditorApprovedError && fileErrors.filePreexistingError,
+      fileErrors.validFilenameError,
+      authorErrors?.hasAuthorsError,
+      headerErrors?.constantEIPNumError,
+      !isStateChangeAllowed && headerErrors?.constantStatusError,
+      !isStateChangeAllowed && headerErrors?.validStatusError,
+      headerErrors?.matchingEIPNumError,
+      approvalErrors?.isAuthorApprovedError,
+      fileErrors.filePreexistingError && approvalErrors.isEditorApprovedError
     ].filter(Boolean) as string[];
 
     // errors are truthy if they exist (are the error description)
     const shouldMerge =
-      !fileErrors.filePreexisting &&
-      !fileErrors.validFilename &&
-      !authorErrors?.hasAuthors &&
-      !headerErrors?.constantEIPNum &&
-      !headerErrors?.validStatus &&
-      !headerErrors?.matchingEIPNum &&
-      !approvalErrors?.isApproved &&
-      (isStateChangeAllowed || !headerErrors?.constantStatus);
+      (!approvalErrors.isEditorApprovedError ||
+        !fileErrors.filePreexistingError) &&
+      !fileErrors.validFilenameError &&
+      !authorErrors?.hasAuthorsError &&
+      !headerErrors?.constantEIPNumError &&
+      !headerErrors?.validStatusError &&
+      !headerErrors?.matchingEIPNumError &&
+      !approvalErrors?.isAuthorApprovedError &&
+      (isStateChangeAllowed || !headerErrors?.constantStatusError);
 
+    console.log({ errors, shouldMerge });
     if (!shouldMerge) {
-      if (authors) {
+      if (
+        fileErrors.filePreexistingError &&
+        approvalErrors.isEditorApprovedError
+      ) {
+        const mentions = EIP_EDITORS.join(" ");
+        await requestReviewers(EIP_EDITORS);
+        await postComment(errors, mentions);
+      } else if (authors) {
         const mentions = authors.join(" ");
         await requestReviewers(authors);
-        await postComment(errors, mentions)
+        await postComment(errors, mentions);
       } else {
         await postComment(errors);
       }
 
       if (!process.env.SHOULD_MERGE) {
-        throw `would not have merged for the following reasons ${errors.join("\n\t - ")}`;
+        throw `would not have merged for the following reasons \n\t - ${errors.join(
+          "\n\t - "
+        )}`;
       }
     } else {
       // disabled initially to test behavior
       // return await merge(file);
     }
   } catch (error) {
-    console.error(error);
-    ERRORS.push(`An Exception Occured While Linting: ${error}`);
-    console.log(ERRORS);
+    console.log(`An Exception Occured While Linting: \n${error}`);
     setFailed(error.message);
   }
 };
