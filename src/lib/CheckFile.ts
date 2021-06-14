@@ -32,8 +32,7 @@ export const getFileDiff = async (
 
   // Get and parse head and base file
   const head = await getParsedContent(filename, pr.head.sha);
-  // if the base file is new but was approved it will error, so instead
-  // use the head file as both
+  // if the base file is new this will error, so use head instead
   const base = await getParsedContent(filename, pr.base.sha).catch(() => head);
 
   // Organize information cleanly

@@ -1,6 +1,6 @@
 import { setFailed } from "@actions/core";
 import {
-  // merge,
+  merge,
   postComment,
   requireEvent,
   assertValidFilename,
@@ -30,12 +30,13 @@ import {
 
 const testFile = async (
   file: File
-): Promise<ERRORS & { fileDiff?: FileDiff; authors?: string[] }> => {
+): Promise<ERRORS & { fileDiff: FileDiff; authors?: string[] }> => {
   // we need to define this here because the below logic can get very complicated otherwise
   const errors = DEFAULT_ERRORS;
 
   // file testing is not compatible (yet) with an initialy undefined file
   // so instead it's required here. It throws an exception for consistency
+  const fileDiff = await getFileDiff(file);
   try {
     file = await requireFilePreexisting(file);
   } catch (err) {
@@ -45,12 +46,14 @@ const testFile = async (
     );
     // new files are acceptable if an editor has approved
     if (errors.approvalErrors.isEditorApprovedError) {
-      return errors;
+      return {
+        ...errors,
+        fileDiff
+      };
     }
   }
-  errors.fileErrors.validFilenameError = assertValidFilename(file);
 
-  const fileDiff = await getFileDiff(file);
+  errors.fileErrors.validFilenameError = assertValidFilename(file);
   errors.headerErrors.matchingEIPNumError = assertFilenameAndFileNumbersMatch(
     fileDiff
   );
@@ -130,7 +133,6 @@ export const main = async () => {
       !approvalErrors?.isAuthorApprovedError &&
       (isStateChangeAllowed || !headerErrors?.constantStatusError);
 
-    console.log({ errors, shouldMerge });
     if (!shouldMerge) {
       if (
         fileErrors.filePreexistingError &&
@@ -152,9 +154,9 @@ export const main = async () => {
           "\n\t - "
         )}`;
       }
+
     } else {
-      // disabled initially to test behavior
-      // return await merge(file);
+      return await merge(fileDiff);
     }
   } catch (error) {
     console.log(`An Exception Occured While Linting: \n${error}`);

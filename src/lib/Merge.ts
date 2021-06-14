@@ -2,11 +2,10 @@ import { getOctokit, context } from "@actions/github";
 import { FileDiff, GITHUB_TOKEN, MERGE_MESSAGE } from "src/utils";
 import { requirePr } from "./Assertions";
 
-export const merge = async (diffs: FileDiff[]) => {
+export const merge = async (diff: FileDiff) => {
   const pr = await requirePr();
   const Github = getOctokit(GITHUB_TOKEN);
-  const eips = diffs.map((diff) => diff.head.eipNum);
-  const eipNumbers = eips.join(", ");
+  const eipNum = diff.head.eipNum;
 
   const { SHOULD_MERGE, NODE_ENV } = process.env;
   if (!SHOULD_MERGE || !NODE_ENV) {
@@ -22,7 +21,7 @@ export const merge = async (diffs: FileDiff[]) => {
     pull_number: pr.number,
     repo: context.repo.repo,
     owner: context.repo.owner,
-    commit_title: `Automatically merged updates to draft EIP(s) ${eipNumbers} (#${pr.number})`,
+    commit_title: `Automatically merged updates to ${diff.head.status} EIP(s) ${eipNum} (#${pr.number})`,
     commit_message: MERGE_MESSAGE,
     merge_method: "squash",
     sha: pr.head.sha
