@@ -7,8 +7,8 @@ export const merge = async (diff: FileDiff) => {
   const Github = getOctokit(GITHUB_TOKEN);
   const eipNum = diff.head.eipNum;
 
-  const { SHOULD_MERGE, NODE_ENV } = process.env;
-  if (!SHOULD_MERGE || !NODE_ENV) {
+  const { MERGE_ENABLED, NODE_ENV } = process.env;
+  if (!MERGE_ENABLED || !NODE_ENV) {
     return {
       response: [
         `PR would have been merged but wasn't because env variable`,

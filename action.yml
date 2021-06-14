@@ -5,9 +5,12 @@ inputs:
     description: |-
       The Github token to be used by this bot when merging, posting comments, or requesting reviewers
     required: true
+  MERGE_ENABLED:
+    description: if true then the bot merge abilities are enabled, otherwise the bot will not merge
+    required: false 
 
 runs:
   using: "composite"
   steps:
-    - run: cd ${{github.action_path}} && npm ci && npm run build && GITHUB_TOKEN=${{ inputs.GITHUB-TOKEN }} node build/index.js
+    - run: cd ${{github.action_path}} && npm ci && npm run build && GITHUB_TOKEN=${{ inputs.GITHUB-TOKEN }} MERGE_ENABLED=${{ inputs.MERGE_ENABLED }} node build/index.js
       shell: bash
