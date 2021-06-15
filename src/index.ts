@@ -120,16 +120,22 @@ const checkCIStatus = async () => {
     lastStatus = "success";
     return false;
   }
-  
+
   // if neither success or failure clear lastStatus and continue looping
   lastStatus = undefined;
   return false;
 }
 
-export const pauseInterval = (checker, timeout) => async () => {
+const MAX_LOOPS = 40;
+export const pauseInterval = (checker, timeout, loop = 0) => async () => {
+  if (loop > MAX_LOOPS) {
+    const message = `CI Check timed out after ${MAX_LOOPS * timeout / 1000 / 60} minutes`
+    setFailed(message)
+    throw message;
+  }
   const status = await checker();
   if (!status) {
-    setTimeout(pauseInterval(checker, timeout), timeout);
+    setTimeout(pauseInterval(checker, timeout, loop + 1), timeout);
   } else return; // success
 }
 
