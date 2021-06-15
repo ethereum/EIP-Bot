@@ -156,7 +156,7 @@ export const main = async () => {
       }
 
     } else {
-      return await merge(fileDiff);
+      await merge(fileDiff);
     }
   } catch (error) {
     console.log(`An Exception Occured While Linting: \n${error}`);
