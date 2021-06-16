@@ -3,9 +3,11 @@ import { getOctokit, context } from "@actions/github";
 
 const CHECK_STATUS_INTERVAL = 30000
 const GITHUB_TOKEN = process.env.GITHUB_TOKEN || "";
+const TRAVIS_CI_NAME = "Travis CI - Pull Request";
 
 const setDebugContext = (debugEnv?: NodeJS.ProcessEnv) => {
   const env = {...process.env, ...debugEnv};
+
   process.env = env;
 
   // By instantiating after above it allows it to initialize with custom env
@@ -20,7 +22,7 @@ const setDebugContext = (debugEnv?: NodeJS.ProcessEnv) => {
     },
     number: parseInt(env.PULL_NUMBER || "") || 0
   };
-
+ 
   if (env.NODE_ENV === "test") {
     context.repo = {
       owner: env.REPO_OWNER_NAME,
@@ -79,13 +81,18 @@ let lastStatus: "failure" | "success" | undefined;
 const checkCIStatus = async () => {
   const Github = getOctokit(GITHUB_TOKEN);
   const pr = await requirePr()
-  const data = await Github.repos.getCombinedStatusForRef({
+  const data = await Github.checks.listForRef({
     owner: context.repo.owner,
     repo: context.repo.repo,
     ref: pr.head.sha
   }).then(res => res.data)
 
-  const status = data.state;
+  const check_run = data.check_runs.find(check => check.name === TRAVIS_CI_NAME);
+  if (!check_run) {
+    lastStatus = undefined;
+    return false;
+  }
+  const status = check_run.conclusion;
 
   console.log(`status of CI is '${status}'...`)
   if (status === "failure") {
@@ -99,8 +106,7 @@ const checkCIStatus = async () => {
         "re-check because the status isn't always accurate 😬"
       ].join(" ")
     );
-    const {repository, ...debugInfo} = data;
-    console.log(debugInfo);
+    console.log(check_run);
     lastStatus = "failure";
     return false; // re-runs bot
   }
@@ -115,8 +121,7 @@ const checkCIStatus = async () => {
         "re-check because the status isn't always accurate 😬"
       ].join(" ")
     );
-    const {repository, ...debugInfo} = data;
-    console.log(debugInfo);
+    console.log(check_run);
     lastStatus = "success";
     return false;
   }
