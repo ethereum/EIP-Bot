@@ -149,7 +149,7 @@ export const main = async () => {
         await postComment(errors);
       }
 
-      if (!process.env.SHOULD_MERGE) {
+      if (!process.env.ENABLE_MERGE) {
         throw `would not have merged for the following reasons \n\t - ${errors.join(
           "\n\t - "
         )}`;

@@ -7,14 +7,14 @@ export const merge = async (diff: FileDiff) => {
   const Github = getOctokit(GITHUB_TOKEN);
   const eipNum = diff.head.eipNum;
 
-  const { MERGE_ENABLED, NODE_ENV } = process.env;
-  if (!MERGE_ENABLED || !NODE_ENV) {
-    return {
-      response: [
+  const { MERGE_ENABLED } = process.env;
+  if (!MERGE_ENABLED) {
+    const message = [
         `PR would have been merged but wasn't because env variable`,
-        `SHOULD_MERGE has either not been set or is deliberately false`
+        `ENABLE_MERGE has either not been set or is deliberately false`
       ].join(" ")
-    };
+    console.log(message);
+    return message;
   }
 
   await Github.pulls.merge({
