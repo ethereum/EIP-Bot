@@ -3,7 +3,6 @@ import { RequestError } from "@octokit/types";
 import {
   ALLOWED_STATUSES,
   EIP1_REQUIRED_EDITOR_APPROVALS,
-  EipStatus,
   EIP_EDITORS,
   EIP_NUM_RE,
   EVENTS,
@@ -249,7 +248,10 @@ export const assertConstantStatus = ({ head, base }: FileDiff) => {
 export const assertValidStatus = ({ head, base }: FileDiff) => {
   if (!ALLOWED_STATUSES.has(head.status)) {
     const allowedStatus = [...ALLOWED_STATUSES].join(" or ");
-    return `${head.name} is in state ${head.status}, not ${allowedStatus}`;
+    return [
+      `${head.name} is in state ${head.status}, not ${allowedStatus};`,
+      `an EIP editor needs to approve this change`
+    ].join(" ");
   } else return;
 };
 
@@ -301,28 +303,3 @@ export const assertEIP1EditorApprovals = async () => {
     ].join(" ");
   } else return;
 };
-
-// @ts-expect-error it doesn't matter that all paths don't return an error because they all return
-export const assertFinalStatusAuthorAndEditorApproval = async (fileDiff: FileDiff) => {
-  const approvals = await getApprovals();
-  const authors = requireAuthors(fileDiff);
-
-  // there exists an approver who is also an author
-  const hasAuthorApproval = !!approvals.find((approver) =>
-    authors.includes(approver)
-  );
-  const hasEditorApproval = approvals.find((approver) =>
-    EIP_EDITORS.includes(approver)
-  );
-
-  const isStatusFinal = fileDiff.head.status === EipStatus.final || fileDiff.base.status === EipStatus.final
-
-  if (isStatusFinal) {
-    if (!hasAuthorApproval || !hasEditorApproval) {
-      return [
-        `EIP ${fileDiff.base.eipNum} is (or was) in state final,all changes to EIPs`,
-        `in state final require the approval of both an author and an EIP editor`
-      ].join(" ")
-    }
-  } else return;
-}

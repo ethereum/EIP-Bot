@@ -17,8 +17,7 @@ import {
   assertValidStatus,
   requireFilePreexisting,
   assertEIPEditorApproval,
-  assertEIP1EditorApprovals,
-  assertFinalStatusAuthorAndEditorApproval
+  assertEIP1EditorApprovals
 } from "./lib";
 import {
   DEFAULT_ERRORS,
@@ -54,8 +53,10 @@ const testFile = async (
     }
   }
 
+  errors.approvalErrors.isEditorApprovedError = await assertEIPEditorApproval(
+    file
+  );
   errors.approvalErrors.enoughEditorApprovalsForEIP1Error = await assertEIP1EditorApprovals();
-  errors.approvalErrors.finalStatusAuthorAndEditorApprovalError = await assertFinalStatusAuthorAndEditorApproval(fileDiff);
   errors.fileErrors.validFilenameError = assertValidFilename(file);
   errors.headerErrors.matchingEIPNumError = assertFilenameAndFileNumbersMatch(
     fileDiff
