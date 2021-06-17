@@ -17,9 +17,11 @@
     "@actions/github": "4.0.0",
     "@octokit/plugin-retry": "^3.0.7",
     "@octokit/rest": "^18.3.5",
+    "@types/lodash": "^4.14.170",
     "@zeit/ncc": "0.22.3",
     "dotenv": "8.2.0",
     "front-matter": "4.0.2",
+    "lodash": "^4.17.21",
     "nock": "^13.0.11"
   },
   "devDependencies": {

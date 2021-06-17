@@ -1,3 +1,5 @@
+import { ERRORS } from "./Types";
+
 export const MERGE_MESSAGE = `
     Hi, I'm a bot! This change was automatically merged because:
     - It only modifies existing Draft, Review, or Last Call EIP(s)
@@ -32,27 +34,9 @@ export enum EVENTS {
   pullRequestReview = "pull_request_review"
 }
 
-export const EIP_EDITORS = ["@MicahZoltu", "@lightclient"];
+export const EIP_EDITORS = ["@MicahZoltu", "@lightclient", "@arachnid", "@cdetrio", "@Souptacular", "@vbuterin", "@nicksavers", "@wanderer", "@gcolvin", "@axic"];
 
-export type ERRORS = {
-  fileErrors: {
-    filePreexistingError?: string;
-    validFilenameError?: string;
-  };
-  headerErrors: {
-    matchingEIPNumError?: string;
-    constantEIPNumError?: string;
-    constantStatusError?: string;
-    validStatusError?: string;
-  };
-  authorErrors: {
-    hasAuthorsError?: string;
-  };
-  approvalErrors: {
-    isAuthorApprovedError?: string;
-    isEditorApprovedError?: string;
-  };
-};
+
 
 /**
  *  A collection of error strings, although confusing the error strings are
@@ -69,3 +53,5 @@ export const DEFAULT_ERRORS: ERRORS = {
 };
 
 export const CHECK_STATUS_INTERVAL = 30000;
+
+export const EIP1_REQUIRED_EDITOR_APPROVALS = 2;

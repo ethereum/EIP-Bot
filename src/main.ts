@@ -1,6 +1,5 @@
 import { setFailed } from "@actions/core";
 import {
-  merge,
   postComment,
   requireEvent,
   assertValidFilename,
@@ -17,20 +16,21 @@ import {
   requestReviewers,
   assertValidStatus,
   requireFilePreexisting,
-  assertEIPEditorApproval
+  assertEIPEditorApproval,
+  assertEIP1EditorApproval
 } from "./lib";
 import {
   DEFAULT_ERRORS,
-  EipStatus,
   EIP_EDITORS,
-  ERRORS,
   File,
-  FileDiff
+  TestResults
 } from "./utils";
+import { editorApprovalPurifier, EIP1Purifier, getAllTruthyObjectPaths, innerJoinAncestors, stateChangeAllowedPurifier } from "./lib/Purifiers";
+import { get } from "lodash";
 
 const testFile = async (
   file: File
-): Promise<ERRORS & { fileDiff: FileDiff; authors?: string[] }> => {
+): Promise<TestResults> => {
   // we need to define this here because the below logic can get very complicated otherwise
   const errors = DEFAULT_ERRORS;
 
@@ -47,12 +47,13 @@ const testFile = async (
     // new files are acceptable if an editor has approved
     if (errors.approvalErrors.isEditorApprovedError) {
       return {
-        ...errors,
+        errors,
         fileDiff
       };
     }
   }
 
+  errors.approvalErrors.enoughEditorApprovalsForEIP1Error = await assertEIP1EditorApproval(file);
   errors.fileErrors.validFilenameError = assertValidFilename(file);
   errors.headerErrors.matchingEIPNumError = assertFilenameAndFileNumbersMatch(
     fileDiff
@@ -65,7 +66,7 @@ const testFile = async (
   // if no authors then remaining items aren't relevant to check
   if (errors.authorErrors.hasAuthorsError) {
     return {
-      ...errors,
+      errors,
       fileDiff
     };
   }
@@ -74,90 +75,71 @@ const testFile = async (
     fileDiff
   );
   return {
-    ...errors,
+    errors,
     fileDiff,
     authors: requireAuthors(fileDiff)
   };
 };
 
+
 export const main = async () => {
   try {
-    // Verify correct enviornment and request context
+    // Verify correct environment and request context
     requireEvent();
     requirePullNumber();
-    await requirePr();
+    const pr = await requirePr();
 
     // Collect the changes made in the given PR from base <-> head for eip files
-    const files = await requireFiles();
-    if (files.length !== 1) {
+    const files = await requireFiles(pr);
+    if (pr.changed_files !== 1 || files.length !== 1) {
       throw "sorry only 1 file is supported right now";
     }
     const file = files[0] as File;
 
     // Collect errors for each file
-    const {
+    const dirtyTestResults = await testFile(file);
+    // Apply independent purifiers
+    const primedPurifiers = [
+      stateChangeAllowedPurifier(dirtyTestResults),
+      editorApprovalPurifier(dirtyTestResults),
+      EIP1Purifier(dirtyTestResults)
+    ]
+    // Purify the dirty results
+    const testResults = innerJoinAncestors(dirtyTestResults, primedPurifiers)
+
+    const {errors: {
       fileErrors,
-      authorErrors,
-      headerErrors,
-      approvalErrors,
-      authors,
-      fileDiff
-    } = await testFile(file);
+      approvalErrors
+    },
+      authors
+    } = testResults;
 
-    const isStateChangeAllowed =
-      fileDiff?.head.status === EipStatus.withdrawn ||
-      (fileDiff?.base.status === EipStatus.lastCall &&
-        fileDiff?.head.status === EipStatus.review);
+    const errors = getAllTruthyObjectPaths(testResults.errors).map((path) => get(testResults.errors, path))
 
-    const errors = [
-      approvalErrors.isEditorApprovedError && fileErrors.filePreexistingError,
-      fileErrors.validFilenameError,
-      authorErrors?.hasAuthorsError,
-      headerErrors?.constantEIPNumError,
-      !isStateChangeAllowed && headerErrors?.constantStatusError,
-      !isStateChangeAllowed && headerErrors?.validStatusError,
-      headerErrors?.matchingEIPNumError,
-      approvalErrors?.isAuthorApprovedError,
-      fileErrors.filePreexistingError && approvalErrors.isEditorApprovedError
-    ].filter(Boolean) as string[];
+    if (errors.length === 0) { console.log("passed!"); return; }
 
-    // errors are truthy if they exist (are the error description)
-    const shouldMerge =
-      (!approvalErrors.isEditorApprovedError ||
-        !fileErrors.filePreexistingError) &&
-      !fileErrors.validFilenameError &&
-      !authorErrors?.hasAuthorsError &&
-      !headerErrors?.constantEIPNumError &&
-      !headerErrors?.validStatusError &&
-      !headerErrors?.matchingEIPNumError &&
-      !approvalErrors?.isAuthorApprovedError &&
-      (isStateChangeAllowed || !headerErrors?.constantStatusError);
-
-    if (!shouldMerge) {
-      if (
-        fileErrors.filePreexistingError &&
-        approvalErrors.isEditorApprovedError
-      ) {
-        const mentions = EIP_EDITORS.join(" ");
-        await requestReviewers(EIP_EDITORS);
-        await postComment(errors, mentions);
-      } else if (authors) {
-        const mentions = authors.join(" ");
-        await requestReviewers(authors);
-        await postComment(errors, mentions);
-      } else {
-        await postComment(errors);
-      }
-
-      if (!process.env.ENABLE_MERGE) {
-        throw `would not have merged for the following reasons \n\t - ${errors.join(
-          "\n\t - "
-        )}`;
-      }
-
-    } else {
-      await merge(fileDiff);
+    // If errors, post comment and set the job as failed
+    let mentions = "";
+    if (
+      fileErrors.filePreexistingError &&
+      approvalErrors.isEditorApprovedError
+    ) {
+      mentions += EIP_EDITORS.join(" ");
+      await requestReviewers(EIP_EDITORS);
+    } else if (approvalErrors.enoughEditorApprovalsForEIP1Error) {
+      mentions += EIP_EDITORS.join(" ");
+      await requestReviewers(EIP_EDITORS);
     }
+    
+    if (authors && approvalErrors.isAuthorApprovedError) {
+      mentions += authors.join(" ");
+      await requestReviewers(authors);
+    }
+    await postComment(errors, mentions);
+
+    const message = `failed to pass tests with the following errors:\n\t- ${errors.join("\n\t- ")}`
+    console.log(message);
+    setFailed(message)
   } catch (error) {
     console.log(`An Exception Occured While Linting: \n${error}`);
     setFailed(error.message);

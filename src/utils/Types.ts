@@ -6,7 +6,7 @@ import { FrontMatterResult } from "front-matter";
 export type Github = ReturnType<typeof getOctokit>;
 const Github = getOctokit("fake");
 
-type UnPromisify<T> = T extends Promise<infer U> ? U : T;
+export type UnPromisify<T> = T extends Promise<infer U> ? U : T;
 type UnArrayify<T> = T extends (infer U)[] ? U : T;
 
 export type CompareCommits = UnPromisify<
@@ -71,3 +71,26 @@ export type FileDiff = {
   head: FormattedFile;
   base: FormattedFile;
 };
+
+export type ERRORS = {
+  fileErrors: {
+    filePreexistingError?: string;
+    validFilenameError?: string;
+  };
+  headerErrors: {
+    matchingEIPNumError?: string;
+    constantEIPNumError?: string;
+    constantStatusError?: string;
+    validStatusError?: string;
+  };
+  authorErrors: {
+    hasAuthorsError?: string;
+  };
+  approvalErrors: {
+    isAuthorApprovedError?: string;
+    isEditorApprovedError?: string;
+    enoughEditorApprovalsForEIP1Error?: string;
+  };
+};
+
+export type TestResults = { errors: ERRORS} & { fileDiff: FileDiff; authors?: string[] }
