@@ -47,8 +47,8 @@ export const requirePr = async () => {
     owner: context.repo.owner,
     pull_number: prNum
   });
-
-  if (pr.merged) {
+  
+  if (pr.merged && process.env.NODE_ENV !== "development") {
     throw `PR ${prNum} is already merged; quitting`;
   }
 
@@ -248,7 +248,10 @@ export const assertConstantStatus = ({ head, base }: FileDiff) => {
 export const assertValidStatus = ({ head, base }: FileDiff) => {
   if (!ALLOWED_STATUSES.has(head.status)) {
     const allowedStatus = [...ALLOWED_STATUSES].join(" or ");
-    return `${head.name} is in state ${head.status}, not ${allowedStatus}`;
+    return [
+      `${head.name} is in state ${head.status}, not ${allowedStatus};`,
+      `an EIP editor needs to approve this change`
+    ].join(" ");
   } else return;
 };
 
@@ -288,7 +291,7 @@ export const assertEIPEditorApproval = async (file: File) => {
   } else return;
 };
 
-export const assertEIP1EditorApproval = async (file: File) => {
+export const assertEIP1EditorApprovals = async () => {
   const approvals = await getApprovals();
   const editorApprovals = approvals.filter((approver) =>
     EIP_EDITORS.includes(approver)

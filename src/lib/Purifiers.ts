@@ -1,17 +1,18 @@
-import { intersection, set } from "lodash";
+import { cloneDeep, intersection, set } from "lodash";
 import { EipStatus, TestResults } from "src/utils";
 
-const ANY = (states: boolean[]) => states.includes(true);
+const ANY = (states: any[]) => states.filter(Boolean).length > 0;
 
 export const stateChangeAllowedPurifier = (testResults: TestResults) => {
-  const { errors, fileDiff } = testResults;
+  const _testResults = cloneDeep(testResults);
+  const { errors, fileDiff } = _testResults;
 
   const isStateChangeAllowed = ANY([
     // state changes to withdrawn from anything
     fileDiff?.head.status === EipStatus.withdrawn,
     // state changes from lastcall -> review
     fileDiff?.base.status === EipStatus.lastCall &&
-      fileDiff?.head.status === EipStatus.review,
+    fileDiff?.head.status === EipStatus.review,
     // editors can approve state changes
     !errors.approvalErrors.isEditorApprovedError
   ]);
@@ -28,41 +29,46 @@ export const stateChangeAllowedPurifier = (testResults: TestResults) => {
 };
 
 export const editorApprovalPurifier = (testResults: TestResults) => {
+  const _testResults = cloneDeep(testResults);
+  const { errors } = _testResults;
+  
   const isEditorApproved =
-    !testResults.errors.approvalErrors.isEditorApprovedError;
-  const isNewFile = !!testResults.errors.fileErrors.filePreexistingError;
-
+    !errors.approvalErrors.isEditorApprovedError;
+  const isNewFile = !!errors.fileErrors.filePreexistingError;
   if (isEditorApproved && isNewFile) {
-    testResults.errors.fileErrors.filePreexistingError = undefined;
+   errors.fileErrors.filePreexistingError = undefined;
   }
 
-  const isInvalidStatus = !!testResults.errors.headerErrors.validStatusError;
-  if (isEditorApproved && isInvalidStatus) {
-    testResults.errors.headerErrors.validStatusError = undefined;
+  if (isEditorApproved) {
+    errors.headerErrors.validStatusError = undefined;
   }
 
-  if (!isEditorApproved) {
-    if (!isNewFile) {
-      testResults.errors.approvalErrors.isEditorApprovedError = undefined;
-    }
+  const isInvalidStatus = errors.headerErrors.validStatusError;
+  const mentionEditors = ANY([
+    !isEditorApproved && isNewFile,
+    !isEditorApproved && isInvalidStatus
+  ]);
+  if (!mentionEditors) {
+    errors.approvalErrors.isEditorApprovedError = undefined;
   }
 
-  return testResults;
+  return {...testResults, errors};
 };
 
 export const EIP1Purifier = (testResults: TestResults) => {
+  const { errors } = cloneDeep(testResults);
   const eipNum = testResults.fileDiff.base.eipNum;
 
   if (eipNum === 1) {
     // authors not required for EIP1
-    testResults.errors.approvalErrors.isAuthorApprovedError = undefined;
+    errors.approvalErrors.isAuthorApprovedError = undefined;
   } else {
-    testResults.errors.approvalErrors.enoughEditorApprovalsForEIP1Error =
+    errors.approvalErrors.enoughEditorApprovalsForEIP1Error =
       undefined;
   }
 
   // clear error in all other cases
-  return testResults;
+  return {...testResults, errors};
 };
 
 /**
