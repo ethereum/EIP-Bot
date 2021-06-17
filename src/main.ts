@@ -1,6 +1,5 @@
 import { setFailed } from "@actions/core";
 import {
-  merge,
   postComment,
   requireEvent,
   assertValidFilename,
@@ -21,14 +20,11 @@ import {
 } from "./lib";
 import {
   DEFAULT_ERRORS,
-  EipStatus,
   EIP_EDITORS,
-  ERRORS,
   File,
-  FileDiff,
   TestResults
 } from "./utils";
-import {intersection, pick, set} from "lodash"
+import { editorApprovalPurifier, innerJoinAncestors, stateChangeAllowedPurifier } from "./lib/Purifiers";
 
 const testFile = async (
   file: File
@@ -82,78 +78,6 @@ const testFile = async (
   };
 };
 
-const OR = (states: boolean[]) => states.includes(true)
-
-const stateChangeAllowedPurifier = (testResults: TestResults) => {
-  const {errors, fileDiff} = testResults;
-  
-  const isStateChangeAllowed = OR([
-    // state changes to withdrawn from anything
-    fileDiff?.head.status === EipStatus.withdrawn,
-    // state changes from lastcall -> review
-    fileDiff?.base.status === EipStatus.lastCall &&
-    fileDiff?.head.status === EipStatus.review,
-    // editors can approve state changes
-    !errors.approvalErrors.isEditorApprovedError
-    ])
-
-  if (isStateChangeAllowed) {
-    if (errors.headerErrors.constantStatusError) {
-      // allows for the header to change to an invalid status
-      errors.headerErrors.validStatusError = undefined;
-    }
-    // always clear the constant status error if changes are allowed
-    errors.headerErrors.constantStatusError = undefined;
-  }     
-
-  return {
-    ...testResults,
-    errors
-  }
-}
-
-const editorApprovalPurifier = (testResults: TestResults) => {
-  const isEditorApproved = !testResults.errors.approvalErrors.isEditorApprovedError;
-  const isNewFile = !!testResults.errors.fileErrors.filePreexistingError;
-
-  if (isEditorApproved && isNewFile) {
-    testResults.errors.fileErrors.filePreexistingError = undefined;
-  } 
-
-  if (!isEditorApproved) {
-    if (!isNewFile) {
-      testResults.errors.approvalErrors.isEditorApprovedError = undefined;
-    }
-  }
-
-  return testResults
-}
-
-/**
- * designed to collect the purified results and return the common paths;
- * this is useful because it means that if one error is purified in one 
- * purifier but not in others it will be purified in this step, which 
- * avoids race conditions and keeps logic linear and shallow (improves
- * readability)
- * 
- * @param parent common ancestor between potentially mutated objects
- * @param objects mutated objects from ancestor
- * @returns common paths of the mutated objects relative to the parent
- */
-const innerJoinAncestors = (parent: TestResults, objects: TestResults[]) => {
-  function rKeys(obj: TestResults, path?: string) {
-    if (!obj || typeof obj !== "object") return path;
-    return Object.keys(obj).map((key) =>
-      rKeys(obj[key], path ? [path, key].join(".") : key)
-    );
-  }
-
-  const objectPaths = objects.map((obj) => rKeys(obj).toString().split(",") as string[]);
-  const commonPaths = intersection(...objectPaths);
-  const clearPaths = rKeys(parent).toString().split(",").filter(path => commonPaths.includes(path))
-  
-  return clearPaths.reduce((obj, path) => set(obj, path, undefined), parent) as TestResults
-};
 
 export const main = async () => {
   try {
@@ -185,12 +109,11 @@ export const main = async () => {
       headerErrors,
       approvalErrors
     },
-      authors,
-      fileDiff
+      authors
     } = testResults; 
 
     const errors = [
-      approvalErrors.isEditorApprovedError && fileErrors.filePreexistingError,
+      fileErrors.filePreexistingError,
       fileErrors.validFilenameError,
       authorErrors?.hasAuthorsError,
       headerErrors?.constantEIPNumError,
@@ -198,7 +121,7 @@ export const main = async () => {
       headerErrors?.validStatusError,
       headerErrors?.matchingEIPNumError,
       approvalErrors?.isAuthorApprovedError,
-      fileErrors.filePreexistingError && approvalErrors.isEditorApprovedError
+      approvalErrors.isEditorApprovedError
     ].filter(Boolean) as string[];
 
     // errors are truthy if they exist (are the error description)
@@ -211,6 +134,8 @@ export const main = async () => {
       !headerErrors?.matchingEIPNumError &&
       !approvalErrors?.isAuthorApprovedError &&
       !headerErrors?.constantStatusError;
+
+    if (shouldMerge) return;
 
     if (
       fileErrors.filePreexistingError &&
@@ -226,6 +151,10 @@ export const main = async () => {
     } else {
       await postComment(errors);
     }
+
+    const message = `failed to pass tests with the following errors:\n\t- ${errors.join("\n\t- ")}`
+    console.log(message);
+    setFailed(message)
   } catch (error) {
     console.log(`An Exception Occured While Linting: \n${error}`);
     setFailed(error.message);
