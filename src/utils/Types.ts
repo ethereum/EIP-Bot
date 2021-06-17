@@ -90,7 +90,6 @@ export type ERRORS = {
     isAuthorApprovedError?: string;
     isEditorApprovedError?: string;
     enoughEditorApprovalsForEIP1Error?: string;
-    finalStatusAuthorAndEditorApprovalError?: string;
   };
 };
 

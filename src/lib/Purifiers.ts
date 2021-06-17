@@ -43,11 +43,10 @@ export const editorApprovalPurifier = (testResults: TestResults) => {
     errors.headerErrors.validStatusError = undefined;
   }
 
-  const isStatusFinal =
-    errors.approvalErrors.finalStatusAuthorAndEditorApprovalError;
+  const isInvalidStatus = errors.headerErrors.validStatusError;
   const mentionEditors = ANY([
     !isEditorApproved && isNewFile,
-    !isEditorApproved && isStatusFinal
+    !isEditorApproved && isInvalidStatus
   ]);
   if (!mentionEditors) {
     errors.approvalErrors.isEditorApprovedError = undefined;
