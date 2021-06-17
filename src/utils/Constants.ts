@@ -21,7 +21,8 @@ export enum EipStatus {
   draft = "draft",
   withdrawn = "withdrawn",
   lastCall = "last call",
-  review = "review"
+  review = "review",
+  final = "final"
 }
 
 export enum FileStatus {
@@ -35,8 +36,6 @@ export enum EVENTS {
 }
 
 export const EIP_EDITORS = ["@MicahZoltu", "@lightclient", "@arachnid", "@cdetrio", "@Souptacular", "@vbuterin", "@nicksavers", "@wanderer", "@gcolvin", "@axic"];
-
-
 
 /**
  *  A collection of error strings, although confusing the error strings are

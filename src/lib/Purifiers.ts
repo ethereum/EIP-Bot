@@ -31,7 +31,6 @@ export const editorApprovalPurifier = (testResults: TestResults) => {
   const isEditorApproved =
     !testResults.errors.approvalErrors.isEditorApprovedError;
   const isNewFile = !!testResults.errors.fileErrors.filePreexistingError;
-
   if (isEditorApproved && isNewFile) {
     testResults.errors.fileErrors.filePreexistingError = undefined;
   }
@@ -41,10 +40,12 @@ export const editorApprovalPurifier = (testResults: TestResults) => {
     testResults.errors.headerErrors.validStatusError = undefined;
   }
 
-  if (!isEditorApproved) {
-    if (!isNewFile) {
-      testResults.errors.approvalErrors.isEditorApprovedError = undefined;
-    }
+  const isStatusFinal =
+    testResults.errors.approvalErrors.finalStatusAuthorAndEditorApprovalError;
+  const mentionEditors = !isEditorApproved || isNewFile || isStatusFinal;
+
+  if (!mentionEditors) {
+    testResults.errors.approvalErrors.isEditorApprovedError = undefined;
   }
 
   return testResults;

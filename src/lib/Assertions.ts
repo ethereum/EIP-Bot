@@ -3,6 +3,7 @@ import { RequestError } from "@octokit/types";
 import {
   ALLOWED_STATUSES,
   EIP1_REQUIRED_EDITOR_APPROVALS,
+  EipStatus,
   EIP_EDITORS,
   EIP_NUM_RE,
   EVENTS,
@@ -47,8 +48,8 @@ export const requirePr = async () => {
     owner: context.repo.owner,
     pull_number: prNum
   });
-
-  if (pr.merged) {
+  
+  if (pr.merged && process.env.NODE_ENV !== "development") {
     throw `PR ${prNum} is already merged; quitting`;
   }
 
@@ -288,7 +289,7 @@ export const assertEIPEditorApproval = async (file: File) => {
   } else return;
 };
 
-export const assertEIP1EditorApproval = async (file: File) => {
+export const assertEIP1EditorApprovals = async () => {
   const approvals = await getApprovals();
   const editorApprovals = approvals.filter((approver) =>
     EIP_EDITORS.includes(approver)
@@ -300,3 +301,28 @@ export const assertEIP1EditorApproval = async (file: File) => {
     ].join(" ");
   } else return;
 };
+
+// @ts-expect-error it doesn't matter that all paths don't return an error because they all return
+export const assertFinalStatusAuthorAndEditorApproval = async (fileDiff: FileDiff) => {
+  const approvals = await getApprovals();
+  const authors = requireAuthors(fileDiff);
+
+  // there exists an approver who is also an author
+  const hasAuthorApproval = !!approvals.find((approver) =>
+    authors.includes(approver)
+  );
+  const hasEditorApproval = approvals.find((approver) =>
+    EIP_EDITORS.includes(approver)
+  );
+
+  const isStatusFinal = fileDiff.head.status === EipStatus.final || fileDiff.base.status === EipStatus.final
+
+  if (isStatusFinal) {
+    if (!hasAuthorApproval || !hasEditorApproval) {
+      return [
+        `EIP ${fileDiff.base.eipNum} is (or was) in state final,all changes to EIPs`,
+        `in state final require the approval of both an author and an EIP editor`
+      ].join(" ")
+    }
+  } else return;
+}
