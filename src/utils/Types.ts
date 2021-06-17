@@ -89,6 +89,7 @@ export type ERRORS = {
   approvalErrors: {
     isAuthorApprovedError?: string;
     isEditorApprovedError?: string;
+    enoughEditorApprovalsForEIP1Error?: string;
   };
 };
 

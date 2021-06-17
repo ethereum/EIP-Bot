@@ -17,10 +17,6 @@ export const stateChangeAllowedPurifier = (testResults: TestResults) => {
   ]);
 
   if (isStateChangeAllowed) {
-    if (errors.headerErrors.constantStatusError) {
-      // allows for the header to change to an invalid status
-      errors.headerErrors.validStatusError = undefined;
-    }
     // always clear the constant status error if changes are allowed
     errors.headerErrors.constantStatusError = undefined;
   }
@@ -40,12 +36,32 @@ export const editorApprovalPurifier = (testResults: TestResults) => {
     testResults.errors.fileErrors.filePreexistingError = undefined;
   }
 
+  const isInvalidStatus = !!testResults.errors.headerErrors.validStatusError;
+  if (isEditorApproved && isInvalidStatus) {
+    testResults.errors.headerErrors.validStatusError = undefined;
+  }
+
   if (!isEditorApproved) {
     if (!isNewFile) {
       testResults.errors.approvalErrors.isEditorApprovedError = undefined;
     }
   }
 
+  return testResults;
+};
+
+export const EIP1Purifier = (testResults: TestResults) => {
+  const eipNum = testResults.fileDiff.base.eipNum;
+
+  if (eipNum === 1) {
+    // authors not required for EIP1
+    testResults.errors.approvalErrors.isAuthorApprovedError = undefined;
+  } else {
+    testResults.errors.approvalErrors.enoughEditorApprovalsForEIP1Error =
+      undefined;
+  }
+
+  // clear error in all other cases
   return testResults;
 };
 
@@ -60,25 +76,30 @@ export const editorApprovalPurifier = (testResults: TestResults) => {
  * @param objects mutated objects from ancestor
  * @returns common paths of the mutated objects relative to the parent
  */
-export const innerJoinAncestors = (parent: TestResults, objects: TestResults[]) => {
-  function rKeys(obj: TestResults, path?: string) {
-    if (!obj || typeof obj !== "object") return path;
-    return Object.keys(obj).map((key) =>
-      rKeys(obj[key], path ? [path, key].join(".") : key)
-    );
-  }
-
-  const objectPaths = objects.map(
-    (obj) => rKeys(obj).toString().split(",") as string[]
-  );
+export const innerJoinAncestors = (
+  parent: TestResults,
+  objects: TestResults[]
+) => {
+  const objectPaths = objects.map(getAllTruthyObjectPaths);
   const commonPaths = intersection(...objectPaths);
-  const clearPaths = rKeys(parent)
-    .toString()
-    .split(",")
-    .filter((path) => commonPaths.includes(path));
+  const clearPaths = getAllTruthyObjectPaths(parent).filter(
+    (path) => !commonPaths.includes(path)
+  );
 
   return clearPaths.reduce(
     (obj, path) => set(obj, path, undefined),
     parent
   ) as TestResults;
+};
+
+export const getAllTruthyObjectPaths = (obj: object) => {
+  function rKeys(o: object, path?: string) {
+    if (!o) return;
+    if (typeof o !== "object") return path;
+    return Object.keys(o).map((key) =>
+      rKeys(o[key], path ? [path, key].join(".") : key)
+    );
+  }
+
+  return rKeys(obj).toString().split(",").filter(Boolean) as string[];
 };

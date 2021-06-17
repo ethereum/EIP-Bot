@@ -34,7 +34,7 @@ export enum EVENTS {
   pullRequestReview = "pull_request_review"
 }
 
-export const EIP_EDITORS = ["@MicahZoltu", "@lightclient"];
+export const EIP_EDITORS = ["@MicahZoltu", "@lightclient", "@arachnid", "@cdetrio", "@Souptacular", "@vbuterin", "@nicksavers", "@wanderer", "@gcolvin", "@axic"];
 
 
 
@@ -53,3 +53,5 @@ export const DEFAULT_ERRORS: ERRORS = {
 };
 
 export const CHECK_STATUS_INTERVAL = 30000;
+
+export const EIP1_REQUIRED_EDITOR_APPROVALS = 2;

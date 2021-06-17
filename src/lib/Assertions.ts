@@ -2,7 +2,7 @@ import { context, getOctokit } from "@actions/github";
 import { RequestError } from "@octokit/types";
 import {
   ALLOWED_STATUSES,
-  CompareCommits,
+  EIP1_REQUIRED_EDITOR_APPROVALS,
   EIP_EDITORS,
   EIP_NUM_RE,
   EVENTS,
@@ -11,7 +11,8 @@ import {
   Files,
   FileStatus,
   FILE_RE,
-  GITHUB_TOKEN
+  GITHUB_TOKEN,
+  PR
 } from "src/utils";
 import { getApprovals, getJustLogin } from "./CheckApprovals";
 
@@ -152,21 +153,18 @@ export const requireFilenameEipNum = (filename: string) => {
  *
  * @returns {File}
  */
-export const requireFiles = async () => {
+export const requireFiles = async (pr: PR) => {
   const Github = getOctokit(GITHUB_TOKEN);
 
-  const comparison: CompareCommits = await Github.repos
-    .compareCommits({
-      base: context.payload.pull_request?.base?.sha,
-      head: context.payload.pull_request?.head?.sha,
-      owner: context.repo.owner,
-      repo: context.repo.repo
+  const files = await Github.pulls
+    .listFiles({
+      pull_number: pr.number,
+      repo: context.repo.repo,
+      owner: context.repo.owner
     })
-    .then((res) => {
-      return res.data;
-    });
+    .then((res) => res.data);
 
-  if (!comparison.files) {
+  if (!files) {
     throw new Error(
       [
         "There were no files found to be associated",
@@ -175,7 +173,7 @@ export const requireFiles = async () => {
     );
   }
 
-  return comparison.files as Files;
+  return files as Files;
 };
 
 /**
@@ -287,5 +285,18 @@ export const assertEIPEditorApproval = async (file: File) => {
   );
   if (!isApproved) {
     return `This PR requires review from one of [${EIP_EDITORS.join(", ")}]`;
+  } else return;
+};
+
+export const assertEIP1EditorApproval = async (file: File) => {
+  const approvals = await getApprovals();
+  const editorApprovals = approvals.filter((approver) =>
+    EIP_EDITORS.includes(approver)
+  );
+  if (editorApprovals.length < EIP1_REQUIRED_EDITOR_APPROVALS) {
+    return [
+      `Changes to EIP 1 require at least ${EIP1_REQUIRED_EDITOR_APPROVALS}`,
+      `unique approvals from editors, the editors are [${EIP_EDITORS.join(", ")}]`
+    ].join(" ");
   } else return;
 };

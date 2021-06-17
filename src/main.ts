@@ -16,7 +16,8 @@ import {
   requestReviewers,
   assertValidStatus,
   requireFilePreexisting,
-  assertEIPEditorApproval
+  assertEIPEditorApproval,
+  assertEIP1EditorApproval
 } from "./lib";
 import {
   DEFAULT_ERRORS,
@@ -24,7 +25,8 @@ import {
   File,
   TestResults
 } from "./utils";
-import { editorApprovalPurifier, innerJoinAncestors, stateChangeAllowedPurifier } from "./lib/Purifiers";
+import { editorApprovalPurifier, EIP1Purifier, getAllTruthyObjectPaths, innerJoinAncestors, stateChangeAllowedPurifier } from "./lib/Purifiers";
+import { get } from "lodash";
 
 const testFile = async (
   file: File
@@ -51,6 +53,7 @@ const testFile = async (
     }
   }
 
+  errors.approvalErrors.enoughEditorApprovalsForEIP1Error = await assertEIP1EditorApproval(file);
   errors.fileErrors.validFilenameError = assertValidFilename(file);
   errors.headerErrors.matchingEIPNumError = assertFilenameAndFileNumbersMatch(
     fileDiff
@@ -84,11 +87,11 @@ export const main = async () => {
     // Verify correct environment and request context
     requireEvent();
     requirePullNumber();
-    await requirePr();
+    const pr = await requirePr();
 
     // Collect the changes made in the given PR from base <-> head for eip files
-    const files = await requireFiles();
-    if (files.length !== 1) {
+    const files = await requireFiles(pr);
+    if (pr.changed_files !== 1 || files.length !== 1) {
       throw "sorry only 1 file is supported right now";
     }
     const file = files[0] as File;
@@ -96,61 +99,43 @@ export const main = async () => {
     // Collect errors for each file
     const dirtyTestResults = await testFile(file);
     // Apply independent purifiers
-    const purifiedResults = [
+    const primedPurifiers = [
       stateChangeAllowedPurifier(dirtyTestResults),
-      editorApprovalPurifier(dirtyTestResults)
+      editorApprovalPurifier(dirtyTestResults),
+      EIP1Purifier(dirtyTestResults)
     ]
     // Purify the dirty results
-    const testResults = innerJoinAncestors(dirtyTestResults, purifiedResults)
+    const testResults = innerJoinAncestors(dirtyTestResults, primedPurifiers)
 
     const {errors: {
       fileErrors,
-      authorErrors,
-      headerErrors,
       approvalErrors
     },
       authors
-    } = testResults; 
+    } = testResults;
 
-    const errors = [
-      fileErrors.filePreexistingError,
-      fileErrors.validFilenameError,
-      authorErrors?.hasAuthorsError,
-      headerErrors?.constantEIPNumError,
-      headerErrors?.constantStatusError,
-      headerErrors?.validStatusError,
-      headerErrors?.matchingEIPNumError,
-      approvalErrors?.isAuthorApprovedError,
-      approvalErrors.isEditorApprovedError
-    ].filter(Boolean) as string[];
+    const errors = getAllTruthyObjectPaths(testResults.errors).map((path) => get(testResults.errors, path))
 
-    // errors are truthy if they exist (are the error description)
-    const shouldMerge =
-      !fileErrors.filePreexistingError &&
-      !fileErrors.validFilenameError &&
-      !authorErrors?.hasAuthorsError &&
-      !headerErrors?.constantEIPNumError &&
-      !headerErrors?.validStatusError &&
-      !headerErrors?.matchingEIPNumError &&
-      !approvalErrors?.isAuthorApprovedError &&
-      !headerErrors?.constantStatusError;
+    if (errors.length === 0) { console.log("passed!"); return; }
 
-    if (shouldMerge) return;
-
+    // If errors, post comment and set the job as failed
+    let mentions = "";
     if (
       fileErrors.filePreexistingError &&
       approvalErrors.isEditorApprovedError
     ) {
-      const mentions = EIP_EDITORS.join(" ");
+      mentions += EIP_EDITORS.join(" ");
       await requestReviewers(EIP_EDITORS);
-      await postComment(errors, mentions);
-    } else if (authors) {
-      const mentions = authors.join(" ");
-      await requestReviewers(authors);
-      await postComment(errors, mentions);
-    } else {
-      await postComment(errors);
+    } else if (approvalErrors.enoughEditorApprovalsForEIP1Error) {
+      mentions += EIP_EDITORS.join(" ");
+      await requestReviewers(EIP_EDITORS);
     }
+    
+    if (authors && approvalErrors.isAuthorApprovedError) {
+      mentions += authors.join(" ");
+      await requestReviewers(authors);
+    }
+    await postComment(errors, mentions);
 
     const message = `failed to pass tests with the following errors:\n\t- ${errors.join("\n\t- ")}`
     console.log(message);
