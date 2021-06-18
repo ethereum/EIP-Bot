@@ -5,6 +5,7 @@ import {
   EIP1_REQUIRED_EDITOR_APPROVALS,
   EIP_EDITORS,
   EIP_NUM_RE,
+  encodings,
   EVENTS,
   File,
   FileDiff,
@@ -12,7 +13,8 @@ import {
   FileStatus,
   FILE_RE,
   GITHUB_TOKEN,
-  PR
+  PR,
+  Encodings
 } from "src/utils";
 import { getApprovals, getJustLogin } from "./CheckApprovals";
 
@@ -113,19 +115,6 @@ export const requireAuthors = (file: FileDiff): string[] => {
   return authors;
 };
 
-const encodings = [
-  "ascii",
-  "utf8",
-  "utf-8",
-  "utf16le",
-  "ucs2",
-  "ucs-2",
-  "base64",
-  "latin1",
-  "binary",
-  "hex"
-] as const;
-type Encodings = typeof encodings[number];
 export function requireEncoding(
   maybeEncoding: string,
   context: string
@@ -164,7 +153,7 @@ export const requireFiles = async (pr: PR) => {
     })
     .then((res) => res.data);
 
-  if (!files) {
+  if (!files?.length) {
     throw new Error(
       [
         "There were no files found to be associated",

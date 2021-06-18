@@ -16,8 +16,8 @@ export type PR = UnPromisify<ReturnType<typeof Github.pulls.get>>["data"];
 export type Commit = UnPromisify<
   ReturnType<typeof Github.repos.getCommit>
 >["data"];
-export type Files = CompareCommits["files"];
-export type File = UnArrayify<CompareCommits["files"]>;
+export type Files = UnPromisify<ReturnType<Github["pulls"]["listFiles"]>>["data"];
+export type File = UnArrayify<Files>;
 export type CommitFiles = CompareCommits["base_commit"]["files"];
 export type CommitFile = UnArrayify<NonNullable<CommitFiles>>;
 export type Repo = UnPromisify<ReturnType<typeof Github.repos.get>>["data"];
@@ -92,5 +92,19 @@ export type ERRORS = {
     enoughEditorApprovalsForEIP1Error?: string;
   };
 };
+
+export const encodings = [
+  "ascii",
+  "utf8",
+  "utf-8",
+  "utf16le",
+  "ucs2",
+  "ucs-2",
+  "base64",
+  "latin1",
+  "binary",
+  "hex"
+] as const;
+export type Encodings = typeof encodings[number];
 
 export type TestResults = { errors: ERRORS} & { fileDiff: FileDiff; authors?: string[] }
