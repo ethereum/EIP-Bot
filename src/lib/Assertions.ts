@@ -234,24 +234,33 @@ export const assertConstantStatus = ({ head, base }: FileDiff) => {
   } else return;
 };
 
+/**
+ * determines if the status of either the base or the head are
+ * not auto mergeable. A non-auto mergeable status requires editor
+ * approval 
+ * 
+ * @returns error or undefined
+ */
 export const assertValidStatus = ({ head, base }: FileDiff) => {
+  const allowedStatus = [...ALLOWED_STATUSES].join(" or ");
   if (!ALLOWED_STATUSES.has(head.status)) {
+    return [
+      `${head.name} is in state ${head.status} at the head commit,`,
+      `not ${allowedStatus}; an EIP editor needs to approve this change`
+    ].join(" ");
+  } else if (!ALLOWED_STATUSES.has(base.status)) {
     const allowedStatus = [...ALLOWED_STATUSES].join(" or ");
     return [
-      `${head.name} is in state ${head.status}, not ${allowedStatus};`,
-      `an EIP editor needs to approve this change`
+      `${base.name} is in state ${base.status} at the base commit,`,
+      `not ${allowedStatus}; an EIP editor needs to approve this change`
     ].join(" ");
   } else return;
 };
 
-/**
- *  accepts a standard File object and throws an error if the status is new or
- *  it does not exist at the base commit; uses the file's previous_filename if
- *  it exists.
- */
-export const requireFilePreexisting = async (file: File) => {
+
+export const _requireFilePreexisting = (_requirePr: typeof requirePr) => async (file: File) => {
   const Github = getOctokit(GITHUB_TOKEN);
-  const pr = await requirePr();
+  const pr = await _requirePr();
   const filename = file.previous_filename || file.filename;
   const error = await Github.repos
     .getContent({
@@ -268,6 +277,13 @@ export const requireFilePreexisting = async (file: File) => {
 
   return file;
 };
+
+/**
+ *  accepts a standard File object and throws an error if the status is new or
+ *  it does not exist at the base commit; uses the file's previous_filename if
+ *  it exists.
+ */
+export const requireFilePreexisting = _requireFilePreexisting(requirePr);
 
 /** returns an error string if the PR does NOT have editor approval */
 export const assertEIPEditorApproval = async (file: File) => {

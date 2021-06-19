@@ -1,21 +1,29 @@
 import "jest";
 import actions from "@actions/github";
 // import { Context } from "@actions/github/lib/context";
-import { EVENTS, Files, PR } from "src/utils";
+import { ALLOWED_STATUSES, EipStatus, EVENTS, File, Files, PR } from "src/utils";
 import {
+  assertConstantEipNumber,
+  assertConstantStatus,
+  assertFilenameAndFileNumbersMatch,
   assertHasAuthors,
+  assertValidFilename,
+  assertValidStatus,
   requireAuthors,
   requireEvent,
   requireFilenameEipNum,
+  requireFilePreexisting,
   requireFiles,
   requirePr,
-  requirePullNumber
+  requirePullNumber,
+  _requireFilePreexisting
 } from "src/lib";
 import {
   expectError,
   clearContext,
   FileDiffFactory,
-  FileFactory
+  FileFactory,
+  PRFactory
 } from "__tests__/testutils";
 
 jest.mock("@actions/github");
@@ -134,35 +142,102 @@ describe("Requires", () => {
     it("should not error if filename matches regex", () => {
       const eipNum = requireFilenameEipNum("eip-123.md");
       expect(eipNum).toBe(123);
-    })
+    });
     it("should not explode if filename doesn't match", async () => {
       await expectError(() => requireFilenameEipNum("eip-123"));
       await expectError(() => requireFilenameEipNum("ep-123.md"));
       await expectError(() => requireFilenameEipNum("eip-a.md"));
       await expectError(() => requireFilenameEipNum("eip-123.js"));
-    })
-  })
+    });
+  });
 
-  describe("requireFiles", () => { 
+  describe("requireFiles", () => {
     const mockFiles = [FileFactory()];
-    const listFiles = jest.fn().mockReturnValue(Promise.resolve({ data: mockFiles}))
+    const listFiles = jest
+      .fn()
+      .mockReturnValue(Promise.resolve({ data: mockFiles }));
     beforeEach(() => {
       getOctokit.mockReturnValue({
         pulls: {
           // @ts-expect-error listFiles is mocked so meant to be improper
           listFiles
         }
+      });
+    });
+
+    it("should call github and return files", async () => {
+      const files = await requireFiles({ number: 1 } as PR);
+      expect(files).toBe(mockFiles);
+    });
+
+    it("should explode if no files exist", async () => {
+      listFiles.mockReturnValueOnce(Promise.resolve({ data: [] }));
+      await expectError(() => requireFiles({ number: 1 } as PR));
+    });
+  });
+
+  describe("requireFilePreexisting", () => {
+    const getContent = jest.fn();
+    const requirePr = jest.fn();
+    const requireFilePreexisting = _requireFilePreexisting(requirePr)
+    beforeEach(() => {
+      getOctokit.mockClear();
+      requirePr.mockClear();
+      getContent.mockClear();
+
+      requirePr.mockReturnValue(Promise.resolve(PRFactory()))
+      getContent.mockReturnValue(Promise.resolve());
+      getOctokit.mockReturnValue({
+        repos: {
+          // @ts-expect-error meant to error due to mock
+          getContent
+        }
       })
     })
 
-    it("should call github and return files", async () => {
-      const files = await requireFiles({ number: 1 } as PR)
-      expect(files).toBe(mockFiles);
+    it("should return undefined if a file exists and is retrievable", async () => {
+      const file = FileFactory();
+      const res = await requireFilePreexisting(file);
+      expect(res).toBe(file);
     })
 
-    it("should explode if no files exist", async () => {
-      listFiles.mockReturnValueOnce(Promise.resolve({data: []}))
-      await expectError(() => requireFiles({number: 1} as PR));
+    it("should throw error if github request returns 404",async () => {
+      const file = FileFactory();
+      getContent.mockReturnValueOnce(Promise.reject({status: 404}));
+      await expectError(() => requireFilePreexisting(file))
+    })
+
+    it("should not throw error if github request does NOT return 404 (but still an error)",async () => {
+      const file = FileFactory();
+      getContent.mockReturnValueOnce(Promise.reject({status: 403}));
+      const res = await requireFilePreexisting(file)
+      expect(res).toBe(file)
+    })
+
+    it("should consider previous_filename", async () => {
+      const file = FileFactory();
+      file.previous_filename = "previous";
+      file.filename = "now";
+      // @ts-expect-error intentionally unused to avoid multi-factor tests
+      const _unused_ = await requireFilePreexisting(file);
+
+      expect(getContent.mock.calls[0][0].path).toEqual("previous")
+    })
+
+    it("should consider filename if previous_filename is undefined", async () => {
+      const file = FileFactory();
+      file.previous_filename = "";
+      file.filename = "now";
+      // @ts-expect-error intentionally unused to avoid multi-factor tests
+      const _unused_ = await requireFilePreexisting(file);
+
+      expect(getContent.mock.calls[0][0].path).toEqual("now")
+    })
+
+    it("should throw error if file status is `added`", async () => {
+      const file = FileFactory();
+      file.status = "added"
+      await expectError(() => requireFilePreexisting(file))
     })
   })
 });
@@ -203,4 +278,135 @@ describe("Asserts", () => {
       expect(res).toBeUndefined();
     });
   });
+
+  describe("assertValidFilename", () => {
+    it("should return undefined if filename is valid", () => {
+      const file = FileFactory();
+      const res = assertValidFilename(file);
+      expect(res).toBeUndefined();
+    });
+
+    it("should return defined if filename is not valid", () => {
+      const files = [
+        FileFactory({ filename: "eip-123" }),
+        FileFactory({ filename: "ep-123.md" }),
+        FileFactory({ filename: "eip-a.md" }),
+        FileFactory({ filename: "eip-123.js" })
+      ];
+      // @ts-expect-error below is an invalid type error
+      expect(assertValidFilename(files[0])).toBeDefined();
+      // @ts-expect-error below is an invalid type error
+      expect(assertValidFilename(files[1])).toBeDefined();
+      // @ts-expect-error below is an invalid type error
+      expect(assertValidFilename(files[2])).toBeDefined();
+      // @ts-expect-error below is an invalid type error
+      expect(assertValidFilename(files[3])).toBeDefined();
+    });
+  });
+
+  describe("assertFilenameAndFileNumbersMatch", () => {
+    it("should return undefined if the file names and headers match", () => {
+      const fileDiff = FileDiffFactory();
+      const res = assertFilenameAndFileNumbersMatch(fileDiff);
+      expect(res).toBeUndefined();
+    });
+    it("returns an error if the numbers don't match in head", () => {
+      const fileDiff = FileDiffFactory({
+        head: { filenameEipNum: 1, eipNum: 2 }
+      });
+      const res = assertFilenameAndFileNumbersMatch(fileDiff);
+      expect(res).toBeDefined();
+    });
+
+    it("does not return error if numbers don't match in base (base is assumed accurate)", () => {
+      const fileDiff = FileDiffFactory({
+        base: { filenameEipNum: 1, eipNum: 2 }
+      });
+      const res = assertFilenameAndFileNumbersMatch(fileDiff);
+      expect(res).toBeUndefined();
+    });
+  });
+
+  describe("assertConstantEipNumber", () => {
+    it("should return nothing if the eip numbers haven't changed", () => {
+      const fileDiff = FileDiffFactory();
+      const res = assertConstantEipNumber(fileDiff);
+      expect(res).toBeUndefined();
+    });
+
+    it("should return error message if only filename eip number changes", () => {
+      const fileDiff = FileDiffFactory({
+        base: { filenameEipNum: 1 },
+        head: { filenameEipNum: 2 }
+      });
+      const res = assertConstantEipNumber(fileDiff);
+      expect(res).toBeDefined();
+    });
+
+    it("should return error message if only header eip number changes", () => {
+      const fileDiff = FileDiffFactory({
+        base: { eipNum: 1 },
+        head: { eipNum: 2 }
+      });
+      const res = assertConstantEipNumber(fileDiff);
+      expect(res).toBeDefined();
+    });
+
+    it("should return error message if both header and filename eip number changes", () => {
+      const fileDiff = FileDiffFactory({
+        base: { eipNum: 1, filenameEipNum: 1 },
+        head: { eipNum: 2, filenameEipNum: 2 }
+      });
+      const res = assertConstantEipNumber(fileDiff);
+      expect(res).toBeDefined();
+    });
+  });
+
+  describe("assertConstantStatus", () => {
+    it("should return undefined if the status is constant", () => {
+      const fileDiff = FileDiffFactory();
+      const res = assertConstantStatus(fileDiff);
+      expect(res).toBeUndefined()
+    })
+
+    it("should return error message if status is not constant", () => {
+      const fileDiff = FileDiffFactory({head: {status: EipStatus.draft}, base: {status: EipStatus.review}})
+      const res = assertConstantStatus(fileDiff);
+      expect(res).toBeDefined();
+    })
+  })
+
+  describe("assertValidStatus", () => {
+    const allStatuses = Object.values(EipStatus);
+    const validStatuses = [...ALLOWED_STATUSES] as EipStatus[];
+    const invalidStatuses = allStatuses.filter(status => !validStatuses.includes(status))
+
+    for (const status of validStatuses) {
+      it(`should NOT return error if status is ${status} in the head commit`, () => {
+        const fileDiff = FileDiffFactory({head: { status }})
+        const res = assertValidStatus(fileDiff);
+        expect(res).toBeUndefined();
+      })
+
+      it(`should NOT return error if status is ${status} in the base commit`, () => {
+        const fileDiff = FileDiffFactory({ base: { status }})
+        const res = assertValidStatus(fileDiff);
+        expect(res).toBeUndefined();
+      })
+    }
+
+    for (const status of invalidStatuses) {
+      it(`should return error if status is ${status} in the head commit`, () => {
+        const fileDiff = FileDiffFactory({head: { status }})
+        const res = assertValidStatus(fileDiff);
+        expect(res).toBeDefined();
+      })
+
+      it(`should return error if status is ${status} in the base commit`, () => {
+        const fileDiff = FileDiffFactory({ base: { status }})
+        const res = assertValidStatus(fileDiff);
+        expect(res).toBeDefined();
+      })
+    }
+  })
 });

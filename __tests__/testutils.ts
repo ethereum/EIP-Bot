@@ -1,6 +1,6 @@
 import { Context } from "@actions/github/lib/context";
 import { set } from "lodash";
-import { File, FileDiff, FormattedFile } from "src/utils";
+import { EipStatus, File, FileDiff, FormattedFile, PR } from "src/utils";
 
 export const getAllTruthyObjectPaths = (obj: object) => {
   function rKeys(o: object, path?: string) {
@@ -29,7 +29,7 @@ export const clearContext = (context: Context) => {
   }
 }
 
-export const FileFactory = (overrides: Partial<File> = {}): File => {
+export const FileFactory = (overrides: Partial<File> = {}): NonNullable<File> => {
   const defaults: File = {
     sha: '5e7d0c3f74aef60373c83edf063b42cdd09041b4',
     filename: 'EIPS/eip-2930.md',
@@ -83,14 +83,14 @@ export const FileDiffFactory = (overrides: RecursivePartial<FileDiff>  = {}): Fi
   const defaults = {
     head: {
       eipNum: 2930,
-      status: 'final',
+      status: EipStatus.draft,
       authors: new Set(['@vbuterin', '@holiman']),
       name: 'eip-2930.md',
       filenameEipNum: 2930
     },
     base: {
       eipNum: 2930,
-      status: 'final',
+      status: EipStatus.draft,
       authors:  new Set(['@vbuterin', '@holiman']),
       name: 'eip-2930.md',
       filenameEipNum: 2930
@@ -109,3 +109,10 @@ export const FileDiffFactory = (overrides: RecursivePartial<FileDiff>  = {}): Fi
   }
 }
 
+export const PRFactory = (overrides: Partial<PR>={}) => {
+  const defaults: PR = require("./assets/pulls/3596.json");
+  return {
+    ...defaults,
+    ...overrides
+  }
+}
