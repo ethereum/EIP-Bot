@@ -12,5 +12,5 @@ inputs:
 runs:
   using: "composite"
   steps:
-    - run: cd ${{github.action_path}} && npm ci && npm run build && GITHUB_TOKEN=${{ inputs.GITHUB-TOKEN }} MERGE_ENABLED=${{ inputs.MERGE_ENABLED }} node build/index.js
+    - run: cd ${{github.action_path}} && npm ci && npm run build && GITHUB_TOKEN=${{ inputs.GITHUB-TOKEN }} MERGE_ENABLED=${{ inputs.MERGE_ENABLED }} node build/src/index.js
       shell: bash
