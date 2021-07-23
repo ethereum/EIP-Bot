@@ -16,13 +16,14 @@
     "noUncheckedIndexedAccess": true,
     "noUnusedParameters": false,
     "noImplicitAny": false,
-    "rootDir": "src",
+    "rootDir": "./",
     "outDir": "./build",
     "sourceMap": true,
     "inlineSources": true,
     "baseUrl": "./",
     "paths": {
-      "src/*": ["src/*"]
+      "src/*": ["src/*"],
+      "assets/*": ["assets/*"]
     }
   },
   "exclude": ["./node_modules/*", "./__tests__/*"]

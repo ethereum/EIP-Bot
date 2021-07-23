@@ -7,7 +7,8 @@
     "test": "jest",
     "build": "npx tsc --p ./tsconfig.run.json ",
     "watch": "npx tsc --watch --p ./tsconfig.run.json",
-    "it": "node -r dotenv/config build/index.js",
+    "it": "node -r dotenv/config build/src/index.js",
+    "mock_it": "NODE_ENV=MOCK node -r dotenv/config build/src/index.js",
     "prettier-changed": "prettier --write"
   },
   "author": "",
@@ -18,11 +19,12 @@
     "@octokit/plugin-retry": "^3.0.7",
     "@octokit/rest": "^18.3.5",
     "@types/lodash": "^4.14.170",
+    "@types/nock": "^11.1.0",
     "@zeit/ncc": "0.22.3",
     "dotenv": "8.2.0",
     "front-matter": "4.0.2",
     "lodash": "^4.17.21",
-    "nock": "^13.0.11"
+    "nock": "^13.1.1"
   },
   "devDependencies": {
     "@babel/preset-env": "^7.13.10",
@@ -44,7 +46,8 @@
     }
   },
   "_moduleAliases": {
-    "src": "build"
+    "src": "build/src",
+    "assets": "build/assets"
   },
   "repository": {
     "type": "git",

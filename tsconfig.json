@@ -23,7 +23,8 @@
     "baseUrl": "./",
     "paths": {
       "src/*": ["src/*"],
-      "__tests__/*": ["__tests__/*"]
+      "__tests__/*": ["__tests__/*"],
+      "assets/*": ["assets/*"]
     }
   },
   "exclude": ["./node_modules/*"]
