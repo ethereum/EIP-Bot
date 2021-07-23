@@ -1,6 +1,6 @@
 import { getOctokit, context } from "@actions/github";
 import { FileDiff, GITHUB_TOKEN, MERGE_MESSAGE } from "src/utils";
-import { requirePr } from "./Assertions";
+import { requirePr } from "../lib/Assertions";
 
 export const merge = async (diff: FileDiff) => {
   const pr = await requirePr();
