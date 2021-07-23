@@ -151,9 +151,9 @@ export const main = async () => {
       "\n\t- "
     )}`;
     console.log(message);
-    setFailed(message);
+    return setFailed(message);
   } catch (error) {
     console.log(`An Exception Occured While Linting: \n${error}`);
-    setFailed(error.message);
+    return setFailed(error.message);
   }
 };

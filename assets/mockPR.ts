@@ -16,6 +16,7 @@ const scope = nock(baseUrl).persist();
 export const mockPR = (pullNumber: number) => {
   const records = MockRecords[`PR${pullNumber}`];
 
+  if (!records) throw new Error(`no mocked records for pull number ${pullNumber}`)
   for (const record of records) {
     const req = record.req;
     const res = record.res;

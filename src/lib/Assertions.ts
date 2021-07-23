@@ -24,7 +24,7 @@ export const requireEvent = () => {
   const isPullRequestReview = event === EVENTS.pullRequestReview;
   const isPullRequestTarget = event === EVENTS.pullRequestTarget;
   if (!(isPullRequestReview || isPullRequestTarget)) {
-    throw `Only events of type ${EVENTS.pullRequest} are allowed`;
+    throw `Only events of type ${EVENTS.pullRequestTarget} and ${EVENTS.pullRequestReview} are allowed`;
   }
 
   return event;

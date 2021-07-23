@@ -1,8 +1,9 @@
 import { mockPR } from "assets/mockPR";
+import { NodeEnvs } from "./Types";
 
 export const __MAIN__ = async (debugEnv?: NodeJS.ProcessEnv) => {
   const isDebug =
-    process.env.NODE_ENV === "development" || process.env.NODE_ENV === "test";
+    process.env.NODE_ENV === NodeEnvs.developemnt || process.env.NODE_ENV === NodeEnvs.test;
 
   if (!isDebug) throw new Error("trying to run debug without proper auth");
 
@@ -17,7 +18,7 @@ export const __MAIN__ = async (debugEnv?: NodeJS.ProcessEnv) => {
 
 // TODO: rename and reorganize these debugging tools
 export const __MAIN_MOCK__ = async (mockEnv?: NodeJS.ProcessEnv) => {
-  const isMock = process.env.NODE_ENV === "MOCK";
+  const isMock = process.env.NODE_ENV === NodeEnvs.mock || process.env.NODE_ENV === NodeEnvs.test;
 
   if (!isMock) throw new Error("trying to run debug without proper auth");
 
@@ -30,8 +31,8 @@ export const __MAIN_MOCK__ = async (mockEnv?: NodeJS.ProcessEnv) => {
   return await main();
 };
 
-const setMockContext = (debugEnv?: NodeJS.ProcessEnv) => {
-  const env = { ...process.env, ...debugEnv };
+const setMockContext = (mockEnv?: NodeJS.ProcessEnv) => {
+  const env = { ...process.env, ...mockEnv };
   process.env = env;
 
   if (!env.PULL_NUMBER) throw new Error("PULL_NUMBER is required to mock");
@@ -50,24 +51,20 @@ const setMockContext = (debugEnv?: NodeJS.ProcessEnv) => {
     number: parseInt(env.PULL_NUMBER || "") || 0
   };
 
-  if (env.NODE_ENV === "test") {
+  if (env.NODE_ENV === NodeEnvs.test) {
     context.repo = {
       owner: env.REPO_OWNER_NAME,
       repo: env.REPO_NAME
     };
   } else {
-    // @ts-ignore
     context.repo.owner = env.REPO_OWNER_NAME;
-    // @ts-ignore
     context.repo.repo = env.REPO_NAME;
   }
 
   context.payload.repository = {
-    // @ts-ignore
     name: env.REPO_NAME,
     owner: {
       key: "",
-      // @ts-ignore
       login: env.REPO_OWNER_NAME,
       name: env.REPO_OWNER_NAME
     },
@@ -93,7 +90,7 @@ const setDebugContext = (debugEnv?: NodeJS.ProcessEnv) => {
     number: parseInt(env.PULL_NUMBER || "") || 0
   };
 
-  if (env.NODE_ENV === "test") {
+  if (env.NODE_ENV === NodeEnvs.test) {
     context.repo = {
       owner: env.REPO_OWNER_NAME,
       repo: env.REPO_NAME

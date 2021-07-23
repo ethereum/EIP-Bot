@@ -129,3 +129,9 @@ export type MockRecord = {
     data: any;
   };
 };
+
+export enum NodeEnvs {
+  test = "test",
+  mock = "MOCK",
+  developemnt = "development"
+}

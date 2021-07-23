@@ -1,10 +1,10 @@
 require("module-alias/register");
 import { main } from "./main";
-import { __MAIN_MOCK__, __MAIN__ } from "./utils";
+import { NodeEnvs, __MAIN_MOCK__, __MAIN__ } from "./utils";
 
 const isDebug =
-  process.env.NODE_ENV === "development" || process.env.NODE_ENV === "test";
-const isMock = process.env.NODE_ENV === "MOCK";
+  process.env.NODE_ENV === NodeEnvs.developemnt || process.env.NODE_ENV === NodeEnvs.test;
+const isMock = process.env.NODE_ENV === NodeEnvs.mock;
 
 // allows for easy mocking / testing
 if (isMock) __MAIN_MOCK__();
