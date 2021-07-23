@@ -17,7 +17,7 @@ export const __MAIN__ = async (debugEnv?: NodeJS.ProcessEnv) => {
 
 // TODO: rename and reorganize these debugging tools
 export const __MAIN_MOCK__ = async (mockEnv?: NodeJS.ProcessEnv) => {
-  const isMock = process.env.NODE_ENV === "MOCK"
+  const isMock = process.env.NODE_ENV === "MOCK";
 
   if (!isMock) throw new Error("trying to run debug without proper auth");
 
@@ -34,8 +34,8 @@ const setMockContext = (debugEnv?: NodeJS.ProcessEnv) => {
   const env = { ...process.env, ...debugEnv };
   process.env = env;
 
-  if (!env.PULL_NUMBER) throw new Error("PULL_NUMBER is required to mock")
-  const pr = mockPR(parseInt(env.PULL_NUMBER || "") || 0)
+  if (!env.PULL_NUMBER) throw new Error("PULL_NUMBER is required to mock");
+  const pr = mockPR(parseInt(env.PULL_NUMBER || "") || 0);
 
   // By instantiating after above it allows it to initialize with custom env
   const context = require("@actions/github").context;

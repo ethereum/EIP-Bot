@@ -17,20 +17,20 @@ import {
   assertValidStatus,
   requireFilePreexisting,
   assertEIPEditorApproval,
-  assertEIP1EditorApprovals
+  assertEIP1EditorApprovals,
+  requireEIPEditors
 } from "./lib";
+import { DEFAULT_ERRORS, File, TestResults } from "./utils";
 import {
-  DEFAULT_ERRORS,
-  EIP_EDITORS,
-  File,
-  TestResults
-} from "./utils";
-import { editorApprovalPurifier, EIP1Purifier, getAllTruthyObjectPaths, innerJoinAncestors, stateChangeAllowedPurifier } from "./lib/Purifiers";
+  editorApprovalPurifier,
+  EIP1Purifier,
+  getAllTruthyObjectPaths,
+  innerJoinAncestors,
+  stateChangeAllowedPurifier
+} from "./lib/Purifiers";
 import { get } from "lodash";
 
-const testFile = async (
-  file: File
-): Promise<TestResults> => {
+const testFile = async (file: File): Promise<TestResults> => {
   // we need to define this here because the below logic can get very complicated otherwise
   const errors = DEFAULT_ERRORS;
 
@@ -42,7 +42,7 @@ const testFile = async (
   } catch (err) {
     errors.fileErrors.filePreexistingError = err;
     errors.approvalErrors.isEditorApprovedError = await assertEIPEditorApproval(
-      file
+      fileDiff
     );
     // new files are acceptable if an editor has approved
     if (errors.approvalErrors.isEditorApprovedError) {
@@ -54,9 +54,11 @@ const testFile = async (
   }
 
   errors.approvalErrors.isEditorApprovedError = await assertEIPEditorApproval(
-    file
+    fileDiff
   );
-  errors.approvalErrors.enoughEditorApprovalsForEIP1Error = await assertEIP1EditorApprovals();
+  errors.approvalErrors.enoughEditorApprovalsForEIP1Error = await assertEIP1EditorApprovals(
+    fileDiff
+  );
   errors.fileErrors.validFilenameError = assertValidFilename(file);
   errors.headerErrors.matchingEIPNumError = assertFilenameAndFileNumbersMatch(
     fileDiff
@@ -84,7 +86,6 @@ const testFile = async (
   };
 };
 
-
 export const main = async () => {
   try {
     // Verify correct environment and request context
@@ -106,43 +107,51 @@ export const main = async () => {
       stateChangeAllowedPurifier(dirtyTestResults),
       editorApprovalPurifier(dirtyTestResults),
       EIP1Purifier(dirtyTestResults)
-    ]
+    ];
     // Purify the dirty results
-    const testResults = innerJoinAncestors(dirtyTestResults, primedPurifiers)
+    const testResults = innerJoinAncestors(dirtyTestResults, primedPurifiers);
 
-    const {errors: {
-      fileErrors,
-      approvalErrors
-    },
-      authors
+    const {
+      errors: { fileErrors, approvalErrors },
+      authors,
+      fileDiff
     } = testResults;
 
-    const errors = getAllTruthyObjectPaths(testResults.errors).map((path) => get(testResults.errors, path))
+    const errors = getAllTruthyObjectPaths(testResults.errors).map((path) =>
+      get(testResults.errors, path)
+    );
 
-    if (errors.length === 0) { console.log("passed!"); return; }
+    if (errors.length === 0) {
+      console.log("passed!");
+      return;
+    }
 
     // If errors, post comment and set the job as failed
     let mentions = "";
+    const editors = requireEIPEditors(fileDiff);
     if (
       fileErrors.filePreexistingError &&
       approvalErrors.isEditorApprovedError
     ) {
-      mentions += EIP_EDITORS.join(" ");
-      await requestReviewers(EIP_EDITORS);
+      mentions += editors.join(" ");
+      await requestReviewers(editors);
     } else if (approvalErrors.enoughEditorApprovalsForEIP1Error) {
-      mentions += EIP_EDITORS.join(" ");
-      await requestReviewers(EIP_EDITORS);
+      mentions += editors.join(" ");
+      await requestReviewers(editors);
     }
-    
+
     if (authors && approvalErrors.isAuthorApprovedError) {
       mentions += authors.join(" ");
       await requestReviewers(authors);
     }
+
     await postComment(errors, mentions);
 
-    const message = `failed to pass tests with the following errors:\n\t- ${errors.join("\n\t- ")}`
+    const message = `failed to pass tests with the following errors:\n\t- ${errors.join(
+      "\n\t- "
+    )}`;
     console.log(message);
-    setFailed(message)
+    setFailed(message);
   } catch (error) {
     console.log(`An Exception Occured While Linting: \n${error}`);
     setFailed(error.message);

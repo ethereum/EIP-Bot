@@ -1,7 +1,7 @@
 import "jest";
 import actions from "@actions/github";
 // import { Context } from "@actions/github/lib/context";
-import { ALLOWED_STATUSES, EipStatus, EVENTS, File, Files, PR } from "src/utils";
+import { ALLOWED_STATUSES, EipStatus, EVENTS, FileDiff, PR } from "src/utils";
 import {
   assertConstantEipNumber,
   assertConstantStatus,
@@ -12,10 +12,10 @@ import {
   requireAuthors,
   requireEvent,
   requireFilenameEipNum,
-  requireFilePreexisting,
   requireFiles,
   requirePr,
   requirePullNumber,
+  _requireEIPEditors,
   _requireFilePreexisting
 } from "src/lib";
 import {
@@ -179,40 +179,40 @@ describe("Requires", () => {
   describe("requireFilePreexisting", () => {
     const getContent = jest.fn();
     const requirePr = jest.fn();
-    const requireFilePreexisting = _requireFilePreexisting(requirePr)
+    const requireFilePreexisting = _requireFilePreexisting(requirePr);
     beforeEach(() => {
       getOctokit.mockClear();
       requirePr.mockClear();
       getContent.mockClear();
 
-      requirePr.mockReturnValue(Promise.resolve(PRFactory()))
+      requirePr.mockReturnValue(Promise.resolve(PRFactory()));
       getContent.mockReturnValue(Promise.resolve());
       getOctokit.mockReturnValue({
         repos: {
           // @ts-expect-error meant to error due to mock
           getContent
         }
-      })
-    })
+      });
+    });
 
     it("should return undefined if a file exists and is retrievable", async () => {
       const file = FileFactory();
       const res = await requireFilePreexisting(file);
       expect(res).toBe(file);
-    })
+    });
 
-    it("should throw error if github request returns 404",async () => {
+    it("should throw error if github request returns 404", async () => {
       const file = FileFactory();
-      getContent.mockReturnValueOnce(Promise.reject({status: 404}));
-      await expectError(() => requireFilePreexisting(file))
-    })
+      getContent.mockReturnValueOnce(Promise.reject({ status: 404 }));
+      await expectError(() => requireFilePreexisting(file));
+    });
 
-    it("should not throw error if github request does NOT return 404 (but still an error)",async () => {
+    it("should not throw error if github request does NOT return 404 (but still an error)", async () => {
       const file = FileFactory();
-      getContent.mockReturnValueOnce(Promise.reject({status: 403}));
-      const res = await requireFilePreexisting(file)
-      expect(res).toBe(file)
-    })
+      getContent.mockReturnValueOnce(Promise.reject({ status: 403 }));
+      const res = await requireFilePreexisting(file);
+      expect(res).toBe(file);
+    });
 
     it("should consider previous_filename", async () => {
       const file = FileFactory();
@@ -221,8 +221,8 @@ describe("Requires", () => {
       // @ts-expect-error intentionally unused to avoid multi-factor tests
       const _unused_ = await requireFilePreexisting(file);
 
-      expect(getContent.mock.calls[0][0].path).toEqual("previous")
-    })
+      expect(getContent.mock.calls[0][0].path).toEqual("previous");
+    });
 
     it("should consider filename if previous_filename is undefined", async () => {
       const file = FileFactory();
@@ -231,15 +231,51 @@ describe("Requires", () => {
       // @ts-expect-error intentionally unused to avoid multi-factor tests
       const _unused_ = await requireFilePreexisting(file);
 
-      expect(getContent.mock.calls[0][0].path).toEqual("now")
-    })
+      expect(getContent.mock.calls[0][0].path).toEqual("now");
+    });
 
     it("should throw error if file status is `added`", async () => {
       const file = FileFactory();
-      file.status = "added"
-      await expectError(() => requireFilePreexisting(file))
-    })
-  })
+      file.status = "added";
+      await expectError(() => requireFilePreexisting(file));
+    });
+  });
+
+  describe("requireEIPEditors", () => {
+    const editors = ["editor1", "editor2", "editor3"];
+    const requireAuthorsMock = jest.fn();
+    const requireEIPEditors = _requireEIPEditors(requireAuthorsMock, editors);
+    const consoleSpy = jest.spyOn(console, "warn");
+
+    beforeEach(() => {
+      requireAuthorsMock.mockClear();
+      consoleSpy.mockClear();
+    });
+
+    afterAll(() => {
+      consoleSpy.mockReset();
+    });
+
+    it("should emit a console warning if no file diff is provided", () => {
+      const res = requireEIPEditors();
+      expect(res).toEqual(editors);
+      expect(consoleSpy).toHaveBeenCalledTimes(1);
+    });
+
+    it("should return only editors that are not authors", () => {
+      requireAuthorsMock.mockReturnValueOnce([editors[0]]);
+      const res = requireEIPEditors({} as FileDiff);
+      expect(res).toEqual([editors[1], editors[2]]);
+      expect(consoleSpy).not.toHaveBeenCalled();
+    });
+
+    it("should return all editors if none are authors", () => {
+      requireAuthorsMock.mockReturnValueOnce(["not an author"]);
+      const res = requireEIPEditors({} as FileDiff);
+      expect(res).toEqual(editors);
+      expect(consoleSpy).not.toHaveBeenCalled();
+    });
+  });
 });
 
 describe("Asserts", () => {
@@ -366,47 +402,52 @@ describe("Asserts", () => {
     it("should return undefined if the status is constant", () => {
       const fileDiff = FileDiffFactory();
       const res = assertConstantStatus(fileDiff);
-      expect(res).toBeUndefined()
-    })
+      expect(res).toBeUndefined();
+    });
 
     it("should return error message if status is not constant", () => {
-      const fileDiff = FileDiffFactory({head: {status: EipStatus.draft}, base: {status: EipStatus.review}})
+      const fileDiff = FileDiffFactory({
+        head: { status: EipStatus.draft },
+        base: { status: EipStatus.review }
+      });
       const res = assertConstantStatus(fileDiff);
       expect(res).toBeDefined();
-    })
-  })
+    });
+  });
 
   describe("assertValidStatus", () => {
     const allStatuses = Object.values(EipStatus);
     const validStatuses = [...ALLOWED_STATUSES] as EipStatus[];
-    const invalidStatuses = allStatuses.filter(status => !validStatuses.includes(status))
+    const invalidStatuses = allStatuses.filter(
+      (status) => !validStatuses.includes(status)
+    );
 
     for (const status of validStatuses) {
       it(`should NOT return error if status is ${status} in the head commit`, () => {
-        const fileDiff = FileDiffFactory({head: { status }})
+        const fileDiff = FileDiffFactory({ head: { status } });
         const res = assertValidStatus(fileDiff);
         expect(res).toBeUndefined();
-      })
+      });
 
       it(`should NOT return error if status is ${status} in the base commit`, () => {
-        const fileDiff = FileDiffFactory({ base: { status }})
+        const fileDiff = FileDiffFactory({ base: { status } });
         const res = assertValidStatus(fileDiff);
         expect(res).toBeUndefined();
-      })
+      });
     }
 
     for (const status of invalidStatuses) {
       it(`should return error if status is ${status} in the head commit`, () => {
-        const fileDiff = FileDiffFactory({head: { status }})
+        const fileDiff = FileDiffFactory({ head: { status } });
         const res = assertValidStatus(fileDiff);
         expect(res).toBeDefined();
-      })
+      });
 
       it(`should return error if status is ${status} in the base commit`, () => {
-        const fileDiff = FileDiffFactory({ base: { status }})
+        const fileDiff = FileDiffFactory({ base: { status } });
         const res = assertValidStatus(fileDiff);
         expect(res).toBeDefined();
-      })
+      });
     }
-  })
+  });
 });

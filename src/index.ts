@@ -7,6 +7,6 @@ const isDebug =
 const isMock = process.env.NODE_ENV === "MOCK";
 
 // allows for easy mocking / testing
-if (isMock) __MAIN_MOCK__()
-else if (isDebug) __MAIN__()
-else main()
+if (isMock) __MAIN_MOCK__();
+else if (isDebug) __MAIN__();
+else main();

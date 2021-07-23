@@ -10,9 +10,9 @@ export const merge = async (diff: FileDiff) => {
   const { MERGE_ENABLED } = process.env;
   if (!MERGE_ENABLED) {
     const message = [
-        `PR would have been merged but wasn't because env variable`,
-        `ENABLE_MERGE has either not been set or is deliberately false`
-      ].join(" ")
+      `PR would have been merged but wasn't because env variable`,
+      `ENABLE_MERGE has either not been set or is deliberately false`
+    ].join(" ");
     console.log(message);
     return message;
   }

@@ -1,8 +1,9 @@
-import nock from "nock"
+import nock from "nock";
 import { PR } from "src/utils";
-import PRs from "./pulls"
+import MockRecords from "./records";
 
-const scope = nock("https://api.github.com").persist();
+const baseUrl = "https://api.github.com";
+const scope = nock(baseUrl).persist();
 
 /**
  * This is a tool used to mock pull requests, this is useful for testing and it's also
@@ -13,14 +14,27 @@ const scope = nock("https://api.github.com").persist();
  * @returns mocked pull request of the pull number
  */
 export const mockPR = (pullNumber: number) => {
-  const records = PRs[`PR${pullNumber}`]
-  const requests = Object.keys(records);
+  const records = MockRecords[`PR${pullNumber}`];
 
-  for (const request of requests) {
-    console.log("mocking request ||", request)
-    scope.get(request).reply(200, records[request])
+  for (const record of records) {
+    const req = record.req;
+    const res = record.res;
+    const wildcard = req.url.replace(baseUrl, "");
+
+    switch (req.method) {
+      case "GET":
+        scope.get(wildcard).reply(res.status, res.data);
+      case "POST":
+        scope.post(wildcard).reply(res.status, res.data);
+    }
   }
 
-  nock.disableNetConnect()
-  return records[`/repos/ethereum/EIPs/pulls/${pullNumber}`] as PR
-}
+  nock.disableNetConnect();
+
+  const PRWildcard = `/repos/ethereum/EIPs/pulls/${pullNumber}`;
+  return records.find(
+    (record) =>
+      record.req.method === "GET" &&
+      record.req.url === `${baseUrl}${PRWildcard}`
+  ).res.data as PR;
+};

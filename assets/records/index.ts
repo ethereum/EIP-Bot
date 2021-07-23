@@ -4,4 +4,4 @@ import PR3596 from "./3596";
 export default {
   PR3596,
   PR3670
-}
+};

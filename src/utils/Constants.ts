@@ -11,6 +11,20 @@ export const COMMENT_HEADER =
   "Hi! I'm a bot, and I wanted to automerge your PR, but couldn't because of the following issue(s):\n\n";
 export const GITHUB_TOKEN = process.env.GITHUB_TOKEN || "";
 
+/** don't use this, use `requireEIPEditors` instead */
+export const EIP_EDITORS = [
+  "@MicahZoltu",
+  "@lightclient",
+  "@arachnid",
+  "@cdetrio",
+  "@Souptacular",
+  "@vbuterin",
+  "@nicksavers",
+  "@wanderer",
+  "@gcolvin",
+  "@axic"
+];
+
 export enum FrontMatterAttributes {
   status = "status",
   eip = "eip",
@@ -34,8 +48,6 @@ export enum EVENTS {
   pullRequestTarget = "pull_request_target",
   pullRequestReview = "pull_request_review"
 }
-
-export const EIP_EDITORS = ["@MicahZoltu", "@lightclient", "@arachnid", "@cdetrio", "@Souptacular", "@vbuterin", "@nicksavers", "@wanderer", "@gcolvin", "@axic"];
 
 /**
  *  A collection of error strings, although confusing the error strings are

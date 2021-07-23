@@ -16,7 +16,9 @@ export type PR = UnPromisify<ReturnType<typeof Github.pulls.get>>["data"];
 export type Commit = UnPromisify<
   ReturnType<typeof Github.repos.getCommit>
 >["data"];
-export type Files = UnPromisify<ReturnType<Github["pulls"]["listFiles"]>>["data"];
+export type Files = UnPromisify<
+  ReturnType<Github["pulls"]["listFiles"]>
+>["data"];
 export type File = UnArrayify<Files>;
 export type CommitFiles = CompareCommits["base_commit"]["files"];
 export type CommitFile = UnArrayify<NonNullable<CommitFiles>>;
@@ -107,4 +109,23 @@ export const encodings = [
 ] as const;
 export type Encodings = typeof encodings[number];
 
-export type TestResults = { errors: ERRORS} & { fileDiff: FileDiff; authors?: string[] }
+export type TestResults = { errors: ERRORS } & {
+  fileDiff: FileDiff;
+  authors?: string[];
+};
+
+export enum MockMethods {
+  get = "GET",
+  post = "POST"
+}
+
+export type MockRecord = {
+  req: {
+    method: MockMethods;
+    url: string;
+  };
+  res: {
+    status: number;
+    data: any;
+  };
+};

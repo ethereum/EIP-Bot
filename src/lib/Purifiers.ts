@@ -12,7 +12,7 @@ export const stateChangeAllowedPurifier = (testResults: TestResults) => {
     fileDiff?.head.status === EipStatus.withdrawn,
     // state changes from lastcall -> review
     fileDiff?.base.status === EipStatus.lastCall &&
-    fileDiff?.head.status === EipStatus.review,
+      fileDiff?.head.status === EipStatus.review,
     // editors can approve state changes
     !errors.approvalErrors.isEditorApprovedError
   ]);
@@ -31,12 +31,11 @@ export const stateChangeAllowedPurifier = (testResults: TestResults) => {
 export const editorApprovalPurifier = (testResults: TestResults) => {
   const _testResults = cloneDeep(testResults);
   const { errors } = _testResults;
-  
-  const isEditorApproved =
-    !errors.approvalErrors.isEditorApprovedError;
+
+  const isEditorApproved = !errors.approvalErrors.isEditorApprovedError;
   const isNewFile = !!errors.fileErrors.filePreexistingError;
   if (isEditorApproved && isNewFile) {
-   errors.fileErrors.filePreexistingError = undefined;
+    errors.fileErrors.filePreexistingError = undefined;
   }
 
   if (isEditorApproved) {
@@ -52,7 +51,7 @@ export const editorApprovalPurifier = (testResults: TestResults) => {
     errors.approvalErrors.isEditorApprovedError = undefined;
   }
 
-  return {...testResults, errors};
+  return { ...testResults, errors };
 };
 
 export const EIP1Purifier = (testResults: TestResults) => {
@@ -63,12 +62,11 @@ export const EIP1Purifier = (testResults: TestResults) => {
     // authors not required for EIP1
     errors.approvalErrors.isAuthorApprovedError = undefined;
   } else {
-    errors.approvalErrors.enoughEditorApprovalsForEIP1Error =
-      undefined;
+    errors.approvalErrors.enoughEditorApprovalsForEIP1Error = undefined;
   }
 
   // clear error in all other cases
-  return {...testResults, errors};
+  return { ...testResults, errors };
 };
 
 /**

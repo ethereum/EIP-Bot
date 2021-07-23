@@ -3,7 +3,6 @@ import { RequestError } from "@octokit/types";
 import {
   ALLOWED_STATUSES,
   EIP1_REQUIRED_EDITOR_APPROVALS,
-  EIP_EDITORS,
   EIP_NUM_RE,
   encodings,
   EVENTS,
@@ -14,7 +13,8 @@ import {
   FILE_RE,
   GITHUB_TOKEN,
   PR,
-  Encodings
+  Encodings,
+  EIP_EDITORS
 } from "src/utils";
 import { getApprovals, getJustLogin } from "./CheckApprovals";
 
@@ -49,7 +49,7 @@ export const requirePr = async () => {
     owner: context.repo.owner,
     pull_number: prNum
   });
-  
+
   if (pr.merged && process.env.NODE_ENV !== "development") {
     throw `PR ${prNum} is already merged; quitting`;
   }
@@ -103,18 +103,19 @@ export const assertIsApprovedByAuthors = async (fileDiff: FileDiff) => {
  * @param file file diff of a given file
  * @returns list of raw author data
  */
-export const requireAuthors = (file: FileDiff): string[] => {
+export const requireAuthors = (fileDiff: FileDiff): string[] => {
   // take from base to avoid people adding themselves and being able to approve
-  const authors = file.base.authors && [...file.base.authors];
+  const authors = fileDiff.base.authors && [...fileDiff.base.authors];
 
   // Make sure there are authors
   if (!authors || authors.length === 0) {
-    throw `${file.head.name} has no identifiable authors who can approve the PR (only considering the base version)`;
+    throw `${fileDiff.head.name} has no identifiable authors who can approve the PR (only considering the base version)`;
   }
 
   return authors;
 };
 
+/** Ensures that encodings are as expected by octokit */
 export function requireEncoding(
   maybeEncoding: string,
   context: string
@@ -237,8 +238,8 @@ export const assertConstantStatus = ({ head, base }: FileDiff) => {
 /**
  * determines if the status of either the base or the head are
  * not auto mergeable. A non-auto mergeable status requires editor
- * approval 
- * 
+ * approval
+ *
  * @returns error or undefined
  */
 export const assertValidStatus = ({ head, base }: FileDiff) => {
@@ -257,8 +258,10 @@ export const assertValidStatus = ({ head, base }: FileDiff) => {
   } else return;
 };
 
-
-export const _requireFilePreexisting = (_requirePr: typeof requirePr) => async (file: File) => {
+// this has an injected dependency to make testing easier
+export const _requireFilePreexisting = (_requirePr: typeof requirePr) => async (
+  file: File
+) => {
   const Github = getOctokit(GITHUB_TOKEN);
   const pr = await _requirePr();
   const filename = file.previous_filename || file.filename;
@@ -285,26 +288,58 @@ export const _requireFilePreexisting = (_requirePr: typeof requirePr) => async (
  */
 export const requireFilePreexisting = _requireFilePreexisting(requirePr);
 
+// injected to make testing easier
+export const _requireEIPEditors = (
+  _requireAuthors: typeof requireAuthors,
+  EDITORS: string[]
+) => (fileDiff?: FileDiff) => {
+  // TODO: find a better way to do this
+
+  if (fileDiff) {
+    const authors = _requireAuthors(fileDiff);
+    return EDITORS.filter((editor) => !authors.includes(editor));
+  } else {
+    console.warn(
+      [
+        "You are requesting all of the EIP_EDITORS, but an edgecase may exist where",
+        "an editor is also an author; it's recommended that you instead request the",
+        "editors with respect to a fileDiff"
+      ].join(" ")
+    );
+    return EDITORS;
+  }
+};
+/**
+ * returns the list of EIP editors, optionally removes any that may also be authors
+ * if a file diff is provided
+ */
+export const requireEIPEditors = _requireEIPEditors(
+  requireAuthors,
+  EIP_EDITORS
+);
+
 /** returns an error string if the PR does NOT have editor approval */
-export const assertEIPEditorApproval = async (file: File) => {
+export const assertEIPEditorApproval = async (fileDiff: FileDiff) => {
   const approvals = await getApprovals();
-  const isApproved = approvals.find((approver) =>
-    EIP_EDITORS.includes(approver)
-  );
+  const editors = requireEIPEditors(fileDiff);
+
+  const isApproved = approvals.find((approver) => editors.includes(approver));
   if (!isApproved) {
-    return `This PR requires review from one of [${EIP_EDITORS.join(", ")}]`;
+    return `This PR requires review from one of [${editors.join(", ")}]`;
   } else return;
 };
 
-export const assertEIP1EditorApprovals = async () => {
+export const assertEIP1EditorApprovals = async (fileDiff: FileDiff) => {
   const approvals = await getApprovals();
+
+  const editors = requireEIPEditors(fileDiff);
   const editorApprovals = approvals.filter((approver) =>
-    EIP_EDITORS.includes(approver)
+    editors.includes(approver)
   );
   if (editorApprovals.length < EIP1_REQUIRED_EDITOR_APPROVALS) {
     return [
       `Changes to EIP 1 require at least ${EIP1_REQUIRED_EDITOR_APPROVALS}`,
-      `unique approvals from editors, the editors are [${EIP_EDITORS.join(", ")}]`
+      `unique approvals from editors, the editors are [${editors.join(", ")}]`
     ].join(" ");
   } else return;
 };
