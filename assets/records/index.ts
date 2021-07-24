@@ -3,10 +3,10 @@ import PR3596 from "./3596";
 import PR3654 from "./3654";
 
 export enum MockedPullNumbers {
-  /** editor is author edgecase */
+  /** editor approval wasn't required if the author of the PR was an editor */
   PR3670 = "3670",
   PR3595 = "3596",
-  /** unknown editors not being mentioned */
+  /** editors weren't mentioned if there was only a valid status error */
   PR3654 = "3654"
 }
 

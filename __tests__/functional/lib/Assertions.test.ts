@@ -20,11 +20,11 @@ import {
 } from "src/lib";
 import {
   expectError,
-  clearContext,
-  FileDiffFactory,
-  FileFactory,
-  PRFactory
+  clearContext
 } from "__tests__/testutils";
+import { FileDiffFactory } from "__tests__/factories/fileDiffFactory";
+import { FileFactory } from "__tests__/factories/fileFactory";
+import { PRFactory } from "__tests__/factories/prFactory";
 
 jest.mock("@actions/github");
 

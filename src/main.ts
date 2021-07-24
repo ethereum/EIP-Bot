@@ -20,7 +20,7 @@ import {
   assertEIP1EditorApprovals,
   requireEIPEditors
 } from "./lib";
-import { DEFAULT_ERRORS, File, NodeEnvs, TestResults } from "./utils";
+import { DEFAULT_ERRORS, File, MENTIONS_SEPARATOR, NodeEnvs, TestResults } from "./utils";
 import {
   editorApprovalPurifier,
   EIP1Purifier,
@@ -86,6 +86,54 @@ const testFile = async (file: File): Promise<TestResults> => {
   };
 };
 
+const getEditorMentions = (testResults: TestResults) => {
+  const {
+    errors: { fileErrors, approvalErrors, headerErrors },
+    fileDiff
+  } = testResults;
+
+  const editors = requireEIPEditors(fileDiff);
+
+  // new eips require editor approval
+  if (fileErrors.filePreexistingError && approvalErrors.isEditorApprovedError) {
+    return editors.join(MENTIONS_SEPARATOR);
+  }
+
+  // eip1 requires more than 1 editor approval
+  if (approvalErrors.enoughEditorApprovalsForEIP1Error) {
+    return editors.join(MENTIONS_SEPARATOR);
+  }
+
+  // valid status errors require editor approval
+  if (headerErrors.validStatusError && approvalErrors.isEditorApprovedError) {
+    return editors.join(MENTIONS_SEPARATOR);
+  }
+
+  return;
+}
+
+const getAuthorMentions = (testResults: TestResults) => {
+  const {
+    errors: { approvalErrors },
+    authors
+  } = testResults;
+
+  if (authors && approvalErrors.isAuthorApprovedError) {
+    return authors.join(MENTIONS_SEPARATOR)
+  }
+
+  return;
+}
+
+const _getMentions = (_getEditorMentions: typeof getEditorMentions, _getAuthorMentions: typeof getAuthorMentions) => (testResults: TestResults) => {
+  const editorMentions = _getEditorMentions(testResults);
+  const authorMentions = _getAuthorMentions(testResults);
+  // filtering Boolean prevents trailing space
+  return [editorMentions, authorMentions].filter(Boolean).join(MENTIONS_SEPARATOR)
+}
+
+const getMentions = _getMentions(getEditorMentions, getAuthorMentions)
+
 export const _main_ = async () => {
   // Verify correct environment and request context
   requireEvent();
@@ -109,13 +157,6 @@ export const _main_ = async () => {
   ];
   // Purify the dirty results
   const testResults = innerJoinAncestors(dirtyTestResults, primedPurifiers);
-
-  const {
-    errors: { fileErrors, approvalErrors },
-    authors,
-    fileDiff
-  } = testResults;
-
   const errors = getAllTruthyObjectPaths(testResults.errors).map((path) =>
     get(testResults.errors, path)
   );
@@ -125,22 +166,9 @@ export const _main_ = async () => {
     return;
   }
 
-  // If errors, post comment and set the job as failed
-  let mentions = "";
-  const editors = requireEIPEditors(fileDiff);
-  if (fileErrors.filePreexistingError && approvalErrors.isEditorApprovedError) {
-    mentions += editors.join(" ");
-    await requestReviewers(editors);
-  } else if (approvalErrors.enoughEditorApprovalsForEIP1Error) {
-    mentions += editors.join(" ");
-    await requestReviewers(editors);
-  }
-
-  if (authors && approvalErrors.isAuthorApprovedError) {
-    mentions += authors.join(" ");
-    await requestReviewers(authors);
-  }
-
+  // collect mentions and post message comment
+  const mentions = getMentions(testResults);
+  await requestReviewers(mentions.split(" "));
   await postComment(errors, mentions);
 
   const message = `failed to pass tests with the following errors:\n\t- ${errors.join(
@@ -163,3 +191,9 @@ export const main = async () => {
     return setFailed(error.message);
   }
 };
+
+export const _TESTS_ = {
+  getEditorMentions,
+  getAuthorMentions,
+  _getMentions
+}
