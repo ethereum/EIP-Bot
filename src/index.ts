@@ -1,9 +1,11 @@
 require("module-alias/register");
 import { main } from "./main";
-import { NodeEnvs, __MAIN_MOCK__, __MAIN__ } from "./utils";
+import { NodeEnvs, __MAIN__ } from "./utils";
+import { __MAIN_MOCK__ } from "assets/mockPR";
 
 const isDebug =
-  process.env.NODE_ENV === NodeEnvs.developemnt || process.env.NODE_ENV === NodeEnvs.test;
+  process.env.NODE_ENV === NodeEnvs.developemnt ||
+  process.env.NODE_ENV === NodeEnvs.test;
 const isMock = process.env.NODE_ENV === NodeEnvs.mock;
 
 // allows for easy mocking / testing

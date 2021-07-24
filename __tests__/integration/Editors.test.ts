@@ -1,29 +1,43 @@
-import { MockedPullNumbers } from "assets/records"
-import { __MAIN_MOCK__ } from "src/utils"
+import { MockedPullNumbers } from "assets/records";
 import { envFactory } from "__tests__/factories/envFactory";
+import * as core from "@actions/core";
+import { __MAIN_MOCK__ } from "assets/mockPR";
+import MockedEnv from "mocked-env";
 
-const mocked = jest.genMockFromModule("@actions/core")
-console.log(mocked)
 describe("integration testing edgecases associated with editors", () => {
-  const OLD_ENV = process.env;
+  const setFailedMock = jest
+    .fn()
+    .mockImplementation(core.setFailed) as jest.MockedFunction<
+    typeof core.setFailed
+  >;
+  const restore = MockedEnv(process.env);
 
-  beforeEach(() => {
-    jest.resetModules(); // Most important - it clears the cache
-    process.env = { ...OLD_ENV }; // Make a copy
+  beforeAll(async () => {
+    jest.spyOn(core, "setFailed").mockImplementation(setFailedMock);
+  });
 
-    mocked.setFailed.mockClear();
+  beforeEach(async () => {
+    jest.resetModules();
+    jest.spyOn(console, "warn").mockImplementation(() => {});
+    jest.spyOn(console, "log").mockImplementation(() => {});
+    const core = await import("@actions/core");
+    jest.spyOn(core, "setFailed").mockImplementation(setFailedMock);
+    setFailedMock.mockClear();
+  });
+
+  afterEach(() => {
+    restore();
   });
 
   afterAll(() => {
-    process.env = OLD_ENV; // Restore old environment
+    jest.restoreAllMocks();
   });
-  describe("editor is also an author", () => {
 
-    it("should require editor approval if an editor is also an author", async (next) => {
-      const env = envFactory({PULL_NUMBER: MockedPullNumbers.PR3670})
-      const res = await __MAIN_MOCK__(env)
-      // expect(setFailedMocked).toHaveBeenCalledTimes(1)
-      setTimeout(() => { console.log(mocked), next()}, 1000)
-    })
-  })
-})
+  describe("editor is also an author", () => {
+    it("should require editor approval if an editor is also an author", async () => {
+      process.env = envFactory({ PULL_NUMBER: MockedPullNumbers.PR3670 });
+      await __MAIN_MOCK__();
+      expect(setFailedMock).toHaveBeenCalledTimes(1);
+    });
+  });
+});
