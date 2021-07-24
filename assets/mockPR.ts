@@ -18,6 +18,7 @@ export const mockPR = (pullNumber: number) => {
 
   if (!records)
     throw new Error(`no mocked records for pull number ${pullNumber}`);
+
   for (const record of records) {
     const req = record.req;
     const res = record.res;
@@ -28,6 +29,8 @@ export const mockPR = (pullNumber: number) => {
         scope.get(wildcard).reply(res.status, res.data);
       case "POST":
         scope.post(wildcard).reply(res.status, res.data);
+      case "PATCH":
+        scope.patch(wildcard).reply(res.status, res.data)
     }
   }
 
@@ -38,7 +41,7 @@ export const mockPR = (pullNumber: number) => {
     (record) =>
       record.req.method === "GET" &&
       record.req.url === `${baseUrl}${PRWildcard}`
-  ).res.data as PR;
+  )?.res?.data as PR;
 };
 
 // TODO: rename and reorganize these debugging tools
@@ -70,10 +73,10 @@ export const setMockContext = (mockEnv?: NodeJS.ProcessEnv) => {
 
   context.payload.pull_request = {
     base: {
-      sha: pr.base.sha
+      sha: pr?.base?.sha
     },
     head: {
-      sha: pr.head.sha
+      sha: pr?.head?.sha
     },
     number: parseInt(env.PULL_NUMBER || "") || 0
   };
