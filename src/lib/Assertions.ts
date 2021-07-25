@@ -229,7 +229,7 @@ export const assertConstantEipNumber = ({ head, base }: FileDiff) => {
 export const assertConstantStatus = ({ head, base }: FileDiff) => {
   if (head.status !== base.status) {
     return [
-      `EIP ${base.eipNum} state was changed from ${base.status}`,
+      `eip-${base.eipNum} state was changed from ${base.status}`,
       `to ${head.status}`
     ].join(" ");
   } else return;
