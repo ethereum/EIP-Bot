@@ -1,6 +1,6 @@
 # EIP Linting Bot
 
-This Github Actions integrated bot lints EIPs and provides feedback for authors, its goal is to catch simple problems, notify the relevant individuals to review, and merge simple changes automatically.
+This Github Actions integrated bot lints EIPs and provides feedback for authors; its goal is to catch simple problems, notify the relevant individuals to review, and merge simple changes automatically.
 
 # Usage
 
@@ -51,6 +51,8 @@ An integration test is a test that considers the behavior as a whole. In this bo
 
 Feel free to share ideas on how to improve testing procedures.
 
+## Getting Started
+
 ### Requirements
 
 1. node package manager (npm)
@@ -58,7 +60,9 @@ Feel free to share ideas on how to improve testing procedures.
 3. Forked Repo
 4. nodejs
 
-### Quick Start
+### Quick Start (npm run it)
+
+`npm run it` runs the bot end to end; which means you can integrate and test with github directly. It uses the typescript built script so don't forget to build that by using `npm run build` or `npm run watch`.
 
 1. Download your forked `EIPS` repo
 2. Create a [Github Token](/creating-a-personal-access-token)
@@ -77,7 +81,49 @@ REPO_NAME = EIPs
 GITHUB_REPOSITORY = <your login>/EIPs
 ```
 
-5. `npm run it`
+5. `npm run build && npm run it`
+
+### Quick Start (npm run mock)
+
+`npm run mock` is a tool built for writing integration tests, but it can also be used to develop. `npm run mock` uses the saved network data of previous pull requests and states of those pull requests. Try this by mocking [pull 3670](https://github.com/ethereum/EIPs/pull/3670)..
+
+1. Clone this repo
+2. Setup your local enviornment (requires node > 14.x): `npm install`
+3. Create a .env variable in the root dir with the following information:
+
+```
+GITHUB_TOKEN = anything
+
+PULL_NUMBER = 3670
+REPO_OWNER_NAME = ethereum
+REPO_NAME = EIPs
+GITHUB_REPOSITORY = ethereum/EIPs
+EVENT_TYPE = pull_request_target
+```
+4. Then run the mock `npm run mock`
+5. You should get a response like the following
+```bash
+alitamoore@Alitas-MBP EIP-Bot % npm run mock
+
+> auto-merge-eip@1.0.0 mock /Users/alitamoore/ethereum/EIP-Bot
+> NODE_ENV=MOCK node -r dotenv/config build/src/index.js
+
+failed to pass tests with the following errors:
+        - File with name EIPS/eip-3670.md is new and new files must be reviewed
+        - This PR requires review from one of [@micahzoltu, @lightclient, @arachnid, @cdetrio, @souptacular, @vbuterin, @nicksavers, @wanderer, @gcolvin]
+::error::failed to pass tests with the following errors:%0A     - File with name EIPS/eip-3670.md is new and new files must be reviewed%0A      - This PR requires review from one of [@micahzoltu, @lightclient, @arachnid, @cdetrio, @souptacular, @vbuterin, @nicksavers, @wanderer, @gcolvin]
+npm ERR! code ELIFECYCLE
+npm ERR! errno 1
+npm ERR! auto-merge-eip@1.0.0 mock: `NODE_ENV=MOCK node -r dotenv/config build/src/index.js`
+npm ERR! Exit status 1
+npm ERR! 
+npm ERR! Failed at the auto-merge-eip@1.0.0 mock script.
+npm ERR! This is probably not a problem with npm. There is likely additional logging output above.
+
+npm ERR! A complete log of this run can be found in:
+npm ERR!     /Users/alitamoore/.npm/_logs/2021-07-25T06_43_54_229Z-debug.log
+```
+In this case, an error was expected because the bug in question was if the editors were mentioned if a status error occured (if the status wasn't one of the allowed types)
 
 ### Troubleshooting
 
