@@ -5,12 +5,8 @@ import * as Assertions from "src/lib/Assertions";
 
 describe("mentions", () => {
   describe("getAuthorMentions", () => {
-    const { getAuthorMentions } = _TESTS_
-    const authors = [
-      "author1",
-      "author2",
-      "author3"
-    ]
+    const { getAuthorMentions } = _TESTS_;
+    const authors = ["author1", "author2", "author3"];
     it("should return authors if not approved by authors", () => {
       const testResults = testResultsFactory({
         authors,
@@ -21,8 +17,8 @@ describe("mentions", () => {
         }
       });
       const res = getAuthorMentions(testResults);
-      expect(res).toBe(authors.join(MENTIONS_SEPARATOR))
-    })
+      expect(res).toBe(authors.join(MENTIONS_SEPARATOR));
+    });
 
     it("should return undefined if no authors", () => {
       const testResults = testResultsFactory({
@@ -34,7 +30,7 @@ describe("mentions", () => {
       });
       const res = getAuthorMentions(testResults);
       expect(res).toBeUndefined();
-    })
+    });
 
     it("should return undefined if approved by authors", () => {
       const testResults = testResultsFactory({
@@ -48,23 +44,21 @@ describe("mentions", () => {
       });
       const res = getAuthorMentions(testResults);
       expect(res).toBeUndefined();
-    })
-  })
+    });
+  });
 
   describe("getEditorMentions", () => {
-    const {getEditorMentions} = _TESTS_;
-    const editors = [
-      "editor1",
-      "editor2",
-      "editor3"
-    ]
-    const mockRequireEIPEditors = jest.fn().mockReturnValue(editors)
+    const { getEditorMentions } = _TESTS_;
+    const editors = ["editor1", "editor2", "editor3"];
+    const mockRequireEIPEditors = jest.fn().mockReturnValue(editors);
 
     beforeEach(async () => {
       jest.resetModules();
-      jest.spyOn(Assertions, "requireEIPEditors").mockImplementation(mockRequireEIPEditors)
+      jest
+        .spyOn(Assertions, "requireEIPEditors")
+        .mockImplementation(mockRequireEIPEditors);
       mockRequireEIPEditors.mockClear();
-    })
+    });
 
     it("should return editors if the file is new and there's no editor approval", () => {
       const testResults = testResultsFactory({
@@ -78,8 +72,8 @@ describe("mentions", () => {
         }
       });
       const res = getEditorMentions(testResults);
-      expect(res).toBe(editors.join(MENTIONS_SEPARATOR))
-    })
+      expect(res).toBe(editors.join(MENTIONS_SEPARATOR));
+    });
 
     it("should return nothing if the file is new and there's editor approval", () => {
       const testResults = testResultsFactory({
@@ -93,8 +87,8 @@ describe("mentions", () => {
         }
       });
       const res = getEditorMentions(testResults);
-      expect(res).toBeUndefined()
-    })
+      expect(res).toBeUndefined();
+    });
 
     it("should mention editors if not enough eip1 editor approvals", () => {
       const testResults = testResultsFactory({
@@ -105,8 +99,8 @@ describe("mentions", () => {
         }
       });
       const res = getEditorMentions(testResults);
-      expect(res).toBe(editors.join(MENTIONS_SEPARATOR))
-    })
+      expect(res).toBe(editors.join(MENTIONS_SEPARATOR));
+    });
 
     it("should mention editors if status is not automergeable and no editor approval", () => {
       const testResults = testResultsFactory({
@@ -120,8 +114,8 @@ describe("mentions", () => {
         }
       });
       const res = getEditorMentions(testResults);
-      expect(res).toBe(editors.join(MENTIONS_SEPARATOR))
-    })
+      expect(res).toBe(editors.join(MENTIONS_SEPARATOR));
+    });
 
     it("shouldn't mention editors if status is not automergeable and it has editor approval", () => {
       const testResults = testResultsFactory({
@@ -135,43 +129,46 @@ describe("mentions", () => {
         }
       });
       const res = getEditorMentions(testResults);
-      expect(res).toBeUndefined()
-    })
-  })
+      expect(res).toBeUndefined();
+    });
+  });
 
   describe("_getMentions", () => {
-    const { _getMentions } = _TESTS_
+    const { _getMentions } = _TESTS_;
     const getAuthorMentionsMock = jest.fn();
     const getEditorMentionsMock = jest.fn();
-    const getMentions = _getMentions(getEditorMentionsMock, getAuthorMentionsMock)
+    const getMentions = _getMentions(
+      getEditorMentionsMock,
+      getAuthorMentionsMock
+    );
     const authors = ["author1", "author2"].join(MENTIONS_SEPARATOR);
     const editors = ["editor1", "editor2"].join(MENTIONS_SEPARATOR);
 
     beforeEach(() => {
       getAuthorMentionsMock.mockClear();
       getEditorMentionsMock.mockClear();
-    })
+    });
     it("should handle no mentions", () => {
       const res = getMentions({} as any);
-      expect(res).toBe("")
-    })
+      expect(res).toBe("");
+    });
     it("should handle only authors", () => {
       getAuthorMentionsMock.mockReturnValueOnce(authors);
       const res = getMentions({} as any);
-      expect(res).toEqual(authors)
-    })
+      expect(res).toEqual(authors);
+    });
     it("should handle only editors", () => {
       getEditorMentionsMock.mockReturnValueOnce(editors);
       const res = getMentions({} as any);
-      expect(res).toEqual(editors)
-    })
+      expect(res).toEqual(editors);
+    });
     it("should handle both editors and authors", () => {
       getAuthorMentionsMock.mockReturnValueOnce(authors);
       getEditorMentionsMock.mockReturnValueOnce(editors);
-      const res = getMentions({} as any)
+      const res = getMentions({} as any);
       // this is sensitive to the order, but the order shouldn't matter
       // if this breaks, just flip it around
-      expect(res).toBe([editors, authors].join(MENTIONS_SEPARATOR))
-    })
-  })
-})
+      expect(res).toBe([editors, authors].join(MENTIONS_SEPARATOR));
+    });
+  });
+});

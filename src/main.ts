@@ -20,7 +20,13 @@ import {
   assertEIP1EditorApprovals,
   requireEIPEditors
 } from "./lib";
-import { DEFAULT_ERRORS, File, MENTIONS_SEPARATOR, NodeEnvs, TestResults } from "./utils";
+import {
+  DEFAULT_ERRORS,
+  File,
+  MENTIONS_SEPARATOR,
+  NodeEnvs,
+  TestResults
+} from "./utils";
 import {
   editorApprovalPurifier,
   EIP1Purifier,
@@ -110,7 +116,7 @@ const getEditorMentions = (testResults: TestResults) => {
   }
 
   return;
-}
+};
 
 const getAuthorMentions = (testResults: TestResults) => {
   const {
@@ -119,20 +125,25 @@ const getAuthorMentions = (testResults: TestResults) => {
   } = testResults;
 
   if (authors && approvalErrors.isAuthorApprovedError) {
-    return authors.join(MENTIONS_SEPARATOR)
+    return authors.join(MENTIONS_SEPARATOR);
   }
 
   return;
-}
+};
 
-const _getMentions = (_getEditorMentions: typeof getEditorMentions, _getAuthorMentions: typeof getAuthorMentions) => (testResults: TestResults) => {
+const _getMentions = (
+  _getEditorMentions: typeof getEditorMentions,
+  _getAuthorMentions: typeof getAuthorMentions
+) => (testResults: TestResults) => {
   const editorMentions = _getEditorMentions(testResults);
   const authorMentions = _getAuthorMentions(testResults);
   // filtering Boolean prevents trailing space
-  return [editorMentions, authorMentions].filter(Boolean).join(MENTIONS_SEPARATOR)
-}
+  return [editorMentions, authorMentions]
+    .filter(Boolean)
+    .join(MENTIONS_SEPARATOR);
+};
 
-const getMentions = _getMentions(getEditorMentions, getAuthorMentions)
+const getMentions = _getMentions(getEditorMentions, getAuthorMentions);
 
 export const _main_ = async () => {
   // Verify correct environment and request context
@@ -196,4 +207,4 @@ export const _TESTS_ = {
   getEditorMentions,
   getAuthorMentions,
   _getMentions
-}
+};

@@ -26,7 +26,7 @@ export const EIP_EDITORS = [
 ];
 
 /** what is used to `.join(..)` the mentions */
-export const MENTIONS_SEPARATOR = " "
+export const MENTIONS_SEPARATOR = " ";
 
 export enum FrontMatterAttributes {
   status = "status",

@@ -18,10 +18,7 @@ import {
   _requireEIPEditors,
   _requireFilePreexisting
 } from "src/lib";
-import {
-  expectError,
-  clearContext
-} from "__tests__/testutils";
+import { expectError, clearContext } from "__tests__/testutils";
 import { FileDiffFactory } from "__tests__/factories/fileDiffFactory";
 import { FileFactory } from "__tests__/factories/fileFactory";
 import { PRFactory } from "__tests__/factories/prFactory";
@@ -274,6 +271,25 @@ describe("Requires", () => {
       const res = requireEIPEditors({} as FileDiff);
       expect(res).toEqual(editors);
       expect(consoleSpy).not.toHaveBeenCalled();
+    });
+
+    it("should normalize editors to lowercase and no file diff provided", () => {
+      const requireEIPEditors = _requireEIPEditors(
+        requireAuthorsMock,
+        editors.map((i) => i.toUpperCase())
+      );
+      const res = requireEIPEditors();
+      expect(res).toEqual(editors);
+    });
+
+    it("should normalize editors to lowercase and file diff provided", () => {
+      const requireEIPEditors = _requireEIPEditors(
+        requireAuthorsMock,
+        editors.map((i) => i.toUpperCase())
+      );
+      requireAuthorsMock.mockReturnValueOnce([editors[0]]);
+      const res = requireEIPEditors({} as FileDiff);
+      expect(res).toEqual([editors[1], editors[2]]);
     });
   });
 });

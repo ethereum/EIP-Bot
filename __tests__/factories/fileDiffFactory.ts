@@ -1,7 +1,6 @@
 import { EipStatus, FileDiff } from "src/utils";
 import { RecursivePartial } from "__tests__/testutils";
 
-
 export const FileDiffFactory = (
   overrides: RecursivePartial<FileDiff> = {}
 ): FileDiff => {

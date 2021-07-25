@@ -1,6 +1,6 @@
 import nock from "nock";
 import { NodeEnvs, PR } from "src/utils";
-import MockRecords from "./records";
+import MockRecords, { assertSavedRecord, SavedRecord } from "./records";
 
 const baseUrl = "https://api.github.com";
 const scope = nock(baseUrl).persist();
@@ -13,7 +13,7 @@ const scope = nock(baseUrl).persist();
  * @param pullNumber the pull number to mock (mocks the necesary github api requests)
  * @returns mocked pull request of the pull number
  */
-export const mockPR = (pullNumber: number) => {
+export const mockPR = (pullNumber: SavedRecord) => {
   const records = MockRecords[`PR${pullNumber}`];
 
   if (!records)
@@ -30,7 +30,7 @@ export const mockPR = (pullNumber: number) => {
       case "POST":
         scope.post(wildcard).reply(res.status, res.data);
       case "PATCH":
-        scope.patch(wildcard).reply(res.status, res.data)
+        scope.patch(wildcard).reply(res.status, res.data);
     }
   }
 
@@ -66,7 +66,10 @@ export const setMockContext = (mockEnv?: NodeJS.ProcessEnv) => {
   process.env = env;
 
   if (!env.PULL_NUMBER) throw new Error("PULL_NUMBER is required to mock");
-  const pr = mockPR(parseInt(env.PULL_NUMBER || "") || 0);
+
+  // setup saved record (mocking network responses)
+  assertSavedRecord(env.PULL_NUMBER);
+  const pr = mockPR(env.PULL_NUMBER);
 
   // By instantiating after above it allows it to initialize with custom env
   const context = require("@actions/github").context;

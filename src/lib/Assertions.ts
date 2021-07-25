@@ -293,8 +293,7 @@ export const _requireEIPEditors = (
   _requireAuthors: typeof requireAuthors,
   EDITORS: string[]
 ) => (fileDiff?: FileDiff) => {
-  // TODO: find a better way to do this
-
+  EDITORS = EDITORS.map((i) => i.toLowerCase());
   if (fileDiff) {
     const authors = _requireAuthors(fileDiff);
     return EDITORS.filter((editor) => !authors.includes(editor));
