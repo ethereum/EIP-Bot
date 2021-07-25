@@ -1,6 +1,6 @@
 # EIP Linting Bot
 
-This Github Actions integrated bot lints EIPs and provides feedback for authors, its goal is to catch simple problems and merge simple changes automatically.
+This Github Actions integrated bot lints EIPs and provides feedback for authors, its goal is to catch simple problems, notify the relevant individuals to review, and merge simple changes automatically.
 
 # Usage
 
@@ -23,6 +23,7 @@ jobs:
 
 ## Standard Practices
 
+### Function Naming
 This library uses concepts that may appear strange,
 
 - **require...** : if a function starts with `require`, then it will
@@ -38,7 +39,17 @@ This library uses concepts that may appear strange,
 
 These practices are applied here for the primary purpose of streamlining logic to maximize readability and minimize errors. It is, in effect, untangling a messy logic stream by mostly) removing race conditions and side effects.
 
-## Development Enviornment Setup
+### Testing
+This bot employees two types of tests
+
+- functional
+- integration
+
+A functional test if your standard unit test. Take a small function and test its behavior thoroughly. You don't need anything more than jest to do this, and your code should be organized such that the sub functions are abstracted and tested. It also uses dependency injection for this reason (it's typically easier to mock that way). Everything should have unit tests.
+
+An integration test is a test that considers the behavior as a whole. In this bot, we mock a network response from the github api using `nock`. When you do this for every network request you're able to get a snapshot and test the whole's behavior. All integration tests were once bugs that were fixed, so if you implement a feature you don't need to add an integration test. It's easier to manage this way, and it serves the purpose of reducing code regression. Integration tests tend to be brittle because of the number of different facets. So the code uses several homebrewed tools to maximize reliability.
+
+Feel free to share ideas on how to improve testing procedures.
 
 ### Requirements
 
