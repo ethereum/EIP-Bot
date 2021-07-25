@@ -8,15 +8,21 @@ This Github Actions integrated bot lints EIPs and provides feedback for authors;
 on: [pull_request_target]
 
 jobs:
-  hello_world_job:
+  auto_merge_bot:
     runs-on: ubuntu-latest
     name: EIP Auto-Merge Bot
     steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Setup Node.js Environment
+        uses: actions/setup-node@v2
+        with:
+          node-version: '14'
       - name: auto-merge-bot
-        uses: ./.github/bot
+        uses: ethereum/EIP-Bot@<commit hash> # master
         id: auto-merge-bot
-        env:
-          GITHUB_TOKEN: ${{ secrets.TOKEN }}
+        with:
+          GITHUB-TOKEN: ${{ secrets.TOKEN }}
 ```
 
 # Contributing
