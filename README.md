@@ -27,7 +27,7 @@ jobs:
 This library uses concepts that may appear strange,
 
 - **require...** : functions that start with `require` are used to guarantee it responds with the resource you're looking for or else it will error
-- **assert...** : functions that start with `assert` are used to test something and if that test fails it'll respond with some kind of error. This is where the errors that the bot tells the author comes from.
+- **assert...** : functions that start with `assert` are used to test something and if that test fails it'll respond with some kind of error message string. This is where the errors that the bot tells the author comes from.
 - **...Purifier** : functions that end in `purifier` are used to _purify_ test results, they help to keep the logic of assertions clean and handle cross error dependencies like the fact that if you change the status you need an editor approval, but then once you actually get that approval we don't want to show the error for changing the status (i.e. `if (changedStatus && !approvedByEditor) { return error } else if (changedStatus && approvedByEditor) { return }`). 
 
 These practices are applied to make things easier to understand. If you're not careful, then the logic can get tangled very quick, and then it's really hard to read and change things.
