@@ -26,18 +26,11 @@ jobs:
 ### Function Naming
 This library uses concepts that may appear strange,
 
-- **require...** : if a function starts with `require`, then it will
-  - throw an error if the requirement is not met
-  - return the specified check (`requirePR` returns the pull request object)
-- **assert...** : if a function starts with `assert`, then it will
-  - return an error string if the assertion fails
-  - return undefined if the assert succeeds
-- **...Purifier** : if a function ends in `purifier`, then it will
-  - return a mutated testResult (the input will be mutated)
-  - will remove any assertion erorrs based on edge cases
-  - can only remove errors but can not negate removal or add
+- **require...** : functions that start with `require` are used to guarantee it responds with the resource you're looking for or else it will error
+- **assert...** : functions that start with `assert` are used to test something and if that test fails it'll respond with some kind of error. This is where the errors that the bot tells the author comes from.
+- **...Purifier** : functions that end in `purifier` are used to _purify_ test results, they help to keep the logic of assertions clean and handle cross error dependencies like the fact that if you change the status you need an editor approval, but then once you actually get that approval we don't want to show the error for changing the status (i.e. `if (changedStatus && !approvedByEditor) { return error } else if (changedStatus && approvedByEditor) { return }`). 
 
-These practices are applied here for the primary purpose of streamlining logic to maximize readability and minimize errors. It is, in effect, untangling a messy logic stream by mostly) removing race conditions and side effects.
+These practices are applied to make things easier to understand. If you're not careful, then the logic can get tangled very quick, and then it's really hard to read and change things.
 
 ### Testing
 This bot employees two types of tests
