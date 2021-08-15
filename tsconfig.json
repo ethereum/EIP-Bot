@@ -22,10 +22,9 @@
     "inlineSources": true,
     "baseUrl": "./",
     "paths": {
-      "src/*": ["src/*"],
-      "__tests__/*": ["__tests__/*"],
-      "assets/*": ["assets/*"]
-    }
+      "src/*": ["src/*"]
+    },
+    "skipLibCheck": true
   },
   "exclude": ["./node_modules/*"]
 }
