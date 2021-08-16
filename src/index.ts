@@ -14,15 +14,20 @@ import {
 } from "./lib";
 import async from "async";
 import plimit from "p-limit";
+import { NodeEnvs } from "./types";
 
-setDebugContext();
+if (
+  process.env.NODE_ENV === NodeEnvs.test ||
+  process.env.NODE === NodeEnvs.mock
+) {
+  setDebugContext();
+}
 
-// Action begins ----
 const run = async () => {
   // gets the contents of the EIPS directory
   const eips = await getEIPs();
 
-  console.log("fetching file modified dates...")
+  console.log("fetching file modified dates...");
   // checks if the last date the file was changed is greater than a year ago
   const limit = plimit(10); // without a limiter github will flag too many parallel requests in the next step
   const datesChanged = await Promise.all(
@@ -32,7 +37,9 @@ const run = async () => {
     moment(date.date).isBefore(WITHDRAWN_CUTOFF)
   );
 
-  console.log(`checking for stale EIPs that weren't edited before ${WITHDRAWN_CUTOFF.toISOString()}`)
+  console.log(
+    `checking for stale EIPs that weren't edited before ${WITHDRAWN_CUTOFF.toISOString()}`
+  );
   // retrieves the details of the old files
   const EIPContents = await Promise.all(oldEnoughEIPs.map(getEIPContent));
   const EIPsToWithdraw = await async.filter(
@@ -42,7 +49,9 @@ const run = async () => {
 
   // if there are no EIPs to withdraw then stop here
   if (!EIPsToWithdraw.length) {
-    console.log(`No EIPs were found to be last edited before ${WITHDRAWN_CUTOFF.toISOString()}`)
+    console.log(
+      `No EIPs were found to be last edited before ${WITHDRAWN_CUTOFF.toISOString()}`
+    );
     return;
   }
 
