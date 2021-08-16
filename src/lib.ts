@@ -29,7 +29,10 @@ export function requireEncoding(
 
 export const getParsedContent = async (
   path: string
-): Promise<{ content: ContentFile; parsed: ParsedContent["content"] }> => {
+): Promise<{
+  content: { file: ContentFile; decoded: string };
+  parsed: ParsedContent["content"];
+}> => {
   const github = getOctokit(GITHUB_TOKEN).rest;
   const decodeData = (data: ContentFile) => {
     const encoding = data.encoding;
@@ -53,7 +56,10 @@ export const getParsedContent = async (
 
   // Return parsed information
   return {
-    content: data,
+    content: {
+      file: data,
+      decoded: decodeData(data)
+    },
     parsed: frontmatter(decodeData(data))
   };
 };
@@ -99,7 +105,7 @@ export const setDebugContext = async (debugEnv?: NodeJS.ProcessEnv) => {
     full_name: `${env.REPO_OWNER}/${env.REPO_NAME}`
   };
   context.eventName = env.EVENT_TYPE;
-  context.sha = env.SHA
+  context.sha = env.SHA;
 };
 
 export const getEIPs = async () => {
@@ -133,6 +139,7 @@ export const getCommitDate = (eip: EIP) => {
     })
     .then((res) => {
       const commit = res.data[0];
+      console.log("fetched commit")
       if (!commit) {
         throw new Error(`path ${eip.path} did not resolve to a commit`);
       }
@@ -143,8 +150,9 @@ export const getCommitDate = (eip: EIP) => {
     });
 };
 
-
-type ReturnOf<T extends ({...any}: any) => Promise<any>> = UnPromisify<ReturnType<T>>
+type ReturnOf<T extends ({ ...any }: any) => Promise<any>> = UnPromisify<
+  ReturnType<T>
+>;
 export const getIsValidStateEIP = async (
   parsed: ReturnOf<typeof getParsedContent>["parsed"]
 ) => {
@@ -163,10 +171,55 @@ export const getEIPContent = async (eip: ReturnOf<typeof getCommitDate>) => {
 
 export const createBranch = (branchName: string) => {
   const github = getOctokit(GITHUB_TOKEN).rest;
-  return github.git.createRef({
-    owner: context.repo.owner,
+  return github.git
+    .createRef({
+      owner: context.repo.owner,
+      repo: context.repo.repo,
+      ref: `refs/heads/${branchName}`,
+      sha: context.sha
+    })
+    .then((res) => {
+      console.log("successfully created branch", branchName);
+      return res.data
+    });
+};
+
+type CommitProps = {file: ContentFile, branchName: string, content: string}
+export const createFileUpdateCommit = ({file, branchName, content}: CommitProps) => {
+  const github = getOctokit(GITHUB_TOKEN).rest;
+  const message = `Updating ${file.path} to status Withdrawn`
+
+  return github.repos.createOrUpdateFileContents({
     repo: context.repo.repo,
-    ref: `refs/heads/${branchName}`,
-    sha: context.sha
+    owner: context.repo.owner,
+    message,
+    branch: branchName,
+    path: file.path,
+    sha: file.sha,
+    content: Buffer.from(content).toString("base64")
+  }).then(() => console.log(message))
+}
+
+export const capitalize = (str: string) =>
+  str.charAt(0).toUpperCase() + str.slice(1);
+
+type PRProps = {
+  fromBranch: string,
+  toBranch: string,
+  title: string,
+  body: string
+}
+export const createPR = ({fromBranch, toBranch, title, body}: PRProps) => {
+  const github = getOctokit(GITHUB_TOKEN).rest;
+  return github.pulls.create({
+    repo: context.repo.repo,
+    owner: context.repo.owner,
+    base: toBranch,
+    head: fromBranch,
+    title,
+    body
+  }).then(res => {
+    console.log(`successfully created pull request titled ${res.data.title}`);
+    return res.data
   })
 }
