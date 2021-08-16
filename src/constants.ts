@@ -14,6 +14,22 @@ export enum FrontMatterAttributes {
   author = "author"
 }
 
+/** pull requests will open against this */
+export const DEFAULT_BRANCH = "master"
+
+export const EIP_EDITORS = [
+  "@MicahZoltu",
+  "@lightclient",
+  "@arachnid",
+  "@cdetrio",
+  "@Souptacular",
+  "@vbuterin",
+  "@nicksavers",
+  "@wanderer",
+  "@gcolvin",
+  "@axic"
+];
+
 export enum EipStatus {
   draft = "draft",
   withdrawn = "withdrawn",

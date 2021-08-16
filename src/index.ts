@@ -1,6 +1,6 @@
 require("module-alias/register");
 import moment from "moment-timezone";
-import { EipStatus, WITHDRAWN_CUTOFF } from "./constants";
+import { DEFAULT_BRANCH, EipStatus, EIP_EDITORS, WITHDRAWN_CUTOFF } from "./constants";
 import {
   capitalize,
   createBranch,
@@ -74,9 +74,9 @@ const run = async () => {
   // const branch = await getBranchObject(branchName);
   await createPR({
     fromBranch: branchName,
-    toBranch: "master",
+    toBranch: DEFAULT_BRANCH,
     title: `Withdrawn Bot ${moment().toISOString()}`,
-    body: "@alita-moore"
+    body: EIP_EDITORS.join(" ")
   });
 };
 
