@@ -179,46 +179,54 @@ export const createBranch = (branchName: string) => {
     })
     .then((res) => {
       console.log("successfully created branch", branchName);
-      return res.data
+      return res.data;
     });
 };
 
-type CommitProps = {file: ContentFile, branchName: string, content: string}
-export const createFileUpdateCommit = ({file, branchName, content}: CommitProps) => {
+type CommitProps = { file: ContentFile; branchName: string; content: string };
+export const createFileUpdateCommit = ({
+  file,
+  branchName,
+  content
+}: CommitProps) => {
   const github = getOctokit(GITHUB_TOKEN).rest;
-  const message = `Updating ${file.path} to status Withdrawn`
+  const message = `Updating ${file.path} to status Withdrawn`;
 
-  return github.repos.createOrUpdateFileContents({
-    repo: context.repo.repo,
-    owner: context.repo.owner,
-    message,
-    branch: branchName,
-    path: file.path,
-    sha: file.sha,
-    content: Buffer.from(content).toString("base64")
-  }).then(() => console.log(message))
-}
+  return github.repos
+    .createOrUpdateFileContents({
+      repo: context.repo.repo,
+      owner: context.repo.owner,
+      message,
+      branch: branchName,
+      path: file.path,
+      sha: file.sha,
+      content: Buffer.from(content).toString("base64")
+    })
+    .then(() => console.log(message));
+};
 
 export const capitalize = (str: string) =>
   str.charAt(0).toUpperCase() + str.slice(1);
 
 type PRProps = {
-  fromBranch: string,
-  toBranch: string,
-  title: string,
-  body: string
-}
-export const createPR = ({fromBranch, toBranch, title, body}: PRProps) => {
+  fromBranch: string;
+  toBranch: string;
+  title: string;
+  body: string;
+};
+export const createPR = ({ fromBranch, toBranch, title, body }: PRProps) => {
   const github = getOctokit(GITHUB_TOKEN).rest;
-  return github.pulls.create({
-    repo: context.repo.repo,
-    owner: context.repo.owner,
-    base: toBranch,
-    head: fromBranch,
-    title,
-    body
-  }).then(res => {
-    console.log(`successfully created pull request titled ${res.data.title}`);
-    return res.data
-  })
-}
+  return github.pulls
+    .create({
+      repo: context.repo.repo,
+      owner: context.repo.owner,
+      base: toBranch,
+      head: fromBranch,
+      title,
+      body
+    })
+    .then((res) => {
+      console.log(`successfully created pull request titled ${res.data.title}`);
+      return res.data;
+    });
+};

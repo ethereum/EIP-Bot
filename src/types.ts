@@ -46,7 +46,8 @@ export type ContentFile = {
   submodule_git_url?: string;
 };
 
-export type ContentResponse = Endpoints["GET /repos/{owner}/{repo}/contents/{path}"]["response"]["data"];
+export type ContentResponse =
+  Endpoints["GET /repos/{owner}/{repo}/contents/{path}"]["response"]["data"];
 
 export type ParsedContent = {
   path: string;
@@ -112,4 +113,3 @@ export enum NodeEnvs {
 }
 
 export type ArrayLike<T> = T extends (infer U)[] ? U[] : never;
-
