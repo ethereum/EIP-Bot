@@ -139,7 +139,6 @@ export const getCommitDate = (eip: EIP) => {
     })
     .then((res) => {
       const commit = res.data[0];
-      console.log("fetched commit")
       if (!commit) {
         throw new Error(`path ${eip.path} did not resolve to a commit`);
       }

@@ -22,6 +22,7 @@ const run = async () => {
   // gets the contents of the EIPS directory
   const eips = await getEIPs();
 
+  console.log("fetching file modified dates...")
   // checks if the last date the file was changed is greater than a year ago
   const limit = plimit(10); // without a limiter github will flag too many parallel requests in the next step
   const datesChanged = await Promise.all(
@@ -31,6 +32,7 @@ const run = async () => {
     moment(date.date).isBefore(WITHDRAWN_CUTOFF)
   );
 
+  console.log(`checking for stale EIPs that weren't edited before ${WITHDRAWN_CUTOFF.toISOString()}`)
   // retrieves the details of the old files
   const EIPContents = await Promise.all(oldEnoughEIPs.map(getEIPContent));
   const EIPsToWithdraw = await async.filter(
@@ -39,15 +41,17 @@ const run = async () => {
   );
 
   // if there are no EIPs to withdraw then stop here
-  if (!EIPsToWithdraw.length) return;
+  if (!EIPsToWithdraw.length) {
+    console.log(`No EIPs were found to be last edited before ${WITHDRAWN_CUTOFF.toISOString()}`)
+    return;
+  }
 
   const branchName = `Withdrawn-EIP-Bot-${moment().format(
     "(YYYY-MMM-Do@HH.m.s)"
   )}`;
   await createBranch(branchName);
 
-  // synchronise is necessary for the commits avoid
-  // commit race conditions
+  // synchronise is necessary for the commits avoid commit race conditions
   for (const { content } of EIPsToWithdraw) {
     const statusRegex = /(?<=status:).*/;
     const withdrawn = ` ${capitalize(EipStatus.withdrawn)}`;
