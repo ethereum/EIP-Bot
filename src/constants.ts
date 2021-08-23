@@ -1,7 +1,10 @@
 import moment from "moment-timezone";
 
 export const GITHUB_TOKEN = process.env.GITHUB_TOKEN as string;
-export const WITHDRAWN_CUTOFF = moment().subtract(1, "year");
+export const STAGNATION_CUTOFF_MONTHS = 6;
+export const STAGNATION_CUTOFF = moment().subtract(STAGNATION_CUTOFF_MONTHS, "months");
+
+export const USERNAME_DELIMETER = ", "
 
 /** for cleaning strings so they can be safely compared */
 export const cleanString = (str: string) => {
@@ -41,9 +44,15 @@ export enum EipStatus {
   stagnant = "stagnant"
 }
 
+/** @deprecated */
 export const WITHDRAWABLE_STATUSES: EipStatus[] = [
   EipStatus.draft,
   EipStatus.review,
   EipStatus.stagnant,
   EipStatus.lastCall
 ];
+
+export const STAGNATABLE_STATUSES: EipStatus[] = [
+  EipStatus.draft,
+  EipStatus.review
+]

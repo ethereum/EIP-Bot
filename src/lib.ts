@@ -3,19 +3,19 @@ import {
   cleanString,
   FrontMatterAttributes,
   GITHUB_TOKEN,
-  WITHDRAWABLE_STATUSES
+  STAGNATABLE_STATUSES
 } from "./constants";
 import {
   ArrayLike,
   ContentFile,
   encodings,
   Encodings,
-  NodeEnvs,
   ParsedContent,
   UnArrayify,
   UnPromisify
 } from "./types";
-import frontmatter from "front-matter";
+import frontmatter, { FrontMatterResult } from "front-matter";
+import { Moment } from "moment-timezone";
 
 /** Ensures that encodings are as expected by octokit */
 export function requireEncoding(
@@ -58,54 +58,11 @@ export const getParsedContent = async (
   return {
     content: {
       file: data,
+      // @ts-ignore
       decoded: decodeData(data)
     },
     parsed: frontmatter(decodeData(data))
   };
-};
-
-export const setDebugContext = async (debugEnv?: NodeJS.ProcessEnv) => {
-  const env = { ...process.env, ...debugEnv };
-  process.env = env;
-
-  // By instantiating after above it allows it to initialize with custom env
-  const context = require("@actions/github").context;
-
-  context.payload.pull_request = {
-    base: {
-      sha: env.BASE_SHA
-    },
-    head: {
-      sha: env.HEAD_SHA
-    },
-    number: parseInt(env.PULL_NUMBER || "") || 0
-  };
-
-  if (env.NODE_ENV === NodeEnvs.test) {
-    context.repo = {
-      owner: env.REPO_OWNER_NAME,
-      repo: env.REPO_NAME
-    };
-  } else {
-    // @ts-ignore
-    context.repo.owner = env.REPO_OWNER_NAME;
-    // @ts-ignore
-    context.repo.repo = env.REPO_NAME;
-  }
-
-  context.payload.repository = {
-    // @ts-ignore
-    name: env.REPO_NAME,
-    owner: {
-      key: "",
-      // @ts-ignore
-      login: env.REPO_OWNER_NAME,
-      name: env.REPO_OWNER_NAME
-    },
-    full_name: `${env.REPO_OWNER}/${env.REPO_NAME}`
-  };
-  context.eventName = env.EVENT_TYPE;
-  context.sha = env.SHA;
 };
 
 export const getEIPs = async () => {
@@ -156,7 +113,7 @@ export const getIsValidStateEIP = async (
   parsed: ReturnOf<typeof getParsedContent>["parsed"]
 ) => {
   const status = parsed.attributes[FrontMatterAttributes.status];
-  return WITHDRAWABLE_STATUSES.map(cleanString).includes(cleanString(status));
+  return STAGNATABLE_STATUSES.map(cleanString).includes(cleanString(status));
 };
 
 export const getEIPContent = async (eip: ReturnOf<typeof getCommitDate>) => {
@@ -229,4 +186,42 @@ export const createPR = ({ fromBranch, toBranch, title, body }: PRProps) => {
       console.log(`successfully created pull request titled ${res.data.title}`);
       return res.data;
     });
+};
+
+export const formatDate = (date: Moment) => {
+  return date.format("(YYYY-MMM-Do@HH.m.s)");
+};
+
+export const getAuthorsFromFile = async (parsedContent: FrontMatterResult<any>) => {
+  const rawAuthorList = parsedContent.attributes[FrontMatterAttributes.author]
+  if (!rawAuthorList) return;
+
+  const findUserByEmail = async (
+    email: string
+  ): Promise<string | undefined> => {
+    const Github = getOctokit(GITHUB_TOKEN).rest;
+    const { data: results } = await Github.search.users({ q: email });
+    if (results.total_count > 0 && results.items[0] !== undefined) {
+      return "@" + results.items[0].login;
+    }
+    console.warn(`No github user found, using email instead: ${email}`);
+    return undefined;
+  };
+
+  const resolveAuthor = async (author: string) => {
+    if (author[0] === "@") {
+      return author.toLowerCase();
+    } else {
+      // Email address
+      const queriedUser = await findUserByEmail(author);
+      return (queriedUser || author).toLowerCase();
+    }
+  };
+
+  const AUTHOR_RE = /[(<]([^>)]+)[>)]/gm;
+  const authors = rawAuthorList.matchAll(AUTHOR_RE);
+  const resolved = await Promise.all(
+    [...authors].map((value) => value[0] && resolveAuthor(value[0]))
+  );
+  return new Set(resolved);
 };
