@@ -22,7 +22,8 @@
     "front-matter": "4.0.2",
     "moment-timezone": "^0.5.33",
     "p-limit": "3.1.0",
-    "prettier": "^2.3.2"
+    "prettier": "^2.3.2",
+    "type-fest": "^2.1.0"
   },
   "devDependencies": {
     "@babel/preset-env": "^7.15.0",

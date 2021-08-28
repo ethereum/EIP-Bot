@@ -6,7 +6,7 @@ export const setDebugContext = async (debugEnv?: NodeJS.ProcessEnv) => {
   process.env = env;
 
   // By instantiating after above it allows it to initialize with custom env
-  const context = require("@actions/github").context;
+  const context = (await import("@actions/github")).context;
 
   context.payload.pull_request = {
     base: {
@@ -18,24 +18,13 @@ export const setDebugContext = async (debugEnv?: NodeJS.ProcessEnv) => {
     number: parseInt(env.PULL_NUMBER || "") || 0
   };
 
-  if (env.NODE_ENV === NodeEnvs.test) {
-    context.repo = {
-      owner: env.REPO_OWNER_NAME,
-      repo: env.REPO_NAME
-    };
-  } else {
-    // @ts-ignore
-    context.repo.owner = env.REPO_OWNER_NAME;
-    // @ts-ignore
-    context.repo.repo = env.REPO_NAME;
-  }
+  context.repo.owner = env.REPO_OWNER_NAME;
+  context.repo.repo = env.REPO_NAME;
 
   context.payload.repository = {
-    // @ts-ignore
     name: env.REPO_NAME,
     owner: {
       key: "",
-      // @ts-ignore
       login: env.REPO_OWNER_NAME,
       name: env.REPO_OWNER_NAME
     },

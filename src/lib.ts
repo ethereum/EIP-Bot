@@ -1,6 +1,7 @@
 import { context, getOctokit } from "@actions/github";
 import {
   cleanString,
+  EipStatus,
   FrontMatterAttributes,
   GITHUB_TOKEN,
   STAGNATABLE_STATUSES
@@ -109,15 +110,37 @@ export const getCommitDate = (eip: EIP) => {
 type ReturnOf<T extends ({ ...any }: any) => Promise<any>> = UnPromisify<
   ReturnType<T>
 >;
-export const getIsValidStateEIP = async (
+export const getIsValidStateEIP = (
   parsed: ReturnOf<typeof getParsedContent>["parsed"]
 ) => {
   const status = parsed.attributes[FrontMatterAttributes.status];
+  if (!status) {
+    console.error(
+      "============",
+      "failed to collect 'status' from the following parsed eip\n============\n",
+      JSON.stringify(parsed, null, 2),
+      "\n==========\nfailed with error:\n",
+      parsed
+    );
+    return;
+  }
   return STAGNATABLE_STATUSES.map(cleanString).includes(cleanString(status));
 };
 
 export const getEIPContent = async (eip: ReturnOf<typeof getCommitDate>) => {
-  const { content, parsed } = await getParsedContent(eip.eip.path);
+  const res = await getParsedContent(eip.eip.path).catch((err) => {
+    console.error(
+      "============",
+      "failed to collect EIP contents for the following eip\n============\n",
+      JSON.stringify(eip, null, 2),
+      "\n==========\nfailed with error:\n",
+      err
+    );
+  });
+
+  if (!res) return;
+
+  const { content, parsed } = res;
   return {
     content,
     parsed,
@@ -147,7 +170,7 @@ export const createFileUpdateCommit = ({
   content
 }: CommitProps) => {
   const github = getOctokit(GITHUB_TOKEN).rest;
-  const message = `Updating ${file.path} to status Withdrawn`;
+  const message = `Updating ${file.path} to status ${EipStatus.stagnant}`;
 
   return github.repos
     .createOrUpdateFileContents({
@@ -192,8 +215,10 @@ export const formatDate = (date: Moment) => {
   return date.format("(YYYY-MMM-Do@HH.m.s)");
 };
 
-export const getAuthorsFromFile = async (parsedContent: FrontMatterResult<any>) => {
-  const rawAuthorList = parsedContent.attributes[FrontMatterAttributes.author]
+export const getAuthorsFromFile = async (
+  parsedContent: FrontMatterResult<any>
+) => {
+  const rawAuthorList = parsedContent.attributes[FrontMatterAttributes.author];
   if (!rawAuthorList) return;
 
   const findUserByEmail = async (
@@ -219,9 +244,25 @@ export const getAuthorsFromFile = async (parsedContent: FrontMatterResult<any>) 
   };
 
   const AUTHOR_RE = /[(<]([^>)]+)[>)]/gm;
-  const authors = rawAuthorList.matchAll(AUTHOR_RE);
+  const authors: string[] = [...rawAuthorList.matchAll(AUTHOR_RE)].map(
+    (value) => value[1]
+  );
   const resolved = await Promise.all(
-    [...authors].map((value) => value[0] && resolveAuthor(value[0]))
+    authors.map((author) => resolveAuthor(author))
   );
   return new Set(resolved);
 };
+
+export const filterBoolean = <Arr extends any[]>(array: Arr) => {
+  return array.filter(Boolean) as NonNullable<UnArrayify<Arr>>[];
+};
+
+/**
+ * pull requests have special rate limiting (due to notifications) read more here:
+ * https://www.gitmemory.com/issue/peter-evans/create-pull-request/855/900797502
+ * https://docs.github.com/en/rest/guides/best-practices-for-integrators#dealing-with-secondary-rate-limits
+ *  */
+export const wait = (seconds: number) => {
+  console.log(`===== waiting ${seconds} seconds before continuing to avoid rate limiting =====`);
+  return new Promise(r => setTimeout(r, 1000 * seconds))
+}
