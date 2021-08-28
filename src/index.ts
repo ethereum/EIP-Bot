@@ -1,7 +1,6 @@
 require("module-alias/register");
 import moment from "moment-timezone";
 import {
-  FrontMatterAttributes,
   STAGNATION_CUTOFF,
 } from "./constants";
 import {
@@ -21,6 +20,7 @@ const run = async () => {
   const eips = await getEIPs();
 
   console.log("fetching file modified dates...");
+
   // checks if the last date the file was changed is greater than a year ago
   const limit = plimit(10); // without a limiter github will flag too many parallel requests in the next step
   const datesChanged = await Promise.all(
@@ -40,10 +40,6 @@ const run = async () => {
   const EIPsToWithdraw = EIPContents.filter(Boolean).filter((eip) =>
     getIsValidStateEIP(eip.parsed)
   );
-
-  function onlyUnique(value, index, self) {
-    return self.indexOf(value) === index;
-  }
 
   // if there are no EIPs to withdraw then stop here
   if (!EIPsToWithdraw.length) {
