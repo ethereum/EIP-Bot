@@ -76,3 +76,31 @@ export const STAGNATABLE_STATUSES: EipStatus[] = [
   EipStatus.draft,
   EipStatus.review
 ];
+
+export const Logs = {
+  fetchingDates: () => console.log("fetching file modified dates..."),
+  checkingStagnant: () =>
+    console.log(
+      `checking for stagnant EIPs that weren't edited before ${STAGNATION_CUTOFF.toISOString()}`
+    ),
+  successfulPR: (title) =>
+    console.log(`successfully created pull request titled ${title}`),
+  successfulKeyLabels: () =>
+    console.log("successfully added key labels to the pull request"),
+  protocolStart: (EIPNum) => console.log(`\n================ EIP ${EIPNum}`),
+  successfulBranch: (branchName) =>
+    console.log("successfully created branch", branchName),
+  wait: (seconds) =>
+    console.log(
+      `===== waiting ${seconds} seconds before continuing to avoid rate limiting =====`
+    ),
+  succesfulFileUpdate: (path) =>
+    console.log(`Updating ${path} to status ${EipStatus.stagnant}`)
+};
+
+export const Resolve = {
+  noEIPs: () =>
+    console.log(
+      `No EIPs were found to be last edited before ${STAGNATION_CUTOFF.toISOString()}`
+    )
+};

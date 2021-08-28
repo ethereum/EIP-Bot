@@ -5,6 +5,7 @@ import {
   EipStatus,
   FrontMatterAttributes,
   GITHUB_TOKEN,
+  Logs,
   PR_KEY_LABELS,
   STAGNATABLE_STATUSES,
   STAGNATION_CUTOFF_MONTHS
@@ -161,7 +162,7 @@ export const createBranch = (branchName: string) => {
       sha: context.sha
     })
     .then((res) => {
-      console.log("successfully created branch", branchName);
+      Logs.successfulBranch(branchName);
       return res.data;
     });
 };
@@ -185,7 +186,7 @@ export const createFileUpdateCommit = ({
       sha: file.sha,
       content: Buffer.from(content).toString("base64")
     })
-    .then(() => console.log(message));
+    .then(() => Logs.succesfulFileUpdate(file.path));
 };
 
 export const capitalize = (str: string) =>
@@ -197,7 +198,12 @@ type PRProps = {
   title: string;
   body: string;
 };
-export const createPR = async ({ fromBranch, toBranch, title, body }: PRProps) => {
+export const createPR = async ({
+  fromBranch,
+  toBranch,
+  title,
+  body
+}: PRProps) => {
   const github = getOctokit(GITHUB_TOKEN).rest;
 
   const PR = await github.pulls
@@ -210,20 +216,22 @@ export const createPR = async ({ fromBranch, toBranch, title, body }: PRProps) =
       body
     })
     .then((res) => {
-      console.log(`successfully created pull request titled ${res.data.title}`);
+      Logs.successfulPR(res.data.title);
       return res.data;
     });
 
-  await github.issues.addLabels({
-    repo: context.repo.repo,
-    owner: context.repo.owner,
-    issue_number: PR.number,
-    labels: PR_KEY_LABELS
-  }).then(() => {
-    console.log("successfully added key labels to the pull request")
-  })
+  await github.issues
+    .addLabels({
+      repo: context.repo.repo,
+      owner: context.repo.owner,
+      issue_number: PR.number,
+      labels: PR_KEY_LABELS
+    })
+    .then(() => {
+      Logs.successfulKeyLabels();
+    });
 
-  return PR
+  return PR;
 };
 
 export const formatDate = (date: Moment) => {
@@ -278,54 +286,57 @@ export const filterBoolean = <Arr extends any[]>(array: Arr) => {
  * https://docs.github.com/en/rest/guides/best-practices-for-integrators#dealing-with-secondary-rate-limits
  *  */
 export const wait = (seconds: number) => {
-  console.log(`===== waiting ${seconds} seconds before continuing to avoid rate limiting =====`);
-  return new Promise(r => setTimeout(r, 1000 * seconds))
-}
-
+  Logs.wait(seconds);
+  return new Promise((r) => setTimeout(r, 1000 * seconds));
+};
 
 type GetCommitDate = UnPromisify<ReturnType<typeof getCommitDate>>;
 type GetParsedContent = UnPromisify<ReturnType<typeof getParsedContent>>;
-export const applyStagnantProtocol = async ({content, parsed, date}: {
-  eip: GetCommitDate["eip"],
-  date: GetCommitDate["date"],
-  parsed: GetParsedContent["parsed"],
-  content: GetParsedContent["content"]
+export const applyStagnantProtocol = async ({
+  content,
+  parsed,
+  date
+}: {
+  eip: GetCommitDate["eip"];
+  date: GetCommitDate["date"];
+  parsed: GetParsedContent["parsed"];
+  content: GetParsedContent["content"];
 }) => {
   const EIPNum = parsed.attributes[FrontMatterAttributes.eip];
-    const statusRegex = /(?<=status:).*/;
-    const stagnant = ` ${capitalize(EipStatus.stagnant)}`;
+  const statusRegex = /(?<=status:).*/;
+  const stagnant = ` ${capitalize(EipStatus.stagnant)}`;
 
-    console.log(`\n================ EIP ${EIPNum}`)
+  Logs.protocolStart(EIPNum);
 
-    const now = formatDate(moment());
-    const branchName = `mark-eip-${EIPNum}-stagnant-${now}`;
+  const now = formatDate(moment());
+  const branchName = `mark-eip-${EIPNum}-stagnant-${now}`;
 
-    await createBranch(branchName);
-    await new Promise(r => setTimeout(r, 1000))
-    await createFileUpdateCommit({
-      file: content.file,
-      branchName,
-      content: content.decoded.replace(statusRegex, stagnant)
-    });
+  await createBranch(branchName);
+  await new Promise((r) => setTimeout(r, 1000));
+  await createFileUpdateCommit({
+    file: content.file,
+    branchName,
+    content: content.decoded.replace(statusRegex, stagnant)
+  });
 
-    const authors = await getAuthorsFromFile(parsed).then(
-      (res) => res && [...res]
-    );
+  const authors = await getAuthorsFromFile(parsed).then(
+    (res) => res && [...res]
+  );
 
-    await new Promise(r => setTimeout(r, 1000))
-    console.log(authors);
-    await createPR({
-      fromBranch: branchName,
-      toBranch: DEFAULT_BRANCH,
-      title: `EIP ${EIPNum} ${EipStatus.stagnant} ${now}`,
-      body: [
-        `This EIP has not been active since ${formatDate(moment(date))};`,
-        `which, is greater than the allowed time of ${STAGNATION_CUTOFF_MONTHS} months.\n\n`,
-        `authors: \n`, // ${authors?.join(USERNAME_DELIMETER)}
-        `EIP Editors: ` //`${EIP_EDITORS.join(USERNAME_DELIMETER)}`
-      ].join(" ")
-    });
+  await new Promise((r) => setTimeout(r, 1000));
+  console.log(authors);
+  await createPR({
+    fromBranch: branchName,
+    toBranch: DEFAULT_BRANCH,
+    title: `EIP ${EIPNum} ${EipStatus.stagnant} ${now}`,
+    body: [
+      `This EIP has not been active since ${formatDate(moment(date))};`,
+      `which, is greater than the allowed time of ${STAGNATION_CUTOFF_MONTHS} months.\n\n`,
+      `authors: \n`, // ${authors?.join(USERNAME_DELIMETER)}
+      `EIP Editors: ` //`${EIP_EDITORS.join(USERNAME_DELIMETER)}`
+    ].join(" ")
+  });
 
-    await wait(5);
-    await new Promise(r => setTimeout(r, 5000))
-}
+  await wait(5);
+  await new Promise((r) => setTimeout(r, 5000));
+};
