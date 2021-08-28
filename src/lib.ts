@@ -1,10 +1,13 @@
 import { context, getOctokit } from "@actions/github";
 import {
   cleanString,
+  DEFAULT_BRANCH,
   EipStatus,
   FrontMatterAttributes,
   GITHUB_TOKEN,
-  STAGNATABLE_STATUSES
+  PR_KEY_LABELS,
+  STAGNATABLE_STATUSES,
+  STAGNATION_CUTOFF_MONTHS
 } from "./constants";
 import {
   ArrayLike,
@@ -16,7 +19,7 @@ import {
   UnPromisify
 } from "./types";
 import frontmatter, { FrontMatterResult } from "front-matter";
-import { Moment } from "moment-timezone";
+import moment, { Moment } from "moment-timezone";
 
 /** Ensures that encodings are as expected by octokit */
 export function requireEncoding(
@@ -194,9 +197,10 @@ type PRProps = {
   title: string;
   body: string;
 };
-export const createPR = ({ fromBranch, toBranch, title, body }: PRProps) => {
+export const createPR = async ({ fromBranch, toBranch, title, body }: PRProps) => {
   const github = getOctokit(GITHUB_TOKEN).rest;
-  return github.pulls
+
+  const PR = await github.pulls
     .create({
       repo: context.repo.repo,
       owner: context.repo.owner,
@@ -209,6 +213,17 @@ export const createPR = ({ fromBranch, toBranch, title, body }: PRProps) => {
       console.log(`successfully created pull request titled ${res.data.title}`);
       return res.data;
     });
+
+  await github.issues.addLabels({
+    repo: context.repo.repo,
+    owner: context.repo.owner,
+    issue_number: PR.number,
+    labels: PR_KEY_LABELS
+  }).then(() => {
+    console.log("successfully added key labels to the pull request")
+  })
+
+  return PR
 };
 
 export const formatDate = (date: Moment) => {
@@ -265,4 +280,52 @@ export const filterBoolean = <Arr extends any[]>(array: Arr) => {
 export const wait = (seconds: number) => {
   console.log(`===== waiting ${seconds} seconds before continuing to avoid rate limiting =====`);
   return new Promise(r => setTimeout(r, 1000 * seconds))
+}
+
+
+type GetCommitDate = UnPromisify<ReturnType<typeof getCommitDate>>;
+type GetParsedContent = UnPromisify<ReturnType<typeof getParsedContent>>;
+export const applyStagnantProtocol = async ({content, parsed, date}: {
+  eip: GetCommitDate["eip"],
+  date: GetCommitDate["date"],
+  parsed: GetParsedContent["parsed"],
+  content: GetParsedContent["content"]
+}) => {
+  const EIPNum = parsed.attributes[FrontMatterAttributes.eip];
+    const statusRegex = /(?<=status:).*/;
+    const stagnant = ` ${capitalize(EipStatus.stagnant)}`;
+
+    console.log(`\n================ EIP ${EIPNum}`)
+
+    const now = formatDate(moment());
+    const branchName = `mark-eip-${EIPNum}-stagnant-${now}`;
+
+    await createBranch(branchName);
+    await new Promise(r => setTimeout(r, 1000))
+    await createFileUpdateCommit({
+      file: content.file,
+      branchName,
+      content: content.decoded.replace(statusRegex, stagnant)
+    });
+
+    const authors = await getAuthorsFromFile(parsed).then(
+      (res) => res && [...res]
+    );
+
+    await new Promise(r => setTimeout(r, 1000))
+    console.log(authors);
+    await createPR({
+      fromBranch: branchName,
+      toBranch: DEFAULT_BRANCH,
+      title: `EIP ${EIPNum} ${EipStatus.stagnant} ${now}`,
+      body: [
+        `This EIP has not been active since ${formatDate(moment(date))};`,
+        `which, is greater than the allowed time of ${STAGNATION_CUTOFF_MONTHS} months.\n\n`,
+        `authors: \n`, // ${authors?.join(USERNAME_DELIMETER)}
+        `EIP Editors: ` //`${EIP_EDITORS.join(USERNAME_DELIMETER)}`
+      ].join(" ")
+    });
+
+    await wait(5);
+    await new Promise(r => setTimeout(r, 5000))
 }
