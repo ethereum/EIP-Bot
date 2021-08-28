@@ -14,21 +14,19 @@ export const cleanString = (str: string) => {
   return str.toLowerCase().replace(/\s/, "");
 };
 
+export const BOT_ID = "1272989785";
+
 /**
- *  This key is attached to all PRs created, it's later used to
- *  easily retrieve the created / non-closed PRs created during
- *  a prior run so that it can clean them up; the pull request
- *  must have all of these labels for it to be captured
+ *  These labels are helpful to collecting
+ *  bot created pull requests but also the
+ *  combination of "created-by-bot" and the
+ *  bot ID allow for precise tracking of PRs
+ *  created by this bot; this is helpful for
+ *  later cleanup
  */
 export const PR_KEY_LABELS = [
-  "catapult",
-  "violate",
-  "amerce",
-  "download",
-  "academia",
-  "cathedra",
-  "tallow",
-  "uglify"
+  `created-by-bot`,
+  BOT_ID
 ];
 
 export enum FrontMatterAttributes {
