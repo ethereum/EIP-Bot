@@ -200,7 +200,7 @@ export const main = async () => {
   } catch (error) {
     console.log(`An Exception Occured While Linting: \n${error}`);
     setFailed(error.message);
-    await postComment(error.comment);
+    await postComment([error.comment]);
     throw error
   }
 };
