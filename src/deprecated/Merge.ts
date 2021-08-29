@@ -4,7 +4,7 @@ import { requirePr } from "../lib/Assertions";
 
 export const merge = async (diff: FileDiff) => {
   const pr = await requirePr();
-  const Github = getOctokit(GITHUB_TOKEN);
+  const Github = getOctokit(GITHUB_TOKEN).rest;
   const eipNum = diff.head.eipNum;
 
   const { MERGE_ENABLED } = process.env;

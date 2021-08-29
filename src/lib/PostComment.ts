@@ -3,7 +3,7 @@ import { context } from "@actions/github";
 import { COMMENT_HEADER, GITHUB_TOKEN } from "src/utils";
 
 export const postComment = async (errors: string[], mentions?: string) => {
-  const Github = getOctokit(GITHUB_TOKEN);
+  const Github = getOctokit(GITHUB_TOKEN).rest;
 
   let message = COMMENT_HEADER + "\n\t - " + errors.join("\n\t - ");
   if (mentions) {

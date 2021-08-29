@@ -19,7 +19,7 @@ export const getJustLogin = (author: string) => {
  */
 export const requestReviewers = async (reviewers: string[]) => {
   const requestReview = async (reviewer: string) => {
-    const Github = getOctokit(GITHUB_TOKEN);
+    const Github = getOctokit(GITHUB_TOKEN).rest;
     const pr = await requirePr();
 
     const res = await Github.pulls
@@ -41,7 +41,7 @@ export const requestReviewers = async (reviewers: string[]) => {
 
 export const getApprovals = async () => {
   const pr = await requirePr();
-  const Github = getOctokit(GITHUB_TOKEN);
+  const Github = getOctokit(GITHUB_TOKEN).rest;
   const { data: reviews } = await Github.pulls.listReviews({
     owner: context.repo.owner,
     repo: context.repo.repo,

@@ -1,0 +1,617 @@
+[
+  {
+    "req": {
+      "url": "https://api.github.com/repos/ethereum/EIPs/pulls/3767",
+      "method": "GET"
+    },
+    "res": {
+      "status": 200,
+      "data": {
+        "url": "https://api.github.com/repos/ethereum/EIPs/pulls/3767",
+        "id": 719252745,
+        "node_id": "MDExOlB1bGxSZXF1ZXN0NzE5MjUyNzQ1",
+        "html_url": "https://github.com/ethereum/EIPs/pull/3767",
+        "diff_url": "https://github.com/ethereum/EIPs/pull/3767.diff",
+        "patch_url": "https://github.com/ethereum/EIPs/pull/3767.patch",
+        "issue_url": "https://api.github.com/repos/ethereum/EIPs/issues/3767",
+        "number": 3767,
+        "state": "open",
+        "locked": false,
+        "title": "Update eip-2315.md",
+        "user": {
+          "login": "gcolvin",
+          "id": 16827129,
+          "node_id": "MDQ6VXNlcjE2ODI3MTI5",
+          "avatar_url": "https://avatars.githubusercontent.com/u/16827129?v=4",
+          "gravatar_id": "",
+          "url": "https://api.github.com/users/gcolvin",
+          "html_url": "https://github.com/gcolvin",
+          "followers_url": "https://api.github.com/users/gcolvin/followers",
+          "following_url": "https://api.github.com/users/gcolvin/following{/other_user}",
+          "gists_url": "https://api.github.com/users/gcolvin/gists{/gist_id}",
+          "starred_url": "https://api.github.com/users/gcolvin/starred{/owner}{/repo}",
+          "subscriptions_url": "https://api.github.com/users/gcolvin/subscriptions",
+          "organizations_url": "https://api.github.com/users/gcolvin/orgs",
+          "repos_url": "https://api.github.com/users/gcolvin/repos",
+          "events_url": "https://api.github.com/users/gcolvin/events{/privacy}",
+          "received_events_url": "https://api.github.com/users/gcolvin/received_events",
+          "type": "User",
+          "site_admin": false
+        },
+        "body": "*",
+        "created_at": "2021-08-25T04:53:03Z",
+        "updated_at": "2021-08-29T04:36:39Z",
+        "closed_at": "2021-08-28T18:41:12Z",
+        "merged_at": "2021-08-28T18:41:12Z",
+        "merge_commit_sha": "6b476e296a16d7528c44b090287e062405883eeb",
+        "assignee": null,
+        "assignees": [],
+        "requested_reviewers": [],
+        "requested_teams": [],
+        "labels": [],
+        "milestone": null,
+        "draft": false,
+        "commits_url": "https://api.github.com/repos/ethereum/EIPs/pulls/3767/commits",
+        "review_comments_url": "https://api.github.com/repos/ethereum/EIPs/pulls/3767/comments",
+        "review_comment_url": "https://api.github.com/repos/ethereum/EIPs/pulls/comments{/number}",
+        "comments_url": "https://api.github.com/repos/ethereum/EIPs/issues/3767/comments",
+        "statuses_url": "https://api.github.com/repos/ethereum/EIPs/statuses/a3f47c7834be6e5712b165155ab2211d9cbf0f76",
+        "head": {
+          "label": "ethereum:gcolvin-patch-1",
+          "ref": "gcolvin-patch-1",
+          "sha": "a3f47c7834be6e5712b165155ab2211d9cbf0f76",
+          "user": {
+            "login": "ethereum",
+            "id": 6250754,
+            "node_id": "MDEyOk9yZ2FuaXphdGlvbjYyNTA3NTQ=",
+            "avatar_url": "https://avatars.githubusercontent.com/u/6250754?v=4",
+            "gravatar_id": "",
+            "url": "https://api.github.com/users/ethereum",
+            "html_url": "https://github.com/ethereum",
+            "followers_url": "https://api.github.com/users/ethereum/followers",
+            "following_url": "https://api.github.com/users/ethereum/following{/other_user}",
+            "gists_url": "https://api.github.com/users/ethereum/gists{/gist_id}",
+            "starred_url": "https://api.github.com/users/ethereum/starred{/owner}{/repo}",
+            "subscriptions_url": "https://api.github.com/users/ethereum/subscriptions",
+            "organizations_url": "https://api.github.com/users/ethereum/orgs",
+            "repos_url": "https://api.github.com/users/ethereum/repos",
+            "events_url": "https://api.github.com/users/ethereum/events{/privacy}",
+            "received_events_url": "https://api.github.com/users/ethereum/received_events",
+            "type": "Organization",
+            "site_admin": false
+          },
+          "repo": {
+            "id": 44971752,
+            "node_id": "MDEwOlJlcG9zaXRvcnk0NDk3MTc1Mg==",
+            "name": "EIPs",
+            "full_name": "ethereum/EIPs",
+            "private": false,
+            "owner": {
+              "login": "ethereum",
+              "id": 6250754,
+              "node_id": "MDEyOk9yZ2FuaXphdGlvbjYyNTA3NTQ=",
+              "avatar_url": "https://avatars.githubusercontent.com/u/6250754?v=4",
+              "gravatar_id": "",
+              "url": "https://api.github.com/users/ethereum",
+              "html_url": "https://github.com/ethereum",
+              "followers_url": "https://api.github.com/users/ethereum/followers",
+              "following_url": "https://api.github.com/users/ethereum/following{/other_user}",
+              "gists_url": "https://api.github.com/users/ethereum/gists{/gist_id}",
+              "starred_url": "https://api.github.com/users/ethereum/starred{/owner}{/repo}",
+              "subscriptions_url": "https://api.github.com/users/ethereum/subscriptions",
+              "organizations_url": "https://api.github.com/users/ethereum/orgs",
+              "repos_url": "https://api.github.com/users/ethereum/repos",
+              "events_url": "https://api.github.com/users/ethereum/events{/privacy}",
+              "received_events_url": "https://api.github.com/users/ethereum/received_events",
+              "type": "Organization",
+              "site_admin": false
+            },
+            "html_url": "https://github.com/ethereum/EIPs",
+            "description": "The Ethereum Improvement Proposal repository",
+            "fork": false,
+            "url": "https://api.github.com/repos/ethereum/EIPs",
+            "forks_url": "https://api.github.com/repos/ethereum/EIPs/forks",
+            "keys_url": "https://api.github.com/repos/ethereum/EIPs/keys{/key_id}",
+            "collaborators_url": "https://api.github.com/repos/ethereum/EIPs/collaborators{/collaborator}",
+            "teams_url": "https://api.github.com/repos/ethereum/EIPs/teams",
+            "hooks_url": "https://api.github.com/repos/ethereum/EIPs/hooks",
+            "issue_events_url": "https://api.github.com/repos/ethereum/EIPs/issues/events{/number}",
+            "events_url": "https://api.github.com/repos/ethereum/EIPs/events",
+            "assignees_url": "https://api.github.com/repos/ethereum/EIPs/assignees{/user}",
+            "branches_url": "https://api.github.com/repos/ethereum/EIPs/branches{/branch}",
+            "tags_url": "https://api.github.com/repos/ethereum/EIPs/tags",
+            "blobs_url": "https://api.github.com/repos/ethereum/EIPs/git/blobs{/sha}",
+            "git_tags_url": "https://api.github.com/repos/ethereum/EIPs/git/tags{/sha}",
+            "git_refs_url": "https://api.github.com/repos/ethereum/EIPs/git/refs{/sha}",
+            "trees_url": "https://api.github.com/repos/ethereum/EIPs/git/trees{/sha}",
+            "statuses_url": "https://api.github.com/repos/ethereum/EIPs/statuses/{sha}",
+            "languages_url": "https://api.github.com/repos/ethereum/EIPs/languages",
+            "stargazers_url": "https://api.github.com/repos/ethereum/EIPs/stargazers",
+            "contributors_url": "https://api.github.com/repos/ethereum/EIPs/contributors",
+            "subscribers_url": "https://api.github.com/repos/ethereum/EIPs/subscribers",
+            "subscription_url": "https://api.github.com/repos/ethereum/EIPs/subscription",
+            "commits_url": "https://api.github.com/repos/ethereum/EIPs/commits{/sha}",
+            "git_commits_url": "https://api.github.com/repos/ethereum/EIPs/git/commits{/sha}",
+            "comments_url": "https://api.github.com/repos/ethereum/EIPs/comments{/number}",
+            "issue_comment_url": "https://api.github.com/repos/ethereum/EIPs/issues/comments{/number}",
+            "contents_url": "https://api.github.com/repos/ethereum/EIPs/contents/{+path}",
+            "compare_url": "https://api.github.com/repos/ethereum/EIPs/compare/{base}...{head}",
+            "merges_url": "https://api.github.com/repos/ethereum/EIPs/merges",
+            "archive_url": "https://api.github.com/repos/ethereum/EIPs/{archive_format}{/ref}",
+            "downloads_url": "https://api.github.com/repos/ethereum/EIPs/downloads",
+            "issues_url": "https://api.github.com/repos/ethereum/EIPs/issues{/number}",
+            "pulls_url": "https://api.github.com/repos/ethereum/EIPs/pulls{/number}",
+            "milestones_url": "https://api.github.com/repos/ethereum/EIPs/milestones{/number}",
+            "notifications_url": "https://api.github.com/repos/ethereum/EIPs/notifications{?since,all,participating}",
+            "labels_url": "https://api.github.com/repos/ethereum/EIPs/labels{/name}",
+            "releases_url": "https://api.github.com/repos/ethereum/EIPs/releases{/id}",
+            "deployments_url": "https://api.github.com/repos/ethereum/EIPs/deployments",
+            "created_at": "2015-10-26T13:57:23Z",
+            "updated_at": "2021-08-29T05:27:41Z",
+            "pushed_at": "2021-08-29T06:03:30Z",
+            "git_url": "git://github.com/ethereum/EIPs.git",
+            "ssh_url": "git@github.com:ethereum/EIPs.git",
+            "clone_url": "https://github.com/ethereum/EIPs.git",
+            "svn_url": "https://github.com/ethereum/EIPs",
+            "homepage": "https://eips.ethereum.org/",
+            "size": 20438,
+            "stargazers_count": 7111,
+            "watchers_count": 7111,
+            "language": "Solidity",
+            "has_issues": true,
+            "has_projects": true,
+            "has_downloads": true,
+            "has_wiki": false,
+            "has_pages": true,
+            "forks_count": 2756,
+            "mirror_url": null,
+            "archived": false,
+            "disabled": false,
+            "open_issues_count": 508,
+            "license": null,
+            "forks": 2756,
+            "open_issues": 508,
+            "watchers": 7111,
+            "default_branch": "master"
+          }
+        },
+        "base": {
+          "label": "ethereum:master",
+          "ref": "master",
+          "sha": "0aa56907d8b6134167b049e4f48e9b1bc953256f",
+          "user": {
+            "login": "ethereum",
+            "id": 6250754,
+            "node_id": "MDEyOk9yZ2FuaXphdGlvbjYyNTA3NTQ=",
+            "avatar_url": "https://avatars.githubusercontent.com/u/6250754?v=4",
+            "gravatar_id": "",
+            "url": "https://api.github.com/users/ethereum",
+            "html_url": "https://github.com/ethereum",
+            "followers_url": "https://api.github.com/users/ethereum/followers",
+            "following_url": "https://api.github.com/users/ethereum/following{/other_user}",
+            "gists_url": "https://api.github.com/users/ethereum/gists{/gist_id}",
+            "starred_url": "https://api.github.com/users/ethereum/starred{/owner}{/repo}",
+            "subscriptions_url": "https://api.github.com/users/ethereum/subscriptions",
+            "organizations_url": "https://api.github.com/users/ethereum/orgs",
+            "repos_url": "https://api.github.com/users/ethereum/repos",
+            "events_url": "https://api.github.com/users/ethereum/events{/privacy}",
+            "received_events_url": "https://api.github.com/users/ethereum/received_events",
+            "type": "Organization",
+            "site_admin": false
+          },
+          "repo": {
+            "id": 44971752,
+            "node_id": "MDEwOlJlcG9zaXRvcnk0NDk3MTc1Mg==",
+            "name": "EIPs",
+            "full_name": "ethereum/EIPs",
+            "private": false,
+            "owner": {
+              "login": "ethereum",
+              "id": 6250754,
+              "node_id": "MDEyOk9yZ2FuaXphdGlvbjYyNTA3NTQ=",
+              "avatar_url": "https://avatars.githubusercontent.com/u/6250754?v=4",
+              "gravatar_id": "",
+              "url": "https://api.github.com/users/ethereum",
+              "html_url": "https://github.com/ethereum",
+              "followers_url": "https://api.github.com/users/ethereum/followers",
+              "following_url": "https://api.github.com/users/ethereum/following{/other_user}",
+              "gists_url": "https://api.github.com/users/ethereum/gists{/gist_id}",
+              "starred_url": "https://api.github.com/users/ethereum/starred{/owner}{/repo}",
+              "subscriptions_url": "https://api.github.com/users/ethereum/subscriptions",
+              "organizations_url": "https://api.github.com/users/ethereum/orgs",
+              "repos_url": "https://api.github.com/users/ethereum/repos",
+              "events_url": "https://api.github.com/users/ethereum/events{/privacy}",
+              "received_events_url": "https://api.github.com/users/ethereum/received_events",
+              "type": "Organization",
+              "site_admin": false
+            },
+            "html_url": "https://github.com/ethereum/EIPs",
+            "description": "The Ethereum Improvement Proposal repository",
+            "fork": false,
+            "url": "https://api.github.com/repos/ethereum/EIPs",
+            "forks_url": "https://api.github.com/repos/ethereum/EIPs/forks",
+            "keys_url": "https://api.github.com/repos/ethereum/EIPs/keys{/key_id}",
+            "collaborators_url": "https://api.github.com/repos/ethereum/EIPs/collaborators{/collaborator}",
+            "teams_url": "https://api.github.com/repos/ethereum/EIPs/teams",
+            "hooks_url": "https://api.github.com/repos/ethereum/EIPs/hooks",
+            "issue_events_url": "https://api.github.com/repos/ethereum/EIPs/issues/events{/number}",
+            "events_url": "https://api.github.com/repos/ethereum/EIPs/events",
+            "assignees_url": "https://api.github.com/repos/ethereum/EIPs/assignees{/user}",
+            "branches_url": "https://api.github.com/repos/ethereum/EIPs/branches{/branch}",
+            "tags_url": "https://api.github.com/repos/ethereum/EIPs/tags",
+            "blobs_url": "https://api.github.com/repos/ethereum/EIPs/git/blobs{/sha}",
+            "git_tags_url": "https://api.github.com/repos/ethereum/EIPs/git/tags{/sha}",
+            "git_refs_url": "https://api.github.com/repos/ethereum/EIPs/git/refs{/sha}",
+            "trees_url": "https://api.github.com/repos/ethereum/EIPs/git/trees{/sha}",
+            "statuses_url": "https://api.github.com/repos/ethereum/EIPs/statuses/{sha}",
+            "languages_url": "https://api.github.com/repos/ethereum/EIPs/languages",
+            "stargazers_url": "https://api.github.com/repos/ethereum/EIPs/stargazers",
+            "contributors_url": "https://api.github.com/repos/ethereum/EIPs/contributors",
+            "subscribers_url": "https://api.github.com/repos/ethereum/EIPs/subscribers",
+            "subscription_url": "https://api.github.com/repos/ethereum/EIPs/subscription",
+            "commits_url": "https://api.github.com/repos/ethereum/EIPs/commits{/sha}",
+            "git_commits_url": "https://api.github.com/repos/ethereum/EIPs/git/commits{/sha}",
+            "comments_url": "https://api.github.com/repos/ethereum/EIPs/comments{/number}",
+            "issue_comment_url": "https://api.github.com/repos/ethereum/EIPs/issues/comments{/number}",
+            "contents_url": "https://api.github.com/repos/ethereum/EIPs/contents/{+path}",
+            "compare_url": "https://api.github.com/repos/ethereum/EIPs/compare/{base}...{head}",
+            "merges_url": "https://api.github.com/repos/ethereum/EIPs/merges",
+            "archive_url": "https://api.github.com/repos/ethereum/EIPs/{archive_format}{/ref}",
+            "downloads_url": "https://api.github.com/repos/ethereum/EIPs/downloads",
+            "issues_url": "https://api.github.com/repos/ethereum/EIPs/issues{/number}",
+            "pulls_url": "https://api.github.com/repos/ethereum/EIPs/pulls{/number}",
+            "milestones_url": "https://api.github.com/repos/ethereum/EIPs/milestones{/number}",
+            "notifications_url": "https://api.github.com/repos/ethereum/EIPs/notifications{?since,all,participating}",
+            "labels_url": "https://api.github.com/repos/ethereum/EIPs/labels{/name}",
+            "releases_url": "https://api.github.com/repos/ethereum/EIPs/releases{/id}",
+            "deployments_url": "https://api.github.com/repos/ethereum/EIPs/deployments",
+            "created_at": "2015-10-26T13:57:23Z",
+            "updated_at": "2021-08-29T05:27:41Z",
+            "pushed_at": "2021-08-29T06:03:30Z",
+            "git_url": "git://github.com/ethereum/EIPs.git",
+            "ssh_url": "git@github.com:ethereum/EIPs.git",
+            "clone_url": "https://github.com/ethereum/EIPs.git",
+            "svn_url": "https://github.com/ethereum/EIPs",
+            "homepage": "https://eips.ethereum.org/",
+            "size": 20438,
+            "stargazers_count": 7111,
+            "watchers_count": 7111,
+            "language": "Solidity",
+            "has_issues": true,
+            "has_projects": true,
+            "has_downloads": true,
+            "has_wiki": false,
+            "has_pages": true,
+            "forks_count": 2756,
+            "mirror_url": null,
+            "archived": false,
+            "disabled": false,
+            "open_issues_count": 508,
+            "license": null,
+            "forks": 2756,
+            "open_issues": 508,
+            "watchers": 7111,
+            "default_branch": "master"
+          }
+        },
+        "_links": {
+          "self": {
+            "href": "https://api.github.com/repos/ethereum/EIPs/pulls/3767"
+          },
+          "html": {
+            "href": "https://github.com/ethereum/EIPs/pull/3767"
+          },
+          "issue": {
+            "href": "https://api.github.com/repos/ethereum/EIPs/issues/3767"
+          },
+          "comments": {
+            "href": "https://api.github.com/repos/ethereum/EIPs/issues/3767/comments"
+          },
+          "review_comments": {
+            "href": "https://api.github.com/repos/ethereum/EIPs/pulls/3767/comments"
+          },
+          "review_comment": {
+            "href": "https://api.github.com/repos/ethereum/EIPs/pulls/comments{/number}"
+          },
+          "commits": {
+            "href": "https://api.github.com/repos/ethereum/EIPs/pulls/3767/commits"
+          },
+          "statuses": {
+            "href": "https://api.github.com/repos/ethereum/EIPs/statuses/a3f47c7834be6e5712b165155ab2211d9cbf0f76"
+          }
+        },
+        "author_association": "MEMBER",
+        "auto_merge": {
+          "enabled_by": {
+            "login": "eth-bot",
+            "id": 85952233,
+            "node_id": "MDQ6VXNlcjg1OTUyMjMz",
+            "avatar_url": "https://avatars.githubusercontent.com/u/85952233?v=4",
+            "gravatar_id": "",
+            "url": "https://api.github.com/users/eth-bot",
+            "html_url": "https://github.com/eth-bot",
+            "followers_url": "https://api.github.com/users/eth-bot/followers",
+            "following_url": "https://api.github.com/users/eth-bot/following{/other_user}",
+            "gists_url": "https://api.github.com/users/eth-bot/gists{/gist_id}",
+            "starred_url": "https://api.github.com/users/eth-bot/starred{/owner}{/repo}",
+            "subscriptions_url": "https://api.github.com/users/eth-bot/subscriptions",
+            "organizations_url": "https://api.github.com/users/eth-bot/orgs",
+            "repos_url": "https://api.github.com/users/eth-bot/repos",
+            "events_url": "https://api.github.com/users/eth-bot/events{/privacy}",
+            "received_events_url": "https://api.github.com/users/eth-bot/received_events",
+            "type": "User",
+            "site_admin": false
+          },
+          "merge_method": "squash",
+          "commit_title": null,
+          "commit_message": null
+        },
+        "active_lock_reason": null,
+        "merged": false,
+        "mergeable": null,
+        "rebaseable": null,
+        "mergeable_state": "unknown",
+        "comments": 8,
+        "review_comments": 3,
+        "maintainer_can_modify": false,
+        "commits": 13,
+        "additions": 125,
+        "deletions": 194,
+        "changed_files": 1
+      }
+    }
+  },
+  {
+    "req": {
+      "url": "https://api.github.com/repos/ethereum/EIPs/pulls/3767/files",
+      "method": "GET"
+    },
+    "res": {
+      "status": 200,
+      "data": [
+        {
+          "sha": "b0b8cf8dd166ba278d05af9410cb95d1191e6f4d",
+          "filename": "EIPS/eip-2315.md",
+          "status": "modified",
+          "additions": 125,
+          "deletions": 194,
+          "changes": 319,
+          "blob_url": "https://github.com/ethereum/EIPs/blob/a3f47c7834be6e5712b165155ab2211d9cbf0f76/EIPS/eip-2315.md",
+          "raw_url": "https://github.com/ethereum/EIPs/raw/a3f47c7834be6e5712b165155ab2211d9cbf0f76/EIPS/eip-2315.md",
+          "contents_url": "https://api.github.com/repos/ethereum/EIPs/contents/EIPS/eip-2315.md?ref=a3f47c7834be6e5712b165155ab2211d9cbf0f76",
+          "patch": "@@ -9,231 +9,213 @@ discussions-to: https://ethereum-magicians.org/t/eip-2315-simple-subroutines-for\n created: 2019-10-17\n ---\n \n-## Simple Summary\n-\n-A small change to the EVM that provides native subroutines.\n-\n ## Abstract\n \n This proposal introduces three opcodes to support subroutines: `BEGINSUB`, `JUMPSUB` and `RETURNSUB`.  It deprecates `JUMP` and `JUMPI`.\n \n-Substantial gains in efficiency and reduced gas costs are achieved.\n+This change supports substantial reductions in the gas costs of using subroutines.\n+\n+This change also allows for the validation of some important safety properties, including\n+* valid jump destinations,\n+* valid instructions,\n+* no stack underflows, and\n+* no stack overflows without recursion\n \n-Safety properties equivalent to  [EIP-615](https://eips.ethereum.org/EIPS/eip-615) — including valid jump destinations — are ensured by following a few simple rules, which are validated at contract creation time — not runtime — by the provided algorithm, and without imposing syntactic constraints. \n+Valid contracts will not halt with an exception unless they run out of gas or overflow stack during a recursion.\n+\n+Code is validated at contract creation time – not runtime – by the provided algorithm.  This is a one-pass algorithm, linear in the size of the bytecode, so as not to enable DoS attacks.\n \n ## Motivation\n \n The EVM does not provide subroutines as a primitive.  Instead, calls can be synthesized by fetching and pushing the current program counter on the data stack and jumping to the subroutine address; returns can be synthesized by getting the return address to the top of the stack and jumping back to it.  These conventions are more costly than necessary, and impede static analysis of EVM code, especially rapid validation of some important safety properties.\n \n-Facilities to directly support subroutines are provided by all but one of the real and virtual machines programmed by the lead author, including the Burroughs 5000, CDC 7600, IBM 360, DEC PDP 11 and VAX, Motorola 68000, a few generations of Intel silicon, Sun SPARC, UCSD p-Machine, Sun JVM, Wasm, and the sole exception — the EVM.  In whatever form, these operations provide for\n+Facilities to directly support subroutines are provided by all but one of the real and virtual machines programmed by the lead author, including the Burroughs 5000, CDC 7600, IBM 360, DEC PDP 11 and VAX, Motorola 68000, a few generations of Intel silicon, Sun SPARC, UCSD p-Machine, Sun JVM, Wasm, and the sole exception  the EVM.  In whatever form, these operations provide for\n * capturing the current context of execution,\n * transferring control to a new context, and \n * returning to the original context\n * * after possible further transfers of control\n * * to some arbitrary depth.\n \n-The concept goes back to Turing (1946):\n+The concept goes back to [Turing, 1946](http://www.alanturing.net/turing_archive/archive/p/p01/P01-001.html):\n > We also wish to be able to arrange for the splitting up of operations into subsidiary operations.  This should be done in such a way that once we have written down how an operation is done we can use it as a subsidiary to any other operation.\n > ...\n > When we wish to start on a subsidiary operation we need only make a note of where we left off the major operation and then apply the first instruction of the subsidiary.  When the subsidiary is over we look up the note and continue with the major operation. Each subsidiary operation can end with instructions for this recovery of the note.  How is the burying and disinterring of the note to be done?  There are of course many ways.  One is to keep a list of these notes in one or more standard size delay lines, (1024) with the most recent last.  The position of the most recent of these will be kept in a fixed TS, and this reference will be modified every time a subsidiary is started or finished...\n \n-We propose to use Turing's simple mechanism, long known to work well for virtual stack machines, as specified below.  Note that this specification is entirely semantic.  It constrains only stack usage and control flow and imposes no syntax on code beyond being a sequence of bytes to be executed.\n+We propose to use Turing's simple mechanism to implement subroutines, as specified below.  Note that this specification is entirely semantic.  It constrains only stack usage and control flow and imposes no syntax on code beyond being a sequence of bytes to be executed.\n \n ## Specification\n \n-We introduce one more stack into the EVM in addition to the existing `data stack`, known as the `return stack`. The `return stack` is limited to `1024` items. This stack supports three new instructions for subroutines.\n+We introduce one more stack into the EVM in addition to the existing `data stack`, which we call the `return stack`. The `return stack` is limited to `1024` items. This stack supports three new instructions for subroutines.\n \n-###  `BEGINSUB`\n+###  `BEGINSUB( 0x5c)`\n \n-> Marks an entry point to a subroutine.  Execution of a `BEGINSUB` is a no-op.\n+> Marks an entry point to a subroutine.  Execution of a `BEGINSUB` is a no-op.  The cost is _jumpdest_.\n \n-#### `JUMPSUB location`\n+#### `JUMPSUB (0x5d) location`\n \n > Transfers control to a subroutine.\n >\n-> 1. Decode the `location` from the immediate data.  The data is encoded as two bytes, MSB-first.\n+> 1. Decode the `location` from the immediate data.  The data is encoded as three bytes, MSB-first.\n > 2. If the opcode at `location` is not a `BEGINSUB` _`abort`_.\n > 3. If the `return stack` already has `1024` items _`abort`_.\n > 4. Push the current `PC + 1` to the `return stack`.\n > 5. Set `PC` to `location`.\n >\n+>  The cost is _low_.\n+>  \n > * _pops one item off the `data stack`_\n > * _pushes one item on the `return stack`_\n \n-#### `RETURNSUB`\n+#### `RETURNSUB (0x5e)`\n \n > Returns control to the caller of a subroutine.\n > \n > 1. If the `return stack` is empty _`abort`_.\n > 2. Pop `PC` off the `return stack`.\n >\n+> The cost is _verylow_.\n+>\n > * _pops one item off the `return stack`_\n \n _Notes:_\n * _If a resulting `PC` to be executed is beyond the last instruction then the opcode is implicitly a `STOP`, which is not an error._\n * _Values popped off the `return stack` do not need to be validated, since they are alterable only by `JUMPSUB` and `RETURNSUB`._\n * _The description above lays out the semantics of this feature in terms of a `return stack`.  But the actual state of the `return stack` is not observable by EVM code or consensus-critical to the protocol.  (For example, a node implementor may code `JUMPSUB` to unobservably push `PC` on the `return stack` rather than `PC + 1`, which is allowed so long as `RETURNSUB` observably returns control to the `PC + 1` location.)_\n-* _The `return stack is the functional equivalent of Turing's \"delay line\" of \"where we left off\"._\n+* _The `return stack` is the functional equivalent of Turing's \"delay line\"._\n \n ### Dependencies\n \n-We need [EVM Object Format (EOF)](https://eips.ethereum.org/EIPS/eip-3540) to allow for immediate arguments without special encoding.\n+We need [EIP-3540: EVM Object Format (EOF)](./eip-3540.md) to allow for immediate arguments without special encoding.\n \n-We need [EOF Static Relative Jumps](https://github.com/ethereum/evmone/pull/351) or the equivalent to define and validate the rules for contract safety.  These jumps — `RJUMP offset` and `RJUMPI offset` — transfer control to a location in the bytecode at a fixed offset relative to the current `PC`.\n+We need [EOF Static Relative Jumps](https://github.com/ethereum/evmone/pull/351) or the equivalent to define and validate the rules for contract safety.  These jumps  `RJUMP offset` and `RJUMPI offset`  transfer control to a location in the bytecode at a fixed offset relative to the current `PC`.\n \n ## Rationale\n \n-We modeled this design on the proven, archetypal Forth virtual machine of 1970.  It is a two-stack design — the data stack is supplemented with a return stack to support jumping into and returning from subroutines, as specified above.   The return address (Turing's \"note\") is pushed onto the return stack when calling,  and the stack is popped into the `PC` when returning.\n+We modeled this design on Moore's 1970 [Forth virtual machine](http://www.ultratechnology.com/4th_1970.pdf). It is a two-stack design  the data stack is supplemented with a return stack to support jumping into and returning from subroutines, as specified above.  The return address (Turing's \"note\") is pushed onto the return stack (Turing's \"delay line\") when calling, and the stack is popped into the `PC` when returning.\n \n The alternative design is to push the return address and the destination address on the data stack before jumping, and to pop the data stack and jump back to the popped `PC` to return.  We prefer the separate return stack because it ensures that the return address cannot be overwritten or mislaid, uses fewer data stack slots, and obviates any need to swap the return address past the arguments or return values on the stack.  Crucially, a dynamic jump is not needed to implement subroutine returns, allowing for deprecation of `JUMP` and `JUMPI`.\n \n-(`JUMPSUB` and `RETURNSUB` are also defined in terms of a `return stack` in [EIP-615](https://eips.ethereum.org/EIPS/eip-615)).\n+The _low_ cost of `JUMPSUB` is justified by needing only about six Go operations to push the return address on the return stack, and decode the immediate two byte destination to the `PC`.   The _verylow_ cost of `RETURNSUB` is justified by needing only about three Go operations to pop the return stack into the `PC`.  No 256-bit arithmetic or checking for valid destinations is needed.  Also, `JUMP` is assigned _mid_, and `JUMPSUB` should be more efficient, as decoding immediate bytes should be cheaper than than converting 32-byte stack items, and the destination address will not need to be checked for either `JUMPSUB` or `RETURNSUB`.  Benchmarking will be needed to tell if the costs are well-balanced. \n \n ## Backwards and Forwards Compatibility\n \n These changes affect the semantics of existing EVM code.  The EVM Object Format is required to allow for immediate data.\n \n-These changes are compatible with using [EIP-3337](https://eips.ethereum.org/EIPS/eip-3337) to provide stack frames, by associating a frame with each subroutine, as sketched out in the Appendix below.\n-\n-## Implementations\n-\n-Three clients have implemented this (or an earlier version of this) proposal:\n-\n-- [geth](https://github.com/ethereum/go-ethereum/pull/20619),\n-- [besu](https://github.com/hyperledger/besu/pull/717), and\n-- [openethereum](https://github.com/openethereum/openethereum/pull/11629).\n-\n-### Costs and Codes\n-\n-We suggest that the cost of \n-- `BEGINSUB` be _jumpdest_ (`1`)\n-- `JUMPSUB` be _low_ (`5`)\n-- `RETURNSUB` be _verylow_ (`3`)\n+These changes are compatible with using [EIP-3337](https://eips.ethereum.org/EIPS/eip-3337) to provide stack frames, by associating a frame with each subroutine.\n \n-The _low_ cost of `JUMPSUB` is justified by needing only about six Go operations, pushing the return address on the return stack, and decoding the two byte destination to the `PC`.   The _verylow_ cost of `RETURNSUB` is justified by needing only about three Go operations to pop the return stack into the `PC`.  No 256-bit arithmetic or checking for valid destinations is needed.\n+### Gas Costs in Practice\n \n-Benchmarking might be needed to tell if the costs are well-balanced. \n-\n-We suggest the following opcodes:\n-```\n-0x5c BEGINSUB\n-0x5d RETURNSUB\n-0x5e JUMPSUB\n-```\n-\n-### Efficiency\n-\n-These opcodes increase the efficiency and reduce the gas costs of both ordinary subroutine calls and low-level optimizations.\n+These opcodes reduce the gas costs of both ordinary subroutine calls and low-level optimizations.  The savings reported here will of course be less relevant to programs that use a few large subroutines rather than being a factored than in to smaller ones.   Note that the choice of gas costs for the new opcodes above does not make a large difference in this analysis, as much of the improvement is due to PUSH and SWAP operations that are no longer needed.\n \n #### Subroutine Call\n \n Consider this example of calling a minimal subroutine\n-using  `JUMPDEF`\n+using  `JUMPSUB`\n ```\n-TEST_DIV:\n-    beginsub        ; 1 gas\n-    0x02            ; 3 gas\n-    0x03            ; 3 gas\n-    jumpsub DIVIDE  ; 5 gas\n-    returnsub       ; 3 gas\n-\n-DIVIDE:\n-    beginsub        ; 1 gas\n-    div             ; 5 gas\n-    returnsub       ; 3 gas\n-\n-Total 24 gas.\n+ADD:\n+    beginsub          ; 1 gas\n+    0x02              ; 3 gas\n+    0x03              ; 3 gas\n+    jumpsub ADDITION  ; 5 gas\n+    returnsub         ; 3 gas\n+\n+ADDITION:\n+    beginsub          ; 1 gas\n+    add               ; 3 gas\n+    returnsub         ; 3 gas\n+\n+Total 22 gas.\n ```\n The same code, using `JUMP`.\n ```\n-TEST_DIV:\n-   jumpdest         ; 1 gas\n-   RTN_DIV          ; 3 gas\n-   0x02             ; 3 gas\n-   0x03             ; 3 gas\n-   DIVIDE           ; 3 gas\n-   jump             ; 8 gas\n-RTN_DIV:\n-   jumpdest         ; 1 gas\n-   swap1            ; 3 gas\n-   jump             ; 8 gas\n-\n-DIVIDE:\n-   jumpdest         ; 1 gas\n-   div              ; 5 gas\n-   swap1            ; 3 gas\n-   jump             ; 8 gas\n-\n-Total: 50 gas\n+TEST_ADD:\n+   jumpdest           ; 1 gas\n+   RTN_ADD            ; 3 gas\n+   0x02               ; 3 gas\n+   0x03               ; 3 gas\n+   ADDITION           ; 3 gas\n+   jump               ; 8 gas\n+RTN_ADD:\n+   jumpdest           ; 1 gas\n+   swap1              ; 3 gas\n+   jump               ; 8 gas\n+\n+ADDITION:\n+   jumpdest           ; 1 gas\n+   add                ; 3 gas\n+   swap1              ; 3 gas\n+   jump               ; 8 gas\n+\n+Total: 48 gas\n ```\n-Using `JUMP` uses **_50 - 24 = 26_** more gas than using `JUMPSUB`.\n+Using `JUMP` uses **_48 - 22 = 26_** more gas than using `JUMPSUB`.\n \n #### Tail Call Optimization\n \n-Of course in cases like this one we can optimize the tail call, so that the final jump in `DIVIDE` actually returns from TEST_DIV.\n+Of course in cases like this one we can optimize the tail call, so that the final `RETURNSUB` in `ADDITION` actually returns from TEST_ADD.\n ```\n-TEST_DIV:\n-    beginsub        ; 1 gas\n-    0x02            ; 3 gas\n-    0x03            ; 3 gas\n-    rjump DIVIDE    ; 3 gas\n-\n-DIVIDE:\n-    beginsub        ; 1 gas\n-    div             ; 5 gas\n-    returnsub       ; 3 gas\n-\n-Total: 22 gas\n+TEST_ADD:\n+    beginsub          ; 1 gas\n+    0x02              ; 3 gas\n+    0x03              ; 3 gas\n+    rjump ADDITION    ; 3 gas\n+\n+ADDITION:\n+    beginsub          ; 1 gas\n+    add               ; 3 gas\n+    returnsub         ; 3 gas\n+\n+Total: 20 gas\n ```\n Or the same code, using `JUMP`\n ```\n-TEST_DIV:\n-   jumpdest         ; 1 gas\n-   0x02             ; 3 gas\n-   0x03             ; 3 gas\n-   DIVIDE           ; 3 gas\n-   jump             ; 8 gas\n-\n-DIVIDE:\n-   jumpdest         ; 1 gas\n-   div              ; 5 gas\n-   swap1            ; 3 gas\n-   jump             ; 8 gas\n-\n-Total: 35 gas\n+TEST_ADD:\n+   jumpdest           ; 1 gas\n+   0x02               ; 3 gas\n+   0x03               ; 3 gas\n+   ADDITION           ; 3 gas\n+   jump               ; 8 gas\n+\n+ADDITION:\n+   jumpdest           ; 1 gas\n+   add                ; 3 gas\n+   swap1              ; 3 gas\n+   jump               ; 8 gas\n+\n+Total: 33 gas\n ```\n-Using `JUMP` cost **_35 - 22 = 13_** more gas than using `JUMPSUB`.\n+Using `JUMP` cost **_33 - 20 = 13_** more gas than using `JUMPSUB`.\n \n #### Tail Call Elimination\n \n-We can even take advantage of `DIVIDE` just happening to directly follow `TEST_DIV` and just fall through rather than jump at all.\n+We can even take advantage of `ADDITION` just happening to directly follow `TEST_ADD` and just fall through rather than jump at all.\n ```\n-TEST_DIV:\n-    beginsub        ; 1 gas\n-    0x02            ; 3 gas\n-    0x03            ; 3 gas\n-DIVIDE:\n-    beginsub        ; 1 gas\n-    div             ; 5 gas\n-    returnsub       ; 3 gas\n+TEST_ADD:\n+    beginsub          ; 1 gas\n+    0x02              ; 3 gas\n+    0x03              ; 3 gas\n+ADDITION:\n+    beginsub          ; 1 gas\n+    add               ; 3 gas\n+    returnsub         ; 3 gas\n \n Total 16 gas.\n ```\n The same code, using JUMP.\n ```\n-TEST_DIV:\n-   jumpdest         ; 1 gas\n-   0x02             ; 3 gas\n-   0x03             ; 3 gas\n-DIVIDE:\n-   jumpdest         ; 1 gas\n-   div              ; 5 gas\n-   swap1            ; 3 gas\n-   jump             ; 8 gas\n+TEST_ADD:\n+   jumpdest           ; 1 gas\n+   0x02               ; 3 gas\n+   0x03               ; 3 gas\n+ADDITION:\n+   jumpdest           ; 1 gas\n+   add                ; 3 gas\n+   swap1              ; 3 gas\n+   jump               ; 8 gas\n \n Total: 24 gas\n ```\n-Using `JUMP` costs **_24 - 16 = 8_** more gas than using `JUMPSUB`.\n+Using `JUMP` costs **_22 - 14 = 8_** more gas than using `JUMPSUB`.\n \n ## Security Considerations\n \n@@ -247,14 +229,14 @@ We define safety here as avoiding exceptional halting states.\n \n #### Exceptional Halting States\n \n-_Execution_ is as defined in the [Yellow Paper](https://ethereum.github.io/yellowpaper/paper.pdf) — a sequence of changes to the EVM state.  The conditions on valid code are preserved by state changes.  At runtime, if execution of an instruction would violate a condition the execution is in an exceptional halting state.  The Yellow Paper defines five such states.\n+_Execution_ is as defined in the [Yellow Paper](https://ethereum.github.io/yellowpaper/paper.pdf)  a sequence of changes to the EVM state.  The conditions on valid code are preserved by state changes.  At runtime, if execution of an instruction would violate a condition the execution is in an exceptional halting state.  The Yellow Paper defines five such states.\n 1. Insufficient gas\n 2. More than 1024 stack items\n 3. Insufficient stack items\n 4. Invalid jump destination\n 5. Invalid instruction\n \n-We would like to consider EVM code valid iff no execution of the program can lead to an exceptional halting state, but we must be able to validate code in linear time to avoid denial of service attacks.  So in practice, we can only partially meet these requirements.  Our validation algorithm does not consider the code’s data and computations, only its control flow and stack use.  This means we will reject programs with any invalid code paths, even if those paths are not reachable at runtime.   Further, conditions *1* and *2* — Insufficient gas and stack overflow — must in general be checked at runtime.  Conditions *3*, *4*, and *5* cannot occur if the code conforms to the following rules.\n+We would like to consider EVM code valid iff no execution of the program can lead to an exceptional halting state, but we must be able to validate code in linear time to avoid denial of service attacks.  So in practice, we can only partially meet these requirements.  Our validation algorithm does not consider the codes data and computations, only its control flow and stack use.  This means we will reject programs with any invalid code paths, even if those paths are not reachable at runtime.   Further, conditions *1* and *2*  Insufficient gas and stack overflow  must in general be checked at runtime.  Conditions *3*, *4*, and *5* cannot occur if the code conforms to the following rules.\n \n #### The Rules\n \n@@ -266,21 +248,21 @@ We would like to consider EVM code valid iff no execution of the program can lea\n \n *Rule 0*, deprecating `JUMP` and `JUMPI`, forbids dynamic jumps.  Absent dynamic jumps another mechanism is needed for subroutine returns, as provided here. \n \n-Jump destinations are currently checked at runtime.  Static jumps allow them to be validated at creation time, per *rule 1* and *rule 2*.  *Note: Valid instructions are not part of immediate data.*\n+Jump destinations are currently checked at runtime.  Static jumps allow them to be validated at creation time, per *Rule 1* and *Rule 2*.  *Note: Valid instructions are not part of immediate data.*\n \n-For *rule 3* and *rule 4* we need to define `stack depth`.  The Yellow Paper has the `stack pointer` or `SP` pointing just past the top item on the `data stack`.   We define the `stack base` as where the `SP` pointed before the most recent `JUMPSUB`, or `0` on program entry.  So we can define the `stack depth` as the number of stack elements between the current `SP` and the current `stack base`.  \n+For *Rule 3* and *Rule 4* we need to define `stack depth`.  The Yellow Paper has the `stack pointer` or `SP` pointing just past the top item on the `data stack`.   We define the `stack base` as where the `SP` pointed before the most recent `JUMPSUB`, or `0` on program entry.  So we can define the `stack depth` as the number of stack elements between the current `SP` and the current `stack base`.  \n \n-Given our definition of `stack depth`, *rule 3* ensures that control flows which return to the same place with a different `stack depth` are invalid.  These can be caused by irreducible paths like jumping into loops and subroutines, and calling subroutines with different numbers of arguments.  Taken together, these rules allow for code to be validated  by following the control-flow graph, traversing each edge only once.\n+Given our definition of `stack depth`, *Rule 3* ensures that control flows which return to the same place with a different `stack depth` are invalid.  These can be caused by irreducible paths like jumping into loops and subroutines, and calling subroutines with different numbers of arguments.  Taken together, these rules allow for code to be validated  by following the control-flow graph, traversing each edge only once.\n \n-Finally, *rule 4* catches all stack underflows.  It also catches stack overflows in programs that overflow without (or before) recursion.\n+Finally, *Rule 4* catches all stack underflows.  It also catches stack overflows in programs that overflow without (or before) recursion.\n \n ### Validation\n \n-The following is a pseudo-Go implementation of an algorithm for enforcing program validity – being a symbolic execution that recursively traverses the bytecode, following its control flow and stack use and checking for violations of the rules above. \n+The following is a pseudo-Go implementation of an algorithm for enforcing program validity  being a symbolic execution that recursively traverses the bytecode, following its control flow and stack use and checking for violations of the rules above. \n \n-This algorithm runs in time equal to `O(vertices + edges)` in the program's control-flow graph, where vertices represent control-flow instructions and the edges represent basic blocks – thus the algorithm takes time proportional to the size of the bytecode.\n+This algorithm runs in time equal to `O(vertices + edges)` in the program's control-flow graph, where vertices represent control-flow instructions and the edges represent basic blocks  thus the algorithm takes time proportional to the size of the bytecode.\n \n-(For simplicity we assume an `advance_pc()` routine to skip immediate data and `removed_items()` and `added_items()` functions that return the effect of each instruction on the stack.  We also don't specify `JUMPTABLE` — which amounts to a loop over `RJUMP`.)\n+(For simplicity we assume an `advance_pc()` routine to skip immediate data and `removed_items()` and `added_items()` functions that return the effect of each instruction on the stack.  We also don't specify `JUMPTABLE`  which amounts to a loop over `RJUMP`.)\n ```\n    var bytecode []byte\n    var stack_depth []int\n@@ -327,7 +309,7 @@ This algorithm runs in time equal to `O(vertices + edges)` in the program's cont\n              }\n \n              // reset PC to destination of jump \n-             PC = jumpdest\n+             PC += jumpdest\n              continue\n          }\n          if instruction == RJUMPI {\n@@ -339,7 +321,7 @@ This algorithm runs in time equal to `O(vertices + edges)` in the program's cont\n              }\n \n              // reset PC to destination of jump \n-             PC = jumpdest\n+             PC += jumpdest\n \n              // recurse to jump to code to validate \n              if !validate(stack[SP])) {\n@@ -377,6 +359,8 @@ This algorithm runs in time equal to `O(vertices + edges)` in the program's cont\n    }\n ```\n \n+_Note: These safety guarantees are also made in [EIP-615](https://eips.ethereum.org/EIPS/eip-615)), with similar rules and a similar validation algorithm._\n+\n ## Test Cases\n \n ### Simple routine\n@@ -455,56 +439,3 @@ Bytecode: `0x6005565c5d5b60035e` (`PUSH1 0x05, JUMP, BEGINSUB, RETURNSUB, JUMPDE\n |    7  |       STOP  |    0 |        [] |        [] |\n \n Consumed gas: `30`\n-\n-## Appendix: Stack Frames\n-\n-Given [EIP-3337](https://eips.ethereum.org/EIPS/eip-3337) — which introduces a frame pointer register `FP` relative to which which memory can be addressed , we can create a frame stack — a list of data frames in memory for arguments and  local variables.  Two conventions are typical — either create the frame before calling the subroutine, or create the frame after the `BEGINSUB`.  Adding these two instructions to EIP-3337 would ease the way.  They are modeled on the corresponding Intel opcodes.\n-\n-#### ENTER _frame_size_\n-\n-> Write the current `FP` to memory as with MSTOREF at `FP - frame_size`, then set `FP` to `FP - frame size`.\n-This a shorthand for\n-```\n-MSTOREF\n-GETFP\n-PUSH frame_size\n-SUB\n-SETFP\n-```\n-This should be placed either before a `JUMPSUB` operation or after a `BEGINSUB`, depending on the calling convention.  Repeated calls to `ENTER` create a stack of frames, linked by their `previous FP` field. The stack grows towards lower addresses in memory, as is the common, efficient practice.\n-\n-#### `LEAVE`\n-> Restores `FP` to the value which was stored at offset `FP` in memory by the most recent `ENTER`, thus popping a frame off of the stack of frames.  This a shorthand for\n-```\n-MLOADF\n-SETFP\n-```\n-This should be placed after the `JUMPSUB` operation or before the `RETURNSUB` – depending on the calling convention – to pop the most recent frame from the call stack.\n-\n-These operations would be especially useful if the gas formula for memory was reinterpreted so that writes from the top of memory down (equivalently, from -1 down, twos-complement) are charged the same gas as writes from the bottom of memory up.\n-\n-The total cost to expand the memory to size _a_ words is\n-> `Cmem(a) = 3 * a + floor(a ** 2 / 512)`\n-\n-If the memory is already _b_ words long, the incremental cost is\n-> `Cmem(a) - Cmem(b)`\n-\n-If _a_, _b_ and memory offsets in general are allowed to be negative the formula gives the desired results – stack memory can grow from the top down, and heap memory can be allocated from the bottom up, without address conflicts or excessive gas charges.\n-\n-## References\n-\n-A.M. Turing, [Proposals for the development in the Mathematics Division of an Automatic Computing Engine (ACE)](http://www.alanturing.net/turing_archive/archive/p/p01/P01-001.html) Report E882, Executive Committee, NPL 1946\n-\n-Alex Beregszaszi, Paweł Bylica, Andrei Maiboroda, [EVM Object Format (EOF) v1](https://eips.ethereum.org/EIPS/eip-3540) 2021\n-\n-Andrei Maiboroda, [EOF static relative jumps](https://github.com/ethereum/evmone/pull/351)\n-\n-Gavin Wood, [Ethereum:  A Secure Decentralized Generalized  Transaction  Ledger](https://ethereum.github.io/yellowpaper/paper.pdf), 2014-2021\n-\n-Greg Colvin, Brooklyn Zelenka, Paweł Bylica, Christian Reitwiessner, [EIP-615: Subroutines and Static Jumps for the EVM](https://eips.ethereum.org/EIPS/eip-615), 2016-2019\n-\n-Nick Johnson, [EIP-3337: Frame pointer support for memory load and store operations](https://eips.ethereum.org/EIPS/eip-3337), 2021\n-\n-## Copyright\n-Copyright and related rights waived via [CC0](https://creativecommons.org/publicdomain/zero/1.0/).\n-  "
+        }
+      ]
+    }
+  },
+  {
+    "req": {
+      "url": "https://api.github.com/repos/ethereum/EIPs/contents/EIPS%2Feip-2315.md?ref=a3f47c7834be6e5712b165155ab2211d9cbf0f76",
+      "method": "GET"
+    },
+    "res": {
+      "status": 200,
+      "data": {
+        "name": "eip-2315.md",
+        "path": "EIPS/eip-2315.md",
+        "sha": "b0b8cf8dd166ba278d05af9410cb95d1191e6f4d",
+        "size": 21061,
+        "url": "https://api.github.com/repos/ethereum/EIPs/contents/EIPS/eip-2315.md?ref=a3f47c7834be6e5712b165155ab2211d9cbf0f76",
+        "html_url": "https://github.com/ethereum/EIPs/blob/a3f47c7834be6e5712b165155ab2211d9cbf0f76/EIPS/eip-2315.md",
+        "git_url": "https://api.github.com/repos/ethereum/EIPs/git/blobs/b0b8cf8dd166ba278d05af9410cb95d1191e6f4d",
+        "download_url": "https://raw.githubusercontent.com/ethereum/EIPs/a3f47c7834be6e5712b165155ab2211d9cbf0f76/EIPS/eip-2315.md",
+        "type": "file",
+        "content": "LS0tCmVpcDogMjMxNQp0aXRsZTogU2ltcGxlIFN1YnJvdXRpbmVzIGZvciB0\naGUgRVZNCnN0YXR1czogRHJhZnQKdHlwZTogU3RhbmRhcmRzIFRyYWNrCmNh\ndGVnb3J5OiBDb3JlCmF1dGhvcjogR3JlZyBDb2x2aW4gPGdyZWdAY29sdmlu\nLm9yZz4sIE1hcnRpbiBIb2xzdCBTd2VuZGUgKEBob2xpbWFuKQpkaXNjdXNz\naW9ucy10bzogaHR0cHM6Ly9ldGhlcmV1bS1tYWdpY2lhbnMub3JnL3QvZWlw\nLTIzMTUtc2ltcGxlLXN1YnJvdXRpbmVzLWZvci10aGUtZXZtLzM5NDEKY3Jl\nYXRlZDogMjAxOS0xMC0xNwotLS0KCiMjIEFic3RyYWN0CgpUaGlzIHByb3Bv\nc2FsIGludHJvZHVjZXMgdGhyZWUgb3Bjb2RlcyB0byBzdXBwb3J0IHN1YnJv\ndXRpbmVzOiBgQkVHSU5TVUJgLCBgSlVNUFNVQmAgYW5kIGBSRVRVUk5TVUJg\nLiAgSXQgZGVwcmVjYXRlcyBgSlVNUGAgYW5kIGBKVU1QSWAuCgpUaGlzIGNo\nYW5nZSBzdXBwb3J0cyBzdWJzdGFudGlhbCByZWR1Y3Rpb25zIGluIHRoZSBn\nYXMgY29zdHMgb2YgdXNpbmcgc3Vicm91dGluZXMuCgpUaGlzIGNoYW5nZSBh\nbHNvIGFsbG93cyBmb3IgdGhlIHZhbGlkYXRpb24gb2Ygc29tZSBpbXBvcnRh\nbnQgc2FmZXR5IHByb3BlcnRpZXMsIGluY2x1ZGluZwoqIHZhbGlkIGp1bXAg\nZGVzdGluYXRpb25zLAoqIHZhbGlkIGluc3RydWN0aW9ucywKKiBubyBzdGFj\nayB1bmRlcmZsb3dzLCBhbmQKKiBubyBzdGFjayBvdmVyZmxvd3Mgd2l0aG91\ndCByZWN1cnNpb24KClZhbGlkIGNvbnRyYWN0cyB3aWxsIG5vdCBoYWx0IHdp\ndGggYW4gZXhjZXB0aW9uIHVubGVzcyB0aGV5IHJ1biBvdXQgb2YgZ2FzIG9y\nIG92ZXJmbG93IHN0YWNrIGR1cmluZyBhIHJlY3Vyc2lvbi4KCkNvZGUgaXMg\ndmFsaWRhdGVkIGF0IGNvbnRyYWN0IGNyZWF0aW9uIHRpbWUg4oCTIG5vdCBy\ndW50aW1lIOKAkyBieSB0aGUgcHJvdmlkZWQgYWxnb3JpdGhtLiAgVGhpcyBp\ncyBhIG9uZS1wYXNzIGFsZ29yaXRobSwgbGluZWFyIGluIHRoZSBzaXplIG9m\nIHRoZSBieXRlY29kZSwgc28gYXMgbm90IHRvIGVuYWJsZSBEb1MgYXR0YWNr\ncy4KCiMjIE1vdGl2YXRpb24KClRoZSBFVk0gZG9lcyBub3QgcHJvdmlkZSBz\ndWJyb3V0aW5lcyBhcyBhIHByaW1pdGl2ZS4gIEluc3RlYWQsIGNhbGxzIGNh\nbiBiZSBzeW50aGVzaXplZCBieSBmZXRjaGluZyBhbmQgcHVzaGluZyB0aGUg\nY3VycmVudCBwcm9ncmFtIGNvdW50ZXIgb24gdGhlIGRhdGEgc3RhY2sgYW5k\nIGp1bXBpbmcgdG8gdGhlIHN1YnJvdXRpbmUgYWRkcmVzczsgcmV0dXJucyBj\nYW4gYmUgc3ludGhlc2l6ZWQgYnkgZ2V0dGluZyB0aGUgcmV0dXJuIGFkZHJl\nc3MgdG8gdGhlIHRvcCBvZiB0aGUgc3RhY2sgYW5kIGp1bXBpbmcgYmFjayB0\nbyBpdC4gIFRoZXNlIGNvbnZlbnRpb25zIGFyZSBtb3JlIGNvc3RseSB0aGFu\nIG5lY2Vzc2FyeSwgYW5kIGltcGVkZSBzdGF0aWMgYW5hbHlzaXMgb2YgRVZN\nIGNvZGUsIGVzcGVjaWFsbHkgcmFwaWQgdmFsaWRhdGlvbiBvZiBzb21lIGlt\ncG9ydGFudCBzYWZldHkgcHJvcGVydGllcy4KCkZhY2lsaXRpZXMgdG8gZGly\nZWN0bHkgc3VwcG9ydCBzdWJyb3V0aW5lcyBhcmUgcHJvdmlkZWQgYnkgYWxs\nIGJ1dCBvbmUgb2YgdGhlIHJlYWwgYW5kIHZpcnR1YWwgbWFjaGluZXMgcHJv\nZ3JhbW1lZCBieSB0aGUgbGVhZCBhdXRob3IsIGluY2x1ZGluZyB0aGUgQnVy\ncm91Z2hzIDUwMDAsIENEQyA3NjAwLCBJQk0gMzYwLCBERUMgUERQIDExIGFu\nZCBWQVgsIE1vdG9yb2xhIDY4MDAwLCBhIGZldyBnZW5lcmF0aW9ucyBvZiBJ\nbnRlbCBzaWxpY29uLCBTdW4gU1BBUkMsIFVDU0QgcC1NYWNoaW5lLCBTdW4g\nSlZNLCBXYXNtLCBhbmQgdGhlIHNvbGUgZXhjZXB0aW9uICB0aGUgRVZNLiAg\nSW4gd2hhdGV2ZXIgZm9ybSwgdGhlc2Ugb3BlcmF0aW9ucyBwcm92aWRlIGZv\ncgoqIGNhcHR1cmluZyB0aGUgY3VycmVudCBjb250ZXh0IG9mIGV4ZWN1dGlv\nbiwKKiB0cmFuc2ZlcnJpbmcgY29udHJvbCB0byBhIG5ldyBjb250ZXh0LCBh\nbmQgCiogcmV0dXJuaW5nIHRvIHRoZSBvcmlnaW5hbCBjb250ZXh0CiogKiBh\nZnRlciBwb3NzaWJsZSBmdXJ0aGVyIHRyYW5zZmVycyBvZiBjb250cm9sCiog\nKiB0byBzb21lIGFyYml0cmFyeSBkZXB0aC4KClRoZSBjb25jZXB0IGdvZXMg\nYmFjayB0byBbVHVyaW5nLCAxOTQ2XShodHRwOi8vd3d3LmFsYW50dXJpbmcu\nbmV0L3R1cmluZ19hcmNoaXZlL2FyY2hpdmUvcC9wMDEvUDAxLTAwMS5odG1s\nKToKPiBXZSBhbHNvIHdpc2ggdG8gYmUgYWJsZSB0byBhcnJhbmdlIGZvciB0\naGUgc3BsaXR0aW5nIHVwIG9mIG9wZXJhdGlvbnMgaW50byBzdWJzaWRpYXJ5\nIG9wZXJhdGlvbnMuICBUaGlzIHNob3VsZCBiZSBkb25lIGluIHN1Y2ggYSB3\nYXkgdGhhdCBvbmNlIHdlIGhhdmUgd3JpdHRlbiBkb3duIGhvdyBhbiBvcGVy\nYXRpb24gaXMgZG9uZSB3ZSBjYW4gdXNlIGl0IGFzIGEgc3Vic2lkaWFyeSB0\nbyBhbnkgb3RoZXIgb3BlcmF0aW9uLgo+IC4uLgo+IFdoZW4gd2Ugd2lzaCB0\nbyBzdGFydCBvbiBhIHN1YnNpZGlhcnkgb3BlcmF0aW9uIHdlIG5lZWQgb25s\neSBtYWtlIGEgbm90ZSBvZiB3aGVyZSB3ZSBsZWZ0IG9mZiB0aGUgbWFqb3Ig\nb3BlcmF0aW9uIGFuZCB0aGVuIGFwcGx5IHRoZSBmaXJzdCBpbnN0cnVjdGlv\nbiBvZiB0aGUgc3Vic2lkaWFyeS4gIFdoZW4gdGhlIHN1YnNpZGlhcnkgaXMg\nb3ZlciB3ZSBsb29rIHVwIHRoZSBub3RlIGFuZCBjb250aW51ZSB3aXRoIHRo\nZSBtYWpvciBvcGVyYXRpb24uIEVhY2ggc3Vic2lkaWFyeSBvcGVyYXRpb24g\nY2FuIGVuZCB3aXRoIGluc3RydWN0aW9ucyBmb3IgdGhpcyByZWNvdmVyeSBv\nZiB0aGUgbm90ZS4gIEhvdyBpcyB0aGUgYnVyeWluZyBhbmQgZGlzaW50ZXJy\naW5nIG9mIHRoZSBub3RlIHRvIGJlIGRvbmU/ICBUaGVyZSBhcmUgb2YgY291\ncnNlIG1hbnkgd2F5cy4gIE9uZSBpcyB0byBrZWVwIGEgbGlzdCBvZiB0aGVz\nZSBub3RlcyBpbiBvbmUgb3IgbW9yZSBzdGFuZGFyZCBzaXplIGRlbGF5IGxp\nbmVzLCAoMTAyNCkgd2l0aCB0aGUgbW9zdCByZWNlbnQgbGFzdC4gIFRoZSBw\nb3NpdGlvbiBvZiB0aGUgbW9zdCByZWNlbnQgb2YgdGhlc2Ugd2lsbCBiZSBr\nZXB0IGluIGEgZml4ZWQgVFMsIGFuZCB0aGlzIHJlZmVyZW5jZSB3aWxsIGJl\nIG1vZGlmaWVkIGV2ZXJ5IHRpbWUgYSBzdWJzaWRpYXJ5IGlzIHN0YXJ0ZWQg\nb3IgZmluaXNoZWQuLi4KCldlIHByb3Bvc2UgdG8gdXNlIFR1cmluZydzIHNp\nbXBsZSBtZWNoYW5pc20gdG8gaW1wbGVtZW50IHN1YnJvdXRpbmVzLCBhcyBz\ncGVjaWZpZWQgYmVsb3cuICBOb3RlIHRoYXQgdGhpcyBzcGVjaWZpY2F0aW9u\nIGlzIGVudGlyZWx5IHNlbWFudGljLiAgSXQgY29uc3RyYWlucyBvbmx5IHN0\nYWNrIHVzYWdlIGFuZCBjb250cm9sIGZsb3cgYW5kIGltcG9zZXMgbm8gc3lu\ndGF4IG9uIGNvZGUgYmV5b25kIGJlaW5nIGEgc2VxdWVuY2Ugb2YgYnl0ZXMg\ndG8gYmUgZXhlY3V0ZWQuCgojIyBTcGVjaWZpY2F0aW9uCgpXZSBpbnRyb2R1\nY2Ugb25lIG1vcmUgc3RhY2sgaW50byB0aGUgRVZNIGluIGFkZGl0aW9uIHRv\nIHRoZSBleGlzdGluZyBgZGF0YSBzdGFja2AsIHdoaWNoIHdlIGNhbGwgdGhl\nIGByZXR1cm4gc3RhY2tgLiBUaGUgYHJldHVybiBzdGFja2AgaXMgbGltaXRl\nZCB0byBgMTAyNGAgaXRlbXMuIFRoaXMgc3RhY2sgc3VwcG9ydHMgdGhyZWUg\nbmV3IGluc3RydWN0aW9ucyBmb3Igc3Vicm91dGluZXMuCgojIyMgIGBCRUdJ\nTlNVQiggMHg1YylgCgo+IE1hcmtzIGFuIGVudHJ5IHBvaW50IHRvIGEgc3Vi\ncm91dGluZS4gIEV4ZWN1dGlvbiBvZiBhIGBCRUdJTlNVQmAgaXMgYSBuby1v\ncC4gIFRoZSBjb3N0IGlzIF9qdW1wZGVzdF8uCgojIyMjIGBKVU1QU1VCICgw\neDVkKSBsb2NhdGlvbmAKCj4gVHJhbnNmZXJzIGNvbnRyb2wgdG8gYSBzdWJy\nb3V0aW5lLgo+Cj4gMS4gRGVjb2RlIHRoZSBgbG9jYXRpb25gIGZyb20gdGhl\nIGltbWVkaWF0ZSBkYXRhLiAgVGhlIGRhdGEgaXMgZW5jb2RlZCBhcyB0aHJl\nZSBieXRlcywgTVNCLWZpcnN0Lgo+IDIuIElmIHRoZSBvcGNvZGUgYXQgYGxv\nY2F0aW9uYCBpcyBub3QgYSBgQkVHSU5TVUJgIF9gYWJvcnRgXy4KPiAzLiBJ\nZiB0aGUgYHJldHVybiBzdGFja2AgYWxyZWFkeSBoYXMgYDEwMjRgIGl0ZW1z\nIF9gYWJvcnRgXy4KPiA0LiBQdXNoIHRoZSBjdXJyZW50IGBQQyArIDFgIHRv\nIHRoZSBgcmV0dXJuIHN0YWNrYC4KPiA1LiBTZXQgYFBDYCB0byBgbG9jYXRp\nb25gLgo+Cj4gIFRoZSBjb3N0IGlzIF9sb3dfLgo+ICAKPiAqIF9wb3BzIG9u\nZSBpdGVtIG9mZiB0aGUgYGRhdGEgc3RhY2tgXwo+ICogX3B1c2hlcyBvbmUg\naXRlbSBvbiB0aGUgYHJldHVybiBzdGFja2BfCgojIyMjIGBSRVRVUk5TVUIg\nKDB4NWUpYAoKPiBSZXR1cm5zIGNvbnRyb2wgdG8gdGhlIGNhbGxlciBvZiBh\nIHN1YnJvdXRpbmUuCj4gCj4gMS4gSWYgdGhlIGByZXR1cm4gc3RhY2tgIGlz\nIGVtcHR5IF9gYWJvcnRgXy4KPiAyLiBQb3AgYFBDYCBvZmYgdGhlIGByZXR1\ncm4gc3RhY2tgLgo+Cj4gVGhlIGNvc3QgaXMgX3Zlcnlsb3dfLgo+Cj4gKiBf\ncG9wcyBvbmUgaXRlbSBvZmYgdGhlIGByZXR1cm4gc3RhY2tgXwoKX05vdGVz\nOl8KKiBfSWYgYSByZXN1bHRpbmcgYFBDYCB0byBiZSBleGVjdXRlZCBpcyBi\nZXlvbmQgdGhlIGxhc3QgaW5zdHJ1Y3Rpb24gdGhlbiB0aGUgb3Bjb2RlIGlz\nIGltcGxpY2l0bHkgYSBgU1RPUGAsIHdoaWNoIGlzIG5vdCBhbiBlcnJvci5f\nCiogX1ZhbHVlcyBwb3BwZWQgb2ZmIHRoZSBgcmV0dXJuIHN0YWNrYCBkbyBu\nb3QgbmVlZCB0byBiZSB2YWxpZGF0ZWQsIHNpbmNlIHRoZXkgYXJlIGFsdGVy\nYWJsZSBvbmx5IGJ5IGBKVU1QU1VCYCBhbmQgYFJFVFVSTlNVQmAuXwoqIF9U\naGUgZGVzY3JpcHRpb24gYWJvdmUgbGF5cyBvdXQgdGhlIHNlbWFudGljcyBv\nZiB0aGlzIGZlYXR1cmUgaW4gdGVybXMgb2YgYSBgcmV0dXJuIHN0YWNrYC4g\nIEJ1dCB0aGUgYWN0dWFsIHN0YXRlIG9mIHRoZSBgcmV0dXJuIHN0YWNrYCBp\ncyBub3Qgb2JzZXJ2YWJsZSBieSBFVk0gY29kZSBvciBjb25zZW5zdXMtY3Jp\ndGljYWwgdG8gdGhlIHByb3RvY29sLiAgKEZvciBleGFtcGxlLCBhIG5vZGUg\naW1wbGVtZW50b3IgbWF5IGNvZGUgYEpVTVBTVUJgIHRvIHVub2JzZXJ2YWJs\neSBwdXNoIGBQQ2Agb24gdGhlIGByZXR1cm4gc3RhY2tgIHJhdGhlciB0aGFu\nIGBQQyArIDFgLCB3aGljaCBpcyBhbGxvd2VkIHNvIGxvbmcgYXMgYFJFVFVS\nTlNVQmAgb2JzZXJ2YWJseSByZXR1cm5zIGNvbnRyb2wgdG8gdGhlIGBQQyAr\nIDFgIGxvY2F0aW9uLilfCiogX1RoZSBgcmV0dXJuIHN0YWNrYCBpcyB0aGUg\nZnVuY3Rpb25hbCBlcXVpdmFsZW50IG9mIFR1cmluZydzICJkZWxheSBsaW5l\nIi5fCgojIyMgRGVwZW5kZW5jaWVzCgpXZSBuZWVkIFtFSVAtMzU0MDogRVZN\nIE9iamVjdCBGb3JtYXQgKEVPRildKC4vZWlwLTM1NDAubWQpIHRvIGFsbG93\nIGZvciBpbW1lZGlhdGUgYXJndW1lbnRzIHdpdGhvdXQgc3BlY2lhbCBlbmNv\nZGluZy4KCldlIG5lZWQgW0VPRiBTdGF0aWMgUmVsYXRpdmUgSnVtcHNdKGh0\ndHBzOi8vZ2l0aHViLmNvbS9ldGhlcmV1bS9ldm1vbmUvcHVsbC8zNTEpIG9y\nIHRoZSBlcXVpdmFsZW50IHRvIGRlZmluZSBhbmQgdmFsaWRhdGUgdGhlIHJ1\nbGVzIGZvciBjb250cmFjdCBzYWZldHkuICBUaGVzZSBqdW1wcyAgYFJKVU1Q\nIG9mZnNldGAgYW5kIGBSSlVNUEkgb2Zmc2V0YCAgdHJhbnNmZXIgY29udHJv\nbCB0byBhIGxvY2F0aW9uIGluIHRoZSBieXRlY29kZSBhdCBhIGZpeGVkIG9m\nZnNldCByZWxhdGl2ZSB0byB0aGUgY3VycmVudCBgUENgLgoKIyMgUmF0aW9u\nYWxlCgpXZSBtb2RlbGVkIHRoaXMgZGVzaWduIG9uIE1vb3JlJ3MgMTk3MCBb\nRm9ydGggdmlydHVhbCBtYWNoaW5lXShodHRwOi8vd3d3LnVsdHJhdGVjaG5v\nbG9neS5jb20vNHRoXzE5NzAucGRmKS4gSXQgaXMgYSB0d28tc3RhY2sgZGVz\naWduICB0aGUgZGF0YSBzdGFjayBpcyBzdXBwbGVtZW50ZWQgd2l0aCBhIHJl\ndHVybiBzdGFjayB0byBzdXBwb3J0IGp1bXBpbmcgaW50byBhbmQgcmV0dXJu\naW5nIGZyb20gc3Vicm91dGluZXMsIGFzIHNwZWNpZmllZCBhYm92ZS4gIFRo\nZSByZXR1cm4gYWRkcmVzcyAoVHVyaW5nJ3MgIm5vdGUiKSBpcyBwdXNoZWQg\nb250byB0aGUgcmV0dXJuIHN0YWNrIChUdXJpbmcncyAiZGVsYXkgbGluZSIp\nIHdoZW4gY2FsbGluZywgYW5kIHRoZSBzdGFjayBpcyBwb3BwZWQgaW50byB0\naGUgYFBDYCB3aGVuIHJldHVybmluZy4KClRoZSBhbHRlcm5hdGl2ZSBkZXNp\nZ24gaXMgdG8gcHVzaCB0aGUgcmV0dXJuIGFkZHJlc3MgYW5kIHRoZSBkZXN0\naW5hdGlvbiBhZGRyZXNzIG9uIHRoZSBkYXRhIHN0YWNrIGJlZm9yZSBqdW1w\naW5nLCBhbmQgdG8gcG9wIHRoZSBkYXRhIHN0YWNrIGFuZCBqdW1wIGJhY2sg\ndG8gdGhlIHBvcHBlZCBgUENgIHRvIHJldHVybi4gIFdlIHByZWZlciB0aGUg\nc2VwYXJhdGUgcmV0dXJuIHN0YWNrIGJlY2F1c2UgaXQgZW5zdXJlcyB0aGF0\nIHRoZSByZXR1cm4gYWRkcmVzcyBjYW5ub3QgYmUgb3ZlcndyaXR0ZW4gb3Ig\nbWlzbGFpZCwgdXNlcyBmZXdlciBkYXRhIHN0YWNrIHNsb3RzLCBhbmQgb2J2\naWF0ZXMgYW55IG5lZWQgdG8gc3dhcCB0aGUgcmV0dXJuIGFkZHJlc3MgcGFz\ndCB0aGUgYXJndW1lbnRzIG9yIHJldHVybiB2YWx1ZXMgb24gdGhlIHN0YWNr\nLiAgQ3J1Y2lhbGx5LCBhIGR5bmFtaWMganVtcCBpcyBub3QgbmVlZGVkIHRv\nIGltcGxlbWVudCBzdWJyb3V0aW5lIHJldHVybnMsIGFsbG93aW5nIGZvciBk\nZXByZWNhdGlvbiBvZiBgSlVNUGAgYW5kIGBKVU1QSWAuCgpUaGUgX2xvd18g\nY29zdCBvZiBgSlVNUFNVQmAgaXMganVzdGlmaWVkIGJ5IG5lZWRpbmcgb25s\neSBhYm91dCBzaXggR28gb3BlcmF0aW9ucyB0byBwdXNoIHRoZSByZXR1cm4g\nYWRkcmVzcyBvbiB0aGUgcmV0dXJuIHN0YWNrLCBhbmQgZGVjb2RlIHRoZSBp\nbW1lZGlhdGUgdHdvIGJ5dGUgZGVzdGluYXRpb24gdG8gdGhlIGBQQ2AuICAg\nVGhlIF92ZXJ5bG93XyBjb3N0IG9mIGBSRVRVUk5TVUJgIGlzIGp1c3RpZmll\nZCBieSBuZWVkaW5nIG9ubHkgYWJvdXQgdGhyZWUgR28gb3BlcmF0aW9ucyB0\nbyBwb3AgdGhlIHJldHVybiBzdGFjayBpbnRvIHRoZSBgUENgLiAgTm8gMjU2\nLWJpdCBhcml0aG1ldGljIG9yIGNoZWNraW5nIGZvciB2YWxpZCBkZXN0aW5h\ndGlvbnMgaXMgbmVlZGVkLiAgQWxzbywgYEpVTVBgIGlzIGFzc2lnbmVkIF9t\naWRfLCBhbmQgYEpVTVBTVUJgIHNob3VsZCBiZSBtb3JlIGVmZmljaWVudCwg\nYXMgZGVjb2RpbmcgaW1tZWRpYXRlIGJ5dGVzIHNob3VsZCBiZSBjaGVhcGVy\nIHRoYW4gdGhhbiBjb252ZXJ0aW5nIDMyLWJ5dGUgc3RhY2sgaXRlbXMsIGFu\nZCB0aGUgZGVzdGluYXRpb24gYWRkcmVzcyB3aWxsIG5vdCBuZWVkIHRvIGJl\nIGNoZWNrZWQgZm9yIGVpdGhlciBgSlVNUFNVQmAgb3IgYFJFVFVSTlNVQmAu\nICBCZW5jaG1hcmtpbmcgd2lsbCBiZSBuZWVkZWQgdG8gdGVsbCBpZiB0aGUg\nY29zdHMgYXJlIHdlbGwtYmFsYW5jZWQuIAoKIyMgQmFja3dhcmRzIGFuZCBG\nb3J3YXJkcyBDb21wYXRpYmlsaXR5CgpUaGVzZSBjaGFuZ2VzIGFmZmVjdCB0\naGUgc2VtYW50aWNzIG9mIGV4aXN0aW5nIEVWTSBjb2RlLiAgVGhlIEVWTSBP\nYmplY3QgRm9ybWF0IGlzIHJlcXVpcmVkIHRvIGFsbG93IGZvciBpbW1lZGlh\ndGUgZGF0YS4KClRoZXNlIGNoYW5nZXMgYXJlIGNvbXBhdGlibGUgd2l0aCB1\nc2luZyBbRUlQLTMzMzddKGh0dHBzOi8vZWlwcy5ldGhlcmV1bS5vcmcvRUlQ\nUy9laXAtMzMzNykgdG8gcHJvdmlkZSBzdGFjayBmcmFtZXMsIGJ5IGFzc29j\naWF0aW5nIGEgZnJhbWUgd2l0aCBlYWNoIHN1YnJvdXRpbmUuCgojIyMgR2Fz\nIENvc3RzIGluIFByYWN0aWNlCgpUaGVzZSBvcGNvZGVzIHJlZHVjZSB0aGUg\nZ2FzIGNvc3RzIG9mIGJvdGggb3JkaW5hcnkgc3Vicm91dGluZSBjYWxscyBh\nbmQgbG93LWxldmVsIG9wdGltaXphdGlvbnMuICBUaGUgc2F2aW5ncyByZXBv\ncnRlZCBoZXJlIHdpbGwgb2YgY291cnNlIGJlIGxlc3MgcmVsZXZhbnQgdG8g\ncHJvZ3JhbXMgdGhhdCB1c2UgYSBmZXcgbGFyZ2Ugc3Vicm91dGluZXMgcmF0\naGVyIHRoYW4gYmVpbmcgYSBmYWN0b3JlZCB0aGFuIGluIHRvIHNtYWxsZXIg\nb25lcy4gICBOb3RlIHRoYXQgdGhlIGNob2ljZSBvZiBnYXMgY29zdHMgZm9y\nIHRoZSBuZXcgb3Bjb2RlcyBhYm92ZSBkb2VzIG5vdCBtYWtlIGEgbGFyZ2Ug\nZGlmZmVyZW5jZSBpbiB0aGlzIGFuYWx5c2lzLCBhcyBtdWNoIG9mIHRoZSBp\nbXByb3ZlbWVudCBpcyBkdWUgdG8gUFVTSCBhbmQgU1dBUCBvcGVyYXRpb25z\nIHRoYXQgYXJlIG5vIGxvbmdlciBuZWVkZWQuCgojIyMjIFN1YnJvdXRpbmUg\nQ2FsbAoKQ29uc2lkZXIgdGhpcyBleGFtcGxlIG9mIGNhbGxpbmcgYSBtaW5p\nbWFsIHN1YnJvdXRpbmUKdXNpbmcgIGBKVU1QU1VCYApgYGAKQUREOgogICAg\nYmVnaW5zdWIgICAgICAgICAgOyAxIGdhcwogICAgMHgwMiAgICAgICAgICAg\nICAgOyAzIGdhcwogICAgMHgwMyAgICAgICAgICAgICAgOyAzIGdhcwogICAg\nanVtcHN1YiBBRERJVElPTiAgOyA1IGdhcwogICAgcmV0dXJuc3ViICAgICAg\nICAgOyAzIGdhcwoKQURESVRJT046CiAgICBiZWdpbnN1YiAgICAgICAgICA7\nIDEgZ2FzCiAgICBhZGQgICAgICAgICAgICAgICA7IDMgZ2FzCiAgICByZXR1\ncm5zdWIgICAgICAgICA7IDMgZ2FzCgpUb3RhbCAyMiBnYXMuCmBgYApUaGUg\nc2FtZSBjb2RlLCB1c2luZyBgSlVNUGAuCmBgYApURVNUX0FERDoKICAganVt\ncGRlc3QgICAgICAgICAgIDsgMSBnYXMKICAgUlROX0FERCAgICAgICAgICAg\nIDsgMyBnYXMKICAgMHgwMiAgICAgICAgICAgICAgIDsgMyBnYXMKICAgMHgw\nMyAgICAgICAgICAgICAgIDsgMyBnYXMKICAgQURESVRJT04gICAgICAgICAg\nIDsgMyBnYXMKICAganVtcCAgICAgICAgICAgICAgIDsgOCBnYXMKUlROX0FE\nRDoKICAganVtcGRlc3QgICAgICAgICAgIDsgMSBnYXMKICAgc3dhcDEgICAg\nICAgICAgICAgIDsgMyBnYXMKICAganVtcCAgICAgICAgICAgICAgIDsgOCBn\nYXMKCkFERElUSU9OOgogICBqdW1wZGVzdCAgICAgICAgICAgOyAxIGdhcwog\nICBhZGQgICAgICAgICAgICAgICAgOyAzIGdhcwogICBzd2FwMSAgICAgICAg\nICAgICAgOyAzIGdhcwogICBqdW1wICAgICAgICAgICAgICAgOyA4IGdhcwoK\nVG90YWw6IDQ4IGdhcwpgYGAKVXNpbmcgYEpVTVBgIHVzZXMgKipfNDggLSAy\nMiA9IDI2XyoqIG1vcmUgZ2FzIHRoYW4gdXNpbmcgYEpVTVBTVUJgLgoKIyMj\nIyBUYWlsIENhbGwgT3B0aW1pemF0aW9uCgpPZiBjb3Vyc2UgaW4gY2FzZXMg\nbGlrZSB0aGlzIG9uZSB3ZSBjYW4gb3B0aW1pemUgdGhlIHRhaWwgY2FsbCwg\nc28gdGhhdCB0aGUgZmluYWwgYFJFVFVSTlNVQmAgaW4gYEFERElUSU9OYCBh\nY3R1YWxseSByZXR1cm5zIGZyb20gVEVTVF9BREQuCmBgYApURVNUX0FERDoK\nICAgIGJlZ2luc3ViICAgICAgICAgIDsgMSBnYXMKICAgIDB4MDIgICAgICAg\nICAgICAgIDsgMyBnYXMKICAgIDB4MDMgICAgICAgICAgICAgIDsgMyBnYXMK\nICAgIHJqdW1wIEFERElUSU9OICAgIDsgMyBnYXMKCkFERElUSU9OOgogICAg\nYmVnaW5zdWIgICAgICAgICAgOyAxIGdhcwogICAgYWRkICAgICAgICAgICAg\nICAgOyAzIGdhcwogICAgcmV0dXJuc3ViICAgICAgICAgOyAzIGdhcwoKVG90\nYWw6IDIwIGdhcwpgYGAKT3IgdGhlIHNhbWUgY29kZSwgdXNpbmcgYEpVTVBg\nCmBgYApURVNUX0FERDoKICAganVtcGRlc3QgICAgICAgICAgIDsgMSBnYXMK\nICAgMHgwMiAgICAgICAgICAgICAgIDsgMyBnYXMKICAgMHgwMyAgICAgICAg\nICAgICAgIDsgMyBnYXMKICAgQURESVRJT04gICAgICAgICAgIDsgMyBnYXMK\nICAganVtcCAgICAgICAgICAgICAgIDsgOCBnYXMKCkFERElUSU9OOgogICBq\ndW1wZGVzdCAgICAgICAgICAgOyAxIGdhcwogICBhZGQgICAgICAgICAgICAg\nICAgOyAzIGdhcwogICBzd2FwMSAgICAgICAgICAgICAgOyAzIGdhcwogICBq\ndW1wICAgICAgICAgICAgICAgOyA4IGdhcwoKVG90YWw6IDMzIGdhcwpgYGAK\nVXNpbmcgYEpVTVBgIGNvc3QgKipfMzMgLSAyMCA9IDEzXyoqIG1vcmUgZ2Fz\nIHRoYW4gdXNpbmcgYEpVTVBTVUJgLgoKIyMjIyBUYWlsIENhbGwgRWxpbWlu\nYXRpb24KCldlIGNhbiBldmVuIHRha2UgYWR2YW50YWdlIG9mIGBBRERJVElP\nTmAganVzdCBoYXBwZW5pbmcgdG8gZGlyZWN0bHkgZm9sbG93IGBURVNUX0FE\nRGAgYW5kIGp1c3QgZmFsbCB0aHJvdWdoIHJhdGhlciB0aGFuIGp1bXAgYXQg\nYWxsLgpgYGAKVEVTVF9BREQ6CiAgICBiZWdpbnN1YiAgICAgICAgICA7IDEg\nZ2FzCiAgICAweDAyICAgICAgICAgICAgICA7IDMgZ2FzCiAgICAweDAzICAg\nICAgICAgICAgICA7IDMgZ2FzCkFERElUSU9OOgogICAgYmVnaW5zdWIgICAg\nICAgICAgOyAxIGdhcwogICAgYWRkICAgICAgICAgICAgICAgOyAzIGdhcwog\nICAgcmV0dXJuc3ViICAgICAgICAgOyAzIGdhcwoKVG90YWwgMTYgZ2FzLgpg\nYGAKVGhlIHNhbWUgY29kZSwgdXNpbmcgSlVNUC4KYGBgClRFU1RfQUREOgog\nICBqdW1wZGVzdCAgICAgICAgICAgOyAxIGdhcwogICAweDAyICAgICAgICAg\nICAgICAgOyAzIGdhcwogICAweDAzICAgICAgICAgICAgICAgOyAzIGdhcwpB\nRERJVElPTjoKICAganVtcGRlc3QgICAgICAgICAgIDsgMSBnYXMKICAgYWRk\nICAgICAgICAgICAgICAgIDsgMyBnYXMKICAgc3dhcDEgICAgICAgICAgICAg\nIDsgMyBnYXMKICAganVtcCAgICAgICAgICAgICAgIDsgOCBnYXMKClRvdGFs\nOiAyNCBnYXMKYGBgClVzaW5nIGBKVU1QYCBjb3N0cyAqKl8yMiAtIDE0ID0g\nOF8qKiBtb3JlIGdhcyB0aGFuIHVzaW5nIGBKVU1QU1VCYC4KCiMjIFNlY3Vy\naXR5IENvbnNpZGVyYXRpb25zCgpUaGVzZSBjaGFuZ2VzIGRvIGludHJvZHVj\nZSBuZXcgZmxvdyBjb250cm9sIGluc3RydWN0aW9ucywgc28gYW55IHNvZnR3\nYXJlIHdoaWNoIGRvZXMgc3RhdGljL2R5bmFtaWMgYW5hbHlzaXMgb2YgRVZN\nIGNvZGUgbmVlZHMgdG8gYmUgbW9kaWZpZWQgYWNjb3JkaW5nbHkuIFRoZSBg\nSlVNUFNVQmAgc2VtYW50aWNzIGFyZSBzaW1pbGFyIHRvIGBKVU1QYCAoYnV0\nIGp1bXBpbmcgdG8gYSBgQkVHSU5TVUJgKSwgd2hlcmVhcyB0aGUgYFJFVFVS\nTlNVQmAgaW5zdHJ1Y3Rpb24gaXMgZGlmZmVyZW50LCBzaW5jZSBpdCBjYW4g\nJ2xhbmQnIG9uIGFueSBvcGNvZGUgKGJ1dCB0aGUgcG9zc2libGUgZGVzdGlu\nYXRpb25zIGNhbiBiZSBzdGF0aWNhbGx5IGluZmVycmVkKS4KClNhZmV0eSBh\nbmQgYW1lbmFiaWxpdHkgdG8gc3RhdGljIGFuYWx5c2lzIG9mIHZhbGlkIHBy\nb2dyYW1zIGFyZSBjb21wYXJhYmxlIHRvIFtFSVAtNjE1XShodHRwczovL2Vp\ncHMuZXRoZXJldW0ub3JnL0VJUFMvZWlwLTYxNSksIGJ1dCB3aXRob3V0IGlt\ncG9zaW5nIHN5bnRhY3RpYyBjb25zdHJhaW50cywgYW5kIHRodXMgd2l0aCBp\nbXByb3ZlZCBsb3ctbGV2ZWwgb3B0aW1pemF0aW9ucyAoYXMgc2hvd24gYWJv\ndmUuKSAgVmFsaWRpdHkgY2FuIGVuc3VyZWQgYnkgZm9sbG93aW5nIHRoZSBy\ndWxlcyBnaXZlbiBpbiB0aGUgbmV4dCBzZWN0aW9uLCBhbmQgcHJvZ3JhbXMg\nY2FuIGJlIHZhbGlkYXRlZCB3aXRoIHRoZSBwcm92aWRlZCBhbGdvcml0aG0u\nICBUaGUgdmFsaWRhdGlvbiBhbGdvcml0aG0gaXMgc2ltcGxlIGFuZCBib3Vu\nZGVkIGJ5IHRoZSBzaXplIG9mIHRoZSBjb2RlLCBhbGxvd2luZyBmb3IgdmFs\naWRhdGlvbiBhdCBjcmVhdGlvbiB0aW1lLiAgQW5kIGNvbXBpbGVycyBjYW4g\nZWFzaWx5IGZvbGxvdyB0aGUgcnVsZXMuCgojIyMgVmFsaWRpdHkKCldlIGRl\nZmluZSBzYWZldHkgaGVyZSBhcyBhdm9pZGluZyBleGNlcHRpb25hbCBoYWx0\naW5nIHN0YXRlcy4KCiMjIyMgRXhjZXB0aW9uYWwgSGFsdGluZyBTdGF0ZXMK\nCl9FeGVjdXRpb25fIGlzIGFzIGRlZmluZWQgaW4gdGhlIFtZZWxsb3cgUGFw\nZXJdKGh0dHBzOi8vZXRoZXJldW0uZ2l0aHViLmlvL3llbGxvd3BhcGVyL3Bh\ncGVyLnBkZikgIGEgc2VxdWVuY2Ugb2YgY2hhbmdlcyB0byB0aGUgRVZNIHN0\nYXRlLiAgVGhlIGNvbmRpdGlvbnMgb24gdmFsaWQgY29kZSBhcmUgcHJlc2Vy\ndmVkIGJ5IHN0YXRlIGNoYW5nZXMuICBBdCBydW50aW1lLCBpZiBleGVjdXRp\nb24gb2YgYW4gaW5zdHJ1Y3Rpb24gd291bGQgdmlvbGF0ZSBhIGNvbmRpdGlv\nbiB0aGUgZXhlY3V0aW9uIGlzIGluIGFuIGV4Y2VwdGlvbmFsIGhhbHRpbmcg\nc3RhdGUuICBUaGUgWWVsbG93IFBhcGVyIGRlZmluZXMgZml2ZSBzdWNoIHN0\nYXRlcy4KMS4gSW5zdWZmaWNpZW50IGdhcwoyLiBNb3JlIHRoYW4gMTAyNCBz\ndGFjayBpdGVtcwozLiBJbnN1ZmZpY2llbnQgc3RhY2sgaXRlbXMKNC4gSW52\nYWxpZCBqdW1wIGRlc3RpbmF0aW9uCjUuIEludmFsaWQgaW5zdHJ1Y3Rpb24K\nCldlIHdvdWxkIGxpa2UgdG8gY29uc2lkZXIgRVZNIGNvZGUgdmFsaWQgaWZm\nIG5vIGV4ZWN1dGlvbiBvZiB0aGUgcHJvZ3JhbSBjYW4gbGVhZCB0byBhbiBl\neGNlcHRpb25hbCBoYWx0aW5nIHN0YXRlLCBidXQgd2UgbXVzdCBiZSBhYmxl\nIHRvIHZhbGlkYXRlIGNvZGUgaW4gbGluZWFyIHRpbWUgdG8gYXZvaWQgZGVu\naWFsIG9mIHNlcnZpY2UgYXR0YWNrcy4gIFNvIGluIHByYWN0aWNlLCB3ZSBj\nYW4gb25seSBwYXJ0aWFsbHkgbWVldCB0aGVzZSByZXF1aXJlbWVudHMuICBP\ndXIgdmFsaWRhdGlvbiBhbGdvcml0aG0gZG9lcyBub3QgY29uc2lkZXIgdGhl\nIGNvZGVzIGRhdGEgYW5kIGNvbXB1dGF0aW9ucywgb25seSBpdHMgY29udHJv\nbCBmbG93IGFuZCBzdGFjayB1c2UuICBUaGlzIG1lYW5zIHdlIHdpbGwgcmVq\nZWN0IHByb2dyYW1zIHdpdGggYW55IGludmFsaWQgY29kZSBwYXRocywgZXZl\nbiBpZiB0aG9zZSBwYXRocyBhcmUgbm90IHJlYWNoYWJsZSBhdCBydW50aW1l\nLiAgIEZ1cnRoZXIsIGNvbmRpdGlvbnMgKjEqIGFuZCAqMiogIEluc3VmZmlj\naWVudCBnYXMgYW5kIHN0YWNrIG92ZXJmbG93ICBtdXN0IGluIGdlbmVyYWwg\nYmUgY2hlY2tlZCBhdCBydW50aW1lLiAgQ29uZGl0aW9ucyAqMyosICo0Kiwg\nYW5kICo1KiBjYW5ub3Qgb2NjdXIgaWYgdGhlIGNvZGUgY29uZm9ybXMgdG8g\ndGhlIGZvbGxvd2luZyBydWxlcy4KCiMjIyMgVGhlIFJ1bGVzCgowLiBgSlVN\nUGAgYW5kIGBKVU1QSWAgYXJlIGRlcHJlY2F0ZWQuCjEuIGBSSlVNUGAgYW5k\nIGBSSlVNUElgIGFkZHJlc3Mgb25seSB2YWxpZCBgSlVNUERFU1RgIGluc3Ry\ndWN0aW9ucy4KMi4gYEpVTVBTVUJgIGFkZHJlc3NlcyBvbmx5IHZhbGlkIGBC\nRUdJTlNVQmAgaW5zdHJ1Y3Rpb25zLgozLiBGb3IgZWFjaCBpbnN0cnVjdGlv\nbiBpbiB0aGUgY29kZSB0aGUgYHN0YWNrIGRlcHRoYCBpcyBhbHdheXMgdGhl\nIHNhbWUuCjQuIFRoZSBgc3RhY2sgZGVwdGhgIGlzIGFsd2F5cyBwb3NpdGl2\nZSBhbmQgYXQgbW9zdCAxMDI0LgoKKlJ1bGUgMCosIGRlcHJlY2F0aW5nIGBK\nVU1QYCBhbmQgYEpVTVBJYCwgZm9yYmlkcyBkeW5hbWljIGp1bXBzLiAgQWJz\nZW50IGR5bmFtaWMganVtcHMgYW5vdGhlciBtZWNoYW5pc20gaXMgbmVlZGVk\nIGZvciBzdWJyb3V0aW5lIHJldHVybnMsIGFzIHByb3ZpZGVkIGhlcmUuIAoK\nSnVtcCBkZXN0aW5hdGlvbnMgYXJlIGN1cnJlbnRseSBjaGVja2VkIGF0IHJ1\nbnRpbWUuICBTdGF0aWMganVtcHMgYWxsb3cgdGhlbSB0byBiZSB2YWxpZGF0\nZWQgYXQgY3JlYXRpb24gdGltZSwgcGVyICpSdWxlIDEqIGFuZCAqUnVsZSAy\nKi4gICpOb3RlOiBWYWxpZCBpbnN0cnVjdGlvbnMgYXJlIG5vdCBwYXJ0IG9m\nIGltbWVkaWF0ZSBkYXRhLioKCkZvciAqUnVsZSAzKiBhbmQgKlJ1bGUgNCog\nd2UgbmVlZCB0byBkZWZpbmUgYHN0YWNrIGRlcHRoYC4gIFRoZSBZZWxsb3cg\nUGFwZXIgaGFzIHRoZSBgc3RhY2sgcG9pbnRlcmAgb3IgYFNQYCBwb2ludGlu\nZyBqdXN0IHBhc3QgdGhlIHRvcCBpdGVtIG9uIHRoZSBgZGF0YSBzdGFja2Au\nICAgV2UgZGVmaW5lIHRoZSBgc3RhY2sgYmFzZWAgYXMgd2hlcmUgdGhlIGBT\nUGAgcG9pbnRlZCBiZWZvcmUgdGhlIG1vc3QgcmVjZW50IGBKVU1QU1VCYCwg\nb3IgYDBgIG9uIHByb2dyYW0gZW50cnkuICBTbyB3ZSBjYW4gZGVmaW5lIHRo\nZSBgc3RhY2sgZGVwdGhgIGFzIHRoZSBudW1iZXIgb2Ygc3RhY2sgZWxlbWVu\ndHMgYmV0d2VlbiB0aGUgY3VycmVudCBgU1BgIGFuZCB0aGUgY3VycmVudCBg\nc3RhY2sgYmFzZWAuICAKCkdpdmVuIG91ciBkZWZpbml0aW9uIG9mIGBzdGFj\nayBkZXB0aGAsICpSdWxlIDMqIGVuc3VyZXMgdGhhdCBjb250cm9sIGZsb3dz\nIHdoaWNoIHJldHVybiB0byB0aGUgc2FtZSBwbGFjZSB3aXRoIGEgZGlmZmVy\nZW50IGBzdGFjayBkZXB0aGAgYXJlIGludmFsaWQuICBUaGVzZSBjYW4gYmUg\nY2F1c2VkIGJ5IGlycmVkdWNpYmxlIHBhdGhzIGxpa2UganVtcGluZyBpbnRv\nIGxvb3BzIGFuZCBzdWJyb3V0aW5lcywgYW5kIGNhbGxpbmcgc3Vicm91dGlu\nZXMgd2l0aCBkaWZmZXJlbnQgbnVtYmVycyBvZiBhcmd1bWVudHMuICBUYWtl\nbiB0b2dldGhlciwgdGhlc2UgcnVsZXMgYWxsb3cgZm9yIGNvZGUgdG8gYmUg\ndmFsaWRhdGVkICBieSBmb2xsb3dpbmcgdGhlIGNvbnRyb2wtZmxvdyBncmFw\naCwgdHJhdmVyc2luZyBlYWNoIGVkZ2Ugb25seSBvbmNlLgoKRmluYWxseSwg\nKlJ1bGUgNCogY2F0Y2hlcyBhbGwgc3RhY2sgdW5kZXJmbG93cy4gIEl0IGFs\nc28gY2F0Y2hlcyBzdGFjayBvdmVyZmxvd3MgaW4gcHJvZ3JhbXMgdGhhdCBv\ndmVyZmxvdyB3aXRob3V0IChvciBiZWZvcmUpIHJlY3Vyc2lvbi4KCiMjIyBW\nYWxpZGF0aW9uCgpUaGUgZm9sbG93aW5nIGlzIGEgcHNldWRvLUdvIGltcGxl\nbWVudGF0aW9uIG9mIGFuIGFsZ29yaXRobSBmb3IgZW5mb3JjaW5nIHByb2dy\nYW0gdmFsaWRpdHkgIGJlaW5nIGEgc3ltYm9saWMgZXhlY3V0aW9uIHRoYXQg\ncmVjdXJzaXZlbHkgdHJhdmVyc2VzIHRoZSBieXRlY29kZSwgZm9sbG93aW5n\nIGl0cyBjb250cm9sIGZsb3cgYW5kIHN0YWNrIHVzZSBhbmQgY2hlY2tpbmcg\nZm9yIHZpb2xhdGlvbnMgb2YgdGhlIHJ1bGVzIGFib3ZlLiAKClRoaXMgYWxn\nb3JpdGhtIHJ1bnMgaW4gdGltZSBlcXVhbCB0byBgTyh2ZXJ0aWNlcyArIGVk\nZ2VzKWAgaW4gdGhlIHByb2dyYW0ncyBjb250cm9sLWZsb3cgZ3JhcGgsIHdo\nZXJlIHZlcnRpY2VzIHJlcHJlc2VudCBjb250cm9sLWZsb3cgaW5zdHJ1Y3Rp\nb25zIGFuZCB0aGUgZWRnZXMgcmVwcmVzZW50IGJhc2ljIGJsb2NrcyAgdGh1\ncyB0aGUgYWxnb3JpdGhtIHRha2VzIHRpbWUgcHJvcG9ydGlvbmFsIHRvIHRo\nZSBzaXplIG9mIHRoZSBieXRlY29kZS4KCihGb3Igc2ltcGxpY2l0eSB3ZSBh\nc3N1bWUgYW4gYGFkdmFuY2VfcGMoKWAgcm91dGluZSB0byBza2lwIGltbWVk\naWF0ZSBkYXRhIGFuZCBgcmVtb3ZlZF9pdGVtcygpYCBhbmQgYGFkZGVkX2l0\nZW1zKClgIGZ1bmN0aW9ucyB0aGF0IHJldHVybiB0aGUgZWZmZWN0IG9mIGVh\nY2ggaW5zdHJ1Y3Rpb24gb24gdGhlIHN0YWNrLiAgV2UgYWxzbyBkb24ndCBz\ncGVjaWZ5IGBKVU1QVEFCTEVgICB3aGljaCBhbW91bnRzIHRvIGEgbG9vcCBv\ndmVyIGBSSlVNUGAuKQpgYGAKICAgdmFyIGJ5dGVjb2RlIFtdYnl0ZQogICB2\nYXIgc3RhY2tfZGVwdGggW11pbnQKICAgdmFyIFNQIDo9IDAKCiAgIGZ1bmMg\ndmFsaWRhdGUoUEMgOj0wKSBib29sZWFuIHsKICAgICAgLy8gdHJhdmVyc2Ug\nY29kZSBzZXF1ZW50aWFsbHkKICAgICAgLy8gcmVjdXJzZSBmb3Igc3Vicm91\ndGluZXMgYW5kIGNvbmRpdGlvbmFsIGp1bXBzCiAgICAgIHdoaWxlIHRydWUg\newogICAgICAgICBpbnN0cnVjdGlvbiA9IGJ5dGVjb2RlW1BDXQogICAgICAg\nICBpZiBpc19pbnZhbGlkKGluc3RydWN0aW9uKSB7CiAgICAgICAgICAgIHJl\ndHVybiBmYWxzZTsKICAgICAgICAgfQoKICAgICAgICAgLy8gc3RhY2sgZGVw\ndGggbXVzdCBiZSB0aGUgc2FtZQogICAgICAgICBpZiBTUCAhPSBzdGFja19k\nZXB0aFtQQ10gewogICAgICAgICAgICAgICByZXR1cm4gZmFsc2UKICAgICAg\nICAgfQogICAgICAgICAvLyBpZiBzdGFjayBkZXB0aCBub24temVybyB3ZSBo\nYXZlIGJlZW4gaGVyZSBiZWZvcmUgCiAgICAgICAgIC8vIHJldHVybiB0cnVl\nIHRvIGJyZWFrIGN5Y2xlIGluIGNvbnRyb2wgZmxvdyBncmFwaAogICAgICAg\nICBpZiBzdGFja19kZXB0aFtQQ10gIT0gMCB7IAogICAgICAgICAgICByZXR1\ncm4gdHJ1ZQogICAgICAgICB9CiAgICAgICAgIHN0YWNrX2RlcHRoW1BDXSA9\nIFNQCgogICAgICAgICAvLyBlZmZlY3Qgb2YgaW5zdHJ1Y3Rpb24gb24gc3Rh\nY2sKICAgICAgICAgU1AgLT0gcmVtb3ZlZF9pdGVtcyhpbnN0cnVjdGlvbikK\nICAgICAgICAgU1AgKz0gYWRkZWRfaXRlbXMoaW5zdHJ1Y3Rpb24pCiAgICAg\nICAgIGlmIFNQIDwgMCB8fCAxMDI0IDwgU1AgewogICAgICAgICAgICAgcmV0\ndXJuIGZhbHNlCiAgICAgICAgIH0KCiAgICAgICAgIC8vIHN1Y2Nlc3NmdWwg\ndmFsaWRhdGlvbiBvZiBwYXRoCiAgICAgICAgIGlmIGluc3RydWN0aW9uID09\nIFNUT1AsIFJFVFVSTiwgb3IgU1VJQ0lERSB7CiAgICAgICAgICAgICByZXR1\ncm4gdHJ1ZQogICAgICAgICB9CgogICAgICAgICBpZiBpbnN0cnVjdGlvbiA9\nPSBSSlVNUCB7CgogICAgICAgICAgICAgLy8gY2hlY2sgZm9yIHZhbGlkIGRl\nc3RpbmF0aW9uCiAgICAgICAgICAgICBqdW1wZGVzdCA9ICpQQywgUEMrKywg\nanVtcGRlc3QgPDwgOCwganVtcGRlc3QgPSAqUEMKICAgICAgICAgICAgIGlm\nIGJ5dGVjb2RlW2p1bXBkZXN0XSAhPSBKVU1QREVTVCB7CiAgICAgICAgICAg\nICAgICAgcmV0dXJuIGZhbHNlCiAgICAgICAgICAgICB9CgogICAgICAgICAg\nICAgLy8gcmVzZXQgUEMgdG8gZGVzdGluYXRpb24gb2YganVtcCAKICAgICAg\nICAgICAgIFBDICs9IGp1bXBkZXN0CiAgICAgICAgICAgICBjb250aW51ZQog\nICAgICAgICB9CiAgICAgICAgIGlmIGluc3RydWN0aW9uID09IFJKVU1QSSB7\nCgogICAgICAgICAgICAgLy8gY2hlY2sgZm9yIHZhbGlkIGRlc3RpbmF0aW9u\nCiAgICAgICAgICAgICBqdW1wZGVzdCA9ICpQQywgUEMrKywganVtcGRlc3Qg\nPDwgOCwganVtcGRlc3QgPSAqUEMKICAgICAgICAgICAgIGlmIGJ5dGVjb2Rl\nW2p1bXBkZXN0XSAhPSBKVU1QREVTVCB7CiAgICAgICAgICAgICAgICAgcmV0\ndXJuIGZhbHNlCiAgICAgICAgICAgICB9CgogICAgICAgICAgICAgLy8gcmVz\nZXQgUEMgdG8gZGVzdGluYXRpb24gb2YganVtcCAKICAgICAgICAgICAgIFBD\nICs9IGp1bXBkZXN0CgogICAgICAgICAgICAgLy8gcmVjdXJzZSB0byBqdW1w\nIHRvIGNvZGUgdG8gdmFsaWRhdGUgCiAgICAgICAgICAgICBpZiAhdmFsaWRh\ndGUoc3RhY2tbU1BdKSkgewogICAgICAgICAgICAgICAgIHJldHVybiBmYWxz\nZQogICAgICAgICAgICAgfQogICAgICAgICAgICAgY29udGludWUgCiAgICAg\nICAgIH0KICAgICAgICAgaWYgaW5zdHJ1Y3Rpb24gPT0gSlVNUFNVQiB7Cgog\nICAgICAgICAgICAgLy8gY2hlY2sgZm9yIHZhbGlkIGRlc3RpbmF0aW9uCiAg\nICAgICAgICAgICBqdW1wZGVzdCA9ICpQQywgUEMrKywganVtcGRlc3QgPDwg\nOAogICAgICAgICAgICAgaWYgYnl0ZWNvZGVbanVtcGRlc3RdICE9IEJFR0lO\nU1VCIHsKICAgICAgICAgICAgICAgICByZXR1cm4gZmFsc2UKICAgICAgICAg\nICAgIH0KCiAgICAgICAgICAgICAvLyByZWN1cnNlIHRvIGp1bXAgdG8gY29k\nZSB0byB2YWxpZGF0ZQogICAgICAgICAgICAgcHJldlNQID0gU1AKICAgICAg\nICAgICAgIGRlcHRoID0gU1AgLSBwcmV2U1AKICAgICAgICAgICAgIFNQID0g\nZGVwdGgKICAgICAgICAgICAgIGlmICAhdmFsaWRhdGUoc3RhY2tbU1BdKzEp\nKSB7CiAgICAgICAgICAgICAgICAgcmV0dXJuIGZhbHNlCiAgICAgICAgICAg\nICB9CiAgICAgICAgICAgICBTUCA9IHByZXZTUCAtIGRlcHRoICsgU1AKICAg\nICAgICAgICAgIFBDID0gcHJldlBDCiAgICAgICAgICAgICBjb250aW51ZQog\nICAgICAgICB9CiAgICAgICAgIGlmIGluc3RydWN0aW9uID09IFJFVFVSTlNV\nQiB7CiAgICAgICAgICAgICBQQyA9IHByZXZQQwogICAgICAgICAgICAgcmV0\ndXJuIHRydWUKICAgICAgICAgfQoKICAgICAgICAgLy8gYWR2YW5jZSBQQyBh\nY2NvcmRpbmcgdG8gaW5zdHJ1Y3Rpb24KICAgICAgICAgUEMgPSBhZHZhbmNl\nX3BjKFBDLCBpbnN0cnVjdGlvbikKICAgICAgfSAgICAKICAgfQpgYGAKCl9O\nb3RlOiBUaGVzZSBzYWZldHkgZ3VhcmFudGVlcyBhcmUgYWxzbyBtYWRlIGlu\nIFtFSVAtNjE1XShodHRwczovL2VpcHMuZXRoZXJldW0ub3JnL0VJUFMvZWlw\nLTYxNSkpLCB3aXRoIHNpbWlsYXIgcnVsZXMgYW5kIGEgc2ltaWxhciB2YWxp\nZGF0aW9uIGFsZ29yaXRobS5fCgojIyBUZXN0IENhc2VzCgojIyMgU2ltcGxl\nIHJvdXRpbmUKClRoaXMgc2hvdWxkIGp1bXAgaW50byBhIHN1YnJvdXRpbmUs\nIGJhY2sgb3V0IGFuZCBzdG9wLgoKQnl0ZWNvZGU6IGAweDYwMDQ1ZTAwNWM1\nZGAgKGBQVVNIMSAweDA0LCBKVU1QU1VCLCBTVE9QLCBCRUdJTlNVQiwgUkVU\nVVJOU1VCYCkKCnwgIFBjICAgfCAgICAgIE9wICAgICB8IENvc3QgfCAgIFN0\nYWNrICAgfCAgIFJTdGFjayAgfAp8LS0tLS0tLXwtLS0tLS0tLS0tLS0tfC0t\nLS0tLXwtLS0tLS0tLS0tLXwtLS0tLS0tLS0tLXwKfCAgICAwICB8ICAgIEpV\nTVBTVUIgIHwgICAgNSB8ICAgICAgICBbXSB8ICAgICAgICBbXSB8CnwgICAg\nMyAgfCAgUkVUVVJOU1VCICB8ICAgIDUgfCAgICAgICAgW10gfCAgICAgICBb\nMF0gfAp8ICAgIDQgIHwgICAgICAgU1RPUCAgfCAgICAwIHwgICAgICAgIFtd\nIHwgICAgICAgIFtdIHwKCk91dHB1dDogMHgKQ29uc3VtZWQgZ2FzOiBgMTBg\nCgojIyMgVHdvIGxldmVscyBvZiBzdWJyb3V0aW5lcwoKVGhpcyBzaG91bGQg\nZXhlY3V0ZSBmaW5lLCBnb2luZyBpbnRvIG9uZSB0d28gZGVwdGhzIG9mIHN1\nYnJvdXRpbmVzCgpCeXRlY29kZTogYDB4NjgwMDAwMDAwMDAwMDAwMDAwMGM1\nZTAwNWM2MDExNWU1ZDVjNWRgIChgUFVTSDkgMHgwMDAwMDAwMDAwMDAwMDAw\nMGMsIEpVTVBTVUIsIFNUT1AsIEJFR0lOU1VCLCBQVVNIMSAweDExLCBKVU1Q\nU1VCLCBSRVRVUk5TVUIsIEJFR0lOU1VCLCBSRVRVUk5TVUJgKQoKfCAgUGMg\nICB8ICAgICAgT3AgICAgIHwgQ29zdCB8ICAgU3RhY2sgICB8ICAgUlN0YWNr\nICB8CnwtLS0tLS0tfC0tLS0tLS0tLS0tLS18LS0tLS0tfC0tLS0tLS0tLS0t\nfC0tLS0tLS0tLS0tfAp8ICAgIDAgIHwgICAgSlVNUFNVQiAgfCAgICA1IHwg\nICAgICAgIFtdIHwgICAgICAgIFtdIHwKfCAgICAzICB8ICAgIEpVTVBTVUIg\nIHwgICAgNSB8ICAgICAgICBbXSB8ICAgICAgIFswXSB8CnwgICAgNCAgfCAg\nUkVUVVJOU1VCICB8ICAgIDUgfCAgICAgICAgW10gfCAgICAgWzAsM10gfAp8\nICAgIDUgIHwgIFJFVFVSTlNVQiAgfCAgICA1IHwgICAgICAgIFtdIHwgICAg\nICAgWzNdIHwKfCAgICA2ICB8ICAgICAgIFNUT1AgIHwgICAgMCB8ICAgICAg\nICBbXSB8ICAgICAgICBbXSB8CgpDb25zdW1lZCBnYXM6IGAyMGAKCiMjIyBG\nYWlsdXJlIDE6IGludmFsaWQganVtcAoKVGhpcyBzaG91bGQgZmFpbCwgc2lu\nY2UgdGhlIGdpdmVuIGxvY2F0aW9uIGlzIG91dHNpZGUgb2YgdGhlIGNvZGUt\ncmFuZ2UuIFRoZSBjb2RlIGlzIHRoZSBzYW1lIGFzIHByZXZpb3VzIGV4YW1w\nbGUsIApleGNlcHQgdGhhdCB0aGUgcHVzaGVkIGxvY2F0aW9uIGlzIGAweDAx\nMDAwMDAwMDAwMDAwMDAwY2AgaW5zdGVhZCBvZiBgMHgwY2AuCgpCeXRlY29k\nZTogKGBQVVNIOSAweDAxMDAwMDAwMDAwMDAwMDAwYywgSlVNUFNVQiwgYDB4\nNjgwMTAwMDAwMDAwMDAwMDAwMGM1ZTAwNWM2MDExNWU1ZDVjNWRgLCBTVE9Q\nLCBCRUdJTlNVQiwgUFVTSDEgMHgxMSwgSlVNUFNVQiwgUkVUVVJOU1VCLCBC\nRUdJTlNVQiwgUkVUVVJOU1VCYCkKCnwgIFBjICAgfCAgICAgIE9wICAgICB8\nIENvc3QgfCAgIFN0YWNrICAgfCAgIFJTdGFjayAgfAp8LS0tLS0tLXwtLS0t\nLS0tLS0tLS0tfC0tLS0tLXwtLS0tLS0tLS0tLXwtLS0tLS0tLS0tLXwKfCAg\nICAwICB8ICAgIEpVTVBTVUIgIHwgICAxMCB8WzE4NDQ2NzQ0MDczNzA5NTUx\nNjI4XSB8ICAgICAgICBbXSB8CgpgYGAKRXJyb3I6IGF0IHBjPTEwLCBvcD1K\nVU1QU1VCOiBpbnZhbGlkIGp1bXAgZGVzdGluYXRpb24KYGBgCgojIyMgRmFp\nbHVyZSAyOiBzaGFsbG93IGByZXR1cm4gc3RhY2tgCgpUaGlzIHNob3VsZCBm\nYWlsIGF0IGZpcnN0IG9wY29kZSwgZHVlIHRvIHNoYWxsb3cgYHJldHVybl9z\ndGFja2AKCkJ5dGVjb2RlOiBgMHg1ZDU4NThgIChgUkVUVVJOU1VCLCBQQywg\nUENgKQoKfCAgUGMgICB8ICAgICAgT3AgICAgIHwgQ29zdCB8ICAgU3RhY2sg\nICB8ICAgUlN0YWNrICB8CnwtLS0tLS0tfC0tLS0tLS0tLS0tLS18LS0tLS0t\nfC0tLS0tLS0tLS0tfC0tLS0tLS0tLS0tfAp8ICAgIDAgIHwgIFJFVFVSTlNV\nQiAgfCAgICA1IHwgICAgICAgIFtdIHwgICAgICAgIFtdIHwKCmBgYApFcnJv\ncjogYXQgcGM9MCwgb3A9UkVUVVJOU1VCOiBpbnZhbGlkIHJldHN1YgpgYGAK\nCiMjIyBTdWJyb3V0aW5lIGF0IGVuZCBvZiBjb2RlCgpJbiB0aGlzIGV4YW1w\nbGUuIHRoZSBKVU1QU1VCIGlzIG9uIHRoZSBsYXN0IGJ5dGUgb2YgY29kZS4g\nV2hlbiB0aGUgc3Vicm91dGluZSByZXR1cm5zLCBpdCBzaG91bGQgaGl0IHRo\nZSAndmlydHVhbCBzdG9wJyBfYWZ0ZXJfIHRoZSBieXRlY29kZSwgYW5kIG5v\ndCBleGl0IHdpdGggZXJyb3IKCkJ5dGVjb2RlOiBgMHg2MDA1NTY1YzVkNWI2\nMDAzNWVgIChgUFVTSDEgMHgwNSwgSlVNUCwgQkVHSU5TVUIsIFJFVFVSTlNV\nQiwgSlVNUERFU1QsIFBVU0gxIDB4MDMsIEpVTVBTVUJgKQoKfCAgUGMgICB8\nICAgICAgT3AgICAgIHwgQ29zdCB8ICAgU3RhY2sgICB8ICAgUlN0YWNrICB8\nCnwtLS0tLS0tfC0tLS0tLS0tLS0tLS18LS0tLS0tfC0tLS0tLS0tLS0tfC0t\nLS0tLS0tLS0tfAp8ICAgIDAgIHwgICAgICBQVVNIMSAgfCAgICAzIHwgICAg\nICAgIFtdIHwgICAgICAgIFtdIHwKfCAgICAyICB8ICAgICAgIEpVTVAgIHwg\nICAgOCB8ICAgICAgIFs1XSB8ICAgICAgICBbXSB8CnwgICAgNSAgfCAgIEpV\nTVBERVNUICB8ICAgIDEgfCAgICAgICAgW10gfCAgICAgICAgW10gfAp8ICAg\nIDYgIHwgICAgSlVNUFNVQiAgfCAgICA1IHwgICAgICAgIFtdIHwgICAgICAg\nIFtdIHwKfCAgICAyICB8ICBSRVRVUk5TVUIgIHwgICAgNSB8ICAgICAgICBb\nXSB8ICAgICAgIFsyXSB8CnwgICAgNyAgfCAgICAgICBTVE9QICB8ICAgIDAg\nfCAgICAgICAgW10gfCAgICAgICAgW10gfAoKQ29uc3VtZWQgZ2FzOiBgMzBg\nCg==\n",
+        "encoding": "base64",
+        "_links": {
+          "self": "https://api.github.com/repos/ethereum/EIPs/contents/EIPS/eip-2315.md?ref=a3f47c7834be6e5712b165155ab2211d9cbf0f76",
+          "git": "https://api.github.com/repos/ethereum/EIPs/git/blobs/b0b8cf8dd166ba278d05af9410cb95d1191e6f4d",
+          "html": "https://github.com/ethereum/EIPs/blob/a3f47c7834be6e5712b165155ab2211d9cbf0f76/EIPS/eip-2315.md"
+        }
+      }
+    }
+  },
+  {
+    "req": {
+      "url": "https://api.github.com/search/users?q=greg%40colvin.org",
+      "method": "GET"
+    },
+    "res": {
+      "status": 200,
+      "data": {
+        "total_count": 1,
+        "incomplete_results": false,
+        "items": [
+          {
+            "login": "gcolvin",
+            "id": 16827129,
+            "node_id": "MDQ6VXNlcjE2ODI3MTI5",
+            "avatar_url": "https://avatars.githubusercontent.com/u/16827129?v=4",
+            "gravatar_id": "",
+            "url": "https://api.github.com/users/gcolvin",
+            "html_url": "https://github.com/gcolvin",
+            "followers_url": "https://api.github.com/users/gcolvin/followers",
+            "following_url": "https://api.github.com/users/gcolvin/following{/other_user}",
+            "gists_url": "https://api.github.com/users/gcolvin/gists{/gist_id}",
+            "starred_url": "https://api.github.com/users/gcolvin/starred{/owner}{/repo}",
+            "subscriptions_url": "https://api.github.com/users/gcolvin/subscriptions",
+            "organizations_url": "https://api.github.com/users/gcolvin/orgs",
+            "repos_url": "https://api.github.com/users/gcolvin/repos",
+            "events_url": "https://api.github.com/users/gcolvin/events{/privacy}",
+            "received_events_url": "https://api.github.com/users/gcolvin/received_events",
+            "type": "User",
+            "site_admin": false,
+            "score": 1
+          }
+        ]
+      }
+    }
+  },
+  {
+    "req": {
+      "url": "https://api.github.com/repos/ethereum/EIPs/pulls/3767/reviews",
+      "method": "GET"
+    },
+    "res": {
+      "status": 200,
+      "data": [
+        {
+          "id": 741014342,
+          "node_id": "MDE3OlB1bGxSZXF1ZXN0UmV2aWV3NzQxMDE0MzQy",
+          "user": {
+            "login": "MicahZoltu",
+            "id": 886059,
+            "node_id": "MDQ6VXNlcjg4NjA1OQ==",
+            "avatar_url": "https://avatars.githubusercontent.com/u/886059?u=408de357d90aae9b9ffc956970b8fd4eec642060&v=4",
+            "gravatar_id": "",
+            "url": "https://api.github.com/users/MicahZoltu",
+            "html_url": "https://github.com/MicahZoltu",
+            "followers_url": "https://api.github.com/users/MicahZoltu/followers",
+            "following_url": "https://api.github.com/users/MicahZoltu/following{/other_user}",
+            "gists_url": "https://api.github.com/users/MicahZoltu/gists{/gist_id}",
+            "starred_url": "https://api.github.com/users/MicahZoltu/starred{/owner}{/repo}",
+            "subscriptions_url": "https://api.github.com/users/MicahZoltu/subscriptions",
+            "organizations_url": "https://api.github.com/users/MicahZoltu/orgs",
+            "repos_url": "https://api.github.com/users/MicahZoltu/repos",
+            "events_url": "https://api.github.com/users/MicahZoltu/events{/privacy}",
+            "received_events_url": "https://api.github.com/users/MicahZoltu/received_events",
+            "type": "User",
+            "site_admin": false
+          },
+          "body": "All opcode references in the specification must be accompanied by their respective number with the format `REVERT (0xfe)`.  You can choose to only use this style for the first reference in the specification section, or for all of them, but it must be included in the first reference to each opcode.\r\n\r\n----\r\n\r\nFor the new opcodes (BEGINSUB, JUMPSUB, RETURNSUB), I recommend just picking some unused ones for now.  We can always change them prior to final, but having a straw man for people to argue against has value in aiding discussion, prototype implementation, etc.\r\n\r\n----\r\n\r\nEIP dependencies should be included in the frontmatter with:\r\n```md\r\nrequires: 3540\r\n```\r\n\r\n----\r\n\r\n`[EVM Object Format (EOF)](https://eips.ethereum.org/EIPS/eip-3540)` needs to change to `[EIP-3540](./eip-3540.md)`.  I wouldn't be opposed to `[EIP-3540: EVM Object Format (EOF)](./eip-3540.md)` either if you like having the title present (I do think the title adds value).  The key is that the link should be relative, and the EIP number should be included in the link title in its proper format (`EIP-####`).\r\n\r\n----\r\n\r\nExternal link to closed EVMOne pull request should be removed.  If this EIP depends on a standardized change, then that should be an EIP itself.  If the EVMOne change is just an example of a necessary change that clients will need to make, then I recommend briefly describing the necessary change here.\r\n\r\n----\r\n\r\nReference to 615 in the Rationale and 3337 in the Backward compatibility should both be removed, or those EIPs should be moved to Review prior to this EIP moving to review.  I recommend just removing the links though, as neither add meaningful value in a world where they don't make it to final (which is the world we should be authoring in if they remain in stages lower than this EIP).\r\n\r\n----\r\n\r\nThe Implementation section is no longer a standard EIP section.  It was replaced with the optional Reference Implementation section which should contain either an inline implementation or pseudocode implementation, or a link to `../assets/3767/*` which contains a reference implementation.  If you want to track implementation progress later in the process, https://github.com/ethereum/execution-specs is the appropriate place to do so.\r\n\r\n----\r\n\r\nThe Costs and Codes section should be a subsection of the Specification.  It is impossible to implement this EIP in a consensus compatible way without gas costs, so it should go there.  Also, EIPs should not \"suggest\", they should assert.  My recommendation is to just put the gas costs in the ## Specification section directly along with each opcode's definition and then in the ## Rationale section you can describe your reasoning and methodology for each.\r\n\r\n----\r\n\r\nTODO, Appendix, and References sections are not standard EIP sections and should be removed.  EIPs are not the appropriate place to discuss future works or pass around acknowledgements.  They should be purely technical standards.  I strongly encourage all EIP authors to draft a separate document somewhere like hackmd or similar that tracks things that aren't explicitly related to the standard.  This includes collections of links, references, various external implementations, etc.",
+          "state": "CHANGES_REQUESTED",
+          "html_url": "https://github.com/ethereum/EIPs/pull/3767#pullrequestreview-741014342",
+          "pull_request_url": "https://api.github.com/repos/ethereum/EIPs/pulls/3767",
+          "author_association": "MEMBER",
+          "_links": {
+            "html": {
+              "href": "https://github.com/ethereum/EIPs/pull/3767#pullrequestreview-741014342"
+            },
+            "pull_request": {
+              "href": "https://api.github.com/repos/ethereum/EIPs/pulls/3767"
+            }
+          },
+          "submitted_at": "2021-08-28T11:11:56Z",
+          "commit_id": "cb6a602dcee5e6b15c60d7d298ab991062a73129"
+        },
+        {
+          "id": 741031768,
+          "node_id": "MDE3OlB1bGxSZXF1ZXN0UmV2aWV3NzQxMDMxNzY4",
+          "user": {
+            "login": "Tkb68",
+            "id": 88061386,
+            "node_id": "MDQ6VXNlcjg4MDYxMzg2",
+            "avatar_url": "https://avatars.githubusercontent.com/u/88061386?v=4",
+            "gravatar_id": "",
+            "url": "https://api.github.com/users/Tkb68",
+            "html_url": "https://github.com/Tkb68",
+            "followers_url": "https://api.github.com/users/Tkb68/followers",
+            "following_url": "https://api.github.com/users/Tkb68/following{/other_user}",
+            "gists_url": "https://api.github.com/users/Tkb68/gists{/gist_id}",
+            "starred_url": "https://api.github.com/users/Tkb68/starred{/owner}{/repo}",
+            "subscriptions_url": "https://api.github.com/users/Tkb68/subscriptions",
+            "organizations_url": "https://api.github.com/users/Tkb68/orgs",
+            "repos_url": "https://api.github.com/users/Tkb68/repos",
+            "events_url": "https://api.github.com/users/Tkb68/events{/privacy}",
+            "received_events_url": "https://api.github.com/users/Tkb68/received_events",
+            "type": "User",
+            "site_admin": false
+          },
+          "body": "",
+          "state": "APPROVED",
+          "html_url": "https://github.com/ethereum/EIPs/pull/3767#pullrequestreview-741031768",
+          "pull_request_url": "https://api.github.com/repos/ethereum/EIPs/pulls/3767",
+          "author_association": "NONE",
+          "_links": {
+            "html": {
+              "href": "https://github.com/ethereum/EIPs/pull/3767#pullrequestreview-741031768"
+            },
+            "pull_request": {
+              "href": "https://api.github.com/repos/ethereum/EIPs/pulls/3767"
+            }
+          },
+          "submitted_at": "2021-08-28T14:41:30Z",
+          "commit_id": "8c93cecc2db4e879c5791d68dd734a767f425193"
+        },
+        {
+          "id": 741044969,
+          "node_id": "MDE3OlB1bGxSZXF1ZXN0UmV2aWV3NzQxMDQ0OTY5",
+          "user": {
+            "login": "Tkb68",
+            "id": 88061386,
+            "node_id": "MDQ6VXNlcjg4MDYxMzg2",
+            "avatar_url": "https://avatars.githubusercontent.com/u/88061386?v=4",
+            "gravatar_id": "",
+            "url": "https://api.github.com/users/Tkb68",
+            "html_url": "https://github.com/Tkb68",
+            "followers_url": "https://api.github.com/users/Tkb68/followers",
+            "following_url": "https://api.github.com/users/Tkb68/following{/other_user}",
+            "gists_url": "https://api.github.com/users/Tkb68/gists{/gist_id}",
+            "starred_url": "https://api.github.com/users/Tkb68/starred{/owner}{/repo}",
+            "subscriptions_url": "https://api.github.com/users/Tkb68/subscriptions",
+            "organizations_url": "https://api.github.com/users/Tkb68/orgs",
+            "repos_url": "https://api.github.com/users/Tkb68/repos",
+            "events_url": "https://api.github.com/users/Tkb68/events{/privacy}",
+            "received_events_url": "https://api.github.com/users/Tkb68/received_events",
+            "type": "User",
+            "site_admin": false
+          },
+          "body": "",
+          "state": "APPROVED",
+          "html_url": "https://github.com/ethereum/EIPs/pull/3767#pullrequestreview-741044969",
+          "pull_request_url": "https://api.github.com/repos/ethereum/EIPs/pulls/3767",
+          "author_association": "NONE",
+          "_links": {
+            "html": {
+              "href": "https://github.com/ethereum/EIPs/pull/3767#pullrequestreview-741044969"
+            },
+            "pull_request": {
+              "href": "https://api.github.com/repos/ethereum/EIPs/pulls/3767"
+            }
+          },
+          "submitted_at": "2021-08-28T17:49:55Z",
+          "commit_id": "955d13a7e47c605e8933a0fd3cba386f11e2b600"
+        },
+        {
+          "id": 741044997,
+          "node_id": "MDE3OlB1bGxSZXF1ZXN0UmV2aWV3NzQxMDQ0OTk3",
+          "user": {
+            "login": "Tkb68",
+            "id": 88061386,
+            "node_id": "MDQ6VXNlcjg4MDYxMzg2",
+            "avatar_url": "https://avatars.githubusercontent.com/u/88061386?v=4",
+            "gravatar_id": "",
+            "url": "https://api.github.com/users/Tkb68",
+            "html_url": "https://github.com/Tkb68",
+            "followers_url": "https://api.github.com/users/Tkb68/followers",
+            "following_url": "https://api.github.com/users/Tkb68/following{/other_user}",
+            "gists_url": "https://api.github.com/users/Tkb68/gists{/gist_id}",
+            "starred_url": "https://api.github.com/users/Tkb68/starred{/owner}{/repo}",
+            "subscriptions_url": "https://api.github.com/users/Tkb68/subscriptions",
+            "organizations_url": "https://api.github.com/users/Tkb68/orgs",
+            "repos_url": "https://api.github.com/users/Tkb68/repos",
+            "events_url": "https://api.github.com/users/Tkb68/events{/privacy}",
+            "received_events_url": "https://api.github.com/users/Tkb68/received_events",
+            "type": "User",
+            "site_admin": false
+          },
+          "body": "#3767 ",
+          "state": "COMMENTED",
+          "html_url": "https://github.com/ethereum/EIPs/pull/3767#pullrequestreview-741044997",
+          "pull_request_url": "https://api.github.com/repos/ethereum/EIPs/pulls/3767",
+          "author_association": "NONE",
+          "_links": {
+            "html": {
+              "href": "https://github.com/ethereum/EIPs/pull/3767#pullrequestreview-741044997"
+            },
+            "pull_request": {
+              "href": "https://api.github.com/repos/ethereum/EIPs/pulls/3767"
+            }
+          },
+          "submitted_at": "2021-08-28T17:50:18Z",
+          "commit_id": "955d13a7e47c605e8933a0fd3cba386f11e2b600"
+        }
+      ]
+    }
+  }
+]

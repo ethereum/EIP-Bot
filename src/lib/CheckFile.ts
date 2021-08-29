@@ -63,7 +63,7 @@ const getParsedContent = async (
   filename: string,
   sha: string
 ): Promise<ParsedContent> => {
-  const Github = getOctokit(GITHUB_TOKEN);
+  const Github = getOctokit(GITHUB_TOKEN).rest;
   const decodeData = (data: ContentFile) => {
     const encoding = data.encoding;
     requireEncoding(encoding, filename);
@@ -105,7 +105,7 @@ const getAuthors = async (rawAuthorList?: string) => {
   const findUserByEmail = async (
     email: string
   ): Promise<string | undefined> => {
-    const Github = getOctokit(GITHUB_TOKEN);
+    const Github = getOctokit(GITHUB_TOKEN).rest;
     const { data: results } = await Github.search.users({ q: email });
     if (results.total_count > 0 && results.items[0] !== undefined) {
       return "@" + results.items[0].login;

@@ -3,8 +3,8 @@ import { EipStatus } from "./Constants";
 import { Endpoints } from "@octokit/types";
 import { FrontMatterResult } from "front-matter";
 
-export type Github = ReturnType<typeof getOctokit>;
-const Github = getOctokit("fake");
+export type Github = ReturnType<typeof getOctokit>["rest"];
+const Github = getOctokit("fake").rest;
 
 export type UnPromisify<T> = T extends Promise<infer U> ? U : T;
 type UnArrayify<T> = T extends (infer U)[] ? U : T;

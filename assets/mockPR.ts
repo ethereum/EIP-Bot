@@ -1,6 +1,8 @@
+import { getOctokit } from "@actions/github";
 import nock from "nock";
-import { NodeEnvs, PR } from "src/utils";
+import { GITHUB_TOKEN, MockMethods, MockRecord, NodeEnvs, PR } from "src/utils";
 import MockRecords, { assertSavedRecord, SavedRecord } from "./records";
+import * as fs from "fs";
 
 const baseUrl = "https://api.github.com";
 const scope = nock(baseUrl).persist();
@@ -57,8 +59,21 @@ export const __MAIN_MOCK__ = async (mockEnv?: NodeJS.ProcessEnv) => {
 
   // by instantiating after context and env are custom set,
   // it allows for a custom environment that's setup programmatically
-  const main = require("src/main").main;
-  return await main();
+  const main = (await import("src/main")).main;
+
+  // only want to run this once to make things easier
+  try {
+    return await main();
+  } catch (err) {
+    const url = err?.request?.url;
+    const method = err?.request?.method;
+
+    if (url && method) {
+      await fetchAndCreateRecord(url, method);
+    } else {
+      throw err;
+    }
+  }
 };
 
 export const setMockContext = (mockEnv?: NodeJS.ProcessEnv) => {
@@ -97,4 +112,42 @@ export const setMockContext = (mockEnv?: NodeJS.ProcessEnv) => {
     full_name: `${env.REPO_OWNER}/${env.REPO_NAME}`
   };
   context.eventName = env.EVENT_TYPE;
+};
+
+const fetchAndCreateRecord = async (url: string, method: MockMethods) => {
+  console.error("failed request", method, url, "\nmocking requet...");
+
+  nock.cleanAll();
+  nock.enableNetConnect();
+  const github = getOctokit(GITHUB_TOKEN).request;
+  const res = await github({
+    method,
+    url
+  }).catch((err) => {
+    nock.disableNetConnect();
+    throw err;
+  });
+  console.log("successfully fetched data");
+  nock.disableNetConnect();
+
+  const fileName = `records/${process.env.PULL_NUMBER}.json`;
+  const mockedRecord: MockRecord[] = (await import("./" + fileName)).default;
+  mockedRecord.push({
+    req: {
+      url,
+      method
+    },
+    res: {
+      status: res.status,
+      data: res.data
+    }
+  });
+
+  fs.writeFile(
+    process.cwd() + "/assets/" + fileName,
+    JSON.stringify(mockedRecord, null, 2),
+    () => {
+      console.log("wrote file");
+    }
+  );
 };

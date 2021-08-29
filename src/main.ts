@@ -199,7 +199,8 @@ export const main = async () => {
     return await _main_();
   } catch (error) {
     console.log(`An Exception Occured While Linting: \n${error}`);
-    return setFailed(error.message);
+    setFailed(error.message);
+    throw error
   }
 };
 

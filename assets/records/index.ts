@@ -1,7 +1,9 @@
+import { MockRecord } from "src/utils";
 import PR3670 from "./3670";
 import PR3596 from "./3596";
 import PR3654_1 from "./3654/editorApproved";
 import PR3654_2 from "./3654/noEditorApproval";
+import PR3767 from "./3767.json";
 
 export enum SavedRecord {
   /**
@@ -15,7 +17,7 @@ export enum SavedRecord {
    * at hand. So if an editor is an author they won't be consider an editor for that test.
    * */
   PR3670 = "3670",
-  PR3595 = "3596",
+  PR3596 = "3596",
   /** **SHOULD PASS**
    *
    *  Summary: wasn't passing despite editor approval
@@ -34,7 +36,12 @@ export enum SavedRecord {
    *  that actually collected the mentions didn't account for it. So I added that
    *  logic and it was golden
    */
-  PR3654_2 = "3654_2"
+  PR3654_2 = "3654_2",
+  /**
+   *  @summary: greg opened a pull request and it automatically merged for
+   *  an unknown reason. There were no editor reviews.
+   */
+  PR3767 = "3767"
 }
 
 /**
@@ -58,5 +65,6 @@ export default {
   PR3596,
   PR3670,
   PR3654_1,
-  PR3654_2
-};
+  PR3654_2,
+  PR3767
+} as { [k in keyof typeof SavedRecord]: MockRecord[]}

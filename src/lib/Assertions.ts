@@ -41,7 +41,7 @@ export const requirePullNumber = () => {
 };
 
 export const requirePr = async () => {
-  const Github = getOctokit(GITHUB_TOKEN);
+  const Github = getOctokit(GITHUB_TOKEN).rest;
 
   const prNum = requirePullNumber();
   const { data: pr } = await Github.pulls.get({
@@ -144,7 +144,7 @@ export const requireFilenameEipNum = (filename: string) => {
  * @returns {File}
  */
 export const requireFiles = async (pr: PR) => {
-  const Github = getOctokit(GITHUB_TOKEN);
+  const Github = getOctokit(GITHUB_TOKEN).rest;
 
   const files = await Github.pulls
     .listFiles({
@@ -262,7 +262,7 @@ export const assertValidStatus = ({ head, base }: FileDiff) => {
 export const _requireFilePreexisting = (_requirePr: typeof requirePr) => async (
   file: File
 ) => {
-  const Github = getOctokit(GITHUB_TOKEN);
+  const Github = getOctokit(GITHUB_TOKEN).rest;
   const pr = await _requirePr();
   const filename = file.previous_filename || file.filename;
   const error = await Github.repos
