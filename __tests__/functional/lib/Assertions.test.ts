@@ -181,12 +181,12 @@ describe("Requires", () => {
     const getContent = jest.fn();
     const requirePr = jest.fn();
     const requireFilePreexisting = _requireFilePreexisting(requirePr);
-    beforeEach(() => {
+    beforeEach(async () => {
       getOctokit.mockClear();
       requirePr.mockClear();
       getContent.mockClear();
 
-      requirePr.mockReturnValue(Promise.resolve(PRFactory()));
+      requirePr.mockReturnValue(Promise.resolve(await PRFactory()));
       getContent.mockReturnValue(Promise.resolve());
       getOctokit.mockReturnValue({
         rest: {

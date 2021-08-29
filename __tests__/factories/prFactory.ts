@@ -1,8 +1,9 @@
 import { PR } from "src/utils";
-import MockRecords from "assets/records";
+import { getMockRecords } from "assets/records";
 
-export const PRFactory = (overrides: Partial<PR> = {}) => {
-  const defaults: PR = MockRecords.PR3596[0]?.res.data;
+export const PRFactory = async (overrides: Partial<PR> = {}) => {
+  const Records = await getMockRecords();
+  const defaults: PR = Records.PR3596[0]?.res.data;
   return {
     ...defaults,
     ...overrides
