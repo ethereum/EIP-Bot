@@ -120,7 +120,7 @@ export enum MockMethods {
 
 export type MockRecord = {
   req: {
-    method: MockMethods;
+    method: string; // ValueOf<{ [k in keyof typeof MockMethods]: `${typeof MockMethods[k]}` }>;
     url: string;
   };
   res: {
@@ -133,4 +133,12 @@ export enum NodeEnvs {
   test = "test",
   mock = "MOCK",
   developemnt = "development"
+}
+
+export function isMockMethod(method): asserts method is MockMethods {
+  if(!Object.values(MockMethods).includes(method)){
+    throw Error(`method ${method} is not a supported mock method`)
+  } else {
+    return method
+  }
 }

@@ -1,9 +1,8 @@
-import { MockRecord } from "src/utils";
+import { isMockMethod, MockRecord } from "src/utils";
 import PR3670 from "./3670";
 import PR3596 from "./3596";
 import PR3654_1 from "./3654/editorApproved";
 import PR3654_2 from "./3654/noEditorApproval";
-import PR3767 from "./3767.json";
 
 export enum SavedRecord {
   /**
@@ -47,7 +46,15 @@ export enum SavedRecord {
    * draft to review at first but then reverted this change. In this case it was
    * expected behavior to auto merge; but it was incorrect interpreted.
    */
-  PR3767 = "3767"
+  PR3767 = "3767",
+  /**
+   * @summary: a pull request changed the status from last call to review,
+   * it was caught by the linter but the editors weren't mentioned and they
+   * were presumably not required
+   *
+   * @description:
+   */
+  PR3676 = "3676"
 }
 
 /**
@@ -67,10 +74,23 @@ export function assertSavedRecord(
   }
 }
 
-export default {
-  PR3596,
-  PR3670,
-  PR3654_1,
-  PR3654_2,
-  PR3767
-} as { [k in keyof typeof SavedRecord]: MockRecord[]}
+const assertMethods = (records: { default: MockRecord[]}) => {
+  records.default.map(record => record.req?.method && isMockMethod(record.req.method))
+}
+export const getMockRecords = async () => {
+  const PR3767 = await import("./3767.json");
+  const PR3676 = await import("./3676.json");
+
+  assertMethods(PR3767);
+  assertMethods(PR3676 as any);
+
+  const Records: { [k in keyof typeof SavedRecord]: MockRecord[] } = {
+    PR3596,
+    PR3670,
+    PR3654_1,
+    PR3654_2,
+    PR3767: PR3767.default,
+    PR3676: PR3676.default as any
+  };
+  return Records;
+};

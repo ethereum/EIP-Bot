@@ -1,7 +1,7 @@
 import { getOctokit } from "@actions/github";
 import nock from "nock";
-import { GITHUB_TOKEN, MockMethods, MockRecord, NodeEnvs, PR } from "src/utils";
-import MockRecords, { assertSavedRecord, SavedRecord } from "./records";
+import { GITHUB_TOKEN, isMockMethod, MockMethods, MockRecord, NodeEnvs, PR } from "src/utils";
+import { assertSavedRecord, SavedRecord, getMockRecords } from "./records";
 import * as fs from "fs";
 
 const baseUrl = "https://api.github.com";
@@ -15,8 +15,9 @@ const scope = nock(baseUrl).persist();
  * @param pullNumber the pull number to mock (mocks the necesary github api requests)
  * @returns mocked pull request of the pull number
  */
-export const mockPR = (pullNumber: SavedRecord) => {
-  const records = MockRecords[`PR${pullNumber}`];
+export const mockPR = async (pullNumber: SavedRecord) => {
+  const mockRecords = await getMockRecords();
+  const records = mockRecords[`PR${pullNumber}`];
 
   if (!records)
     throw new Error(`no mocked records for pull number ${pullNumber}`);
@@ -24,6 +25,9 @@ export const mockPR = (pullNumber: SavedRecord) => {
   for (const record of records) {
     const req = record.req;
     const res = record.res;
+
+    if (!req && !res) continue; // allows for setting {} for new mocks
+
     const wildcard = req.url.replace(baseUrl, "");
 
     switch (req.method) {
@@ -41,8 +45,8 @@ export const mockPR = (pullNumber: SavedRecord) => {
   const PRWildcard = `/repos/ethereum/EIPs/pulls/${pullNumber}`;
   return records.find(
     (record) =>
-      record.req.method === "GET" &&
-      record.req.url === `${baseUrl}${PRWildcard}`
+      record.req?.method === "GET" &&
+      record.req?.url === `${baseUrl}${PRWildcard}`
   )?.res?.data as PR;
 };
 
@@ -55,7 +59,7 @@ export const __MAIN_MOCK__ = async (mockEnv?: NodeJS.ProcessEnv) => {
   if (!isMock) throw new Error("trying to run debug without proper auth");
 
   // setup debug env
-  setMockContext(mockEnv);
+  await setMockContext(mockEnv);
 
   // by instantiating after context and env are custom set,
   // it allows for a custom environment that's setup programmatically
@@ -76,7 +80,7 @@ export const __MAIN_MOCK__ = async (mockEnv?: NodeJS.ProcessEnv) => {
   }
 };
 
-export const setMockContext = (mockEnv?: NodeJS.ProcessEnv) => {
+export const setMockContext = async (mockEnv?: NodeJS.ProcessEnv) => {
   const env = { ...process.env, ...mockEnv };
   process.env = env;
 
@@ -84,7 +88,7 @@ export const setMockContext = (mockEnv?: NodeJS.ProcessEnv) => {
 
   // setup saved record (mocking network responses)
   assertSavedRecord(env.PULL_NUMBER);
-  const pr = mockPR(env.PULL_NUMBER);
+  const pr = await mockPR(env.PULL_NUMBER);
 
   // By instantiating after above it allows it to initialize with custom env
   const context = require("@actions/github").context;
@@ -132,6 +136,8 @@ const fetchAndCreateRecord = async (url: string, method: MockMethods) => {
 
   const fileName = `records/${process.env.PULL_NUMBER}.json`;
   const mockedRecord: MockRecord[] = (await import("./" + fileName)).default;
+
+  isMockMethod(method)
   mockedRecord.push({
     req: {
       url,
