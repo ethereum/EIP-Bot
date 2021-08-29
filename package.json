@@ -7,7 +7,7 @@
     "test": "jest",
     "build": "npx tsc --p ./tsconfig.build.json ",
     "watch": "npx tsc --watch --p ./tsconfig.build.json",
-    "it": "node -r dotenv/config build/src/index.js",
+    "it": "NODE_ENV=development node -r dotenv/config build/src/index.js",
     "mock": "NODE_ENV=MOCK node -r dotenv/config build/src/index.js",
     "prettier-changed": "prettier --write"
   },
