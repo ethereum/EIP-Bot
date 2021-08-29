@@ -1,26 +1,42 @@
 require("module-alias/register");
 import moment from "moment-timezone";
-import { Logs, Resolve, STAGNATION_CUTOFF } from "./constants";
+import {
+  EIPPathsToAlwaysExclude,
+  Logs,
+  Resolve,
+  STAGNATION_CUTOFF
+} from "./constants";
 import {
   applyStagnantProtocol,
+  fetchPreExistingEIPPaths,
   filterBoolean,
   getCommitDate,
   getEIPContent,
   getEIPs,
-  getIsValidStateEIP
+  getIsValidStateEIP,
+  limit
 } from "./lib";
-import plimit from "p-limit";
 import { NodeEnvs } from "./types";
 import { setDebugContext } from "./debug";
+import _ from "lodash/fp";
 
 const run = async () => {
   // gets the contents of the EIPS directory
-  const eips = await getEIPs();
+  const allEIPs = (await getEIPs());
+
+  // exclude EIPs with PRs already open for them
+  const allEIPPaths = allEIPs.map((EIP) => EIP.path);
+  const preExistingEIPPaths = await fetchPreExistingEIPPaths();
+  const EIPsToExclude = _.intersection(preExistingEIPPaths, allEIPPaths).concat(
+    EIPPathsToAlwaysExclude
+  );
+  Logs.pathsWithPRs(EIPsToExclude);
+
+  const EIPs = allEIPs.filter((eip) => !EIPsToExclude.includes(eip.path));
 
   Logs.fetchingDates();
-  const limit = plimit(10); // without a limiter github will flag too many parallel requests in the next step
   const datesChanged = await Promise.all(
-    eips.map((eip) => limit(() => getCommitDate(eip)))
+    EIPs.map((EIP) => limit(() => getCommitDate(EIP)))
   );
   const oldEnoughEIPs = datesChanged.filter((date) =>
     moment(date.date).isBefore(STAGNATION_CUTOFF)
@@ -30,8 +46,8 @@ const run = async () => {
   const EIPContents = filterBoolean(
     await Promise.all(oldEnoughEIPs.map(getEIPContent))
   );
-  const EIPsToStagnate = EIPContents.filter(Boolean).filter((eip) =>
-    getIsValidStateEIP(eip.parsed)
+  const EIPsToStagnate = EIPContents.filter(Boolean).filter((EIP) =>
+    getIsValidStateEIP(EIP.parsed)
   );
 
   if (!EIPsToStagnate.length) {

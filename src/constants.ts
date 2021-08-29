@@ -1,4 +1,5 @@
 import moment from "moment-timezone";
+import _ from "lodash/fp";
 
 export const GITHUB_TOKEN = process.env.GITHUB_TOKEN as string;
 export const STAGNATION_CUTOFF_MONTHS = 6;
@@ -16,6 +17,8 @@ export const cleanString = (str: string) => {
 
 export const BOT_ID = "1272989785";
 
+export const EIPPathsToAlwaysExclude = ["EIPS/eip-1.md"];
+
 /**
  *  These labels are helpful to collecting
  *  bot created pull requests but also the
@@ -24,10 +27,7 @@ export const BOT_ID = "1272989785";
  *  created by this bot; this is helpful for
  *  later cleanup
  */
-export const PR_KEY_LABELS = [
-  `created-by-bot`,
-  BOT_ID
-];
+export const PR_KEY_LABELS = [`created-by-bot`, BOT_ID];
 
 export enum FrontMatterAttributes {
   status = "status",
@@ -93,7 +93,39 @@ export const Logs = {
       `===== waiting ${seconds} seconds before continuing to avoid rate limiting =====`
     ),
   succesfulFileUpdate: (path) =>
-    console.log(`Updating ${path} to status ${EipStatus.stagnant}`)
+    console.log(`Updating ${path} to status ${EipStatus.stagnant}`),
+  fetchingBotCreatedPRSearch: (searchPattern) =>
+    console.log(
+      `fetching open PRs created by bot ${BOT_ID} search pattern ${searchPattern}`
+    ),
+  successfulBotCreatedPRSearch: (PRNums: number[]) =>
+    console.log(
+      `old PRs created by bot ${BOT_ID} were fetched successfully\n`,
+      `the following PR numbers were found:\n`,
+      _.chunk(
+        10,
+        PRNums.sort((a, b) => a - b)
+      )
+        .map((chunk) => chunk.join(", "))
+        .join("\n ")
+    ),
+  successfulBotCreatedPRSearchNoResult: () =>
+    console.log(
+      `old PRs created by bot ${BOT_ID} were fetched successfully, but none were found`
+    ),
+  fechingFilePaths: () => console.log("fetching file paths"),
+  pathsWithPRs: (paths: string[]) =>
+    console.log(
+      [
+        `bot ${BOT_ID}'s previous pull requests are still open for\n`,
+        _.chunk(
+          4,
+          paths.filter((path) => !EIPPathsToAlwaysExclude.includes(path))
+        )
+          .map((chunk) => chunk.join(", "))
+          .join("\n ")
+      ].join(" ")
+    )
 };
 
 export const Resolve = {

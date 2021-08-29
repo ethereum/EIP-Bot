@@ -21,6 +21,9 @@ import {
 } from "./types";
 import frontmatter, { FrontMatterResult } from "front-matter";
 import moment, { Moment } from "moment-timezone";
+import pLimit from "p-limit";
+
+export const limit = pLimit(10);
 
 /** Ensures that encodings are as expected by octokit */
 export function requireEncoding(
@@ -338,5 +341,66 @@ export const applyStagnantProtocol = async ({
   });
 
   await wait(5);
-  await new Promise((r) => setTimeout(r, 5000));
 };
+
+export const requireFiles = async (PRNum: number) => {
+  const Github = getOctokit(GITHUB_TOKEN).rest;
+
+  const files = await Github.pulls
+    .listFiles({
+      pull_number: PRNum,
+      repo: context.repo.repo,
+      owner: context.repo.owner
+    })
+    .then((res) => res.data);
+
+  if (!files?.length) {
+    throw new Error(
+      [
+        "There were no files found to be associated",
+        "with the PR within context"
+      ].join(" ")
+    );
+  }
+
+  return files;
+};
+
+export const fetchBotCreatedPRs = () => {
+  const github = getOctokit(GITHUB_TOKEN).rest;
+
+  const searchPattern = [
+    `label:${PR_KEY_LABELS.join(" label:")}`,
+    `is:pr`,
+    `is:open`,
+    `repo:${context.repo.owner}/${context.repo.repo}`
+  ].join(" ");
+  Logs.fetchingBotCreatedPRSearch(searchPattern);
+  return github.search
+    .issuesAndPullRequests({
+      q: searchPattern
+    })
+    .then((res) => {
+      const data = res.data;
+      if (data.total_count) {
+        const PRNums = data.items.map((pr) => pr.number);
+        Logs.successfulBotCreatedPRSearch(PRNums);
+      } else {
+        Logs.successfulBotCreatedPRSearchNoResult();
+      }
+
+      return data.items;
+    });
+};
+
+export const fetchFilePathsFromPRNum = async (PRNum) => {
+  const files = await requireFiles(PRNum);
+  return files.map(file => file.filename)
+}
+
+export const fetchPreExistingEIPPaths = async () => {
+  const preExistingPRs = await fetchBotCreatedPRs();
+  return await Promise.all(
+    preExistingPRs.map((pr) => limit(() => fetchFilePathsFromPRNum(pr.number)))
+  ).then(res => res.flat());
+}
