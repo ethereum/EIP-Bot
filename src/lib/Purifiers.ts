@@ -3,11 +3,11 @@ import { EipStatus, TestResults } from "src/utils";
 
 const ANY = (states: any[]) => states.filter(Boolean).length > 0;
 
-export const stateChangeAllowedPurifier = (testResults: TestResults) => {
+export const statusChangeAllowedPurifier = (testResults: TestResults) => {
   const _testResults = cloneDeep(testResults);
   const { errors, fileDiff } = _testResults;
 
-  const isStateChangeAllowed = ANY([
+  const isStatusChangeAllowed = ANY([
     // state changes to withdrawn from anything
     fileDiff?.head.status === EipStatus.withdrawn,
     // state changes from lastcall -> review
@@ -17,7 +17,7 @@ export const stateChangeAllowedPurifier = (testResults: TestResults) => {
     !errors.approvalErrors.isEditorApprovedError
   ]);
 
-  if (isStateChangeAllowed) {
+  if (isStatusChangeAllowed) {
     // always clear the constant status error if changes are allowed
     errors.headerErrors.constantStatusError = undefined;
   }
@@ -34,6 +34,7 @@ export const editorApprovalPurifier = (testResults: TestResults) => {
 
   const isEditorApproved = !errors.approvalErrors.isEditorApprovedError;
   const isNewFile = !!errors.fileErrors.filePreexistingError;
+
   if (isEditorApproved && isNewFile) {
     errors.fileErrors.filePreexistingError = undefined;
   }
@@ -42,10 +43,16 @@ export const editorApprovalPurifier = (testResults: TestResults) => {
     errors.headerErrors.validStatusError = undefined;
   }
 
+  // I call the purifier because we shouldn't mention editors if
+  // the status change is allowed
+  const statusChangedAllowed = !statusChangeAllowedPurifier(testResults).errors
+    .headerErrors.constantStatusError;
+
   const isInvalidStatus = errors.headerErrors.validStatusError;
   const mentionEditors = ANY([
     !isEditorApproved && isNewFile,
-    !isEditorApproved && isInvalidStatus
+    !isEditorApproved && isInvalidStatus,
+    !isEditorApproved && !statusChangedAllowed
   ]);
   if (!mentionEditors) {
     errors.approvalErrors.isEditorApprovedError = undefined;

@@ -32,7 +32,7 @@ import {
   EIP1Purifier,
   getAllTruthyObjectPaths,
   innerJoinAncestors,
-  stateChangeAllowedPurifier
+  statusChangeAllowedPurifier
 } from "./lib/Purifiers";
 import { get } from "lodash";
 
@@ -162,7 +162,7 @@ export const _main_ = async () => {
   const dirtyTestResults = await testFile(file);
   // Apply independent purifiers
   const primedPurifiers = [
-    stateChangeAllowedPurifier(dirtyTestResults),
+    statusChangeAllowedPurifier(dirtyTestResults),
     editorApprovalPurifier(dirtyTestResults),
     EIP1Purifier(dirtyTestResults)
   ];
