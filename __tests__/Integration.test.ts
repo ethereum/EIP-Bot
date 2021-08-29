@@ -14,6 +14,10 @@ describe("integration testing edgecases associated with editors", () => {
   >;
   const restore = MockedEnv(process.env);
 
+  beforeAll(() => {
+    jest.spyOn(console, "log").mockImplementation(() => {})
+  })
+
   beforeEach(async () => {
     jest.resetModules();
     const core = await import("@actions/core");
@@ -86,4 +90,13 @@ describe("integration testing edgecases associated with editors", () => {
       expect(setFailedMock).not.toBeCalled();
     });
   });
+
+  describe("Pull 3767", () => {
+    it("should pass", async () => {
+      process.env = envFactory({ PULL_NUMBER: SavedRecord.PR3767 });
+
+      await __MAIN_MOCK__();
+      expect(setFailedMock).not.toBeCalled();
+    })
+  })
 });

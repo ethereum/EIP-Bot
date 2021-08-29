@@ -38,24 +38,14 @@ export enum SavedRecord {
    */
   PR3654_2 = "3654_2",
   /**
-   * @summary: greg opened a pull request and it automatically merged for
+   * **SHOULD PASS**
+   *
+   * @summary: [false alarm] greg opened a pull request and it automatically merged for
    *  an unknown reason. There were no editor reviews.
    *
-   * @description: This error is occuring because of the following line in the
-   * editor approval purifier
-   * ```ts
-   * const isInvalidStatus = errors.headerErrors.validStatusError;
-   * const mentionEditors = ANY([
-   *  !isEditorApproved && isNewFile,
-   *  !isEditorApproved && isInvalidStatus,
-   * ]);
-   * if (!mentionEditors) {
-   *   errors.approvalErrors.isEditorApprovedError = undefined;
-   * }
-   * ```
-   * essentially, EIP editors are only being required if the PR is either a new file or
-   * an invalid status. It's not clear if this is a desired behavior. But this reminds me
-   * that editors should be required if the status changes so I will add that behavior.
+   * @description: This was perceived as an error because greg moved the status from
+   * draft to review at first but then reverted this change. In this case it was
+   * expected behavior to auto merge; but it was incorrect interpreted.
    */
   PR3767 = "3767"
 }
