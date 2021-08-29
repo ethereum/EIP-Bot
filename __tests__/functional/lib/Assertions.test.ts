@@ -74,9 +74,11 @@ describe("Requires", () => {
     beforeEach(() => {
       _pr.merged = false;
       getOctokit.mockReturnValueOnce({
-        pulls: {
-          // @ts-expect-error get is mocked and doesn't align
-          get
+        rest: {
+          pulls: {
+            // @ts-expect-error get is mocked and doesn't align
+            get
+          }
         }
       });
     });
@@ -155,9 +157,11 @@ describe("Requires", () => {
       .mockReturnValue(Promise.resolve({ data: mockFiles }));
     beforeEach(() => {
       getOctokit.mockReturnValue({
-        pulls: {
-          // @ts-expect-error listFiles is mocked so meant to be improper
-          listFiles
+        rest: {
+          pulls: {
+            // @ts-expect-error listFiles is mocked so meant to be improper
+            listFiles
+          }
         }
       });
     });
@@ -185,9 +189,11 @@ describe("Requires", () => {
       requirePr.mockReturnValue(Promise.resolve(PRFactory()));
       getContent.mockReturnValue(Promise.resolve());
       getOctokit.mockReturnValue({
-        repos: {
-          // @ts-expect-error meant to error due to mock
-          getContent
+        rest: {
+          repos: {
+            // @ts-expect-error meant to error due to mock
+            getContent
+          }
         }
       });
     });

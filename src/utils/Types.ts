@@ -2,27 +2,26 @@ import { getOctokit } from "@actions/github";
 import { EipStatus } from "./Constants";
 import { Endpoints } from "@octokit/types";
 import { FrontMatterResult } from "front-matter";
+import { PromiseValue } from "type-fest";
 
 export type Github = ReturnType<typeof getOctokit>["rest"];
-const Github = getOctokit("fake").rest;
 
-export type UnPromisify<T> = T extends Promise<infer U> ? U : T;
 type UnArrayify<T> = T extends (infer U)[] ? U : T;
 
-export type CompareCommits = UnPromisify<
-  ReturnType<typeof Github.repos.compareCommits>
+export type CompareCommits = PromiseValue<
+  ReturnType<Github["repos"]["compareCommits"]>
 >["data"];
-export type PR = UnPromisify<ReturnType<typeof Github.pulls.get>>["data"];
-export type Commit = UnPromisify<
-  ReturnType<typeof Github.repos.getCommit>
+export type PR = PromiseValue<ReturnType<Github["pulls"]["get"]>>["data"];
+export type Commit = PromiseValue<
+  ReturnType<Github["repos"]["getCommit"]>
 >["data"];
-export type Files = UnPromisify<
+export type Files = PromiseValue<
   ReturnType<Github["pulls"]["listFiles"]>
 >["data"];
 export type File = UnArrayify<Files>;
 export type CommitFiles = CompareCommits["base_commit"]["files"];
 export type CommitFile = UnArrayify<NonNullable<CommitFiles>>;
-export type Repo = UnPromisify<ReturnType<typeof Github.repos.get>>["data"];
+export type Repo = PromiseValue<ReturnType<Github["repos"]["get"]>>["data"];
 
 // This was extracted directly from Octokit repo
 // node_modules/@octokit/openapi-types/generated/types.ts : 7513 - 7553
