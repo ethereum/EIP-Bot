@@ -223,21 +223,16 @@ export const _main_ = async () => {
 };
 
 export const main = async () => {
-  const isTest = process.env.NODE_ENV === NodeEnvs.test;
-  const isMock = process.env.NODE_ENV === NodeEnvs.mock;
-
-  // allows for easier debugging when developing / testing
-  if (isTest) return await _main_();
+  const isProd = process.env.NODE_ENV === NodeEnvs.production
 
   try {
     return await _main_();
   } catch (error: any) {
     console.log(`An Exception Occured While Linting: \n${error}`);
     setFailed(error.message);
-    if (!isTest && !isMock) {
+    if (isProd) {
       await postComment(error.message);
     }
-
     throw error;
   }
 };

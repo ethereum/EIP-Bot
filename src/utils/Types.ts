@@ -133,7 +133,8 @@ export type MockRecord = {
 export enum NodeEnvs {
   test = "test",
   mock = "MOCK",
-  developemnt = "development"
+  developemnt = "development",
+  production = "production"
 }
 
 export function isMockMethod(method): asserts method is MockMethods {

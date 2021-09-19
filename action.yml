@@ -12,5 +12,5 @@ inputs:
 runs:
   using: "composite"
   steps:
-    - run: cd ${{github.action_path}} && yarn install && yarn build && GITHUB_TOKEN=${{ inputs.GITHUB-TOKEN }} MERGE_ENABLED=${{ inputs.MERGE_ENABLED }} node build/src/index.js
+    - run: cd ${{github.action_path}} && yarn install && yarn build && GITHUB_TOKEN=${{ inputs.GITHUB-TOKEN }} MERGE_ENABLED=${{ inputs.MERGE_ENABLED }} NODE_ENV=production node build/src/index.js
       shell: bash
