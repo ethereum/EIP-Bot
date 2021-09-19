@@ -353,7 +353,7 @@ export const applyStagnantProtocol = async ({
   await createPR({
     fromBranch: branchName,
     toBranch: DEFAULT_BRANCH,
-    title: `EIP ${EIPNum} ${EipStatus.stagnant} ${now}`,
+    title: `EIP-${EIPNum} ${EipStatus.stagnant} ${now}`,
     body: [
       `This EIP has not been active since ${formatDate(moment(date))};`,
       `which, is greater than the allowed time of ${STAGNATION_CUTOFF_MONTHS} months.\n\n`,
