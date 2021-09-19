@@ -1,6 +1,8 @@
 import moment from "moment-timezone";
 import _ from "lodash/fp";
+import { Files } from "./types";
 
+export const SYNCHRONOUS_PROMISE_LIMIT = 10;
 export const GITHUB_TOKEN = process.env.GITHUB_TOKEN as string;
 export const STAGNATION_CUTOFF_MONTHS = 6;
 export const STAGNATION_CUTOFF = moment().subtract(
@@ -82,7 +84,7 @@ export const Logs = {
       `checking for stagnant EIPs that weren't edited before ${STAGNATION_CUTOFF.toISOString()}`
     ),
   successfulPR: (title) =>
-    console.log(`successfully created pull request titled ${title}`),
+    console.log(`successfully created draft pull request titled ${title}`),
   successfulKeyLabels: () =>
     console.log("successfully added key labels to the pull request"),
   protocolStart: (EIPNum) => console.log(`\n================ EIP ${EIPNum}`),
@@ -94,9 +96,9 @@ export const Logs = {
     ),
   succesfulFileUpdate: (path) =>
     console.log(`Updating ${path} to status ${EipStatus.stagnant}`),
-  fetchingBotCreatedPRSearch: (searchPattern) =>
+  fetchingBotCreatedPRSearch: (searchPattern, page) =>
     console.log(
-      `fetching open PRs created by bot ${BOT_ID} search pattern ${searchPattern}`
+      `fetching open PRs created by bot ${BOT_ID} search pattern ${searchPattern} (page ${page})`
     ),
   successfulBotCreatedPRSearch: (PRNums: number[]) =>
     console.log(
@@ -118,6 +120,7 @@ export const Logs = {
     console.log(
       [
         `bot ${BOT_ID}'s previous pull requests are still open for\n`,
+        `\t(there's a total of ${paths.length} open pull requests)\n`,
         _.chunk(
           4,
           paths.filter((path) => !EIPPathsToAlwaysExclude.includes(path))
@@ -125,7 +128,61 @@ export const Logs = {
           .map((chunk) => chunk.join(", "))
           .join("\n ")
       ].join(" ")
+    ),
+  warnForRepeatPaths: (paths: string[]) => {
+    console.warn(
+      [
+        `bot ${BOT_ID} has multiple PRs open for\n`,
+        `\t(there's a total of ${paths.length} repeat paths)\n`,
+        _.chunk(
+          4,
+          paths
+        )
+          .map((chunk) => chunk.join(", "))
+          .join("\n ")
+      ].join(" ")
     )
+  },
+  closingRepeatPRs: (prNums: number[]) => {
+      console.log(
+        [
+          `closing the following PRs opened by bot ${BOT_ID} because they are repeats\n`,
+          `\t(there's a total of ${prNums.length} PRs to close)\n`,
+          _.chunk(
+            10,
+            prNums
+          )
+            .map((chunk) => chunk.join(", "))
+            .join("\n ")
+        ].join(" ")
+      )
+  },
+  successfullyClosedPR: (prNum: number, title: string) => {
+    console.log(`successfully closed PR ${prNum} with title ${title}`)
+  },
+  successfullyOpenedPR: (prNum: number, title: string) => {
+    console.log(`successfully opened PR ${prNum} with title ${title}`)
+  },
+  warnMultipleFiles: (files: Files, prNum: number) => {
+    console.warn(
+      [
+        `PR ${prNum} created by bot ${BOT_ID} has multiple files\n`,
+        `\t(there's a total of ${files.length} files)\n`,
+        _.chunk(
+          2,
+          files.map(file => file.filename)
+        )
+          .map((chunk) => chunk.join(", "))
+          .join("\n ")
+      ].join(" ")
+    )
+  },
+  closingPRDueToMultipleFiles: (prNum: number) => {
+    console.log(`closing pr ${prNum} due to it having multiple files`)
+  },
+  successfulMarkReadyForReview: (prNum: number, title: string) => {
+    console.log(`successfully marked PR ${prNum} with title "${title}"" as ready for review`)
+  }
 };
 
 export const Resolve = {

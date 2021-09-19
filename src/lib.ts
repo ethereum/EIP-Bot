@@ -3,18 +3,22 @@ import {
   cleanString,
   DEFAULT_BRANCH,
   EipStatus,
+  EIP_EDITORS,
   FrontMatterAttributes,
   GITHUB_TOKEN,
   Logs,
   PR_KEY_LABELS,
   STAGNATABLE_STATUSES,
-  STAGNATION_CUTOFF_MONTHS
+  STAGNATION_CUTOFF_MONTHS,
+  SYNCHRONOUS_PROMISE_LIMIT,
+  USERNAME_DELIMETER
 } from "./constants";
 import {
   ArrayLike,
   ContentFile,
   encodings,
   Encodings,
+  Files,
   ParsedContent,
   UnArrayify,
   UnPromisify
@@ -22,8 +26,9 @@ import {
 import frontmatter, { FrontMatterResult } from "front-matter";
 import moment, { Moment } from "moment-timezone";
 import pLimit from "p-limit";
+import _ from "lodash/fp";
 
-export const limit = pLimit(10);
+export const limit = pLimit(SYNCHRONOUS_PROMISE_LIMIT);
 
 /** Ensures that encodings are as expected by octokit */
 export function requireEncoding(
@@ -208,6 +213,7 @@ export const createPR = async ({
   body
 }: PRProps) => {
   const github = getOctokit(GITHUB_TOKEN).rest;
+  const graphql = getOctokit(GITHUB_TOKEN).graphql;
 
   const PR = await github.pulls
     .create({
@@ -216,7 +222,8 @@ export const createPR = async ({
       base: toBranch,
       head: fromBranch,
       title,
-      body
+      body,
+      draft: true
     })
     .then((res) => {
       Logs.successfulPR(res.data.title);
@@ -233,6 +240,22 @@ export const createPR = async ({
     .then(() => {
       Logs.successfulKeyLabels();
     });
+
+  // by first marking the PR as a draft and then active, it allows for
+  // the merge bot to ignore it and not use unnecessary api bandwidth
+  await graphql(`#graphql
+    mutation {
+      markPullRequestReadyForReview(
+        input: {
+          pullRequestId: "${PR.node_id}"
+        }
+      ){
+        clientMutationId
+      }
+    }
+  `).then(() => {
+    Logs.successfulMarkReadyForReview(PR.number, PR.title)
+  })
 
   return PR;
 };
@@ -327,7 +350,6 @@ export const applyStagnantProtocol = async ({
   );
 
   await new Promise((r) => setTimeout(r, 1000));
-  console.log(authors);
   await createPR({
     fromBranch: branchName,
     toBranch: DEFAULT_BRANCH,
@@ -335,8 +357,8 @@ export const applyStagnantProtocol = async ({
     body: [
       `This EIP has not been active since ${formatDate(moment(date))};`,
       `which, is greater than the allowed time of ${STAGNATION_CUTOFF_MONTHS} months.\n\n`,
-      `authors: \n`, // ${authors?.join(USERNAME_DELIMETER)}
-      `EIP Editors: ` //`${EIP_EDITORS.join(USERNAME_DELIMETER)}`
+      `authors: ${authors?.join(USERNAME_DELIMETER)} \n`,
+      `EIP Editors: ${EIP_EDITORS.join(USERNAME_DELIMETER)}`
     ].join(" ")
   });
 
@@ -366,7 +388,7 @@ export const requireFiles = async (PRNum: number) => {
   return files;
 };
 
-export const fetchBotCreatedPRs = () => {
+export const fetchBotCreatedPRs = (page = 1) => {
   const github = getOctokit(GITHUB_TOKEN).rest;
 
   const searchPattern = [
@@ -375,12 +397,15 @@ export const fetchBotCreatedPRs = () => {
     `is:open`,
     `repo:${context.repo.owner}/${context.repo.repo}`
   ].join(" ");
-  Logs.fetchingBotCreatedPRSearch(searchPattern);
+  Logs.fetchingBotCreatedPRSearch(searchPattern, page);
+
   return github.search
     .issuesAndPullRequests({
-      q: searchPattern
+      q: searchPattern,
+      per_page: 100,
+      page
     })
-    .then((res) => {
+    .then(async (res) => {
       const data = res.data;
       if (data.total_count) {
         const PRNums = data.items.map((pr) => pr.number);
@@ -389,18 +414,72 @@ export const fetchBotCreatedPRs = () => {
         Logs.successfulBotCreatedPRSearchNoResult();
       }
 
+      if (data.total_count - page * 100 > 0) {
+        const nextPage = await fetchBotCreatedPRs(page + 1);
+        const allPages: typeof data.items = data.items.concat(nextPage);
+        return allPages;
+      }
+
       return data.items;
     });
 };
 
+const requireOneFile = async (files: Files, PRNum: number) => {
+  if (!(files.length > 1)) return files[0]?.filename;
+
+  Logs.warnMultipleFiles(files, PRNum);
+  Logs.closingPRDueToMultipleFiles(PRNum);
+  await closePRByNum(PRNum);
+  await wait(5);
+  return;
+};
+
 export const fetchFilePathsFromPRNum = async (PRNum) => {
   const files = await requireFiles(PRNum);
-  return files.map(file => file.filename)
-}
+  return await requireOneFile(files, PRNum);
+};
+
+export const closePRByNum = (prNum: number) => {
+  const github = getOctokit(GITHUB_TOKEN).rest;
+
+  return github.pulls
+    .update({
+      owner: context.repo.owner,
+      repo: context.repo.repo,
+      pull_number: prNum,
+      state: "closed"
+    })
+    .then((res) => {
+      Logs.successfullyClosedPR(res.data.number, res.data.title);
+    });
+};
+
+export const closeRepeatPRs = async (PRs: { path: string; num: number }[]) => {
+  const paths = PRs.map((pr) => pr.path);
+  const repeats = _.uniq(paths.filter((v, i, a) => a.indexOf(v) !== i));
+  Logs.warnForRepeatPaths(repeats);
+  const numsToClose = repeats
+    .map((path) => PRs.filter((pr) => pr.path === path).map((pr) => pr.num))
+    .flatMap((allNums) => allNums.slice(1));
+  Logs.closingRepeatPRs(numsToClose);
+
+  for (const prNum of numsToClose) {
+    await closePRByNum(prNum);
+    // long wait because this is allowed to be in parallel
+    await wait(SYNCHRONOUS_PROMISE_LIMIT * 5);
+  }
+};
 
 export const fetchPreExistingEIPPaths = async () => {
   const preExistingPRs = await fetchBotCreatedPRs();
-  return await Promise.all(
-    preExistingPRs.map((pr) => limit(() => fetchFilePathsFromPRNum(pr.number)))
-  ).then(res => res.flat());
-}
+  const PRs = await Promise.all(
+    preExistingPRs.map(async (pr) => ({
+      path: await limit(() => fetchFilePathsFromPRNum(pr.number)),
+      num: pr.number
+    }))
+  ).then(
+    (PRs) => PRs.filter((PR) => PR.path) as { path: string; num: number }[]
+  );
+  await closeRepeatPRs(PRs);
+  return PRs.map((pr) => pr.path);
+};
