@@ -2,13 +2,6 @@ import { context, getOctokit } from "@actions/github";
 import { GITHUB_TOKEN } from "src/utils";
 import { requirePr } from "./Assertions";
 
-export const getJustLogin = (author: string) => {
-  if (author.startsWith("@")) {
-    return author.slice(1);
-  }
-  return author;
-};
-
 /**
  * Attempts to request a review and returns a list of unchanged users
  * that were failed to request

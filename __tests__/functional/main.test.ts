@@ -17,7 +17,7 @@ describe("mentions", () => {
         }
       });
       const res = getAuthorMentions(testResults);
-      expect(res).toBe(authors.join(MENTIONS_SEPARATOR));
+      expect(res).toEqual(authors);
     });
 
     it("should return undefined if no authors", () => {
@@ -72,7 +72,7 @@ describe("mentions", () => {
         }
       });
       const res = getEditorMentions(testResults);
-      expect(res).toBe(editors.join(MENTIONS_SEPARATOR));
+      expect(res).toEqual(editors);
     });
 
     it("should return nothing if the file is new and there's editor approval", () => {
@@ -99,7 +99,7 @@ describe("mentions", () => {
         }
       });
       const res = getEditorMentions(testResults);
-      expect(res).toBe(editors.join(MENTIONS_SEPARATOR));
+      expect(res).toEqual(editors);
     });
 
     it("should mention editors if status is not automergeable and no editor approval", () => {
@@ -114,7 +114,7 @@ describe("mentions", () => {
         }
       });
       const res = getEditorMentions(testResults);
-      expect(res).toBe(editors.join(MENTIONS_SEPARATOR));
+      expect(res).toEqual(editors);
     });
 
     it("shouldn't mention editors if status is not automergeable and it has editor approval", () => {
@@ -141,8 +141,8 @@ describe("mentions", () => {
       getEditorMentionsMock,
       getAuthorMentionsMock
     );
-    const authors = ["author1", "author2"].join(MENTIONS_SEPARATOR);
-    const editors = ["editor1", "editor2"].join(MENTIONS_SEPARATOR);
+    const authors = ["author1", "author2"];
+    const editors = ["editor1", "editor2"];
 
     beforeEach(() => {
       getAuthorMentionsMock.mockClear();
@@ -150,7 +150,7 @@ describe("mentions", () => {
     });
     it("should handle no mentions", () => {
       const res = getMentions({} as any);
-      expect(res).toBe("");
+      expect(res).toEqual([]);
     });
     it("should handle only authors", () => {
       getAuthorMentionsMock.mockReturnValueOnce(authors);
@@ -168,7 +168,7 @@ describe("mentions", () => {
       const res = getMentions({} as any);
       // this is sensitive to the order, but the order shouldn't matter
       // if this breaks, just flip it around
-      expect(res).toBe([editors, authors].join(MENTIONS_SEPARATOR));
+      expect(res).toEqual([editors, authors].flat());
     });
   });
 });

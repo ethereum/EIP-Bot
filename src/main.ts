@@ -21,10 +21,11 @@ import {
   requireEIPEditors
 } from "./lib";
 import {
+  COMMENT_HEADER,
   DEFAULT_ERRORS,
   File,
-  MENTIONS_SEPARATOR,
   NodeEnvs,
+  Results,
   TestResults
 } from "./utils";
 import {
@@ -34,7 +35,7 @@ import {
   innerJoinAncestors,
   statusChangeAllowedPurifier
 } from "./lib/Purifiers";
-import { get } from "lodash";
+import { get, uniq } from "lodash";
 
 const testFile = async (file: File): Promise<TestResults> => {
   // we need to define this here because the below logic can get very complicated otherwise
@@ -45,7 +46,7 @@ const testFile = async (file: File): Promise<TestResults> => {
   const fileDiff = await getFileDiff(file);
   try {
     file = await requireFilePreexisting(file);
-  } catch (err) {
+  } catch (err: any) {
     errors.fileErrors.filePreexistingError = err;
     errors.approvalErrors.isEditorApprovedError = await assertEIPEditorApproval(
       fileDiff
@@ -102,17 +103,17 @@ const getEditorMentions = (testResults: TestResults) => {
 
   // new eips require editor approval
   if (fileErrors.filePreexistingError && approvalErrors.isEditorApprovedError) {
-    return editors.join(MENTIONS_SEPARATOR);
+    return editors;
   }
 
   // eip1 requires more than 1 editor approval
   if (approvalErrors.enoughEditorApprovalsForEIP1Error) {
-    return editors.join(MENTIONS_SEPARATOR);
+    return editors;
   }
 
   // valid status errors require editor approval
   if (headerErrors.validStatusError && approvalErrors.isEditorApprovedError) {
-    return editors.join(MENTIONS_SEPARATOR);
+    return editors;
   }
 
   return;
@@ -125,7 +126,7 @@ const getAuthorMentions = (testResults: TestResults) => {
   } = testResults;
 
   if (authors && approvalErrors.isAuthorApprovedError) {
-    return authors.join(MENTIONS_SEPARATOR);
+    return authors;
   }
 
   return;
@@ -138,26 +139,33 @@ const _getMentions = (
   const editorMentions = _getEditorMentions(testResults);
   const authorMentions = _getAuthorMentions(testResults);
   // filtering Boolean prevents trailing space
-  return [editorMentions, authorMentions]
-    .filter(Boolean)
-    .join(MENTIONS_SEPARATOR);
+  return [editorMentions, authorMentions].flat().filter(Boolean) as string[];
 };
 
 const getMentions = _getMentions(getEditorMentions, getAuthorMentions);
 
-export const _main_ = async () => {
-  // Verify correct environment and request context
-  requireEvent();
-  requirePullNumber();
-  const pr = await requirePr();
+const getCommentMessage = (results: Results) => {
+  if (!results.length) return "There were no results";
+  const comment: string[] = [];
 
-  // Collect the changes made in the given PR from base <-> head for eip files
-  const files = await requireFiles(pr);
-  if (pr.changed_files !== 1 || files.length !== 1) {
-    throw "sorry only 1 file is supported right now";
+  comment.push(COMMENT_HEADER);
+  comment.push("---");
+  for (const { filename, errors } of results) {
+    comment.push(`## ${filename}`);
+    if (!errors) {
+      comment.push(`\t passed!`);
+      continue;
+    }
+
+    for (const error of errors) {
+      comment.push(`- ${error}`);
+    }
   }
-  const file = files[0] as File;
 
+  return comment.join("\n");
+};
+
+const getFileTestResults = async (file: File) => {
   // Collect errors for each file
   const dirtyTestResults = await testFile(file);
   // Apply independent purifiers
@@ -168,25 +176,50 @@ export const _main_ = async () => {
   ];
   // Purify the dirty results
   const testResults = innerJoinAncestors(dirtyTestResults, primedPurifiers);
-  const errors = getAllTruthyObjectPaths(testResults.errors).map((path) =>
-    get(testResults.errors, path)
-  );
+  const errors: string[] = getAllTruthyObjectPaths(
+    testResults.errors
+  ).map((path) => get(testResults.errors, path));
 
   if (errors.length === 0) {
-    console.log("passed!");
-    return;
+    console.log(`${testResults.fileDiff.base.name} passed!`);
+    return {
+      filename: testResults.fileDiff.base.name
+    };
   }
 
   // collect mentions and post message comment
   const mentions = getMentions(testResults);
-  await requestReviewers(mentions.split(" "));
-  await postComment(errors, mentions);
+  return {
+    filename: testResults.fileDiff.base.name,
+    errors,
+    mentions
+  };
+};
 
-  const message = `failed to pass tests with the following errors:\n\t- ${errors.join(
-    "\n\t- "
-  )}`;
-  console.log(message);
-  return setFailed(message);
+export const _main_ = async () => {
+  // Verify correct environment and request context
+  requireEvent();
+  requirePullNumber();
+  const pr = await requirePr();
+
+  // Collect the changes made in the given PR from base <-> head for eip files
+  const files = await requireFiles(pr);
+
+  const results: Results = await Promise.all(files.map(getFileTestResults));
+
+  if (!results.filter((res) => res.errors).length) {
+    await postComment("All tests passed");
+    console.log("All tests passed");
+    return;
+  }
+
+  const commentMessage = getCommentMessage(results);
+  await postComment(commentMessage);
+  await requestReviewers(
+    uniq(results.flatMap((res) => res.mentions).filter(Boolean) as string[])
+  );
+  console.log(commentMessage);
+  return setFailed(commentMessage);
 };
 
 export const main = async () => {
@@ -197,11 +230,11 @@ export const main = async () => {
 
   try {
     return await _main_();
-  } catch (error) {
+  } catch (error: any) {
     console.log(`An Exception Occured While Linting: \n${error}`);
     setFailed(error.message);
-    await postComment([error.message]);
-    throw error
+    await postComment(error.message);
+    throw error;
   }
 };
 

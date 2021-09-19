@@ -14,10 +14,6 @@ describe("integration testing edgecases associated with editors", () => {
   >;
   const restore = MockedEnv(process.env);
 
-  beforeAll(() => {
-    jest.spyOn(console, "log").mockImplementation(() => {})
-  })
-
   beforeEach(async () => {
     jest.resetModules();
     const core = await import("@actions/core");
@@ -68,8 +64,11 @@ describe("integration testing edgecases associated with editors", () => {
       }
       assertDefined(call);
 
-      expect(call[1]).toBe(
-        constants.EIP_EDITORS.join(constants.MENTIONS_SEPARATOR)
+      expect(call[0]).toContain(
+        constants.EIP_EDITORS[0]
+      );
+      expect(call[0]).toContain(
+        constants.EIP_EDITORS[1]
       );
     });
 

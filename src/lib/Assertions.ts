@@ -16,7 +16,7 @@ import {
   Encodings,
   EIP_EDITORS
 } from "src/utils";
-import { getApprovals, getJustLogin } from "./CheckApprovals";
+import { getApprovals } from "./CheckApprovals";
 
 export const requireEvent = () => {
   const event = context.eventName;
@@ -92,7 +92,7 @@ export const assertIsApprovedByAuthors = async (fileDiff: FileDiff) => {
   if (!hasAuthorApproval) {
     return [
       `${fileDiff.head.name} requires approval from one of`,
-      `(${authors.map(getJustLogin).join(", ")})`
+      `(${authors.join(", ")})`
     ].join(" ");
   } else return;
 };

@@ -68,7 +68,7 @@ export const __MAIN_MOCK__ = async (mockEnv?: NodeJS.ProcessEnv) => {
   // only want to run this once to make things easier
   try {
     return await main();
-  } catch (err) {
+  } catch (err: any) {
     const url = err?.request?.url;
     const method = err?.request?.method;
 

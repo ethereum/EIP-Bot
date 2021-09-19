@@ -142,3 +142,9 @@ export function isMockMethod(method): asserts method is MockMethods {
     return method
   }
 }
+
+export type Results = {
+  filename: string,
+  errors?: string[],
+  mentions?: string[]
+}[]

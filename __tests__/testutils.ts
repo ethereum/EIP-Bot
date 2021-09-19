@@ -1,6 +1,5 @@
 import { Context } from "@actions/github/lib/context";
 import { set } from "lodash";
-import { EipStatus, File, FileDiff, PR } from "src/utils";
 
 export const getAllTruthyObjectPaths = (obj: object) => {
   function rKeys(o: object, path?: string) {

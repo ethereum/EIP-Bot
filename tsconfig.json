@@ -20,6 +20,7 @@
     "outDir": "./build",
     "sourceMap": true,
     "inlineSources": true,
+    "skipLibCheck": true,
     "resolveJsonModule": true,
     "baseUrl": "./",
     "paths": {

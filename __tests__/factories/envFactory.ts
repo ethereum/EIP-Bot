@@ -1,9 +1,9 @@
-import { MockedPullNumbers } from "assets/records";
+import { SavedRecord } from "assets/records";
 import faker from "faker";
 import { EVENTS, NodeEnvs } from "src/utils";
 
 type Env = {
-  PULL_NUMBER: MockedPullNumbers;
+  PULL_NUMBER: SavedRecord;
   BASE_SHA: string;
   HEAD_SHA: string;
   GITHUB_TOKEN: string;

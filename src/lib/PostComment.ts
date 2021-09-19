@@ -1,14 +1,9 @@
 import { getOctokit } from "@actions/github";
 import { context } from "@actions/github";
-import { COMMENT_HEADER, GITHUB_TOKEN } from "src/utils";
+import { GITHUB_TOKEN } from "src/utils";
 
-export const postComment = async (errors: string[], mentions?: string) => {
+export const postComment = async (message: string) => {
   const Github = getOctokit(GITHUB_TOKEN).rest;
-
-  let message = COMMENT_HEADER + "\n\t - " + errors.join("\n\t - ");
-  if (mentions) {
-    message += `\n ${mentions}`;
-  }
 
   const { data: me } = await Github.users.getAuthenticated();
   const { data: comments } = await Github.issues.listComments({
