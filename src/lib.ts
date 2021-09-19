@@ -3,7 +3,6 @@ import {
   cleanString,
   DEFAULT_BRANCH,
   EipStatus,
-  EIP_EDITORS,
   FrontMatterAttributes,
   GITHUB_TOKEN,
   Logs,
@@ -357,8 +356,7 @@ export const applyStagnantProtocol = async ({
     body: [
       `This EIP has not been active since ${formatDate(moment(date))};`,
       `which, is greater than the allowed time of ${STAGNATION_CUTOFF_MONTHS} months.\n\n`,
-      `authors: ${authors?.join(USERNAME_DELIMETER)} \n`,
-      `EIP Editors: ${EIP_EDITORS.join(USERNAME_DELIMETER)}`
+      `authors: ${authors?.join(USERNAME_DELIMETER)} \n`
     ].join(" ")
   });
 
