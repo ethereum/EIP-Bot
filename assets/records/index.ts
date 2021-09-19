@@ -54,7 +54,19 @@ export enum SavedRecord {
    *
    * @description:
    */
-  PR3676 = "3676"
+  PR3676 = "3676",
+  /**
+   * **SHOULD PASS**
+   *
+   * @summary: multi-file PR change with bot
+   */
+  PR3612 = "3612",
+  /**
+   * **SHOULD FAIL**
+   *
+   * @summary: multi-file PR that does not have the necessary reviews for it to pass
+   */
+  PR4192 = "4192"
 }
 
 /**
@@ -74,15 +86,21 @@ export function assertSavedRecord(
   }
 }
 
-const assertMethods = (records: { default: MockRecord[]}) => {
-  records.default.map(record => record.req?.method && isMockMethod(record.req.method))
-}
+const assertMethods = (records: { default: MockRecord[] }) => {
+  records.default.map(
+    (record) => record.req?.method && isMockMethod(record.req.method)
+  );
+};
 export const getMockRecords = async () => {
   const PR3767 = await import("./3767.json");
   const PR3676 = await import("./3676.json");
+  const PR3612 = await import("./3612.json");
+  const PR4192 = await import("./4192.json")
 
   assertMethods(PR3767);
-  assertMethods(PR3676 as any);
+  assertMethods(PR3676);
+  assertMethods(PR3612);
+  assertMethods(PR4192);
 
   const Records: { [k in keyof typeof SavedRecord]: MockRecord[] } = {
     PR3596,
@@ -90,7 +108,9 @@ export const getMockRecords = async () => {
     PR3654_1,
     PR3654_2,
     PR3767: PR3767.default,
-    PR3676: PR3676.default as any
+    PR3676: PR3676.default,
+    PR3612: PR3612.default,
+    PR4192: PR4192.default
   };
   return Records;
 };

@@ -1,5 +1,4 @@
 import { _TESTS_ } from "src/main";
-import { MENTIONS_SEPARATOR } from "src/utils";
 import { testResultsFactory } from "__tests__/factories/testResultsFactory";
 import * as Assertions from "src/lib/Assertions";
 

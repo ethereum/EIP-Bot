@@ -4,7 +4,7 @@
   "description": "auto merge eip",
   "main": "index.js",
   "scripts": {
-    "test": "jest",
+    "test": "NODE_ENV=test jest",
     "build": "npx tsc --p ./tsconfig.build.json ",
     "watch": "npx tsc --watch --p ./tsconfig.build.json",
     "it": "NODE_ENV=development node -r dotenv/config build/src/index.js",

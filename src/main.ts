@@ -161,7 +161,7 @@ const getCommentMessage = (results: Results) => {
       comment.push(`- ${error}`);
     }
   }
-
+7
   return comment.join("\n");
 };
 
@@ -208,8 +208,8 @@ export const _main_ = async () => {
   const results: Results = await Promise.all(files.map(getFileTestResults));
 
   if (!results.filter((res) => res.errors).length) {
-    await postComment("All tests passed");
-    console.log("All tests passed");
+    await postComment("All tests passed; auto-merging...");
+    console.log("All tests passed; auto-merging...");
     return;
   }
 
@@ -224,6 +224,7 @@ export const _main_ = async () => {
 
 export const main = async () => {
   const isTest = process.env.NODE_ENV === NodeEnvs.test;
+  const isMock = process.env.NODE_ENV === NodeEnvs.mock;
 
   // allows for easier debugging when developing / testing
   if (isTest) return await _main_();
@@ -233,7 +234,10 @@ export const main = async () => {
   } catch (error: any) {
     console.log(`An Exception Occured While Linting: \n${error}`);
     setFailed(error.message);
-    await postComment(error.message);
+    if (!isTest && !isMock) {
+      await postComment(error.message);
+    }
+
     throw error;
   }
 };

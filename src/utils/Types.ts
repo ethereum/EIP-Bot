@@ -115,7 +115,8 @@ export type TestResults = { errors: ERRORS } & {
 
 export enum MockMethods {
   get = "GET",
-  post = "POST"
+  post = "POST",
+  patch = "PATCH"
 }
 
 export type MockRecord = {

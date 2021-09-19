@@ -98,4 +98,34 @@ describe("integration testing edgecases associated with editors", () => {
       expect(setFailedMock).not.toBeCalled();
     })
   })
+
+  describe("Pull 3612", () => {
+    it("should pass", async () => {
+      process.env = envFactory({ PULL_NUMBER: SavedRecord.PR3612 });
+
+      await __MAIN_MOCK__();
+      expect(setFailedMock).not.toBeCalled();
+    })
+  })
+
+  describe("Pull 4192", () => {
+    it("should not pass either files", async () => {
+      process.env = envFactory({ PULL_NUMBER: SavedRecord.PR4192 });
+
+      await __MAIN_MOCK__();
+      expect(setFailedMock).toBeCalled();
+      const call = setFailedMock.mock.calls[0] as  NonNullable<typeof setFailedMock.mock.calls[0]>;
+      expect(call[0]).not.toMatch(/passed/)
+    })
+
+    it("should mention multiple expected files", async () => {
+      process.env = envFactory({ PULL_NUMBER: SavedRecord.PR4192 });
+
+      await __MAIN_MOCK__();
+      expect(setFailedMock).toBeCalled();
+      const call = setFailedMock.mock.calls[0] as  NonNullable<typeof setFailedMock.mock.calls[0]>;
+      expect(call[0]).toMatch(/eip-1010.md/)
+      expect(call[0]).toMatch(/eip-1056.md/)
+    })
+  })
 });

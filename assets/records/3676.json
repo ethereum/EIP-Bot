@@ -1,5 +1,4 @@
 [
-  {},
   {
     "req": {
       "url": "https://api.github.com/repos/ethereum/EIPs/pulls/3676",

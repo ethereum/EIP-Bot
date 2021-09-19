@@ -71,9 +71,10 @@ export const __MAIN_MOCK__ = async (mockEnv?: NodeJS.ProcessEnv) => {
   } catch (err: any) {
     const url = err?.request?.url;
     const method = err?.request?.method;
+    const body = err?.request?.body;
 
     if (url && method) {
-      await fetchAndCreateRecord(url, method);
+      await fetchAndCreateRecord(url, method, body);
     } else {
       throw err;
     }
@@ -118,15 +119,20 @@ export const setMockContext = async (mockEnv?: NodeJS.ProcessEnv) => {
   context.eventName = env.EVENT_TYPE;
 };
 
-const fetchAndCreateRecord = async (url: string, method: MockMethods) => {
-  console.error("failed request", method, url, "\nmocking requet...");
+const fetchAndCreateRecord = async (url: string, method: MockMethods, body?: string) => {
+  console.error("failed request", method, url, "\nmocking request...");
+
+  const isMock = process.env.NODE_ENV === NodeEnvs.mock;
+
+  if (!isMock) return;
 
   nock.cleanAll();
   nock.enableNetConnect();
   const github = getOctokit(GITHUB_TOKEN).request;
   const res = await github({
     method,
-    url
+    url,
+    body
   }).catch((err) => {
     nock.disableNetConnect();
     throw err;

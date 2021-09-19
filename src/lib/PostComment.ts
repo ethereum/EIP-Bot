@@ -16,23 +16,26 @@ export const postComment = async (message: string) => {
   for (const comment of comments) {
     if (comment.user?.login == me.login) {
       if (comment.body != message) {
-        Github.issues
+        await Github.issues
           .updateComment({
             owner: context.repo.owner,
             repo: context.repo.repo,
             comment_id: comment.id,
             body: message
+          }).catch(err => {
+            if (err?.request?.body) {
+              err.request.body = JSON.parse(err.request.body).body
+
+            }
+            throw err
           })
-          .catch((err) => {
-            console.log(err);
-          });
       }
       return;
     }
   }
 
   // else create a new one
-  Github.issues.createComment({
+  await Github.issues.createComment({
     owner: context.repo.owner,
     repo: context.repo.repo,
     issue_number: context.issue.number,
