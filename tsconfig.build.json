@@ -3,6 +3,10 @@
   "compilerOptions": {
     "paths": {
       "src/*": ["src/*"],
+      "#domain": ["src/domain"],
+      "#assertions": ["src/modules/assertions"],
+      "#infra": ["src/infra"],
+      "#components": ["src/modules/components"],
       "assets/*": ["assets/*"]
     }
   },

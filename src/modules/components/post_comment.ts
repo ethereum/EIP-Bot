@@ -1,6 +1,6 @@
 import { getOctokit } from "@actions/github";
 import { context } from "@actions/github";
-import { GITHUB_TOKEN } from "src/utils";
+import { GITHUB_TOKEN } from "src/domain";
 
 export const postComment = async (message: string) => {
   const Github = getOctokit(GITHUB_TOKEN).rest;

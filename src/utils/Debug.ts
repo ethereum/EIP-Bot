@@ -1,4 +1,4 @@
-import { NodeEnvs } from "./Types";
+import { NodeEnvs } from "../domain/Types";
 
 export const __MAIN__ = async (debugEnv?: NodeJS.ProcessEnv) => {
   const isDebug =

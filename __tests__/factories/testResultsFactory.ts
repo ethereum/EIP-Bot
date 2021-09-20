@@ -1,4 +1,4 @@
-import { TestResults } from "src/utils";
+import { TestResults } from "src/domain";
 import { RecursivePartial } from "__tests__/testutils";
 import { FileDiffFactory } from "./fileDiffFactory";
 

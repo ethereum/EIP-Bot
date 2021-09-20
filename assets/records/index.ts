@@ -1,4 +1,4 @@
-import { isMockMethod, MockRecord } from "src/utils";
+import { isMockMethod, MockRecord } from "src/domain";
 import PR3670 from "./3670";
 import PR3596 from "./3596";
 import PR3654_1 from "./3654/editorApproved";

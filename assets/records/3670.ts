@@ -1,4 +1,4 @@
-import { MockRecord } from "src/utils";
+import { MockRecord } from "src/domain";
 
 /**
  * edgecase where an author is an editor, when this was fixed we required

@@ -1,4 +1,4 @@
-import { File } from "src/utils";
+import { File } from "src/domain";
 
 export const FileFactory = (
   overrides: Partial<File> = {}

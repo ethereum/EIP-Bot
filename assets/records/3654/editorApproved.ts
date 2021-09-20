@@ -1,4 +1,4 @@
-import { MockRecord } from "src/utils";
+import { MockRecord } from "src/domain";
 
 export default [
   {

@@ -1,7 +1,7 @@
 import "jest";
 import actions from "@actions/github";
 // import { Context } from "@actions/github/lib/context";
-import { ALLOWED_STATUSES, EipStatus, EVENTS, FileDiff, PR } from "src/utils";
+import { ALLOWED_STATUSES, EipStatus, EVENTS, FileDiff, PR } from "src/domain";
 import {
   assertConstantEipNumber,
   assertConstantStatus,
@@ -17,7 +17,7 @@ import {
   requirePullNumber,
   _requireEIPEditors,
   _requireFilePreexisting
-} from "src/lib";
+} from "#assertions";
 import { expectError, clearContext } from "__tests__/testutils";
 import { FileDiffFactory } from "__tests__/factories/fileDiffFactory";
 import { FileFactory } from "__tests__/factories/fileFactory";
@@ -70,7 +70,7 @@ describe("Requires", () => {
     const _pr = {
       merged: false
     };
-    const get = jest.fn().mockReturnValue({ data: _pr });
+    const get = jest.fn().mockResolvedValue({ data: _pr });
     beforeEach(() => {
       _pr.merged = false;
       getOctokit.mockReturnValueOnce({

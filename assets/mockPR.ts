@@ -1,6 +1,6 @@
 import { getOctokit } from "@actions/github";
 import nock from "nock";
-import { GITHUB_TOKEN, isMockMethod, MockMethods, MockRecord, NodeEnvs, PR } from "src/utils";
+import { GITHUB_TOKEN, isMockMethod, MockMethods, MockRecord, NodeEnvs, PR } from "src/domain";
 import { assertSavedRecord, SavedRecord, getMockRecords } from "./records";
 import * as fs from "fs";
 

@@ -9,13 +9,13 @@ import {
   FormattedFile,
   ParsedContent,
   FileDiff
-} from "src/utils";
+} from "#domain";
 import frontmatter from "front-matter";
 import {
   requireEncoding,
   requireFilenameEipNum,
   requirePr
-} from "./Assertions";
+} from "#assertions";
 
 /**
  * Accepts a file and returns the information of that file at the beginning

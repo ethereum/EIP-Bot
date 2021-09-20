@@ -1,5 +1,5 @@
 import { cloneDeep, intersection, set } from "lodash";
-import { EipStatus, TestResults } from "src/utils";
+import { EipStatus, TestResults } from "src/domain";
 
 const ANY = (states: any[]) => states.filter(Boolean).length > 0;
 

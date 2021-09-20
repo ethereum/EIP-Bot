@@ -1,6 +1,6 @@
 import { _TESTS_ } from "src/main";
 import { testResultsFactory } from "__tests__/factories/testResultsFactory";
-import * as Assertions from "src/lib/Assertions";
+import { requireEIPEditors } from "#assertions";
 
 describe("mentions", () => {
   describe("getAuthorMentions", () => {
@@ -47,19 +47,23 @@ describe("mentions", () => {
   });
 
   describe("getEditorMentions", () => {
-    const { getEditorMentions } = _TESTS_;
+    let { getEditorMentions } = _TESTS_;
     const editors = ["editor1", "editor2", "editor3"];
+
     const mockRequireEIPEditors = jest.fn().mockReturnValue(editors);
 
     beforeEach(async () => {
-      jest.resetModules();
-      jest
-        .spyOn(Assertions, "requireEIPEditors")
-        .mockImplementation(mockRequireEIPEditors);
+      jest.mock("#assertions", () => ({
+        ...jest.requireActual("#assertions"),
+        requireEIPEditors: mockRequireEIPEditors
+      }))
+      jest.resetModules()
+      getEditorMentions = (await import("src/main"))._TESTS_.getEditorMentions
       mockRequireEIPEditors.mockClear();
     });
 
-    it("should return editors if the file is new and there's no editor approval", () => {
+    it("should return editors if the file is new and there's no editor approval", async () => {
+      await import("#assertions")
       const testResults = testResultsFactory({
         errors: {
           fileErrors: {
@@ -70,6 +74,7 @@ describe("mentions", () => {
           }
         }
       });
+
       const res = getEditorMentions(testResults);
       expect(res).toEqual(editors);
     });

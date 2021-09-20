@@ -1,25 +1,27 @@
 import { setFailed } from "@actions/core";
 import {
-  postComment,
   requireEvent,
   assertValidFilename,
   requirePullNumber,
   requirePr,
   requireFiles,
-  getFileDiff,
   assertFilenameAndFileNumbersMatch,
   assertConstantEipNumber,
-  assertConstantStatus,
   assertHasAuthors,
   assertIsApprovedByAuthors,
   requireAuthors,
-  requestReviewers,
+  assertConstantStatus,
   assertValidStatus,
   requireFilePreexisting,
   assertEIPEditorApproval,
   assertEIP1EditorApprovals,
   requireEIPEditors
-} from "./lib";
+} from "#assertions";
+import {
+  getFileDiff,
+  postComment,
+  requestReviewers
+} from "#components"
 import {
   COMMENT_HEADER,
   DEFAULT_ERRORS,
@@ -27,14 +29,14 @@ import {
   NodeEnvs,
   Results,
   TestResults
-} from "./utils";
+} from "#domain";
 import {
   editorApprovalPurifier,
   EIP1Purifier,
   getAllTruthyObjectPaths,
   innerJoinAncestors,
   statusChangeAllowedPurifier
-} from "./lib/Purifiers";
+} from "#components";
 import { get, uniq } from "lodash";
 
 const testFile = async (file: File): Promise<TestResults> => {
@@ -204,7 +206,6 @@ export const _main_ = async () => {
 
   // Collect the changes made in the given PR from base <-> head for eip files
   const files = await requireFiles(pr);
-
   const results: Results = await Promise.all(files.map(getFileTestResults));
 
   if (!results.filter((res) => res.errors).length) {
@@ -218,6 +219,7 @@ export const _main_ = async () => {
   await requestReviewers(
     uniq(results.flatMap((res) => res.mentions).filter(Boolean) as string[])
   );
+
   console.log(commentMessage);
   return setFailed(commentMessage);
 };

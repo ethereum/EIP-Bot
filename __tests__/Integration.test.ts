@@ -5,6 +5,7 @@ import * as core from "@actions/core";
 import { __MAIN_MOCK__ } from "assets/mockPR";
 import MockedEnv from "mocked-env";
 import nock from "nock";
+import { Mutable, PromiseValue } from "type-fest";
 
 describe("integration testing edgecases associated with editors", () => {
   const setFailedMock = jest
@@ -43,47 +44,48 @@ describe("integration testing edgecases associated with editors", () => {
       process.env = envFactory({ PULL_NUMBER: SavedRecord.PR3654_2 });
 
       // to be used later to check for mentions (postComment was an arbitrary choice)
-      const lib = await import("src/lib/PostComment");
-      const postCommentMock: jest.MockedFunction<
-        typeof lib.postComment
-      > = jest.fn().mockImplementation(lib.postComment);
-      jest.spyOn(lib, "postComment").mockImplementation(postCommentMock);
+      jest.mock("#components", () => ({
+        ...jest.requireActual("#components"),
+        postComment: jest
+          .fn()
+          .mockImplementation(() => console.log("mocked call"))
+      }));
 
       // constrain constants to prevent changes in state
-      const constants = await import("src/utils/Constants");
-      // @ts-expect-error
-      constants.EIP_EDITORS = ["@micahzoltu", "@lightclient"];
+      jest.mock("#domain", () => ({
+        ...jest.requireActual("#domain"),
+        EIP_EDITORS: ["@micahzoltu", "@lighclient"]
+      }));
+      jest.resetModules();
 
       await __MAIN_MOCK__();
 
+      const Domain = await import("#domain");
+      const Components = (await import("#components")) as jest.Mocked<
+        PromiseValue<typeof import("#components")>
+      >;
+
       // collect the call
-      expect(postCommentMock).toHaveBeenCalledTimes(1);
-      const call = postCommentMock.mock.calls[0];
+      expect(Components.postComment).toHaveBeenCalledTimes(1);
+      const call = Components.postComment.mock.calls[0];
       function assertDefined<T>(call: T): asserts call is NonNullable<T> {
         expect(call).toBeDefined();
       }
       assertDefined(call);
 
-      expect(call[0]).toContain(
-        constants.EIP_EDITORS[0]
-      );
-      expect(call[0]).toContain(
-        constants.EIP_EDITORS[1]
-      );
+      expect(call[0]).toContain(Domain.EIP_EDITORS[0]);
+      expect(call[0]).toContain(Domain.EIP_EDITORS[1]);
     });
 
     it("should pass with editor approval", async () => {
       process.env = envFactory({ PULL_NUMBER: SavedRecord.PR3654_1 });
 
-      // constrain constants to prevent changes in state
-      const constants = await import("src/utils/Constants");
+      jest.mock("#domain", () => ({
+        ...jest.requireActual("#domain"),
+        EIP_EDITORS: ["@micahzoltu", "@lighclient"]
+      }));
 
-      // @ts-expect-error
-      constants.EIP_EDITORS = [
-        "@MicahZoltu", // capitalized
-        "@lightclient"
-      ];
-
+      // console.log(proxy.EIP_EDITORS)
       await __MAIN_MOCK__();
 
       expect(setFailedMock).not.toBeCalled();
@@ -96,8 +98,8 @@ describe("integration testing edgecases associated with editors", () => {
 
       await __MAIN_MOCK__();
       expect(setFailedMock).not.toBeCalled();
-    })
-  })
+    });
+  });
 
   describe("Pull 3612", () => {
     it("should pass", async () => {
@@ -105,8 +107,8 @@ describe("integration testing edgecases associated with editors", () => {
 
       await __MAIN_MOCK__();
       expect(setFailedMock).not.toBeCalled();
-    })
-  })
+    });
+  });
 
   describe("Pull 4192", () => {
     it("should not pass either files", async () => {
@@ -114,18 +116,22 @@ describe("integration testing edgecases associated with editors", () => {
 
       await __MAIN_MOCK__();
       expect(setFailedMock).toBeCalled();
-      const call = setFailedMock.mock.calls[0] as  NonNullable<typeof setFailedMock.mock.calls[0]>;
-      expect(call[0]).not.toMatch(/passed/)
-    })
+      const call = setFailedMock.mock.calls[0] as NonNullable<
+        typeof setFailedMock.mock.calls[0]
+      >;
+      expect(call[0]).not.toMatch(/passed/);
+    });
 
     it("should mention multiple expected files", async () => {
       process.env = envFactory({ PULL_NUMBER: SavedRecord.PR4192 });
 
       await __MAIN_MOCK__();
       expect(setFailedMock).toBeCalled();
-      const call = setFailedMock.mock.calls[0] as  NonNullable<typeof setFailedMock.mock.calls[0]>;
-      expect(call[0]).toMatch(/eip-1010.md/)
-      expect(call[0]).toMatch(/eip-1056.md/)
-    })
-  })
+      const call = setFailedMock.mock.calls[0] as NonNullable<
+        typeof setFailedMock.mock.calls[0]
+      >;
+      expect(call[0]).toMatch(/eip-1010.md/);
+      expect(call[0]).toMatch(/eip-1056.md/);
+    });
+  });
 });

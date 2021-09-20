@@ -1,6 +1,7 @@
 import { context, getOctokit } from "@actions/github";
-import { GITHUB_TOKEN } from "src/utils";
-import { requirePr } from "./Assertions";
+import { GITHUB_TOKEN } from "src/domain";
+import { getPullRequestReviews } from "src/infra";
+import { requirePr } from "../assertions";
 
 /**
  * Attempts to request a review and returns a list of unchanged users
@@ -32,14 +33,12 @@ export const requestReviewers = async (reviewers: string[]) => {
   return requested.filter(Boolean);
 };
 
+/**
+ * @returns the approvals of the pull request in context
+ */
 export const getApprovals = async () => {
   const pr = await requirePr();
-  const Github = getOctokit(GITHUB_TOKEN).rest;
-  const { data: reviews } = await Github.pulls.listReviews({
-    owner: context.repo.owner,
-    repo: context.repo.repo,
-    pull_number: pr.number
-  });
+  const reviews = await getPullRequestReviews(pr.number);
 
   // Starting with set to prevent repeats
   const approvals: Set<string> = new Set();
