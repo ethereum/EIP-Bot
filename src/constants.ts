@@ -10,6 +10,16 @@ export const STAGNATION_CUTOFF = moment().subtract(
   "months"
 );
 
+
+export const formatDate = (date: moment.Moment) => {
+  return date.format("(YYYY-MMM-Do@HH.m.s)");
+};
+
+export const MERGEABLE_CUTOFF = moment().subtract(
+  2,
+  "weeks"
+)
+
 export const USERNAME_DELIMETER = ", ";
 
 /** for cleaning strings so they can be safely compared */
@@ -182,6 +192,18 @@ export const Logs = {
   },
   successfulMarkReadyForReview: (prNum: number, title: string) => {
     console.log(`successfully marked PR ${prNum} with title "${title}"" as ready for review`)
+  },
+  mergingOldPR: (path: string, prNum: number, createdAt: moment.Moment) => {
+    const message = [
+      `PR ${prNum} with changes to ${path} was created at ${formatDate(createdAt)}`,
+      `which is before the cutoff date of ${formatDate(MERGEABLE_CUTOFF)}; therefore`,
+      `it will be merged`
+    ].join(" ")
+    console.log(message)
+    return message
+  },
+  mergedSuccessful: () => {
+    console.log(`succesfully merged`)
   }
 };
 

@@ -3,9 +3,11 @@ import {
   cleanString,
   DEFAULT_BRANCH,
   EipStatus,
+  formatDate,
   FrontMatterAttributes,
   GITHUB_TOKEN,
   Logs,
+  MERGEABLE_CUTOFF,
   PR_KEY_LABELS,
   STAGNATABLE_STATUSES,
   STAGNATION_CUTOFF_MONTHS,
@@ -23,7 +25,7 @@ import {
   UnPromisify
 } from "./types";
 import frontmatter, { FrontMatterResult } from "front-matter";
-import moment, { Moment } from "moment-timezone";
+import moment from "moment-timezone";
 import pLimit from "p-limit";
 import _ from "lodash/fp";
 
@@ -259,10 +261,6 @@ export const createPR = async ({
   return PR;
 };
 
-export const formatDate = (date: Moment) => {
-  return date.format("(YYYY-MMM-Do@HH.m.s)");
-};
-
 export const getAuthorsFromFile = async (
   parsedContent: FrontMatterResult<any>
 ) => {
@@ -452,9 +450,12 @@ export const closePRByNum = (prNum: number) => {
     });
 };
 
-export const closeRepeatPRs = async (PRs: { path: string; num: number }[]) => {
+type PreExistingPR = { path: string; num: number; createdAt: moment.Moment }
+
+export const closeRepeatPRs = async (PRs: PreExistingPR[]) => {
   const paths = PRs.map((pr) => pr.path);
   const repeats = _.uniq(paths.filter((v, i, a) => a.indexOf(v) !== i));
+  if (!repeats.length) return;
   Logs.warnForRepeatPaths(repeats);
   const numsToClose = repeats
     .map((path) => PRs.filter((pr) => pr.path === path).map((pr) => pr.num))
@@ -468,16 +469,40 @@ export const closeRepeatPRs = async (PRs: { path: string; num: number }[]) => {
   }
 };
 
+export const mergeOldPR = async (PR: PreExistingPR) => {
+  const isMergeable = PR.createdAt.isBefore(MERGEABLE_CUTOFF);
+
+  if (!isMergeable) return;
+
+  const github = getOctokit(GITHUB_TOKEN).rest
+  const message = Logs.mergingOldPR(PR.path, PR.num, PR.createdAt)
+
+  await github.pulls.merge({
+    owner: context.repo.owner,
+    repo: context.repo.repo,
+    pull_number: PR.num,
+    commit_title: `(bot) moving ${PR.path} to stagnant`,
+    commit_message: message
+  }).then(() => {
+    Logs.mergedSuccessful()
+  })
+
+  await wait(SYNCHRONOUS_PROMISE_LIMIT * 5)
+}
+
 export const fetchPreExistingEIPPaths = async () => {
   const preExistingPRs = await fetchBotCreatedPRs();
   const PRs = await Promise.all(
     preExistingPRs.map(async (pr) => ({
       path: await limit(() => fetchFilePathsFromPRNum(pr.number)),
-      num: pr.number
+      num: pr.number,
+      createdAt: moment(pr.created_at)
     }))
   ).then(
-    (PRs) => PRs.filter((PR) => PR.path) as { path: string; num: number }[]
+    (PRs) => PRs.filter((PR) => PR.path) as PreExistingPR[]
   );
   await closeRepeatPRs(PRs);
+  await Promise.all(PRs.map((PR) => limit(() => mergeOldPR(PR))))
+
   return PRs.map((pr) => pr.path);
 };
