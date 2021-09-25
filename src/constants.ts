@@ -141,6 +141,20 @@ export const Logs = {
       `old PRs NOT created by bot ${BOT_ID} were fetched successfully, but none were found`
     ),
   fechingFilePaths: () => console.log("fetching file paths"),
+  fetchedActiveFiles: (paths: string[]) => {
+    console.log(
+      [
+        `Non bot ${BOT_ID} pull requests are touching these files:\n`,
+        `\t(there's a total of ${paths.length} active files)\n`,
+        _.chunk(
+          4,
+          paths.filter((path) => !EIPPathsToAlwaysExclude.includes(path))
+        )
+          .map((chunk) => chunk.join(", "))
+          .join("\n ")
+      ].join(" ")
+    )
+  },
   pathsWithPRs: (paths: string[]) =>
     console.log(
       [

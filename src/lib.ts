@@ -570,5 +570,7 @@ export const getFilePathsWithNonBotOpenPRs = async (): Promise<string[]> => {
     return PRFiles.map(file => file.filename)
   }
 
-  return AllPRFiles.flatMap(extractFilePath)
+  const activeFiles = AllPRFiles.flatMap(extractFilePath)
+  Logs.fetchedActiveFiles(activeFiles);
+  return activeFiles
 }
