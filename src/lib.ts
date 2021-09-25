@@ -506,3 +506,69 @@ export const fetchPreExistingEIPPaths = async () => {
 
   return PRs.map((pr) => pr.path);
 };
+
+export const fetchNonBotPRs = (page = 1) => {
+  const github = getOctokit(GITHUB_TOKEN).rest;
+
+  const searchPattern = [
+    `-label:${PR_KEY_LABELS.join(" -label:")}`,
+    `-is:pr`,
+    `-is:open`,
+    `repo:${context.repo.owner}/${context.repo.repo}`
+  ].join(" ");
+  Logs.fetchingNonBotCreatedPRs(searchPattern, page);
+
+  return github.search
+    .issuesAndPullRequests({
+      q: searchPattern,
+      per_page: 100,
+      page
+    })
+    .then(async (res) => {
+      const data = res.data;
+      if (data.total_count) {
+        const PRNums = data.items.map((pr) => pr.number);
+        Logs.successfulNonBotCreatedPRSearch(PRNums);
+      } else {
+        Logs.successfulNonBotCreatedPRSearchNoResult();
+      }
+
+      if (data.total_count - page * 100 > 0) {
+        const nextPage = await fetchBotCreatedPRs(page + 1);
+        const allPages: typeof data.items = data.items.concat(nextPage);
+        return allPages;
+      }
+
+      return data.items;
+    });
+
+}
+
+export const getPullRequestFiles = (pullNumber: number) => {
+  const Github = getOctokit(GITHUB_TOKEN).rest;
+  return Github.pulls
+    .listFiles({
+      pull_number: pullNumber,
+      repo: context.repo.repo,
+      owner: context.repo.owner
+    })
+    .then((res) => res.data);
+}
+
+/**
+ * Returns all files currently touchced by open pull requests
+ * that are not created by the bot
+ */
+export const getFilePathsWithNonBotOpenPRs = async (): Promise<string[]> => {
+  const PRs = await fetchNonBotPRs();
+  const PRNums = PRs.map(pr => pr.number);
+  const AllPRFiles = await Promise.all(
+    PRNums.map(num => limit(() => getPullRequestFiles(num)))
+  )
+
+  const extractFilePath = (PRFiles: typeof AllPRFiles[number]) => {
+    return PRFiles.map(file => file.filename)
+  }
+
+  return AllPRFiles.flatMap(extractFilePath)
+}

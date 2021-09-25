@@ -10,15 +10,11 @@ export const STAGNATION_CUTOFF = moment().subtract(
   "months"
 );
 
-
 export const formatDate = (date: moment.Moment) => {
   return date.format("(YYYY-MMM-Do@HH.m.s)");
 };
 
-export const MERGEABLE_CUTOFF = moment().subtract(
-  2,
-  "weeks"
-)
+export const MERGEABLE_CUTOFF = moment().subtract(2, "weeks");
 
 export const USERNAME_DELIMETER = ", ";
 
@@ -110,6 +106,21 @@ export const Logs = {
     console.log(
       `fetching open PRs created by bot ${BOT_ID} search pattern ${searchPattern} (page ${page})`
     ),
+  fetchingNonBotCreatedPRs: (searchPattern, page) =>
+    console.log(
+      `fetching open PRs NOT created by bot ${BOT_ID} search pattern ${searchPattern} (page ${page})`
+    ),
+  successfulNonBotCreatedPRSearch: (PRNums: number[]) =>
+    console.log(
+      `old PRs NOT created by bot ${BOT_ID} were fetched successfully\n`,
+      `the following PR numbers were found:\n`,
+      _.chunk(
+        10,
+        PRNums.sort((a, b) => a - b)
+      )
+        .map((chunk) => chunk.join(", "))
+        .join("\n ")
+    ),
   successfulBotCreatedPRSearch: (PRNums: number[]) =>
     console.log(
       `old PRs created by bot ${BOT_ID} were fetched successfully\n`,
@@ -124,6 +135,10 @@ export const Logs = {
   successfulBotCreatedPRSearchNoResult: () =>
     console.log(
       `old PRs created by bot ${BOT_ID} were fetched successfully, but none were found`
+    ),
+  successfulNonBotCreatedPRSearchNoResult: () =>
+    console.log(
+      `old PRs NOT created by bot ${BOT_ID} were fetched successfully, but none were found`
     ),
   fechingFilePaths: () => console.log("fetching file paths"),
   pathsWithPRs: (paths: string[]) =>
@@ -144,34 +159,28 @@ export const Logs = {
       [
         `bot ${BOT_ID} has multiple PRs open for\n`,
         `\t(there's a total of ${paths.length} repeat paths)\n`,
-        _.chunk(
-          4,
-          paths
-        )
+        _.chunk(4, paths)
           .map((chunk) => chunk.join(", "))
           .join("\n ")
       ].join(" ")
-    )
+    );
   },
   closingRepeatPRs: (prNums: number[]) => {
-      console.log(
-        [
-          `closing the following PRs opened by bot ${BOT_ID} because they are repeats\n`,
-          `\t(there's a total of ${prNums.length} PRs to close)\n`,
-          _.chunk(
-            10,
-            prNums
-          )
-            .map((chunk) => chunk.join(", "))
-            .join("\n ")
-        ].join(" ")
-      )
+    console.log(
+      [
+        `closing the following PRs opened by bot ${BOT_ID} because they are repeats\n`,
+        `\t(there's a total of ${prNums.length} PRs to close)\n`,
+        _.chunk(10, prNums)
+          .map((chunk) => chunk.join(", "))
+          .join("\n ")
+      ].join(" ")
+    );
   },
   successfullyClosedPR: (prNum: number, title: string) => {
-    console.log(`successfully closed PR ${prNum} with title ${title}`)
+    console.log(`successfully closed PR ${prNum} with title ${title}`);
   },
   successfullyOpenedPR: (prNum: number, title: string) => {
-    console.log(`successfully opened PR ${prNum} with title ${title}`)
+    console.log(`successfully opened PR ${prNum} with title ${title}`);
   },
   warnMultipleFiles: (files: Files, prNum: number) => {
     console.warn(
@@ -180,30 +189,36 @@ export const Logs = {
         `\t(there's a total of ${files.length} files)\n`,
         _.chunk(
           2,
-          files.map(file => file.filename)
+          files.map((file) => file.filename)
         )
           .map((chunk) => chunk.join(", "))
           .join("\n ")
       ].join(" ")
-    )
+    );
   },
   closingPRDueToMultipleFiles: (prNum: number) => {
-    console.log(`closing pr ${prNum} due to it having multiple files`)
+    console.log(`closing pr ${prNum} due to it having multiple files`);
   },
   successfulMarkReadyForReview: (prNum: number, title: string) => {
-    console.log(`successfully marked PR ${prNum} with title "${title}"" as ready for review`)
+    console.log(
+      `successfully marked PR ${prNum} with title "${title}"" as ready for review`
+    );
   },
   mergingOldPR: (path: string, prNum: number, createdAt: moment.Moment) => {
     const message = [
-      `PR ${prNum} with changes to ${path} was created at ${formatDate(createdAt)}`,
-      `which is before the cutoff date of ${formatDate(MERGEABLE_CUTOFF)}; therefore`,
+      `PR ${prNum} with changes to ${path} was created at ${formatDate(
+        createdAt
+      )}`,
+      `which is before the cutoff date of ${formatDate(
+        MERGEABLE_CUTOFF
+      )}; therefore`,
       `it will be merged`
-    ].join(" ")
-    console.log(message)
-    return message
+    ].join(" ");
+    console.log(message);
+    return message;
   },
   mergedSuccessful: () => {
-    console.log(`succesfully merged`)
+    console.log(`succesfully merged`);
   }
 };
 

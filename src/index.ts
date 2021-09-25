@@ -13,6 +13,7 @@ import {
   getCommitDate,
   getEIPContent,
   getEIPs,
+  getFilePathsWithNonBotOpenPRs,
   getIsValidStateEIP,
   limit
 } from "./lib";
@@ -27,8 +28,10 @@ const run = async () => {
   // exclude EIPs with PRs already open for them
   const allEIPPaths = allEIPs.map((EIP) => EIP.path);
   const preExistingEIPPaths = await fetchPreExistingEIPPaths();
+  const activeFiles = await getFilePathsWithNonBotOpenPRs();
   const EIPsToExclude = _.intersection(preExistingEIPPaths, allEIPPaths).concat(
-    EIPPathsToAlwaysExclude
+    EIPPathsToAlwaysExclude,
+    activeFiles
   );
   Logs.pathsWithPRs(EIPsToExclude);
 
