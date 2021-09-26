@@ -1,5 +1,6 @@
 import { context, getOctokit } from "@actions/github";
 import {
+  BOT_ID,
   cleanString,
   DEFAULT_BRANCH,
   EipStatus,
@@ -21,13 +22,16 @@ import {
   Encodings,
   Files,
   ParsedContent,
+  PreExistingPR,
+  SearchPR,
   UnArrayify,
   UnPromisify
 } from "./types";
 import frontmatter, { FrontMatterResult } from "front-matter";
 import moment from "moment-timezone";
 import pLimit from "p-limit";
-import _ from "lodash/fp";
+import _ from "lodash";
+import { Merge } from "type-fest";
 
 export const limit = pLimit(SYNCHRONOUS_PROMISE_LIMIT);
 
@@ -113,9 +117,14 @@ export const getCommitDate = (eip: EIP) => {
       if (!commit) {
         throw new Error(`path ${eip.path} did not resolve to a commit`);
       }
+      if (commit.commit.committer?.date) {
+        return {
+          eip,
+          date: moment(commit.commit.committer.date)
+        };
+      }
       return {
-        eip,
-        date: commit.commit.committer?.date
+        eip
       };
     });
 };
@@ -255,8 +264,8 @@ export const createPR = async ({
       }
     }
   `).then(() => {
-    Logs.successfulMarkReadyForReview(PR.number, PR.title)
-  })
+    Logs.successfulMarkReadyForReview(PR.number, PR.title);
+  });
 
   return PR;
 };
@@ -450,8 +459,6 @@ export const closePRByNum = (prNum: number) => {
     });
 };
 
-type PreExistingPR = { path: string; num: number; createdAt: moment.Moment }
-
 export const closeRepeatPRs = async (PRs: PreExistingPR[]) => {
   const paths = PRs.map((pr) => pr.path);
   const repeats = _.uniq(paths.filter((v, i, a) => a.indexOf(v) !== i));
@@ -465,32 +472,48 @@ export const closeRepeatPRs = async (PRs: PreExistingPR[]) => {
   for (const prNum of numsToClose) {
     await closePRByNum(prNum);
     // long wait because this is allowed to be in parallel
-    await wait(SYNCHRONOUS_PROMISE_LIMIT * 5);
+    await wait(5);
   }
 };
 
-export const mergeOldPR = async (PR: PreExistingPR) => {
-  const isMergeable = PR.createdAt.isBefore(MERGEABLE_CUTOFF);
+type PRDateDefined = Merge<Omit<PreExistingPR, "createdAt">, {createdAt: moment.Moment}>
 
-  if (!isMergeable) return;
+export const mergeOldPR = (PR: PRDateDefined): Promise<void> => {
+  const github = getOctokit(GITHUB_TOKEN).rest;
+  const message = Logs.mergingOldPR(PR.path, PR.num, PR.createdAt);
 
-  const github = getOctokit(GITHUB_TOKEN).rest
-  const message = Logs.mergingOldPR(PR.path, PR.num, PR.createdAt)
+  return github.pulls
+    .merge({
+      owner: context.repo.owner,
+      repo: context.repo.repo,
+      pull_number: PR.num,
+      merge_method: "squash",
+      commit_title: `(bot ${BOT_ID}) moving ${PR.path} to stagnant (#${PR.num})`,
+      commit_message: message
+    })
+    .then(() => {
+      Logs.mergedSuccessful();
+    })
+    .catch((err) => {
+      Logs.failedToMerge(err);
+    })
+};
 
-  await github.pulls.merge({
-    owner: context.repo.owner,
-    repo: context.repo.repo,
-    pull_number: PR.num,
-    commit_title: `(bot) moving ${PR.path} to stagnant`,
-    commit_message: message
-  }).then(() => {
-    Logs.mergedSuccessful()
-  })
+export const mergeOldPRs = async (PRs: PreExistingPR[]) => {
+  const getIsMergeable = (PR: PreExistingPR): PR is PRDateDefined=> {
+    if (!PR.createdAt) return false;
+    return PR.createdAt.isBefore(MERGEABLE_CUTOFF);
+  }
 
-  await wait(SYNCHRONOUS_PROMISE_LIMIT * 5)
+  const mergeablePRs = PRs.filter(getIsMergeable)
+
+  for (const PR of mergeablePRs) {
+    await limit(() => mergeOldPR(PR));
+    await wait(5);
+  }
 }
 
-export const fetchPreExistingEIPPaths = async () => {
+export const fetchPreExistingEIPPaths = async (): Promise<PreExistingPR[]> => {
   const preExistingPRs = await fetchBotCreatedPRs();
   const PRs = await Promise.all(
     preExistingPRs.map(async (pr) => ({
@@ -498,22 +521,18 @@ export const fetchPreExistingEIPPaths = async () => {
       num: pr.number,
       createdAt: moment(pr.created_at)
     }))
-  ).then(
-    (PRs) => PRs.filter((PR) => PR.path) as PreExistingPR[]
-  );
-  await closeRepeatPRs(PRs);
-  await Promise.all(PRs.map((PR) => limit(() => mergeOldPR(PR))))
+  ).then((PRs) => PRs.filter((PR) => PR.path) as PreExistingPR[]);
 
-  return PRs.map((pr) => pr.path);
+  return PRs;
 };
 
-export const fetchNonBotPRs = (page = 1) => {
+export const fetchNonBotPRs = (page = 1): Promise<SearchPR[]> => {
   const github = getOctokit(GITHUB_TOKEN).rest;
 
   const searchPattern = [
     `-label:${PR_KEY_LABELS.join(" -label:")}`,
-    `-is:pr`,
-    `-is:open`,
+    `is:pr`,
+    `is:open`,
     `repo:${context.repo.owner}/${context.repo.repo}`
   ].join(" ");
   Logs.fetchingNonBotCreatedPRs(searchPattern, page);
@@ -541,36 +560,92 @@ export const fetchNonBotPRs = (page = 1) => {
 
       return data.items;
     });
+};
 
-}
-
-export const getPullRequestFiles = (pullNumber: number) => {
+export const getPullRequestFiles = (PR: SearchPR): Promise<PreExistingPR[]> => {
   const Github = getOctokit(GITHUB_TOKEN).rest;
   return Github.pulls
     .listFiles({
-      pull_number: pullNumber,
+      pull_number: PR.number,
       repo: context.repo.repo,
       owner: context.repo.owner
     })
-    .then((res) => res.data);
-}
+    .then((res) => {
+      const files = res.data;
+      return files.map((file) => ({
+        path: file.filename,
+        num: PR.number,
+        createdAt: moment(),
+        author: PR.user?.login
+      }));
+    });
+};
 
 /**
  * Returns all files currently touchced by open pull requests
  * that are not created by the bot
  */
-export const getFilePathsWithNonBotOpenPRs = async (): Promise<string[]> => {
+export const getFilePathsWithNonBotOpenPRs = async (): Promise<
+  PreExistingPR[]
+> => {
   const PRs = await fetchNonBotPRs();
-  const PRNums = PRs.map(pr => pr.number);
   const AllPRFiles = await Promise.all(
-    PRNums.map(num => limit(() => getPullRequestFiles(num)))
-  )
+    PRs.map((PR) => limit(() => getPullRequestFiles(PR)))
+  );
 
-  const extractFilePath = (PRFiles: typeof AllPRFiles[number]) => {
-    return PRFiles.map(file => file.filename)
+  const activeFiles = AllPRFiles.flat();
+  Logs.fetchedActiveFiles(activeFiles.map((file) => file.path));
+  return activeFiles;
+};
+
+export const closeNonSelfBotPRs = async () => {
+  const Github = getOctokit(GITHUB_TOKEN).rest;
+  const PRs = await fetchBotCreatedPRs();
+  const { data: me } = await Github.users.getAuthenticated();
+  const NonSelfPRs = PRs.filter((PR) => PR.user?.login !== me.login);
+
+  const getComments = (PR: SearchPR) => {
+    return Github.issues
+      .listComments({
+        repo: context.repo.repo,
+        owner: context.repo.owner,
+        issue_number: PR.number
+      })
+      .then((res) => res.data);
+  };
+
+  const closePR = async (PR: SearchPR) => {
+    const comments = await getComments(PR).then((comments) =>
+      comments.filter((comment) => comment.user?.login !== me.login)
+    );
+    if (comments.length) {
+      Logs.abortClosingDueToCommentsOnPR(comments, PR.number);
+      return;
+    }
+
+    Logs.closingDueToNonSelf(PR.number, PR.user?.login, me.login);
+    await closePRByNum(PR.number);
+    await wait(5);
+  };
+
+  for (const PR of NonSelfPRs) {
+    await limit(() => closePR(PR))
+  }
+};
+
+export const closeObsoletePRs = async (obsoletePRs: PreExistingPR[]) => {
+  if (!obsoletePRs.length) {
+    Logs.noObsoletePRFound();
+    return;
   }
 
-  const activeFiles = AllPRFiles.flatMap(extractFilePath)
-  Logs.fetchedActiveFiles(activeFiles);
-  return activeFiles
-}
+  const closePR = async (PR: PreExistingPR) => {
+    Logs.closingDueToObsolete(PR.num);
+    await closePRByNum(PR.num);
+  };
+
+  for (const PR of obsoletePRs) {
+    await limit(() => closePR(PR));
+    await wait(5)
+  }
+};
