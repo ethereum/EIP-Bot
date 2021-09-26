@@ -36,13 +36,13 @@ const botCleanup = async () => {
   await mergeOldPRs(preExistingPaths);
   await deleteOrphanedBranches(preExistingPaths);
   Logs.cleanupComplete();
-}
+};
 
 const run = async () => {
   await botCleanup();
 
   // gets the contents of the EIPS directory
-  const allEIPs = (await getEIPs()).slice(0,20);
+  const allEIPs = await getEIPs();
 
   // exclude EIPs with PRs already open for them
   const allEIPPaths = allEIPs.map((EIP) => EIP.path);
@@ -57,13 +57,14 @@ const run = async () => {
   );
   Logs.pathsWithPRs(pathsToExclude);
   Logs.fetchingDates();
+
   const datesChanged = await Promise.all(
     allEIPs.map((EIP) => limit(() => getCommitDate(EIP)))
   );
   const oldEnoughEIPs = datesChanged.filter((date) => {
     if (!date.date) return false;
-    return moment(date.date).isBefore(STAGNATION_CUTOFF)
-  })
+    return moment(date.date).isBefore(STAGNATION_CUTOFF);
+  });
 
   Logs.checkingStagnant();
   const EIPContents = filterBoolean(
@@ -75,18 +76,18 @@ const run = async () => {
 
   const obsoletePRs = _.differenceBy(
     preExistingPaths,
-    allEIPsToStagnate.map(eip => ({
+    allEIPsToStagnate.map((eip) => ({
       path: eip.content.file.path
     })),
     "path"
-  )
-  await closeObsoletePRs(obsoletePRs)
+  );
+  await closeObsoletePRs(obsoletePRs);
 
   const EIPsToStagnate = _.differenceWith(
     allEIPsToStagnate,
-    pathsToExclude.concat(obsoletePRs.map(PR => PR.path)),
+    pathsToExclude.concat(obsoletePRs.map((PR) => PR.path)),
     (a, b) => a.content.file.path === b
-  )
+  );
 
   if (!EIPsToStagnate.length) {
     return Resolve.noEIPs();

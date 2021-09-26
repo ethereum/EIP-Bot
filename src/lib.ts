@@ -22,6 +22,7 @@ import {
   encodings,
   Encodings,
   Files,
+  NodeEnvs,
   ParsedContent,
   PreExistingPR,
   SearchPR,
@@ -199,9 +200,9 @@ export const deleteBranch = (branchName: string) => {
       Logs.successfulBranchDeletion(branchName);
       return res.data;
     })
-    .catch(err => {
+    .catch((err) => {
       console.log(`refs/heads/${branchName}`);
-      console.log(err)
+      console.log(err);
     });
 };
 
@@ -375,6 +376,11 @@ export const applyStagnantProtocol = async ({
     (res) => res && [...res]
   );
 
+  const authorLine =
+    process.env.NODE_ENV === NodeEnvs.test
+      ? `authors: \n`
+      : `authors: ${authors?.join(USERNAME_DELIMETER)} \n`;
+
   await new Promise((r) => setTimeout(r, 1000));
   await createPR({
     fromBranch: branchName,
@@ -383,7 +389,7 @@ export const applyStagnantProtocol = async ({
     body: [
       `This EIP has not been active since ${formatDate(moment(date))};`,
       `which, is greater than the allowed time of ${STAGNATION_CUTOFF_MONTHS} months.\n\n`,
-      `authors: ${authors?.join(USERNAME_DELIMETER)} \n`
+      authorLine
     ].join(" ")
   });
 
@@ -609,14 +615,14 @@ export const getPullRequestFiles = async (
     owner: context.repo.owner
   });
 
-  const branch = await fetchPRBranch(PR.number)
+  const branch = await fetchPRBranch(PR.number);
   return files.map((file) => ({
-      path: file.filename,
-      num: PR.number,
-      createdAt: moment(),
-      author: PR.user?.login,
-      branch
-    }))
+    path: file.filename,
+    num: PR.number,
+    createdAt: moment(),
+    author: PR.user?.login,
+    branch
+  }));
 };
 
 /**
