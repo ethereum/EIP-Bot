@@ -11,6 +11,7 @@ import {
   closeNonSelfBotPRs,
   closeObsoletePRs,
   closeRepeatPRs,
+  deleteOrphanedBranches,
   fetchPreExistingEIPPaths,
   filterBoolean,
   getCommitDate,
@@ -32,7 +33,8 @@ const botCleanup = async () => {
   // keep in mind that this has to run before checking the
   // file dates because it will create PRs unnecessariliy
   await closeRepeatPRs(preExistingPaths);
-  await mergeOldPRs(preExistingPaths)
+  await mergeOldPRs(preExistingPaths);
+  await deleteOrphanedBranches(preExistingPaths);
   Logs.cleanupComplete();
 }
 
@@ -40,14 +42,12 @@ const run = async () => {
   await botCleanup();
 
   // gets the contents of the EIPS directory
-  const allEIPs = await getEIPs();
+  const allEIPs = (await getEIPs()).slice(0,20);
 
   // exclude EIPs with PRs already open for them
   const allEIPPaths = allEIPs.map((EIP) => EIP.path);
   const preExistingPaths = await fetchPreExistingEIPPaths();
-
   const activeFiles = await getFilePathsWithNonBotOpenPRs();
-
   const pathsToExclude = _.intersection(
     preExistingPaths.map((eip) => eip.path),
     allEIPPaths
@@ -56,7 +56,6 @@ const run = async () => {
     activeFiles.map((file) => file.path)
   );
   Logs.pathsWithPRs(pathsToExclude);
-
   Logs.fetchingDates();
   const datesChanged = await Promise.all(
     allEIPs.map((EIP) => limit(() => getCommitDate(EIP)))
@@ -88,6 +87,7 @@ const run = async () => {
     pathsToExclude.concat(obsoletePRs.map(PR => PR.path)),
     (a, b) => a.content.file.path === b
   )
+
   if (!EIPsToStagnate.length) {
     return Resolve.noEIPs();
   }

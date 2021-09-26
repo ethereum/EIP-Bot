@@ -10,6 +10,27 @@ export const STAGNATION_CUTOFF = moment().subtract(
   "months"
 );
 
+// this supports multiple search REs
+const STAGNANT_BRANCH_SEARCH_RE = [
+  /mark-eip-(\d)+-stagnant-\(\d+-[a-zA-Z]+-.+\@\d+\.\d+\.\d+\)/
+];
+/**
+ * returns the first substring matching one of the
+ * branch search regexes
+ */
+export const extractBranchFromRef = (
+  ref: string,
+  REs: RegExp[] = STAGNANT_BRANCH_SEARCH_RE
+): string | undefined => {
+  const RE = REs[0];
+  if (!RE) return;
+  const result = ref.match(RE);
+  if (!result) {
+    return extractBranchFromRef(ref, REs.slice(1));
+  }
+  return result[0];
+};
+
 export const formatDate = (date: moment.Moment) => {
   return date.format("(YYYY-MMM-Do@HH.m.s)");
 };
@@ -97,6 +118,12 @@ export const Logs = {
   protocolStart: (EIPNum) => console.log(`\n================ EIP ${EIPNum}`),
   successfulBranch: (branchName) =>
     console.log("successfully created branch", branchName),
+  successfulBranchDeletion: (branchName) => {
+    console.log(
+      "successfully deleted branch",
+      _.truncate(branchName, { length: 50 })
+    );
+  },
   wait: (seconds) =>
     console.log(
       `===== waiting ${seconds} seconds before continuing to avoid rate limiting =====\n`
@@ -116,7 +143,6 @@ export const Logs = {
       `old PRs NOT created by bot ${BOT_ID} were fetched successfully\n`,
       `\tThere were ${PRNums.length} PRs found\n`,
       _.chunk(
-
         PRNums.sort((a, b) => a - b),
         10
       )
@@ -149,7 +175,6 @@ export const Logs = {
         `Non bot ${BOT_ID} pull requests are touching these files:\n`,
         `\t(there's a total of ${paths.length} active files)\n`,
         _.chunk(
-
           paths.filter((path) => !EIPPathsToAlwaysExclude.includes(path)),
           4
         )
@@ -218,7 +243,9 @@ export const Logs = {
   },
   successfulMarkReadyForReview: (prNum: number, title: string) => {
     console.log(
-      `successfully marked PR ${prNum} with title "${_.truncate(title, {length: 40})}" as ready for review`
+      `successfully marked PR ${prNum} with title "${_.truncate(title, {
+        length: 40
+      })}" as ready for review`
     );
   },
   mergingOldPR: (path: string, prNum: number, createdAt: moment.Moment) => {
@@ -226,9 +253,7 @@ export const Logs = {
       `PR ${prNum} with changes to ${path} was created on \n\t${formatDate(
         createdAt
       )}`,
-      `which is before the cutoff date of \n\t${formatDate(
-        MERGEABLE_CUTOFF
-      )}`,
+      `which is before the cutoff date of \n\t${formatDate(MERGEABLE_CUTOFF)}`,
       `i.e. ${MERGEABLE_CUTOFF_DESCRIPTION} ago`
     ].join("\n");
     console.log(message);
@@ -250,7 +275,7 @@ export const Logs = {
     const formatComment = (comment: Comment, index: number) => {
       if (comment.body) {
         return [
-          `\t${index}) "${_.truncate(comment.body, {length: 40})}"`,
+          `\t${index}) "${_.truncate(comment.body, { length: 40 })}"`,
           `from ${comment.user?.login}`
         ].join(" ");
       }
@@ -281,10 +306,30 @@ export const Logs = {
     );
   },
   failedToMerge: (err: any) => {
-    console.log("failed to merge\n\n", err)
+    console.log("failed to merge\n\n", err);
   },
   cleanupComplete: () => {
-    console.log("\n\t====== CLEANUP COMPLETE =====\n")
+    console.log("\n\t====== CLEANUP COMPLETE =====\n");
+  },
+  foundRefs: (refs: string[]) => {
+    console.log(`successfully found ${refs.length} references`);
+  },
+  foundBranches: (branches: string[]) => {
+    console.log(`extracted ${branches.length} bot created branches`);
+  },
+  foundOrphanedBranches: (branches: string[]) => {
+    console.log(
+      [
+        `The following bot created branches were not associated with an active PR\n`,
+        `\t(${branches.length} orphaned branches were found)\n`,
+        ...branches.map(
+          (branch, i) => `\t${i}) ${_.truncate(branch, { length: 50 })}\n`
+        )
+      ].join(" ")
+    );
+  },
+  noOrphanedBranchesFound: () => {
+    console.log("no orphaned branches were found");
   }
 };
 

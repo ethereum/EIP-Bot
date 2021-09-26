@@ -12,11 +12,15 @@ export type CompareCommits = UnPromisify<
   ReturnType<typeof Github.repos.compareCommits>
 >["data"];
 export type PR = UnPromisify<ReturnType<typeof Github.pulls.get>>["data"];
-export type SearchPR = UnPromisify<ReturnType<typeof Github["search"]["issuesAndPullRequests"]>>["data"]["items"][number]
+export type SearchPR = UnPromisify<
+  ReturnType<typeof Github["search"]["issuesAndPullRequests"]>
+>["data"]["items"][number];
 export type Commit = UnPromisify<
   ReturnType<typeof Github.repos.getCommit>
 >["data"];
-export type Comment = UnPromisify<ReturnType<typeof Github["issues"]["listComments"]>>["data"][number]
+export type Comment = UnPromisify<
+  ReturnType<typeof Github["issues"]["listComments"]>
+>["data"][number];
 export type Files = UnPromisify<
   ReturnType<Github["pulls"]["listFiles"]>
 >["data"];
@@ -115,4 +119,10 @@ export enum NodeEnvs {
 }
 
 export type ArrayLike<T> = T extends (infer U)[] ? U[] : never;
-export type PreExistingPR = { path: string; num: number; createdAt?: moment.Moment, author?: string }
+export type PreExistingPR = {
+  path: string;
+  num: number;
+  createdAt?: moment.Moment;
+  author?: string;
+  branch: string;
+};

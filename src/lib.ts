@@ -4,6 +4,7 @@ import {
   cleanString,
   DEFAULT_BRANCH,
   EipStatus,
+  extractBranchFromRef,
   formatDate,
   FrontMatterAttributes,
   GITHUB_TOKEN,
@@ -182,6 +183,25 @@ export const createBranch = (branchName: string) => {
     .then((res) => {
       Logs.successfulBranch(branchName);
       return res.data;
+    });
+};
+
+export const deleteBranch = (branchName: string) => {
+  const github = getOctokit(GITHUB_TOKEN).rest;
+  return github.git
+    .deleteRef({
+      owner: context.repo.owner,
+      repo: context.repo.repo,
+      ref: `heads/${branchName}`,
+      sha: context.sha
+    })
+    .then((res) => {
+      Logs.successfulBranchDeletion(branchName);
+      return res.data;
+    })
+    .catch(err => {
+      console.log(`refs/heads/${branchName}`);
+      console.log(err)
     });
 };
 
@@ -444,10 +464,10 @@ export const fetchFilePathsFromPRNum = async (PRNum) => {
   return await requireOneFile(files, PRNum);
 };
 
-export const closePRByNum = (prNum: number) => {
+export const closePRByNum = async (prNum: number) => {
   const github = getOctokit(GITHUB_TOKEN).rest;
 
-  return github.pulls
+  const PR = await github.pulls
     .update({
       owner: context.repo.owner,
       repo: context.repo.repo,
@@ -456,7 +476,9 @@ export const closePRByNum = (prNum: number) => {
     })
     .then((res) => {
       Logs.successfullyClosedPR(res.data.number, res.data.title);
+      return res.data;
     });
+  await deleteBranch(PR.head.ref);
 };
 
 export const closeRepeatPRs = async (PRs: PreExistingPR[]) => {
@@ -476,7 +498,10 @@ export const closeRepeatPRs = async (PRs: PreExistingPR[]) => {
   }
 };
 
-type PRDateDefined = Merge<Omit<PreExistingPR, "createdAt">, {createdAt: moment.Moment}>
+type PRDateDefined = Merge<
+  Omit<PreExistingPR, "createdAt">,
+  { createdAt: moment.Moment }
+>;
 
 export const mergeOldPR = (PR: PRDateDefined): Promise<void> => {
   const github = getOctokit(GITHUB_TOKEN).rest;
@@ -496,22 +521,33 @@ export const mergeOldPR = (PR: PRDateDefined): Promise<void> => {
     })
     .catch((err) => {
       Logs.failedToMerge(err);
-    })
+    });
 };
 
 export const mergeOldPRs = async (PRs: PreExistingPR[]) => {
-  const getIsMergeable = (PR: PreExistingPR): PR is PRDateDefined=> {
+  const getIsMergeable = (PR: PreExistingPR): PR is PRDateDefined => {
     if (!PR.createdAt) return false;
     return PR.createdAt.isBefore(MERGEABLE_CUTOFF);
-  }
+  };
 
-  const mergeablePRs = PRs.filter(getIsMergeable)
+  const mergeablePRs = PRs.filter(getIsMergeable);
 
   for (const PR of mergeablePRs) {
     await limit(() => mergeOldPR(PR));
     await wait(5);
   }
-}
+};
+
+const fetchPRBranch = (PRNum: number) => {
+  const github = getOctokit(GITHUB_TOKEN).rest;
+  return github.pulls
+    .get({
+      repo: context.repo.repo,
+      owner: context.repo.owner,
+      pull_number: PRNum
+    })
+    .then((res) => res.data.head.ref);
+};
 
 export const fetchPreExistingEIPPaths = async (): Promise<PreExistingPR[]> => {
   const preExistingPRs = await fetchBotCreatedPRs();
@@ -519,7 +555,8 @@ export const fetchPreExistingEIPPaths = async (): Promise<PreExistingPR[]> => {
     preExistingPRs.map(async (pr) => ({
       path: await limit(() => fetchFilePathsFromPRNum(pr.number)),
       num: pr.number,
-      createdAt: moment(pr.created_at)
+      createdAt: moment(pr.created_at),
+      branch: await limit(() => fetchPRBranch(pr.number))
     }))
   ).then((PRs) => PRs.filter((PR) => PR.path) as PreExistingPR[]);
 
@@ -562,23 +599,24 @@ export const fetchNonBotPRs = (page = 1): Promise<SearchPR[]> => {
     });
 };
 
-export const getPullRequestFiles = (PR: SearchPR): Promise<PreExistingPR[]> => {
+export const getPullRequestFiles = async (
+  PR: SearchPR
+): Promise<PreExistingPR[]> => {
   const Github = getOctokit(GITHUB_TOKEN).rest;
-  return Github.pulls
-    .listFiles({
-      pull_number: PR.number,
-      repo: context.repo.repo,
-      owner: context.repo.owner
-    })
-    .then((res) => {
-      const files = res.data;
-      return files.map((file) => ({
-        path: file.filename,
-        num: PR.number,
-        createdAt: moment(),
-        author: PR.user?.login
-      }));
-    });
+  const { data: files } = await Github.pulls.listFiles({
+    pull_number: PR.number,
+    repo: context.repo.repo,
+    owner: context.repo.owner
+  });
+
+  const branch = await fetchPRBranch(PR.number)
+  return files.map((file) => ({
+      path: file.filename,
+      num: PR.number,
+      createdAt: moment(),
+      author: PR.user?.login,
+      branch
+    }))
 };
 
 /**
@@ -590,7 +628,7 @@ export const getFilePathsWithNonBotOpenPRs = async (): Promise<
 > => {
   const PRs = await fetchNonBotPRs();
   const AllPRFiles = await Promise.all(
-    PRs.map((PR) => limit(() => getPullRequestFiles(PR)))
+    PRs.map(async (PR) => await limit(() => getPullRequestFiles(PR)))
   );
 
   const activeFiles = AllPRFiles.flat();
@@ -629,7 +667,7 @@ export const closeNonSelfBotPRs = async () => {
   };
 
   for (const PR of NonSelfPRs) {
-    await limit(() => closePR(PR))
+    await limit(() => closePR(PR));
   }
 };
 
@@ -646,6 +684,45 @@ export const closeObsoletePRs = async (obsoletePRs: PreExistingPR[]) => {
 
   for (const PR of obsoletePRs) {
     await limit(() => closePR(PR));
-    await wait(5)
+    await wait(5);
+  }
+};
+
+export const fetchOrphanedBranches = async (
+  preexistingPRs: PreExistingPR[]
+): Promise<string[]> => {
+  const github = getOctokit(GITHUB_TOKEN).rest;
+  const activeBranches = preexistingPRs.map((pr) => pr.branch);
+  return github.git
+    .listMatchingRefs({
+      repo: context.repo.repo,
+      owner: context.repo.owner,
+      ref: "heads"
+    })
+    .then((res) => {
+      const refs = res.data.map((ref) => ref.ref);
+      Logs.foundRefs(refs);
+      const branches = refs
+        .map((ref) => extractBranchFromRef(ref))
+        .filter((ref): ref is string => !!ref);
+      Logs.foundBranches(branches);
+      const orphanedBranches = _.difference(branches, activeBranches);
+
+      if (!orphanedBranches.length) {
+        Logs.noOrphanedBranchesFound();
+        return [];
+      }
+      Logs.foundOrphanedBranches(orphanedBranches);
+      return orphanedBranches;
+    });
+};
+
+export const deleteOrphanedBranches = async (
+  preexistingPRs: PreExistingPR[]
+) => {
+  const orphanedBranches = await fetchOrphanedBranches(preexistingPRs);
+  for (const branch of orphanedBranches) {
+    await deleteBranch(branch);
+    await wait(5);
   }
 };
