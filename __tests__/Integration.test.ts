@@ -41,22 +41,16 @@ describe("integration testing edgecases associated with editors", () => {
 
   describe("Pull 3654", () => {
     it("should mention editors if there's a valid status error and no editor approval", async () => {
-      process.env = envFactory({ PULL_NUMBER: SavedRecord.PR3654_2 });
+      process.env = envFactory({
+        PULL_NUMBER: SavedRecord.PR3654_2,
+        ERC_EDITORS: "@micahzoltu, @lighclient"
+      });
 
       // to be used later to check for mentions (postComment was an arbitrary choice)
       jest.mock("#components", () => ({
         ...jest.requireActual("#components"),
-        postComment: jest
-          .fn()
-          .mockImplementation(() => console.log("mocked call"))
+        postComment: jest.fn().mockImplementation(() => {})
       }));
-
-      // constrain constants to prevent changes in state
-      jest.mock("#domain", () => ({
-        ...jest.requireActual("#domain"),
-        EIP_EDITORS: ["@micahzoltu", "@lighclient"]
-      }));
-      jest.resetModules();
 
       await __MAIN_MOCK__();
 
@@ -73,19 +67,21 @@ describe("integration testing edgecases associated with editors", () => {
       }
       assertDefined(call);
 
-      expect(call[0]).toContain(Domain.EIP_EDITORS[0]);
-      expect(call[0]).toContain(Domain.EIP_EDITORS[1]);
+      console.log(Domain.ERC_EDITORS());
+      expect(call[0]).toContain(Domain.ERC_EDITORS()[0]);
+      expect(call[0]).toContain(Domain.ERC_EDITORS()[1]);
     });
 
     it("should pass with editor approval", async () => {
-      process.env = envFactory({ PULL_NUMBER: SavedRecord.PR3654_1 });
+      process.env = envFactory({
+        PULL_NUMBER: SavedRecord.PR3654_1,
+        ERC_EDITORS: "@micahzoltu, @lighclient"
+      });
 
       jest.mock("#domain", () => ({
-        ...jest.requireActual("#domain"),
-        EIP_EDITORS: ["@micahzoltu", "@lighclient"]
+        ...jest.requireActual("#domain")
       }));
 
-      // console.log(proxy.EIP_EDITORS)
       await __MAIN_MOCK__();
 
       expect(setFailedMock).not.toBeCalled();
@@ -94,6 +90,7 @@ describe("integration testing edgecases associated with editors", () => {
 
   describe("Pull 3767", () => {
     it("should pass", async () => {
+      jest.setTimeout(60 * 10 * 1000 * 60);
       process.env = envFactory({ PULL_NUMBER: SavedRecord.PR3767 });
 
       await __MAIN_MOCK__();

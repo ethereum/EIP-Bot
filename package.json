@@ -9,7 +9,8 @@
     "watch": "npx tsc --watch --p ./tsconfig.build.json",
     "it": "NODE_ENV=development node -r dotenv/config build/src/index.js",
     "mock": "NODE_ENV=MOCK node -r dotenv/config build/src/index.js",
-    "prettier-changed": "prettier --write"
+    "prettier-changed": "prettier --write",
+    "prettier:all": "prettier --write src assets __tests__"
   },
   "author": "",
   "license": "CC0-1.0",
@@ -27,6 +28,7 @@
     "front-matter": "4.0.2",
     "lodash": "^4.17.21",
     "nock": "^13.1.1",
+    "prettier": "^2.4.1",
     "ts-jest": "^27.0.5",
     "type-fest": "^2.3.3"
   },
@@ -56,7 +58,9 @@
     "#domain": "build/src/domain",
     "#assertions": "build/src/modules/assertions",
     "#components": "build/src/modules/components",
-    "#infra": "build/src/infra"
+    "#infra": "build/src/infra",
+    "#approvals": "build/src/modules/approvals",
+    "#file": "build/src/modules/file"
   },
   "repository": {
     "type": "git",

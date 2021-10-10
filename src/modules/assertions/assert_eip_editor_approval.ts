@@ -1,5 +1,5 @@
 import { FileDiff } from "#domain";
-import { getApprovals } from "#components";
+import { getApprovals } from "#approvals";
 import { requireEIPEditors } from "#assertions";
 
 /** returns an error string if the PR does NOT have editor approval */

@@ -7,7 +7,7 @@ import { ALLOWED_STATUSES, FileDiff } from "#domain";
  *
  * @returns error or undefined
  */
- export const assertValidStatus = ({ head, base }: FileDiff) => {
+export const assertValidStatus = ({ head, base }: FileDiff) => {
   const allowedStatus = [...ALLOWED_STATUSES].join(" or ");
   if (!ALLOWED_STATUSES.has(head.status)) {
     return [

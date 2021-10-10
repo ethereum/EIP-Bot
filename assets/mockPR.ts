@@ -1,6 +1,13 @@
 import { getOctokit } from "@actions/github";
 import nock from "nock";
-import { GITHUB_TOKEN, isMockMethod, MockMethods, MockRecord, NodeEnvs, PR } from "src/domain";
+import {
+  GITHUB_TOKEN,
+  isMockMethod,
+  MockMethods,
+  MockRecord,
+  NodeEnvs,
+  PR
+} from "src/domain";
 import { assertSavedRecord, SavedRecord, getMockRecords } from "./records";
 import * as fs from "fs";
 
@@ -119,7 +126,11 @@ export const setMockContext = async (mockEnv?: NodeJS.ProcessEnv) => {
   context.eventName = env.EVENT_TYPE;
 };
 
-const fetchAndCreateRecord = async (url: string, method: MockMethods, body?: string) => {
+const fetchAndCreateRecord = async (
+  url: string,
+  method: MockMethods,
+  body?: string
+) => {
   console.error("failed request", method, url, "\nmocking request...");
 
   const isMock = process.env.NODE_ENV === NodeEnvs.mock;
@@ -143,7 +154,7 @@ const fetchAndCreateRecord = async (url: string, method: MockMethods, body?: str
   const fileName = `records/${process.env.PULL_NUMBER}.json`;
   const mockedRecord: MockRecord[] = (await import("./" + fileName)).default;
 
-  isMockMethod(method)
+  isMockMethod(method);
   mockedRecord.push({
     req: {
       url,

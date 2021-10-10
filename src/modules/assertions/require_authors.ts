@@ -6,7 +6,7 @@ import { FileDiff } from "#domain";
  * @param file file diff of a given file
  * @returns list of raw author data
  */
- export const requireAuthors = (fileDiff: FileDiff): string[] => {
+export const requireAuthors = (fileDiff: FileDiff): string[] => {
   // take from base to avoid people adding themselves and being able to approve
   const authors = fileDiff.base.authors && [...fileDiff.base.authors];
 

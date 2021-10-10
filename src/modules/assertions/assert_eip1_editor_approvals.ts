@@ -1,6 +1,6 @@
-import { getApprovals } from "#components";
 import { requireEIPEditors } from "#assertions";
 import { EIP1_REQUIRED_EDITOR_APPROVALS, FileDiff } from "#domain";
+import { getApprovals } from "#approvals";
 
 export const assertEIP1EditorApprovals = async (fileDiff: FileDiff) => {
   const approvals = await getApprovals();

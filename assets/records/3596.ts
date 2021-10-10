@@ -45,8 +45,7 @@ export default [
           type: "User",
           site_admin: false
         },
-        body:
-          "There has been some desire to get some consistency across these EIPs in terms of naming.  Also, `access_list` is snake case while the rest are `camelCase` so I fixed it to align with the rest (and also match casing style of 1559).",
+        body: "There has been some desire to get some consistency across these EIPs in terms of naming.  Also, `access_list` is snake case while the rest are `camelCase` so I fixed it to align with the rest (and also match casing style of 1559).",
         created_at: "2021-05-29T07:54:22Z",
         updated_at: "2021-06-19T04:24:52Z",
         closed_at: "2021-05-31T03:15:58Z",
@@ -400,24 +399,19 @@ export default [
             href: "https://api.github.com/repos/ethereum/EIPs/issues/3596"
           },
           comments: {
-            href:
-              "https://api.github.com/repos/ethereum/EIPs/issues/3596/comments"
+            href: "https://api.github.com/repos/ethereum/EIPs/issues/3596/comments"
           },
           review_comments: {
-            href:
-              "https://api.github.com/repos/ethereum/EIPs/pulls/3596/comments"
+            href: "https://api.github.com/repos/ethereum/EIPs/pulls/3596/comments"
           },
           review_comment: {
-            href:
-              "https://api.github.com/repos/ethereum/EIPs/pulls/comments{/number}"
+            href: "https://api.github.com/repos/ethereum/EIPs/pulls/comments{/number}"
           },
           commits: {
-            href:
-              "https://api.github.com/repos/ethereum/EIPs/pulls/3596/commits"
+            href: "https://api.github.com/repos/ethereum/EIPs/pulls/3596/commits"
           },
           statuses: {
-            href:
-              "https://api.github.com/repos/ethereum/EIPs/statuses/f661efb56fee4a4cdffe1ba3efe119d19c0ae9a7"
+            href: "https://api.github.com/repos/ethereum/EIPs/statuses/f661efb56fee4a4cdffe1ba3efe119d19c0ae9a7"
           }
         },
         author_association: "COLLABORATOR",

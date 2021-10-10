@@ -1,6 +1,5 @@
 import { _TESTS_ } from "src/main";
 import { testResultsFactory } from "__tests__/factories/testResultsFactory";
-import { requireEIPEditors } from "#assertions";
 
 describe("mentions", () => {
   describe("getAuthorMentions", () => {
@@ -56,14 +55,14 @@ describe("mentions", () => {
       jest.mock("#assertions", () => ({
         ...jest.requireActual("#assertions"),
         requireEIPEditors: mockRequireEIPEditors
-      }))
-      jest.resetModules()
-      getEditorMentions = (await import("src/main"))._TESTS_.getEditorMentions
+      }));
+      jest.resetModules();
+      getEditorMentions = (await import("src/main"))._TESTS_.getEditorMentions;
       mockRequireEIPEditors.mockClear();
     });
 
     it("should return editors if the file is new and there's no editor approval", async () => {
-      await import("#assertions")
+      await import("#assertions");
       const testResults = testResultsFactory({
         errors: {
           fileErrors: {

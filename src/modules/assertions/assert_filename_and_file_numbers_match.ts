@@ -5,7 +5,7 @@ import { FileDiff } from "#domain";
  *
  * @returns error or undefined
  */
- export const assertFilenameAndFileNumbersMatch = ({ head, base }: FileDiff) => {
+export const assertFilenameAndFileNumbersMatch = ({ head, base }: FileDiff) => {
   const headMatchesSelf = head.filenameEipNum === head.eipNum;
 
   if (!headMatchesSelf) {

@@ -6,7 +6,7 @@ import { FileDiff } from "#domain";
  *
  * @returns error or undefined
  */
- export const assertConstantStatus = ({ head, base }: FileDiff) => {
+export const assertConstantStatus = ({ head, base }: FileDiff) => {
   if (head.status !== base.status) {
     return [
       `eip-${base.eipNum} state was changed from ${base.status}`,

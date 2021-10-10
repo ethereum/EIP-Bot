@@ -45,8 +45,9 @@ export const editorApprovalPurifier = (testResults: TestResults) => {
 
   // I call the purifier because we shouldn't mention editors if
   // the status change is allowed
-  const statusChangedAllowed = !statusChangeAllowedPurifier(testResults).errors
-    .headerErrors.constantStatusError;
+  const statusChangedAllowed =
+    !statusChangeAllowedPurifier(testResults).errors.headerErrors
+      .constantStatusError;
 
   const isInvalidStatus = errors.headerErrors.validStatusError;
   const mentionEditors = ANY([

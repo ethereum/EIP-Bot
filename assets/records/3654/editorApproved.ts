@@ -401,24 +401,19 @@ export default [
             href: "https://api.github.com/repos/ethereum/EIPs/issues/3654"
           },
           comments: {
-            href:
-              "https://api.github.com/repos/ethereum/EIPs/issues/3654/comments"
+            href: "https://api.github.com/repos/ethereum/EIPs/issues/3654/comments"
           },
           review_comments: {
-            href:
-              "https://api.github.com/repos/ethereum/EIPs/pulls/3654/comments"
+            href: "https://api.github.com/repos/ethereum/EIPs/pulls/3654/comments"
           },
           review_comment: {
-            href:
-              "https://api.github.com/repos/ethereum/EIPs/pulls/comments{/number}"
+            href: "https://api.github.com/repos/ethereum/EIPs/pulls/comments{/number}"
           },
           commits: {
-            href:
-              "https://api.github.com/repos/ethereum/EIPs/pulls/3654/commits"
+            href: "https://api.github.com/repos/ethereum/EIPs/pulls/3654/commits"
           },
           statuses: {
-            href:
-              "https://api.github.com/repos/ethereum/EIPs/statuses/8aca1212d7e716c9c47f8b39efec86795961d4cb"
+            href: "https://api.github.com/repos/ethereum/EIPs/statuses/8aca1212d7e716c9c47f8b39efec86795961d4cb"
           }
         },
         author_association: "CONTRIBUTOR",
@@ -468,8 +463,7 @@ export default [
   {
     req: {
       method: "GET",
-      url:
-        "https://api.github.com/repos/ethereum/EIPs/contents/EIPS%2Feip-2228.md?ref=8aca1212d7e716c9c47f8b39efec86795961d4cb"
+      url: "https://api.github.com/repos/ethereum/EIPs/contents/EIPS%2Feip-2228.md?ref=8aca1212d7e716c9c47f8b39efec86795961d4cb"
     },
     res: {
       status: 200,
@@ -478,8 +472,7 @@ export default [
         path: "EIPS/eip-2228.md",
         sha: "f73ff06338a8a3aa315e7da600d84ea45e3609c9",
         size: 5059,
-        url:
-          "https://api.github.com/repos/ethereum/EIPs/contents/EIPS/eip-2228.md?ref=8aca1212d7e716c9c47f8b39efec86795961d4cb",
+        url: "https://api.github.com/repos/ethereum/EIPs/contents/EIPS/eip-2228.md?ref=8aca1212d7e716c9c47f8b39efec86795961d4cb",
         html_url:
           "https://github.com/ethereum/EIPs/blob/8aca1212d7e716c9c47f8b39efec86795961d4cb/EIPS/eip-2228.md",
         git_url:
@@ -491,12 +484,9 @@ export default [
           "LS0tCmVpcDogMjIyOAp0aXRsZTogQ2Fub25pY2FsaXplIHRoZSBuYW1lIG9m\nIG5ldHdvcmsgSUQgMSBhbmQgY2hhaW4gSUQgMQphdXRob3I6IFdpbGxpYW0g\nRW50cmlrZW4gKEBmdWxsZGVjZW50KQpkaXNjdXNzaW9ucy10bzogaHR0cHM6\nLy9naXRodWIuY29tL2V0aGVyZXVtL0VJUHMvaXNzdWVzLzIyMjgKc3RhdHVz\nOiBGaW5hbAp0eXBlOiBJbmZvcm1hdGlvbmFsCmNyZWF0ZWQ6IDIwMTktMDgt\nMDQKLS0tCgojIyBTaW1wbGUgU3VtbWFyeQoKVGhlIEV0aGVyZXVtIG5ldHdv\ncmsgd2l0aCBuZXR3b3JrIElEIDEgYW5kIGNoYWluIElEIDEgaXMgbmFtZWQg\nRXRoZXJldW0gTWFpbm5ldC4KCiMjIEFic3RyYWN0CgpUaGUgbmFtZSBmb3Ig\ndGhlIEV0aGVyZXVtIG5ldHdvcmsgd2l0aCBuZXR3b3JrIElEIDEgYW5kIGNo\nYWluIElEIDEgc2hhbGwgYmUgRXRoZXJldW0gTWFpbm5ldCBvciBqdXN0IE1h\naW5uZXQuIFRoaXMgaXMgYSBwcm9wZXIgbm91bi4KClRoaXMgc3RhbmRhcmQg\nc3BlY2lmaWVzIHRoZSBuYW1lIGZvciB0aGlzIG5ldHdvcmsgYW5kIHByb3Zp\nZGVzIHJlZmVyZW5jZSBleGFtcGxlcyBpbiBhbiBlZmZvcnQgdG8gc3RhbmRh\ncmRpemUgdGhlIHdvcmQgY2hvaWNlIGFuZCBwcm92aWRlIGEgY29tbW9uIGxh\nbmd1YWdlIGZvciB1c2UgdG8gcmVmZXIgdG8gdGhpcyBuZXR3b3JrLgoKIyMg\nTW90aXZhdGlvbgoKVGhlIEV0aGVyZXVtIG5ldHdvcmsgd2l0aCBuZXR3b3Jr\nIElEIDEgYW5kIGNoYWluIElEIDEgaXMgcmVmZXJlbmNlZCB1c2luZyBzZXZl\ncmFsIGNvbmZsaWN0aW5nIG5hbWVzIGFjcm9zcyBFSVBzLCBjbGllbnQgaW1w\nbGVtZW50YXRpb25zLCBhbmQgaW5mb3JtYXRpb24gcHVibGlzaGVkIG9uIHRo\nZSBpbnRlcm5ldCBhdCBsYXJnZS4gSW4gc2V2ZXJhbCBsb2NhdGlvbnMsIGV2\nZW4gZG9jdW1lbnRzIHdyaXR0ZW4gYnkgdGhlIHNhbWUgYXV0aG9yIHVzZSBp\nbmNvbnNpc3RlbnQgbmFtZXMgdG8gcmVmZXIgdG8gdGhlIEV0aGVyZXVtIG5l\ndHdvcmsgd2l0aCBuZXR3b3JrIElEIDEgYW5kIGNoYWluIElEIDEuIE5hbWVz\nIGluIHVzZSBhdCB0aGUgdGltZSBvZiB0aGlzIHdyaXRpbmcgaW5jbHVkZToK\nCiogIm1haW4gbmV0IgoqICJtYWlubmV0IgoqICJNYWluIG5ldCIKKiAiTWFp\nbm5ldCIKCiMjIFNwZWNpZmljYXRpb24KClRoZSBuZXR3b3JrIG5hbWUgZm9y\nIG5ldHdvcmsgSUQgMSBhbmQgY2hhaW4gSUQgMSBzaGFsbCBiZSBFdGhlcmV1\nbSBNYWlubmV0LCBvciBqdXN0IE1haW5uZXQgaWYgdGhlIGNvbnRleHQgaXMg\na25vd24gdG8gYmUgZGlzY3Vzc2luZyBFdGhlcmV1bSBuZXR3b3Jrcy4gVGhp\ncyBJUyBhIHByb3BlciBub3VuLiBTZXZlcmFsIGV4YW1wbGVzIGFyZSBnaXZl\nbiBiZWxvdyB3aGljaCBkaWZmZXJlbnRpYXRlIGJldHdlZW4gdXNhZ2Ugb2Yg\ndGhlIG5hbWUgb2YgdGhlIG5ldHdvcmsgdmVyc3VzIGEgZGVzY3JpcHRpdmUg\ncmVmZXJlbmNlIHRvIHRoZSBuZXR3b3JrLgoKQW55IG5hbWUgb3Igd29yZCBz\ndHlsaW5nIChpLmUuIGNhcGl0YWxpemF0aW9uIG9mIHRoZSBsZXR0ZXJzKSBv\nZiB0aGUgbmV0d29yayB3aGljaCBpcyBpbmNvbnNpc3RlbnQgd2l0aCB0aGUg\ndGVzdCBjYXNlcyBjaXRlZCBiZWxvdyBzaGFsbCBOT1QgYmUgdXNlZC4KCiMj\nIyBUcmFkZW1hcmsgbm90ZQoKIkV0aGVyZXVtIiBpcyB0cmFkZW1hcmtlZCBi\neSB0aGUgRXRoZXJldW0gRm91bmRhdGlvbi4gRm9yIG1vcmUgaW5mb3JtYXRp\nb24gb24geW91ciBvYmxpZ2F0aW9ucyB3aGVuIG1lbnRpb25pbmcgIkV0aGVy\nZXVtIiwgYW5kIHBvc3NpYmx5ICJFdGhlcmV1bSBNYWlubmV0Iiwgc2VlOgoK\nKiBVU1BUTyByZWdpc3RyYXRpb24gbnVtYmVyIDUxMTA1NzkgYnkgRXRoZXJl\ndW0gRm91bmRhdGlvbgoqIFRoZSBub3RlICJ5b3UgbXVzdCBub3QgdXNlIFt0\naGlzIG1hcmtdIHdpdGhvdXQgdGhlIHByaW9yIHdyaXR0ZW4gcGVybWlzc2lv\nbiBvZiB0aGUgRm91bmRhdGlvbiIgb24gdGhlIEV0aGVyZXVtIEZvdW5kYXRp\nb24gd2Vic2l0ZSwgVGVybXMgb2YgVXNlIHBhZ2UKCiMjIFJhdGlvbmFsZQoK\nQ2hvb3NpbmcgY29tbW9uIHdvcmQgdXNlIHByb21vdGVzIGludGVyb3BlcmFi\naWxpdHkgb2YgaW1wbGVtZW50YXRpb25zIGFuZCBpbmNyZWFzZXMgY3VzdG9t\nZXIgYXdhcmVuZXNzLiBBbHNvLCBpdCBhZGRzIGEgc2Vuc2Ugb2YgcHJvZmVz\nc2lvbmFsaXNtIHdoZW4gY3VzdG9tZXJzIHNlZSB0aGUgc2FtZSB3b3JkIGFu\nZCB3b3JkIHN0eWxpbmcgKGkuZS4gY2FwaXRhbGl6YXRpb24gb2YgbGV0dGVy\ncykgYWNyb3NzIGRpZmZlcmVudCBpbXBsZW1lbnRhdGlvbnMuCgpBbnlib2R5\nIHRoYXQgaGFzIHRyYXZlbGxlZCB0byBjZXJ0YWluIGNvdW50cmllcyBhbmQg\nc2VlbiBhbiAiSVBob25lIFtzaWNdIiByZXBhaXIgc3RvcmUgc2hvdWxkIGlt\nbWVkaWF0ZWx5IHJlY29nbml6ZSB0aGF0IHRoaXMgaXMgb2ZmLWJyYW5kIGFu\nZCB1bm9mZmljaWFsLiBMaWtld2lzZSwgdGhlIGFzdHV0ZSBjdXN0b21lciBv\nZiBFdGhlcmV1bSBzaG91bGQgcmVjb2duaXplIGlmIHRoZXkgc2VlIHRoZSBu\nZXR3b3JrIHJlZmVycmVkIHRvIHVzaW5nIGluY29uc2lzdGVudCBuYW1lcyBp\nbiBkaWZmZXJlbnQgc29mdHdhcmUsIHNvIGxldCdzIGF2b2lkIHRoaXMuCgoj\nIyBCYWNrd2FyZHMgQ29tcGF0aWJpbGl0eQoKLSBNZXRhTWFzayBwcmV2aW91\nc2x5IHVzZWQgIk1haW4gRXRoZXJldW0gTmV0d29yayIgaW4gdGhlIGFjY291\nbnQgbmV0d29yayBjaG9vc2VyLiBNZXRhTWFzayBoYXMgYmVlbiB1cGRhdGVk\nIGNvbnNpc3RlbnQgd2l0aCB0aGlzIEVJUC4KCi0gUmVmZXJlbmNlcyB0byBN\nYWlubmV0IHRoYXQgYXJlIGluY29uc2lzdGVudCB3aXRoIHRoaXMgc3BlY2lm\naWNhdGlvbiBhcmUgbWFkZSBpbjogW0VJUC0yXSguL2VpcC0yLm1kKSwgW0VJ\nUC03NzldKC4vZWlwLTc3OS5tZCksIFtFSVAtMTUwXSguL2VpcC0xNTAubWQp\nLCBbRUlQLTE1NV0oLi9laXAtMTU1Lm1kKSwgW0VJUC0xNjFdKC4vZWlwLTE2\nMS5tZCksIFtFSVAtMTcwXSguL2VpcC0xNzAubWQpLCBbRUlQLTE5MF0oLi9l\naXAtMTkwLm1kKSwgW0VJUC0yMjVdKC4vZWlwLTIyNS5tZCksIFtFSVAtMTAx\nM10oLi9laXAtMTAxMy5tZCksIFtFSVAtMTY3OV0oLi9laXAtMTY3OS5tZCks\nIFtFSVAtMTcxNl0oLi9laXAtMTcxNi5tZCksIFtFSVAtMjAyOF0oLi9laXAt\nMjAyOC5tZCksIFtFSVAtMjIwMF0oLi9laXAtMjIwMC5tZCksIGFuZCBbRUlQ\nLTIzODddKC4vZWlwLTIzODcubWQpLiBGb3IgY29uc2lzdGVuY3ksIHdlIHJl\nY29tbWVuZCB0aGUgZWRpdG9yIHdpbGwgdXBkYXRlIEVJUHMgdG8gY29uc2lz\ndGVudGx5IHVzZSB0aGUgbmFtZSBhcyBzcGVjaWZpZWQgaW4gdGhpcyBFSVAu\nCgojIyBUZXN0IENhc2VzCgojIyMgRXhhbXBsZXMgcmVmZXJlbmNpbmcgdGhl\nIG5hbWUgb2YgdGhlIG5ldHdvcmsg4pyFCgo+IFRoZSBjb250cmFjdCB3YXMg\nZGVwbG95ZWQgdG8gRXRoZXJldW0gTWFpbm5ldC4KCj4gRXRoZXJldW0gcnVu\ncyBtYW55IGFwcGxpY2F0aW9ucywgdGhpcyBEYXBwIHdhcyBkZXBsb3llZCB0\nbyBNYWlubmV0LgoKTm8gc3BlY2lmaWNhdGlvbiBpcyBtYWRlIG9uIHdoZXRo\nZXIgRGFwcCwgZGFwcCwgZEFwcCwgZXRjLiBpcyBwcmVmZXJyZWQuCgo+IFNX\nSVRDSCBUTyBNQUlOTkVUCgpUaGlzIGV4YW1wbGUgc2hvd3MgYSB1c2VyIGlu\ndGVyZmFjZSB3aGljaCBpcyBpbiB1cHBlcmNhc2UuIFRvIGJlIHNlbWFudGlj\nYWxseSBjb3JyZWN0LCB0aGlzIGNvdWxkIGJlIHdyaXR0ZW4gaW4gSFRNTCBh\ncyBgPHNwYW4gc3R5bGU9InRleHQtdHJhbnNmb3JtOiB1cHBlcmNhc2UiPlN3\naXRjaCB0byBNYWlubmV0PC9zcGFuPmAuCgo+IHN3aXRjaCB0byBtYWlubmV0\nCgpUaGlzIGV4YW1wbGUgc2hvd3MgYSB1c2VyIGludGVyZmFjZSB3aGljaCBp\ncyBpbiBsb3dlcmNhc2UuIFRvIGJlIHNlbWFudGljYWxseSBjb3JyZWN0LCB0\naGlzIGNvdWxkIGJlIHdyaXR0ZW4gaW4gSFRNTCBhcyBgPHNwYW4gc3R5bGU9\nInRleHQtdHJhbnNmb3JtOiBsb3dlcmNhc2UiPlN3aXRjaCB0byBNYWlubmV0\nPC9zcGFuPmAuCgojIyMgRXhhbXBsZXMgcmVmZXJlbmNpbmcgdGhlIG5ldHdv\ncmsgaW4gYSBkZXNjcmlwdGl2ZSB3YXkg4pyFCgo+IE1haW5uZXQgaGFzICMj\nIyB0aW1lcyB0aGUgbnVtYmVyIG9mIHRyYW5zYWN0aW9ucyBhcyB0aGUgdGVz\ndCBuZXR3b3Jrcy4KCiMjIyBFeGFtcGxlcyBvZiBvdGhlciBjb3JyZWN0IHdv\ncmQgdXNhZ2Ug4pyFCgo+IFRoZSBtYWluIG5ldHdvcmsgb24gRXRoZXJldW0g\naXMgTWFpbm5ldAoKVGhpcyBzaG93cyB0aGF0ICJtYWluIiBpcyB1c2VkIGFz\nIGEgZGVzY3JpcHRpdmUgd29yZCwgYnV0IE1haW5uZXQgaXMgdGhlIHNwZWNp\nZmljIG5ldHdvcmsgd2hpY2ggaXMgaGF2aW5nIG5ldHdvcmsgSUQgMSBhbmQg\nY2hhaW4gSUQgMS4KCiMjIyBFeGFtcGxlcyBvZiBwb29yIHdvcmQgY2hvaWNl\nIChhdm9pZCB0aGlzKSDinYwKCj4gRGVwbG95IHlvdXIgY29udHJhY3QgdG8g\ndGhlIEV0aGVyZXVtIG1haW4gbmV0d29yay4KClRoaXMgaXMgcmVmZXJyaW5n\nIHRvIGEgIm1haW4iIG5ldHdvcmsgd2hpY2ggaXMgY29udGV4dC1kZXBlbmRl\nbnQuIElmIHlvdSB3ZXJlIHJlYWRpbmcgdGhpcyB0ZXh0IG9uIGEgcGFnZSBh\nYm91dCBFdGhlcmV1bSBDbGFzc2ljLCB0aGV5IHdvdWxkIGJlIHJlZmVycmlu\nZyB0byBuZXR3b3JrIElEIDIgYW5kIGNoYWluIElEIDYyLiBUaGVyZWZvcmUg\ndGhpcyB3b3JkIHVzYWdlIGlzIGxlc3MgY3Jpc3AuIERvIE5PVCB1c2Ugd29y\nZGluZyBsaWtlIHRoaXMuCgo+IENvbm5lY3QgdG8gbWFpbm5ldC4KClRoZXNl\nIHdvcmRzIGxpdGVyYWxseSBtZWFuIG5vdGhpbmcuIFRoZSBsb3dlcmNhc2Us\nIG5vdC1wcm9wZXItbm91biB3b3JkICJtYWlubmV0IiBpcyBub3QgYSBwbGFp\nbiBFbmdsaXNoIHdvcmQgYW5kIGl0IHNob3VsZCBub3QgYmUgaW4gYW55IGRp\nY3Rpb25hcnkuIERvIE5PVCB1c2Ugd29yZGluZyBsaWtlIHRoaXMuCgojIyBD\nb3B5cmlnaHQKCkNvcHlyaWdodCBhbmQgcmVsYXRlZCByaWdodHMgd2FpdmVk\nIHZpYSBbQ0MwXShodHRwczovL2NyZWF0aXZlY29tbW9ucy5vcmcvcHVibGlj\nZG9tYWluL3plcm8vMS4wLykuCg==\n",
         encoding: "base64",
         _links: {
-          self:
-            "https://api.github.com/repos/ethereum/EIPs/contents/EIPS/eip-2228.md?ref=8aca1212d7e716c9c47f8b39efec86795961d4cb",
-          git:
-            "https://api.github.com/repos/ethereum/EIPs/git/blobs/f73ff06338a8a3aa315e7da600d84ea45e3609c9",
-          html:
-            "https://github.com/ethereum/EIPs/blob/8aca1212d7e716c9c47f8b39efec86795961d4cb/EIPS/eip-2228.md"
+          self: "https://api.github.com/repos/ethereum/EIPs/contents/EIPS/eip-2228.md?ref=8aca1212d7e716c9c47f8b39efec86795961d4cb",
+          git: "https://api.github.com/repos/ethereum/EIPs/git/blobs/f73ff06338a8a3aa315e7da600d84ea45e3609c9",
+          html: "https://github.com/ethereum/EIPs/blob/8aca1212d7e716c9c47f8b39efec86795961d4cb/EIPS/eip-2228.md"
         }
       }
     }
@@ -548,8 +538,7 @@ export default [
           author_association: "COLLABORATOR",
           _links: {
             html: {
-              href:
-                "https://github.com/ethereum/EIPs/pull/3654#pullrequestreview-706946210"
+              href: "https://github.com/ethereum/EIPs/pull/3654#pullrequestreview-706946210"
             },
             pull_request: {
               href: "https://api.github.com/repos/ethereum/EIPs/pulls/3654"
@@ -616,8 +605,7 @@ export default [
       status: 200,
       data: [
         {
-          url:
-            "https://api.github.com/repos/ethereum/EIPs/issues/comments/880074335",
+          url: "https://api.github.com/repos/ethereum/EIPs/issues/comments/880074335",
           html_url:
             "https://github.com/ethereum/EIPs/pull/3654#issuecomment-880074335",
           issue_url: "https://api.github.com/repos/ethereum/EIPs/issues/3654",
@@ -650,13 +638,11 @@ export default [
           created_at: "2021-07-14T17:25:02Z",
           updated_at: "2021-07-14T17:25:02Z",
           author_association: "COLLABORATOR",
-          body:
-            "Hi! I'm a bot, and I wanted to automerge your PR, but couldn't because of the following issue(s):\n\n\n\t - EIP 2228 state was changed from last call to final\n\t - eip-2228.md is in state final, not draft or last call or review; an EIP editor needs to approve this change\n\t - This PR requires review from one of [@MicahZoltu, @lightclient, @arachnid, @cdetrio, @Souptacular, @vbuterin, @nicksavers, @wanderer, @gcolvin, @axic]",
+          body: "Hi! I'm a bot, and I wanted to automerge your PR, but couldn't because of the following issue(s):\n\n\n\t - EIP 2228 state was changed from last call to final\n\t - eip-2228.md is in state final, not draft or last call or review; an EIP editor needs to approve this change\n\t - This PR requires review from one of [@MicahZoltu, @lightclient, @arachnid, @cdetrio, @Souptacular, @vbuterin, @nicksavers, @wanderer, @gcolvin, @axic]",
           performed_via_github_app: null
         },
         {
-          url:
-            "https://api.github.com/repos/ethereum/EIPs/issues/comments/880074717",
+          url: "https://api.github.com/repos/ethereum/EIPs/issues/comments/880074717",
           html_url:
             "https://github.com/ethereum/EIPs/pull/3654#issuecomment-880074717",
           issue_url: "https://api.github.com/repos/ethereum/EIPs/issues/3654",
@@ -695,8 +681,7 @@ export default [
           performed_via_github_app: null
         },
         {
-          url:
-            "https://api.github.com/repos/ethereum/EIPs/issues/comments/880095123",
+          url: "https://api.github.com/repos/ethereum/EIPs/issues/comments/880095123",
           html_url:
             "https://github.com/ethereum/EIPs/pull/3654#issuecomment-880095123",
           issue_url: "https://api.github.com/repos/ethereum/EIPs/issues/3654",
@@ -735,8 +720,7 @@ export default [
           performed_via_github_app: null
         },
         {
-          url:
-            "https://api.github.com/repos/ethereum/EIPs/issues/comments/882916266",
+          url: "https://api.github.com/repos/ethereum/EIPs/issues/comments/882916266",
           html_url:
             "https://github.com/ethereum/EIPs/pull/3654#issuecomment-882916266",
           issue_url: "https://api.github.com/repos/ethereum/EIPs/issues/3654",
@@ -771,13 +755,11 @@ export default [
           created_at: "2021-07-19T23:02:40Z",
           updated_at: "2021-07-19T23:02:40Z",
           author_association: "CONTRIBUTOR",
-          body:
-            "weird, @MicahZoltu should this have auto merged provided that you approved it?",
+          body: "weird, @MicahZoltu should this have auto merged provided that you approved it?",
           performed_via_github_app: null
         },
         {
-          url:
-            "https://api.github.com/repos/ethereum/EIPs/issues/comments/882918160",
+          url: "https://api.github.com/repos/ethereum/EIPs/issues/comments/882918160",
           html_url:
             "https://github.com/ethereum/EIPs/pull/3654#issuecomment-882918160",
           issue_url: "https://api.github.com/repos/ethereum/EIPs/issues/3654",
@@ -812,13 +794,11 @@ export default [
           created_at: "2021-07-19T23:06:29Z",
           updated_at: "2021-07-19T23:06:29Z",
           author_association: "CONTRIBUTOR",
-          body:
-            "Here is the relevant bot error message which as @alita-moore notes, is inaccurate:\r\n\r\n> https://github.com/ethereum/EIPs/pull/3654/checks?check_run_id=3073655592#step:4:17\r\n\r\nRequesting manual merge here please and then bot fixing where that happens.",
+          body: "Here is the relevant bot error message which as @alita-moore notes, is inaccurate:\r\n\r\n> https://github.com/ethereum/EIPs/pull/3654/checks?check_run_id=3073655592#step:4:17\r\n\r\nRequesting manual merge here please and then bot fixing where that happens.",
           performed_via_github_app: null
         },
         {
-          url:
-            "https://api.github.com/repos/ethereum/EIPs/issues/comments/882921561",
+          url: "https://api.github.com/repos/ethereum/EIPs/issues/comments/882921561",
           html_url:
             "https://github.com/ethereum/EIPs/pull/3654#issuecomment-882921561",
           issue_url: "https://api.github.com/repos/ethereum/EIPs/issues/3654",
@@ -862,16 +842,13 @@ export default [
   {
     req: {
       method: "PATCH",
-      url:
-        "https://api.github.com/repos/ethereum/EIPs/issues/comments/880074335",
-      body:
-        '{"body":"Hi! I\'m a bot, and I wanted to automerge your PR, but couldn\'t because of the following issue(s):\\n\\n\\n\\t - eip-2228.md is in state final at the head commit, not draft or last call or review; an EIP editor needs to approve this change\\n\\t - This PR requires review from one of [@MicahZoltu, @lightclient, @arachnid, @cdetrio, @Souptacular, @vbuterin, @nicksavers, @wanderer, @gcolvin, @axic]"}'
+      url: "https://api.github.com/repos/ethereum/EIPs/issues/comments/880074335",
+      body: '{"body":"Hi! I\'m a bot, and I wanted to automerge your PR, but couldn\'t because of the following issue(s):\\n\\n\\n\\t - eip-2228.md is in state final at the head commit, not draft or last call or review; an EIP editor needs to approve this change\\n\\t - This PR requires review from one of [@MicahZoltu, @lightclient, @arachnid, @cdetrio, @Souptacular, @vbuterin, @nicksavers, @wanderer, @gcolvin, @axic]"}'
     },
     res: {
       status: 200,
       data: {
-        url:
-          "https://api.github.com/repos/ethereum/EIPs/issues/comments/880074335",
+        url: "https://api.github.com/repos/ethereum/EIPs/issues/comments/880074335",
         html_url:
           "https://github.com/ethereum/EIPs/pull/3654#issuecomment-880074335",
         issue_url: "https://api.github.com/repos/ethereum/EIPs/issues/3654",
@@ -904,8 +881,7 @@ export default [
         created_at: "2021-07-14T17:25:02Z",
         updated_at: "2021-07-24T07:00:26Z",
         author_association: "COLLABORATOR",
-        body:
-          "Hi! I'm a bot, and I wanted to automerge your PR, but couldn't because of the following issue(s):\n\n\n\t - eip-2228.md is in state final at the head commit, not draft or last call or review; an EIP editor needs to approve this change\n\t - This PR requires review from one of [@MicahZoltu, @lightclient, @arachnid, @cdetrio, @Souptacular, @vbuterin, @nicksavers, @wanderer, @gcolvin, @axic]",
+        body: "Hi! I'm a bot, and I wanted to automerge your PR, but couldn't because of the following issue(s):\n\n\n\t - eip-2228.md is in state final at the head commit, not draft or last call or review; an EIP editor needs to approve this change\n\t - This PR requires review from one of [@MicahZoltu, @lightclient, @arachnid, @cdetrio, @Souptacular, @vbuterin, @nicksavers, @wanderer, @gcolvin, @axic]",
         performed_via_github_app: null
       }
     }

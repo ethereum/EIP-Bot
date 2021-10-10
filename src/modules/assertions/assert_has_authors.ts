@@ -6,7 +6,7 @@ import { FileDiff } from "#domain";
  * @param file file diff of a given file
  * @returns list of raw author data
  */
- export const assertHasAuthors = (file: FileDiff) => {
+export const assertHasAuthors = (file: FileDiff) => {
   // take from base to avoid people adding themselves and being able to approve
   const authors = file.base.authors && [...file.base.authors];
 

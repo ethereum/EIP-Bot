@@ -8,9 +8,15 @@ inputs:
   MERGE_ENABLED:
     description: if true then the bot merge abilities are enabled, otherwise the bot will not merge
     required: false
+  CORE_EDITORS:
+    description: a list of editors in the following format "@github_username,@..." to be mentioned for core eip changes
+    required: true
+  ERC_EDITORS:
+    description: a list of editors in the following format "@github_username,@..." to be mentioned for ERC type changes 
+    required: true
 
 runs:
   using: "composite"
   steps:
-    - run: cd ${{github.action_path}} && yarn install && yarn build && GITHUB_TOKEN=${{ inputs.GITHUB-TOKEN }} MERGE_ENABLED=${{ inputs.MERGE_ENABLED }} NODE_ENV=production node build/src/index.js
+    - run: cd ${{github.action_path}} && yarn install && yarn build && ERC_EDITORS=${{ inputs.ERC_EDITORS }} CORE_EDITORS=${{ inputs.CORE_EDITORS }}GITHUB_TOKEN=${{ inputs.GITHUB-TOKEN }} MERGE_ENABLED=${{ inputs.MERGE_ENABLED }} NODE_ENV=production node build/src/index.js
       shell: bash

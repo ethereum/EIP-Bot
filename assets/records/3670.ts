@@ -14,8 +14,7 @@ export default [
       status: 200,
       data: [
         {
-          url:
-            "https://api.github.com/repos/ethereum/EIPs/issues/comments/883245826",
+          url: "https://api.github.com/repos/ethereum/EIPs/issues/comments/883245826",
           html_url:
             "https://github.com/ethereum/EIPs/pull/3670#issuecomment-883245826",
           issue_url: "https://api.github.com/repos/ethereum/EIPs/issues/3670",
@@ -48,13 +47,11 @@ export default [
           created_at: "2021-07-20T09:29:48Z",
           updated_at: "2021-07-20T09:38:52Z",
           author_association: "MEMBER",
-          body:
-            "Why was this auto merged without review from any other editor?",
+          body: "Why was this auto merged without review from any other editor?",
           performed_via_github_app: null
         },
         {
-          url:
-            "https://api.github.com/repos/ethereum/EIPs/issues/comments/883635183",
+          url: "https://api.github.com/repos/ethereum/EIPs/issues/comments/883635183",
           html_url:
             "https://github.com/ethereum/EIPs/pull/3670#issuecomment-883635183",
           issue_url: "https://api.github.com/repos/ethereum/EIPs/issues/3670",
@@ -89,13 +86,11 @@ export default [
           created_at: "2021-07-20T19:21:04Z",
           updated_at: "2021-07-20T19:21:04Z",
           author_association: "COLLABORATOR",
-          body:
-            "Hmm, good question.  cc @alita-moore If an editor is an author, the PR should wait for another editor to approve before merging.  It is probably simpler to just require an approval from any editor (like all PRs) and ignore that the author happens to be an editor.",
+          body: "Hmm, good question.  cc @alita-moore If an editor is an author, the PR should wait for another editor to approve before merging.  It is probably simpler to just require an approval from any editor (like all PRs) and ignore that the author happens to be an editor.",
           performed_via_github_app: null
         },
         {
-          url:
-            "https://api.github.com/repos/ethereum/EIPs/issues/comments/883638726",
+          url: "https://api.github.com/repos/ethereum/EIPs/issues/comments/883638726",
           html_url:
             "https://github.com/ethereum/EIPs/pull/3670#issuecomment-883638726",
           issue_url: "https://api.github.com/repos/ethereum/EIPs/issues/3670",
@@ -134,8 +129,7 @@ export default [
           performed_via_github_app: null
         },
         {
-          url:
-            "https://api.github.com/repos/ethereum/EIPs/issues/comments/883735351",
+          url: "https://api.github.com/repos/ethereum/EIPs/issues/comments/883735351",
           html_url:
             "https://github.com/ethereum/EIPs/pull/3670#issuecomment-883735351",
           issue_url: "https://api.github.com/repos/ethereum/EIPs/issues/3670",
@@ -609,24 +603,19 @@ export default [
             href: "https://api.github.com/repos/ethereum/EIPs/issues/3670"
           },
           comments: {
-            href:
-              "https://api.github.com/repos/ethereum/EIPs/issues/3670/comments"
+            href: "https://api.github.com/repos/ethereum/EIPs/issues/3670/comments"
           },
           review_comments: {
-            href:
-              "https://api.github.com/repos/ethereum/EIPs/pulls/3670/comments"
+            href: "https://api.github.com/repos/ethereum/EIPs/pulls/3670/comments"
           },
           review_comment: {
-            href:
-              "https://api.github.com/repos/ethereum/EIPs/pulls/comments{/number}"
+            href: "https://api.github.com/repos/ethereum/EIPs/pulls/comments{/number}"
           },
           commits: {
-            href:
-              "https://api.github.com/repos/ethereum/EIPs/pulls/3670/commits"
+            href: "https://api.github.com/repos/ethereum/EIPs/pulls/3670/commits"
           },
           statuses: {
-            href:
-              "https://api.github.com/repos/ethereum/EIPs/statuses/984cac68dec3b2a6f6e2470422086fddd2655403"
+            href: "https://api.github.com/repos/ethereum/EIPs/statuses/984cac68dec3b2a6f6e2470422086fddd2655403"
           }
         },
         author_association: "MEMBER",
@@ -677,8 +666,7 @@ export default [
   {
     req: {
       method: "GET",
-      url:
-        "https://api.github.com/repos/ethereum/EIPs/contents/EIPS%2Feip-3670.md?ref=984cac68dec3b2a6f6e2470422086fddd2655403"
+      url: "https://api.github.com/repos/ethereum/EIPs/contents/EIPS%2Feip-3670.md?ref=984cac68dec3b2a6f6e2470422086fddd2655403"
     },
     res: {
       status: 200,
@@ -687,8 +675,7 @@ export default [
         path: "EIPS/eip-3670.md",
         sha: "ed22ebfcd5beeb6905c30b3f10e99d1b293d3dc6",
         size: 4421,
-        url:
-          "https://api.github.com/repos/ethereum/EIPs/contents/EIPS/eip-3670.md?ref=984cac68dec3b2a6f6e2470422086fddd2655403",
+        url: "https://api.github.com/repos/ethereum/EIPs/contents/EIPS/eip-3670.md?ref=984cac68dec3b2a6f6e2470422086fddd2655403",
         html_url:
           "https://github.com/ethereum/EIPs/blob/984cac68dec3b2a6f6e2470422086fddd2655403/EIPS/eip-3670.md",
         git_url:
@@ -700,12 +687,9 @@ export default [
           "LS0tCmVpcDogMzY3MAp0aXRsZTogRU9GIC0gQ29kZSBWYWxpZGF0aW9uCmF1\ndGhvcjogQWxleCBCZXJlZ3N6YXN6aSAoQGF4aWMpLCBBbmRyZWkgTWFpYm9y\nb2RhIChAZ3VtYjApLCBQYXdlxYIgQnlsaWNhIChAY2hmYXN0KQpkaXNjdXNz\naW9ucy10bzogaHR0cHM6Ly9ldGhlcmV1bS1tYWdpY2lhbnMub3JnL3QvZWlw\nLTM2NzAtZW9mLWNvZGUtdmFsaWRhdGlvbi82NjkzCnN0YXR1czogRHJhZnQK\ndHlwZTogU3RhbmRhcmRzIFRyYWNrCmNhdGVnb3J5OiBDb3JlCmNyZWF0ZWQ6\nIDIwMjEtMDYtMjMKcmVxdWlyZXM6IDM1NDAKLS0tCgojIyBBYnN0cmFjdAoK\nSW50cm9kdWNlIGNvZGUgdmFsaWRhdGlvbiBhdCBjb250cmFjdCBjcmVhdGlv\nbiB0aW1lIGZvciBFT0YgZm9ybWF0dGVkIChbRUlQLTM1NDBdKC4vZWlwLTM1\nNDAubWQpKSBjb250cmFjdHMuICBSZWplY3QgY29udHJhY3RzIHdoaWNoIGNv\nbnRhaW4gdHJ1bmNhdGVkIGBQVVNIYC1kYXRhIG9yIHVuYXNzaWduZWQgaW5z\ndHJ1Y3Rpb25zLiBMZWdhY3kgYnl0ZWNvZGUgaXMgdW5hZmZlY3RlZCBieSB0\naGlzIGNoYW5nZS4KCiMjIE1vdGl2YXRpb24KCkN1cnJlbnRseSBleGlzdGlu\nZyBjb250cmFjdHMgcmVxdWlyZSBubyB2YWxpZGF0aW9uIG9mIGNvcnJlY3Ru\nZXNzIGFuZCBFVk0gaW1wbGVtZW50YXRpb25zIGNhbiBkZWNpZGUgaG93IHRo\nZXkgaGFuZGxlIHRydW5jYXRlZCBieXRlY29kZSBvciB1bmFzc2luZ2VkIGlu\nc3RydWN0aW9ucy4gIFRoaXMgY2hhbmdlIGFpbXMgdG8gYnJpbmcgY29kZSB2\nYWxpZGl0eSBpbnRvIGNvbnNlbnN1cywgc28gdGhhdCBpdCBiZWNvbWVzIGVh\nc2llciB0byByZWFzb24gYWJvdXQgYnl0ZWNvZGUuIE1vcmVvdmVyLCBFVk0g\naW1wbGVtZW50YXRpb25zIG1heSByZXF1aXJlIGxlc3MgcGF0aHMgdG8gZGVj\naWRlIHdoaWNoIGluc3RydWN0aW9uIGlzIHZhbGlkIGluIHRoZSBjdXJyZW50\nIGV4ZWN1dGlvbiBjb250ZXh0LgoKSWYgaXQgd2lsbCBiZSBkZXNpcmVkIHRv\nIGludHJvZHVjZSBuZXcgaW5zdHJ1Y3Rpb25zIHdpdGhvdXQgYnVtcGluZyBF\nT0YgdmVyc2lvbiwgaGF2aW5nIHVuYXNzaWduZWQgaW5zdHJ1Y3Rpb25zIGFs\ncmVhZHkgZGVwbG95ZWQgd291bGQgbWVhbiBzdWNoIGNvbnRyYWN0cyBwb3Rl\nbnRpYWxseSBjYW4gYmUgYnJva2VuIChzaW5jZSBzb21lIG9mIHRoZSBpbnN0\ncnVjdGlvbnMgYXJlIGNoYW5naW5nIHRoZWlyIGJlaGF2aW91cikuIFJlamVj\ndGluZyB0byBkZXBsb3kgdW5hc3NpZ25lZCBpbnN0cnVjdGlvbnMgYWxsb3dz\nIGludHJvZHVjaW5nIG5ldyBpbnN0cnVjdGlvbnMgd2l0aCBvciB3aXRob3V0\nIGJ1bXBpbmcgdGhlIEVPRiB2ZXJzaW9uLgoKIyMgU3BlY2lmaWNhdGlvbgoK\nKlJlbWFyazoqIFdlIHJlbHkgb24gdGhlIG5vdGF0aW9uIG9mICppbml0Y29k\nZSosICpjb2RlKiBhbmQgKmNyZWF0aW9uKiBhcyBkZWZpbmVkIGJ5IEVJUC0z\nNTQwLgoKVGhpcyBmZWF0dXJlIGlzIGludHJvZHVjZWQgb24gdGhlIHZlcnkg\nc2FtZSBibG9jayBFSVAtMzU0MCBpcyBlbmFibGVkLCB0aGVyZWZvcmUgZXZl\ncnkgRU9GMS1jb21wYXRpYmxlIGJ5dGVjb2RlIE1VU1QgYmUgdmFsaWRhdGVk\nIGFjY29yZGluZyB0byB0aGVzZSBydWxlcy4KCkF0IGNvbnRyYWN0IGNyZWF0\naW9uIHRpbWUgYm90aCAqaW5pdGNvZGUqIGFuZCAqY29kZSogYXJlIGl0ZXJh\ndGVkIGluc3RydWN0aW9uLWJ5LWluc3RydWN0aW9uICh0aGUgc2FtZSBwcm9j\nZXNzIGlzIHVzZWQgdG8gcGVyZm9ybSAiSlVNUERFU1QtYW5hbHlzaXMiKS4g\nQnl0ZWNvZGUgaXMgZGVlbWVkIGludmFsaWQgaWYgYW55IG9mIHRoZXNlIGNv\nbmRpdGlvbnMgaXMgdHJ1ZToKLSBpdCBjb250YWlucyBvcGNvZGVzIHdoaWNo\nIGFyZSBub3QgY3VycmVudGx5IGFzc2lnbmVkIHRvIGFuIGluc3RydWN0aW9u\nIChmb3IgdGhlIHNha2Ugb2YgYXNzaWduZWQgaW5zdHJ1Y3Rpb25zLCB3ZSBj\nb3VudCBgSU5WQUxJRGAgKDB4ZmUpIGFzIGFzc2lnbmVkKSwKLSB0aGUgZGF0\nYSBwb3J0aW9uIG9mIGEgYFBVU0huYCAoMHg2MC4uMHg3ZikgaW5zdHJ1Y3Rp\nb24gaXMgYmV5b25kIHRoZSBlbmQgb2YgdGhlIGNvZGUgc2VjdGlvbi4KCklm\nICppbml0Y29kZSogaXMgaW52YWxpZCwgdGhlIGNvbnRyYWN0IGNyZWF0aW9u\nIHJlc3VsdHMgaW4gYW4gZXhjZXB0aW9uYWwgYWJvcnQuCklmICpjb2RlKiBp\ncyBpbnZhbGlkLCB0aGUgY29udHJhY3QgY3JlYXRpb24gcmVzdWx0cyBpbiBh\nbiBleGNlcHRpb25hbCBhYm9ydC4KCiMjIFJhdGlvbmFsZQoKVGhlIGRlcHJl\nY2F0ZWQgYENBTExDT0RFYCAoMHhmMikgb3Bjb2RlIG1heSBiZSBkcm9wcGVk\nIGZyb20gdGhlIGB2YWxpZF9vcGNvZGVzYCBsaXN0IHRvIHByZXZlbnQgdXNl\nIG9mIHRoaXMgaW5zdHJ1Y3Rpb24gaW4gZnV0dXJlLiBMaWtld2lzZSBgU0VM\nRkRFU1RSVUNUYCAoMHhmZikgY291bGQgYWxzbyBiZSByZWplY3RlZC4gWWV0\nIHdlIGRlY2lkZWQgbm90IHRvIG1peCBzdWNoIGNoYW5nZXMgaW4uCgojIyBS\nZWZlcmVuY2UgSW1wbGVtZW50YXRpb24KCmBgYHB5dGhvbgojIFRoZSBiZWxv\ndyBhcmUgcmFuZ2VzIGFzIHNwZWNpZmllZCBpbiB0aGUgWWVsbG93IFBhcGVy\nLgojIE5vdGU6IHJhbmdlKHMsIGUpIGV4Y2x1ZGVzIGUsIGhlbmNlIHRoZSAr\nMQp2YWxpZF9vcGNvZGVzID0gWwogICAgKnJhbmdlKDB4MDAsIDB4MGIgKyAx\nKSwKICAgICpyYW5nZSgweDEwLCAweDFkICsgMSksCiAgICAweDIwLAogICAg\nKnJhbmdlKDB4MzAsIDB4M2YgKyAxKSwKICAgICpyYW5nZSgweDQwLCAweDQ3\nICsgMSksCiAgICAqcmFuZ2UoMHg1MCwgMHg1YiArIDEpLAogICAgKnJhbmdl\nKDB4NjAsIDB4NmYgKyAxKSwKICAgICpyYW5nZSgweDcwLCAweDdmICsgMSks\nCiAgICAqcmFuZ2UoMHg4MCwgMHg4ZiArIDEpLAogICAgKnJhbmdlKDB4OTAs\nIDB4OWYgKyAxKSwKICAgICpyYW5nZSgweGEwLCAweGE0ICsgMSksCiAgICAj\nIE5vdGU6IDB4ZmUgaXMgY29uc2lkZXJlZCBhc3NpZ25lZC4KICAgICpyYW5n\nZSgweGYwLCAweGY1ICsgMSksIDB4ZmEsIDB4ZmQsIDB4ZmUsIDB4ZmYKXQoK\nIyBGYWlscyB3aXRoIGFzc2VydGlvbiBvbiBpbnZhbGlkIGNvZGUKZGVmIHZh\nbGlkYXRlX2NvZGUoY29kZTogYnl0ZXMpOgogICAgcG9zID0gMAogICAgd2hp\nbGUgcG9zIDwgbGVuKGNvZGUpOgogICAgICAgICMgRW5zdXJlIHRoZSBvcGNv\nZGUgaXMgdmFsaWQKICAgICAgICBvcGNvZGUgPSBjb2RlW3Bvc10KICAgICAg\nICBwb3MgKz0gMQogICAgICAgIGFzc2VydChvcGNvZGUgaW4gdmFsaWRfb3Bj\nb2RlcykKCiAgICAgICAgIyBTa2lwIHB1c2hkYXRhIC0tIG92ZXItcmVhZGlu\nZyB3aWxsIGJlIGNoZWNrZWQgb24gbmV4dCBpdGVyYXRpb24KICAgICAgICBp\nZiBvcGNvZGUgPj0gMHg2MCBhbmQgb3Bjb2RlIDw9IDB4N2Y6CiAgICAgICAg\nICAgIHBvcyArPSBvcGNvZGUgLSAweDYwICsgMQogICAgCiAgICAjIEVuc3Vy\nZSBsYXN0IFBVU0ggZG9lc24ndCBnbyBvdmVyIGNvZGUgZW5kCiAgICBhc3Nl\ncnQocG9zID09IGxlbihjb2RlKSkKYGBgCgojIyBUZXN0IENhc2VzCgpUQkEK\nCiMjIEJhY2t3YXJkcyBDb21wYXRpYmlsaXR5CgpUaGlzIGNoYW5nZSBwb3Nl\ncyBubyByaXNrIHRvIGJhY2t3YXJkcyBjb21wYXRpYmlsaXR5LCBhcyBpdCBp\ncyBpbnRyb2R1Y2VkIGF0IHRoZSBzYW1lIHRpbWUgRUlQLTM1NDAgaXMuIFRo\nZSB2YWxpZGF0aW9uIGRvZXMgbm90IGNvdmVyIGxlZ2FjeSBieXRlY29kZS4K\nCiMjIFNlY3VyaXR5IENvbnNpZGVyYXRpb25zCgpUaGUgKmluaXRjb2RlKiB2\nYWxpZGF0aW9uIGFkZHMgYWRkaXRpb25hbCBvdmVyaGVhZC4gV2UgY29uc2lk\nZXIgYWRkaW5nIGFkZGl0aW9uYWwgZ2FzIGNvc3QgZm9yIHRoZSBjb250cmFj\ndCBjcmVhdGlvbiBwcm9wb3J0aW9uYWwgdG8gdGhlIGxlbmd0aCBvZiB0aGUg\nY29kZSBzZWN0aW9uIGluICppbml0Y29kZSogKGUuZy4gMyBnYXMgcGVyIGJ5\ndGUpLgoKVGhpcyBpcyBub3QgYW4gaXNzdWUgZm9yICpjb2RlKiBpbiBhdmVy\nYWdlIGNhc2UgYmVjYXVzZSB0aGUgZGVwbG95bWVudCBjb3N0IGlzIGFscmVh\nZHkgMjAwIGdhcyBwZXIgYnl0ZS4gSG93ZXZlciwgYW4gYXR0YWNrIG1heSBi\nZSBjb25zdHJ1Y3RlZCB3aGVyZSBsb25nICpjb2RlKiBpcyBmaXJzdCB2YWxp\nZGF0ZWQgYW5kIHRoZW4gY29udHJhY3QgY3JlYXRpb24gZmFpbHMgYmVjYXVz\nZSBvZiBpbnN1ZmZpY2llbnQgZ2FzIGZvciB0aGUgZGVwbG95bWVudCBjb3N0\nLiBUaGUgc29sdXRpb24gaXMgdG8gZWl0aGVyIGNoYXJnZSB0aGUgZGVwbG95\nbWVudCBjb3N0IGJlZm9yZSB2YWxpZGF0aW9uLCBvciBhZGQgYSBzaW1pbGFy\nIGNoYXJnZSBhcyAqaW5pdGNvZGUqIHdpbGwgaGF2ZS4KCiMjIENvcHlyaWdo\ndAoKQ29weXJpZ2h0IGFuZCByZWxhdGVkIHJpZ2h0cyB3YWl2ZWQgdmlhIFtD\nQzBdKGh0dHBzOi8vY3JlYXRpdmVjb21tb25zLm9yZy9wdWJsaWNkb21haW4v\nemVyby8xLjAvKS4=\n",
         encoding: "base64",
         _links: {
-          self:
-            "https://api.github.com/repos/ethereum/EIPs/contents/EIPS/eip-3670.md?ref=984cac68dec3b2a6f6e2470422086fddd2655403",
-          git:
-            "https://api.github.com/repos/ethereum/EIPs/git/blobs/ed22ebfcd5beeb6905c30b3f10e99d1b293d3dc6",
-          html:
-            "https://github.com/ethereum/EIPs/blob/984cac68dec3b2a6f6e2470422086fddd2655403/EIPS/eip-3670.md"
+          self: "https://api.github.com/repos/ethereum/EIPs/contents/EIPS/eip-3670.md?ref=984cac68dec3b2a6f6e2470422086fddd2655403",
+          git: "https://api.github.com/repos/ethereum/EIPs/git/blobs/ed22ebfcd5beeb6905c30b3f10e99d1b293d3dc6",
+          html: "https://github.com/ethereum/EIPs/blob/984cac68dec3b2a6f6e2470422086fddd2655403/EIPS/eip-3670.md"
         }
       }
     }
@@ -775,8 +759,7 @@ export default [
             type: "User",
             site_admin: false
           },
-          body:
-            "No blockers for moving to draft, left a couple very minor suggestions.  I won't rehash our previous debate about including a Simple Summary (even if it feels redundant with the Abstract), but I still encourage it.",
+          body: "No blockers for moving to draft, left a couple very minor suggestions.  I won't rehash our previous debate about including a Simple Summary (even if it feels redundant with the Abstract), but I still encourage it.",
           state: "COMMENTED",
           html_url:
             "https://github.com/ethereum/EIPs/pull/3670#pullrequestreview-711474502",
@@ -785,8 +768,7 @@ export default [
           author_association: "COLLABORATOR",
           _links: {
             html: {
-              href:
-                "https://github.com/ethereum/EIPs/pull/3670#pullrequestreview-711474502"
+              href: "https://github.com/ethereum/EIPs/pull/3670#pullrequestreview-711474502"
             },
             pull_request: {
               href: "https://api.github.com/repos/ethereum/EIPs/pulls/3670"

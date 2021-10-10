@@ -95,7 +95,7 @@ export const getMockRecords = async () => {
   const PR3767 = await import("./3767.json");
   const PR3676 = await import("./3676.json");
   const PR3612 = await import("./3612.json");
-  const PR4192 = await import("./4192.json")
+  const PR4192 = await import("./4192.json");
 
   assertMethods(PR3767);
   assertMethods(PR3676);

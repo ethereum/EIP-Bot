@@ -8,14 +8,11 @@ import {
   ContentFile,
   FormattedFile,
   ParsedContent,
-  FileDiff
+  FileDiff,
+  assertCategory
 } from "#domain";
 import frontmatter from "front-matter";
-import {
-  requireEncoding,
-  requireFilenameEipNum,
-  requirePr
-} from "#assertions";
+import { requireEncoding, requireFilenameEipNum, requirePr } from "#assertions";
 
 /**
  * Accepts a file and returns the information of that file at the beginning
@@ -55,7 +52,12 @@ const formatFile = async (file: ParsedContent): Promise<FormattedFile> => {
       file.content.attributes[FrontMatterAttributes.author]
     ),
     name: file.name,
-    filenameEipNum
+    filenameEipNum,
+    category: assertCategory({
+      maybeCategory: file.content.attributes[FrontMatterAttributes.category],
+      fileName: file.name,
+      maybeType: file.content.attributes[FrontMatterAttributes.type]
+    })
   };
 };
 

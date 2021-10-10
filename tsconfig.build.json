@@ -7,7 +7,9 @@
       "#assertions": ["src/modules/assertions"],
       "#infra": ["src/infra"],
       "#components": ["src/modules/components"],
-      "assets/*": ["assets/*"]
+      "assets/*": ["assets/*"],
+      "#approvals": ["src/modules/approvals"],
+      "#file": ["src/modules/file"]
     }
   },
   "exclude": ["./node_modules/*", "./__tests__/*"]

@@ -1,6 +1,6 @@
 import { FileDiff } from "#domain";
 import { requireAuthors } from "#assertions";
-import { getApprovals } from "#components";
+import { getApprovals } from "#approvals";
 
 export const assertIsApprovedByAuthors = async (fileDiff: FileDiff) => {
   const approvals = await getApprovals();

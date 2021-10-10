@@ -17,11 +17,7 @@ import {
   assertEIP1EditorApprovals,
   requireEIPEditors
 } from "#assertions";
-import {
-  getFileDiff,
-  postComment,
-  requestReviewers
-} from "#components"
+import { postComment } from "#components";
 import {
   COMMENT_HEADER,
   DEFAULT_ERRORS,
@@ -38,6 +34,8 @@ import {
   statusChangeAllowedPurifier
 } from "#components";
 import { get, uniq } from "lodash";
+import { requestReviewers } from "#approvals";
+import { getFileDiff } from "#file";
 
 const testFile = async (file: File): Promise<TestResults> => {
   // we need to define this here because the below logic can get very complicated otherwise
@@ -65,13 +63,11 @@ const testFile = async (file: File): Promise<TestResults> => {
   errors.approvalErrors.isEditorApprovedError = await assertEIPEditorApproval(
     fileDiff
   );
-  errors.approvalErrors.enoughEditorApprovalsForEIP1Error = await assertEIP1EditorApprovals(
-    fileDiff
-  );
+  errors.approvalErrors.enoughEditorApprovalsForEIP1Error =
+    await assertEIP1EditorApprovals(fileDiff);
   errors.fileErrors.validFilenameError = assertValidFilename(file);
-  errors.headerErrors.matchingEIPNumError = assertFilenameAndFileNumbersMatch(
-    fileDiff
-  );
+  errors.headerErrors.matchingEIPNumError =
+    assertFilenameAndFileNumbersMatch(fileDiff);
   errors.headerErrors.constantEIPNumError = assertConstantEipNumber(fileDiff);
   errors.headerErrors.constantStatusError = assertConstantStatus(fileDiff);
   errors.headerErrors.validStatusError = assertValidStatus(fileDiff);
@@ -134,15 +130,17 @@ const getAuthorMentions = (testResults: TestResults) => {
   return;
 };
 
-const _getMentions = (
-  _getEditorMentions: typeof getEditorMentions,
-  _getAuthorMentions: typeof getAuthorMentions
-) => (testResults: TestResults) => {
-  const editorMentions = _getEditorMentions(testResults);
-  const authorMentions = _getAuthorMentions(testResults);
-  // filtering Boolean prevents trailing space
-  return [editorMentions, authorMentions].flat().filter(Boolean) as string[];
-};
+const _getMentions =
+  (
+    _getEditorMentions: typeof getEditorMentions,
+    _getAuthorMentions: typeof getAuthorMentions
+  ) =>
+  (testResults: TestResults) => {
+    const editorMentions = _getEditorMentions(testResults);
+    const authorMentions = _getAuthorMentions(testResults);
+    // filtering Boolean prevents trailing space
+    return [editorMentions, authorMentions].flat().filter(Boolean) as string[];
+  };
 
 const getMentions = _getMentions(getEditorMentions, getAuthorMentions);
 
@@ -163,7 +161,7 @@ const getCommentMessage = (results: Results) => {
       comment.push(`- ${error}`);
     }
   }
-7
+  7;
   return comment.join("\n");
 };
 
@@ -178,9 +176,9 @@ const getFileTestResults = async (file: File) => {
   ];
   // Purify the dirty results
   const testResults = innerJoinAncestors(dirtyTestResults, primedPurifiers);
-  const errors: string[] = getAllTruthyObjectPaths(
-    testResults.errors
-  ).map((path) => get(testResults.errors, path));
+  const errors: string[] = getAllTruthyObjectPaths(testResults.errors).map(
+    (path) => get(testResults.errors, path)
+  );
 
   if (errors.length === 0) {
     console.log(`${testResults.fileDiff.base.name} passed!`);
@@ -225,7 +223,7 @@ export const _main_ = async () => {
 };
 
 export const main = async () => {
-  const isProd = process.env.NODE_ENV === NodeEnvs.production
+  const isProd = process.env.NODE_ENV === NodeEnvs.production;
 
   try {
     return await _main_();

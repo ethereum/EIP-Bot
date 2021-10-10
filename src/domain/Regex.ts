@@ -4,6 +4,8 @@ export const FILE_RE = /^EIPS\/eip-(\d+)\.md$/gm;
 export const AUTHOR_RE = /[(<]([^>)]+)[>)]/gm;
 /** to find the EIP number in a file name */
 export const EIP_NUM_RE = /eip-(\d+)\.md/;
+/** matches github handles (includes @)*/
+export const GITHUB_HANDLE = /^@[a-z\d](?:[a-z\d]|-(?=[a-z\d])){0,38}$/i;
 
 /**
  * This functionality is supported in es2020, but for the purposes

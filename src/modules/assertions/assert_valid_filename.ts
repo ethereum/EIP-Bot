@@ -1,5 +1,5 @@
 import { File, FILE_RE } from "#domain";
-import { requireFilenameEipNum } from "#assertions"
+import { requireFilenameEipNum } from "#assertions";
 
 /**
  * Accepts a file and returns whether or not its name is valid
@@ -7,7 +7,7 @@ import { requireFilenameEipNum } from "#assertions"
  * @param errors a list to add any errors that occur to
  * @returns {boolean} is the provided file's filename valid?
  */
- export const assertValidFilename = (file: NonNullable<File>) => {
+export const assertValidFilename = (file: NonNullable<File>) => {
   const filename = file.filename;
 
   // File name is formatted correctly and is in the EIPS folder

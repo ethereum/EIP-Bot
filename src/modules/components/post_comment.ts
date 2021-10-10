@@ -22,13 +22,13 @@ export const postComment = async (message: string) => {
             repo: context.repo.repo,
             comment_id: comment.id,
             body: message
-          }).catch(err => {
-            if (err?.request?.body) {
-              err.request.body = JSON.parse(err.request.body).body
-
-            }
-            throw err
           })
+          .catch((err) => {
+            if (err?.request?.body) {
+              err.request.body = JSON.parse(err.request.body).body;
+            }
+            throw err;
+          });
       }
       return;
     }

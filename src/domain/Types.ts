@@ -3,6 +3,8 @@ import { EipStatus } from "./Constants";
 import { Endpoints } from "@octokit/types";
 import { FrontMatterResult } from "front-matter";
 import { PromiseValue } from "type-fest";
+import _ from "lodash";
+import { EIPCategory } from ".";
 
 export type Github = ReturnType<typeof getOctokit>["rest"];
 
@@ -46,7 +48,8 @@ export type ContentFile = {
   submodule_git_url?: string;
 };
 
-export type ContentResponse = Endpoints["GET /repos/{owner}/{repo}/contents/{path}"]["response"]["data"];
+export type ContentResponse =
+  Endpoints["GET /repos/{owner}/{repo}/contents/{path}"]["response"]["data"];
 
 export type EIP = {
   number: string;
@@ -60,6 +63,7 @@ export type FormattedFile = {
   authors?: Set<string>;
   name: string;
   filenameEipNum: number;
+  category: EIPCategory;
 };
 
 export type ParsedContent = {
@@ -138,15 +142,27 @@ export enum NodeEnvs {
 }
 
 export function isMockMethod(method): asserts method is MockMethods {
-  if(!Object.values(MockMethods).includes(method)){
-    throw Error(`method ${method} is not a supported mock method`)
+  if (!Object.values(MockMethods).includes(method)) {
+    throw Error(`method ${method} is not a supported mock method`);
   } else {
-    return method
+    return method;
   }
 }
 
 export type Results = {
-  filename: string,
-  errors?: string[],
-  mentions?: string[]
-}[]
+  filename: string;
+  errors?: string[];
+  mentions?: string[];
+}[];
+
+/** includes a check for NaN and general falsey */
+export const isDefined = <T>(
+  maybeDefined: T | null | undefined | typeof NaN | "" | false | []
+): maybeDefined is T => {
+  return (
+    !_.isUndefined(maybeDefined) &&
+    !_.isNull(maybeDefined) &&
+    !_.isNaN(maybeDefined) &&
+    !maybeDefined
+  );
+};

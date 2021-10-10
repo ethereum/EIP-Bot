@@ -7,7 +7,7 @@ import { PR, Files } from "#domain";
  *
  * @returns {File}
  */
- export const requireFiles = async (pr: PR): Promise<Files> => {
+export const requireFiles = async (pr: PR): Promise<Files> => {
   const files = await getPullRequestFiles(pr.number);
 
   if (!files?.length) {
