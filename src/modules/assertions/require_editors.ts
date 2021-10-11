@@ -2,7 +2,7 @@ import { requireAuthors } from "#assertions";
 import { CORE_EDITORS, EIPCategory, ERC_EDITORS, FileDiff } from "#domain";
 
 // injected to make testing easier
-export const _requireEIPEditors =
+const _requireEIPEditors =
   (_requireAuthors: typeof requireAuthors, EDITORS: string[]) =>
   (fileDiff?: FileDiff) => {
     EDITORS = EDITORS.map((i) => i.toLowerCase());
@@ -25,6 +25,7 @@ export const requireEIPEditors = (fileDiff: FileDiff) => {
   const isERC = fileDiff.base.category === EIPCategory.erc;
   const isCore = fileDiff.base.category === EIPCategory.core;
 
+  console.log(ERC_EDITORS)
   if (isERC) {
     return _requireEIPEditors(requireAuthors, ERC_EDITORS())(fileDiff);
   }
@@ -41,3 +42,7 @@ export const requireEIPEditors = (fileDiff: FileDiff) => {
     ].join(" ")
   );
 };
+
+export const __tests__ = {
+  _requireEIPEditors
+}

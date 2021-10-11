@@ -243,61 +243,6 @@ describe("Requires", () => {
       await expectError(() => requireFilePreexisting(file));
     });
   });
-
-  describe("requireEIPEditors", () => {
-    const editors = ["editor1", "editor2", "editor3"];
-    const requireAuthorsMock = jest.fn();
-    const requireEIPEditors = _requireEIPEditors(requireAuthorsMock, editors);
-    const consoleSpy = jest.spyOn(console, "warn");
-
-    beforeEach(() => {
-      requireAuthorsMock.mockClear();
-      consoleSpy.mockClear();
-    });
-
-    afterAll(() => {
-      consoleSpy.mockReset();
-    });
-
-    it("should emit a console warning if no file diff is provided", () => {
-      const res = requireEIPEditors();
-      expect(res).toEqual(editors);
-      expect(consoleSpy).toHaveBeenCalledTimes(1);
-    });
-
-    it("should return only editors that are not authors", () => {
-      requireAuthorsMock.mockReturnValueOnce([editors[0]]);
-      const res = requireEIPEditors({} as FileDiff);
-      expect(res).toEqual([editors[1], editors[2]]);
-      expect(consoleSpy).not.toHaveBeenCalled();
-    });
-
-    it("should return all editors if none are authors", () => {
-      requireAuthorsMock.mockReturnValueOnce(["not an author"]);
-      const res = requireEIPEditors({} as FileDiff);
-      expect(res).toEqual(editors);
-      expect(consoleSpy).not.toHaveBeenCalled();
-    });
-
-    it("should normalize editors to lowercase and no file diff provided", () => {
-      const requireEIPEditors = _requireEIPEditors(
-        requireAuthorsMock,
-        editors.map((i) => i.toUpperCase())
-      );
-      const res = requireEIPEditors();
-      expect(res).toEqual(editors);
-    });
-
-    it("should normalize editors to lowercase and file diff provided", () => {
-      const requireEIPEditors = _requireEIPEditors(
-        requireAuthorsMock,
-        editors.map((i) => i.toUpperCase())
-      );
-      requireAuthorsMock.mockReturnValueOnce([editors[0]]);
-      const res = requireEIPEditors({} as FileDiff);
-      expect(res).toEqual([editors[1], editors[2]]);
-    });
-  });
 });
 
 describe("Asserts", () => {

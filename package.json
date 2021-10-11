@@ -29,7 +29,7 @@
     "lodash": "^4.17.21",
     "nock": "^13.1.1",
     "prettier": "^2.4.1",
-    "ts-jest": "^27.0.5",
+    "tsconfig-paths-jest": "^0.0.1",
     "type-fest": "^2.3.3"
   },
   "devDependencies": {

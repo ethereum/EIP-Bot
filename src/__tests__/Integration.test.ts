@@ -90,7 +90,6 @@ describe("integration testing edgecases associated with editors", () => {
 
   describe("Pull 3767", () => {
     it("should pass", async () => {
-      jest.setTimeout(60 * 10 * 1000 * 60);
       process.env = envFactory({ PULL_NUMBER: SavedRecord.PR3767 });
 
       await __MAIN_MOCK__();

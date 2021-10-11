@@ -2,6 +2,8 @@
  * For a detailed explanation regarding each configuration property, visit:
  * https://jestjs.io/docs/en/configuration.html
  */
+const tsconfig = require("./tsconfig.json");
+const moduleNameMapper = require("tsconfig-paths-jest")(tsconfig);
 
 module.exports = {
   clearMocks: true,
@@ -9,15 +11,7 @@ module.exports = {
     "node_modules",
     "./"
   ],
-  moduleNameMapper: {
-      "#domain": "<rootDir>/src/domain",
-      "#assertions": "<rootDir>/src/modules/assertions",
-      "#infra": "<rootDir>/src/infra",
-      "#components": "<rootDir>/src/modules/components",
-      "#approvals": "<rootDir>/src/modules/approvals",
-      "#file": "<rootDir>/src/modules/file",
-      "#tests": "<rootDir>/src/tests"
-  },
+  moduleNameMapper,
   testEnvironment: "node",
   testMatch: [
     // "**/__tests__/**/*.[jt]s?(x)",

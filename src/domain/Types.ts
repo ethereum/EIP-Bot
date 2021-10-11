@@ -4,7 +4,7 @@ import { Endpoints } from "@octokit/types";
 import { FrontMatterResult } from "front-matter";
 import { PromiseValue } from "type-fest";
 import _ from "lodash";
-import { EIPCategory } from ".";
+import { EIPCategory } from "./Constants";
 
 export type Github = ReturnType<typeof getOctokit>["rest"];
 

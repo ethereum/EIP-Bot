@@ -12,7 +12,7 @@ export * from "./assert_filename_and_file_numbers_match";
 export * from "./assert_constant_eip_number";
 export * from "./assert_valid_status";
 export * from "./require_file_preexisting";
-export * from "./require_editors";
+export { requireEIPEditors } from "./require_editors";
 export * from "./assert_eip_editor_approval";
 export * from "./assert_eip1_editor_approvals";
 export * from "./assert_constant_status";
