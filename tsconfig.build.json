@@ -1,16 +1,4 @@
 {
   "extends": "./tsconfig.json",
-  "compilerOptions": {
-    "paths": {
-      "src/*": ["src/*"],
-      "#domain": ["src/domain"],
-      "#assertions": ["src/modules/assertions"],
-      "#infra": ["src/infra"],
-      "#components": ["src/modules/components"],
-      "assets/*": ["assets/*"],
-      "#approvals": ["src/modules/approvals"],
-      "#file": ["src/modules/file"]
-    }
-  },
-  "exclude": ["./node_modules/*", "./__tests__/*"]
+  "exclude": ["src/tests/*"]
 }

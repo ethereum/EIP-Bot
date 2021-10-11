@@ -1,11 +1,11 @@
 // integration tests in this repo are previously fixed bugs
-import { SavedRecord } from "assets/records";
-import { envFactory } from "__tests__/factories/envFactory";
+import { SavedRecord } from "#tests/assets/records";
+import { envFactory } from "src/tests/factories/envFactory";
 import * as core from "@actions/core";
-import { __MAIN_MOCK__ } from "assets/mockPR";
+import { __MAIN_MOCK__ } from "#tests/assets/mockPR";
 import MockedEnv from "mocked-env";
 import nock from "nock";
-import { Mutable, PromiseValue } from "type-fest";
+import { PromiseValue } from "type-fest";
 
 describe("integration testing edgecases associated with editors", () => {
   const setFailedMock = jest

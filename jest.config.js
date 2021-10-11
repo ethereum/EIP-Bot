@@ -15,7 +15,8 @@ module.exports = {
       "#infra": "<rootDir>/src/infra",
       "#components": "<rootDir>/src/modules/components",
       "#approvals": "<rootDir>/src/modules/approvals",
-      "#file": "<rootDir>/src/modules/file"
+      "#file": "<rootDir>/src/modules/file",
+      "#tests": "<rootDir>/src/tests"
   },
   testEnvironment: "node",
   testMatch: [

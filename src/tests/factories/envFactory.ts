@@ -1,6 +1,6 @@
-import { SavedRecord } from "assets/records";
+import { SavedRecord } from "#tests/assets/records";
 import faker from "faker";
-import { CORE_EDITORS, EVENTS, NodeEnvs } from "src/domain";
+import { EVENTS, NodeEnvs } from "src/domain";
 
 type Env = {
   PULL_NUMBER: SavedRecord;

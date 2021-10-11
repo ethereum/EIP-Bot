@@ -29,11 +29,10 @@
       "#assertions": ["src/modules/assertions"],
       "#infra": ["src/infra"],
       "#components": ["src/modules/components"],
-      "__tests__/*": ["__tests__/*"],
-      "assets/*": ["assets/*"],
+      "#tests/*": ["src/tests/*"],
       "#approvals": ["src/modules/approvals"],
       "#file": ["src/modules/file"]
     }
   },
-  "exclude": ["./node_modules/*"]
+  "include": ["src"]
 }

@@ -54,13 +54,13 @@
   },
   "_moduleAliases": {
     "src": "build/src",
-    "assets": "build/assets",
     "#domain": "build/src/domain",
     "#assertions": "build/src/modules/assertions",
     "#components": "build/src/modules/components",
     "#infra": "build/src/infra",
     "#approvals": "build/src/modules/approvals",
-    "#file": "build/src/modules/file"
+    "#file": "build/src/modules/file",
+    "#tests": "build/src/tests"
   },
   "repository": {
     "type": "git",

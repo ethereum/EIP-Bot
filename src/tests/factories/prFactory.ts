@@ -1,5 +1,5 @@
 import { PR } from "src/domain";
-import { getMockRecords } from "assets/records";
+import { getMockRecords } from "#tests/assets/records";
 
 export const PRFactory = async (overrides: Partial<PR> = {}) => {
   const Records = await getMockRecords();

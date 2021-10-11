@@ -2,7 +2,7 @@ require("module-alias/register");
 import { main } from "./main";
 import { NodeEnvs } from "#domain";
 import { __MAIN__ } from "./utils/Debug";
-import { __MAIN_MOCK__ } from "assets/mockPR";
+import { __MAIN_MOCK__ } from "#tests/assets/mockPR";
 
 const isDebug =
   process.env.NODE_ENV === NodeEnvs.developemnt ||

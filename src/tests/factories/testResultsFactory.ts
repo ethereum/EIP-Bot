@@ -1,5 +1,5 @@
 import { TestResults } from "src/domain";
-import { RecursivePartial } from "__tests__/testutils";
+import { RecursivePartial } from "src/tests/testutils";
 import { FileDiffFactory } from "./fileDiffFactory";
 
 const defaults: RecursivePartial<TestResults> & {

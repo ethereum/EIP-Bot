@@ -1,5 +1,5 @@
 import { _TESTS_ } from "src/main";
-import { testResultsFactory } from "__tests__/factories/testResultsFactory";
+import { testResultsFactory } from "src/tests/factories/testResultsFactory";
 
 describe("mentions", () => {
   describe("getAuthorMentions", () => {

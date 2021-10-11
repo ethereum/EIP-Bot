@@ -18,10 +18,10 @@ import {
   _requireEIPEditors,
   _requireFilePreexisting
 } from "#assertions";
-import { expectError, clearContext } from "__tests__/testutils";
-import { FileDiffFactory } from "__tests__/factories/fileDiffFactory";
-import { FileFactory } from "__tests__/factories/fileFactory";
-import { PRFactory } from "__tests__/factories/prFactory";
+import { expectError, clearContext } from "src/tests/testutils";
+import { FileDiffFactory } from "src/tests/factories/fileDiffFactory";
+import { FileFactory } from "src/tests/factories/fileFactory";
+import { PRFactory } from "src/tests/factories/prFactory";
 
 jest.mock("@actions/github");
 

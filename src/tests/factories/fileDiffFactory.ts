@@ -1,5 +1,5 @@
 import { EipStatus, FileDiff } from "src/domain";
-import { RecursivePartial } from "__tests__/testutils";
+import { RecursivePartial } from "src/tests/testutils";
 
 export const FileDiffFactory = (
   overrides: RecursivePartial<FileDiff> = {}
