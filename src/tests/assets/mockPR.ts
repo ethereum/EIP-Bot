@@ -8,7 +8,7 @@ import {
   NodeEnvs,
   PR
 } from "src/domain";
-import { assertSavedRecord, SavedRecord, getMockRecords } from "./records";
+import { assertSavedRecord, getMockRecords, SavedRecord } from "./records";
 import * as fs from "fs";
 
 const baseUrl = "https://api.github.com";

@@ -1,15 +1,15 @@
-import { getOctokit, context } from "@actions/github";
+import { context, getOctokit } from "@actions/github";
 import {
-  GITHUB_TOKEN,
-  FrontMatterAttributes,
-  matchAll,
+  assertCategory,
   AUTHOR_RE,
-  File,
   ContentFile,
-  FormattedFile,
-  ParsedContent,
+  File,
   FileDiff,
-  assertCategory
+  FormattedFile,
+  FrontMatterAttributes,
+  GITHUB_TOKEN,
+  matchAll,
+  ParsedContent
 } from "#domain";
 import frontmatter from "front-matter";
 import { requireEncoding, requireFilenameEipNum, requirePr } from "#assertions";

@@ -1,8 +1,9 @@
 import "jest";
 import actions from "@actions/github";
 // import { Context } from "@actions/github/lib/context";
-import { ALLOWED_STATUSES, EipStatus, EVENTS, FileDiff, PR } from "src/domain";
+import { ALLOWED_STATUSES, EipStatus, EVENTS, PR } from "src/domain";
 import {
+  _requireFilePreexisting,
   assertConstantEipNumber,
   assertConstantStatus,
   assertFilenameAndFileNumbersMatch,
@@ -14,11 +15,9 @@ import {
   requireFilenameEipNum,
   requireFiles,
   requirePr,
-  requirePullNumber,
-  _requireEIPEditors,
-  _requireFilePreexisting
+  requirePullNumber
 } from "#assertions";
-import { expectError, clearContext } from "src/tests/testutils";
+import { clearContext, expectError } from "src/tests/testutils";
 import { FileDiffFactory } from "src/tests/factories/fileDiffFactory";
 import { FileFactory } from "src/tests/factories/fileFactory";
 import { PRFactory } from "src/tests/factories/prFactory";

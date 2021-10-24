@@ -1,23 +1,30 @@
 import { setFailed } from "@actions/core";
 import {
-  requireEvent,
-  assertValidFilename,
-  requirePullNumber,
-  requirePr,
-  requireFiles,
-  assertFilenameAndFileNumbersMatch,
   assertConstantEipNumber,
+  assertConstantStatus,
+  assertEIP1EditorApprovals,
+  assertEIPEditorApproval,
+  assertFilenameAndFileNumbersMatch,
   assertHasAuthors,
   assertIsApprovedByAuthors,
-  requireAuthors,
-  assertConstantStatus,
+  assertValidFilename,
   assertValidStatus,
+  requireAuthors,
+  requireEIPEditors,
+  requireEvent,
   requireFilePreexisting,
-  assertEIPEditorApproval,
-  assertEIP1EditorApprovals,
-  requireEIPEditors
+  requireFiles,
+  requirePr,
+  requirePullNumber
 } from "#assertions";
-import { postComment } from "#components";
+import {
+  editorApprovalPurifier,
+  EIP1Purifier,
+  getAllTruthyObjectPaths,
+  innerJoinAncestors,
+  postComment,
+  statusChangeAllowedPurifier
+} from "#components";
 import {
   COMMENT_HEADER,
   DEFAULT_ERRORS,
@@ -26,13 +33,6 @@ import {
   Results,
   TestResults
 } from "#domain";
-import {
-  editorApprovalPurifier,
-  EIP1Purifier,
-  getAllTruthyObjectPaths,
-  innerJoinAncestors,
-  statusChangeAllowedPurifier
-} from "#components";
 import { get, uniq } from "lodash";
 import { requestReviewers } from "#approvals";
 import { getFileDiff } from "#file";

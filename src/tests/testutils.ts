@@ -1,8 +1,7 @@
 import { Context } from "@actions/github/lib/context";
 import actions from "@actions/github";
 import { set } from "lodash";
-import _ from "lodash";
-import { Get, PromiseValue, Simplify } from "type-fest";
+import { PromiseValue } from "type-fest";
 
 export const getAllTruthyObjectPaths = (obj: object) => {
   function rKeys(o: object, path?: string) {
@@ -117,14 +116,12 @@ export const mockDependency = <
 
   beforeEach(async () => {
     const mock = await moduleImport();
-    console.log(mock)
     methodMock = mock[methodName];
     methodMock.mockReturnValue(returnValue);
   });
 
   afterEach(async () => {
     const mock = await moduleImport();
-    console.log(modulePath, mock)
     methodMock = mock[methodName];
     methodMock.mockClear();
   });

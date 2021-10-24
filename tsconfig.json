@@ -24,9 +24,10 @@
     "resolveJsonModule": true,
     "baseUrl": "./",
     "paths": {
+      "#domain/*": ["src/domain/*"],
       "#domain": ["src/domain"],
-      "#assertions": ["src/modules/assertions"],
       "#assertions/*": ["src/modules/assertions/*"],
+      "#assertions": ["src/modules/assertions"],
       "#infra": ["src/infra"],
       "#components": ["src/modules/components"],
       "#tests/*": ["src/tests/*"],

@@ -1,44 +1,28 @@
-import {
-  CORE_EDITORS,
-  EIPCategory,
-  ERC_EDITORS,
-  EVENTS,
-  FileDiff
-} from "#domain";
-import {
-  mockDependency,
-  mockGithubContext,
-  mockedActual
-} from "#tests/testutils";
-import * as RequireEditors from "../require_editors";
+import { EIPCategory, EVENTS } from "#domain/Constants";
+import { expectError, mockGithubContext } from "#tests/testutils";
+import { RequireEditors as _RequireEditors } from "#assertions/require_editors";
+import { CORE_EDITORS, ERC_EDITORS, FileDiff } from "#domain";
+import { requireAuthors } from "#assertions/require_authors";
 
-const { _requireEIPEditors } = RequireEditors.__tests__;
-
-describe("requireEIPEditors", () => {
-  const requireEditorsPath = "#assertions/require_editors";
-  const importRequireEditors = () => import("#assertions/require_editors")
-  const importRequireEditorTests = () => import("#assertions/require_editors").then(res => res.__tests__);
-  const actualRequireEIPEditors = mockedActual(
-    importRequireEditors,
-    "requireEIPEditors"
-  );
-
-  const coreEditorsMock = mockDependency("#domain", () => import("#domain"), "CORE_EDITORS");
-  const ercEditorsMock = mockDependency("#domain", () => import("#domain"), "ERC_EDITORS");
-
+describe("_requireEIPEditors", () => {
   mockGithubContext({
     payload: { pull_request: { number: 1 } },
     repo: { repo: "repo", owner: "owner" },
     eventName: EVENTS.pullRequestTarget
   });
 
-  const editors = ["editor1", "editor2", "editor3"];
-  const requireAuthorsMock = jest.fn();
-  const requireEIPEditors = _requireEIPEditors(requireAuthorsMock, editors);
+  const editors: [string, string, string] = ["editor1", "editor2", "editor3"];
+
+  const RequireEIPEditors = new _RequireEditors({
+    requireAuthors,
+    ERC_EDITORS,
+    CORE_EDITORS
+  });
+  const requireAuthorsSpy = jest.spyOn(RequireEIPEditors, "requireAuthors");
   const consoleSpy = jest.spyOn(console, "warn");
 
   beforeEach(async () => {
-    requireAuthorsMock.mockClear();
+    requireAuthorsSpy.mockClear();
     consoleSpy.mockClear();
   });
 
@@ -47,53 +31,93 @@ describe("requireEIPEditors", () => {
   });
 
   it("should emit a console warning if no file diff is provided", () => {
-    const res = requireEIPEditors();
+    const res = RequireEIPEditors._requireEIPEditors(editors);
     expect(res).toEqual(editors);
     expect(consoleSpy).toHaveBeenCalledTimes(1);
   });
 
   it("should return only editors that are not authors", () => {
-    requireAuthorsMock.mockReturnValueOnce([editors[0]]);
-    const res = requireEIPEditors({} as FileDiff);
+    requireAuthorsSpy.mockReturnValueOnce([editors[0]]);
+    const res = RequireEIPEditors._requireEIPEditors(editors, {} as FileDiff);
     expect(res).toEqual([editors[1], editors[2]]);
     expect(consoleSpy).not.toHaveBeenCalled();
   });
 
   it("should return all editors if none are authors", () => {
-    requireAuthorsMock.mockReturnValueOnce(["not an author"]);
-    const res = requireEIPEditors({} as FileDiff);
+    requireAuthorsSpy.mockReturnValueOnce(["not an author"]);
+    const res = RequireEIPEditors._requireEIPEditors(editors, {} as FileDiff);
     expect(res).toEqual(editors);
     expect(consoleSpy).not.toHaveBeenCalled();
   });
 
   it("should normalize editors to lowercase and no file diff provided", () => {
-    const requireEIPEditors = _requireEIPEditors(
-      requireAuthorsMock,
-      editors.map((i) => i.toUpperCase())
+    const res = RequireEIPEditors._requireEIPEditors(
+      editors.map((editor) => editor.toUpperCase())
     );
-    const res = requireEIPEditors();
     expect(res).toEqual(editors);
   });
 
   it("should normalize editors to lowercase and file diff provided", () => {
-    const requireEIPEditors = _requireEIPEditors(
-      requireAuthorsMock,
-      editors.map((i) => i.toUpperCase())
+    requireAuthorsSpy.mockReturnValueOnce([editors[0]]);
+    const res = RequireEIPEditors._requireEIPEditors(
+      editors.map((i) => i.toUpperCase()),
+      {} as FileDiff
     );
-    requireAuthorsMock.mockReturnValueOnce([editors[0]]);
-    const res = requireEIPEditors({} as FileDiff);
     expect(res).toEqual([editors[1], editors[2]]);
   });
+});
 
-  describe("requireEditors", () => {
-    const mock = mockDependency(requireEditorsPath, importRequireEditorTests, "_requireEIPEditors")
+describe("requireEditors", () => {
+  mockGithubContext({
+    payload: { pull_request: { number: 1 } },
+    repo: { repo: "repo", owner: "owner" },
+    eventName: EVENTS.pullRequestTarget
+  });
 
-    it("should call erc if fileDiff is of type erc", async () => {
-      const res = await actualRequireEIPEditors({
-        base: { category: EIPCategory.erc }
+  const editors: [string, string, string] = ["editor1", "editor2", "editor3"];
+
+  const RequireEditors = new _RequireEditors({
+    requireAuthors,
+    ERC_EDITORS,
+    CORE_EDITORS
+  });
+  RequireEditors._requireEIPEditors = jest.fn()
+  RequireEditors.ERC_EDITORS = jest.fn()
+  RequireEditors.CORE_EDITORS = jest.fn()
+
+  const requireAuthorsSpy = jest.spyOn(RequireEditors, "requireAuthors");
+  const consoleSpy = jest.spyOn(console, "warn");
+  const methodNames = {
+    [EIPCategory.erc]: "ERC_EDITORS",
+    [EIPCategory.core]: "CORE_EDITORS"
+  }
+  const types = [EIPCategory.erc, EIPCategory.core];
+
+  beforeEach(async () => {
+    requireAuthorsSpy.mockReset();
+    consoleSpy.mockClear();
+
+    for (const method of Object.values(methodNames)) {
+      RequireEditors[method].mockReset();
+    }
+  });
+
+  for (const type of types) {
+    it(`should call ${type} editor getter if fileDiff is of type ${type}`, () => {
+      RequireEditors[methodNames[type]].mockReturnValue(editors);
+      RequireEditors.requireEIPEditors({
+        base: { category: type }
       } as FileDiff);
-      expect(ercEditorsMock.getMock()).toBeCalled();
+      expect(RequireEditors[methodNames[type]]).toBeCalled();
     });
-  })
+  }
 
+  it("should explode if no valid category is given", async() => {
+    await expectError(() => {
+      // @ts-expect-error this is on purpose
+      RequireEditors.requireEIPEditors({
+        base: { category: "fake category" }
+      } as FileDiff);
+    })
+  })
 });
