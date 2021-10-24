@@ -1,5 +1,5 @@
 import { isDefined } from "src/domain";
-import { requirePr } from "#assertions";
+import { requirePr } from "#/assertions";
 import { requestReview } from "src/infra";
 
 /**

@@ -9,9 +9,9 @@ import {
   NETWORKING_EDITORS
 } from "src/domain/Constants";
 import { expectError, mockGithubContext } from "src/tests/testutils";
-import { RequireEditors as _RequireEditors } from "#assertions/require_editors";
+import { RequireEditors as _RequireEditors } from "#/assertions/require_editors";
 import { CORE_EDITORS, ERC_EDITORS, FileDiff } from "src/domain";
-import { requireAuthors } from "#assertions/require_authors";
+import { requireAuthors } from "#/assertions/require_authors";
 
 describe("_requireEIPEditors", () => {
   mockGithubContext({

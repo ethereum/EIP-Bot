@@ -1,8 +1,4 @@
 import { isMockMethod, MockRecord } from "src/domain";
-import PR3670 from "./3670";
-import PR3596 from "./3596";
-import PR3654_1 from "./3654/editorApproved";
-import PR3654_2 from "./3654/noEditorApproval";
 
 export enum SavedRecord {
   /**
@@ -113,6 +109,10 @@ export const getMockRecords = async () => {
   const PR4192 = await import("./4192.json");
   const PR3768_1 = await import("./3768/1.json");
   const PR3768_2 = await import("./3768/2.json");
+  const PR3596 = await import("./3596.json");
+  const PR3670 = await import("./3670.json");
+  const PR3654_1 = await import("./3654/1.json");
+  const PR3654_2 = await import("./3654/2.json");
 
   assertMethods(PR3767);
   assertMethods(PR3676);
@@ -120,12 +120,16 @@ export const getMockRecords = async () => {
   assertMethods(PR4192);
   assertMethods(PR3768_1);
   assertMethods(PR3768_2);
+  assertMethods(PR3596);
+  assertMethods(PR3670);
+  assertMethods(PR3654_1);
+  assertMethods(PR3654_2);
 
   const Records: { [k in keyof typeof SavedRecord]: MockRecord[] } = {
-    PR3596,
-    PR3670,
-    PR3654_1,
-    PR3654_2,
+    PR3596: PR3596.default,
+    PR3670: PR3670.default,
+    PR3654_1: PR3654_1.default,
+    PR3654_2: PR3654_2.default,
     PR3767: PR3767.default,
     PR3676: PR3676.default,
     PR3612: PR3612.default,

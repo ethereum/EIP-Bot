@@ -16,7 +16,7 @@ import {
   requireFiles,
   requirePr,
   requirePullNumber
-} from "#assertions";
+} from "#/assertions";
 import {
   editorApprovalPurifier,
   EIP1Purifier,
@@ -24,7 +24,7 @@ import {
   innerJoinAncestors,
   postComment,
   statusChangeAllowedPurifier
-} from "#components";
+} from "#/components";
 import {
   COMMENT_HEADER,
   DEFAULT_ERRORS,
@@ -34,8 +34,8 @@ import {
   TestResults
 } from "src/domain";
 import { get, uniq } from "lodash";
-import { requestReviewers } from "#approvals";
-import { getFileDiff } from "#file";
+import { requestReviewers } from "#/approvals";
+import { getFileDiff } from "#/file";
 
 const testFile = async (file: File): Promise<TestResults> => {
   // we need to define this here because the below logic can get very complicated otherwise

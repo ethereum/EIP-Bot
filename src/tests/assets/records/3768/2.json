@@ -803,5 +803,223 @@
         "performed_via_github_app": null
       }
     }
+  },
+  {
+    "req": {
+      "url": "https://api.github.com/search/users?q=github.com%2540phor.net",
+      "method": "GET"
+    },
+    "res": {
+      "status": 200,
+      "data": {
+        "total_count": 0,
+        "incomplete_results": false,
+        "items": []
+      }
+    }
+  },
+  {
+    "req": {
+      "url": "https://api.github.com/search/users?q=dete%2540axiomzen.co",
+      "method": "GET"
+    },
+    "res": {
+      "status": 200,
+      "data": {
+        "total_count": 0,
+        "incomplete_results": false,
+        "items": []
+      }
+    }
+  },
+  {
+    "req": {
+      "url": "https://api.github.com/search/users?q=jacob%2540dekz.net",
+      "method": "GET"
+    },
+    "res": {
+      "status": 200,
+      "data": {
+        "total_count": 0,
+        "incomplete_results": false,
+        "items": []
+      }
+    }
+  },
+  {
+    "req": {
+      "url": "https://api.github.com/search/users?q=nastassia.sachs%2540protonmail.com",
+      "method": "GET"
+    },
+    "res": {
+      "status": 200,
+      "data": {
+        "total_count": 0,
+        "incomplete_results": false,
+        "items": []
+      }
+    }
+  },
+  {
+    "req": {
+      "url": "https://api.github.com/search/users?q=github.com%2540phor.net%2520in%253Aemail",
+      "method": "GET"
+    },
+    "res": {
+      "status": 200,
+      "data": {
+        "total_count": 0,
+        "incomplete_results": false,
+        "items": []
+      }
+    }
+  },
+  {
+    "req": {
+      "url": "https://api.github.com/search/users?q=dete%2540axiomzen.co%2520in%253Aemail",
+      "method": "GET"
+    },
+    "res": {
+      "status": 200,
+      "data": {
+        "total_count": 0,
+        "incomplete_results": false,
+        "items": []
+      }
+    }
+  },
+  {
+    "req": {
+      "url": "https://api.github.com/search/users?q=jacob%2540dekz.net%2520in%253Aemail",
+      "method": "GET"
+    },
+    "res": {
+      "status": 200,
+      "data": {
+        "total_count": 0,
+        "incomplete_results": false,
+        "items": []
+      }
+    }
+  },
+  {
+    "req": {
+      "url": "https://api.github.com/search/users?q=nastassia.sachs%2540protonmail.com%2520in%253Aemail",
+      "method": "GET"
+    },
+    "res": {
+      "status": 200,
+      "data": {
+        "total_count": 0,
+        "incomplete_results": false,
+        "items": []
+      }
+    }
+  },
+  {
+    "req": {
+      "url": "https://api.github.com/search/users?q=fullname%253Agithub%2520com",
+      "method": "GET"
+    },
+    "res": {
+      "status": 200,
+      "data": {
+        "total_count": 0,
+        "incomplete_results": false,
+        "items": []
+      }
+    }
+  },
+  {
+    "req": {
+      "url": "https://api.github.com/search/users?q=fullname%253Anastassia%2520sachs",
+      "method": "GET"
+    },
+    "res": {
+      "status": 200,
+      "data": {
+        "total_count": 0,
+        "incomplete_results": false,
+        "items": []
+      }
+    }
+  },
+  {
+    "req": {
+      "url": "https://api.github.com/search/users?q=fullname%253Anastassia%2520sachs%2520type%253Ausers",
+      "method": "GET"
+    },
+    "res": {
+      "status": 200,
+      "data": {
+        "total_count": 0,
+        "incomplete_results": false,
+        "items": []
+      }
+    }
+  },
+  {
+    "req": {
+      "url": "https://api.github.com/search/users?q=dete%40axiomzen.co%20in%3Aemail",
+      "method": "GET"
+    },
+    "res": {
+      "status": 200,
+      "data": {
+        "total_count": 0,
+        "incomplete_results": false,
+        "items": []
+      }
+    }
+  },
+  {
+    "req": {
+      "url": "https://api.github.com/search/users?q=nastassia.sachs%40protonmail.com%20in%3Aemail",
+      "method": "GET"
+    },
+    "res": {
+      "status": 200,
+      "data": {
+        "total_count": 0,
+        "incomplete_results": false,
+        "items": []
+      }
+    }
+  },
+  {
+    "req": {
+      "url": "https://api.github.com/search/users?q=fullname%3Anastassia%20sachs%20type%3Ausers",
+      "method": "GET"
+    },
+    "res": {
+      "status": 200,
+      "data": {
+        "total_count": 1,
+        "incomplete_results": false,
+        "items": [
+          {
+            "login": "nastassiasachs",
+            "id": 36475434,
+            "node_id": "MDQ6VXNlcjM2NDc1NDM0",
+            "avatar_url": "https://avatars.githubusercontent.com/u/36475434?v=4",
+            "gravatar_id": "",
+            "url": "https://api.github.com/users/nastassiasachs",
+            "html_url": "https://github.com/nastassiasachs",
+            "followers_url": "https://api.github.com/users/nastassiasachs/followers",
+            "following_url": "https://api.github.com/users/nastassiasachs/following{/other_user}",
+            "gists_url": "https://api.github.com/users/nastassiasachs/gists{/gist_id}",
+            "starred_url": "https://api.github.com/users/nastassiasachs/starred{/owner}{/repo}",
+            "subscriptions_url": "https://api.github.com/users/nastassiasachs/subscriptions",
+            "organizations_url": "https://api.github.com/users/nastassiasachs/orgs",
+            "repos_url": "https://api.github.com/users/nastassiasachs/repos",
+            "events_url": "https://api.github.com/users/nastassiasachs/events{/privacy}",
+            "received_events_url": "https://api.github.com/users/nastassiasachs/received_events",
+            "type": "User",
+            "site_admin": false,
+            "score": 1
+          }
+        ]
+      }
+    }
   }
 ]

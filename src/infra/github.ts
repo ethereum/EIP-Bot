@@ -1,7 +1,6 @@
 import { context, getOctokit } from "@actions/github";
 import { GITHUB_TOKEN, isDefined, PR } from "src/domain";
 import { RequestError } from "@octokit/types";
-import ea from "email-addresses"
 
 export const getEventName = () => {
   return context.eventName;
@@ -74,16 +73,39 @@ export const requestReview = (pr: PR, reviewer: string) => {
   );
 };
 
-// export const searchUsers = async (email:string) => {
-//   const Github = getOctokit(GITHUB_TOKEN).rest;
-//
-//
-//   const emailSearch = await Github.search.users({
-//     q: encodeURIComponent(`${email} in:email`)
-//   }).then(res => res.data);
-//
-//   if (emailSearch.total_count === 1 && isDefined(emailSearch.items[0])) {
-//     return emailSearch.items[0].login
-//   }
-//
-// }
+export const resolveUserByEmail = async (email: string) => {
+  const Github = getOctokit(GITHUB_TOKEN).rest;
+
+  // @ts-ignore
+  const { data: rawEmailSearch } = await Github.search.users({
+    q: email
+  })
+
+  if (rawEmailSearch.total_count > 0 && rawEmailSearch.items[0] !== undefined) {
+    return "@" + rawEmailSearch.items[0].login;
+  }
+
+  const { data: emailSearch } = await Github.search.users({
+    q: `${email} in:email`
+  });
+
+  if (emailSearch.total_count === 1 && isDefined(emailSearch.items[0])) {
+    return "@" + emailSearch.items[0].login;
+  }
+
+  const local = email.split("@")[0];
+  if (!local) return;
+  const firstName = local.split(".")[0];
+  const lastName = local.split(".")[1];
+  if (!firstName || !lastName) return;
+
+  const { data: nameSearch } = await Github.search.users({
+    q: `fullname:${firstName} ${lastName} type:users`
+  });
+
+  if (nameSearch.total_count === 1 && isDefined(nameSearch.items[0])) {
+    return "@" + nameSearch.items[0].login;
+  }
+
+  return;
+};

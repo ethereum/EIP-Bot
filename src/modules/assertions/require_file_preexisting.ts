@@ -1,4 +1,4 @@
-import { requirePr } from "#assertions";
+import { requirePr } from "#/assertions";
 import { File, FileStatus } from "src/domain";
 import { getRepoFilenameContent } from "src/infra";
 

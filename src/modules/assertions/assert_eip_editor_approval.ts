@@ -1,6 +1,6 @@
 import { FileDiff } from "src/domain";
-import { getApprovals } from "#approvals";
-import { requireEIPEditors } from "#assertions";
+import { getApprovals } from "#/approvals";
+import { requireEIPEditors } from "#/assertions";
 
 /** returns an error string if the PR does NOT have editor approval */
 export const assertEIPEditorApproval = async (fileDiff: FileDiff) => {

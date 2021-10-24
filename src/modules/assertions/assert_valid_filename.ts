@@ -1,5 +1,5 @@
 import { File, FILE_RE } from "src/domain";
-import { requireFilenameEipNum } from "#assertions";
+import { requireFilenameEipNum } from "#/assertions";
 
 /**
  * Accepts a file and returns whether or not its name is valid

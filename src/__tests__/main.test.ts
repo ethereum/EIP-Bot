@@ -52,8 +52,8 @@ describe("mentions", () => {
     const mockRequireEIPEditors = jest.fn().mockReturnValue(editors);
 
     beforeEach(async () => {
-      jest.mock("#assertions", () => ({
-        ...jest.requireActual("#assertions"),
+      jest.mock("#/assertions", () => ({
+        ...jest.requireActual("#/assertions"),
         requireEIPEditors: mockRequireEIPEditors
       }));
       jest.resetModules();
@@ -62,7 +62,7 @@ describe("mentions", () => {
     });
 
     it("should return editors if the file is new and there's no editor approval", async () => {
-      await import("#assertions");
+      await import("#/assertions");
       const testResults = testResultsFactory({
         errors: {
           fileErrors: {

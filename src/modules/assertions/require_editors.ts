@@ -1,5 +1,5 @@
 import { EIPCategory, EIPTypes, FileDiff } from "src/domain";
-import { IRequireEditors } from "#assertions/Domain/types";
+import { IRequireEditors } from "#/assertions/Domain/types";
 
 export class RequireEditors implements IRequireEditors {
   public requireAuthors: (fileDiff: FileDiff) => string[];

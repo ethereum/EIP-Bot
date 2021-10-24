@@ -16,7 +16,7 @@ import {
   requireFiles,
   requirePr,
   requirePullNumber
-} from "#assertions";
+} from "#/assertions";
 import { clearContext, expectError } from "src/tests/testutils";
 import { FileDiffFactory } from "src/tests/factories/fileDiffFactory";
 import { FileFactory } from "src/tests/factories/fileFactory";

@@ -54,8 +54,9 @@
     }
   },
   "_moduleAliases": {
-    "src": "build/src",
-    "#": "build/src/modules"
+    "#": "build/src/modules",
+    "src": "build/src"
+
   },
   "repository": {
     "type": "git",

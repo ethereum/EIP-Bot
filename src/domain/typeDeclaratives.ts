@@ -1,16 +1,16 @@
 import _ from "lodash";
-import { OR } from "#utils";
+import { OR } from "#/utils";
 import { Encodings, encodings } from "src/domain";
 
 /** includes a check for NaN and general falsey */
 export const isDefined = <T>(
-  maybeDefined: T | null | undefined | typeof NaN | "" | false | []
+  maybeDefined: T | null | undefined | typeof NaN | [] | {}
 ): maybeDefined is T => {
   return (
     !_.isUndefined(maybeDefined) &&
     !_.isNull(maybeDefined) &&
     !_.isNaN(maybeDefined) &&
-    !maybeDefined
+    !_.isEmpty(maybeDefined)
   );
 };
 

@@ -1,4 +1,4 @@
-import { requirePr } from "#assertions";
+import { requirePr } from "#/assertions";
 import { getPullRequestReviews } from "src/infra";
 
 /**

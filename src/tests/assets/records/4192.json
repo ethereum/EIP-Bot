@@ -617,5 +617,69 @@
         "performed_via_github_app": null
       }
     }
+  },
+  {
+    "req": {
+      "url": "https://api.github.com/search/users?q=pelle.braendgaard%40consensys.net%20in%3Aemail",
+      "method": "GET"
+    },
+    "res": {
+      "status": 200,
+      "data": {
+        "total_count": 0,
+        "incomplete_results": false,
+        "items": []
+      }
+    }
+  },
+  {
+    "req": {
+      "url": "https://api.github.com/search/users?q=oed%40consensys.net%20in%3Aemail",
+      "method": "GET"
+    },
+    "res": {
+      "status": 200,
+      "data": {
+        "total_count": 0,
+        "incomplete_results": false,
+        "items": []
+      }
+    }
+  },
+  {
+    "req": {
+      "url": "https://api.github.com/search/users?q=fullname%3Apelle%20braendgaard%20type%3Ausers",
+      "method": "GET"
+    },
+    "res": {
+      "status": 200,
+      "data": {
+        "total_count": 1,
+        "incomplete_results": false,
+        "items": [
+          {
+            "login": "pelle",
+            "id": 8680,
+            "node_id": "MDQ6VXNlcjg2ODA=",
+            "avatar_url": "https://avatars.githubusercontent.com/u/8680?v=4",
+            "gravatar_id": "",
+            "url": "https://api.github.com/users/pelle",
+            "html_url": "https://github.com/pelle",
+            "followers_url": "https://api.github.com/users/pelle/followers",
+            "following_url": "https://api.github.com/users/pelle/following{/other_user}",
+            "gists_url": "https://api.github.com/users/pelle/gists{/gist_id}",
+            "starred_url": "https://api.github.com/users/pelle/starred{/owner}{/repo}",
+            "subscriptions_url": "https://api.github.com/users/pelle/subscriptions",
+            "organizations_url": "https://api.github.com/users/pelle/orgs",
+            "repos_url": "https://api.github.com/users/pelle/repos",
+            "events_url": "https://api.github.com/users/pelle/events{/privacy}",
+            "received_events_url": "https://api.github.com/users/pelle/received_events",
+            "type": "User",
+            "site_admin": false,
+            "score": 1
+          }
+        ]
+      }
+    }
   }
 ]

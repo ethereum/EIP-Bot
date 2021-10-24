@@ -1,4 +1,4 @@
-import { requirePullNumber } from "#assertions";
+import { requirePullNumber } from "#/assertions";
 import { getPullRequestFromNumber } from "src/infra";
 import { PR } from "src/domain";
 

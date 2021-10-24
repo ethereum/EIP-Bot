@@ -1,5 +1,5 @@
-import { FileDiffInfra } from "#file/modules/file_diff_infra";
-import { requireFilenameEipNum, requirePr } from "#assertions";
+import { FileDiffInfra } from "#/file/modules/file_diff_infra";
+import { requireFilenameEipNum, requirePr } from "#/assertions";
 import { PropsValue } from "src/domain";
 
 const _FileDiffInfra_ = new FileDiffInfra(

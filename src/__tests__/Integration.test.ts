@@ -50,16 +50,16 @@ describe("integration testing edgecases associated with editors", () => {
       });
 
       // to be used later to check for mentions (postComment was an arbitrary choice)
-      jest.mock("#components", () => ({
-        ...jest.requireActual("#components"),
+      jest.mock("#/components", () => ({
+        ...jest.requireActual("#/components"),
         postComment: jest.fn().mockImplementation(() => {})
       }));
 
       await __MAIN_MOCK__();
 
       const Domain = await import("src/domain");
-      const Components = (await import("#components")) as jest.Mocked<
-        PromiseValue<typeof import("#components")>
+      const Components = (await import("#/components")) as jest.Mocked<
+        PromiseValue<typeof import("#/components")>
       >;
 
       // collect the call
@@ -167,7 +167,7 @@ describe("integration testing edgecases associated with editors", () => {
       const call = setFailedMock.mock.calls[0];
       expect(call).toBeDefined();
       assertDefined(call);
-      expect(call[0]).not.toMatch(/nastassia.sachs@protonmail.com/);
+      expect(call[0]).not.toMatch(/dete@axiomzen.co/);
     });
   });
 });

@@ -151,7 +151,7 @@ const fetchAndCreateRecord = async (
   console.log("successfully fetched data");
   nock.disableNetConnect();
 
-  const fileName = `records/${process.env.PULL_NUMBER}.json`;
+  const fileName = `records/${process.env.PULL_NUMBER?.replace("_", "/")}.json`;
   const mockedRecord: MockRecord[] = (await import("./" + fileName)).default;
 
   isMockMethod(method);

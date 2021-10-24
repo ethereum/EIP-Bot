@@ -1,4 +1,3 @@
-import { getOctokit } from "@actions/github";
 import {
   assertCategory,
   AUTHOR_RE,
@@ -7,7 +6,6 @@ import {
   FileDiff,
   FormattedFile,
   FrontMatterAttributes,
-  GITHUB_TOKEN,
   isDefined,
   matchAll,
   ParsedContent,
@@ -15,8 +13,8 @@ import {
   requireEncoding
 } from "src/domain";
 import frontmatter from "front-matter";
-import { IFileDiff } from "#file/domain/types";
-import { getRepoFilenameContent } from "src/infra";
+import { IFileDiff } from "#/file/domain/types";
+import { getRepoFilenameContent, resolveUserByEmail } from "src/infra";
 
 export class FileDiffInfra implements IFileDiff {
   constructor(
@@ -114,24 +112,12 @@ export class FileDiffInfra implements IFileDiff {
   getAuthors = async (rawAuthorList?: string) => {
     if (!rawAuthorList) return;
 
-    const findUserByEmail = async (
-      email: string
-    ): Promise<string | undefined> => {
-      const Github = getOctokit(GITHUB_TOKEN).rest;
-      const { data: results } = await Github.search.users({ q: email });
-      if (results.total_count > 0 && results.items[0] !== undefined) {
-        return "@" + results.items[0].login;
-      }
-      console.warn(`No github user found, using email instead: ${email}`);
-      return undefined;
-    };
-
     const resolveAuthor = async (author: string) => {
       if (author[0] === "@") {
         return author.toLowerCase();
       } else {
         // Email address
-        const queriedUser = await findUserByEmail(author);
+        const queriedUser = await resolveUserByEmail(author);
         if (!queriedUser) return;
         return queriedUser.toLowerCase();
       }

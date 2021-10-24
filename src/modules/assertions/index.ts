@@ -1,4 +1,4 @@
-import { requireAuthors } from "#assertions/require_authors";
+import { requireAuthors } from "#/assertions/require_authors";
 import { RequireEditors } from "./require_editors";
 import {
   CORE_EDITORS,
