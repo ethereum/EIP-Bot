@@ -1,4 +1,4 @@
-import { FileDiff } from "#domain";
+import { FileDiff } from "src/domain";
 
 /**
  * assert that authors exist for the EIP at the PRs base commit

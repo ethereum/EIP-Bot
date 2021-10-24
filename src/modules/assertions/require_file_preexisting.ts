@@ -1,13 +1,13 @@
 import { requirePr } from "#assertions";
-import { File, FileStatus } from "#domain";
-import { getRepoFilenameContent } from "#infra";
+import { File, FileStatus } from "src/domain";
+import { getRepoFilenameContent } from "src/infra";
 
 // this has an injected dependency to make testing easier
 export const _requireFilePreexisting =
   (_requirePr: typeof requirePr) => async (file: File) => {
     const pr = await _requirePr();
     const filename = file.previous_filename || file.filename;
-    const error = await getRepoFilenameContent(filename, pr);
+    const error = await getRepoFilenameContent(filename, pr.base.sha);
 
     // @ts-expect-error error.status is defined if the error is a RequestError
     if ((error && error.status === 404) || file.status === FileStatus.added) {

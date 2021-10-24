@@ -32,7 +32,7 @@ import {
   NodeEnvs,
   Results,
   TestResults
-} from "#domain";
+} from "src/domain";
 import { get, uniq } from "lodash";
 import { requestReviewers } from "#approvals";
 import { getFileDiff } from "#file";

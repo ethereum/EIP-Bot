@@ -1,4 +1,4 @@
-import { FileDiff } from "#domain";
+import { FileDiff } from "src/domain";
 import { requireAuthors } from "#assertions";
 import { getApprovals } from "#approvals";
 

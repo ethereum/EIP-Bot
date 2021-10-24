@@ -24,16 +24,8 @@
     "resolveJsonModule": true,
     "baseUrl": "./",
     "paths": {
-      "#domain/*": ["src/domain/*"],
-      "#domain": ["src/domain"],
-      "#assertions/*": ["src/modules/assertions/*"],
-      "#assertions": ["src/modules/assertions"],
-      "#infra": ["src/infra"],
-      "#components": ["src/modules/components"],
-      "#tests/*": ["src/tests/*"],
-      "#approvals": ["src/modules/approvals"],
-      "#file": ["src/modules/file"],
-      "src/*": ["src/*"]
+      "src/*": ["src/*"],
+      "#*": ["src/modules/*"]
     }
   },
   "include": ["src"]

@@ -1,5 +1,5 @@
-import { getPullRequestFiles } from "#infra";
-import { Files, PR } from "#domain";
+import { getPullRequestFiles } from "src/infra";
+import { Files, PR } from "src/domain";
 
 /**
  * compares the diff between the base commit of the PR and

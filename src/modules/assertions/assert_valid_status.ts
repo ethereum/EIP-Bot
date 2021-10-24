@@ -1,4 +1,4 @@
-import { ALLOWED_STATUSES, FileDiff } from "#domain";
+import { ALLOWED_STATUSES, FileDiff } from "src/domain";
 
 /**
  * determines if the status of either the base or the head are

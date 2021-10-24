@@ -99,7 +99,7 @@ export const setMockContext = async (mockEnv?: NodeJS.ProcessEnv) => {
   const pr = await mockPR(env.PULL_NUMBER);
 
   // By instantiating after above it allows it to initialize with custom env
-  const context = require("@actions/github").context;
+  const context = (await import("@actions/github")).context;
 
   context.payload.pull_request = {
     base: {
@@ -111,18 +111,18 @@ export const setMockContext = async (mockEnv?: NodeJS.ProcessEnv) => {
     number: parseInt(env.PULL_NUMBER || "") || 0
   };
 
-  context.repo.owner = env.REPO_OWNER_NAME;
-  context.repo.repo = env.REPO_NAME;
-
   context.payload.repository = {
+    // @ts-ignore
     name: env.REPO_NAME,
     owner: {
       key: "",
+      // @ts-ignore
       login: env.REPO_OWNER_NAME,
       name: env.REPO_OWNER_NAME
     },
     full_name: `${env.REPO_OWNER}/${env.REPO_NAME}`
   };
+  // @ts-ignore
   context.eventName = env.EVENT_TYPE;
 };
 
@@ -166,10 +166,12 @@ const fetchAndCreateRecord = async (
     }
   });
 
+  console.log(process.cwd() + "/src/tests/assets/" + fileName)
   fs.writeFile(
-    process.cwd() + "/assets/" + fileName,
+    process.cwd() + "/src/tests/assets/" + fileName,
     JSON.stringify(mockedRecord, null, 2),
     () => {
+      console.log(mockedRecord)
       console.log("wrote file");
     }
   );

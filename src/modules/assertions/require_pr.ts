@@ -1,7 +1,8 @@
 import { requirePullNumber } from "#assertions";
-import { getPullRequestFromNumber } from "#infra";
+import { getPullRequestFromNumber } from "src/infra";
+import { PR } from "src/domain";
 
-export const requirePr = async () => {
+export const requirePr = async (): Promise<PR> => {
   const prNum = requirePullNumber();
   const pr = await getPullRequestFromNumber(prNum);
 

@@ -1,4 +1,4 @@
-import { EIPCategory, EIPTypes, FileDiff } from "#domain";
+import { EIPCategory, EIPTypes, FileDiff } from "src/domain";
 import { IRequireEditors } from "#assertions/Domain/types";
 
 export class RequireEditors implements IRequireEditors {

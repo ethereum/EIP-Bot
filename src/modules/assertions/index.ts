@@ -8,7 +8,7 @@ import {
   INTERFACE_EDITORS,
   META_EDITORS,
   NETWORKING_EDITORS
-} from "#domain";
+} from "src/domain";
 
 export * from "./require_pull_number";
 export * from "./require_event";
@@ -17,7 +17,6 @@ export * from "./require_pr";
 export * from "./assert_has_authors";
 export * from "./assert_is_approved_by_authors";
 export * from "./assert_valid_filename";
-export * from "./require_encoding";
 export * from "./require_filename_eip_num";
 export * from "./require_files";
 export * from "./assert_filename_and_file_numbers_match";

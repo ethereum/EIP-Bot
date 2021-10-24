@@ -66,7 +66,22 @@ export enum SavedRecord {
    *
    * @summary: multi-file PR that does not have the necessary reviews for it to pass
    */
-  PR4192 = "4192"
+  PR4192 = "4192",
+  /**
+   * **SHOULD SUCCEED**
+   *
+   * @summary: this is one where the bot mentioned the email of the user when
+   * it couldn't find the username. Either try to
+   */
+  PR3768_1 = "3768_1",
+  /**
+   * **SHOULD FAIL**
+   *
+   * @summary: Same as PR3768_1 but in this case I deleted the author's review;
+   * the goal is to use this PR to verify that an author with an email won't be
+   * mentioned.
+   */
+  PR3768_2 = "3768_2"
 }
 
 /**
@@ -96,11 +111,15 @@ export const getMockRecords = async () => {
   const PR3676 = await import("./3676.json");
   const PR3612 = await import("./3612.json");
   const PR4192 = await import("./4192.json");
+  const PR3768_1 = await import("./3768/1.json");
+  const PR3768_2 = await import("./3768/2.json");
 
   assertMethods(PR3767);
   assertMethods(PR3676);
   assertMethods(PR3612);
   assertMethods(PR4192);
+  assertMethods(PR3768_1);
+  assertMethods(PR3768_2);
 
   const Records: { [k in keyof typeof SavedRecord]: MockRecord[] } = {
     PR3596,
@@ -110,7 +129,9 @@ export const getMockRecords = async () => {
     PR3767: PR3767.default,
     PR3676: PR3676.default,
     PR3612: PR3612.default,
-    PR4192: PR4192.default
+    PR4192: PR4192.default,
+    PR3768_1: PR3768_1.default,
+    PR3768_2: PR3768_2.default
   };
   return Records;
 };

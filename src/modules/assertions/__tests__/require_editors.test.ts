@@ -1,15 +1,16 @@
 import {
-  EIPCategory, EIPTypeOrCategoryToResolver,
+  EIPCategory,
+  EIPTypeOrCategoryToResolver,
   EIPTypes,
   EVENTS,
   INFORMATIONAL_EDITORS,
   INTERFACE_EDITORS,
   META_EDITORS,
   NETWORKING_EDITORS
-} from "#domain/Constants";
-import { expectError, mockGithubContext } from "#tests/testutils";
+} from "src/domain/Constants";
+import { expectError, mockGithubContext } from "src/tests/testutils";
 import { RequireEditors as _RequireEditors } from "#assertions/require_editors";
-import { CORE_EDITORS, ERC_EDITORS, FileDiff } from "#domain";
+import { CORE_EDITORS, ERC_EDITORS, FileDiff } from "src/domain";
 import { requireAuthors } from "#assertions/require_authors";
 
 describe("_requireEIPEditors", () => {

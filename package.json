@@ -24,6 +24,7 @@
     "@types/nock": "^11.1.0",
     "depcheck": "^1.4.2",
     "dotenv": "^10.0.0",
+    "email-addresses": "^5.0.0",
     "faker": "^5.5.3",
     "front-matter": "4.0.2",
     "lodash": "^4.17.21",
@@ -54,13 +55,7 @@
   },
   "_moduleAliases": {
     "src": "build/src",
-    "#domain": "build/src/domain",
-    "#assertions": "build/src/modules/assertions",
-    "#components": "build/src/modules/components",
-    "#infra": "build/src/infra",
-    "#approvals": "build/src/modules/approvals",
-    "#file": "build/src/modules/file",
-    "#tests": "build/src/tests"
+    "#": "build/src/modules"
   },
   "repository": {
     "type": "git",

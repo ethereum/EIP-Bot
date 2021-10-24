@@ -1,6 +1,12 @@
-import { SavedRecord } from "#tests/assets/records";
+import { SavedRecord } from "src/tests/assets/records";
 import faker from "faker";
-import { EIPCategory, EIPTypeOrCategoryToResolver, EIPTypes, EVENTS, NodeEnvs } from "src/domain";
+import {
+  EIPCategory,
+  EIPTypeOrCategoryToResolver,
+  EIPTypes,
+  EVENTS,
+  NodeEnvs
+} from "src/domain";
 
 type Env = {
   PULL_NUMBER: SavedRecord;

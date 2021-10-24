@@ -1,6 +1,6 @@
-import { isDefined } from "#domain";
+import { isDefined } from "src/domain";
 import { requirePr } from "#assertions";
-import { requestReview } from "#infra";
+import { requestReview } from "src/infra";
 
 /**
  * Attempts to request a review and returns a list of unchanged users

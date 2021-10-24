@@ -1,6 +1,7 @@
 import { context, getOctokit } from "@actions/github";
-import { GITHUB_TOKEN, PR } from "#domain";
+import { GITHUB_TOKEN, isDefined, PR } from "src/domain";
 import { RequestError } from "@octokit/types";
+import ea from "email-addresses"
 
 export const getEventName = () => {
   return context.eventName;
@@ -45,14 +46,14 @@ export const getPullRequestFiles = (pullNumber: number) => {
     .then((res) => res.data);
 };
 
-export const getRepoFilenameContent = (filename: string, pr: PR) => {
+export const getRepoFilenameContent = (filename: string, sha: string) => {
   const Github = getOctokit(GITHUB_TOKEN).rest;
   return Github.repos
     .getContent({
       owner: context.repo.owner,
       repo: context.repo.repo,
       path: filename,
-      ref: pr.base.sha
+      ref: sha
     })
     .then((res) => res.data)
     .catch((err) => err as RequestError);
@@ -72,3 +73,17 @@ export const requestReview = (pr: PR, reviewer: string) => {
       .catch((err) => {})
   );
 };
+
+// export const searchUsers = async (email:string) => {
+//   const Github = getOctokit(GITHUB_TOKEN).rest;
+//
+//
+//   const emailSearch = await Github.search.users({
+//     q: encodeURIComponent(`${email} in:email`)
+//   }).then(res => res.data);
+//
+//   if (emailSearch.total_count === 1 && isDefined(emailSearch.items[0])) {
+//     return emailSearch.items[0].login
+//   }
+//
+// }

@@ -1,12 +1,13 @@
 // integration tests in this repo are previously fixed bugs
-import { SavedRecord } from "#tests/assets/records";
+import { SavedRecord } from "src/tests/assets/records";
 import { envFactory } from "src/tests/factories/envFactory";
 import * as core from "@actions/core";
-import { __MAIN_MOCK__ } from "#tests/assets/mockPR";
+import { __MAIN_MOCK__ } from "src/tests/assets/mockPR";
 import MockedEnv from "mocked-env";
 import nock from "nock";
 import { PromiseValue } from "type-fest";
-import { EIPTypeOrCategoryToResolver, EIPTypes } from "#domain";
+import { EIPCategory, EIPTypeOrCategoryToResolver, EIPTypes } from "src/domain";
+import { assertDefined } from "src/domain/typeDeclaratives";
 
 describe("integration testing edgecases associated with editors", () => {
   const setFailedMock = jest
@@ -44,7 +45,8 @@ describe("integration testing edgecases associated with editors", () => {
     it("should mention editors if there's a valid status error and no editor approval", async () => {
       process.env = envFactory({
         PULL_NUMBER: SavedRecord.PR3654_2,
-        [EIPTypeOrCategoryToResolver[EIPTypes.informational]]: "@micahzoltu, @lighclient"
+        [EIPTypeOrCategoryToResolver[EIPTypes.informational]]:
+          "@micahzoltu, @lighclient"
       });
 
       // to be used later to check for mentions (postComment was an arbitrary choice)
@@ -55,7 +57,7 @@ describe("integration testing edgecases associated with editors", () => {
 
       await __MAIN_MOCK__();
 
-      const Domain = await import("#domain");
+      const Domain = await import("src/domain");
       const Components = (await import("#components")) as jest.Mocked<
         PromiseValue<typeof import("#components")>
       >;
@@ -77,11 +79,12 @@ describe("integration testing edgecases associated with editors", () => {
     it("should pass with editor approval", async () => {
       process.env = envFactory({
         PULL_NUMBER: SavedRecord.PR3654_1,
-        [EIPTypeOrCategoryToResolver[EIPTypes.informational]]: "@micahzoltu, @lighclient"
+        [EIPTypeOrCategoryToResolver[EIPTypes.informational]]:
+          "@micahzoltu, @lighclient"
       });
 
-      jest.mock("#domain", () => ({
-        ...jest.requireActual("#domain")
+      jest.mock("src/domain", () => ({
+        ...jest.requireActual("src/domain")
       }));
 
       await __MAIN_MOCK__();
@@ -130,6 +133,41 @@ describe("integration testing edgecases associated with editors", () => {
       >;
       expect(call[0]).toMatch(/eip-1010.md/);
       expect(call[0]).toMatch(/eip-1056.md/);
+    });
+  });
+
+  describe("Pull 3768", () => {
+    it("(variant 1) should pass", async () => {
+      process.env = envFactory({
+        PULL_NUMBER: SavedRecord.PR3768_1,
+        [EIPTypeOrCategoryToResolver[EIPCategory.erc]]: "@micahzoltu"
+      });
+
+      await __MAIN_MOCK__();
+      expect(setFailedMock).not.toBeCalled();
+    });
+
+    it("(variant 2) should fail", async () => {
+      process.env = envFactory({
+        PULL_NUMBER: SavedRecord.PR3768_2,
+        [EIPTypeOrCategoryToResolver[EIPCategory.erc]]: "@micahzoltu"
+      });
+
+      await __MAIN_MOCK__();
+      expect(setFailedMock).toBeCalled();
+    });
+
+    it("should not mention authors with emails", async () => {
+      process.env = envFactory({
+        PULL_NUMBER: SavedRecord.PR3768_2,
+        [EIPTypeOrCategoryToResolver[EIPCategory.erc]]: "@micahzoltu"
+      });
+
+      await __MAIN_MOCK__();
+      const call = setFailedMock.mock.calls[0];
+      expect(call).toBeDefined();
+      assertDefined(call);
+      expect(call[0]).not.toMatch(/nastassia.sachs@protonmail.com/);
     });
   });
 });

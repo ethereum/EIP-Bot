@@ -157,14 +157,4 @@ export type Results = {
   mentions?: string[];
 }[];
 
-/** includes a check for NaN and general falsey */
-export const isDefined = <T>(
-  maybeDefined: T | null | undefined | typeof NaN | "" | false | []
-): maybeDefined is T => {
-  return (
-    !_.isUndefined(maybeDefined) &&
-    !_.isNull(maybeDefined) &&
-    !_.isNaN(maybeDefined) &&
-    !maybeDefined
-  );
-};
+export type PropsValue<T extends (...args: any[]) => any> = T extends (...args: infer Props) => any ? Props: never;

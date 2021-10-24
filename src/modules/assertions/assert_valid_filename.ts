@@ -1,4 +1,4 @@
-import { File, FILE_RE } from "#domain";
+import { File, FILE_RE } from "src/domain";
 import { requireFilenameEipNum } from "#assertions";
 
 /**

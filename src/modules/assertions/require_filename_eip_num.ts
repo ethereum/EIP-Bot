@@ -1,4 +1,4 @@
-import { EIP_NUM_RE } from "#domain";
+import { EIP_NUM_RE } from "src/domain";
 
 /**
  * Extracts the EIP number from a given filename (or returns null)

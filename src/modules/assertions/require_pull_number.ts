@@ -1,4 +1,4 @@
-import { getPullNumber } from "#infra";
+import { getPullNumber } from "src/infra";
 
 export const requirePullNumber = () => {
   const pullNumber = getPullNumber();

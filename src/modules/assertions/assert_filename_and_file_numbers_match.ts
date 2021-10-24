@@ -1,4 +1,4 @@
-import { FileDiff } from "#domain";
+import { FileDiff } from "src/domain";
 
 /**
  * asserts that the eip number in the filename and in the header are the same

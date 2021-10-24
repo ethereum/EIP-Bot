@@ -1,4 +1,4 @@
-import { FileDiff } from "#domain";
+import { FileDiff } from "src/domain";
 import { getApprovals } from "#approvals";
 import { requireEIPEditors } from "#assertions";
 

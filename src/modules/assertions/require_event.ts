@@ -1,5 +1,5 @@
-import { EVENTS } from "#domain";
-import { getEventName } from "#infra";
+import { EVENTS } from "src/domain";
+import { getEventName } from "src/infra";
 
 export const requireEvent = () => {
   const event = getEventName();

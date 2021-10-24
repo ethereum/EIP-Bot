@@ -1,4 +1,4 @@
-import { FileDiff } from "#domain";
+import { FileDiff } from "src/domain";
 
 /**
  * assert that the status hasn't changed, if it hasn't changed then also

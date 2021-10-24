@@ -1,4 +1,4 @@
-import { FileDiff } from "#domain";
+import { FileDiff } from "src/domain";
 
 /**
  * requires that authors exist and returns them else throw error

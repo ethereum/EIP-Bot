@@ -1,5 +1,5 @@
 import { requirePr } from "#assertions";
-import { getPullRequestReviews } from "#infra";
+import { getPullRequestReviews } from "src/infra";
 
 /**
  * @returns the approvals of the pull request in context
