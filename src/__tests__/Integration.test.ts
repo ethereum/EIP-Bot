@@ -6,6 +6,7 @@ import { __MAIN_MOCK__ } from "#tests/assets/mockPR";
 import MockedEnv from "mocked-env";
 import nock from "nock";
 import { PromiseValue } from "type-fest";
+import { EIPTypeOrCategoryToResolver, EIPTypes } from "#domain";
 
 describe("integration testing edgecases associated with editors", () => {
   const setFailedMock = jest
@@ -43,7 +44,7 @@ describe("integration testing edgecases associated with editors", () => {
     it("should mention editors if there's a valid status error and no editor approval", async () => {
       process.env = envFactory({
         PULL_NUMBER: SavedRecord.PR3654_2,
-        ERC_EDITORS: "@micahzoltu, @lighclient"
+        [EIPTypeOrCategoryToResolver[EIPTypes.informational]]: "@micahzoltu, @lighclient"
       });
 
       // to be used later to check for mentions (postComment was an arbitrary choice)
@@ -69,15 +70,14 @@ describe("integration testing edgecases associated with editors", () => {
 
       assertDefined(call);
 
-      console.log(Domain.ERC_EDITORS());
-      expect(call[0]).toContain(Domain.ERC_EDITORS()[0]);
-      expect(call[0]).toContain(Domain.ERC_EDITORS()[1]);
+      expect(call[0]).toContain(Domain.INFORMATIONAL_EDITORS()[0]);
+      expect(call[0]).toContain(Domain.INFORMATIONAL_EDITORS()[1]);
     });
 
     it("should pass with editor approval", async () => {
       process.env = envFactory({
         PULL_NUMBER: SavedRecord.PR3654_1,
-        ERC_EDITORS: "@micahzoltu, @lighclient"
+        [EIPTypeOrCategoryToResolver[EIPTypes.informational]]: "@micahzoltu, @lighclient"
       });
 
       jest.mock("#domain", () => ({

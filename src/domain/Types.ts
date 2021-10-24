@@ -1,5 +1,5 @@
 import { getOctokit } from "@actions/github";
-import { EIPCategory, EipStatus } from "./Constants";
+import { EIPCategory, EipStatus, EIPTypes } from "./Constants";
 import { Endpoints } from "@octokit/types";
 import { FrontMatterResult } from "front-matter";
 import { PromiseValue } from "type-fest";
@@ -62,8 +62,11 @@ export type FormattedFile = {
   authors?: Set<string>;
   name: string;
   filenameEipNum: number;
-  category: EIPCategory;
+  category: Maybe<EIPCategory>;
+  type: EIPTypes;
 };
+
+export type Maybe<T> = T | null;
 
 export type ParsedContent = {
   path: string;

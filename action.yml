@@ -14,9 +14,21 @@ inputs:
   ERC_EDITORS:
     description: a list of editors in the following format "@github_username,@..." to be mentioned for ERC type changes 
     required: true
+  NETWORKING_EDITORS:
+    description: a list of editors in the following format "@github_username,@..." to be mentioned for NETWORKING type changes
+    required: true
+  INTERFACE_EDITORS:
+    description: a list of editors in the following format "@github_username,@..." to be mentioned for INTERFACE type changes
+    required: true
+  META_EDITORS:
+    description: a list of editors in the following format "@github_username,@..." to be mentioned for META type changes
+    required: true
+  INFORMATIONAL_EDITORS:
+    description: a list of editors in the following format "@github_username,@..." to be mentioned for INFORMATIONAL type changes
+    required: true
 
 runs:
   using: "composite"
   steps:
-    - run: cd ${{github.action_path}} && yarn install && yarn build && ERC_EDITORS=${{ inputs.ERC_EDITORS }} CORE_EDITORS=${{ inputs.CORE_EDITORS }}GITHUB_TOKEN=${{ inputs.GITHUB-TOKEN }} MERGE_ENABLED=${{ inputs.MERGE_ENABLED }} NODE_ENV=production node build/src/index.js
+    - run: cd ${{github.action_path}} && yarn install && yarn build && ERC_EDITORS=${{ inputs.ERC_EDITORS }} CORE_EDITORS=${{ inputs.CORE_EDITORS }} NETWORKING_EDITORS=${{ inputs.NETWORKING_EDITORS }} INTERFACE_EDITORS=${{ inputs.INTERFACE_EDITORS }} META_EDITORS=${{ inputs.META_EDITORS }} INFORMATIONAL_EDITORS=${{ inputs.INFORMATIONAL_EDITORS }} GITHUB_TOKEN=${{ inputs.GITHUB-TOKEN }} MERGE_ENABLED=${{ inputs.MERGE_ENABLED }} NODE_ENV=production node build/src/index.js
       shell: bash

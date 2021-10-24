@@ -1,15 +1,31 @@
-import { EIPCategory, FileDiff } from "#domain";
+import { EIPCategory, EIPTypes, FileDiff } from "#domain";
 import { IRequireEditors } from "#assertions/Domain/types";
 
 export class RequireEditors implements IRequireEditors {
   public requireAuthors: (fileDiff: FileDiff) => string[];
   public ERC_EDITORS: () => string[];
   public CORE_EDITORS: () => string[];
+  public INFORMATIONAL_EDITORS: () => string[];
+  public INTERFACE_EDITORS: () => string[];
+  public META_EDITORS: () => string[];
+  public NETWORKING_EDITORS: () => string[];
 
-  constructor({ requireAuthors, ERC_EDITORS, CORE_EDITORS }) {
+  constructor({
+    requireAuthors,
+    ERC_EDITORS,
+    CORE_EDITORS,
+    INFORMATIONAL_EDITORS,
+    INTERFACE_EDITORS,
+    META_EDITORS,
+    NETWORKING_EDITORS
+  }) {
     this.requireAuthors = requireAuthors;
     this.ERC_EDITORS = ERC_EDITORS;
     this.CORE_EDITORS = CORE_EDITORS;
+    this.INFORMATIONAL_EDITORS = INFORMATIONAL_EDITORS;
+    this.INTERFACE_EDITORS = INTERFACE_EDITORS;
+    this.META_EDITORS = META_EDITORS;
+    this.NETWORKING_EDITORS = NETWORKING_EDITORS;
   }
 
   // injected to make testing easier
@@ -31,9 +47,20 @@ export class RequireEditors implements IRequireEditors {
   }
 
   requireEIPEditors(fileDiff?: FileDiff) {
-    const { ERC_EDITORS, CORE_EDITORS } = this;
+    const {
+      ERC_EDITORS,
+      CORE_EDITORS,
+      INFORMATIONAL_EDITORS,
+      INTERFACE_EDITORS,
+      META_EDITORS,
+      NETWORKING_EDITORS
+    } = this;
     const isERC = fileDiff?.base.category === EIPCategory.erc;
     const isCore = fileDiff?.base.category === EIPCategory.core;
+    const isNetworking = fileDiff?.base.category === EIPCategory.networking;
+    const isInterface = fileDiff?.base.category === EIPCategory.interface;
+    const isMeta = fileDiff?.base.type === EIPTypes.meta;
+    const isInformational = fileDiff?.base.type === EIPTypes.informational;
 
     if (isERC) {
       return this._requireEIPEditors(ERC_EDITORS(), fileDiff);
@@ -41,6 +68,23 @@ export class RequireEditors implements IRequireEditors {
 
     if (isCore) {
       return this._requireEIPEditors(CORE_EDITORS(), fileDiff);
+    }
+
+    if (isNetworking) {
+      return this._requireEIPEditors(NETWORKING_EDITORS(), fileDiff);
+    }
+
+    if (isInterface) {
+      return this._requireEIPEditors(INTERFACE_EDITORS(), fileDiff);
+    }
+
+    // these types need to be below category to prevent mismatching categories
+    if (isMeta) {
+      return this._requireEIPEditors(META_EDITORS(), fileDiff);
+    }
+
+    if (isInformational) {
+      return this._requireEIPEditors(INFORMATIONAL_EDITORS(), fileDiff);
     }
 
     throw Error(

@@ -16,7 +16,7 @@ export const getAllTruthyObjectPaths = (obj: object) => {
   return rKeys(obj).toString().split(",").filter(Boolean) as string[];
 };
 
-export const expectError = async (fn, extraContext: string) => {
+export const expectError = async (fn, extraContext?: string) => {
   let error;
   try {
     await fn();

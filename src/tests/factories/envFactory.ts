@@ -1,6 +1,6 @@
 import { SavedRecord } from "#tests/assets/records";
 import faker from "faker";
-import { EVENTS, NodeEnvs } from "src/domain";
+import { EIPCategory, EIPTypeOrCategoryToResolver, EIPTypes, EVENTS, NodeEnvs } from "src/domain";
 
 type Env = {
   PULL_NUMBER: SavedRecord;
@@ -32,6 +32,10 @@ export const envFactory = _envFactory({
   NODE_ENV: NodeEnvs.test,
   GITHUB_REPOSITORY: "ethereum/EIPs",
   EVENT_TYPE: EVENTS.pullRequestTarget,
-  CORE_EDITORS: "@test, @editors",
-  ERC_EDITORS: "@test, @editors"
+  [EIPTypeOrCategoryToResolver[EIPCategory.erc]]: `@${EIPTypeOrCategoryToResolver[EIPCategory.erc].replace("_", "-")}, @test, @editors`,
+  [EIPTypeOrCategoryToResolver[EIPCategory.core]]: `@${EIPTypeOrCategoryToResolver[EIPCategory.core].replace("_", "-")}, @test, @editors`,
+  [EIPTypeOrCategoryToResolver[EIPCategory.interface]]: `@${EIPTypeOrCategoryToResolver[EIPCategory.interface].replace("_", "-")}, @test, @editors`,
+  [EIPTypeOrCategoryToResolver[EIPCategory.networking]]: `@${EIPTypeOrCategoryToResolver[EIPCategory.networking].replace("_", "-")}, @test, @editors`,
+  [EIPTypeOrCategoryToResolver[EIPTypes.meta]]: `@${EIPTypeOrCategoryToResolver[EIPTypes.meta].replace("_", "-")}, @test, @editors`,
+  [EIPTypeOrCategoryToResolver[EIPTypes.informational]]: `@${EIPTypeOrCategoryToResolver[EIPTypes.informational].replace("_", "-")}, @test, @editors`,
 });

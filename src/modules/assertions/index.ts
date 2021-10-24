@@ -1,6 +1,14 @@
 import { requireAuthors } from "#assertions/require_authors";
 import { RequireEditors } from "./require_editors";
-import { CORE_EDITORS, ERC_EDITORS, FileDiff } from "#domain";
+import {
+  CORE_EDITORS,
+  ERC_EDITORS,
+  FileDiff,
+  INFORMATIONAL_EDITORS,
+  INTERFACE_EDITORS,
+  META_EDITORS,
+  NETWORKING_EDITORS
+} from "#domain";
 
 export * from "./require_pull_number";
 export * from "./require_event";
@@ -23,7 +31,11 @@ export * from "./assert_constant_status";
 const _requireEIPEditors = new RequireEditors({
   requireAuthors,
   ERC_EDITORS,
-  CORE_EDITORS
+  CORE_EDITORS,
+  INFORMATIONAL_EDITORS,
+  INTERFACE_EDITORS,
+  META_EDITORS,
+  NETWORKING_EDITORS
 });
 export const requireEIPEditors = (fileDiff?: FileDiff) =>
   _requireEIPEditors.requireEIPEditors(fileDiff);

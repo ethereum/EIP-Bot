@@ -57,7 +57,12 @@ const formatFile = async (file: ParsedContent): Promise<FormattedFile> => {
       maybeCategory: file.content.attributes[FrontMatterAttributes.category],
       fileName: file.name,
       maybeType: file.content.attributes[FrontMatterAttributes.type]
-    })
+    }).category,
+    type: assertCategory({
+      maybeCategory: file.content.attributes[FrontMatterAttributes.category],
+      fileName: file.name,
+      maybeType: file.content.attributes[FrontMatterAttributes.type]
+    }).type,
   };
 };
 

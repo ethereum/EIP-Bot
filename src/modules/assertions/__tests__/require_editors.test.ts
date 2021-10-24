@@ -1,4 +1,12 @@
-import { EIPCategory, EVENTS } from "#domain/Constants";
+import {
+  EIPCategory, EIPTypeOrCategoryToResolver,
+  EIPTypes,
+  EVENTS,
+  INFORMATIONAL_EDITORS,
+  INTERFACE_EDITORS,
+  META_EDITORS,
+  NETWORKING_EDITORS
+} from "#domain/Constants";
 import { expectError, mockGithubContext } from "#tests/testutils";
 import { RequireEditors as _RequireEditors } from "#assertions/require_editors";
 import { CORE_EDITORS, ERC_EDITORS, FileDiff } from "#domain";
@@ -16,7 +24,11 @@ describe("_requireEIPEditors", () => {
   const RequireEIPEditors = new _RequireEditors({
     requireAuthors,
     ERC_EDITORS,
-    CORE_EDITORS
+    CORE_EDITORS,
+    INFORMATIONAL_EDITORS,
+    INTERFACE_EDITORS,
+    META_EDITORS,
+    NETWORKING_EDITORS
   });
   const requireAuthorsSpy = jest.spyOn(RequireEIPEditors, "requireAuthors");
   const consoleSpy = jest.spyOn(console, "warn");
@@ -79,36 +91,55 @@ describe("requireEditors", () => {
   const RequireEditors = new _RequireEditors({
     requireAuthors,
     ERC_EDITORS,
-    CORE_EDITORS
+    CORE_EDITORS,
+    INFORMATIONAL_EDITORS,
+    INTERFACE_EDITORS,
+    META_EDITORS,
+    NETWORKING_EDITORS
   });
   RequireEditors._requireEIPEditors = jest.fn();
-  RequireEditors.ERC_EDITORS = jest.fn();
-  RequireEditors.CORE_EDITORS = jest.fn();
 
   const requireAuthorsSpy = jest.spyOn(RequireEditors, "requireAuthors");
   const consoleSpy = jest.spyOn(console, "warn");
-  const methodNames = {
-    [EIPCategory.erc]: "ERC_EDITORS",
-    [EIPCategory.core]: "CORE_EDITORS"
-  };
-  const types = [EIPCategory.erc, EIPCategory.core];
+
+  const types = [
+    EIPTypes.meta,
+    EIPTypes.informational
+  ];
+
+  const categories = [
+    EIPCategory.erc,
+    EIPCategory.core,
+    EIPCategory.networking,
+    EIPCategory.interface,
+  ]
 
   beforeEach(async () => {
     requireAuthorsSpy.mockReset();
     consoleSpy.mockClear();
 
-    for (const method of Object.values(methodNames)) {
-      RequireEditors[method].mockReset();
+    for (const method of Object.values(EIPTypeOrCategoryToResolver)) {
+      RequireEditors[method] = jest.fn()
     }
   });
 
-  for (const type of types) {
-    it(`should call ${type} editor getter if fileDiff is of type ${type}`, () => {
-      RequireEditors[methodNames[type]].mockReturnValue(editors);
+  for (const category of categories) {
+    it(`should call ${category} editor getter if fileDiff is of category ${category}`, () => {
+      RequireEditors[EIPTypeOrCategoryToResolver[category]].mockReturnValue(editors);
       RequireEditors.requireEIPEditors({
-        base: { category: type }
+        base: { category }
       } as FileDiff);
-      expect(RequireEditors[methodNames[type]]).toBeCalled();
+      expect(RequireEditors[EIPTypeOrCategoryToResolver[category]]).toBeCalled();
+    });
+  }
+
+  for (const type of types) {
+    it(`should call ${type} editor getter if fileDiff is of category ${type}`, () => {
+      RequireEditors[EIPTypeOrCategoryToResolver[type]].mockReturnValue(editors);
+      RequireEditors.requireEIPEditors({
+        base: { type }
+      } as FileDiff);
+      expect(RequireEditors[EIPTypeOrCategoryToResolver[type]]).toBeCalled();
     });
   }
 

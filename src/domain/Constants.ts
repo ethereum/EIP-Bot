@@ -1,6 +1,6 @@
 import { Opaque } from "type-fest";
 import { GITHUB_HANDLE } from "./Regex";
-import { ERRORS } from "./Types";
+import { ERRORS, Maybe } from "./Types";
 
 export const MERGE_MESSAGE = `
     Hi, I'm a bot! This change was automatically merged because:
@@ -65,7 +65,6 @@ export const META_EDITORS = () => getEditors(process.env.META_EDITORS)
 /** don't use this directly, use `requireERCEditors` instead */
 export const INFORMATIONAL_EDITORS = () => getEditors(process.env.INFORMATIONAL_EDITORS)
 
-
 /** what is used to `.join(..)` the mentions */
 export const MENTIONS_SEPARATOR = " ";
 
@@ -87,7 +86,16 @@ export enum EIPCategory {
 export enum EIPTypes {
   informational = "informational",
   meta = "meta",
-  standardTrack = "standard track"
+  standardsTrack = "standards track"
+}
+
+export const EIPTypeOrCategoryToResolver = {
+  [EIPCategory.erc]: "ERC_EDITORS",
+  [EIPCategory.core]: "CORE_EDITORS",
+  [EIPCategory.interface]: "INTERFACE_EDITORS",
+  [EIPCategory.networking]: "NETWORKING_EDITORS",
+  [EIPTypes.meta]: "META_EDITORS",
+  [EIPTypes.informational]: "INFORMATIONAL_EDITORS"
 }
 
 /** asserts a string's type is within EIPCategory */
@@ -127,36 +135,51 @@ export const assertCategory = ({
   maybeType
 }: {
   fileName: string;
-  maybeCategory?: string;
-  maybeType?: string;
-}): EIPCategory => {
-  if (!maybeCategory) {
-    if (!maybeType) {
-      throw new Error(
-        `There was neither a 'category' nor 'type' property found for file '${fileName}'`
-      );
-    }
-    const normalizedType = maybeType.toLowerCase();
-    assertIsTypeEnum(normalizedType, fileName);
-
-    if (normalizedType === EIPTypes.informational) {
-      return EIPCategory.erc;
-    }
-
-    if (normalizedType === EIPTypes.meta) {
-      return EIPCategory.erc;
-    }
-
-    if (normalizedType === EIPTypes.standardTrack) {
-      return EIPCategory.core;
-    }
-
-    throw Error("type was not a known type, this error should never occur");
+  maybeCategory: Maybe<string>;
+  maybeType: Maybe<string>;
+}): {
+  category: Maybe<EIPCategory>,
+  type: EIPTypes
+} => {
+  if (!maybeType) {
+    throw new Error(
+      `A 'type' header is required for all EIPs, '${fileName}' does not have a 'type'`
+    );
   }
-  const normalized = maybeCategory?.toLowerCase();
-  assertIsCategoryEnum(normalized, fileName);
-  return normalized;
-};
+  const normalizedType = maybeType.toLowerCase();
+  assertIsTypeEnum(normalizedType, fileName);
+
+  if (normalizedType === EIPTypes.informational) {
+    return {
+      category: null,
+      type: EIPTypes.informational
+    };
+  }
+
+  if (normalizedType === EIPTypes.meta) {
+    return {
+      category: null,
+      type: EIPTypes.meta
+    }
+  }
+
+  if (normalizedType === EIPTypes.standardsTrack) {
+    const normalized = maybeCategory?.toLowerCase();
+    if (!normalized) {
+      throw new Error([
+        `'${fileName}' does not have a 'category' property, but it MUST`,
+        `be set for eips that are type ${EIPTypes.standardsTrack}`
+      ].join(" "))
+    }
+    assertIsCategoryEnum(normalized, fileName);
+    return {
+      category: normalized,
+      type: EIPTypes.standardsTrack
+    };
+  }
+
+  throw Error("type was not a known type, this error should never occur");
+}
 
 export enum EipStatus {
   draft = "draft",
