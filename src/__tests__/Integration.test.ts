@@ -62,9 +62,11 @@ describe("integration testing edgecases associated with editors", () => {
       // collect the call
       expect(Components.postComment).toHaveBeenCalledTimes(1);
       const call = Components.postComment.mock.calls[0];
+
       function assertDefined<T>(call: T): asserts call is NonNullable<T> {
         expect(call).toBeDefined();
       }
+
       assertDefined(call);
 
       console.log(Domain.ERC_EDITORS());

@@ -81,16 +81,16 @@ describe("requireEditors", () => {
     ERC_EDITORS,
     CORE_EDITORS
   });
-  RequireEditors._requireEIPEditors = jest.fn()
-  RequireEditors.ERC_EDITORS = jest.fn()
-  RequireEditors.CORE_EDITORS = jest.fn()
+  RequireEditors._requireEIPEditors = jest.fn();
+  RequireEditors.ERC_EDITORS = jest.fn();
+  RequireEditors.CORE_EDITORS = jest.fn();
 
   const requireAuthorsSpy = jest.spyOn(RequireEditors, "requireAuthors");
   const consoleSpy = jest.spyOn(console, "warn");
   const methodNames = {
     [EIPCategory.erc]: "ERC_EDITORS",
     [EIPCategory.core]: "CORE_EDITORS"
-  }
+  };
   const types = [EIPCategory.erc, EIPCategory.core];
 
   beforeEach(async () => {
@@ -112,12 +112,12 @@ describe("requireEditors", () => {
     });
   }
 
-  it("should explode if no valid category is given", async() => {
+  it("should explode if no valid category is given", async () => {
     await expectError(() => {
       // @ts-expect-error this is on purpose
       RequireEditors.requireEIPEditors({
         base: { category: "fake category" }
       } as FileDiff);
-    })
-  })
+    });
+  });
 });

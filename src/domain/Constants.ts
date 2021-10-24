@@ -16,6 +16,7 @@ export const GITHUB_TOKEN = process.env.GITHUB_TOKEN || "";
 const editorStringToArray = (str?: string) =>
   str && str.split(",").map((str) => str.trim());
 type Editor = Opaque<string>;
+
 export function assertEditorsFormat(
   maybeEditors: string[] | undefined | ""
 ): asserts maybeEditors is [Editor, ...Editor[]] {
@@ -45,6 +46,7 @@ export function assertEditorsFormat(
     }
   }
 }
+
 /** don't use this directly, use `requireCoreEditors` instead */
 export const CORE_EDITORS = () => {
   const editors = editorStringToArray(process.env.CORE_EDITORS);
@@ -82,6 +84,7 @@ export enum EIPTypes {
   meta = "meta",
   standardTrack = "standard track"
 }
+
 /** asserts a string's type is within EIPCategory */
 export function assertIsCategoryEnum(
   maybeCategory: string,
@@ -97,6 +100,7 @@ export function assertIsCategoryEnum(
     );
   }
 }
+
 export function assertIsTypeEnum(
   maybeType: string,
   fileName: string

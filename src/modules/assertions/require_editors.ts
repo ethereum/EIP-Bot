@@ -5,6 +5,7 @@ export class RequireEditors implements IRequireEditors {
   public requireAuthors: (fileDiff: FileDiff) => string[];
   public ERC_EDITORS: () => string[];
   public CORE_EDITORS: () => string[];
+
   constructor({ requireAuthors, ERC_EDITORS, CORE_EDITORS }) {
     this.requireAuthors = requireAuthors;
     this.ERC_EDITORS = ERC_EDITORS;
@@ -51,4 +52,3 @@ export class RequireEditors implements IRequireEditors {
     );
   }
 }
-

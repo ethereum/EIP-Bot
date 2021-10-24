@@ -20,10 +20,10 @@ export * from "./assert_eip_editor_approval";
 export * from "./assert_eip1_editor_approvals";
 export * from "./assert_constant_status";
 
-const _requireEIPEditors =
-  new RequireEditors({
-    requireAuthors,
-    ERC_EDITORS,
-    CORE_EDITORS
-  });
-export const requireEIPEditors = (fileDiff?: FileDiff) => _requireEIPEditors.requireEIPEditors(fileDiff)
+const _requireEIPEditors = new RequireEditors({
+  requireAuthors,
+  ERC_EDITORS,
+  CORE_EDITORS
+});
+export const requireEIPEditors = (fileDiff?: FileDiff) =>
+  _requireEIPEditors.requireEIPEditors(fileDiff);

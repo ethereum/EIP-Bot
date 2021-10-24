@@ -84,7 +84,7 @@ export const mockGithubContext = (
 export const mockDependency = <
   Import extends () => Promise<any>,
   MethodName extends keyof PromiseValue<ReturnType<Import>>,
-  ModulePath extends string,
+  ModulePath extends string
 >(
   modulePath: ModulePath,
   moduleImport: Import,
@@ -93,15 +93,17 @@ export const mockDependency = <
 ) => {
   function assertString(maybeString): asserts maybeString is string {
     if (typeof maybeString !== "string") {
-      throw Error(`method name ${methodName} is not a string but it must be a string`)
+      throw Error(
+        `method name ${methodName} is not a string but it must be a string`
+      );
     }
   }
 
-  type Method = PromiseValue<ReturnType<Import>>[MethodName]
+  type Method = PromiseValue<ReturnType<Import>>[MethodName];
   let methodMock: jest.MockedFunction<Method> = jest.fn();
 
   beforeAll(async () => {
-    jest.mock(modulePath)
+    jest.mock(modulePath);
     const module = await moduleImport();
     assertString(methodName);
     methodMock = module[methodName];
@@ -112,7 +114,7 @@ export const mockDependency = <
         // module[key].mockRestore()
       }
     }
-  })
+  });
 
   beforeEach(async () => {
     const mock = await moduleImport();
@@ -133,26 +135,29 @@ export const mockDependency = <
   });
 
   return { getMock: () => methodMock };
-}
+};
 
 type InputType<T> = T extends (...args: infer Input) => any ? Input : never;
 /**
  *  returns a utility to be called within a test; this re-imports the dependency
  *  so that its dependencies are mockable
  */
-export const mockedActual = <Import extends () => Promise<any>, Key extends keyof PromiseValue<ReturnType<Import>>>(
+export const mockedActual = <
+  Import extends () => Promise<any>,
+  Key extends keyof PromiseValue<ReturnType<Import>>
+>(
   importPromise: Import,
   methodName: Key
 ) => {
   // this is necesary and it's easier to define it here to make sure
   // it's performed
   beforeEach(() => {
-    jest.resetModules()
-  })
-  type Method = PromiseValue<ReturnType<Import>>[Key]
+    jest.resetModules();
+  });
+  type Method = PromiseValue<ReturnType<Import>>[Key];
   return async (...args: InputType<Method>): Promise<ReturnType<Method>> => {
     const module = await importPromise();
-    const method = module[methodName]
+    const method = module[methodName];
     return method(...args);
   };
 };
