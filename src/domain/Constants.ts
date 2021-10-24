@@ -47,19 +47,24 @@ export function assertEditorsFormat(
   }
 }
 
+const getEditors = (envEditors?: string) => {
+  const editors = editorStringToArray(envEditors);
+  assertEditorsFormat(editors);
+  return editors;
+}
 /** don't use this directly, use `requireCoreEditors` instead */
-export const CORE_EDITORS = () => {
-  const editors = editorStringToArray(process.env.CORE_EDITORS);
-
-  assertEditorsFormat(editors);
-  return editors;
-};
+export const CORE_EDITORS = () => getEditors(process.env.CORE_EDITORS)
 /** don't use this directly, use `requireERCEditors` instead */
-export const ERC_EDITORS = () => {
-  const editors = editorStringToArray(process.env.ERC_EDITORS);
-  assertEditorsFormat(editors);
-  return editors;
-};
+export const ERC_EDITORS = () => getEditors(process.env.ERC_EDITORS)
+/** don't use this directly, use `requireERCEditors` instead */
+export const NETWORKING_EDITORS = () => getEditors(process.env.NETWORKING_EDITORS)
+/** don't use this directly, use `requireERCEditors` instead */
+export const INTERFACE_EDITORS = () => getEditors(process.env.INTERFACE_EDITORS)
+/** don't use this directly, use `requireERCEditors` instead */
+export const META_EDITORS = () => getEditors(process.env.META_EDITORS)
+/** don't use this directly, use `requireERCEditors` instead */
+export const INFORMATIONAL_EDITORS = () => getEditors(process.env.INFORMATIONAL_EDITORS)
+
 
 /** what is used to `.join(..)` the mentions */
 export const MENTIONS_SEPARATOR = " ";
