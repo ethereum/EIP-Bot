@@ -7,6 +7,7 @@ import {
   FormattedFile,
   FrontMatterAttributes,
   isDefined,
+  isNockNoMatchingRequest,
   matchAll,
   ParsedContent,
   PR,
@@ -37,7 +38,13 @@ export class FileDiffInfra implements IFileDiff {
     const head = await this.getParsedContent(filename, pr.head.sha);
     // if the base file is new this will error, so use head instead
     const base = await this.getParsedContent(filename, pr.base.sha).catch(
-      () => head
+      (err) => {
+        const shouldAddToRecords = isNockNoMatchingRequest(err);
+        if (shouldAddToRecords) {
+          throw err;
+        }
+        return head;
+      }
     );
 
     // Organize information cleanly

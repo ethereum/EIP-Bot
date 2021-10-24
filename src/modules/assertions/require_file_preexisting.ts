@@ -1,25 +1,58 @@
-import { requirePr } from "#/assertions";
-import { File, FileStatus } from "src/domain";
-import { getRepoFilenameContent } from "src/infra";
+import { ContentData, File, FileStatus, isDefined, PR } from "src/domain";
+import {
+  IRequireFilePreexisting,
+  PreexistingFile
+} from "#/assertions/Domain/types";
+import { RequirementViolation, UnexpectedError } from "src/domain/exceptions";
+import { multiLineString } from "#/utils";
 
-// this has an injected dependency to make testing easier
-export const _requireFilePreexisting =
-  (_requirePr: typeof requirePr) => async (file: File) => {
-    const pr = await _requirePr();
+export class RequireFilePreexisting implements IRequireFilePreexisting {
+  constructor(
+    public requirePr: () => Promise<PR>,
+    public getRepoFilenameContent: (
+      filename: string,
+      sha: string
+    ) => Promise<ContentData>
+  ) {}
+
+  /**
+   *  accepts a standard File object and throws an error if the status is new or
+   *  it does not exist at the base commit; uses the file's previous_filename if
+   *  it exists.
+   */
+  async requireFilePreexisting(file: File): Promise<PreexistingFile> {
+    const pr = await this.requirePr();
     const filename = file.previous_filename || file.filename;
-    const error = await getRepoFilenameContent(filename, pr.base.sha);
 
-    // @ts-expect-error error.status is defined if the error is a RequestError
-    if ((error && error.status === 404) || file.status === FileStatus.added) {
-      throw `File with name ${filename} is new and new files must be reviewed`;
+    if (!isDefined(filename)) {
+      throw new UnexpectedError(
+        multiLineString(" ")(
+          `the file did not have a previous or current`,
+          `filename associated with it`
+        ),
+        {
+          pr,
+          file
+        }
+      );
     }
 
-    return file;
-  };
+    const error = await this.getRepoFilenameContent(
+      filename,
+      pr.base.sha
+    ).catch((err) => err);
 
-/**
- *  accepts a standard File object and throws an error if the status is new or
- *  it does not exist at the base commit; uses the file's previous_filename if
- *  it exists.
- */
-export const requireFilePreexisting = _requireFilePreexisting(requirePr);
+    if (
+      (isDefined(error) && error.status === 404) ||
+      file.status === FileStatus.added
+    ) {
+      throw new RequirementViolation(
+        multiLineString(" ")(
+          `File with name ${filename} is new and new files must be reviewed`
+        )
+      );
+    }
+
+    return file as PreexistingFile;
+  }
+}

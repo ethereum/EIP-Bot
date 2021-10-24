@@ -1,6 +1,7 @@
 import { Opaque } from "type-fest";
 import { GITHUB_HANDLE } from "./Regex";
-import { ERRORS, Maybe } from "./Types";
+import { ERRORS, Maybe, NodeEnvs } from "./Types";
+import { AND } from "#/utils";
 
 export const MERGE_MESSAGE = `
     Hi, I'm a bot! This change was automatically merged because:
@@ -216,3 +217,22 @@ export const DEFAULT_ERRORS: ERRORS = {
 export const CHECK_STATUS_INTERVAL = 30000;
 
 export const EIP1_REQUIRED_EDITOR_APPROVALS = 2;
+
+export const isMock = () => {
+  return process.env.NODE_ENV === NodeEnvs.mock
+}
+
+type NockNoMatchingRequest = Opaque<NodeJS.ErrnoException>
+export const isNockNoMatchingRequest = (err: any): err is NockNoMatchingRequest  => {
+  if (isMock()) {
+    const message = err.message?.toLowerCase()
+    if (!message) return false;
+    return AND(
+      /nock/.test(message),
+      /method/.test(message),
+      /url/.test(message),
+      /no match/.test(message)
+    )
+  }
+  return false
+}

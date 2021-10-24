@@ -1,6 +1,8 @@
-import { requireAuthors } from "#/assertions/require_authors";
+import { requireAuthors } from "./require_authors";
 import { RequireEditors } from "./require_editors";
+import { RequireFilePreexisting } from "./require_file_preexisting";
 import {
+  castTo,
   CORE_EDITORS,
   ERC_EDITORS,
   FileDiff,
@@ -9,6 +11,8 @@ import {
   META_EDITORS,
   NETWORKING_EDITORS
 } from "src/domain";
+import { requirePr } from "#/assertions/require_pr";
+import { getRepoFilenameContent } from "src/infra";
 
 export * from "./require_pull_number";
 export * from "./require_event";
@@ -22,12 +26,11 @@ export * from "./require_files";
 export * from "./assert_filename_and_file_numbers_match";
 export * from "./assert_constant_eip_number";
 export * from "./assert_valid_status";
-export * from "./require_file_preexisting";
 export * from "./assert_eip_editor_approval";
 export * from "./assert_eip1_editor_approvals";
 export * from "./assert_constant_status";
 
-const _requireEIPEditors = new RequireEditors({
+const _RequireEIPEditors = new RequireEditors({
   requireAuthors,
   ERC_EDITORS,
   CORE_EDITORS,
@@ -37,4 +40,15 @@ const _requireEIPEditors = new RequireEditors({
   NETWORKING_EDITORS
 });
 export const requireEIPEditors = (fileDiff?: FileDiff) =>
-  _requireEIPEditors.requireEIPEditors(fileDiff);
+  _RequireEIPEditors.requireEIPEditors(fileDiff);
+
+const _RequireFilePreexisting = new RequireFilePreexisting(
+  requirePr,
+  getRepoFilenameContent
+);
+export const requireFilePreexisting = castTo<
+  typeof _RequireFilePreexisting.requireFilePreexisting
+>((...args) => {
+  // @ts-ignore
+  return _RequireFilePreexisting.requireFilePreexisting(...args);
+});

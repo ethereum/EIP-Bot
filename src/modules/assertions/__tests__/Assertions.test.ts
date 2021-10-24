@@ -3,7 +3,6 @@ import actions from "@actions/github";
 // import { Context } from "@actions/github/lib/context";
 import { ALLOWED_STATUSES, EipStatus, EVENTS, PR } from "src/domain";
 import {
-  _requireFilePreexisting,
   assertConstantEipNumber,
   assertConstantStatus,
   assertFilenameAndFileNumbersMatch,
@@ -20,7 +19,6 @@ import {
 import { clearContext, expectError } from "src/tests/testutils";
 import { FileDiffFactory } from "src/tests/factories/fileDiffFactory";
 import { FileFactory } from "src/tests/factories/fileFactory";
-import { PRFactory } from "src/tests/factories/prFactory";
 
 jest.mock("@actions/github");
 
@@ -173,73 +171,6 @@ describe("Requires", () => {
     it("should explode if no files exist", async () => {
       listFiles.mockReturnValueOnce(Promise.resolve({ data: [] }));
       await expectError(() => requireFiles({ number: 1 } as PR));
-    });
-  });
-
-  describe("requireFilePreexisting", () => {
-    const getContent = jest.fn();
-    const requirePr = jest.fn();
-    const requireFilePreexisting = _requireFilePreexisting(requirePr);
-    beforeEach(async () => {
-      getOctokit.mockClear();
-      requirePr.mockClear();
-      getContent.mockClear();
-
-      requirePr.mockReturnValue(Promise.resolve(await PRFactory()));
-      getContent.mockReturnValue(Promise.resolve());
-      getOctokit.mockReturnValue({
-        rest: {
-          repos: {
-            // @ts-expect-error meant to error due to mock
-            getContent
-          }
-        }
-      });
-    });
-
-    it("should return undefined if a file exists and is retrievable", async () => {
-      const file = FileFactory();
-      const res = await requireFilePreexisting(file);
-      expect(res).toBe(file);
-    });
-
-    it("should throw error if github request returns 404", async () => {
-      const file = FileFactory();
-      getContent.mockReturnValueOnce(Promise.reject({ status: 404 }));
-      await expectError(() => requireFilePreexisting(file));
-    });
-
-    it("should not throw error if github request does NOT return 404 (but still an error)", async () => {
-      const file = FileFactory();
-      getContent.mockReturnValueOnce(Promise.reject({ status: 403 }));
-      const res = await requireFilePreexisting(file);
-      expect(res).toBe(file);
-    });
-
-    it("should consider previous_filename", async () => {
-      const file = FileFactory();
-      file.previous_filename = "previous";
-      file.filename = "now";
-      // @ts-expect-error intentionally unused to avoid multi-factor tests
-      const _unused_ = await requireFilePreexisting(file);
-
-      expect(getContent.mock.calls[0][0].path).toEqual("previous");
-    });
-
-    it("should consider filename if previous_filename is undefined", async () => {
-      const file = FileFactory();
-      file.previous_filename = "";
-      file.filename = "now";
-      // @ts-expect-error intentionally unused to avoid multi-factor tests
-      const _unused_ = await requireFilePreexisting(file);
-
-      expect(getContent.mock.calls[0][0].path).toEqual("now");
-    });
-
-    it("should throw error if file status is `added`", async () => {
-      const file = FileFactory();
-      file.status = "added";
-      await expectError(() => requireFilePreexisting(file));
     });
   });
 });

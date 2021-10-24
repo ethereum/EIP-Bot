@@ -1,9 +1,7 @@
 import { getOctokit } from "@actions/github";
 import { EIPCategory, EipStatus, EIPTypes } from "./Constants";
-import { Endpoints } from "@octokit/types";
 import { FrontMatterResult } from "front-matter";
 import { PromiseValue } from "type-fest";
-import _ from "lodash";
 
 export type Github = ReturnType<typeof getOctokit>["rest"];
 
@@ -47,8 +45,9 @@ export type ContentFile = {
   submodule_git_url?: string;
 };
 
-export type ContentResponse =
-  Endpoints["GET /repos/{owner}/{repo}/contents/{path}"]["response"]["data"];
+export type ContentData = PromiseValue<
+  ReturnType<Github["repos"]["getContent"]>
+>["data"];
 
 export type EIP = {
   number: string;
@@ -157,4 +156,8 @@ export type Results = {
   mentions?: string[];
 }[];
 
-export type PropsValue<T extends (...args: any[]) => any> = T extends (...args: infer Props) => any ? Props: never;
+export type PropsValue<T extends (...args: any[]) => any> = T extends (
+  ...args: infer Props
+) => any
+  ? Props
+  : never;

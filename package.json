@@ -56,7 +56,6 @@
   "_moduleAliases": {
     "#": "build/src/modules",
     "src": "build/src"
-
   },
   "repository": {
     "type": "git",

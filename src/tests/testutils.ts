@@ -2,6 +2,8 @@ import { Context } from "@actions/github/lib/context";
 import actions from "@actions/github";
 import { set } from "lodash";
 import { PromiseValue } from "type-fest";
+import nock from "nock";
+import MockedEnv from "mocked-env";
 
 export const getAllTruthyObjectPaths = (obj: object) => {
   function rKeys(o: object, path?: string) {
@@ -161,3 +163,30 @@ export const mockedActual = <
     return method(...args);
   };
 };
+
+export const initGeneralTestEnv = () => {
+  const restore = MockedEnv(process.env);
+
+  beforeAll(() => {
+    if (!nock.isActive()) {
+      nock.activate()
+    }
+    nock.disableNetConnect()
+  })
+
+  beforeEach(() => {
+    jest.resetModules();
+    jest.clearAllMocks();
+    nock.cleanAll();
+  })
+
+  afterEach(() => {
+    restore()
+  })
+
+  afterAll(() => {
+    jest.restoreAllMocks();
+    nock.restore();
+    nock.enableNetConnect()
+  })
+}

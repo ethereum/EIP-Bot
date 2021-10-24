@@ -170,4 +170,16 @@ describe("integration testing edgecases associated with editors", () => {
       expect(call[0]).not.toMatch(/dete@axiomzen.co/);
     });
   });
+
+  describe("Pull 3623", () => {
+    it("should pass", async() => {
+      process.env = envFactory({
+        PULL_NUMBER: SavedRecord.PR3623,
+        [EIPTypeOrCategoryToResolver[EIPCategory.erc]]: "@micahzoltu"
+      });
+
+      await __MAIN_MOCK__();
+      expect(setFailedMock).not.toBeCalled();
+    })
+  })
 });
