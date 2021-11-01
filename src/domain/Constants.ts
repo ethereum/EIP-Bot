@@ -6,7 +6,7 @@ import { AND } from "#/utils";
 // this is associated with the eth-bot-do-not-give-me-permissions
 // for obvious reasons NEVER give this bot any form of access to anything.
 // This key also never expires
-export const PUBLIC_GITHUB_KEY = "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"
+export const PUBLIC_GITHUB_KEY = "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"
 
 export const MERGE_MESSAGE = `
     Hi, I'm a bot! This change was automatically merged because:
