@@ -3,6 +3,10 @@ import { GITHUB_HANDLE } from "./Regex";
 import { ERRORS, Maybe, NodeEnvs } from "./Types";
 import { AND } from "#/utils";
 
+// this is associated with the eth-bot-do-not-give-me-permissions
+// for obvious reasons NEVER give this bot any form of access to anything.. ever
+export const PUBLIC_GITHUB_KEY = "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"
+
 export const MERGE_MESSAGE = `
     Hi, I'm a bot! This change was automatically merged because:
     - It only modifies existing Draft, Review, or Last Call EIP(s)
