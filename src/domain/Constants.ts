@@ -3,9 +3,9 @@ import { GITHUB_HANDLE } from "./Regex";
 import { ERRORS, Maybe, NodeEnvs } from "./Types";
 import { AND } from "#/utils";
 
-// this is associated with the eth-bot-do-not-give-me-permissions
-// for obvious reasons NEVER give this bot any form of access to anything.
-// This key also never expires
+// this is meant to be a public key associated with a orphaned account;
+// it is encoded / decoded here because github will invalidate it if it knows
+// that its public (so shhh); also this key will never expire
 export const PUBLIC_GITHUB_KEY = Buffer.from(
   "Z2hwX1hvVVBlcFpTUkdWWmFVdDRqOW44SHFSUloxNVlIZTFlNW82bw==",
   "base64"
