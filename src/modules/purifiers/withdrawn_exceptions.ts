@@ -1,12 +1,11 @@
 import { EipStatus, TestResults } from "src/domain";
 import { cloneDeep } from "lodash";
-import { is } from "#/purifiers/error_properties";
 
 export const withdrawnExceptionPurifier = (testResults: TestResults) => {
   const _testResults = cloneDeep(testResults);
   const { errors, fileDiff } = _testResults;
 
-  const isChangingStatus = fileDiff?.base.status !== EipStatus.withdrawn;
+  const isChangingStatus = !!errors.headerErrors.constantStatusError;
   const isAuthorApproved = !errors.approvalErrors.isAuthorApprovedError;
   const isWithdrawnAtHead = fileDiff?.head.status === EipStatus.withdrawn;
 
@@ -15,12 +14,6 @@ export const withdrawnExceptionPurifier = (testResults: TestResults) => {
     errors.approvalErrors.isEditorApprovedError = undefined;
     errors.headerErrors.constantStatusError = undefined;
     errors.headerErrors.validStatusError = undefined;
-  }
-
-  // all minor changes are allowed from status withdrawn (with author approval)
-  if (isAuthorApproved && isWithdrawnAtHead && is.minorChange(errors)) {
-    errors.headerErrors.validStatusError = undefined;
-    errors.approvalErrors.isEditorApprovedError = undefined;
   }
 
   return {

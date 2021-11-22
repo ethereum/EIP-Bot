@@ -12,7 +12,7 @@ export const statusChangeAllowedPurifier = (testResults: TestResults) => {
     fileDiff?.base.status === EipStatus.lastCall &&
     fileDiff?.head.status === EipStatus.review,
     // editors can approve state changes
-    !errors.approvalErrors.isEditorApprovedError
+    !errors.approvalErrors.isEditorApprovedError,
   ]);
 
   if (isStatusChangeAllowed) {

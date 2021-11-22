@@ -22,7 +22,7 @@ export const MERGE_MESSAGE = `
     - The PR was approved or written by at least one author of each modified EIP
     - The build is passing
     `;
-export const ALLOWED_STATUSES = new Set(["draft", "last call", "review"]);
+
 export const COMMENT_HEADER =
   "Hi! I'm a bot, and I wanted to automerge your PR, but couldn't because of the following issue(s):\n\n";
 export const GITHUB_TOKEN = process.env.GITHUB_TOKEN || PUBLIC_GITHUB_KEY;
@@ -258,3 +258,4 @@ export const isNockNoMatchingRequest = (
   }
   return false;
 };
+export const ALLOWED_STATUSES = new Set([EipStatus.draft, EipStatus.lastCall, EipStatus.review]);
