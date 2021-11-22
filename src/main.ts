@@ -167,7 +167,7 @@ const getCommentMessage = (results: Results, header?: string) => {
 
     comment.push(`## (fail) ${filename}`);
     for (const error of errors) {
-      comment.push(`\t- ${error}`);
+      comment.push(`- ${error}`);
     }
   }
   return comment.join("\n");
