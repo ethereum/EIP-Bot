@@ -82,6 +82,7 @@ export const __MAIN_MOCK__ = async (mockEnv?: NodeJS.ProcessEnv) => {
     const method = err?.request?.method;
     const body = err?.request?.body;
 
+    console.log(err.type);
     if (url && method) {
       await fetchAndCreateRecord(url, method, body);
     } else {

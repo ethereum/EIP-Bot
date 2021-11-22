@@ -18,12 +18,7 @@ import {
   requirePullNumber
 } from "#/assertions";
 import {
-  editorApprovalPurifier,
-  EIP1Purifier,
-  getAllTruthyObjectPaths,
-  innerJoinAncestors,
-  postComment,
-  statusChangeAllowedPurifier
+  postComment
 } from "#/components";
 import {
   COMMENT_HEADER,
@@ -36,8 +31,14 @@ import {
 import { get, uniq } from "lodash";
 import { requestReviewers } from "#/approvals";
 import { getFileDiff } from "#/file";
-import { processError } from "src/domain/exceptions";
-import { multiLineString } from "#/utils";
+import { assertException, processError } from "src/domain/exceptions";
+import { getAllTruthyObjectPaths, innerJoinAncestors, multiLineString } from "#/utils";
+import {
+  editorApprovalPurifier,
+  EIP1Purifier,
+  statusChangeAllowedPurifier,
+  withdrawnExceptionPurifier
+} from "./modules/purifiers";
 
 const testFile = async (file: File): Promise<TestResults> => {
   // we need to define this here because the below logic can get very complicated otherwise
@@ -50,14 +51,8 @@ const testFile = async (file: File): Promise<TestResults> => {
     file = await requireFilePreexisting(file);
   } catch (err: any) {
     processError(err, {
-      gracefulTermination: () => {
-        throw err;
-      },
       requirementViolation: (message) => {
         errors.fileErrors.filePreexistingError = message;
-      },
-      unexpectedError: () => {
-        throw err;
       }
     });
     errors.approvalErrors.isEditorApprovedError = await assertEIPEditorApproval(
@@ -181,12 +176,15 @@ const getCommentMessage = (results: Results, header?: string) => {
 const getFileTestResults = async (file: File) => {
   // Collect errors for each file
   const dirtyTestResults = await testFile(file);
+
   // Apply independent purifiers
   const primedPurifiers = [
     statusChangeAllowedPurifier(dirtyTestResults),
     editorApprovalPurifier(dirtyTestResults),
-    EIP1Purifier(dirtyTestResults)
+    EIP1Purifier(dirtyTestResults),
+    withdrawnExceptionPurifier(dirtyTestResults)
   ];
+
   // Purify the dirty results
   const testResults = innerJoinAncestors(dirtyTestResults, primedPurifiers);
   const errors: string[] = getAllTruthyObjectPaths(testResults.errors).map(
@@ -214,6 +212,7 @@ export const _main_ = async () => {
   requireEvent();
   requirePullNumber();
   const pr = await requirePr();
+
 
   // Collect the changes made in the given PR from base <-> head for eip files
   const files = await requireFiles(pr);
@@ -274,16 +273,19 @@ export const main = async () => {
   try {
     return await _main_();
   } catch (error: any) {
+    assertException(error);
     const message = multiLineString("\n")(
-      `A critical exception has occured:`,
-      `\tMessage: '${error?.error || error}`,
-      error?.data && `\tData:\n${JSON.stringify(error.data, null, 2)}`
+      `A critical exception has occured (cc @alita-moore):`,
+      `\tMessage: ${error.error || error}`,
+      error.data && `\tData:\n${JSON.stringify(error.data, null, 2)}`
     )
     console.log(message);
-    setFailed(message);
+
     if (isProd) {
       await postComment(message);
     }
+
+    setFailed(message);
     throw message;
   }
 };

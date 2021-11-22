@@ -87,10 +87,19 @@ export enum SavedRecord {
    */
   PR3623 = "3623",
   /**
+   * **SHOULD PASS**
+   *
    * @summary: PR3581 makes changes to a non-eip file which we would like to
    * support, when this record was added this was a newly added feature
    */
-  PR3581 = "3581"
+  PR3581 = "3581",
+  /**
+   * @summary: this is an example PR that was used to implement the feature
+   * that authors be allowed to submit a PR to mark their EIP withdrawn and
+   * that should be merged automatically
+   */
+  PR4189 = "4189"
+
 }
 
 /**
@@ -128,6 +137,7 @@ export const getMockRecords = async () => {
   const PR3654_2 = await import("./3654/2.json");
   const PR3623 = await import("./3623.json");
   const PR3581 = await import("./3581.json");
+  const PR4189 = await import("./4189.json");
 
   assertMethods(PR3767);
   assertMethods(PR3676);
@@ -141,6 +151,7 @@ export const getMockRecords = async () => {
   assertMethods(PR3654_2);
   assertMethods(PR3623);
   assertMethods(PR3581);
+  assertMethods(PR4189);
 
   const Records: { [k in keyof typeof SavedRecord]: MockRecord[] } = {
     PR3596: PR3596.default,
@@ -154,7 +165,8 @@ export const getMockRecords = async () => {
     PR3768_1: PR3768_1.default,
     PR3768_2: PR3768_2.default,
     PR3623: PR3623.default,
-    PR3581: PR3581.default
+    PR3581: PR3581.default,
+    PR4189: PR4189.default
   };
   return Records;
 };

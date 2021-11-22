@@ -12,7 +12,7 @@ export const assertConstantEipNumber = ({ head, base }: FileDiff) => {
   if (!(filenameNumMatches && fileNumMatches)) {
     return [
       `Base EIP has number ${base.eipNum} which was changed`,
-      `to head ${head.eipNum}; EIP number changing is not allowd`
+      `to head ${head.eipNum}; EIP number changing is not allowed`
     ].join(" ");
   } else return;
 };

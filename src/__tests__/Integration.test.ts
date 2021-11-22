@@ -203,4 +203,15 @@ describe("integration testing edgecases associated with editors", () => {
       expect(setFailedMock).toHaveBeenCalled();
     });
   });
+
+  describe("Pull 4189", () => {
+    it("should pass",async () => {
+      process.env = envFactory({
+        PULL_NUMBER: SavedRecord.PR4189
+      });
+
+      await __MAIN_MOCK__();
+      expect(setFailedMock).not.toBeCalled();
+    })
+  })
 });

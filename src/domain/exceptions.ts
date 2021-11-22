@@ -52,7 +52,9 @@ export class CriticalError {
   ) {}
 }
 
-type Handlers = { [key in keyof typeof Exceptions]: (message: string, data?: any) => any };
+type Handlers = {
+  [key in keyof typeof Exceptions]: (message: string, data?: any) => any;
+};
 
 /**
  * this is written out on purpose to allow for easier changes where necessary
@@ -60,7 +62,12 @@ type Handlers = { [key in keyof typeof Exceptions]: (message: string, data?: any
  * */
 export const processError = (
   err: any,
-  { gracefulTermination, unexpectedError, requirementViolation, critical }: Partial<Handlers>
+  {
+    gracefulTermination,
+    unexpectedError,
+    requirementViolation,
+    critical
+  }: Partial<Handlers>
 ) => {
   if (err?.type === Exceptions.gracefulTermination) {
     if (gracefulTermination) return gracefulTermination(err.error, err.data);
@@ -80,3 +87,18 @@ export const processError = (
 
   throw err;
 };
+
+export type Exception =
+  | RequirementViolation
+  | UnexpectedError
+  | CriticalError
+  | GracefulTermination;
+
+export function assertException(
+  maybeException
+): asserts maybeException is Exception {
+  if (!Object.values(Exceptions).includes(maybeException?.type)) {
+    // recycles the exception
+    throw maybeException;
+  }
+}
