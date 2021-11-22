@@ -6,7 +6,17 @@ export interface IRequireEditors {
   requireEIPEditors: (fileDiff: FileDiff) => string[];
 }
 
-export type PreexistingFile = Opaque<File>
+export type PreexistingFile = Opaque<File>;
 export interface IRequireFilePreexisting {
   requireFilePreexisting: (fileDiff: File) => Promise<PreexistingFile>;
+}
+
+export interface IAssertValidFilename {
+  assertValidFilename: (file: NonNullable<File>) => Promise<string | undefined>;
+}
+
+export interface IRequireFilenameEIPNum {
+  requireFilenameEipNum: (filename: string) => Promise<number>;
+  attemptAssetGracefulTermination: (filename: string) => Promise<void>;
+  attemptEditorApprovalGracefulTermination: (filename: string) => Promise<void>;
 }

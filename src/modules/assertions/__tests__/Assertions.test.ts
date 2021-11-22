@@ -7,11 +7,9 @@ import {
   assertConstantStatus,
   assertFilenameAndFileNumbersMatch,
   assertHasAuthors,
-  assertValidFilename,
   assertValidStatus,
   requireAuthors,
   requireEvent,
-  requireFilenameEipNum,
   requireFiles,
   requirePr,
   requirePullNumber
@@ -134,19 +132,6 @@ describe("Requires", () => {
     });
   });
 
-  describe("requireFilenameEipNum", () => {
-    it("should not error if filename matches regex", () => {
-      const eipNum = requireFilenameEipNum("eip-123.md");
-      expect(eipNum).toBe(123);
-    });
-    it("should not explode if filename doesn't match", async () => {
-      await expectError(() => requireFilenameEipNum("eip-123"));
-      await expectError(() => requireFilenameEipNum("ep-123.md"));
-      await expectError(() => requireFilenameEipNum("eip-a.md"));
-      await expectError(() => requireFilenameEipNum("eip-123.js"));
-    });
-  });
-
   describe("requireFiles", () => {
     const mockFiles = [FileFactory()];
     const listFiles = jest
@@ -209,31 +194,6 @@ describe("Asserts", () => {
       const res = assertHasAuthors(fileDiff);
       // expect that no error occurs
       expect(res).toBeUndefined();
-    });
-  });
-
-  describe("assertValidFilename", () => {
-    it("should return undefined if filename is valid", () => {
-      const file = FileFactory();
-      const res = assertValidFilename(file);
-      expect(res).toBeUndefined();
-    });
-
-    it("should return defined if filename is not valid", () => {
-      const files = [
-        FileFactory({ filename: "eip-123" }),
-        FileFactory({ filename: "ep-123.md" }),
-        FileFactory({ filename: "eip-a.md" }),
-        FileFactory({ filename: "eip-123.js" })
-      ];
-      // @ts-expect-error below is an invalid type error
-      expect(assertValidFilename(files[0])).toBeDefined();
-      // @ts-expect-error below is an invalid type error
-      expect(assertValidFilename(files[1])).toBeDefined();
-      // @ts-expect-error below is an invalid type error
-      expect(assertValidFilename(files[2])).toBeDefined();
-      // @ts-expect-error below is an invalid type error
-      expect(assertValidFilename(files[3])).toBeDefined();
     });
   });
 

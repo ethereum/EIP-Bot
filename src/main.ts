@@ -36,6 +36,7 @@ import {
 import { get, uniq } from "lodash";
 import { requestReviewers } from "#/approvals";
 import { getFileDiff } from "#/file";
+import { processError } from "src/domain/exceptions";
 
 const testFile = async (file: File): Promise<TestResults> => {
   // we need to define this here because the below logic can get very complicated otherwise
@@ -47,7 +48,17 @@ const testFile = async (file: File): Promise<TestResults> => {
   try {
     file = await requireFilePreexisting(file);
   } catch (err: any) {
-    errors.fileErrors.filePreexistingError = err;
+    processError(err, {
+      gracefulTermination: () => {
+        throw err
+      },
+      requirementViolation: (message) => {
+        errors.fileErrors.filePreexistingError = message;
+      },
+      unexpectedError: () => {
+        throw err
+      }
+    })
     errors.approvalErrors.isEditorApprovedError = await assertEIPEditorApproval(
       fileDiff
     );
@@ -65,7 +76,7 @@ const testFile = async (file: File): Promise<TestResults> => {
   );
   errors.approvalErrors.enoughEditorApprovalsForEIP1Error =
     await assertEIP1EditorApprovals(fileDiff);
-  errors.fileErrors.validFilenameError = assertValidFilename(file);
+  errors.fileErrors.validFilenameError = await assertValidFilename(file);
   errors.headerErrors.matchingEIPNumError =
     assertFilenameAndFileNumbersMatch(fileDiff);
   errors.headerErrors.constantEIPNumError = assertConstantEipNumber(fileDiff);
@@ -144,24 +155,25 @@ const _getMentions =
 
 const getMentions = _getMentions(getEditorMentions, getAuthorMentions);
 
-const getCommentMessage = (results: Results) => {
-  if (!results.length) return "There were no results";
+const getCommentMessage = (results: Results, header?: string) => {
+  if (!results.length) return "There were no results cc @alita-moore";
   const comment: string[] = [];
 
-  comment.push(COMMENT_HEADER);
+  comment.push(header || COMMENT_HEADER);
   comment.push("---");
-  for (const { filename, errors } of results) {
-    comment.push(`## ${filename}`);
+  for (const { filename, errors, successMessage } of results) {
     if (!errors) {
-      comment.push(`\t passed!`);
+      comment.push(`## (pass) ${filename}`);
+      const message = `\t` + (successMessage || "passed!");
+      comment.push(message);
       continue;
     }
 
+    comment.push(`## (fail) ${filename}`);
     for (const error of errors) {
-      comment.push(`- ${error}`);
+      comment.push(`\t- ${error}`);
     }
   }
-  7;
   return comment.join("\n");
 };
 
@@ -204,11 +216,42 @@ export const _main_ = async () => {
 
   // Collect the changes made in the given PR from base <-> head for eip files
   const files = await requireFiles(pr);
-  const results: Results = await Promise.all(files.map(getFileTestResults));
+  let results: Results = [];
+  for await (const file of files) {
+    try {
+      const res = await getFileTestResults(file);
+      results.push(res);
+    } catch (err: any) {
+      processError(err, {
+        gracefulTermination: (message) => {
+          results.push({
+            filename: file.filename,
+            successMessage: message
+          });
+        },
+        requirementViolation: (message) => {
+          results.push({
+            filename: file.filename,
+            errors: [message]
+          });
+        },
+        unexpectedError: (message) => {
+          results.push({
+            filename: file.filename,
+            errors: [message]
+          });
+        }
+      });
+    }
+  }
 
   if (!results.filter((res) => res.errors).length) {
-    await postComment("All tests passed; auto-merging...");
-    console.log("All tests passed; auto-merging...");
+    const commentMessage = getCommentMessage(
+      results,
+      "All tests passed; auto-merging..."
+    );
+    await postComment(commentMessage);
+    console.log(commentMessage);
     return;
   }
 
@@ -228,7 +271,7 @@ export const main = async () => {
   try {
     return await _main_();
   } catch (error: any) {
-    console.log(`An Exception Occured While Linting: \n${error}`);
+    console.log(`An unexpected exception occured while linting: \n${error}`);
     setFailed(error.message);
     if (isProd) {
       await postComment(error.message);

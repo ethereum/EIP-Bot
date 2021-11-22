@@ -84,7 +84,12 @@ export enum SavedRecord {
    * @summary: PR3623 was approved by the author but it didn't merge, so this
    * was a bug where author's approval didn't actually merge anything
    */
-  PR3623 = "3623"
+  PR3623 = "3623",
+  /**
+   * @summary: PR3581 makes changes to a non-eip file which we would like to
+   * support, when this record was added this was a newly added feature
+   */
+  PR3581 = "3581"
 }
 
 /**
@@ -121,6 +126,7 @@ export const getMockRecords = async () => {
   const PR3654_1 = await import("./3654/1.json");
   const PR3654_2 = await import("./3654/2.json");
   const PR3623 = await import("./3623.json");
+  const PR3581 = await import ("./3581.json");
 
   assertMethods(PR3767);
   assertMethods(PR3676);
@@ -132,8 +138,8 @@ export const getMockRecords = async () => {
   assertMethods(PR3670);
   assertMethods(PR3654_1);
   assertMethods(PR3654_2);
-  // @ts-ignore
   assertMethods(PR3623);
+  assertMethods(PR3581);
 
   const Records: { [k in keyof typeof SavedRecord]: MockRecord[] } = {
     PR3596: PR3596.default,
@@ -146,8 +152,8 @@ export const getMockRecords = async () => {
     PR4192: PR4192.default,
     PR3768_1: PR3768_1.default,
     PR3768_2: PR3768_2.default,
-    // @ts-ignore
-    PR3623: PR3623.default
+    PR3623: PR3623.default,
+    PR3581: PR3581.default
   };
   return Records;
 };

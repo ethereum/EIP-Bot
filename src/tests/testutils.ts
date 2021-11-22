@@ -31,6 +31,20 @@ export const expectError = async (fn, extraContext?: string) => {
     );
 };
 
+export const expectErrorWithHandler = async (fn, handler: (error: any) => void, extraContext?: string) => {
+  let error;
+  try {
+    await fn();
+  } catch (err) {
+    handler && handler(err);
+    error = err;
+  }
+  if (!error)
+    throw new Error(
+      `function ${fn.toString()} was expected to throw and error but it didn't\n\textra context: ${extraContext}`
+    );
+};
+
 export const clearContext = (context: Context) => {
   const paths = getAllTruthyObjectPaths(context);
   for (const path of paths) {

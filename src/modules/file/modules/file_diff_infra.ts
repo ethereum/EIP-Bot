@@ -19,7 +19,7 @@ import { getRepoFilenameContent, resolveUserByEmail } from "src/infra";
 
 export class FileDiffInfra implements IFileDiff {
   constructor(
-    public requireFilenameEipNum: (filename: string) => number,
+    public requireFilenameEipNum: (filename: string) => Promise<number>,
     public requirePr: () => Promise<PR>
   ) {}
 
@@ -55,7 +55,7 @@ export class FileDiffInfra implements IFileDiff {
   };
 
   formatFile = async (file: ParsedContent): Promise<FormattedFile> => {
-    const filenameEipNum = this.requireFilenameEipNum(file.name);
+    const filenameEipNum = await this.requireFilenameEipNum(file.name);
     if (!filenameEipNum) {
       throw `Failed to extract eip number from file "${file.path}"`;
     }

@@ -17,7 +17,7 @@ export type Commit = PromiseValue<
 export type Files = PromiseValue<
   ReturnType<Github["pulls"]["listFiles"]>
 >["data"];
-export type File = UnArrayify<Files>;
+export type File = Files[number];
 export type CommitFiles = CompareCommits["base_commit"]["files"];
 export type CommitFile = UnArrayify<NonNullable<CommitFiles>>;
 export type Repo = PromiseValue<ReturnType<Github["repos"]["get"]>>["data"];
@@ -152,6 +152,7 @@ export function isMockMethod(method): asserts method is MockMethods {
 
 export type Results = {
   filename: string;
+  successMessage?: string;
   errors?: string[];
   mentions?: string[];
 }[];

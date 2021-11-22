@@ -172,7 +172,7 @@ describe("integration testing edgecases associated with editors", () => {
   });
 
   describe("Pull 3623", () => {
-    it("should pass", async() => {
+    it("should pass", async () => {
       process.env = envFactory({
         PULL_NUMBER: SavedRecord.PR3623,
         [EIPTypeOrCategoryToResolver[EIPCategory.erc]]: "@micahzoltu"
@@ -180,6 +180,27 @@ describe("integration testing edgecases associated with editors", () => {
 
       await __MAIN_MOCK__();
       expect(setFailedMock).not.toBeCalled();
-    })
-  })
+    });
+  });
+
+  describe("Pull 3581", () => {
+    it("should pass", async () => {
+      process.env = envFactory({
+        PULL_NUMBER: SavedRecord.PR3581,
+        [EIPTypeOrCategoryToResolver[EIPCategory.erc]]: "@lightclient"
+      });
+
+      await __MAIN_MOCK__();
+      expect(setFailedMock).not.toBeCalled();
+    });
+    it("should not pass if no editor approval", async () => {
+      process.env = envFactory({
+        PULL_NUMBER: SavedRecord.PR3581,
+        // in this case I'm not setting the approver as an editor
+      });
+
+      await __MAIN_MOCK__();
+      expect(setFailedMock).toHaveBeenCalled();
+    });
+  });
 });

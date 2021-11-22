@@ -1,5 +1,6 @@
 import { EIPCategory, EIPTypes, FileDiff } from "src/domain";
 import { IRequireEditors } from "#/assertions/Domain/types";
+import _ from "lodash";
 
 export class RequireEditors implements IRequireEditors {
   public requireAuthors: (fileDiff: FileDiff) => string[];
@@ -30,7 +31,7 @@ export class RequireEditors implements IRequireEditors {
 
   // injected to make testing easier
   _requireEIPEditors(EDITORS: string[], fileDiff?: FileDiff) {
-    EDITORS = EDITORS.map((i) => i.toLowerCase());
+    EDITORS = _.uniq(EDITORS.map((i) => i.toLowerCase()));
     if (fileDiff) {
       const authors = this.requireAuthors(fileDiff);
       return EDITORS.filter((editor) => !authors.includes(editor));
@@ -55,12 +56,27 @@ export class RequireEditors implements IRequireEditors {
       META_EDITORS,
       NETWORKING_EDITORS
     } = this;
-    const isERC = fileDiff?.base.category === EIPCategory.erc;
-    const isCore = fileDiff?.base.category === EIPCategory.core;
-    const isNetworking = fileDiff?.base.category === EIPCategory.networking;
-    const isInterface = fileDiff?.base.category === EIPCategory.interface;
-    const isMeta = fileDiff?.base.type === EIPTypes.meta;
-    const isInformational = fileDiff?.base.type === EIPTypes.informational;
+
+    if (!fileDiff) {
+      // if no fileDiff is provided then return all editors
+      return this._requireEIPEditors(
+        _.concat(
+          ERC_EDITORS(),
+          CORE_EDITORS(),
+          NETWORKING_EDITORS(),
+          INTERFACE_EDITORS(),
+          META_EDITORS(),
+          INFORMATIONAL_EDITORS()
+        )
+      )
+    }
+
+    const isERC = fileDiff.base.category === EIPCategory.erc;
+    const isCore = fileDiff.base.category === EIPCategory.core;
+    const isNetworking = fileDiff.base.category === EIPCategory.networking;
+    const isInterface = fileDiff.base.category === EIPCategory.interface;
+    const isMeta = fileDiff.base.type === EIPTypes.meta;
+    const isInformational = fileDiff.base.type === EIPTypes.informational;
 
     if (isERC) {
       return this._requireEIPEditors(ERC_EDITORS(), fileDiff);

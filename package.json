@@ -31,7 +31,7 @@
     "nock": "^13.1.1",
     "prettier": "^2.4.1",
     "tsconfig-paths-jest": "^0.0.1",
-    "type-fest": "^2.3.3"
+    "type-fest": "^2.5.4"
   },
   "devDependencies": {
     "@babel/preset-env": "^7.15.6",
