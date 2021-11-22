@@ -1,11 +1,13 @@
 import { NodeEnvs } from "../domain/Types";
+import { CriticalError } from "src/domain/exceptions";
 
 export const __MAIN__ = async (debugEnv?: NodeJS.ProcessEnv) => {
   const isDebug =
     process.env.NODE_ENV === NodeEnvs.developemnt ||
     process.env.NODE_ENV === NodeEnvs.test;
 
-  if (!isDebug) throw new Error("trying to run debug without proper auth");
+  if (!isDebug)
+    throw new CriticalError("trying to run debug without proper auth");
 
   // setup debug env
   setDebugContext(debugEnv);

@@ -195,7 +195,7 @@ describe("integration testing edgecases associated with editors", () => {
     });
     it("should not pass if no editor approval", async () => {
       process.env = envFactory({
-        PULL_NUMBER: SavedRecord.PR3581,
+        PULL_NUMBER: SavedRecord.PR3581
         // in this case I'm not setting the approver as an editor
       });
 

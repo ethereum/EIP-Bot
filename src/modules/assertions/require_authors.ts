@@ -1,4 +1,5 @@
 import { FileDiff } from "src/domain";
+import { RequirementViolation } from "src/domain/exceptions";
 
 /**
  * requires that authors exist and returns them else throw error
@@ -12,7 +13,9 @@ export const requireAuthors = (fileDiff: FileDiff): string[] => {
 
   // Make sure there are authors
   if (!authors || authors.length === 0) {
-    throw `${fileDiff.head.name} has no identifiable authors who can approve the PR (only considering the base version)`;
+    throw new RequirementViolation(
+      `${fileDiff.head.name} has no identifiable authors who can approve the PR (only considering the base version)`
+    );
   }
 
   return authors;

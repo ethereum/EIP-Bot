@@ -10,6 +10,7 @@ import {
 } from "src/domain";
 import { assertSavedRecord, getMockRecords, SavedRecord } from "./records";
 import * as fs from "fs";
+import { CriticalError } from "src/domain/exceptions";
 
 const baseUrl = "https://api.github.com";
 const scope = nock(baseUrl).persist();
@@ -27,7 +28,7 @@ export const mockPR = async (pullNumber: SavedRecord) => {
   const records = mockRecords[`PR${pullNumber}`];
 
   if (!records)
-    throw new Error(`no mocked records for pull number ${pullNumber}`);
+    throw new CriticalError(`no mocked records for pull number ${pullNumber}`);
 
   for (const record of records) {
     const req = record.req;
@@ -63,7 +64,8 @@ export const __MAIN_MOCK__ = async (mockEnv?: NodeJS.ProcessEnv) => {
     process.env.NODE_ENV === NodeEnvs.mock ||
     process.env.NODE_ENV === NodeEnvs.test;
 
-  if (!isMock) throw new Error("trying to run debug without proper auth");
+  if (!isMock)
+    throw new CriticalError("trying to run debug without proper auth");
 
   // setup debug env
   await setMockContext(mockEnv);
@@ -92,7 +94,8 @@ export const setMockContext = async (mockEnv?: NodeJS.ProcessEnv) => {
   const env = { ...process.env, ...mockEnv };
   process.env = env;
 
-  if (!env.PULL_NUMBER) throw new Error("PULL_NUMBER is required to mock");
+  if (!env.PULL_NUMBER)
+    throw new CriticalError("PULL_NUMBER is required to mock");
 
   // setup saved record (mocking network responses)
   assertSavedRecord(env.PULL_NUMBER);
@@ -166,12 +169,12 @@ const fetchAndCreateRecord = async (
     }
   });
 
-  console.log(process.cwd() + "/src/tests/assets/" + fileName)
+  console.log(process.cwd() + "/src/tests/assets/" + fileName);
   fs.writeFile(
     process.cwd() + "/src/tests/assets/" + fileName,
     JSON.stringify(mockedRecord, null, 2),
     () => {
-      console.log(mockedRecord)
+      console.log(mockedRecord);
       console.log("wrote file");
     }
   );

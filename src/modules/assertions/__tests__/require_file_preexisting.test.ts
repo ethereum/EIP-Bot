@@ -1,4 +1,8 @@
-import { expectError, initGeneralTestEnv, mockGithubContext } from "src/tests/testutils";
+import {
+  expectError,
+  initGeneralTestEnv,
+  mockGithubContext
+} from "src/tests/testutils";
 import { EVENTS } from "src/domain";
 import { PRFactory } from "src/tests/factories/prFactory";
 import { FileFactory } from "src/tests/factories/fileFactory";
@@ -27,20 +31,26 @@ describe("require_file_preexisting", () => {
 
   it("should return undefined if a file exists and is retrievable", async () => {
     const file = FileFactory();
-    const res = await RequireFilePreexistingInstance.requireFilePreexisting(file);
+    const res = await RequireFilePreexistingInstance.requireFilePreexisting(
+      file
+    );
     expect(res).toBe(file);
   });
 
   it("should throw error if github request returns 404", async () => {
     const file = FileFactory();
     getContentMock.mockReturnValueOnce(Promise.reject({ status: 404 }));
-    await expectError(() => RequireFilePreexistingInstance.requireFilePreexisting(file));
+    await expectError(() =>
+      RequireFilePreexistingInstance.requireFilePreexisting(file)
+    );
   });
 
   it("should not throw error if github request does NOT return 404 (but still an error)", async () => {
     const file = FileFactory();
     getContentMock.mockReturnValueOnce(Promise.reject({ status: 403 }));
-    const res = await RequireFilePreexistingInstance.requireFilePreexisting(file);
+    const res = await RequireFilePreexistingInstance.requireFilePreexisting(
+      file
+    );
     expect(res).toBe(file);
   });
 
@@ -65,6 +75,8 @@ describe("require_file_preexisting", () => {
   it("should throw error if file status is `added`", async () => {
     const file = FileFactory();
     file.status = "added";
-    await expectError(() => RequireFilePreexistingInstance.requireFilePreexisting(file));
+    await expectError(() =>
+      RequireFilePreexistingInstance.requireFilePreexisting(file)
+    );
   });
-})
+});

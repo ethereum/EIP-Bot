@@ -16,6 +16,7 @@ import {
 import frontmatter from "front-matter";
 import { IFileDiff } from "#/file/domain/types";
 import { getRepoFilenameContent, resolveUserByEmail } from "src/infra";
+import { UnexpectedError } from "src/domain/exceptions";
 
 export class FileDiffInfra implements IFileDiff {
   constructor(
@@ -57,7 +58,9 @@ export class FileDiffInfra implements IFileDiff {
   formatFile = async (file: ParsedContent): Promise<FormattedFile> => {
     const filenameEipNum = await this.requireFilenameEipNum(file.name);
     if (!filenameEipNum) {
-      throw `Failed to extract eip number from file "${file.path}"`;
+      throw new UnexpectedError(
+        `Failed to extract eip number from file "${file.path}"`
+      );
     }
 
     return {
@@ -99,13 +102,19 @@ export class FileDiffInfra implements IFileDiff {
 
     // Assert type assumptions
     if (!data?.content) {
-      throw `requested file ${filename} at ref sha ${sha} contains no content`;
+      throw new UnexpectedError(
+        `requested file ${filename} at ref sha ${sha} contains no content`
+      );
     }
     if (!data?.path) {
-      throw `requested file ${filename} at ref sha ${sha} has no path`;
+      throw new UnexpectedError(
+        `requested file ${filename} at ref sha ${sha} has no path`
+      );
     }
     if (!data?.name) {
-      throw `requested file ${filename} at ref sha ${sha} has no name`;
+      throw new UnexpectedError(
+        `requested file ${filename} at ref sha ${sha} has no name`
+      );
     }
 
     // Return parsed information

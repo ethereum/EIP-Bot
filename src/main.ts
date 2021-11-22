@@ -37,6 +37,7 @@ import { get, uniq } from "lodash";
 import { requestReviewers } from "#/approvals";
 import { getFileDiff } from "#/file";
 import { processError } from "src/domain/exceptions";
+import { multiLineString } from "#/utils";
 
 const testFile = async (file: File): Promise<TestResults> => {
   // we need to define this here because the below logic can get very complicated otherwise
@@ -50,15 +51,15 @@ const testFile = async (file: File): Promise<TestResults> => {
   } catch (err: any) {
     processError(err, {
       gracefulTermination: () => {
-        throw err
+        throw err;
       },
       requirementViolation: (message) => {
         errors.fileErrors.filePreexistingError = message;
       },
       unexpectedError: () => {
-        throw err
+        throw err;
       }
-    })
+    });
     errors.approvalErrors.isEditorApprovedError = await assertEIPEditorApproval(
       fileDiff
     );
@@ -235,7 +236,9 @@ export const _main_ = async () => {
             errors: [message]
           });
         },
-        unexpectedError: (message) => {
+        unexpectedError: (message, data) => {
+          console.log(JSON.stringify(data, null, 2))
+          message = `An unexpected error occurred (cc @alita-moore): ${message}`
           results.push({
             filename: file.filename,
             errors: [message]
@@ -271,12 +274,17 @@ export const main = async () => {
   try {
     return await _main_();
   } catch (error: any) {
-    console.log(`An unexpected exception occured while linting: \n${error}`);
-    setFailed(error.message);
+    const message = multiLineString("\n")(
+      `A critical exception has occured:`,
+      `\tMessage: '${error?.error || error}`,
+      error?.data && `\tData:\n${JSON.stringify(error.data, null, 2)}`
+    )
+    console.log(message);
+    setFailed(message);
     if (isProd) {
-      await postComment(error.message);
+      await postComment(message);
     }
-    throw error;
+    throw message;
   }
 };
 

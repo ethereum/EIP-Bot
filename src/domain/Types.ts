@@ -2,6 +2,7 @@ import { getOctokit } from "@actions/github";
 import { EIPCategory, EipStatus, EIPTypes } from "./Constants";
 import { FrontMatterResult } from "front-matter";
 import { PromiseValue } from "type-fest";
+import { CriticalError } from "src/domain/exceptions";
 
 export type Github = ReturnType<typeof getOctokit>["rest"];
 
@@ -144,7 +145,7 @@ export enum NodeEnvs {
 
 export function isMockMethod(method): asserts method is MockMethods {
   if (!Object.values(MockMethods).includes(method)) {
-    throw Error(`method ${method} is not a supported mock method`);
+    throw new CriticalError(`method ${method} is not a supported mock method`);
   } else {
     return method;
   }

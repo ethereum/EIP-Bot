@@ -8,6 +8,4 @@ export interface IFileDiff {
   getParsedContent: (filename: string, sha: string) => Promise<ParsedContent>;
 
   getAuthors: (rawAuthorList?: string) => Promise<undefined | Set<string>>;
-};
-
-
+}

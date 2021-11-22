@@ -1,6 +1,7 @@
 import _ from "lodash";
-import { OR, AND } from "#/utils";
+import { AND, OR } from "#/utils";
 import { Encodings, encodings } from "src/domain";
+import { RequirementViolation, UnexpectedError } from "src/domain/exceptions";
 
 /** includes a check for NaN and general falsey */
 export const isDefined = <T>(
@@ -11,10 +12,7 @@ export const isDefined = <T>(
     _.isNull(maybeDefined),
     _.isNaN(maybeDefined),
     AND(
-      OR(
-        _.isObject(maybeDefined),
-        _.isArray(maybeDefined)
-      ),
+      OR(_.isObject(maybeDefined), _.isArray(maybeDefined)),
       _.isEmpty(maybeDefined)
     )
   );
@@ -24,7 +22,7 @@ export function assertDefined<T>(
   maybeDefined: T | null | undefined
 ): asserts maybeDefined is T {
   if (OR(_.isUndefined(maybeDefined), _.isNull(maybeDefined))) {
-    throw new Error("A defined assertion was violated");
+    throw new RequirementViolation("A defined assertion was violated");
   }
 }
 
@@ -35,7 +33,9 @@ export function requireEncoding(
 ): asserts maybeEncoding is Encodings {
   // any here because of https://github.com/microsoft/TypeScript/issues/26255
   if (!encodings.includes(maybeEncoding as any))
-    throw new Error(`Unknown encoding of ${context}: ${maybeEncoding}`);
+    throw new UnexpectedError(
+      `Unknown encoding of ${context}: ${maybeEncoding}`
+    );
 }
 
 export function castTo<CastToThisType>(value: any): CastToThisType {

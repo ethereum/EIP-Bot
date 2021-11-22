@@ -4,7 +4,9 @@ import { IAssertValidFilename } from "#/assertions/Domain/types";
 export class AssertValidFilename implements IAssertValidFilename {
   requireFilenameEipNum: (filename: string) => Promise<number>;
 
-  constructor({ requireFilenameEipNum }: {
+  constructor({
+    requireFilenameEipNum
+  }: {
     requireFilenameEipNum: (filename: string) => Promise<number>;
   }) {
     this.requireFilenameEipNum = requireFilenameEipNum;

@@ -7,6 +7,7 @@ export interface IRequireEditors {
 }
 
 export type PreexistingFile = Opaque<File>;
+
 export interface IRequireFilePreexisting {
   requireFilePreexisting: (fileDiff: File) => Promise<PreexistingFile>;
 }

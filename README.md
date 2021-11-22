@@ -17,7 +17,7 @@ jobs:
       - name: Setup Node.js Environment
         uses: actions/setup-node@v2
         with:
-          node-version: '14'
+          node-version: "14"
       - name: auto-merge-bot
         uses: ethereum/EIP-Bot@<commit hash> # master
         id: auto-merge-bot
@@ -30,15 +30,17 @@ jobs:
 ## Standard Practices
 
 ### Function Naming
+
 This library uses concepts that may appear strange,
 
 - **require...** : functions that start with `require` are used to guarantee it responds with the resource you're looking for or else it will error
 - **assert...** : functions that start with `assert` are used to test something and if that test fails it'll respond with some kind of error message string. This is where the errors that the bot tells the author comes from.
-- **...Purifier** : functions that end in `purifier` are used to _purify_ test results, they help to keep the logic of assertions clean and handle cross error dependencies like the fact that if you change the status you need an editor approval, but then once you actually get that approval we don't want to show the error for changing the status (i.e. `if (changedStatus && !approvedByEditor) { return error } else if (changedStatus && approvedByEditor) { return }`). 
+- **...Purifier** : functions that end in `purifier` are used to _purify_ test results, they help to keep the logic of assertions clean and handle cross error dependencies like the fact that if you change the status you need an editor approval, but then once you actually get that approval we don't want to show the error for changing the status (i.e. `if (changedStatus && !approvedByEditor) { return error } else if (changedStatus && approvedByEditor) { return }`).
 
 These practices are applied to make things easier to understand. If you're not careful, then the logic can get tangled very quick, and then it's really hard to read and change things.
 
 ### Testing
+
 This bot employees two types of tests
 
 - functional
@@ -99,8 +101,10 @@ REPO_NAME = EIPs
 GITHUB_REPOSITORY = ethereum/EIPs
 EVENT_TYPE = pull_request_target
 ```
+
 4. Then run the mock `npm run mock`
 5. You should get a response like the following
+
 ```bash
 alitamoore@Alitas-MBP EIP-Bot % npm run mock
 
@@ -115,13 +119,14 @@ npm ERR! code ELIFECYCLE
 npm ERR! errno 1
 npm ERR! auto-merge-eip@1.0.0 mock: `NODE_ENV=MOCK node -r dotenv/config build/src/index.js`
 npm ERR! Exit status 1
-npm ERR! 
+npm ERR!
 npm ERR! Failed at the auto-merge-eip@1.0.0 mock script.
 npm ERR! This is probably not a problem with npm. There is likely additional logging output above.
 
 npm ERR! A complete log of this run can be found in:
 npm ERR!     /Users/alitamoore/.npm/_logs/2021-07-25T06_43_54_229Z-debug.log
 ```
+
 In this case, an error was expected because the bug in question was if the editors were mentioned if a status error occured (if the status wasn't one of the allowed types)
 
 ### Troubleshooting

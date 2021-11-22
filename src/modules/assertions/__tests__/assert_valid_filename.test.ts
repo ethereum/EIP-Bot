@@ -13,9 +13,9 @@ describe("require_file_preexisting", () => {
   initGeneralTestEnv();
 
   const requireFilenameEipNum = jest.fn();
-  const _AssertValidFilename = new AssertValidFilename(
-    {requireFilenameEipNum}
-  );
+  const _AssertValidFilename = new AssertValidFilename({
+    requireFilenameEipNum
+  });
 
   beforeEach(async () => {
     requireFilenameEipNum.mockReturnValue(Promise.resolve(1));
@@ -35,12 +35,20 @@ describe("require_file_preexisting", () => {
       FileFactory({ filename: "eip-123.js" })
     ];
     // @ts-expect-error below is an invalid type error
-    expect(await _AssertValidFilename.assertValidFilename(files[0])).toBeDefined();
+    expect(
+      await _AssertValidFilename.assertValidFilename(files[0])
+    ).toBeDefined();
     // @ts-expect-error below is an invalid type error
-    expect(await _AssertValidFilename.assertValidFilename(files[1])).toBeDefined();
+    expect(
+      await _AssertValidFilename.assertValidFilename(files[1])
+    ).toBeDefined();
     // @ts-expect-error below is an invalid type error
-    expect(await _AssertValidFilename.assertValidFilename(files[2])).toBeDefined();
+    expect(
+      await _AssertValidFilename.assertValidFilename(files[2])
+    ).toBeDefined();
     // @ts-expect-error below is an invalid type error
-    expect(await _AssertValidFilename.assertValidFilename(files[3])).toBeDefined();
+    expect(
+      await _AssertValidFilename.assertValidFilename(files[3])
+    ).toBeDefined();
   });
-})
+});

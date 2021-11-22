@@ -7,7 +7,7 @@ export const EIP_NUM_RE = /eip-(\d+)\.md/;
 /** matches github handles (includes @)*/
 export const GITHUB_HANDLE = /^@[a-z\d](?:[a-z\d]|-(?=[a-z\d])){0,38}$/i;
 /** extracts the eip number of the assets folder associated */
-export const ASSETS_EIP_NUM = /(?<=^assets\/eip-)(\d+)(?=\/.*)/
+export const ASSETS_EIP_NUM = /(?<=^assets\/eip-)(\d+)(?=\/.*)/;
 
 /**
  * This functionality is supported in es2020, but for the purposes

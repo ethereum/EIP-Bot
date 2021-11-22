@@ -12,7 +12,7 @@ inputs:
     description: a list of editors in the following format "@github_username,@..." to be mentioned for core eip changes
     required: true
   ERC_EDITORS:
-    description: a list of editors in the following format "@github_username,@..." to be mentioned for ERC type changes 
+    description: a list of editors in the following format "@github_username,@..." to be mentioned for ERC type changes
     required: true
   NETWORKING_EDITORS:
     description: a list of editors in the following format "@github_username,@..." to be mentioned for NETWORKING type changes

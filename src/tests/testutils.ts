@@ -26,12 +26,14 @@ export const expectError = async (fn, extraContext?: string) => {
     error = err;
   }
   if (!error)
-    throw new Error(
-      `function ${fn.toString()} was expected to throw and error but it didn't\n\textra context: ${extraContext}`
-    );
+    throw `function ${fn.toString()} was expected to throw and error but it didn't\n\textra context: ${extraContext}`;
 };
 
-export const expectErrorWithHandler = async (fn, handler: (error: any) => void, extraContext?: string) => {
+export const expectErrorWithHandler = async (
+  fn,
+  handler: (error: any) => void,
+  extraContext?: string
+) => {
   let error;
   try {
     await fn();
@@ -40,9 +42,7 @@ export const expectErrorWithHandler = async (fn, handler: (error: any) => void, 
     error = err;
   }
   if (!error)
-    throw new Error(
-      `function ${fn.toString()} was expected to throw and error but it didn't\n\textra context: ${extraContext}`
-    );
+    throw `function ${fn.toString()} was expected to throw and error but it didn't\n\textra context: ${extraContext}`;
 };
 
 export const clearContext = (context: Context) => {
@@ -109,9 +109,7 @@ export const mockDependency = <
 ) => {
   function assertString(maybeString): asserts maybeString is string {
     if (typeof maybeString !== "string") {
-      throw Error(
-        `method name ${methodName} is not a string but it must be a string`
-      );
+      throw `method name ${methodName} is not a string but it must be a string`;
     }
   }
 
@@ -183,24 +181,24 @@ export const initGeneralTestEnv = () => {
 
   beforeAll(() => {
     if (!nock.isActive()) {
-      nock.activate()
+      nock.activate();
     }
-    nock.disableNetConnect()
-  })
+    nock.disableNetConnect();
+  });
 
   beforeEach(() => {
     jest.resetModules();
     jest.clearAllMocks();
     nock.cleanAll();
-  })
+  });
 
   afterEach(() => {
-    restore()
-  })
+    restore();
+  });
 
   afterAll(() => {
     jest.restoreAllMocks();
     nock.restore();
-    nock.enableNetConnect()
-  })
-}
+    nock.enableNetConnect();
+  });
+};

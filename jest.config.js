@@ -7,10 +7,7 @@ const moduleNameMapper = require("tsconfig-paths-jest")(tsconfig);
 
 module.exports = {
   clearMocks: true,
-  moduleDirectories: [
-    "node_modules",
-    "./"
-  ],
+  moduleDirectories: ["node_modules", "./"],
   moduleNameMapper,
   testEnvironment: "node",
   testMatch: [

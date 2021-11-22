@@ -1,6 +1,7 @@
 import { EIPCategory, EIPTypes, FileDiff } from "src/domain";
 import { IRequireEditors } from "#/assertions/Domain/types";
 import _ from "lodash";
+import { RequirementViolation } from "src/domain/exceptions";
 
 export class RequireEditors implements IRequireEditors {
   public requireAuthors: (fileDiff: FileDiff) => string[];
@@ -68,7 +69,7 @@ export class RequireEditors implements IRequireEditors {
           META_EDITORS(),
           INFORMATIONAL_EDITORS()
         )
-      )
+      );
     }
 
     const isERC = fileDiff.base.category === EIPCategory.erc;
@@ -103,7 +104,7 @@ export class RequireEditors implements IRequireEditors {
       return this._requireEIPEditors(INFORMATIONAL_EDITORS(), fileDiff);
     }
 
-    throw Error(
+    throw new RequirementViolation(
       [
         `the fileDiff for '${fileDiff?.base.name}' with category '${fileDiff?.base.category}'`,
         `was neither seen to be a core or erc eip while fetching the editors. This should`,

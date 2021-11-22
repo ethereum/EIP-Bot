@@ -2,6 +2,11 @@ import { Opaque } from "type-fest";
 import { GITHUB_HANDLE } from "./Regex";
 import { ERRORS, Maybe, NodeEnvs } from "./Types";
 import { AND } from "#/utils";
+import {
+  CriticalError,
+  RequirementViolation,
+  UnexpectedError
+} from "src/domain/exceptions";
 
 // this is meant to be a public key associated with a orphaned account;
 // it is encoded / decoded here because github will invalidate it if it knows
@@ -44,12 +49,12 @@ export function assertEditorsFormat(
         )}`
       ].join("\n")
     );
-    throw new Error("at least one editor must be provided");
+    throw new CriticalError("at least one editor must be provided");
   }
 
   for (const maybeEditor of maybeEditors) {
     if (!GITHUB_HANDLE.test(maybeEditor)) {
-      throw Error(
+      throw new CriticalError(
         `${maybeEditor} is not a correctly formatted editor github handle`
       );
     }
@@ -117,7 +122,7 @@ export function assertIsCategoryEnum(
 ): asserts maybeCategory is EIPCategory {
   const categories = Object.values(EIPCategory) as string[];
   if (!categories.includes(maybeCategory)) {
-    throw Error(
+    throw new RequirementViolation(
       [
         `the provided eip category '${maybeCategory}' of file`,
         `'${fileName}' is required to be one of (${categories.join(", ")})`
@@ -132,7 +137,7 @@ export function assertIsTypeEnum(
 ): asserts maybeType is EIPTypes {
   const types = Object.values(EIPTypes) as string[];
   if (!types.includes(maybeType)) {
-    throw Error(
+    throw new RequirementViolation(
       [
         `the provided eip type is '${maybeType}' of file`,
         `'${fileName}' is required to be one of (${types.join(", ")})`
@@ -154,7 +159,7 @@ export const assertCategory = ({
   type: EIPTypes;
 } => {
   if (!maybeType) {
-    throw new Error(
+    throw new RequirementViolation(
       `A 'type' header is required for all EIPs, '${fileName}' does not have a 'type'`
     );
   }
@@ -178,7 +183,7 @@ export const assertCategory = ({
   if (normalizedType === EIPTypes.standardsTrack) {
     const normalized = maybeCategory?.toLowerCase();
     if (!normalized) {
-      throw new Error(
+      throw new RequirementViolation(
         [
           `'${fileName}' does not have a 'category' property, but it MUST`,
           `be set for eips that are type ${EIPTypes.standardsTrack}`
@@ -192,7 +197,9 @@ export const assertCategory = ({
     };
   }
 
-  throw Error("type was not a known type, this error should never occur");
+  throw new UnexpectedError(
+    "type was not a known type, this error should never occur"
+  );
 };
 
 export enum EipStatus {

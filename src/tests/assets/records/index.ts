@@ -1,4 +1,5 @@
 import { isMockMethod, MockRecord } from "src/domain";
+import { CriticalError } from "src/domain/exceptions";
 
 export enum SavedRecord {
   /**
@@ -103,7 +104,7 @@ export function assertSavedRecord(
 
   // @ts-expect-error savedRecords is actually a string[]
   if (!savedRecords.includes(maybeSavedRecord)) {
-    throw new Error(
+    throw new CriticalError(
       `${maybeSavedRecord} is not a SavedRecord, the options are ${savedRecords}`
     );
   }
@@ -126,7 +127,7 @@ export const getMockRecords = async () => {
   const PR3654_1 = await import("./3654/1.json");
   const PR3654_2 = await import("./3654/2.json");
   const PR3623 = await import("./3623.json");
-  const PR3581 = await import ("./3581.json");
+  const PR3581 = await import("./3581.json");
 
   assertMethods(PR3767);
   assertMethods(PR3676);

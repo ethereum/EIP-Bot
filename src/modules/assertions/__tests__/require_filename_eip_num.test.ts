@@ -104,7 +104,7 @@ describe("requireFilenameEipNum", () => {
         getApprovals.mockResolvedValue(["@test2"]);
         await _RequireFilenameEIPNum.attemptEditorApprovalGracefulTermination(
           "test"
-        )
+        );
       });
     });
 
