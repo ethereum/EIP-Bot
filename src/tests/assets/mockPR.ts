@@ -150,7 +150,7 @@ const fetchAndCreateRecord = async (
     body
   }).catch((err) => {
     nock.disableNetConnect();
-    throw err;
+    return err;
   });
   console.log("successfully fetched data");
   nock.disableNetConnect();
@@ -166,7 +166,7 @@ const fetchAndCreateRecord = async (
     },
     res: {
       status: res.status,
-      data: res.data
+      data: res.status === 200 ? res.data : res.message
     }
   });
 

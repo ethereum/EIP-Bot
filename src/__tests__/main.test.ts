@@ -1,5 +1,7 @@
-import { _TESTS_ } from "src/main";
+import { _main, _TESTS_ } from "src/main";
 import { testResultsFactory } from "src/tests/factories/testResultsFactory";
+import { expectError, initGeneralTestEnv } from "src/tests/testutils";
+import * as core from "@actions/core";
 
 describe("mentions", () => {
   describe("getAuthorMentions", () => {
@@ -173,5 +175,29 @@ describe("mentions", () => {
       // if this breaks, just flip it around
       expect(res).toEqual([editors, authors].flat());
     });
+  });
+});
+
+describe("main (error handler)", () => {
+  const _main_ = jest.fn();
+  const main = _main(_main_);
+
+  const setFailedMock = jest
+    .fn()
+    .mockImplementation(core.setFailed) as jest.MockedFunction<
+    typeof core.setFailed
+  >;
+
+  beforeEach(() => {
+    jest.spyOn(core, "setFailed").mockImplementation(setFailedMock);
+    setFailedMock.mockClear();
+  });
+
+  initGeneralTestEnv();
+
+  it("should set failed if exception", async () => {
+    _main_.mockRejectedValue("error");
+    await expectError(() => main());
+    expect(setFailedMock).toBeCalledTimes(1);
   });
 });

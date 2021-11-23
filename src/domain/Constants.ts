@@ -258,4 +258,8 @@ export const isNockNoMatchingRequest = (
   }
   return false;
 };
-export const ALLOWED_STATUSES = new Set([EipStatus.draft, EipStatus.lastCall, EipStatus.review]);
+export const ALLOWED_STATUSES = new Set([
+  EipStatus.draft,
+  EipStatus.lastCall,
+  EipStatus.review
+]);

@@ -17,9 +17,7 @@ import {
   requirePr,
   requirePullNumber
 } from "#/assertions";
-import {
-  postComment
-} from "#/components";
+import { postComment } from "#/components";
 import {
   COMMENT_HEADER,
   DEFAULT_ERRORS,
@@ -31,8 +29,12 @@ import {
 import { get, uniq } from "lodash";
 import { requestReviewers } from "#/approvals";
 import { getFileDiff } from "#/file";
-import { assertException, processError } from "src/domain/exceptions";
-import { getAllTruthyObjectPaths, innerJoinAncestors, multiLineString } from "#/utils";
+import { processError } from "src/domain/exceptions";
+import {
+  getAllTruthyObjectPaths,
+  innerJoinAncestors,
+  multiLineString
+} from "#/utils";
 import {
   editorApprovalPurifier,
   EIP1Purifier,
@@ -213,7 +215,6 @@ export const _main_ = async () => {
   requirePullNumber();
   const pr = await requirePr();
 
-
   // Collect the changes made in the given PR from base <-> head for eip files
   const files = await requireFiles(pr);
   let results: Results = [];
@@ -236,8 +237,8 @@ export const _main_ = async () => {
           });
         },
         unexpectedError: (message, data) => {
-          console.log(JSON.stringify(data, null, 2))
-          message = `An unexpected error occurred (cc @alita-moore): ${message}`
+          console.log(JSON.stringify(data, null, 2));
+          message = `An unexpected error occurred (cc @alita-moore): ${message}`;
           results.push({
             filename: file.filename,
             errors: [message]
@@ -267,18 +268,17 @@ export const _main_ = async () => {
   return setFailed(commentMessage);
 };
 
-export const main = async () => {
+export const _main = (_main_: () => Promise<undefined | void>) => async () => {
   const isProd = process.env.NODE_ENV === NodeEnvs.production;
 
   try {
     return await _main_();
   } catch (error: any) {
-    assertException(error);
     const message = multiLineString("\n")(
       `A critical exception has occured (cc @alita-moore):`,
-      `\tMessage: ${error.error || error}`,
+      `\tMessage: ${error.error || error.message?.toLowerCase()}`,
       error.data && `\tData:\n${JSON.stringify(error.data, null, 2)}`
-    )
+    );
     console.log(message);
 
     if (isProd) {
@@ -290,6 +290,7 @@ export const main = async () => {
   }
 };
 
+export const main = _main(_main_);
 export const _TESTS_ = {
   getEditorMentions,
   getAuthorMentions,

@@ -66,7 +66,7 @@ export class FileDiffInfra implements IFileDiff {
     return {
       eipNum: file.content.attributes[FrontMatterAttributes.eip],
       status:
-        file.content.attributes[FrontMatterAttributes.status].toLowerCase(),
+        file.content.attributes[FrontMatterAttributes.status]?.toLowerCase(),
       authors: await this.getAuthors(
         file.content.attributes[FrontMatterAttributes.author]
       ),

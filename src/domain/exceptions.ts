@@ -94,11 +94,10 @@ export type Exception =
   | CriticalError
   | GracefulTermination;
 
-export function assertException(
-  maybeException
-): asserts maybeException is Exception {
+export function isException(maybeException): maybeException is Exception {
   if (!Object.values(Exceptions).includes(maybeException?.type)) {
     // recycles the exception
-    throw maybeException;
+    return false;
   }
+  return true;
 }

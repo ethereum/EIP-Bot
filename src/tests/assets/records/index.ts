@@ -98,8 +98,11 @@ export enum SavedRecord {
    * that authors be allowed to submit a PR to mark their EIP withdrawn and
    * that should be merged automatically
    */
-  PR4189 = "4189"
-
+  PR4189 = "4189",
+  /**
+   * @summary: this pull request automatically merged despite the tests failing
+   */
+  PR4478 = "4478"
 }
 
 /**
@@ -138,6 +141,7 @@ export const getMockRecords = async () => {
   const PR3623 = await import("./3623.json");
   const PR3581 = await import("./3581.json");
   const PR4189 = await import("./4189.json");
+  const PR4478 = await import("./4478.json");
 
   assertMethods(PR3767);
   assertMethods(PR3676);
@@ -152,6 +156,7 @@ export const getMockRecords = async () => {
   assertMethods(PR3623);
   assertMethods(PR3581);
   assertMethods(PR4189);
+  assertMethods(PR4478);
 
   const Records: { [k in keyof typeof SavedRecord]: MockRecord[] } = {
     PR3596: PR3596.default,
@@ -166,7 +171,8 @@ export const getMockRecords = async () => {
     PR3768_2: PR3768_2.default,
     PR3623: PR3623.default,
     PR3581: PR3581.default,
-    PR4189: PR4189.default
+    PR4189: PR4189.default,
+    PR4478: PR4478.default
   };
   return Records;
 };
