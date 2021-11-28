@@ -9,7 +9,7 @@ export const GITHUB_HANDLE = /^@[a-z\d](?:[a-z\d]|-(?=[a-z\d])){0,38}$/i;
 /** extracts the eip number of the assets folder associated */
 export const ASSETS_EIP_NUM = /(?<=^assets\/eip-)(\d+)(?=\/.*)/;
 /** this is used to test if a new file should be considered allowed */
-export const FILE_IN_EIP_FOLDER = /^EIPS\/eip-[a-zA-Z]*_.*\.md/
+export const FILE_IN_EIP_FOLDER = /^EIPS\/eip-[a-zA-Z]*_.*\.md/;
 
 /**
  * This functionality is supported in es2020, but for the purposes

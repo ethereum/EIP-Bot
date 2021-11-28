@@ -175,7 +175,7 @@ export const getMockRecords = async () => {
   assertMethods(PR3581);
   assertMethods(PR4189);
   assertMethods(PR4478);
-  assertMethods(PR4393)
+  assertMethods(PR4393);
 
   const Records: { [k in keyof typeof SavedRecord]: MockRecord[] } = {
     PR3596: PR3596.default,

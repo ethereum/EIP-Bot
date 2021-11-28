@@ -162,7 +162,7 @@ describe("requireFilenameEipNum", () => {
         status: 404,
         data: "Not Found"
       }
-    }
+    };
 
     it("should not throw if error is known file not found type", async () => {
       getParsedContent.mockRejectedValueOnce(notFoundError);
@@ -177,12 +177,14 @@ describe("requireFilenameEipNum", () => {
     it("should not throw exception unless file is in EIPS folder and follows format", async () => {
       getParsedContent.mockRejectedValueOnce(notFoundError);
       expect(await attemptNewFile("assets/eip-draft_test.md")).toBeUndefined();
-    })
+    });
 
     it("should throw requirement violation error", async () => {
       getParsedContent.mockRejectedValueOnce(notFoundError);
-      const type = await attemptNewFile("EIPS/eip-draft_test.md").catch(err => err.type)
-      expect(type).toBe(Exceptions.requirementViolation)
-    })
+      const type = await attemptNewFile("EIPS/eip-draft_test.md").catch(
+        (err) => err.type
+      );
+      expect(type).toBe(Exceptions.requirementViolation);
+    });
   });
 });

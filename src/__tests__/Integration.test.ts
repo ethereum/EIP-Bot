@@ -234,7 +234,7 @@ describe("integration testing edgecases associated with editors", () => {
 
       await __MAIN_MOCK__();
       expect(setFailedMock).toBeCalled();
-    })
+    });
 
     it("should fail and mention editors", async () => {
       process.env = envFactory({
@@ -243,10 +243,10 @@ describe("integration testing edgecases associated with editors", () => {
       });
 
       await __MAIN_MOCK__();
-      const call = setFailedMock.mock.calls[0]![0]
-      expect(call).toMatch(/@abc/)
-    })
-  })
+      const call = setFailedMock.mock.calls[0]![0];
+      expect(call).toMatch(/@abc/);
+    });
+  });
 
   // describe("Pull 4499", () => {
   //   it("should fail", async () => {

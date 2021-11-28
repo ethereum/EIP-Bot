@@ -20,9 +20,9 @@ export interface IRequireFilenameEIPNum {
   requireFilenameEipNum: (filename: string, path: string) => Promise<number>;
   attemptAssetGracefulTermination: (filename: string) => Promise<void>;
   attemptEditorApprovalGracefulTermination: (filename: string) => Promise<void>;
-  attemptNewFileNoEIPNumber: (filename: string, path: string) => Promise<void>
+  attemptNewFileNoEIPNumber: (filename: string, path: string) => Promise<void>;
 }
 
 export interface IAssertNewEIPWithoutNumber {
-  assertNewEIPWithoutNumber: (fileDiff: FileDiff) => string | undefined
+  assertNewEIPWithoutNumber: (fileDiff: FileDiff) => string | undefined;
 }
