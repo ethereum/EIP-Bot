@@ -225,4 +225,26 @@ describe("integration testing edgecases associated with editors", () => {
       expect(setFailedMock).toBeCalled();
     });
   });
+
+  // describe("Pull 4393", () => {
+  //   it("should succeed", async () => {
+  //     process.env = envFactory({
+  //       PULL_NUMBER: SavedRecord.PR4393
+  //     });
+  //
+  //     await __MAIN_MOCK__();
+  //     expect(setFailedMock).toBeCalled();
+  //   })
+  // })
+
+  // describe("Pull 4499", () => {
+  //   it("should fail", async () => {
+  //     process.env = envFactory({
+  //       PULL_NUMBER: SavedRecord.PR4499
+  //     });
+  //
+  //     await __MAIN_MOCK__();
+  //     expect(setFailedMock).toBeCalled();
+  //   })
+  // })
 });

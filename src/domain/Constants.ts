@@ -258,6 +258,24 @@ export const isNockNoMatchingRequest = (
   }
   return false;
 };
+
+type NockDisallowedNetConnect = Opaque<NodeJS.ErrnoException>;
+export const isNockDisallowedNetConnect = (
+  err: any
+): err is NockDisallowedNetConnect => {
+  if (isMock()) {
+    const message = err.message?.toLowerCase();
+    if (!message) return false;
+    return AND(
+      /nock/.test(message),
+      /disallowed/.test(message),
+      /request.*failed/.test(message),
+      /net connect/.test(message)
+    );
+  }
+  return false;
+};
+
 export const ALLOWED_STATUSES = new Set([
   EipStatus.draft,
   EipStatus.lastCall,

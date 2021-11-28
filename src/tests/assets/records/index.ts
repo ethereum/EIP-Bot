@@ -101,8 +101,19 @@ export enum SavedRecord {
   PR4189 = "4189",
   /**
    * @summary: this pull request automatically merged despite the tests failing
+   * it was due to the fact unhandled errors never triggered a critical failure
    */
-  PR4478 = "4478"
+  PR4478 = "4478",
+  /**n
+nvc
+   * NOTE: this is up to date as of 11/26/2021, the PR is open as of writing this
+   * @summary: this is an eip-1 PR that recognizes and complains about
+   */
+  PR4393 = "4393",
+  /**
+   * @summary: a change to eip-1 that's not able to discern the authors
+   */
+  PR4499 = "4499"
 }
 
 /**
@@ -142,6 +153,8 @@ export const getMockRecords = async () => {
   const PR3581 = await import("./3581.json");
   const PR4189 = await import("./4189.json");
   const PR4478 = await import("./4478.json");
+  const PR4393 = await import("./4393.json");
+  const PR4499 = await import("./4499.json");
 
   assertMethods(PR3767);
   assertMethods(PR3676);
@@ -157,6 +170,7 @@ export const getMockRecords = async () => {
   assertMethods(PR3581);
   assertMethods(PR4189);
   assertMethods(PR4478);
+  assertMethods(PR4393)
 
   const Records: { [k in keyof typeof SavedRecord]: MockRecord[] } = {
     PR3596: PR3596.default,
@@ -172,7 +186,9 @@ export const getMockRecords = async () => {
     PR3623: PR3623.default,
     PR3581: PR3581.default,
     PR4189: PR4189.default,
-    PR4478: PR4478.default
+    PR4478: PR4478.default,
+    PR4393: PR4393.default,
+    PR4499: PR4499.default
   };
   return Records;
 };

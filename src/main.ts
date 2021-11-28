@@ -21,7 +21,7 @@ import { postComment } from "#/components";
 import {
   COMMENT_HEADER,
   DEFAULT_ERRORS,
-  File,
+  File, isNockDisallowedNetConnect, isNockNoMatchingRequest,
   NodeEnvs,
   Results,
   TestResults
@@ -274,6 +274,9 @@ export const _main = (_main_: () => Promise<undefined | void>) => async () => {
   try {
     return await _main_();
   } catch (error: any) {
+    if (isNockDisallowedNetConnect(error) || isNockNoMatchingRequest(error)) {
+      throw error
+    }
     const message = multiLineString("\n")(
       `A critical exception has occured (cc @alita-moore):`,
       `\tMessage: ${error.error || error.message?.toLowerCase()}`,
@@ -286,6 +289,7 @@ export const _main = (_main_: () => Promise<undefined | void>) => async () => {
     }
 
     setFailed(message);
+
     throw message;
   }
 };
