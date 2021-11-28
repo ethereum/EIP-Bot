@@ -1,5 +1,6 @@
 import { File, FILE_RE } from "src/domain";
 import { IAssertValidFilename } from "#/assertions/Domain/types";
+import { multiLineString } from "#/utils";
 
 export class AssertValidFilename implements IAssertValidFilename {
   requireFilenameEipNum: (filename: string, path: string) => Promise<number>;
@@ -24,7 +25,12 @@ export class AssertValidFilename implements IAssertValidFilename {
     // File name is formatted correctly and is in the EIPS folder
     const match = filename.search(FILE_RE);
     if (match === -1) {
-      return `Filename ${filename} is not in EIP format 'EIPS/eip-####.md'`;
+      return multiLineString(" ")(
+        `Filename ${filename} is not in EIP format 'EIPS/eip-####.md';`,
+        `if this is a new submission (and prior to eip # being given) then`,
+        `format your file like so 'eip-draft_{summary of eip}.md (don't`,
+        `include the braces)`
+      );
     }
 
     // EIP number is defined within the filename and can be parsed

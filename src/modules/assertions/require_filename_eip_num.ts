@@ -4,12 +4,12 @@ import {
   File,
   FILE_IN_EIP_FOLDER,
   FileDiff,
+  isFileNotFound,
   ParsedContent,
   PR
 } from "src/domain";
 import {
   GracefulTermination,
-  isException,
   RequirementViolation,
   UnexpectedError
 } from "src/domain/exceptions";
@@ -22,7 +22,10 @@ export class RequireFilenameEIPNum implements IRequireFilenameEIPNum {
   public requirePr: () => Promise<PR>;
   public requireEIPEditors: (fileDiff?: FileDiff | undefined) => string[];
   public getApprovals: () => Promise<string[]>;
-  public getParsedContent: (filename: string, sha: string) => Promise<ParsedContent>;
+  public getParsedContent: (
+    filename: string,
+    sha: string
+  ) => Promise<ParsedContent>;
 
   constructor({
     getPullRequestFiles,
@@ -116,13 +119,14 @@ export class RequireFilenameEIPNum implements IRequireFilenameEIPNum {
     }
   };
 
-  attemptNewFileNoEIPNumber = async (filename: string, path: string) => {
+  attemptNewFileNoEIPNumber = async (filename: string, path?: string) => {
+    if (!path) return;
     const PR = await this.requirePr();
 
-    let isNewFile = await this.getParsedContent(filename, PR.base.sha)
+    let isNewFile = await this.getParsedContent(path, PR.base.sha)
       .then((res) => false)
       .catch((err) => {
-        if (!isException(err)) {
+        if (isFileNotFound(err)) {
           return true;
         }
         throw err;
@@ -132,7 +136,6 @@ export class RequireFilenameEIPNum implements IRequireFilenameEIPNum {
     if (!isNewFile) {
       return;
     }
-
 
     const hasNoEIPNumber = EIP_NUM_RE.test(filename);
     // this edgecase is only relevant if the filename is not in expected format
@@ -162,7 +165,7 @@ export class RequireFilenameEIPNum implements IRequireFilenameEIPNum {
    * Extracts the EIP number from a given filename (or returns null)
    * @param filename EIP filename
    */
-  requireFilenameEipNum = async (filename: string, path: string) => {
+  requireFilenameEipNum = async (filename: string, path?: string) => {
     const eipNumMatch = filename.match(EIP_NUM_RE);
     if (!eipNumMatch || eipNumMatch[1] === undefined) {
       await this.attemptAssetGracefulTermination(filename);

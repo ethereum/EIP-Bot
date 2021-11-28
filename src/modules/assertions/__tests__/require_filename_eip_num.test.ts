@@ -23,11 +23,13 @@ describe("requireFilenameEipNum", () => {
   const getPullRequestFiles = jest.fn();
   const requirePr = jest.fn();
   const getApprovals = jest.fn();
+  const getParsedContent = jest.fn();
   const _RequireFilenameEIPNum = new RequireFilenameEIPNum({
     requireEIPEditors,
     getPullRequestFiles,
     requirePr,
-    getApprovals
+    getApprovals,
+    getParsedContent
   });
 
   const attemptEditorApproval = jest
@@ -58,7 +60,7 @@ describe("requireFilenameEipNum", () => {
     expect(eipNum).toBe(123);
   });
 
-  it("should not explode if filename doesn't match", async () => {
+  it("should explode if filename doesn't match", async () => {
     await expectError(() =>
       _RequireFilenameEIPNum.requireFilenameEipNum("eip-123")
     );
@@ -140,5 +142,47 @@ describe("requireFilenameEipNum", () => {
         );
       });
     });
+  });
+
+  describe("new file submission", () => {
+    const attemptNewFile = (path: string = "path") => {
+      return _RequireFilenameEIPNum.attemptNewFileNoEIPNumber(path, path);
+    };
+
+    it("should rethrow error if not of known type", async () => {
+      getParsedContent.mockRejectedValueOnce("erroorr");
+      await expectError(
+        () => attemptNewFile(),
+        "should rethrow error if not of known type"
+      );
+    });
+
+    const notFoundError = {
+      response: {
+        status: 404,
+        data: "Not Found"
+      }
+    }
+
+    it("should not throw if error is known file not found type", async () => {
+      getParsedContent.mockRejectedValueOnce(notFoundError);
+      expect(await attemptNewFile()).toBeUndefined();
+    });
+
+    it("should not throw exception if eip has a eip number", async () => {
+      getParsedContent.mockRejectedValueOnce(notFoundError);
+      expect(await attemptNewFile("EIPS/eip-4444.md")).toBeUndefined();
+    });
+
+    it("should not throw exception unless file is in EIPS folder and follows format", async () => {
+      getParsedContent.mockRejectedValueOnce(notFoundError);
+      expect(await attemptNewFile("assets/eip-draft_test.md")).toBeUndefined();
+    })
+
+    it("should throw requirement violation error", async () => {
+      getParsedContent.mockRejectedValueOnce(notFoundError);
+      const type = await attemptNewFile("EIPS/eip-draft_test.md").catch(err => err.type)
+      expect(type).toBe(Exceptions.requirementViolation)
+    })
   });
 });

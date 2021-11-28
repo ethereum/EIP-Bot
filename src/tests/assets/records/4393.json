@@ -1334,5 +1334,15 @@
         "performed_via_github_app": null
       }
     }
+  },
+  {
+    "req": {
+      "url": "https://api.github.com/repos/ethereum/EIPs/contents/eip-micropayments_standard_for_nfts_and_multi_tokens.md?ref=6b3462063f2173fdacde15e514c2cbe6a23ac62f",
+      "method": "GET"
+    },
+    "res": {
+      "status": 404,
+      "data": "Not Found"
+    }
   }
 ]

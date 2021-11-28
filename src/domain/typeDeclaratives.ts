@@ -2,6 +2,7 @@ import _ from "lodash";
 import { AND, OR } from "#/utils";
 import { Encodings, encodings } from "src/domain";
 import { RequirementViolation, UnexpectedError } from "src/domain/exceptions";
+import { Opaque } from "type-fest";
 
 /** includes a check for NaN and general falsey */
 export const isDefined = <T>(
@@ -41,3 +42,8 @@ export function requireEncoding(
 export function castTo<CastToThisType>(value: any): CastToThisType {
   return value;
 }
+
+type FileNotFound = Opaque<NodeJS.ErrnoException>;
+export const isFileNotFound = (err: any): err is FileNotFound => {
+  return AND(err.response?.status === 404, err.response?.data === "Not Found");
+};
