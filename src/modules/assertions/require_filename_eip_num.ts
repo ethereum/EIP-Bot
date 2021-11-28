@@ -1,6 +1,15 @@
-import { ASSETS_EIP_NUM, EIP_NUM_RE, File, FileDiff, PR } from "src/domain";
+import {
+  ASSETS_EIP_NUM,
+  EIP_NUM_RE,
+  File,
+  FILE_IN_EIP_FOLDER,
+  FileDiff,
+  ParsedContent,
+  PR
+} from "src/domain";
 import {
   GracefulTermination,
+  isException,
   RequirementViolation,
   UnexpectedError
 } from "src/domain/exceptions";
@@ -13,22 +22,26 @@ export class RequireFilenameEIPNum implements IRequireFilenameEIPNum {
   public requirePr: () => Promise<PR>;
   public requireEIPEditors: (fileDiff?: FileDiff | undefined) => string[];
   public getApprovals: () => Promise<string[]>;
+  public getParsedContent: (filename: string, sha: string) => Promise<ParsedContent>;
 
   constructor({
     getPullRequestFiles,
     requirePr,
     requireEIPEditors,
-    getApprovals
+    getApprovals,
+    getParsedContent
   }: {
     getPullRequestFiles: (pullNumber: number) => Promise<File[]>;
     requirePr: () => Promise<PR>;
     requireEIPEditors: (fileDiff?: FileDiff | undefined) => string[];
     getApprovals: () => Promise<string[]>;
+    getParsedContent: (filename: string, sha: string) => Promise<ParsedContent>;
   }) {
     this.getPullRequestFiles = getPullRequestFiles;
     this.requirePr = requirePr;
     this.requireEIPEditors = requireEIPEditors;
     this.getApprovals = getApprovals;
+    this.getParsedContent = getParsedContent;
   }
 
   public attemptAssetGracefulTermination = async (filename: string) => {
@@ -103,15 +116,58 @@ export class RequireFilenameEIPNum implements IRequireFilenameEIPNum {
     }
   };
 
+  attemptNewFileNoEIPNumber = async (filename: string, path: string) => {
+    const PR = await this.requirePr();
+
+    let isNewFile = await this.getParsedContent(filename, PR.base.sha)
+      .then((res) => false)
+      .catch((err) => {
+        if (!isException(err)) {
+          return true;
+        }
+        throw err;
+      });
+
+    // if it's not a new file then the edgecase doesn't apply
+    if (!isNewFile) {
+      return;
+    }
+
+
+    const hasNoEIPNumber = EIP_NUM_RE.test(filename);
+    // this edgecase is only relevant if the filename is not in expected format
+    if (hasNoEIPNumber) {
+      return;
+    }
+
+    // this only applies to files in the eips folder
+    const isInEIPSFolder = FILE_IN_EIP_FOLDER.test(path);
+    if (!isInEIPSFolder) {
+      return;
+    }
+
+    const editors = this.requireEIPEditors();
+
+    throw new RequirementViolation(
+      multiLineString(" ")(
+        `file '${filename}' is not a valid eip file name;`,
+        `all eip files need to be in eip-####.md format. It's assumed`,
+        `however that this has been included because an eip number`,
+        `has not been provided for this eip yet. cc ${editors.join(",")}`
+      )
+    );
+  };
+
   /**
    * Extracts the EIP number from a given filename (or returns null)
    * @param filename EIP filename
    */
-  requireFilenameEipNum = async (filename: string) => {
+  requireFilenameEipNum = async (filename: string, path: string) => {
     const eipNumMatch = filename.match(EIP_NUM_RE);
     if (!eipNumMatch || eipNumMatch[1] === undefined) {
       await this.attemptAssetGracefulTermination(filename);
       await this.attemptEditorApprovalGracefulTermination(filename);
+      await this.attemptNewFileNoEIPNumber(filename, path);
       throw new RequirementViolation(
         `'${filename}' must be in eip-###.md format; this error will be overwritten upon relevant editor approval`
       );

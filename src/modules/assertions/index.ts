@@ -16,6 +16,7 @@ import { getPullRequestFiles, getRepoFilenameContent } from "src/infra";
 import { AssertValidFilename } from "#/assertions/assert_valid_filename";
 import { RequireFilenameEIPNum } from "./require_filename_eip_num";
 import { getApprovals } from "../approvals";
+import { getParsedContent } from "../utils/get_parsed_content";
 
 export * from "./require_pull_number";
 export * from "./require_event";
@@ -58,7 +59,8 @@ const _RequireFilenameEIPNum = new RequireFilenameEIPNum({
   getPullRequestFiles,
   requirePr,
   requireEIPEditors,
-  getApprovals
+  getApprovals,
+  getParsedContent
 });
 export const requireFilenameEipNum = castTo<
   typeof _RequireFilenameEIPNum.requireFilenameEipNum

@@ -2,12 +2,12 @@ import { File, FILE_RE } from "src/domain";
 import { IAssertValidFilename } from "#/assertions/Domain/types";
 
 export class AssertValidFilename implements IAssertValidFilename {
-  requireFilenameEipNum: (filename: string) => Promise<number>;
+  requireFilenameEipNum: (filename: string, path: string) => Promise<number>;
 
   constructor({
     requireFilenameEipNum
   }: {
-    requireFilenameEipNum: (filename: string) => Promise<number>;
+    requireFilenameEipNum: (filename: string, path: string) => Promise<number>;
   }) {
     this.requireFilenameEipNum = requireFilenameEipNum;
   }
@@ -28,7 +28,8 @@ export class AssertValidFilename implements IAssertValidFilename {
     }
 
     // EIP number is defined within the filename and can be parsed
-    const filenameEipNum = await this.requireFilenameEipNum(filename);
+    // filename is actually path when fetching directly
+    const filenameEipNum = await this.requireFilenameEipNum(filename, filename);
     if (!filenameEipNum) {
       return `No EIP number was found to be associated with filename ${filename}`;
     }

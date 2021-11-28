@@ -104,10 +104,15 @@ export enum SavedRecord {
    * it was due to the fact unhandled errors never triggered a critical failure
    */
   PR4478 = "4478",
-  /**n
-nvc
+  /**
    * NOTE: this is up to date as of 11/26/2021, the PR is open as of writing this
-   * @summary: this is an eip-1 PR that recognizes and complains about
+   * @summary: this is a PR that is adding a new eip file that has not had its
+   * eip number assigned yet. The bot was complaining about the fact the initial
+   * file name was EIPS/{summary_of_eip}.md instead of EIPS/eip-####.md; it was
+   * requested that the bot allow for this and instead notify the editors
+   *
+   * p.s. this should fail with an error that mentions editors need to assign
+   * an eip number
    */
   PR4393 = "4393",
   /**

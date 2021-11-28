@@ -1,7 +1,6 @@
 import {
   assertCategory,
   AUTHOR_RE,
-  ContentFile,
   File,
   FileDiff,
   FormattedFile,
@@ -10,18 +9,19 @@ import {
   isNockNoMatchingRequest,
   matchAll,
   ParsedContent,
-  PR,
-  requireEncoding
+  PR
 } from "src/domain";
-import frontmatter from "front-matter";
 import { IFileDiff } from "#/file/domain/types";
-import { getRepoFilenameContent, resolveUserByEmail } from "src/infra";
-import { UnexpectedError } from "src/domain/exceptions";
+import { resolveUserByEmail } from "src/infra";
 
 export class FileDiffInfra implements IFileDiff {
   constructor(
-    public requireFilenameEipNum: (filename: string) => Promise<number>,
-    public requirePr: () => Promise<PR>
+    public requireFilenameEipNum: (filename: string, path: string) => Promise<number>,
+    public requirePr: () => Promise<PR>,
+    public getParsedContent: (
+      filename: string,
+      sha: string
+    ) => Promise<ParsedContent>
   ) {}
 
   /**
@@ -56,12 +56,7 @@ export class FileDiffInfra implements IFileDiff {
   };
 
   formatFile = async (file: ParsedContent): Promise<FormattedFile> => {
-    const filenameEipNum = await this.requireFilenameEipNum(file.name);
-    if (!filenameEipNum) {
-      throw new UnexpectedError(
-        `Failed to extract eip number from file "${file.path}"`
-      );
-    }
+    const filenameEipNum = await this.requireFilenameEipNum(file.name, file.path);
 
     return {
       eipNum: file.content.attributes[FrontMatterAttributes.eip],
@@ -82,46 +77,6 @@ export class FileDiffInfra implements IFileDiff {
         fileName: file.name,
         maybeType: file.content.attributes[FrontMatterAttributes.type]
       }).type
-    };
-  };
-
-  getParsedContent = async (
-    filename: string,
-    sha: string
-  ): Promise<ParsedContent> => {
-    const decodeData = (data: ContentFile) => {
-      const encoding = data.encoding;
-      requireEncoding(encoding, filename);
-      return Buffer.from(data.content, encoding).toString();
-    };
-
-    // Collect the file contents at the given sha reference frame
-    const data = await getRepoFilenameContent(filename, sha).then(
-      (res) => res as ContentFile
-    );
-
-    // Assert type assumptions
-    if (!data?.content) {
-      throw new UnexpectedError(
-        `requested file ${filename} at ref sha ${sha} contains no content`
-      );
-    }
-    if (!data?.path) {
-      throw new UnexpectedError(
-        `requested file ${filename} at ref sha ${sha} has no path`
-      );
-    }
-    if (!data?.name) {
-      throw new UnexpectedError(
-        `requested file ${filename} at ref sha ${sha} has no name`
-      );
-    }
-
-    // Return parsed information
-    return {
-      path: data.path,
-      name: data.name,
-      content: frontmatter(decodeData(data))
     };
   };
 

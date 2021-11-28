@@ -226,16 +226,27 @@ describe("integration testing edgecases associated with editors", () => {
     });
   });
 
-  // describe("Pull 4393", () => {
-  //   it("should succeed", async () => {
-  //     process.env = envFactory({
-  //       PULL_NUMBER: SavedRecord.PR4393
-  //     });
-  //
-  //     await __MAIN_MOCK__();
-  //     expect(setFailedMock).toBeCalled();
-  //   })
-  // })
+  describe("Pull 4393", () => {
+    it("should fail", async () => {
+      process.env = envFactory({
+        PULL_NUMBER: SavedRecord.PR4393
+      });
+
+      await __MAIN_MOCK__();
+      expect(setFailedMock).toBeCalled();
+    })
+
+    it("should fail and mention editors", async () => {
+      process.env = envFactory({
+        PULL_NUMBER: SavedRecord.PR4393,
+        ERC_EDITORS: "@abc"
+      });
+
+      await __MAIN_MOCK__();
+      const call = setFailedMock.mock.calls[0]![0]
+      expect(call).toMatch(/@abc/)
+    })
+  })
 
   // describe("Pull 4499", () => {
   //   it("should fail", async () => {

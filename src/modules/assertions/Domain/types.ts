@@ -3,7 +3,7 @@ import { Opaque } from "type-fest";
 
 export interface IRequireEditors {
   _requireEIPEditors: (EDITORS: string[], fileDiff?: FileDiff) => string[];
-  requireEIPEditors: (fileDiff: FileDiff) => string[];
+  requireEIPEditors: (fileDiff?: FileDiff) => string[];
 }
 
 export type PreexistingFile = Opaque<File>;
@@ -17,7 +17,12 @@ export interface IAssertValidFilename {
 }
 
 export interface IRequireFilenameEIPNum {
-  requireFilenameEipNum: (filename: string) => Promise<number>;
+  requireFilenameEipNum: (filename: string, path: string) => Promise<number>;
   attemptAssetGracefulTermination: (filename: string) => Promise<void>;
   attemptEditorApprovalGracefulTermination: (filename: string) => Promise<void>;
+  attemptNewFileNoEIPNumber: (filename: string, path: string) => Promise<void>
+}
+
+export interface IAssertNewEIPWithoutNumber {
+  assertNewEIPWithoutNumber: (fileDiff: FileDiff) => string | undefined
 }
