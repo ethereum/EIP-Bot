@@ -6,7 +6,6 @@ import {
   assertConstantEipNumber,
   assertConstantStatus,
   assertFilenameAndFileNumbersMatch,
-  assertHasAuthors,
   assertValidStatus,
   requireAuthors,
   requireEvent,
@@ -171,30 +170,6 @@ describe("Asserts", () => {
   afterEach(() => {
     clearContext(context);
     getOctokit.mockClear();
-  });
-
-  describe("assertHasAuthors", () => {
-    it("should return undefined when assert succeeds", () => {
-      const fileDiff = FileDiffFactory();
-      const res = assertHasAuthors(fileDiff);
-      // expect that no error occurs
-      expect(res).toBeUndefined();
-    });
-    it("should return error if no authors", () => {
-      const fileDiff = FileDiffFactory({
-        head: { authors: new Set() },
-        base: { authors: new Set() }
-      });
-      const res = assertHasAuthors(fileDiff);
-      // expect that an error occurs
-      expect(res).toBeDefined();
-    });
-    it("should only consider the authors at the base commit", () => {
-      const fileDiff = FileDiffFactory({ head: { authors: new Set() } });
-      const res = assertHasAuthors(fileDiff);
-      // expect that no error occurs
-      expect(res).toBeUndefined();
-    });
   });
 
   describe("assertFilenameAndFileNumbersMatch", () => {

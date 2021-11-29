@@ -1,7 +1,6 @@
 import { Context } from "@actions/github/lib/context";
 import actions from "@actions/github";
 import { set } from "lodash";
-import { PromiseValue } from "type-fest";
 import nock from "nock";
 import MockedEnv from "mocked-env";
 
@@ -91,89 +90,6 @@ export const mockGithubContext = (
   const getMock = () => mock;
 
   return getMock;
-};
-
-/**
- * note that there's a bug where if you want to do a promise.then it'll break
- * the types. instead first define it and put it in like mockDependency(.., func, "property")
- */
-export const mockDependency = <
-  Import extends () => Promise<any>,
-  MethodName extends keyof PromiseValue<ReturnType<Import>>,
-  ModulePath extends string
->(
-  modulePath: ModulePath,
-  moduleImport: Import,
-  methodName: keyof PromiseValue<ReturnType<Import>>,
-  returnValue?: ReturnType<PromiseValue<ReturnType<Import>>[MethodName]>
-) => {
-  function assertString(maybeString): asserts maybeString is string {
-    if (typeof maybeString !== "string") {
-      throw `method name ${methodName} is not a string but it must be a string`;
-    }
-  }
-
-  type Method = PromiseValue<ReturnType<Import>>[MethodName];
-  let methodMock: jest.MockedFunction<Method> = jest.fn();
-
-  beforeAll(async () => {
-    jest.mock(modulePath);
-    const module = await moduleImport();
-    assertString(methodName);
-    methodMock = module[methodName];
-
-    const keys = Object.keys(module);
-    for (const key of keys) {
-      if (key !== methodName) {
-        // module[key].mockRestore()
-      }
-    }
-  });
-
-  beforeEach(async () => {
-    const mock = await moduleImport();
-    methodMock = mock[methodName];
-    methodMock.mockReturnValue(returnValue);
-  });
-
-  afterEach(async () => {
-    const mock = await moduleImport();
-    methodMock = mock[methodName];
-    methodMock.mockClear();
-  });
-
-  afterAll(async () => {
-    const mock = await moduleImport();
-    methodMock = mock[methodName];
-    methodMock.mockRestore();
-  });
-
-  return { getMock: () => methodMock };
-};
-
-type InputType<T> = T extends (...args: infer Input) => any ? Input : never;
-/**
- *  returns a utility to be called within a test; this re-imports the dependency
- *  so that its dependencies are mockable
- */
-export const mockedActual = <
-  Import extends () => Promise<any>,
-  Key extends keyof PromiseValue<ReturnType<Import>>
->(
-  importPromise: Import,
-  methodName: Key
-) => {
-  // this is necesary and it's easier to define it here to make sure
-  // it's performed
-  beforeEach(() => {
-    jest.resetModules();
-  });
-  type Method = PromiseValue<ReturnType<Import>>[Key];
-  return async (...args: InputType<Method>): Promise<ReturnType<Method>> => {
-    const module = await importPromise();
-    const method = module[methodName];
-    return method(...args);
-  };
 };
 
 export const initGeneralTestEnv = () => {

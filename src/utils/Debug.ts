@@ -18,7 +18,7 @@ export const __MAIN__ = async (debugEnv?: NodeJS.ProcessEnv) => {
   return await main();
 };
 
-const setDebugContext = (debugEnv?: NodeJS.ProcessEnv) => {
+export const setDebugContext = (debugEnv?: NodeJS.ProcessEnv) => {
   const env = { ...process.env, ...debugEnv };
   process.env = env;
 

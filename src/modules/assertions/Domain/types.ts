@@ -23,6 +23,13 @@ export interface IRequireFilenameEIPNum {
   attemptNewFileNoEIPNumber: (filename: string, path: string) => Promise<void>;
 }
 
-export interface IAssertNewEIPWithoutNumber {
-  assertNewEIPWithoutNumber: (fileDiff: FileDiff) => string | undefined;
+export interface IAssertHasAuthors {
+  /**
+   * assert that authors exist for the EIP at the PRs base commit
+   *
+   * @param file file diff of a given file
+   * @returns list of raw author data
+   */
+  assertHasAuthors: (file: FileDiff) => string | undefined
 }
+

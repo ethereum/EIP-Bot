@@ -1,5 +1,5 @@
 import { initGeneralTestEnv, mockGithubContext } from "src/tests/testutils";
-import { EVENTS } from "src/domain";
+import { EVENTS, File } from "src/domain";
 import { FileFactory } from "src/tests/factories/fileFactory";
 import { AssertValidFilename } from "#/assertions/assert_valid_filename";
 
@@ -34,21 +34,17 @@ describe("require_file_preexisting", () => {
       FileFactory({ filename: "eip-a.md" }),
       FileFactory({ filename: "eip-123.js" })
     ];
-    // @ts-expect-error below is an invalid type error
     expect(
-      await _AssertValidFilename.assertValidFilename(files[0])
+      await _AssertValidFilename.assertValidFilename(files[0] as File)
     ).toBeDefined();
-    // @ts-expect-error below is an invalid type error
     expect(
-      await _AssertValidFilename.assertValidFilename(files[1])
+      await _AssertValidFilename.assertValidFilename(files[1] as File)
     ).toBeDefined();
-    // @ts-expect-error below is an invalid type error
     expect(
-      await _AssertValidFilename.assertValidFilename(files[2])
+      await _AssertValidFilename.assertValidFilename(files[2] as File)
     ).toBeDefined();
-    // @ts-expect-error below is an invalid type error
     expect(
-      await _AssertValidFilename.assertValidFilename(files[3])
+      await _AssertValidFilename.assertValidFilename(files[3] as File)
     ).toBeDefined();
   });
 });
