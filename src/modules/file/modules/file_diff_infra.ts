@@ -17,7 +17,6 @@ import { resolveUserByEmail } from "src/infra";
 export class FileDiffInfra implements IFileDiff {
   constructor(
     public requireFilenameEipNum: (
-      filename: string,
       path: string
     ) => Promise<number>,
     public requirePr: () => Promise<PR>,
@@ -60,7 +59,6 @@ export class FileDiffInfra implements IFileDiff {
 
   formatFile = async (file: ParsedContent): Promise<FormattedFile> => {
     const filenameEipNum = await this.requireFilenameEipNum(
-      file.name,
       file.path
     );
 

@@ -118,7 +118,26 @@ export enum SavedRecord {
   /**
    * @summary: a change to eip-1 that's not able to discern the authors
    */
-  PR4499 = "4499"
+  PR4499 = "4499",
+  /**
+   *
+   * @summary: the bot didn't fail gracefully on an asset file because the filename
+   * provided was just the file's name instead of the path; I made all of the uses
+   * of requireEIPNumber use path instead
+   * @description: the bot reported
+   * > ## (fail) eip-3448.md
+   * > - eip-3448 state was changed from draft to review
+   * > - This PR requires review from one of [@micahzoltu, @lightclient, @axic]
+   * > ## (fail) assets/eip-3448/MetaProxyFactory.sol
+   * > - 'MetaProxyFactory.sol' must be in eip-###.md format; this error will be overwritten upon relevant editor approval
+   *
+   * but it should have had a graceful failure on the assets/eip-3448/MetaProxyFactory.sol
+   *
+   * The problem was that it was evaluating the filename (MetaProxyFactory.sol) instead
+   * of the path (assets/eip-3448/MetaProxyFactory.sol) so the code had no way
+   * of knowing.
+   */
+  PR4506 = "4506"
 }
 
 /**
@@ -160,6 +179,7 @@ export const getMockRecords = async () => {
   const PR4478 = await import("./4478.json");
   const PR4393 = await import("./4393.json");
   const PR4499 = await import("./4499.json");
+  const PR4506 = await import("./4506.json");
 
   assertMethods(PR3767);
   assertMethods(PR3676);
@@ -176,6 +196,7 @@ export const getMockRecords = async () => {
   assertMethods(PR4189);
   assertMethods(PR4478);
   assertMethods(PR4393);
+  assertMethods(PR4506);
 
   const Records: { [k in keyof typeof SavedRecord]: MockRecord[] } = {
     PR3596: PR3596.default,
@@ -193,7 +214,8 @@ export const getMockRecords = async () => {
     PR4189: PR4189.default,
     PR4478: PR4478.default,
     PR4393: PR4393.default,
-    PR4499: PR4499.default
+    PR4499: PR4499.default,
+    PR4506: PR4506.default
   };
   return Records;
 };

@@ -47,16 +47,16 @@ export class RequireFilenameEIPNum implements IRequireFilenameEIPNum {
     this.getParsedContent = getParsedContent;
   }
 
-  public attemptAssetGracefulTermination = async (filename: string) => {
-    if (!ASSETS_EIP_NUM.test(filename)) {
+  public attemptAssetGracefulTermination = async (path: string) => {
+    if (!ASSETS_EIP_NUM.test(path)) {
       return;
     }
 
-    const assetEipNumMatch = filename.match(ASSETS_EIP_NUM);
+    const assetEipNumMatch = path.match(ASSETS_EIP_NUM);
     if (!assetEipNumMatch || assetEipNumMatch[1] === undefined) {
       throw new UnexpectedError(
         multiLineString(" ")(
-          `The filename '${filename}' is seen to match an asset file but`,
+          `The filename '${path}' is seen to match an asset file but`,
           `the extracted eip number is undefined`
         )
       );
@@ -69,7 +69,7 @@ export class RequireFilenameEIPNum implements IRequireFilenameEIPNum {
 
     for (const otherFilename of filenames) {
       // if other filename is same as current one then skip
-      if (otherFilename === filename) {
+      if (otherFilename === path) {
         continue;
       }
 
@@ -83,7 +83,7 @@ export class RequireFilenameEIPNum implements IRequireFilenameEIPNum {
       if (eipNum === assetEipNum) {
         throw new GracefulTermination(
           multiLineString(" ")(
-            `file ${filename} is associated with EIP ${assetEipNum}; because`,
+            `file ${path} is associated with EIP ${assetEipNum}; because`,
             `there are also changes being made to ${otherFilename} all changes`,
             `to corresponding assets are also allowed`
           )
@@ -92,7 +92,7 @@ export class RequireFilenameEIPNum implements IRequireFilenameEIPNum {
     }
     throw new RequirementViolation(
       multiLineString(" ")(
-        `file ${filename} is associated with EIP ${assetEipNum} but there`,
+        `file ${path} is associated with EIP ${assetEipNum} but there`,
         `are no changes being made to corresponding EIP itself. To assure`,
         `that the change is authorized by the relevant stake-holders, you must`,
         `also make changes to the EIP file itself for the asset changes to`,
@@ -119,7 +119,7 @@ export class RequireFilenameEIPNum implements IRequireFilenameEIPNum {
     }
   };
 
-  attemptNewFileNoEIPNumber = async (filename: string, path?: string) => {
+  attemptNewFileNoEIPNumber = async (path?: string) => {
     if (!path) return;
     const PR = await this.requirePr();
 
@@ -137,7 +137,7 @@ export class RequireFilenameEIPNum implements IRequireFilenameEIPNum {
       return;
     }
 
-    const hasNoEIPNumber = EIP_NUM_RE.test(filename);
+    const hasNoEIPNumber = EIP_NUM_RE.test(path);
     // this edgecase is only relevant if the filename is not in expected format
     if (hasNoEIPNumber) {
       return;
@@ -153,7 +153,7 @@ export class RequireFilenameEIPNum implements IRequireFilenameEIPNum {
 
     throw new RequirementViolation(
       multiLineString(" ")(
-        `file '${filename}' is not a valid eip file name;`,
+        `file '${path}' is not a valid eip file name;`,
         `all eip files need to be in eip-####.md format. It's assumed`,
         `however that this has been included because an eip number`,
         `has not been provided for this eip yet. cc ${editors.join(",")}`
@@ -165,14 +165,14 @@ export class RequireFilenameEIPNum implements IRequireFilenameEIPNum {
    * Extracts the EIP number from a given filename (or returns null)
    * @param filename EIP filename
    */
-  requireFilenameEipNum = async (filename: string, path?: string) => {
-    const eipNumMatch = filename.match(EIP_NUM_RE);
+  requireFilenameEipNum = async (path: string) => {
+    const eipNumMatch = path.match(EIP_NUM_RE);
     if (!eipNumMatch || eipNumMatch[1] === undefined) {
-      await this.attemptAssetGracefulTermination(filename);
-      await this.attemptEditorApprovalGracefulTermination(filename);
-      await this.attemptNewFileNoEIPNumber(filename, path);
+      await this.attemptAssetGracefulTermination(path);
+      await this.attemptEditorApprovalGracefulTermination(path);
+      await this.attemptNewFileNoEIPNumber(path);
       throw new RequirementViolation(
-        `'${filename}' must be in eip-###.md format; this error will be overwritten upon relevant editor approval`
+        `'${path}' must be in eip-###.md format; this error will be overwritten upon relevant editor approval`
       );
     }
     return eipNumMatch && parseInt(eipNumMatch[1]);

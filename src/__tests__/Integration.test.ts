@@ -8,6 +8,11 @@ import nock from "nock";
 import { PromiseValue } from "type-fest";
 import { EIPCategory, EIPTypeOrCategoryToResolver, EIPTypes } from "src/domain";
 import { assertDefined } from "src/domain/typeDeclaratives";
+import { getPullRequestFiles, getPullRequestFromNumber } from "src/infra";
+import { RequireFilenameEIPNum } from "#/assertions/require_filename_eip_num";
+import { getApprovals } from "#/approvals";
+import { getParsedContent } from "#/utils/get_parsed_content";
+import { Exceptions } from "src/domain/exceptions";
 
 describe("integration testing edgecases associated with editors", () => {
   const setFailedMock = jest
@@ -245,6 +250,36 @@ describe("integration testing edgecases associated with editors", () => {
       await __MAIN_MOCK__();
       const call = setFailedMock.mock.calls[0]![0];
       expect(call).toMatch(/@abc/);
+    });
+  });
+
+  describe("Pull 4506", () => {
+    it("should fail", async () => {
+      process.env = envFactory({
+        PULL_NUMBER: SavedRecord.PR4506
+      });
+
+      await __MAIN_MOCK__();
+      expect(setFailedMock).toBeCalled();
+    });
+
+    it("should fail gracefully on assets/eip-3448/MetaProxyFactory.sol", async () => {
+      process.env = envFactory({
+        PULL_NUMBER: SavedRecord.PR4506
+      });
+      const PR = await getPullRequestFromNumber(parseInt(SavedRecord.PR4506));
+      const _RequireFilenameEIPNum = new RequireFilenameEIPNum({
+        getPullRequestFiles: getPullRequestFiles,
+        requirePr: jest.fn().mockResolvedValue(PR),
+        requireEIPEditors: jest.fn().mockReturnValue(["@editor1", "@editor2"]),
+        getApprovals: getApprovals,
+        getParsedContent: getParsedContent
+      });
+
+      const exceptionType = await _RequireFilenameEIPNum
+        .requireFilenameEipNum("assets/eip-3448/MetaProxyFactory.sol")
+        .catch((err) => err.type);
+      expect(exceptionType).toBe(Exceptions.gracefulTermination);
     });
   });
 

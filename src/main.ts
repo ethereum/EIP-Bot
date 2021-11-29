@@ -7,7 +7,6 @@ import {
 } from "#/assertions";
 import { postComment } from "#/components";
 import {
-  COMMENT_HEADER,
   isNockDisallowedNetConnect,
   isNockNoMatchingRequest,
   NodeEnvs,
@@ -19,28 +18,7 @@ import { processError } from "src/domain/exceptions";
 import { multiLineString } from "#/utils";
 import { testFile } from "#/main/test_file";
 import { purifyTestResults } from "#/main/purify_test_results";
-
-const getCommentMessage = (results: Results, header?: string) => {
-  if (!results.length) return "There were no results cc @alita-moore";
-  const comment: string[] = [];
-
-  comment.push(header || COMMENT_HEADER);
-  comment.push("---");
-  for (const { filename, errors, successMessage } of results) {
-    if (!errors) {
-      comment.push(`## (pass) ${filename}`);
-      const message = `\t` + (successMessage || "passed!");
-      comment.push(message);
-      continue;
-    }
-
-    comment.push(`## (fail) ${filename}`);
-    for (const error of errors) {
-      comment.push(`- ${error}`);
-    }
-  }
-  return comment.join("\n");
-};
+import { getCommentMessage } from "#/main/get_comment_message";
 
 export const _main_ = async () => {
   // Verify correct environment and request context
@@ -112,7 +90,7 @@ export const _main = (_main_: () => Promise<undefined | void>) => async () => {
       throw error;
     }
     const message = multiLineString("\n")(
-      `A critical exception has occured (cc @alita-moore):`,
+      `A critical exception has occurred (cc @alita-moore):`,
       `\tMessage: ${error.error || error.message?.toLowerCase()}`,
       error.data && `\tData:\n${JSON.stringify(error.data, null, 2)}`
     );

@@ -1,0 +1,680 @@
+[
+  {
+    "req": {
+      "url": "https://api.github.com/repos/ethereum/EIPs/pulls/4506",
+      "method": "GET"
+    },
+    "res": {
+      "status": 200,
+      "data": {
+        "url": "https://api.github.com/repos/ethereum/EIPs/pulls/4506",
+        "id": 790217266,
+        "node_id": "PR_kwDOAq426M4vGcIy",
+        "html_url": "https://github.com/ethereum/EIPs/pull/4506",
+        "diff_url": "https://github.com/ethereum/EIPs/pull/4506.diff",
+        "patch_url": "https://github.com/ethereum/EIPs/pull/4506.patch",
+        "issue_url": "https://api.github.com/repos/ethereum/EIPs/issues/4506",
+        "number": 4506,
+        "state": "open",
+        "locked": false,
+        "title": "EIP-3448: Include references & examples and bump status to Review",
+        "user": {
+          "login": "pinkiebell",
+          "id": 40266861,
+          "node_id": "MDQ6VXNlcjQwMjY2ODYx",
+          "avatar_url": "https://avatars.githubusercontent.com/u/40266861?v=4",
+          "gravatar_id": "",
+          "url": "https://api.github.com/users/pinkiebell",
+          "html_url": "https://github.com/pinkiebell",
+          "followers_url": "https://api.github.com/users/pinkiebell/followers",
+          "following_url": "https://api.github.com/users/pinkiebell/following{/other_user}",
+          "gists_url": "https://api.github.com/users/pinkiebell/gists{/gist_id}",
+          "starred_url": "https://api.github.com/users/pinkiebell/starred{/owner}{/repo}",
+          "subscriptions_url": "https://api.github.com/users/pinkiebell/subscriptions",
+          "organizations_url": "https://api.github.com/users/pinkiebell/orgs",
+          "repos_url": "https://api.github.com/users/pinkiebell/repos",
+          "events_url": "https://api.github.com/users/pinkiebell/events{/privacy}",
+          "received_events_url": "https://api.github.com/users/pinkiebell/received_events",
+          "type": "User",
+          "site_admin": false
+        },
+        "body": null,
+        "created_at": "2021-11-29T00:50:51Z",
+        "updated_at": "2021-11-29T00:52:12Z",
+        "closed_at": null,
+        "merged_at": null,
+        "merge_commit_sha": "514dd45799a51f5b309db275a79608786204e953",
+        "assignee": null,
+        "assignees": [],
+        "requested_reviewers": [],
+        "requested_teams": [],
+        "labels": [],
+        "milestone": null,
+        "draft": false,
+        "commits_url": "https://api.github.com/repos/ethereum/EIPs/pulls/4506/commits",
+        "review_comments_url": "https://api.github.com/repos/ethereum/EIPs/pulls/4506/comments",
+        "review_comment_url": "https://api.github.com/repos/ethereum/EIPs/pulls/comments{/number}",
+        "comments_url": "https://api.github.com/repos/ethereum/EIPs/issues/4506/comments",
+        "statuses_url": "https://api.github.com/repos/ethereum/EIPs/statuses/23c85ee9628090968ee56e7d52951064bde490bb",
+        "head": {
+          "label": "pinkiebell:eip-3448",
+          "ref": "eip-3448",
+          "sha": "23c85ee9628090968ee56e7d52951064bde490bb",
+          "user": {
+            "login": "pinkiebell",
+            "id": 40266861,
+            "node_id": "MDQ6VXNlcjQwMjY2ODYx",
+            "avatar_url": "https://avatars.githubusercontent.com/u/40266861?v=4",
+            "gravatar_id": "",
+            "url": "https://api.github.com/users/pinkiebell",
+            "html_url": "https://github.com/pinkiebell",
+            "followers_url": "https://api.github.com/users/pinkiebell/followers",
+            "following_url": "https://api.github.com/users/pinkiebell/following{/other_user}",
+            "gists_url": "https://api.github.com/users/pinkiebell/gists{/gist_id}",
+            "starred_url": "https://api.github.com/users/pinkiebell/starred{/owner}{/repo}",
+            "subscriptions_url": "https://api.github.com/users/pinkiebell/subscriptions",
+            "organizations_url": "https://api.github.com/users/pinkiebell/orgs",
+            "repos_url": "https://api.github.com/users/pinkiebell/repos",
+            "events_url": "https://api.github.com/users/pinkiebell/events{/privacy}",
+            "received_events_url": "https://api.github.com/users/pinkiebell/received_events",
+            "type": "User",
+            "site_admin": false
+          },
+          "repo": {
+            "id": 218933404,
+            "node_id": "MDEwOlJlcG9zaXRvcnkyMTg5MzM0MDQ=",
+            "name": "EIPs",
+            "full_name": "pinkiebell/EIPs",
+            "private": false,
+            "owner": {
+              "login": "pinkiebell",
+              "id": 40266861,
+              "node_id": "MDQ6VXNlcjQwMjY2ODYx",
+              "avatar_url": "https://avatars.githubusercontent.com/u/40266861?v=4",
+              "gravatar_id": "",
+              "url": "https://api.github.com/users/pinkiebell",
+              "html_url": "https://github.com/pinkiebell",
+              "followers_url": "https://api.github.com/users/pinkiebell/followers",
+              "following_url": "https://api.github.com/users/pinkiebell/following{/other_user}",
+              "gists_url": "https://api.github.com/users/pinkiebell/gists{/gist_id}",
+              "starred_url": "https://api.github.com/users/pinkiebell/starred{/owner}{/repo}",
+              "subscriptions_url": "https://api.github.com/users/pinkiebell/subscriptions",
+              "organizations_url": "https://api.github.com/users/pinkiebell/orgs",
+              "repos_url": "https://api.github.com/users/pinkiebell/repos",
+              "events_url": "https://api.github.com/users/pinkiebell/events{/privacy}",
+              "received_events_url": "https://api.github.com/users/pinkiebell/received_events",
+              "type": "User",
+              "site_admin": false
+            },
+            "html_url": "https://github.com/pinkiebell/EIPs",
+            "description": "The Ethereum Improvement Proposal repository",
+            "fork": true,
+            "url": "https://api.github.com/repos/pinkiebell/EIPs",
+            "forks_url": "https://api.github.com/repos/pinkiebell/EIPs/forks",
+            "keys_url": "https://api.github.com/repos/pinkiebell/EIPs/keys{/key_id}",
+            "collaborators_url": "https://api.github.com/repos/pinkiebell/EIPs/collaborators{/collaborator}",
+            "teams_url": "https://api.github.com/repos/pinkiebell/EIPs/teams",
+            "hooks_url": "https://api.github.com/repos/pinkiebell/EIPs/hooks",
+            "issue_events_url": "https://api.github.com/repos/pinkiebell/EIPs/issues/events{/number}",
+            "events_url": "https://api.github.com/repos/pinkiebell/EIPs/events",
+            "assignees_url": "https://api.github.com/repos/pinkiebell/EIPs/assignees{/user}",
+            "branches_url": "https://api.github.com/repos/pinkiebell/EIPs/branches{/branch}",
+            "tags_url": "https://api.github.com/repos/pinkiebell/EIPs/tags",
+            "blobs_url": "https://api.github.com/repos/pinkiebell/EIPs/git/blobs{/sha}",
+            "git_tags_url": "https://api.github.com/repos/pinkiebell/EIPs/git/tags{/sha}",
+            "git_refs_url": "https://api.github.com/repos/pinkiebell/EIPs/git/refs{/sha}",
+            "trees_url": "https://api.github.com/repos/pinkiebell/EIPs/git/trees{/sha}",
+            "statuses_url": "https://api.github.com/repos/pinkiebell/EIPs/statuses/{sha}",
+            "languages_url": "https://api.github.com/repos/pinkiebell/EIPs/languages",
+            "stargazers_url": "https://api.github.com/repos/pinkiebell/EIPs/stargazers",
+            "contributors_url": "https://api.github.com/repos/pinkiebell/EIPs/contributors",
+            "subscribers_url": "https://api.github.com/repos/pinkiebell/EIPs/subscribers",
+            "subscription_url": "https://api.github.com/repos/pinkiebell/EIPs/subscription",
+            "commits_url": "https://api.github.com/repos/pinkiebell/EIPs/commits{/sha}",
+            "git_commits_url": "https://api.github.com/repos/pinkiebell/EIPs/git/commits{/sha}",
+            "comments_url": "https://api.github.com/repos/pinkiebell/EIPs/comments{/number}",
+            "issue_comment_url": "https://api.github.com/repos/pinkiebell/EIPs/issues/comments{/number}",
+            "contents_url": "https://api.github.com/repos/pinkiebell/EIPs/contents/{+path}",
+            "compare_url": "https://api.github.com/repos/pinkiebell/EIPs/compare/{base}...{head}",
+            "merges_url": "https://api.github.com/repos/pinkiebell/EIPs/merges",
+            "archive_url": "https://api.github.com/repos/pinkiebell/EIPs/{archive_format}{/ref}",
+            "downloads_url": "https://api.github.com/repos/pinkiebell/EIPs/downloads",
+            "issues_url": "https://api.github.com/repos/pinkiebell/EIPs/issues{/number}",
+            "pulls_url": "https://api.github.com/repos/pinkiebell/EIPs/pulls{/number}",
+            "milestones_url": "https://api.github.com/repos/pinkiebell/EIPs/milestones{/number}",
+            "notifications_url": "https://api.github.com/repos/pinkiebell/EIPs/notifications{?since,all,participating}",
+            "labels_url": "https://api.github.com/repos/pinkiebell/EIPs/labels{/name}",
+            "releases_url": "https://api.github.com/repos/pinkiebell/EIPs/releases{/id}",
+            "deployments_url": "https://api.github.com/repos/pinkiebell/EIPs/deployments",
+            "created_at": "2019-11-01T07:16:14Z",
+            "updated_at": "2021-11-28T15:07:52Z",
+            "pushed_at": "2021-11-29T00:49:52Z",
+            "git_url": "git://github.com/pinkiebell/EIPs.git",
+            "ssh_url": "git@github.com:pinkiebell/EIPs.git",
+            "clone_url": "https://github.com/pinkiebell/EIPs.git",
+            "svn_url": "https://github.com/pinkiebell/EIPs",
+            "homepage": "http://eips.ethereum.org/",
+            "size": 21416,
+            "stargazers_count": 0,
+            "watchers_count": 0,
+            "language": "Solidity",
+            "has_issues": false,
+            "has_projects": true,
+            "has_downloads": true,
+            "has_wiki": false,
+            "has_pages": false,
+            "forks_count": 0,
+            "mirror_url": null,
+            "archived": false,
+            "disabled": false,
+            "open_issues_count": 0,
+            "license": null,
+            "allow_forking": true,
+            "is_template": false,
+            "topics": [],
+            "visibility": "public",
+            "forks": 0,
+            "open_issues": 0,
+            "watchers": 0,
+            "default_branch": "master"
+          }
+        },
+        "base": {
+          "label": "ethereum:master",
+          "ref": "master",
+          "sha": "d2c6f0fbdb6c0431743d49639965c7d5de3881d9",
+          "user": {
+            "login": "ethereum",
+            "id": 6250754,
+            "node_id": "MDEyOk9yZ2FuaXphdGlvbjYyNTA3NTQ=",
+            "avatar_url": "https://avatars.githubusercontent.com/u/6250754?v=4",
+            "gravatar_id": "",
+            "url": "https://api.github.com/users/ethereum",
+            "html_url": "https://github.com/ethereum",
+            "followers_url": "https://api.github.com/users/ethereum/followers",
+            "following_url": "https://api.github.com/users/ethereum/following{/other_user}",
+            "gists_url": "https://api.github.com/users/ethereum/gists{/gist_id}",
+            "starred_url": "https://api.github.com/users/ethereum/starred{/owner}{/repo}",
+            "subscriptions_url": "https://api.github.com/users/ethereum/subscriptions",
+            "organizations_url": "https://api.github.com/users/ethereum/orgs",
+            "repos_url": "https://api.github.com/users/ethereum/repos",
+            "events_url": "https://api.github.com/users/ethereum/events{/privacy}",
+            "received_events_url": "https://api.github.com/users/ethereum/received_events",
+            "type": "Organization",
+            "site_admin": false
+          },
+          "repo": {
+            "id": 44971752,
+            "node_id": "MDEwOlJlcG9zaXRvcnk0NDk3MTc1Mg==",
+            "name": "EIPs",
+            "full_name": "ethereum/EIPs",
+            "private": false,
+            "owner": {
+              "login": "ethereum",
+              "id": 6250754,
+              "node_id": "MDEyOk9yZ2FuaXphdGlvbjYyNTA3NTQ=",
+              "avatar_url": "https://avatars.githubusercontent.com/u/6250754?v=4",
+              "gravatar_id": "",
+              "url": "https://api.github.com/users/ethereum",
+              "html_url": "https://github.com/ethereum",
+              "followers_url": "https://api.github.com/users/ethereum/followers",
+              "following_url": "https://api.github.com/users/ethereum/following{/other_user}",
+              "gists_url": "https://api.github.com/users/ethereum/gists{/gist_id}",
+              "starred_url": "https://api.github.com/users/ethereum/starred{/owner}{/repo}",
+              "subscriptions_url": "https://api.github.com/users/ethereum/subscriptions",
+              "organizations_url": "https://api.github.com/users/ethereum/orgs",
+              "repos_url": "https://api.github.com/users/ethereum/repos",
+              "events_url": "https://api.github.com/users/ethereum/events{/privacy}",
+              "received_events_url": "https://api.github.com/users/ethereum/received_events",
+              "type": "Organization",
+              "site_admin": false
+            },
+            "html_url": "https://github.com/ethereum/EIPs",
+            "description": "The Ethereum Improvement Proposal repository",
+            "fork": false,
+            "url": "https://api.github.com/repos/ethereum/EIPs",
+            "forks_url": "https://api.github.com/repos/ethereum/EIPs/forks",
+            "keys_url": "https://api.github.com/repos/ethereum/EIPs/keys{/key_id}",
+            "collaborators_url": "https://api.github.com/repos/ethereum/EIPs/collaborators{/collaborator}",
+            "teams_url": "https://api.github.com/repos/ethereum/EIPs/teams",
+            "hooks_url": "https://api.github.com/repos/ethereum/EIPs/hooks",
+            "issue_events_url": "https://api.github.com/repos/ethereum/EIPs/issues/events{/number}",
+            "events_url": "https://api.github.com/repos/ethereum/EIPs/events",
+            "assignees_url": "https://api.github.com/repos/ethereum/EIPs/assignees{/user}",
+            "branches_url": "https://api.github.com/repos/ethereum/EIPs/branches{/branch}",
+            "tags_url": "https://api.github.com/repos/ethereum/EIPs/tags",
+            "blobs_url": "https://api.github.com/repos/ethereum/EIPs/git/blobs{/sha}",
+            "git_tags_url": "https://api.github.com/repos/ethereum/EIPs/git/tags{/sha}",
+            "git_refs_url": "https://api.github.com/repos/ethereum/EIPs/git/refs{/sha}",
+            "trees_url": "https://api.github.com/repos/ethereum/EIPs/git/trees{/sha}",
+            "statuses_url": "https://api.github.com/repos/ethereum/EIPs/statuses/{sha}",
+            "languages_url": "https://api.github.com/repos/ethereum/EIPs/languages",
+            "stargazers_url": "https://api.github.com/repos/ethereum/EIPs/stargazers",
+            "contributors_url": "https://api.github.com/repos/ethereum/EIPs/contributors",
+            "subscribers_url": "https://api.github.com/repos/ethereum/EIPs/subscribers",
+            "subscription_url": "https://api.github.com/repos/ethereum/EIPs/subscription",
+            "commits_url": "https://api.github.com/repos/ethereum/EIPs/commits{/sha}",
+            "git_commits_url": "https://api.github.com/repos/ethereum/EIPs/git/commits{/sha}",
+            "comments_url": "https://api.github.com/repos/ethereum/EIPs/comments{/number}",
+            "issue_comment_url": "https://api.github.com/repos/ethereum/EIPs/issues/comments{/number}",
+            "contents_url": "https://api.github.com/repos/ethereum/EIPs/contents/{+path}",
+            "compare_url": "https://api.github.com/repos/ethereum/EIPs/compare/{base}...{head}",
+            "merges_url": "https://api.github.com/repos/ethereum/EIPs/merges",
+            "archive_url": "https://api.github.com/repos/ethereum/EIPs/{archive_format}{/ref}",
+            "downloads_url": "https://api.github.com/repos/ethereum/EIPs/downloads",
+            "issues_url": "https://api.github.com/repos/ethereum/EIPs/issues{/number}",
+            "pulls_url": "https://api.github.com/repos/ethereum/EIPs/pulls{/number}",
+            "milestones_url": "https://api.github.com/repos/ethereum/EIPs/milestones{/number}",
+            "notifications_url": "https://api.github.com/repos/ethereum/EIPs/notifications{?since,all,participating}",
+            "labels_url": "https://api.github.com/repos/ethereum/EIPs/labels{/name}",
+            "releases_url": "https://api.github.com/repos/ethereum/EIPs/releases{/id}",
+            "deployments_url": "https://api.github.com/repos/ethereum/EIPs/deployments",
+            "created_at": "2015-10-26T13:57:23Z",
+            "updated_at": "2021-11-29T00:35:03Z",
+            "pushed_at": "2021-11-29T00:50:51Z",
+            "git_url": "git://github.com/ethereum/EIPs.git",
+            "ssh_url": "git@github.com:ethereum/EIPs.git",
+            "clone_url": "https://github.com/ethereum/EIPs.git",
+            "svn_url": "https://github.com/ethereum/EIPs",
+            "homepage": "https://eips.ethereum.org/",
+            "size": 21570,
+            "stargazers_count": 7952,
+            "watchers_count": 7952,
+            "language": "Solidity",
+            "has_issues": true,
+            "has_projects": true,
+            "has_downloads": true,
+            "has_wiki": false,
+            "has_pages": true,
+            "forks_count": 2979,
+            "mirror_url": null,
+            "archived": false,
+            "disabled": false,
+            "open_issues_count": 480,
+            "license": null,
+            "allow_forking": true,
+            "is_template": false,
+            "topics": [],
+            "visibility": "public",
+            "forks": 2979,
+            "open_issues": 480,
+            "watchers": 7952,
+            "default_branch": "master"
+          }
+        },
+        "_links": {
+          "self": {
+            "href": "https://api.github.com/repos/ethereum/EIPs/pulls/4506"
+          },
+          "html": {
+            "href": "https://github.com/ethereum/EIPs/pull/4506"
+          },
+          "issue": {
+            "href": "https://api.github.com/repos/ethereum/EIPs/issues/4506"
+          },
+          "comments": {
+            "href": "https://api.github.com/repos/ethereum/EIPs/issues/4506/comments"
+          },
+          "review_comments": {
+            "href": "https://api.github.com/repos/ethereum/EIPs/pulls/4506/comments"
+          },
+          "review_comment": {
+            "href": "https://api.github.com/repos/ethereum/EIPs/pulls/comments{/number}"
+          },
+          "commits": {
+            "href": "https://api.github.com/repos/ethereum/EIPs/pulls/4506/commits"
+          },
+          "statuses": {
+            "href": "https://api.github.com/repos/ethereum/EIPs/statuses/23c85ee9628090968ee56e7d52951064bde490bb"
+          }
+        },
+        "author_association": "CONTRIBUTOR",
+        "auto_merge": null,
+        "active_lock_reason": null,
+        "merged": false,
+        "mergeable": true,
+        "rebaseable": true,
+        "mergeable_state": "blocked",
+        "merged_by": null,
+        "comments": 2,
+        "review_comments": 0,
+        "maintainer_can_modify": true,
+        "commits": 1,
+        "additions": 181,
+        "deletions": 11,
+        "changed_files": 2
+      }
+    }
+  },
+  {
+    "req": {
+      "url": "https://api.github.com/repos/ethereum/EIPs/pulls/4506/files",
+      "method": "GET"
+    },
+    "res": {
+      "status": 200,
+      "data": [
+        {
+          "sha": "28462ce07a682a66c11f91f964ae1978bce58484",
+          "filename": "EIPS/eip-3448.md",
+          "status": "modified",
+          "additions": 90,
+          "deletions": 11,
+          "changes": 101,
+          "blob_url": "https://github.com/ethereum/EIPs/blob/23c85ee9628090968ee56e7d52951064bde490bb/EIPS/eip-3448.md",
+          "raw_url": "https://github.com/ethereum/EIPs/raw/23c85ee9628090968ee56e7d52951064bde490bb/EIPS/eip-3448.md",
+          "contents_url": "https://api.github.com/repos/ethereum/EIPs/contents/EIPS/eip-3448.md?ref=23c85ee9628090968ee56e7d52951064bde490bb",
+          "patch": "@@ -1,9 +1,9 @@\n ---\n eip: 3448\n-title: Meta Proxy Factory\n+title: MetaProxy Standard\n author: pinkiebell (@pinkiebell)\n discussions-to: https://ethereum-magicians.org/t/erc-3448-metaproxy-factory/5834\n-status: Draft\n+status: Review\n type: Standards Track\n category: ERC\n created: 2021-03-29\n@@ -40,8 +40,6 @@ Additionally, everything after the MetaProxy bytecode can be arbitrary metadata\n <54 bytes metaproxy> <arbitrary data> <length in bytes of arbitrary data (uint256)>\n ```\n \n-A reference implementation of this can be found at the [pinkiebell/MetaProxy](https://github.com/pinkiebell/MetaProxy) GitHub repo.\n-\n ## Rationale\n The goals of this effort have been the following:\n - a cheap way of storing immutable metadata for each child instead of using storage slots\n@@ -52,19 +50,17 @@ The goals of this effort have been the following:\n There are no backwards compatibility issues.\n \n ## Test Cases\n-Test cases include:\n+Tested with:\n - invocation with no arguments\n - invocation with arguments\n - invocation with return values\n - invocation with revert (confirming reverted payload is transferred)\n \n-Tests for these cases are included in the reference implementation project.\n-\n ## Implementation\n-A reference implementation can be found at the [pinkiebell/MetaProxy](https://github.com/pinkiebell/MetaProxy) GitHub repo.\n+A reference implementation can be found [in the EIP asset directory](../assets/eip-3448/MetaProxyFactory.sol).\n \n ### Deployment bytecode\n-An annotated version of the deploy bytecode:\n+A annotated version of the deploy bytecode:\n ```\n // PUSH1 11;\n // CODESIZE;\n@@ -78,7 +74,7 @@ An annotated version of the deploy bytecode:\n ```\n \n ### MetaProxy\n-An annotated version of the MetaProxy bytecode:\n+A annotated version of the MetaProxy bytecode:\n ```\n // copy args\n // CALLDATASIZE;   calldatasize\n@@ -122,9 +118,92 @@ An annotated version of the MetaProxy bytecode:\n // RETURN;         (0, returndatasize()) if delegatecall returned non-zero (1)\n ```\n \n+### Examples\n+The following code snippets serve only as suggestions and are not a discrete part of this standard.\n+\n+#### Proxy construction with bytes from abi.encode\n+```solidity\n+/// @notice MetaProxy construction via abi encoded bytes.\n+function createFromBytes (\n+  address a,\n+  uint256 b,\n+  uint256[] calldata c\n+) external payable returns (address proxy) {\n+  // creates a new proxy where the metadata is the result of abi.encode()\n+  proxy = MetaProxyFactory._metaProxyFromBytes(address(this), abi.encode(a, b, c));\n+  require(proxy != address(0));\n+  // optional one-time setup, a constructor() substitute\n+  MyContract(proxy).init{ value: msg.value }();\n+}\n+```\n+\n+#### Proxy construction with bytes from calldata\n+```solidity\n+/// @notice MetaProxy construction via calldata.\n+function createFromCalldata (\n+  address a,\n+  uint256 b,\n+  uint256[] calldata c\n+) external payable returns (address proxy) {\n+  // creates a new proxy where the metadata is everything after the 4th byte from calldata.\n+  proxy = MetaProxyFactory._metaProxyFromCalldata(address(this));\n+  require(proxy != address(0));\n+  // optional one-time setup, a constructor() substitute\n+  MyContract(proxy).init{ value: msg.value }();\n+}\n+```\n+\n+#### Retrieving the metadata from calldata and abi.decode\n+```solidity\n+/// @notice Returns the metadata of this (MetaProxy) contract.\n+/// Only relevant with contracts created via the MetaProxy standard.\n+/// @dev This function is aimed to be invoked with- & without a call.\n+function getMetadataWithoutCall () public pure returns (\n+  address a,\n+  uint256 b,\n+  uint256[] memory c\n+) {\n+  bytes memory data;\n+  assembly {\n+    let posOfMetadataSize := sub(calldatasize(), 32)\n+    let size := calldataload(posOfMetadataSize)\n+    let dataPtr := sub(posOfMetadataSize, size)\n+    data := mload(64)\n+    // increment free memory pointer by metadata size + 32 bytes (length)\n+    mstore(64, add(data, add(size, 32)))\n+    mstore(data, size)\n+    let memPtr := add(data, 32)\n+    calldatacopy(memPtr, dataPtr, size)\n+  }\n+  return abi.decode(data, (address, uint256, uint256[]));\n+}\n+```\n+\n+#### Retrieving the metadata via a call to self\n+```solidity\n+/// @notice Returns the metadata of this (MetaProxy) contract.\n+/// Only relevant with contracts created via the MetaProxy standard.\n+/// @dev This function is aimed to to be invoked via a call.\n+function getMetadataViaCall () public pure returns (\n+  address a,\n+  uint256 b,\n+  uint256[] memory c\n+) {\n+  assembly {\n+    let posOfMetadataSize := sub(calldatasize(), 32)\n+    let size := calldataload(posOfMetadataSize)\n+    let dataPtr := sub(posOfMetadataSize, size)\n+    calldatacopy(0, dataPtr, size)\n+    return(0, size)\n+  }\n+}\n+```\n+\n+Apart from the examples above, it is also possible to use Solidity Structures or any custom data encoding.\n+\n ## Security Considerations\n This standard only covers the bytecode implementation and does not include any serious side effects of itself.\n-The reference implementation includes some examples how to make use of it, but it is highly recommended to research side effects depending on how the functionaliy is used and implemented in any project.\n+The reference implementation only serves as a example. It is highly recommended to research side effects depending on how the functionality is used and implemented in any project.\n \n ## Copyright\n Copyright and related rights waived via [CC0](https://creativecommons.org/publicdomain/zero/1.0/)."
+        },
+        {
+          "sha": "f2510d85b95bca1013c66fdba70b52843035c911",
+          "filename": "assets/eip-3448/MetaProxyFactory.sol",
+          "status": "added",
+          "additions": 91,
+          "deletions": 0,
+          "changes": 91,
+          "blob_url": "https://github.com/ethereum/EIPs/blob/23c85ee9628090968ee56e7d52951064bde490bb/assets/eip-3448/MetaProxyFactory.sol",
+          "raw_url": "https://github.com/ethereum/EIPs/raw/23c85ee9628090968ee56e7d52951064bde490bb/assets/eip-3448/MetaProxyFactory.sol",
+          "contents_url": "https://api.github.com/repos/ethereum/EIPs/contents/assets/eip-3448/MetaProxyFactory.sol?ref=23c85ee9628090968ee56e7d52951064bde490bb",
+          "patch": "@@ -0,0 +1,91 @@\n+pragma solidity >=0.7.6;\n+\n+contract MetaProxyFactory {\n+  /// @dev Creates a new proxy for `targetContract` with metadata from calldata.\n+  /// Copies everything from calldata except the first 4 bytes.\n+  /// @return addr A non-zero address if successful.\n+  function _metaProxyFromCalldata (address targetContract) internal returns (address addr) {\n+    // the following assembly code (init code + contract code) constructs a metaproxy.\n+    assembly {\n+      // load free memory pointer as per solidity convention\n+      let start := mload(64)\n+      // copy\n+      let ptr := start\n+      // deploy code (11 bytes) + first part of the proxy (21 bytes)\n+      mstore(ptr, 0x600b380380600b3d393df3363d3d373d3d3d3d60368038038091363936013d73)\n+      ptr := add(ptr, 32)\n+\n+      // store the address of the contract to be called\n+      mstore(ptr, shl(96, targetContract))\n+      // 20 bytes\n+      ptr := add(ptr, 20)\n+\n+      // the remaining proxy code...\n+      mstore(ptr, 0x5af43d3d93803e603457fd5bf300000000000000000000000000000000000000)\n+      // ...13 bytes\n+      ptr := add(ptr, 13)\n+\n+      // now calculdate the size and copy the metadata\n+      // - 4 bytes function signature\n+      let size := sub(calldatasize(), 4)\n+      // copy\n+      calldatacopy(ptr, 4, size)\n+      ptr := add(ptr, size)\n+      // store the size of the metadata at the end of the bytecode\n+      mstore(ptr, size)\n+      ptr := add(ptr, 32)\n+\n+      // The size is deploy code + contract code + calldatasize - 4 + 32.\n+      addr := create(0, start, sub(ptr, start))\n+    }\n+  }\n+\n+  /// @dev Creates a proxy for `targetContract` with metadata from `metadata`.\n+  /// @return A non-zero address if successful.\n+  function _metaProxyFromBytes (address targetContract, bytes memory metadata) internal returns (address) {\n+    uint256 ptr;\n+    assembly {\n+      ptr := add(metadata, 32)\n+    }\n+    return _metaProxyFromMemory(targetContract, ptr, metadata.length);\n+  }\n+\n+  /// @dev Creates a new proxy for `targetContract` with metadata from memory starting at `offset` and `length` bytes.\n+  /// @return addr A non-zero address if successful.\n+  function _metaProxyFromMemory (address targetContract, uint256 offset, uint256 length) internal returns (address addr) {\n+    // the following assembly code (init code + contract code) constructs a metaproxy.\n+    assembly {\n+      // load free memory pointer as per solidity convention\n+      let start := mload(64)\n+      // keep a copy\n+      let ptr := start\n+      // deploy code (11 bytes) + first part of the proxy (21 bytes)\n+      mstore(ptr, 0x600b380380600b3d393df3363d3d373d3d3d3d60368038038091363936013d73)\n+      ptr := add(ptr, 32)\n+\n+      // store the address of the contract to be called\n+      mstore(ptr, shl(96, targetContract))\n+      // 20 bytes\n+      ptr := add(ptr, 20)\n+\n+      // the remaining proxy code...\n+      mstore(ptr, 0x5af43d3d93803e603457fd5bf300000000000000000000000000000000000000)\n+      // ...13 bytes\n+      ptr := add(ptr, 13)\n+\n+      // copy the metadata\n+      {\n+        for { let i := 0 } lt(i, length) { i := add(i, 32) } {\n+          mstore(add(ptr, i), mload(add(offset, i)))\n+        }\n+      }\n+      ptr := add(ptr, length)\n+      // store the siz of the metadata at the end of the bytecode\n+      mstore(ptr, length)\n+      ptr := add(ptr, 32)\n+\n+      // The size is deploy code + contract code + calldatasize - 4 + 32.\n+      addr := create(0, start, sub(ptr, start))\n+    }\n+  }\n+}"
+        }
+      ]
+    }
+  },
+  {
+    "req": {
+      "url": "https://api.github.com/repos/ethereum/EIPs/contents/EIPS%2Feip-3448.md?ref=23c85ee9628090968ee56e7d52951064bde490bb",
+      "method": "GET"
+    },
+    "res": {
+      "status": 200,
+      "data": {
+        "name": "eip-3448.md",
+        "path": "EIPS/eip-3448.md",
+        "sha": "28462ce07a682a66c11f91f964ae1978bce58484",
+        "size": 8349,
+        "url": "https://api.github.com/repos/ethereum/EIPs/contents/EIPS/eip-3448.md?ref=23c85ee9628090968ee56e7d52951064bde490bb",
+        "html_url": "https://github.com/ethereum/EIPs/blob/23c85ee9628090968ee56e7d52951064bde490bb/EIPS/eip-3448.md",
+        "git_url": "https://api.github.com/repos/ethereum/EIPs/git/blobs/28462ce07a682a66c11f91f964ae1978bce58484",
+        "download_url": "https://raw.githubusercontent.com/ethereum/EIPs/23c85ee9628090968ee56e7d52951064bde490bb/EIPS/eip-3448.md",
+        "type": "file",
+        "content": "LS0tCmVpcDogMzQ0OAp0aXRsZTogTWV0YVByb3h5IFN0YW5kYXJkCmF1dGhv\ncjogcGlua2llYmVsbCAoQHBpbmtpZWJlbGwpCmRpc2N1c3Npb25zLXRvOiBo\ndHRwczovL2V0aGVyZXVtLW1hZ2ljaWFucy5vcmcvdC9lcmMtMzQ0OC1tZXRh\ncHJveHktZmFjdG9yeS81ODM0CnN0YXR1czogUmV2aWV3CnR5cGU6IFN0YW5k\nYXJkcyBUcmFjawpjYXRlZ29yeTogRVJDCmNyZWF0ZWQ6IDIwMjEtMDMtMjkK\nLS0tCgojIyBTaW1wbGUgU3VtbWFyeQpUaGlzIHN0YW5kYXJkIHNwZWNpZmll\ncyBhIG1pbmltYWwgYnl0ZWNvZGUgaW1wbGVtZW50YXRpb24gdG8gY3JlYXRl\nIGNoaWxkcmVuIG9mIGEgcGFyZW50IGNvbnRyYWN0IHdpdGggYSBzZXQgb2Yg\naW1tdXRhYmxlIG1ldGFkYXRhIGZvciBlYWNoIGNoaWxkLgpBbHNvIGtub3du\nIGFzIGEgUHJveHkgQ29udHJhY3QgYnV0IHdpdGggdGhlIGFkZGl0aW9uYWwg\ndHdpc3QgdG8gc3RvcmUgbWV0YWRhdGEgb3IgaW1tdXRhYmxlIGFyZ3VtZW50\ncyBmb3IgdGhlIGNsb25lZCBjb250cmFjdCBhdCB0aGUgZW5kIG9mIHRoZSBw\ncm94eSBieXRlY29kZS4KCiMjIEFic3RyYWN0CkJ5IHN0YW5kYXJkaXppbmcg\nb24gYSBrbm93biBtaW5pbWFsIGJ5dGVjb2RlIHByb3h5IGltcGxlbWVudGF0\naW9uIHdpdGggc3VwcG9ydCBmb3IgaW1tdXRhYmxlIG1ldGFkYXRhLCB0aGlz\nIHN0YW5kYXJkIGFsbG93cyB1c2VycyBhbmQgdGhpcmQgcGFydHkgdG9vbHMg\nKGUuZy4gRXRoZXJzY2FuKSB0bwooYSkgc2ltcGx5IGRpc2NvdmVyIHRoYXQg\nYSBjb250cmFjdCB3aWxsIGFsd2F5cyByZWRpcmVjdCBpbiBhIGtub3duIG1h\nbm5lciBhbmQKKGIpIGRlcGVuZCBvbiB0aGUgYmVoYXZpb3Igb2YgdGhlIGNv\nZGUgYXQgdGhlIGRlc3RpbmF0aW9uIGNvbnRyYWN0IGFzIHRoZSBiZWhhdmlv\nciBvZiB0aGUgcmVkaXJlY3RpbmcgY29udHJhY3QgYW5kCihjKSB2ZXJpZnkv\ndmlldyB0aGUgYXR0YWNoZWQgbWV0YWRhdGEuCgpUb29saW5nIGNhbiBpbnRl\ncnJvZ2F0ZSB0aGUgYnl0ZWNvZGUgYXQgYSByZWRpcmVjdGluZyBhZGRyZXNz\nIHRvIGRldGVybWluZSB0aGUgbG9jYXRpb24gb2YgdGhlIGNvZGUgdGhhdCB3\naWxsIHJ1biBhbG9uZyB3aXRoIHRoZSBhc3NvY2lhdGVkIG1ldGFkYXRhIC0g\nYW5kIGNhbiBkZXBlbmQgb24gcmVwcmVzZW50YXRpb25zIGFib3V0IHRoYXQg\nY29kZSAodmVyaWZpZWQgc291cmNlLCB0aGlyZC1wYXJ0eSBhdWRpdHMsIGV0\nYykuClRoaXMgaW1wbGVtZW50YXRpb24gZm9yd2FyZHMgYWxsIGNhbGxzIHZp\nYSBgREVMRUdBVEVDQUxMYCBhbmQgYW55IChjYWxsZGF0YSkgaW5wdXQgcGx1\ncyB0aGUgbWV0YWRhdGEgYXQgdGhlIGVuZCBvZiB0aGUgYnl0ZWNvZGUgdG8g\ndGhlIGltcGxlbWVudGF0aW9uIGNvbnRyYWN0IGFuZCB0aGVuIHJlbGF5cyB0\naGUgcmV0dXJuIHZhbHVlIGJhY2sgdG8gdGhlIGNhbGxlci4KSW4gdGhlIGNh\nc2Ugd2hlcmUgdGhlIGltcGxlbWVudGF0aW9uIHJldmVydHMsIHRoZSByZXZl\ncnQgaXMgcGFzc2VkIGJhY2sgYWxvbmcgd2l0aCB0aGUgcGF5bG9hZCBkYXRh\nLgoKIyMgTW90aXZhdGlvbgpUaGlzIHN0YW5kYXJkIHN1cHBvcnRzIHVzZS1j\nYXNlcyB3aGVyZWluIGl0IGlzIGRlc2lyYWJsZSB0byBjbG9uZSBleGFjdCBj\nb250cmFjdCBmdW5jdGlvbmFsaXR5IHdpdGggZGlmZmVyZW50IHBhcmFtZXRl\ncnMgYXQgYW5vdGhlciBhZGRyZXNzLgoKIyMgU3BlY2lmaWNhdGlvbgpUaGUg\nZXhhY3QgYnl0ZWNvZGUgb2YgdGhlIE1ldGFQcm94eSBjb250cmFjdCBpczoK\nYGBgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg\nICAgICAyMCBieXRlcyB0YXJnZXQgY29udHJhY3QgYWRkcmVzcwogICAgICAg\nICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAtLS0tLS0tLS0t\nLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tCjM2M2QzZDM3M2QzZDNk\nM2Q2MDM2ODAzODAzODA5MTM2MzkzNjAxM2Q3MzAwMDAwMDAwMDAwMDAwMDAw\nMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDA1YWY0M2QzZDkzODAzZTYwMzQ1N2Zk\nNWJmMwpgYGAKd2hlcmVpbiB0aGUgYnl0ZXMgYXQgaW5kaWNlcyAyMSAtIDQx\nIChpbmNsdXNpdmUpIGFyZSByZXBsYWNlZCB3aXRoIHRoZSAyMCBieXRlIGFk\nZHJlc3Mgb2YgdGhlIG1hc3RlciBmdW5jdGlvbmFsaXR5IGNvbnRyYWN0LgpB\nZGRpdGlvbmFsbHksIGV2ZXJ5dGhpbmcgYWZ0ZXIgdGhlIE1ldGFQcm94eSBi\neXRlY29kZSBjYW4gYmUgYXJiaXRyYXJ5IG1ldGFkYXRhIGFuZCB0aGUgbGFz\ndCAzMiBieXRlcyAob25lIHdvcmQpIG9mIHRoZSBieXRlY29kZSBtdXN0IGlu\nZGljYXRlIHRoZSBsZW5ndGggb2YgdGhlIG1ldGFkYXRhIGluIGJ5dGVzLgoK\nYGBgCjw1NCBieXRlcyBtZXRhcHJveHk+IDxhcmJpdHJhcnkgZGF0YT4gPGxl\nbmd0aCBpbiBieXRlcyBvZiBhcmJpdHJhcnkgZGF0YSAodWludDI1Nik+CmBg\nYAoKIyMgUmF0aW9uYWxlClRoZSBnb2FscyBvZiB0aGlzIGVmZm9ydCBoYXZl\nIGJlZW4gdGhlIGZvbGxvd2luZzoKLSBhIGNoZWFwIHdheSBvZiBzdG9yaW5n\nIGltbXV0YWJsZSBtZXRhZGF0YSBmb3IgZWFjaCBjaGlsZCBpbnN0ZWFkIG9m\nIHVzaW5nIHN0b3JhZ2Ugc2xvdHMKLSBpbmV4cGVuc2l2ZSBkZXBsb3ltZW50\nIG9mIGNsb25lcwotIGhhbmRsZXMgZXJyb3IgcmV0dXJuIGJ1YmJsaW5nIGZv\nciByZXZlcnQgbWVzc2FnZXMKCiMjIEJhY2t3YXJkcyBDb21wYXRpYmlsaXR5\nClRoZXJlIGFyZSBubyBiYWNrd2FyZHMgY29tcGF0aWJpbGl0eSBpc3N1ZXMu\nCgojIyBUZXN0IENhc2VzClRlc3RlZCB3aXRoOgotIGludm9jYXRpb24gd2l0\naCBubyBhcmd1bWVudHMKLSBpbnZvY2F0aW9uIHdpdGggYXJndW1lbnRzCi0g\naW52b2NhdGlvbiB3aXRoIHJldHVybiB2YWx1ZXMKLSBpbnZvY2F0aW9uIHdp\ndGggcmV2ZXJ0IChjb25maXJtaW5nIHJldmVydGVkIHBheWxvYWQgaXMgdHJh\nbnNmZXJyZWQpCgojIyBJbXBsZW1lbnRhdGlvbgpBIHJlZmVyZW5jZSBpbXBs\nZW1lbnRhdGlvbiBjYW4gYmUgZm91bmQgW2luIHRoZSBFSVAgYXNzZXQgZGly\nZWN0b3J5XSguLi9hc3NldHMvZWlwLTM0NDgvTWV0YVByb3h5RmFjdG9yeS5z\nb2wpLgoKIyMjIERlcGxveW1lbnQgYnl0ZWNvZGUKQSBhbm5vdGF0ZWQgdmVy\nc2lvbiBvZiB0aGUgZGVwbG95IGJ5dGVjb2RlOgpgYGAKLy8gUFVTSDEgMTE7\nCi8vIENPREVTSVpFOwovLyBTVUI7Ci8vIERVUDE7Ci8vIFBVU0gxIDExOwov\nLyBSRVRVUk5EQVRBU0laRTsKLy8gQ09ERUNPUFk7Ci8vIFJFVFVSTkRBVEFT\nSVpFOwovLyBSRVRVUk47CmBgYAoKIyMjIE1ldGFQcm94eQpBIGFubm90YXRl\nZCB2ZXJzaW9uIG9mIHRoZSBNZXRhUHJveHkgYnl0ZWNvZGU6CmBgYAovLyBj\nb3B5IGFyZ3MKLy8gQ0FMTERBVEFTSVpFOyAgIGNhbGxkYXRhc2l6ZQovLyBS\nRVRVUk5EQVRBU0laRTsgMCwgY2FsbGRhdGFzaXplCi8vIFJFVFVSTkRBVEFT\nSVpFOyAwLCAwLCBjYWxsZGF0YXNpemUKLy8gQ0FMTERBVEFDT1BZOwoKLy8g\nUkVUVVJOREFUQVNJWkU7IDAKLy8gUkVUVVJOREFUQVNJWkU7IDAsIDAKLy8g\nUkVUVVJOREFUQVNJWkU7IDAsIDAsIDAKLy8gUkVUVVJOREFUQVNJWkU7IDAs\nIDAsIDAsIDAKCi8vIFBVU0gxIDU0OyAgICAgICA1NCwgMCwgMCwgMCwgMAov\nLyBEVVAxOyAgICAgICAgICAgNTQsIDU0LCAwLCAwLCAwLCAwCi8vIENPREVT\nSVpFOyAgICAgICBjb2Rlc2l6ZSwgNTQsIDU0LCAwLCAwLCAwLCAwCi8vIFNV\nQjsgICAgICAgICAgICBjb2Rlc2l6ZS01NCwgNTQsIDAsIDAsIDAsIDAKLy8g\nRFVQMTsgICAgICAgICAgIGNvZGVzaXplLTU0LCBjb2Rlc2l6ZS01NCwgNTQs\nIDAsIDAsIDAsIDAKLy8gU1dBUDI7ICAgICAgICAgIDU0LCBjb2Rlc2l6ZS01\nNCwgY29kZXNpemUtNTQsIDAsIDAsIDAsIDAKLy8gQ0FMTERBVEFTSVpFOyAg\nIGNhbGxkYXRhc2l6ZSwgNTQsIGNvZGVzaXplLTU0LCBjb2Rlc2l6ZS01NCwg\nMCwgMCwgMCwgMAovLyBDT0RFQ09QWTsgICAgICAgY29kZXNpemUtNTQsIDAs\nIDAsIDAsIDAKCi8vIENBTExEQVRBU0laRTsgICBjYWxsZGF0YXNpemUsIGNv\nZGVzaXplLTU0LCAwLCAwLCAwLCAwCi8vIEFERDsgICAgICAgICAgICBjYWxs\nZGF0YXNpemUrY29kZXNpemUtNTQsIDAsIDAsIDAsIDAKLy8gUkVUVVJOREFU\nQVNJWkU7IDAsIGNhbGxkYXRhc2l6ZStjb2Rlc2l6ZS01NCwgMCwgMCwgMCwg\nMAovLyBQVVNIMjAgMDsgICAgICAgYWRkciwgMCwgY2FsbGRhdGFzaXplK2Nv\nZGVzaXplLTU0LCAwLCAwLCAwLCAwIC0gemVybyBpcyByZXBsYWNlZCB3aXRo\nIHNobCg5NiwgYWRkcmVzcygpKQovLyBHQVM7ICAgICAgICAgICAgZ2FzLCBh\nZGRyLCAwLCBjYWxsZGF0YXNpemUrY29kZXNpemUtNTQsIDAsIDAsIDAsIDAK\nLy8gREVMRUdBVEVDQUxMOyAgIChnYXMsIGFkZHIsIDAsIGNhbGxkYXRhc2l6\nZSgpICsgbWV0YWRhdGEsIDAsIDApIGRlbGVnYXRlY2FsbCB0byB0aGUgdGFy\nZ2V0IGNvbnRyYWN0OwovLwovLyBSRVRVUk5EQVRBU0laRTsgcmV0dXJuZGF0\nYXNpemUsIHJldGNvZGUsIDAsIDAKLy8gUkVUVVJOREFUQVNJWkU7IHJldHVy\nbmRhdGFzaXplLCByZXR1cm5kYXRhc2l6ZSwgcmV0Y29kZSwgMCwgMAovLyBT\nV0FQNDsgICAgICAgICAgMCwgcmV0dXJuZGF0YXNpemUsIHJldGNvZGUsIDAs\nIHJldHVybmRhdGFzaXplCi8vIERVUDE7ICAgICAgICAgICAwLCAwLCByZXR1\ncm5kYXRhc2l6ZSwgcmV0Y29kZSwgMCwgcmV0dXJuZGF0YXNpemUKLy8gUkVU\nVVJOREFUQUNPUFk7ICgwLCAwLCByZXR1cm5kYXRhc2l6ZSkgLSBDb3B5IGV2\nZXJ5dGhpbmcgaW50byBtZW1vcnkgdGhhdCB0aGUgY2FsbCByZXR1cm5lZAoK\nLy8gc3RhY2sgPSByZXRjb2RlLCAwLCByZXR1cm5kYXRhc2l6ZSAjIHRoaXMg\naXMgZm9yIGVpdGhlciByZXZlcnQoMCwgcmV0dXJuZGF0YXNpemUoKSkgb3Ig\ncmV0dXJuICgwLCByZXR1cm5kYXRhc2l6ZSgpKQoKLy8gUFVTSDEgX1NVQ0NF\nU1NfOyBwdXNoIGp1bXBkZXN0IG9mIF9TVUNDRVNTXwovLyBKVU1QSTsgICAg\nICAgICAganVtcCBpZiBkZWxlZ2F0ZWNhbGwgcmV0dXJuZWQgYDFgCi8vIFJF\nVkVSVDsgICAgICAgICAoMCwgcmV0dXJuZGF0YXNpemUoKSkgaWYgZGVsZWdh\ndGVjYWxsIHJldHVybmVkIGAwYAovLyBKVU1QREVTVCBfU1VDQ0VTU187Ci8v\nIFJFVFVSTjsgICAgICAgICAoMCwgcmV0dXJuZGF0YXNpemUoKSkgaWYgZGVs\nZWdhdGVjYWxsIHJldHVybmVkIG5vbi16ZXJvICgxKQpgYGAKCiMjIyBFeGFt\ncGxlcwpUaGUgZm9sbG93aW5nIGNvZGUgc25pcHBldHMgc2VydmUgb25seSBh\ncyBzdWdnZXN0aW9ucyBhbmQgYXJlIG5vdCBhIGRpc2NyZXRlIHBhcnQgb2Yg\ndGhpcyBzdGFuZGFyZC4KCiMjIyMgUHJveHkgY29uc3RydWN0aW9uIHdpdGgg\nYnl0ZXMgZnJvbSBhYmkuZW5jb2RlCmBgYHNvbGlkaXR5Ci8vLyBAbm90aWNl\nIE1ldGFQcm94eSBjb25zdHJ1Y3Rpb24gdmlhIGFiaSBlbmNvZGVkIGJ5dGVz\nLgpmdW5jdGlvbiBjcmVhdGVGcm9tQnl0ZXMgKAogIGFkZHJlc3MgYSwKICB1\naW50MjU2IGIsCiAgdWludDI1NltdIGNhbGxkYXRhIGMKKSBleHRlcm5hbCBw\nYXlhYmxlIHJldHVybnMgKGFkZHJlc3MgcHJveHkpIHsKICAvLyBjcmVhdGVz\nIGEgbmV3IHByb3h5IHdoZXJlIHRoZSBtZXRhZGF0YSBpcyB0aGUgcmVzdWx0\nIG9mIGFiaS5lbmNvZGUoKQogIHByb3h5ID0gTWV0YVByb3h5RmFjdG9yeS5f\nbWV0YVByb3h5RnJvbUJ5dGVzKGFkZHJlc3ModGhpcyksIGFiaS5lbmNvZGUo\nYSwgYiwgYykpOwogIHJlcXVpcmUocHJveHkgIT0gYWRkcmVzcygwKSk7CiAg\nLy8gb3B0aW9uYWwgb25lLXRpbWUgc2V0dXAsIGEgY29uc3RydWN0b3IoKSBz\ndWJzdGl0dXRlCiAgTXlDb250cmFjdChwcm94eSkuaW5pdHsgdmFsdWU6IG1z\nZy52YWx1ZSB9KCk7Cn0KYGBgCgojIyMjIFByb3h5IGNvbnN0cnVjdGlvbiB3\naXRoIGJ5dGVzIGZyb20gY2FsbGRhdGEKYGBgc29saWRpdHkKLy8vIEBub3Rp\nY2UgTWV0YVByb3h5IGNvbnN0cnVjdGlvbiB2aWEgY2FsbGRhdGEuCmZ1bmN0\naW9uIGNyZWF0ZUZyb21DYWxsZGF0YSAoCiAgYWRkcmVzcyBhLAogIHVpbnQy\nNTYgYiwKICB1aW50MjU2W10gY2FsbGRhdGEgYwopIGV4dGVybmFsIHBheWFi\nbGUgcmV0dXJucyAoYWRkcmVzcyBwcm94eSkgewogIC8vIGNyZWF0ZXMgYSBu\nZXcgcHJveHkgd2hlcmUgdGhlIG1ldGFkYXRhIGlzIGV2ZXJ5dGhpbmcgYWZ0\nZXIgdGhlIDR0aCBieXRlIGZyb20gY2FsbGRhdGEuCiAgcHJveHkgPSBNZXRh\nUHJveHlGYWN0b3J5Ll9tZXRhUHJveHlGcm9tQ2FsbGRhdGEoYWRkcmVzcyh0\naGlzKSk7CiAgcmVxdWlyZShwcm94eSAhPSBhZGRyZXNzKDApKTsKICAvLyBv\ncHRpb25hbCBvbmUtdGltZSBzZXR1cCwgYSBjb25zdHJ1Y3RvcigpIHN1YnN0\naXR1dGUKICBNeUNvbnRyYWN0KHByb3h5KS5pbml0eyB2YWx1ZTogbXNnLnZh\nbHVlIH0oKTsKfQpgYGAKCiMjIyMgUmV0cmlldmluZyB0aGUgbWV0YWRhdGEg\nZnJvbSBjYWxsZGF0YSBhbmQgYWJpLmRlY29kZQpgYGBzb2xpZGl0eQovLy8g\nQG5vdGljZSBSZXR1cm5zIHRoZSBtZXRhZGF0YSBvZiB0aGlzIChNZXRhUHJv\neHkpIGNvbnRyYWN0LgovLy8gT25seSByZWxldmFudCB3aXRoIGNvbnRyYWN0\ncyBjcmVhdGVkIHZpYSB0aGUgTWV0YVByb3h5IHN0YW5kYXJkLgovLy8gQGRl\ndiBUaGlzIGZ1bmN0aW9uIGlzIGFpbWVkIHRvIGJlIGludm9rZWQgd2l0aC0g\nJiB3aXRob3V0IGEgY2FsbC4KZnVuY3Rpb24gZ2V0TWV0YWRhdGFXaXRob3V0\nQ2FsbCAoKSBwdWJsaWMgcHVyZSByZXR1cm5zICgKICBhZGRyZXNzIGEsCiAg\ndWludDI1NiBiLAogIHVpbnQyNTZbXSBtZW1vcnkgYwopIHsKICBieXRlcyBt\nZW1vcnkgZGF0YTsKICBhc3NlbWJseSB7CiAgICBsZXQgcG9zT2ZNZXRhZGF0\nYVNpemUgOj0gc3ViKGNhbGxkYXRhc2l6ZSgpLCAzMikKICAgIGxldCBzaXpl\nIDo9IGNhbGxkYXRhbG9hZChwb3NPZk1ldGFkYXRhU2l6ZSkKICAgIGxldCBk\nYXRhUHRyIDo9IHN1Yihwb3NPZk1ldGFkYXRhU2l6ZSwgc2l6ZSkKICAgIGRh\ndGEgOj0gbWxvYWQoNjQpCiAgICAvLyBpbmNyZW1lbnQgZnJlZSBtZW1vcnkg\ncG9pbnRlciBieSBtZXRhZGF0YSBzaXplICsgMzIgYnl0ZXMgKGxlbmd0aCkK\nICAgIG1zdG9yZSg2NCwgYWRkKGRhdGEsIGFkZChzaXplLCAzMikpKQogICAg\nbXN0b3JlKGRhdGEsIHNpemUpCiAgICBsZXQgbWVtUHRyIDo9IGFkZChkYXRh\nLCAzMikKICAgIGNhbGxkYXRhY29weShtZW1QdHIsIGRhdGFQdHIsIHNpemUp\nCiAgfQogIHJldHVybiBhYmkuZGVjb2RlKGRhdGEsIChhZGRyZXNzLCB1aW50\nMjU2LCB1aW50MjU2W10pKTsKfQpgYGAKCiMjIyMgUmV0cmlldmluZyB0aGUg\nbWV0YWRhdGEgdmlhIGEgY2FsbCB0byBzZWxmCmBgYHNvbGlkaXR5Ci8vLyBA\nbm90aWNlIFJldHVybnMgdGhlIG1ldGFkYXRhIG9mIHRoaXMgKE1ldGFQcm94\neSkgY29udHJhY3QuCi8vLyBPbmx5IHJlbGV2YW50IHdpdGggY29udHJhY3Rz\nIGNyZWF0ZWQgdmlhIHRoZSBNZXRhUHJveHkgc3RhbmRhcmQuCi8vLyBAZGV2\nIFRoaXMgZnVuY3Rpb24gaXMgYWltZWQgdG8gdG8gYmUgaW52b2tlZCB2aWEg\nYSBjYWxsLgpmdW5jdGlvbiBnZXRNZXRhZGF0YVZpYUNhbGwgKCkgcHVibGlj\nIHB1cmUgcmV0dXJucyAoCiAgYWRkcmVzcyBhLAogIHVpbnQyNTYgYiwKICB1\naW50MjU2W10gbWVtb3J5IGMKKSB7CiAgYXNzZW1ibHkgewogICAgbGV0IHBv\nc09mTWV0YWRhdGFTaXplIDo9IHN1YihjYWxsZGF0YXNpemUoKSwgMzIpCiAg\nICBsZXQgc2l6ZSA6PSBjYWxsZGF0YWxvYWQocG9zT2ZNZXRhZGF0YVNpemUp\nCiAgICBsZXQgZGF0YVB0ciA6PSBzdWIocG9zT2ZNZXRhZGF0YVNpemUsIHNp\nemUpCiAgICBjYWxsZGF0YWNvcHkoMCwgZGF0YVB0ciwgc2l6ZSkKICAgIHJl\ndHVybigwLCBzaXplKQogIH0KfQpgYGAKCkFwYXJ0IGZyb20gdGhlIGV4YW1w\nbGVzIGFib3ZlLCBpdCBpcyBhbHNvIHBvc3NpYmxlIHRvIHVzZSBTb2xpZGl0\neSBTdHJ1Y3R1cmVzIG9yIGFueSBjdXN0b20gZGF0YSBlbmNvZGluZy4KCiMj\nIFNlY3VyaXR5IENvbnNpZGVyYXRpb25zClRoaXMgc3RhbmRhcmQgb25seSBj\nb3ZlcnMgdGhlIGJ5dGVjb2RlIGltcGxlbWVudGF0aW9uIGFuZCBkb2VzIG5v\ndCBpbmNsdWRlIGFueSBzZXJpb3VzIHNpZGUgZWZmZWN0cyBvZiBpdHNlbGYu\nClRoZSByZWZlcmVuY2UgaW1wbGVtZW50YXRpb24gb25seSBzZXJ2ZXMgYXMg\nYSBleGFtcGxlLiBJdCBpcyBoaWdobHkgcmVjb21tZW5kZWQgdG8gcmVzZWFy\nY2ggc2lkZSBlZmZlY3RzIGRlcGVuZGluZyBvbiBob3cgdGhlIGZ1bmN0aW9u\nYWxpdHkgaXMgdXNlZCBhbmQgaW1wbGVtZW50ZWQgaW4gYW55IHByb2plY3Qu\nCgojIyBDb3B5cmlnaHQKQ29weXJpZ2h0IGFuZCByZWxhdGVkIHJpZ2h0cyB3\nYWl2ZWQgdmlhIFtDQzBdKGh0dHBzOi8vY3JlYXRpdmVjb21tb25zLm9yZy9w\ndWJsaWNkb21haW4vemVyby8xLjAvKS4K\n",
+        "encoding": "base64",
+        "_links": {
+          "self": "https://api.github.com/repos/ethereum/EIPs/contents/EIPS/eip-3448.md?ref=23c85ee9628090968ee56e7d52951064bde490bb",
+          "git": "https://api.github.com/repos/ethereum/EIPs/git/blobs/28462ce07a682a66c11f91f964ae1978bce58484",
+          "html": "https://github.com/ethereum/EIPs/blob/23c85ee9628090968ee56e7d52951064bde490bb/EIPS/eip-3448.md"
+        }
+      }
+    }
+  },
+  {
+    "req": {
+      "url": "https://api.github.com/repos/ethereum/EIPs/contents/EIPS%2Feip-3448.md?ref=d2c6f0fbdb6c0431743d49639965c7d5de3881d9",
+      "method": "GET"
+    },
+    "res": {
+      "status": 200,
+      "data": {
+        "name": "eip-3448.md",
+        "path": "EIPS/eip-3448.md",
+        "sha": "4c67a114073e8fc473cf1d8f81edb75c4947becf",
+        "size": 5852,
+        "url": "https://api.github.com/repos/ethereum/EIPs/contents/EIPS/eip-3448.md?ref=d2c6f0fbdb6c0431743d49639965c7d5de3881d9",
+        "html_url": "https://github.com/ethereum/EIPs/blob/d2c6f0fbdb6c0431743d49639965c7d5de3881d9/EIPS/eip-3448.md",
+        "git_url": "https://api.github.com/repos/ethereum/EIPs/git/blobs/4c67a114073e8fc473cf1d8f81edb75c4947becf",
+        "download_url": "https://raw.githubusercontent.com/ethereum/EIPs/d2c6f0fbdb6c0431743d49639965c7d5de3881d9/EIPS/eip-3448.md",
+        "type": "file",
+        "content": "LS0tCmVpcDogMzQ0OAp0aXRsZTogTWV0YSBQcm94eSBGYWN0b3J5CmF1dGhv\ncjogcGlua2llYmVsbCAoQHBpbmtpZWJlbGwpCmRpc2N1c3Npb25zLXRvOiBo\ndHRwczovL2V0aGVyZXVtLW1hZ2ljaWFucy5vcmcvdC9lcmMtMzQ0OC1tZXRh\ncHJveHktZmFjdG9yeS81ODM0CnN0YXR1czogRHJhZnQKdHlwZTogU3RhbmRh\ncmRzIFRyYWNrCmNhdGVnb3J5OiBFUkMKY3JlYXRlZDogMjAyMS0wMy0yOQot\nLS0KCiMjIFNpbXBsZSBTdW1tYXJ5ClRoaXMgc3RhbmRhcmQgc3BlY2lmaWVz\nIGEgbWluaW1hbCBieXRlY29kZSBpbXBsZW1lbnRhdGlvbiB0byBjcmVhdGUg\nY2hpbGRyZW4gb2YgYSBwYXJlbnQgY29udHJhY3Qgd2l0aCBhIHNldCBvZiBp\nbW11dGFibGUgbWV0YWRhdGEgZm9yIGVhY2ggY2hpbGQuCkFsc28ga25vd24g\nYXMgYSBQcm94eSBDb250cmFjdCBidXQgd2l0aCB0aGUgYWRkaXRpb25hbCB0\nd2lzdCB0byBzdG9yZSBtZXRhZGF0YSBvciBpbW11dGFibGUgYXJndW1lbnRz\nIGZvciB0aGUgY2xvbmVkIGNvbnRyYWN0IGF0IHRoZSBlbmQgb2YgdGhlIHBy\nb3h5IGJ5dGVjb2RlLgoKIyMgQWJzdHJhY3QKQnkgc3RhbmRhcmRpemluZyBv\nbiBhIGtub3duIG1pbmltYWwgYnl0ZWNvZGUgcHJveHkgaW1wbGVtZW50YXRp\nb24gd2l0aCBzdXBwb3J0IGZvciBpbW11dGFibGUgbWV0YWRhdGEsIHRoaXMg\nc3RhbmRhcmQgYWxsb3dzIHVzZXJzIGFuZCB0aGlyZCBwYXJ0eSB0b29scyAo\nZS5nLiBFdGhlcnNjYW4pIHRvCihhKSBzaW1wbHkgZGlzY292ZXIgdGhhdCBh\nIGNvbnRyYWN0IHdpbGwgYWx3YXlzIHJlZGlyZWN0IGluIGEga25vd24gbWFu\nbmVyIGFuZAooYikgZGVwZW5kIG9uIHRoZSBiZWhhdmlvciBvZiB0aGUgY29k\nZSBhdCB0aGUgZGVzdGluYXRpb24gY29udHJhY3QgYXMgdGhlIGJlaGF2aW9y\nIG9mIHRoZSByZWRpcmVjdGluZyBjb250cmFjdCBhbmQKKGMpIHZlcmlmeS92\naWV3IHRoZSBhdHRhY2hlZCBtZXRhZGF0YS4KClRvb2xpbmcgY2FuIGludGVy\ncm9nYXRlIHRoZSBieXRlY29kZSBhdCBhIHJlZGlyZWN0aW5nIGFkZHJlc3Mg\ndG8gZGV0ZXJtaW5lIHRoZSBsb2NhdGlvbiBvZiB0aGUgY29kZSB0aGF0IHdp\nbGwgcnVuIGFsb25nIHdpdGggdGhlIGFzc29jaWF0ZWQgbWV0YWRhdGEgLSBh\nbmQgY2FuIGRlcGVuZCBvbiByZXByZXNlbnRhdGlvbnMgYWJvdXQgdGhhdCBj\nb2RlICh2ZXJpZmllZCBzb3VyY2UsIHRoaXJkLXBhcnR5IGF1ZGl0cywgZXRj\nKS4KVGhpcyBpbXBsZW1lbnRhdGlvbiBmb3J3YXJkcyBhbGwgY2FsbHMgdmlh\nIGBERUxFR0FURUNBTExgIGFuZCBhbnkgKGNhbGxkYXRhKSBpbnB1dCBwbHVz\nIHRoZSBtZXRhZGF0YSBhdCB0aGUgZW5kIG9mIHRoZSBieXRlY29kZSB0byB0\naGUgaW1wbGVtZW50YXRpb24gY29udHJhY3QgYW5kIHRoZW4gcmVsYXlzIHRo\nZSByZXR1cm4gdmFsdWUgYmFjayB0byB0aGUgY2FsbGVyLgpJbiB0aGUgY2Fz\nZSB3aGVyZSB0aGUgaW1wbGVtZW50YXRpb24gcmV2ZXJ0cywgdGhlIHJldmVy\ndCBpcyBwYXNzZWQgYmFjayBhbG9uZyB3aXRoIHRoZSBwYXlsb2FkIGRhdGEu\nCgojIyBNb3RpdmF0aW9uClRoaXMgc3RhbmRhcmQgc3VwcG9ydHMgdXNlLWNh\nc2VzIHdoZXJlaW4gaXQgaXMgZGVzaXJhYmxlIHRvIGNsb25lIGV4YWN0IGNv\nbnRyYWN0IGZ1bmN0aW9uYWxpdHkgd2l0aCBkaWZmZXJlbnQgcGFyYW1ldGVy\ncyBhdCBhbm90aGVyIGFkZHJlc3MuCgojIyBTcGVjaWZpY2F0aW9uClRoZSBl\neGFjdCBieXRlY29kZSBvZiB0aGUgTWV0YVByb3h5IGNvbnRyYWN0IGlzOgpg\nYGAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg\nICAgIDIwIGJ5dGVzIHRhcmdldCBjb250cmFjdCBhZGRyZXNzCiAgICAgICAg\nICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIC0tLS0tLS0tLS0t\nLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0KMzYzZDNkMzczZDNkM2Qz\nZDYwMzY4MDM4MDM4MDkxMzYzOTM2MDEzZDczMDAwMDAwMDAwMDAwMDAwMDAw\nMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDVhZjQzZDNkOTM4MDNlNjAzNDU3ZmQ1\nYmYzCmBgYAp3aGVyZWluIHRoZSBieXRlcyBhdCBpbmRpY2VzIDIxIC0gNDEg\nKGluY2x1c2l2ZSkgYXJlIHJlcGxhY2VkIHdpdGggdGhlIDIwIGJ5dGUgYWRk\ncmVzcyBvZiB0aGUgbWFzdGVyIGZ1bmN0aW9uYWxpdHkgY29udHJhY3QuCkFk\nZGl0aW9uYWxseSwgZXZlcnl0aGluZyBhZnRlciB0aGUgTWV0YVByb3h5IGJ5\ndGVjb2RlIGNhbiBiZSBhcmJpdHJhcnkgbWV0YWRhdGEgYW5kIHRoZSBsYXN0\nIDMyIGJ5dGVzIChvbmUgd29yZCkgb2YgdGhlIGJ5dGVjb2RlIG11c3QgaW5k\naWNhdGUgdGhlIGxlbmd0aCBvZiB0aGUgbWV0YWRhdGEgaW4gYnl0ZXMuCgpg\nYGAKPDU0IGJ5dGVzIG1ldGFwcm94eT4gPGFyYml0cmFyeSBkYXRhPiA8bGVu\nZ3RoIGluIGJ5dGVzIG9mIGFyYml0cmFyeSBkYXRhICh1aW50MjU2KT4KYGBg\nCgpBIHJlZmVyZW5jZSBpbXBsZW1lbnRhdGlvbiBvZiB0aGlzIGNhbiBiZSBm\nb3VuZCBhdCB0aGUgW3BpbmtpZWJlbGwvTWV0YVByb3h5XShodHRwczovL2dp\ndGh1Yi5jb20vcGlua2llYmVsbC9NZXRhUHJveHkpIEdpdEh1YiByZXBvLgoK\nIyMgUmF0aW9uYWxlClRoZSBnb2FscyBvZiB0aGlzIGVmZm9ydCBoYXZlIGJl\nZW4gdGhlIGZvbGxvd2luZzoKLSBhIGNoZWFwIHdheSBvZiBzdG9yaW5nIGlt\nbXV0YWJsZSBtZXRhZGF0YSBmb3IgZWFjaCBjaGlsZCBpbnN0ZWFkIG9mIHVz\naW5nIHN0b3JhZ2Ugc2xvdHMKLSBpbmV4cGVuc2l2ZSBkZXBsb3ltZW50IG9m\nIGNsb25lcwotIGhhbmRsZXMgZXJyb3IgcmV0dXJuIGJ1YmJsaW5nIGZvciBy\nZXZlcnQgbWVzc2FnZXMKCiMjIEJhY2t3YXJkcyBDb21wYXRpYmlsaXR5ClRo\nZXJlIGFyZSBubyBiYWNrd2FyZHMgY29tcGF0aWJpbGl0eSBpc3N1ZXMuCgoj\nIyBUZXN0IENhc2VzClRlc3QgY2FzZXMgaW5jbHVkZToKLSBpbnZvY2F0aW9u\nIHdpdGggbm8gYXJndW1lbnRzCi0gaW52b2NhdGlvbiB3aXRoIGFyZ3VtZW50\ncwotIGludm9jYXRpb24gd2l0aCByZXR1cm4gdmFsdWVzCi0gaW52b2NhdGlv\nbiB3aXRoIHJldmVydCAoY29uZmlybWluZyByZXZlcnRlZCBwYXlsb2FkIGlz\nIHRyYW5zZmVycmVkKQoKVGVzdHMgZm9yIHRoZXNlIGNhc2VzIGFyZSBpbmNs\ndWRlZCBpbiB0aGUgcmVmZXJlbmNlIGltcGxlbWVudGF0aW9uIHByb2plY3Qu\nCgojIyBJbXBsZW1lbnRhdGlvbgpBIHJlZmVyZW5jZSBpbXBsZW1lbnRhdGlv\nbiBjYW4gYmUgZm91bmQgYXQgdGhlIFtwaW5raWViZWxsL01ldGFQcm94eV0o\naHR0cHM6Ly9naXRodWIuY29tL3BpbmtpZWJlbGwvTWV0YVByb3h5KSBHaXRI\ndWIgcmVwby4KCiMjIyBEZXBsb3ltZW50IGJ5dGVjb2RlCkFuIGFubm90YXRl\nZCB2ZXJzaW9uIG9mIHRoZSBkZXBsb3kgYnl0ZWNvZGU6CmBgYAovLyBQVVNI\nMSAxMTsKLy8gQ09ERVNJWkU7Ci8vIFNVQjsKLy8gRFVQMTsKLy8gUFVTSDEg\nMTE7Ci8vIFJFVFVSTkRBVEFTSVpFOwovLyBDT0RFQ09QWTsKLy8gUkVUVVJO\nREFUQVNJWkU7Ci8vIFJFVFVSTjsKYGBgCgojIyMgTWV0YVByb3h5CkFuIGFu\nbm90YXRlZCB2ZXJzaW9uIG9mIHRoZSBNZXRhUHJveHkgYnl0ZWNvZGU6CmBg\nYAovLyBjb3B5IGFyZ3MKLy8gQ0FMTERBVEFTSVpFOyAgIGNhbGxkYXRhc2l6\nZQovLyBSRVRVUk5EQVRBU0laRTsgMCwgY2FsbGRhdGFzaXplCi8vIFJFVFVS\nTkRBVEFTSVpFOyAwLCAwLCBjYWxsZGF0YXNpemUKLy8gQ0FMTERBVEFDT1BZ\nOwoKLy8gUkVUVVJOREFUQVNJWkU7IDAKLy8gUkVUVVJOREFUQVNJWkU7IDAs\nIDAKLy8gUkVUVVJOREFUQVNJWkU7IDAsIDAsIDAKLy8gUkVUVVJOREFUQVNJ\nWkU7IDAsIDAsIDAsIDAKCi8vIFBVU0gxIDU0OyAgICAgICA1NCwgMCwgMCwg\nMCwgMAovLyBEVVAxOyAgICAgICAgICAgNTQsIDU0LCAwLCAwLCAwLCAwCi8v\nIENPREVTSVpFOyAgICAgICBjb2Rlc2l6ZSwgNTQsIDU0LCAwLCAwLCAwLCAw\nCi8vIFNVQjsgICAgICAgICAgICBjb2Rlc2l6ZS01NCwgNTQsIDAsIDAsIDAs\nIDAKLy8gRFVQMTsgICAgICAgICAgIGNvZGVzaXplLTU0LCBjb2Rlc2l6ZS01\nNCwgNTQsIDAsIDAsIDAsIDAKLy8gU1dBUDI7ICAgICAgICAgIDU0LCBjb2Rl\nc2l6ZS01NCwgY29kZXNpemUtNTQsIDAsIDAsIDAsIDAKLy8gQ0FMTERBVEFT\nSVpFOyAgIGNhbGxkYXRhc2l6ZSwgNTQsIGNvZGVzaXplLTU0LCBjb2Rlc2l6\nZS01NCwgMCwgMCwgMCwgMAovLyBDT0RFQ09QWTsgICAgICAgY29kZXNpemUt\nNTQsIDAsIDAsIDAsIDAKCi8vIENBTExEQVRBU0laRTsgICBjYWxsZGF0YXNp\nemUsIGNvZGVzaXplLTU0LCAwLCAwLCAwLCAwCi8vIEFERDsgICAgICAgICAg\nICBjYWxsZGF0YXNpemUrY29kZXNpemUtNTQsIDAsIDAsIDAsIDAKLy8gUkVU\nVVJOREFUQVNJWkU7IDAsIGNhbGxkYXRhc2l6ZStjb2Rlc2l6ZS01NCwgMCwg\nMCwgMCwgMAovLyBQVVNIMjAgMDsgICAgICAgYWRkciwgMCwgY2FsbGRhdGFz\naXplK2NvZGVzaXplLTU0LCAwLCAwLCAwLCAwIC0gemVybyBpcyByZXBsYWNl\nZCB3aXRoIHNobCg5NiwgYWRkcmVzcygpKQovLyBHQVM7ICAgICAgICAgICAg\nZ2FzLCBhZGRyLCAwLCBjYWxsZGF0YXNpemUrY29kZXNpemUtNTQsIDAsIDAs\nIDAsIDAKLy8gREVMRUdBVEVDQUxMOyAgIChnYXMsIGFkZHIsIDAsIGNhbGxk\nYXRhc2l6ZSgpICsgbWV0YWRhdGEsIDAsIDApIGRlbGVnYXRlY2FsbCB0byB0\naGUgdGFyZ2V0IGNvbnRyYWN0OwovLwovLyBSRVRVUk5EQVRBU0laRTsgcmV0\ndXJuZGF0YXNpemUsIHJldGNvZGUsIDAsIDAKLy8gUkVUVVJOREFUQVNJWkU7\nIHJldHVybmRhdGFzaXplLCByZXR1cm5kYXRhc2l6ZSwgcmV0Y29kZSwgMCwg\nMAovLyBTV0FQNDsgICAgICAgICAgMCwgcmV0dXJuZGF0YXNpemUsIHJldGNv\nZGUsIDAsIHJldHVybmRhdGFzaXplCi8vIERVUDE7ICAgICAgICAgICAwLCAw\nLCByZXR1cm5kYXRhc2l6ZSwgcmV0Y29kZSwgMCwgcmV0dXJuZGF0YXNpemUK\nLy8gUkVUVVJOREFUQUNPUFk7ICgwLCAwLCByZXR1cm5kYXRhc2l6ZSkgLSBD\nb3B5IGV2ZXJ5dGhpbmcgaW50byBtZW1vcnkgdGhhdCB0aGUgY2FsbCByZXR1\ncm5lZAoKLy8gc3RhY2sgPSByZXRjb2RlLCAwLCByZXR1cm5kYXRhc2l6ZSAj\nIHRoaXMgaXMgZm9yIGVpdGhlciByZXZlcnQoMCwgcmV0dXJuZGF0YXNpemUo\nKSkgb3IgcmV0dXJuICgwLCByZXR1cm5kYXRhc2l6ZSgpKQoKLy8gUFVTSDEg\nX1NVQ0NFU1NfOyBwdXNoIGp1bXBkZXN0IG9mIF9TVUNDRVNTXwovLyBKVU1Q\nSTsgICAgICAgICAganVtcCBpZiBkZWxlZ2F0ZWNhbGwgcmV0dXJuZWQgYDFg\nCi8vIFJFVkVSVDsgICAgICAgICAoMCwgcmV0dXJuZGF0YXNpemUoKSkgaWYg\nZGVsZWdhdGVjYWxsIHJldHVybmVkIGAwYAovLyBKVU1QREVTVCBfU1VDQ0VT\nU187Ci8vIFJFVFVSTjsgICAgICAgICAoMCwgcmV0dXJuZGF0YXNpemUoKSkg\naWYgZGVsZWdhdGVjYWxsIHJldHVybmVkIG5vbi16ZXJvICgxKQpgYGAKCiMj\nIFNlY3VyaXR5IENvbnNpZGVyYXRpb25zClRoaXMgc3RhbmRhcmQgb25seSBj\nb3ZlcnMgdGhlIGJ5dGVjb2RlIGltcGxlbWVudGF0aW9uIGFuZCBkb2VzIG5v\ndCBpbmNsdWRlIGFueSBzZXJpb3VzIHNpZGUgZWZmZWN0cyBvZiBpdHNlbGYu\nClRoZSByZWZlcmVuY2UgaW1wbGVtZW50YXRpb24gaW5jbHVkZXMgc29tZSBl\neGFtcGxlcyBob3cgdG8gbWFrZSB1c2Ugb2YgaXQsIGJ1dCBpdCBpcyBoaWdo\nbHkgcmVjb21tZW5kZWQgdG8gcmVzZWFyY2ggc2lkZSBlZmZlY3RzIGRlcGVu\nZGluZyBvbiBob3cgdGhlIGZ1bmN0aW9uYWxpeSBpcyB1c2VkIGFuZCBpbXBs\nZW1lbnRlZCBpbiBhbnkgcHJvamVjdC4KCiMjIENvcHlyaWdodApDb3B5cmln\naHQgYW5kIHJlbGF0ZWQgcmlnaHRzIHdhaXZlZCB2aWEgW0NDMF0oaHR0cHM6\nLy9jcmVhdGl2ZWNvbW1vbnMub3JnL3B1YmxpY2RvbWFpbi96ZXJvLzEuMC8p\nLgo=\n",
+        "encoding": "base64",
+        "_links": {
+          "self": "https://api.github.com/repos/ethereum/EIPs/contents/EIPS/eip-3448.md?ref=d2c6f0fbdb6c0431743d49639965c7d5de3881d9",
+          "git": "https://api.github.com/repos/ethereum/EIPs/git/blobs/4c67a114073e8fc473cf1d8f81edb75c4947becf",
+          "html": "https://github.com/ethereum/EIPs/blob/d2c6f0fbdb6c0431743d49639965c7d5de3881d9/EIPS/eip-3448.md"
+        }
+      }
+    }
+  },
+  {
+    "req": {
+      "url": "https://api.github.com/repos/ethereum/EIPs/pulls/4506/reviews",
+      "method": "GET"
+    },
+    "res": {
+      "status": 200,
+      "data": []
+    }
+  },
+  {
+    "req": {
+      "url": "https://api.github.com/repos/ethereum/EIPs/contents/assets%2Feip-3448%2FMetaProxyFactory.sol?ref=23c85ee9628090968ee56e7d52951064bde490bb",
+      "method": "GET"
+    },
+    "res": {
+      "status": 200,
+      "data": {
+        "name": "MetaProxyFactory.sol",
+        "path": "assets/eip-3448/MetaProxyFactory.sol",
+        "sha": "f2510d85b95bca1013c66fdba70b52843035c911",
+        "size": 3391,
+        "url": "https://api.github.com/repos/ethereum/EIPs/contents/assets/eip-3448/MetaProxyFactory.sol?ref=23c85ee9628090968ee56e7d52951064bde490bb",
+        "html_url": "https://github.com/ethereum/EIPs/blob/23c85ee9628090968ee56e7d52951064bde490bb/assets/eip-3448/MetaProxyFactory.sol",
+        "git_url": "https://api.github.com/repos/ethereum/EIPs/git/blobs/f2510d85b95bca1013c66fdba70b52843035c911",
+        "download_url": "https://raw.githubusercontent.com/ethereum/EIPs/23c85ee9628090968ee56e7d52951064bde490bb/assets/eip-3448/MetaProxyFactory.sol",
+        "type": "file",
+        "content": "cHJhZ21hIHNvbGlkaXR5ID49MC43LjY7Cgpjb250cmFjdCBNZXRhUHJveHlG\nYWN0b3J5IHsKICAvLy8gQGRldiBDcmVhdGVzIGEgbmV3IHByb3h5IGZvciBg\ndGFyZ2V0Q29udHJhY3RgIHdpdGggbWV0YWRhdGEgZnJvbSBjYWxsZGF0YS4K\nICAvLy8gQ29waWVzIGV2ZXJ5dGhpbmcgZnJvbSBjYWxsZGF0YSBleGNlcHQg\ndGhlIGZpcnN0IDQgYnl0ZXMuCiAgLy8vIEByZXR1cm4gYWRkciBBIG5vbi16\nZXJvIGFkZHJlc3MgaWYgc3VjY2Vzc2Z1bC4KICBmdW5jdGlvbiBfbWV0YVBy\nb3h5RnJvbUNhbGxkYXRhIChhZGRyZXNzIHRhcmdldENvbnRyYWN0KSBpbnRl\ncm5hbCByZXR1cm5zIChhZGRyZXNzIGFkZHIpIHsKICAgIC8vIHRoZSBmb2xs\nb3dpbmcgYXNzZW1ibHkgY29kZSAoaW5pdCBjb2RlICsgY29udHJhY3QgY29k\nZSkgY29uc3RydWN0cyBhIG1ldGFwcm94eS4KICAgIGFzc2VtYmx5IHsKICAg\nICAgLy8gbG9hZCBmcmVlIG1lbW9yeSBwb2ludGVyIGFzIHBlciBzb2xpZGl0\neSBjb252ZW50aW9uCiAgICAgIGxldCBzdGFydCA6PSBtbG9hZCg2NCkKICAg\nICAgLy8gY29weQogICAgICBsZXQgcHRyIDo9IHN0YXJ0CiAgICAgIC8vIGRl\ncGxveSBjb2RlICgxMSBieXRlcykgKyBmaXJzdCBwYXJ0IG9mIHRoZSBwcm94\neSAoMjEgYnl0ZXMpCiAgICAgIG1zdG9yZShwdHIsIDB4NjAwYjM4MDM4MDYw\nMGIzZDM5M2RmMzM2M2QzZDM3M2QzZDNkM2Q2MDM2ODAzODAzODA5MTM2Mzkz\nNjAxM2Q3MykKICAgICAgcHRyIDo9IGFkZChwdHIsIDMyKQoKICAgICAgLy8g\nc3RvcmUgdGhlIGFkZHJlc3Mgb2YgdGhlIGNvbnRyYWN0IHRvIGJlIGNhbGxl\nZAogICAgICBtc3RvcmUocHRyLCBzaGwoOTYsIHRhcmdldENvbnRyYWN0KSkK\nICAgICAgLy8gMjAgYnl0ZXMKICAgICAgcHRyIDo9IGFkZChwdHIsIDIwKQoK\nICAgICAgLy8gdGhlIHJlbWFpbmluZyBwcm94eSBjb2RlLi4uCiAgICAgIG1z\ndG9yZShwdHIsIDB4NWFmNDNkM2Q5MzgwM2U2MDM0NTdmZDViZjMwMDAwMDAw\nMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMCkKICAgICAgLy8gLi4u\nMTMgYnl0ZXMKICAgICAgcHRyIDo9IGFkZChwdHIsIDEzKQoKICAgICAgLy8g\nbm93IGNhbGN1bGRhdGUgdGhlIHNpemUgYW5kIGNvcHkgdGhlIG1ldGFkYXRh\nCiAgICAgIC8vIC0gNCBieXRlcyBmdW5jdGlvbiBzaWduYXR1cmUKICAgICAg\nbGV0IHNpemUgOj0gc3ViKGNhbGxkYXRhc2l6ZSgpLCA0KQogICAgICAvLyBj\nb3B5CiAgICAgIGNhbGxkYXRhY29weShwdHIsIDQsIHNpemUpCiAgICAgIHB0\nciA6PSBhZGQocHRyLCBzaXplKQogICAgICAvLyBzdG9yZSB0aGUgc2l6ZSBv\nZiB0aGUgbWV0YWRhdGEgYXQgdGhlIGVuZCBvZiB0aGUgYnl0ZWNvZGUKICAg\nICAgbXN0b3JlKHB0ciwgc2l6ZSkKICAgICAgcHRyIDo9IGFkZChwdHIsIDMy\nKQoKICAgICAgLy8gVGhlIHNpemUgaXMgZGVwbG95IGNvZGUgKyBjb250cmFj\ndCBjb2RlICsgY2FsbGRhdGFzaXplIC0gNCArIDMyLgogICAgICBhZGRyIDo9\nIGNyZWF0ZSgwLCBzdGFydCwgc3ViKHB0ciwgc3RhcnQpKQogICAgfQogIH0K\nCiAgLy8vIEBkZXYgQ3JlYXRlcyBhIHByb3h5IGZvciBgdGFyZ2V0Q29udHJh\nY3RgIHdpdGggbWV0YWRhdGEgZnJvbSBgbWV0YWRhdGFgLgogIC8vLyBAcmV0\ndXJuIEEgbm9uLXplcm8gYWRkcmVzcyBpZiBzdWNjZXNzZnVsLgogIGZ1bmN0\naW9uIF9tZXRhUHJveHlGcm9tQnl0ZXMgKGFkZHJlc3MgdGFyZ2V0Q29udHJh\nY3QsIGJ5dGVzIG1lbW9yeSBtZXRhZGF0YSkgaW50ZXJuYWwgcmV0dXJucyAo\nYWRkcmVzcykgewogICAgdWludDI1NiBwdHI7CiAgICBhc3NlbWJseSB7CiAg\nICAgIHB0ciA6PSBhZGQobWV0YWRhdGEsIDMyKQogICAgfQogICAgcmV0dXJu\nIF9tZXRhUHJveHlGcm9tTWVtb3J5KHRhcmdldENvbnRyYWN0LCBwdHIsIG1l\ndGFkYXRhLmxlbmd0aCk7CiAgfQoKICAvLy8gQGRldiBDcmVhdGVzIGEgbmV3\nIHByb3h5IGZvciBgdGFyZ2V0Q29udHJhY3RgIHdpdGggbWV0YWRhdGEgZnJv\nbSBtZW1vcnkgc3RhcnRpbmcgYXQgYG9mZnNldGAgYW5kIGBsZW5ndGhgIGJ5\ndGVzLgogIC8vLyBAcmV0dXJuIGFkZHIgQSBub24temVybyBhZGRyZXNzIGlm\nIHN1Y2Nlc3NmdWwuCiAgZnVuY3Rpb24gX21ldGFQcm94eUZyb21NZW1vcnkg\nKGFkZHJlc3MgdGFyZ2V0Q29udHJhY3QsIHVpbnQyNTYgb2Zmc2V0LCB1aW50\nMjU2IGxlbmd0aCkgaW50ZXJuYWwgcmV0dXJucyAoYWRkcmVzcyBhZGRyKSB7\nCiAgICAvLyB0aGUgZm9sbG93aW5nIGFzc2VtYmx5IGNvZGUgKGluaXQgY29k\nZSArIGNvbnRyYWN0IGNvZGUpIGNvbnN0cnVjdHMgYSBtZXRhcHJveHkuCiAg\nICBhc3NlbWJseSB7CiAgICAgIC8vIGxvYWQgZnJlZSBtZW1vcnkgcG9pbnRl\nciBhcyBwZXIgc29saWRpdHkgY29udmVudGlvbgogICAgICBsZXQgc3RhcnQg\nOj0gbWxvYWQoNjQpCiAgICAgIC8vIGtlZXAgYSBjb3B5CiAgICAgIGxldCBw\ndHIgOj0gc3RhcnQKICAgICAgLy8gZGVwbG95IGNvZGUgKDExIGJ5dGVzKSAr\nIGZpcnN0IHBhcnQgb2YgdGhlIHByb3h5ICgyMSBieXRlcykKICAgICAgbXN0\nb3JlKHB0ciwgMHg2MDBiMzgwMzgwNjAwYjNkMzkzZGYzMzYzZDNkMzczZDNk\nM2QzZDYwMzY4MDM4MDM4MDkxMzYzOTM2MDEzZDczKQogICAgICBwdHIgOj0g\nYWRkKHB0ciwgMzIpCgogICAgICAvLyBzdG9yZSB0aGUgYWRkcmVzcyBvZiB0\naGUgY29udHJhY3QgdG8gYmUgY2FsbGVkCiAgICAgIG1zdG9yZShwdHIsIHNo\nbCg5NiwgdGFyZ2V0Q29udHJhY3QpKQogICAgICAvLyAyMCBieXRlcwogICAg\nICBwdHIgOj0gYWRkKHB0ciwgMjApCgogICAgICAvLyB0aGUgcmVtYWluaW5n\nIHByb3h5IGNvZGUuLi4KICAgICAgbXN0b3JlKHB0ciwgMHg1YWY0M2QzZDkz\nODAzZTYwMzQ1N2ZkNWJmMzAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAw\nMDAwMDAwMDAwKQogICAgICAvLyAuLi4xMyBieXRlcwogICAgICBwdHIgOj0g\nYWRkKHB0ciwgMTMpCgogICAgICAvLyBjb3B5IHRoZSBtZXRhZGF0YQogICAg\nICB7CiAgICAgICAgZm9yIHsgbGV0IGkgOj0gMCB9IGx0KGksIGxlbmd0aCkg\neyBpIDo9IGFkZChpLCAzMikgfSB7CiAgICAgICAgICBtc3RvcmUoYWRkKHB0\nciwgaSksIG1sb2FkKGFkZChvZmZzZXQsIGkpKSkKICAgICAgICB9CiAgICAg\nIH0KICAgICAgcHRyIDo9IGFkZChwdHIsIGxlbmd0aCkKICAgICAgLy8gc3Rv\ncmUgdGhlIHNpeiBvZiB0aGUgbWV0YWRhdGEgYXQgdGhlIGVuZCBvZiB0aGUg\nYnl0ZWNvZGUKICAgICAgbXN0b3JlKHB0ciwgbGVuZ3RoKQogICAgICBwdHIg\nOj0gYWRkKHB0ciwgMzIpCgogICAgICAvLyBUaGUgc2l6ZSBpcyBkZXBsb3kg\nY29kZSArIGNvbnRyYWN0IGNvZGUgKyBjYWxsZGF0YXNpemUgLSA0ICsgMzIu\nCiAgICAgIGFkZHIgOj0gY3JlYXRlKDAsIHN0YXJ0LCBzdWIocHRyLCBzdGFy\ndCkpCiAgICB9CiAgfQp9Cg==\n",
+        "encoding": "base64",
+        "_links": {
+          "self": "https://api.github.com/repos/ethereum/EIPs/contents/assets/eip-3448/MetaProxyFactory.sol?ref=23c85ee9628090968ee56e7d52951064bde490bb",
+          "git": "https://api.github.com/repos/ethereum/EIPs/git/blobs/f2510d85b95bca1013c66fdba70b52843035c911",
+          "html": "https://github.com/ethereum/EIPs/blob/23c85ee9628090968ee56e7d52951064bde490bb/assets/eip-3448/MetaProxyFactory.sol"
+        }
+      }
+    }
+  },
+  {
+    "req": {
+      "url": "https://api.github.com/repos/ethereum/EIPs/contents/assets%2Feip-3448%2FMetaProxyFactory.sol?ref=d2c6f0fbdb6c0431743d49639965c7d5de3881d9",
+      "method": "GET"
+    },
+    "res": {
+      "status": 404,
+      "data": "Not Found"
+    }
+  },
+  {
+    "req": {
+      "url": "https://api.github.com/user",
+      "method": "GET"
+    },
+    "res": {
+      "status": 200,
+      "data": {
+        "login": "eth-bot",
+        "id": 85952233,
+        "node_id": "MDQ6VXNlcjg1OTUyMjMz",
+        "avatar_url": "https://avatars.githubusercontent.com/u/85952233?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/eth-bot",
+        "html_url": "https://github.com/eth-bot",
+        "followers_url": "https://api.github.com/users/eth-bot/followers",
+        "following_url": "https://api.github.com/users/eth-bot/following{/other_user}",
+        "gists_url": "https://api.github.com/users/eth-bot/gists{/gist_id}",
+        "starred_url": "https://api.github.com/users/eth-bot/starred{/owner}{/repo}",
+        "subscriptions_url": "https://api.github.com/users/eth-bot/subscriptions",
+        "organizations_url": "https://api.github.com/users/eth-bot/orgs",
+        "repos_url": "https://api.github.com/users/eth-bot/repos",
+        "events_url": "https://api.github.com/users/eth-bot/events{/privacy}",
+        "received_events_url": "https://api.github.com/users/eth-bot/received_events",
+        "type": "User",
+        "site_admin": false,
+        "name": null,
+        "company": null,
+        "blog": "",
+        "location": null,
+        "email": null,
+        "hireable": null,
+        "bio": null,
+        "twitter_username": null,
+        "public_repos": 0,
+        "public_gists": 0,
+        "followers": 21,
+        "following": 0,
+        "created_at": "2021-06-15T15:27:49Z",
+        "updated_at": "2021-09-06T08:13:22Z"
+      }
+    }
+  },
+  {
+    "req": {
+      "url": "https://api.github.com/repos/ethereum/EIPs/issues/4506/comments",
+      "method": "GET"
+    },
+    "res": {
+      "status": 200,
+      "data": [
+        {
+          "url": "https://api.github.com/repos/ethereum/EIPs/issues/comments/981199404",
+          "html_url": "https://github.com/ethereum/EIPs/pull/4506#issuecomment-981199404",
+          "issue_url": "https://api.github.com/repos/ethereum/EIPs/issues/4506",
+          "id": 981199404,
+          "node_id": "IC_kwDOAq426M46e-os",
+          "user": {
+            "login": "eth-bot",
+            "id": 85952233,
+            "node_id": "MDQ6VXNlcjg1OTUyMjMz",
+            "avatar_url": "https://avatars.githubusercontent.com/u/85952233?v=4",
+            "gravatar_id": "",
+            "url": "https://api.github.com/users/eth-bot",
+            "html_url": "https://github.com/eth-bot",
+            "followers_url": "https://api.github.com/users/eth-bot/followers",
+            "following_url": "https://api.github.com/users/eth-bot/following{/other_user}",
+            "gists_url": "https://api.github.com/users/eth-bot/gists{/gist_id}",
+            "starred_url": "https://api.github.com/users/eth-bot/starred{/owner}{/repo}",
+            "subscriptions_url": "https://api.github.com/users/eth-bot/subscriptions",
+            "organizations_url": "https://api.github.com/users/eth-bot/orgs",
+            "repos_url": "https://api.github.com/users/eth-bot/repos",
+            "events_url": "https://api.github.com/users/eth-bot/events{/privacy}",
+            "received_events_url": "https://api.github.com/users/eth-bot/received_events",
+            "type": "User",
+            "site_admin": false
+          },
+          "created_at": "2021-11-29T00:51:28Z",
+          "updated_at": "2021-11-29T00:51:28Z",
+          "author_association": "COLLABORATOR",
+          "body": "A critical exception has occured (cc @alita-moore):\n\tMessage: not found\n",
+          "reactions": {
+            "url": "https://api.github.com/repos/ethereum/EIPs/issues/comments/981199404/reactions",
+            "total_count": 0,
+            "+1": 0,
+            "-1": 0,
+            "laugh": 0,
+            "hooray": 0,
+            "confused": 0,
+            "heart": 0,
+            "rocket": 0,
+            "eyes": 0
+          },
+          "performed_via_github_app": null
+        },
+        {
+          "url": "https://api.github.com/repos/ethereum/EIPs/issues/comments/981199675",
+          "html_url": "https://github.com/ethereum/EIPs/pull/4506#issuecomment-981199675",
+          "issue_url": "https://api.github.com/repos/ethereum/EIPs/issues/4506",
+          "id": 981199675,
+          "node_id": "IC_kwDOAq426M46e-s7",
+          "user": {
+            "login": "alita-moore",
+            "id": 26529820,
+            "node_id": "MDQ6VXNlcjI2NTI5ODIw",
+            "avatar_url": "https://avatars.githubusercontent.com/u/26529820?v=4",
+            "gravatar_id": "",
+            "url": "https://api.github.com/users/alita-moore",
+            "html_url": "https://github.com/alita-moore",
+            "followers_url": "https://api.github.com/users/alita-moore/followers",
+            "following_url": "https://api.github.com/users/alita-moore/following{/other_user}",
+            "gists_url": "https://api.github.com/users/alita-moore/gists{/gist_id}",
+            "starred_url": "https://api.github.com/users/alita-moore/starred{/owner}{/repo}",
+            "subscriptions_url": "https://api.github.com/users/alita-moore/subscriptions",
+            "organizations_url": "https://api.github.com/users/alita-moore/orgs",
+            "repos_url": "https://api.github.com/users/alita-moore/repos",
+            "events_url": "https://api.github.com/users/alita-moore/events{/privacy}",
+            "received_events_url": "https://api.github.com/users/alita-moore/received_events",
+            "type": "User",
+            "site_admin": false
+          },
+          "created_at": "2021-11-29T00:52:12Z",
+          "updated_at": "2021-11-29T00:52:12Z",
+          "author_association": "CONTRIBUTOR",
+          "body": "> A critical exception has occured (cc @alita-moore):\n> \tMessage: not found\n> \n\nLooking into this now",
+          "reactions": {
+            "url": "https://api.github.com/repos/ethereum/EIPs/issues/comments/981199675/reactions",
+            "total_count": 0,
+            "+1": 0,
+            "-1": 0,
+            "laugh": 0,
+            "hooray": 0,
+            "confused": 0,
+            "heart": 0,
+            "rocket": 0,
+            "eyes": 0
+          },
+          "performed_via_github_app": null
+        }
+      ]
+    }
+  },
+  {
+    "req": {
+      "url": "https://api.github.com/repos/ethereum/EIPs/issues/comments/981199404",
+      "method": "PATCH"
+    },
+    "res": {
+      "status": 200,
+      "data": {
+        "url": "https://api.github.com/repos/ethereum/EIPs/issues/comments/981199404",
+        "html_url": "https://github.com/ethereum/EIPs/pull/4506#issuecomment-981199404",
+        "issue_url": "https://api.github.com/repos/ethereum/EIPs/issues/4506",
+        "id": 981199404,
+        "node_id": "IC_kwDOAq426M46e-os",
+        "user": {
+          "login": "eth-bot",
+          "id": 85952233,
+          "node_id": "MDQ6VXNlcjg1OTUyMjMz",
+          "avatar_url": "https://avatars.githubusercontent.com/u/85952233?v=4",
+          "gravatar_id": "",
+          "url": "https://api.github.com/users/eth-bot",
+          "html_url": "https://github.com/eth-bot",
+          "followers_url": "https://api.github.com/users/eth-bot/followers",
+          "following_url": "https://api.github.com/users/eth-bot/following{/other_user}",
+          "gists_url": "https://api.github.com/users/eth-bot/gists{/gist_id}",
+          "starred_url": "https://api.github.com/users/eth-bot/starred{/owner}{/repo}",
+          "subscriptions_url": "https://api.github.com/users/eth-bot/subscriptions",
+          "organizations_url": "https://api.github.com/users/eth-bot/orgs",
+          "repos_url": "https://api.github.com/users/eth-bot/repos",
+          "events_url": "https://api.github.com/users/eth-bot/events{/privacy}",
+          "received_events_url": "https://api.github.com/users/eth-bot/received_events",
+          "type": "User",
+          "site_admin": false
+        },
+        "created_at": "2021-11-29T00:51:28Z",
+        "updated_at": "2021-11-29T00:57:32Z",
+        "author_association": "COLLABORATOR",
+        "body": "Hi! I'm a bot, and I wanted to automerge your PR, but couldn't because of the following issue(s):\n\n\n---\n## (fail) eip-3448.md\n- eip-3448 state was changed from draft to review\n- This PR requires review from one of [@micahzoltu, @lightclient, @arachnid, @cdetrio, @souptacular, @vbuterin, @nicksavers, @wanderer, @gcolvin, @axic]\n## (fail) assets/eip-3448/MetaProxyFactory.sol\n- 'MetaProxyFactory.sol' must be in eip-###.md format; this error will be overwritten upon relevant editor approval",
+        "reactions": {
+          "url": "https://api.github.com/repos/ethereum/EIPs/issues/comments/981199404/reactions",
+          "total_count": 0,
+          "+1": 0,
+          "-1": 0,
+          "laugh": 0,
+          "hooray": 0,
+          "confused": 0,
+          "heart": 0,
+          "rocket": 0,
+          "eyes": 0
+        },
+        "performed_via_github_app": null
+      }
+    }
+  }
+]
