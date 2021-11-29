@@ -2,13 +2,13 @@
 import { SavedRecord } from "src/tests/assets/records";
 import { envFactory } from "src/tests/factories/envFactory";
 import * as core from "@actions/core";
-import { __MAIN_MOCK__ } from "src/tests/assets/mockPR";
+import { __MAIN_MOCK__, mockPR } from "src/tests/assets/mockPR";
 import MockedEnv from "mocked-env";
 import nock from "nock";
 import { PromiseValue } from "type-fest";
 import { EIPCategory, EIPTypeOrCategoryToResolver, EIPTypes } from "src/domain";
 import { assertDefined } from "src/domain/typeDeclaratives";
-import { getPullRequestFiles, getPullRequestFromNumber } from "src/infra";
+import { getPullRequestFiles } from "src/infra";
 import { RequireFilenameEIPNum } from "#/assertions/require_filename_eip_num";
 import { getApprovals } from "#/approvals";
 import { getParsedContent } from "#/utils/get_parsed_content";
@@ -267,7 +267,8 @@ describe("integration testing edgecases associated with editors", () => {
       process.env = envFactory({
         PULL_NUMBER: SavedRecord.PR4506
       });
-      const PR = await getPullRequestFromNumber(parseInt(SavedRecord.PR4506));
+
+      const PR = await mockPR(SavedRecord.PR4506);
       const _RequireFilenameEIPNum = new RequireFilenameEIPNum({
         getPullRequestFiles: getPullRequestFiles,
         requirePr: jest.fn().mockResolvedValue(PR),
