@@ -1,5 +1,6 @@
 import { FileDiff } from "src/domain";
 import { IAssertHasAuthors } from "#/assertions/Domain/types";
+import { multiLineString } from "#/utils";
 
 export class AssertHasAuthors implements IAssertHasAuthors {
   constructor(){}
@@ -9,10 +10,10 @@ export class AssertHasAuthors implements IAssertHasAuthors {
 
     // Make sure there are authors
     if (!authors || authors.length === 0) {
-      return [
+      return multiLineString(" ")(
         `${file.head.name} has no identifiable authors who`,
         `can approve the PR (only considering the base version)`
-      ].join(" ");
+      );
     } else return;
   };
 }

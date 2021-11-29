@@ -33,3 +33,13 @@ export interface IAssertHasAuthors {
   assertHasAuthors: (file: FileDiff) => string | undefined
 }
 
+export interface IRequireAuthors {
+  /**
+   * requires that authors exist and returns them else throw error
+   *
+   * @param file file diff of a given file
+   * @returns list of raw author data
+   */
+   requireAuthors: (fileDiff: FileDiff) => string[]
+}
+

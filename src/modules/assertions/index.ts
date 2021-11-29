@@ -1,4 +1,4 @@
-import { requireAuthors } from "./require_authors";
+import { RequireAuthors } from "./require_authors";
 import { RequireEditors } from "./require_editors";
 import { RequireFilePreexisting } from "./require_file_preexisting";
 import {
@@ -21,7 +21,6 @@ import { AssertHasAuthors } from "#/assertions/assert_has_authors";
 
 export * from "./require_pull_number";
 export * from "./require_event";
-export * from "./require_authors";
 export * from "./require_pr";
 export * from "./assert_is_approved_by_authors";
 export * from "./require_files";
@@ -31,6 +30,14 @@ export * from "./assert_valid_status";
 export * from "./assert_eip_editor_approval";
 export * from "./assert_eip1_editor_approvals";
 export * from "./assert_constant_status";
+
+const _RequireAuthors = new RequireAuthors()
+export const requireAuthors = castTo<
+  typeof _RequireAuthors.requireAuthors
+  >((...args) => {
+  // @ts-ignore
+  return _RequireAuthors.requireAuthors(...args);
+});
 
 const _RequireEIPEditors = new RequireEditors({
   requireAuthors,
@@ -86,3 +93,5 @@ export const assertHasAuthors = castTo<
   // @ts-ignore
   return _AssertHasAuthors.assertHasAuthors(...args);
 });
+
+

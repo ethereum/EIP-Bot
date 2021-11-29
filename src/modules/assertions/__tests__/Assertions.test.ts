@@ -7,7 +7,6 @@ import {
   assertConstantStatus,
   assertFilenameAndFileNumbersMatch,
   assertValidStatus,
-  requireAuthors,
   requireEvent,
   requireFiles,
   requirePr,
@@ -103,31 +102,6 @@ describe("Requires", () => {
 
       const pr = await requirePr();
       expect(pr).toBeDefined();
-    });
-  });
-  describe("requireAuthors", () => {
-    it("returns authors", () => {
-      const fileDiff = FileDiffFactory();
-      const authors = requireAuthors(fileDiff);
-      // @ts-expect-error errors because authors can be undefined but it's not
-      expect(authors).toEqual(Array.from(fileDiff.base.authors));
-    });
-
-    it("does not return head authors (only from base)", () => {
-      const fileDiff = FileDiffFactory({
-        head: { authors: new Set(["fake"]) }
-      });
-      const authors = requireAuthors(fileDiff);
-      // @ts-expect-error errors because authors can be undefined but it's not
-      expect(authors).toEqual(Array.from(fileDiff.base.authors));
-    });
-
-    it("explodes if no authors", () => {
-      const fileDiff = FileDiffFactory({
-        head: { authors: new Set() },
-        base: { authors: new Set() }
-      });
-      expectError(() => requireAuthors(fileDiff));
     });
   });
 

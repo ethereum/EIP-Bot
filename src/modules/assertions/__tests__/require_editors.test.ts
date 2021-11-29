@@ -11,7 +11,6 @@ import {
 import { expectError, mockGithubContext } from "src/tests/testutils";
 import { RequireEditors as _RequireEditors } from "#/assertions/require_editors";
 import { CORE_EDITORS, ERC_EDITORS, FileDiff } from "src/domain";
-import { requireAuthors } from "#/assertions/require_authors";
 
 describe("_requireEIPEditors", () => {
   mockGithubContext({
@@ -23,7 +22,7 @@ describe("_requireEIPEditors", () => {
   const editors: [string, string, string] = ["editor1", "editor2", "editor3"];
 
   const RequireEIPEditors = new _RequireEditors({
-    requireAuthors,
+    requireAuthors: jest.fn(),
     ERC_EDITORS,
     CORE_EDITORS,
     INFORMATIONAL_EDITORS,
@@ -89,6 +88,7 @@ describe("requireEditors", () => {
 
   const editors: [string, string, string] = ["editor1", "editor2", "editor3"];
 
+  const requireAuthors = jest.fn();
   const RequireEditors = new _RequireEditors({
     requireAuthors,
     ERC_EDITORS,
