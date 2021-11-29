@@ -18,6 +18,7 @@ import { RequireFilenameEIPNum } from "./require_filename_eip_num";
 import { getApprovals } from "../approvals";
 import { getParsedContent } from "../utils/get_parsed_content";
 import { AssertHasAuthors } from "#/assertions/assert_has_authors";
+import { AssertEIP1EditorApprovals } from "#/assertions/assert_eip1_editor_approvals";
 
 export * from "./require_pull_number";
 export * from "./require_event";
@@ -28,7 +29,6 @@ export * from "./assert_filename_and_file_numbers_match";
 export * from "./assert_constant_eip_number";
 export * from "./assert_valid_status";
 export * from "./assert_eip_editor_approval";
-export * from "./assert_eip1_editor_approvals";
 export * from "./assert_constant_status";
 
 const _RequireAuthors = new RequireAuthors()
@@ -92,6 +92,16 @@ export const assertHasAuthors = castTo<
   >((...args) => {
   // @ts-ignore
   return _AssertHasAuthors.assertHasAuthors(...args);
+});
+
+const _AssertEIP1EditorApprovals = new AssertEIP1EditorApprovals(
+  getApprovals
+)
+export const assertEIP1EditorApprovals = castTo<
+  typeof _AssertEIP1EditorApprovals.assertEIP1EditorApprovals
+  >((...args) => {
+  // @ts-ignore
+  return _AssertEIP1EditorApprovals.assertEIP1EditorApprovals(...args);
 });
 
 

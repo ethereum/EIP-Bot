@@ -30,7 +30,7 @@ export interface IAssertHasAuthors {
    * @param file file diff of a given file
    * @returns list of raw author data
    */
-  assertHasAuthors: (file: FileDiff) => string | undefined
+  assertHasAuthors: (file: FileDiff) => string | undefined;
 }
 
 export interface IRequireAuthors {
@@ -40,6 +40,14 @@ export interface IRequireAuthors {
    * @param file file diff of a given file
    * @returns list of raw author data
    */
-   requireAuthors: (fileDiff: FileDiff) => string[]
+  requireAuthors: (fileDiff: FileDiff) => string[];
 }
 
+export interface IAssertEIP1EditorApprovals {
+  /**
+   * requires a set number of editor approvals
+   */
+  assertEIP1EditorApprovals: (
+    fileDiff: FileDiff
+  ) => Promise<string | undefined>;
+}
