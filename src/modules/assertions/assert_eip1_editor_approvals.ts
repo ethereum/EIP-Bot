@@ -16,9 +16,9 @@ export class AssertEIP1EditorApprovals implements IAssertEIP1EditorApprovals {
     if (editorApprovals.length < EIP1_REQUIRED_EDITOR_APPROVALS) {
       return multiLineString(" ")(
         `Changes to EIP 1 require at least ${EIP1_REQUIRED_EDITOR_APPROVALS}`,
-        `unique approvals from editors; there's current ${editorApprovals.length}`,
+        `unique approvals from editors; there's currently ${editorApprovals.length} approvals;`,
         `the remaining editors are ${editors
-          .filter((editor) => editorApprovals.includes(editor))
+          .filter((editor) => !editorApprovals.includes(editor))
           .join(", ")}`
       );
     } else return;

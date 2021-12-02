@@ -11,6 +11,8 @@ import {
 import { expectError, mockGithubContext } from "src/tests/testutils";
 import { RequireEditors as _RequireEditors } from "#/assertions/require_editors";
 import { CORE_EDITORS, ERC_EDITORS, FileDiff } from "src/domain";
+import { envFactory } from "src/tests/factories/envFactory";
+import { FileDiffFactory } from "src/tests/factories/fileDiffFactory";
 
 describe("_requireEIPEditors", () => {
   mockGithubContext({
@@ -98,7 +100,8 @@ describe("requireEditors", () => {
     META_EDITORS,
     NETWORKING_EDITORS
   });
-  RequireEditors._requireEIPEditors = jest.fn();
+  const _requireEIPEditorsMock = jest.fn()
+  RequireEditors._requireEIPEditors = _requireEIPEditorsMock;
 
   const requireAuthorsSpy = jest.spyOn(RequireEditors, "requireAuthors");
   const consoleSpy = jest.spyOn(console, "warn");
@@ -155,4 +158,25 @@ describe("requireEditors", () => {
       } as FileDiff);
     });
   });
+
+  it("should ignore category and return all editors if eip 1", async () => {
+    const fileDiff = FileDiffFactory({
+      base: {
+        // this should be ignored for eip 1
+        category: EIPCategory.erc,
+        filenameEipNum: 1
+      },
+      head: {
+        // only the base eip num should be considered
+        filenameEipNum: 2
+      }
+    });
+
+    _requireEIPEditorsMock.mockImplementation((input) => input)
+    RequireEditors[EIPTypeOrCategoryToResolver[EIPCategory.erc]].mockReturnValue(["@1"])
+    RequireEditors[EIPTypeOrCategoryToResolver[EIPCategory.core]].mockReturnValue(["@2"])
+    const res = RequireEditors.requireEIPEditors(fileDiff);
+    expect(res).toContainEqual("@1")
+    expect(res).toContainEqual("@2")
+  })
 });

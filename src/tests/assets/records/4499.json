@@ -626,5 +626,58 @@
         }
       ]
     }
+  },
+  {
+    "req": {
+      "url": "https://api.github.com/repos/ethereum/EIPs/issues/comments/979392368",
+      "method": "PATCH"
+    },
+    "res": {
+      "status": 200,
+      "data": {
+        "url": "https://api.github.com/repos/ethereum/EIPs/issues/comments/979392368",
+        "html_url": "https://github.com/ethereum/EIPs/pull/4499#issuecomment-979392368",
+        "issue_url": "https://api.github.com/repos/ethereum/EIPs/issues/4499",
+        "id": 979392368,
+        "node_id": "IC_kwDOAq426M46YFdw",
+        "user": {
+          "login": "eth-bot",
+          "id": 85952233,
+          "node_id": "MDQ6VXNlcjg1OTUyMjMz",
+          "avatar_url": "https://avatars.githubusercontent.com/u/85952233?v=4",
+          "gravatar_id": "",
+          "url": "https://api.github.com/users/eth-bot",
+          "html_url": "https://github.com/eth-bot",
+          "followers_url": "https://api.github.com/users/eth-bot/followers",
+          "following_url": "https://api.github.com/users/eth-bot/following{/other_user}",
+          "gists_url": "https://api.github.com/users/eth-bot/gists{/gist_id}",
+          "starred_url": "https://api.github.com/users/eth-bot/starred{/owner}{/repo}",
+          "subscriptions_url": "https://api.github.com/users/eth-bot/subscriptions",
+          "organizations_url": "https://api.github.com/users/eth-bot/orgs",
+          "repos_url": "https://api.github.com/users/eth-bot/repos",
+          "events_url": "https://api.github.com/users/eth-bot/events{/privacy}",
+          "received_events_url": "https://api.github.com/users/eth-bot/received_events",
+          "type": "User",
+          "site_admin": false
+        },
+        "created_at": "2021-11-25T17:56:38Z",
+        "updated_at": "2021-11-29T07:11:23Z",
+        "author_association": "COLLABORATOR",
+        "body": "Hi! I'm a bot, and I wanted to automerge your PR, but couldn't because of the following issue(s):\n\n\n---\n## (fail) eip-1.md\n- eip-1.md has no identifiable authors who can approve the PR (only considering the base version)\n- Changes to EIP 1 require at least 2 unique approvals from editors; there's currently 1 approvals; the remaining editors are @lightclient, @arachnid, @cdetrio, @souptacular, @vbuterin, @nicksavers, @wanderer, @gcolvin, @axic",
+        "reactions": {
+          "url": "https://api.github.com/repos/ethereum/EIPs/issues/comments/979392368/reactions",
+          "total_count": 0,
+          "+1": 0,
+          "-1": 0,
+          "laugh": 0,
+          "hooray": 0,
+          "confused": 0,
+          "heart": 0,
+          "rocket": 0,
+          "eyes": 0
+        },
+        "performed_via_github_app": null
+      }
+    }
   }
 ]

@@ -58,7 +58,7 @@ export class RequireEditors implements IRequireEditors {
       NETWORKING_EDITORS
     } = this;
 
-    if (!fileDiff) {
+    if (!fileDiff || fileDiff.base.filenameEipNum === 1) {
       // if no fileDiff is provided then return all editors
       return this._requireEIPEditors(
         _.concat(
