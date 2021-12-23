@@ -11,7 +11,6 @@ import {
 import { expectError, mockGithubContext } from "src/tests/testutils";
 import { RequireEditors as _RequireEditors } from "#/assertions/require_editors";
 import { CORE_EDITORS, ERC_EDITORS, FileDiff } from "src/domain";
-import { envFactory } from "src/tests/factories/envFactory";
 import { FileDiffFactory } from "src/tests/factories/fileDiffFactory";
 
 describe("_requireEIPEditors", () => {
@@ -100,7 +99,7 @@ describe("requireEditors", () => {
     META_EDITORS,
     NETWORKING_EDITORS
   });
-  const _requireEIPEditorsMock = jest.fn()
+  const _requireEIPEditorsMock = jest.fn();
   RequireEditors._requireEIPEditors = _requireEIPEditorsMock;
 
   const requireAuthorsSpy = jest.spyOn(RequireEditors, "requireAuthors");
@@ -172,11 +171,15 @@ describe("requireEditors", () => {
       }
     });
 
-    _requireEIPEditorsMock.mockImplementation((input) => input)
-    RequireEditors[EIPTypeOrCategoryToResolver[EIPCategory.erc]].mockReturnValue(["@1"])
-    RequireEditors[EIPTypeOrCategoryToResolver[EIPCategory.core]].mockReturnValue(["@2"])
+    _requireEIPEditorsMock.mockImplementation((input) => input);
+    RequireEditors[
+      EIPTypeOrCategoryToResolver[EIPCategory.erc]
+    ].mockReturnValue(["@1"]);
+    RequireEditors[
+      EIPTypeOrCategoryToResolver[EIPCategory.core]
+    ].mockReturnValue(["@2"]);
     const res = RequireEditors.requireEIPEditors(fileDiff);
-    expect(res).toContainEqual("@1")
-    expect(res).toContainEqual("@2")
-  })
+    expect(res).toContainEqual("@1");
+    expect(res).toContainEqual("@2");
+  });
 });

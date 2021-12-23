@@ -10,7 +10,8 @@ import {
 } from "src/domain";
 import { assertSavedRecord, getMockRecords, SavedRecord } from "./records";
 import * as fs from "fs";
-import { CriticalError } from "src/domain/exceptions";
+import { CriticalError, UnexpectedError } from "src/domain/exceptions";
+import * as HttpStatus from "http-status";
 
 const baseUrl = "https://api.github.com";
 const scope = nock(baseUrl).persist();
@@ -159,6 +160,18 @@ const fetchAndCreateRecord = async (
   const mockedRecord: MockRecord[] = (await import("./" + fileName)).default;
 
   isMockMethod(method);
+  const handleResData = (res) => {
+    const status = res.status;
+    if ([HttpStatus.OK].includes(status)) {
+      // when successful it returns the response in a res.data format
+      return res.data;
+    }
+    if ([HttpStatus.NOT_FOUND].includes(status)) {
+      // when it returns a not found or other types of failures
+      return res.response.data;
+    }
+    throw new UnexpectedError(`status code ${status} is not a handled status`);
+  };
   mockedRecord.push({
     req: {
       url,
@@ -166,7 +179,7 @@ const fetchAndCreateRecord = async (
     },
     res: {
       status: res.status,
-      data: res.status === 200 ? res.data : res.message
+      data: handleResData(res)
     }
   });
 

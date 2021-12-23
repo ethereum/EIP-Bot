@@ -9,7 +9,7 @@ export const statusChangeAllowedPurifier = (testResults: TestResults) => {
   const isStatusChangeAllowed = ANY([
     // state changes from lastcall -> review
     fileDiff?.base.status === EipStatus.lastCall &&
-    fileDiff?.head.status === EipStatus.review,
+      fileDiff?.head.status === EipStatus.review,
     // editors can approve state changes
     !errors.approvalErrors.isEditorApprovedError
   ]);

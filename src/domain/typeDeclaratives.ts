@@ -45,5 +45,8 @@ export function castTo<CastToThisType>(value: any): CastToThisType {
 
 type FileNotFound = Opaque<NodeJS.ErrnoException>;
 export const isFileNotFound = (err: any): err is FileNotFound => {
-  return AND(err.response?.status === 404, err.response?.data?.message === "Not Found");
+  return AND(
+    err.response?.status === 404,
+    err.response?.data?.message === "Not Found"
+  );
 };

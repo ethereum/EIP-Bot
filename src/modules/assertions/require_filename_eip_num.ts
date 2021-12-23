@@ -137,9 +137,9 @@ export class RequireFilenameEIPNum implements IRequireFilenameEIPNum {
       return;
     }
 
-    const hasNoEIPNumber = EIP_NUM_RE.test(path);
+    const hasEIPNumber = EIP_NUM_RE.test(path);
     // this edgecase is only relevant if the filename is not in expected format
-    if (hasNoEIPNumber) {
+    if (hasEIPNumber) {
       return;
     }
 

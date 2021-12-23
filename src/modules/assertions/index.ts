@@ -31,13 +31,13 @@ export * from "./assert_valid_status";
 export * from "./assert_eip_editor_approval";
 export * from "./assert_constant_status";
 
-const _RequireAuthors = new RequireAuthors()
-export const requireAuthors = castTo<
-  typeof _RequireAuthors.requireAuthors
-  >((...args) => {
-  // @ts-ignore
-  return _RequireAuthors.requireAuthors(...args);
-});
+const _RequireAuthors = new RequireAuthors();
+export const requireAuthors = castTo<typeof _RequireAuthors.requireAuthors>(
+  (...args) => {
+    // @ts-ignore
+    return _RequireAuthors.requireAuthors(...args);
+  }
+);
 
 const _RequireEIPEditors = new RequireEditors({
   requireAuthors,
@@ -89,19 +89,15 @@ export const assertValidFilename = castTo<
 const _AssertHasAuthors = new AssertHasAuthors();
 export const assertHasAuthors = castTo<
   typeof _AssertHasAuthors.assertHasAuthors
-  >((...args) => {
+>((...args) => {
   // @ts-ignore
   return _AssertHasAuthors.assertHasAuthors(...args);
 });
 
-const _AssertEIP1EditorApprovals = new AssertEIP1EditorApprovals(
-  getApprovals
-)
+const _AssertEIP1EditorApprovals = new AssertEIP1EditorApprovals(getApprovals);
 export const assertEIP1EditorApprovals = castTo<
   typeof _AssertEIP1EditorApprovals.assertEIP1EditorApprovals
-  >((...args) => {
+>((...args) => {
   // @ts-ignore
   return _AssertEIP1EditorApprovals.assertEIP1EditorApprovals(...args);
 });
-
-

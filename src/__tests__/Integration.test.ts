@@ -1,11 +1,7 @@
 // integration tests in this repo are previously fixed bugs
 import { SavedRecord } from "src/tests/assets/records";
 import { envFactory } from "src/tests/factories/envFactory";
-import * as core from "@actions/core";
 import { __MAIN_MOCK__, mockPR } from "src/tests/assets/mockPR";
-import MockedEnv from "mocked-env";
-import nock from "nock";
-import { PromiseValue } from "type-fest";
 import { EIPCategory, EIPTypeOrCategoryToResolver, EIPTypes } from "src/domain";
 import { assertDefined } from "src/domain/typeDeclaratives";
 import { getPullRequestFiles } from "src/infra";
@@ -13,30 +9,11 @@ import { RequireFilenameEIPNum } from "#/assertions/require_filename_eip_num";
 import { getApprovals } from "#/approvals";
 import { getParsedContent } from "#/utils/get_parsed_content";
 import { Exceptions } from "src/domain/exceptions";
+import { getSetFailedMock, initGeneralTestEnv } from "src/tests/testutils";
 
 describe("integration testing edgecases associated with editors", () => {
-  const setFailedMock = jest
-    .fn()
-    .mockImplementation(core.setFailed) as jest.MockedFunction<
-    typeof core.setFailed
-  >;
-  const restore = MockedEnv(process.env);
-
-  beforeEach(async () => {
-    jest.resetModules();
-    const core = await import("@actions/core");
-    jest.spyOn(core, "setFailed").mockImplementation(setFailedMock);
-    setFailedMock.mockClear();
-    nock.cleanAll();
-  });
-
-  afterEach(() => {
-    restore();
-  });
-
-  afterAll(() => {
-    jest.restoreAllMocks();
-  });
+  initGeneralTestEnv();
+  const setFailedMock = getSetFailedMock();
 
   describe("Pull 3670", () => {
     it("should require editor approval if an editor is also an author", async () => {
@@ -63,22 +40,14 @@ describe("integration testing edgecases associated with editors", () => {
       await __MAIN_MOCK__();
 
       const Domain = await import("src/domain");
-      const Components = (await import("#/components")) as jest.Mocked<
-        PromiseValue<typeof import("#/components")>
-      >;
 
       // collect the call
-      expect(Components.postComment).toHaveBeenCalledTimes(1);
-      const call = Components.postComment.mock.calls[0];
+      expect(setFailedMock).toHaveBeenCalledTimes(1);
+      const call = setFailedMock.mock.calls[0];
 
-      function assertDefined<T>(call: T): asserts call is NonNullable<T> {
-        expect(call).toBeDefined();
-      }
-
-      assertDefined(call);
-
-      expect(call[0]).toContain(Domain.INFORMATIONAL_EDITORS()[0]);
-      expect(call[0]).toContain(Domain.INFORMATIONAL_EDITORS()[1]);
+      expect(call).toBeDefined();
+      expect(call![0]).toContain(Domain.INFORMATIONAL_EDITORS()[0]);
+      expect(call![0]).toContain(Domain.INFORMATIONAL_EDITORS()[1]);
     });
 
     it("should pass with editor approval", async () => {

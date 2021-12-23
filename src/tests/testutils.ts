@@ -3,6 +3,7 @@ import actions from "@actions/github";
 import { set } from "lodash";
 import nock from "nock";
 import MockedEnv from "mocked-env";
+import * as core from "@actions/core";
 
 export const getAllTruthyObjectPaths = (obj: object) => {
   function rKeys(o: object, path?: string) {
@@ -117,4 +118,20 @@ export const initGeneralTestEnv = () => {
     nock.restore();
     nock.enableNetConnect();
   });
+};
+
+export const getSetFailedMock = () => {
+  const setFailedMock = jest
+    .fn()
+    .mockImplementation(core.setFailed) as jest.MockedFunction<
+    typeof core.setFailed
+  >;
+
+  beforeEach(async () => {
+    const core = await import("@actions/core");
+    jest.spyOn(core, "setFailed").mockImplementation(setFailedMock);
+    setFailedMock.mockClear();
+  });
+
+  return setFailedMock;
 };

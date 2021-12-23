@@ -9,6 +9,7 @@ import { postComment } from "#/components";
 import {
   isNockDisallowedNetConnect,
   isNockNoMatchingRequest,
+  isProd,
   NodeEnvs,
   Results
 } from "src/domain";
@@ -71,10 +72,14 @@ export const _main_ = async () => {
   }
 
   const commentMessage = getCommentMessage(results);
-  await postComment(commentMessage);
-  await requestReviewers(
-    uniq(results.flatMap((res) => res.mentions).filter(Boolean) as string[])
-  );
+
+  // to avoid annoying people, it's best to only do this while running prod
+  if (isProd()) {
+    await postComment(commentMessage);
+    await requestReviewers(
+      uniq(results.flatMap((res) => res.mentions).filter(Boolean) as string[])
+    );
+  }
 
   console.log(commentMessage);
   return setFailed(commentMessage);

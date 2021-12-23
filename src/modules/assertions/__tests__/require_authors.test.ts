@@ -1,6 +1,10 @@
 import { FileDiffFactory } from "src/tests/factories/fileDiffFactory";
 import { requireAuthors } from "#/assertions";
-import { expectError, initGeneralTestEnv, mockGithubContext } from "src/tests/testutils";
+import {
+  expectError,
+  initGeneralTestEnv,
+  mockGithubContext
+} from "src/tests/testutils";
 import { EVENTS } from "src/domain";
 
 describe("requireAuthors", () => {

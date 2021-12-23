@@ -146,7 +146,7 @@ describe("requireFilenameEipNum", () => {
 
   describe("new file submission", () => {
     const attemptNewFile = (path: string = "path") => {
-      return _RequireFilenameEIPNum.attemptNewFileNoEIPNumber(path, path);
+      return _RequireFilenameEIPNum.attemptNewFileNoEIPNumber(path);
     };
 
     it("should rethrow error if not of known type", async () => {
@@ -160,7 +160,9 @@ describe("requireFilenameEipNum", () => {
     const notFoundError = {
       response: {
         status: 404,
-        data: "Not Found"
+        data: {
+          message: "Not Found"
+        }
       }
     };
 

@@ -238,8 +238,19 @@ export const CHECK_STATUS_INTERVAL = 30000;
 
 export const EIP1_REQUIRED_EDITOR_APPROVALS = 2;
 
+export const isTest = () => {
+  return process.env.NODE_ENV === NodeEnvs.test;
+};
 export const isMock = () => {
   return process.env.NODE_ENV === NodeEnvs.mock;
+};
+
+export const isProd = () => {
+  return process.env.NODE_ENV === NodeEnvs.production;
+};
+
+export const isDevelopment = () => {
+  return process.env.NODE_ENV === NodeEnvs.developemnt;
 };
 
 type NockNoMatchingRequest = Opaque<NodeJS.ErrnoException>;
