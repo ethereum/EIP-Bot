@@ -253,14 +253,19 @@ describe("integration testing edgecases associated with editors", () => {
     });
   });
 
-  // describe("Pull 4499", () => {
-  //   it("should fail", async () => {
-  //     process.env = envFactory({
-  //       PULL_NUMBER: SavedRecord.PR4499
-  //     });
-  //
-  //     await __MAIN_MOCK__();
-  //     expect(setFailedMock).toBeCalled();
-  //   })
-  // })
+  describe("Pull 4499", () => {
+    it("should fail", async () => {
+      process.env = envFactory({
+        PULL_NUMBER: SavedRecord.PR4499
+      });
+
+      const Exceptions = await import("src/domain/exceptions");
+      const requirementViolationMock = jest.spyOn(Exceptions, "RequirementViolation")
+
+      await __MAIN_MOCK__();
+      expect(setFailedMock).toBeCalled();
+
+      expect(requirementViolationMock).not.toBeCalled()
+    })
+  })
 });

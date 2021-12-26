@@ -59,7 +59,7 @@ export class RequireEditors implements IRequireEditors {
     } = this;
 
     if (!fileDiff || fileDiff.base.filenameEipNum === 1) {
-      // if no fileDiff is provided then return all editors
+      // if no fileDiff is provided (meaning it's a new file) then return all editors
       return this._requireEIPEditors(
         _.concat(
           ERC_EDITORS(),
