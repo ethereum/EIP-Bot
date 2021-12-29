@@ -1,4 +1,4 @@
-import { GithubPullRequest } from "#/pull_request/infra/post_comment";
+import { GithubPullRequest } from "#/pull_request/infra/github_api/github_pull_request";
 import { castTo } from "src/domain";
 import { github } from "src/infra";
 
