@@ -679,5 +679,121 @@
         "performed_via_github_app": null
       }
     }
+  },
+  {
+    "req": {
+      "url": "https://api.github.com/repos/ethereum/EIPs/issues/4499",
+      "method": "GET"
+    },
+    "res": {
+      "status": 200,
+      "data": {
+        "url": "https://api.github.com/repos/ethereum/EIPs/issues/4499",
+        "repository_url": "https://api.github.com/repos/ethereum/EIPs",
+        "labels_url": "https://api.github.com/repos/ethereum/EIPs/issues/4499/labels{/name}",
+        "comments_url": "https://api.github.com/repos/ethereum/EIPs/issues/4499/comments",
+        "events_url": "https://api.github.com/repos/ethereum/EIPs/issues/4499/events",
+        "html_url": "https://github.com/ethereum/EIPs/pull/4499",
+        "id": 1063834724,
+        "node_id": "PR_kwDOAq426M4vB8oA",
+        "number": 4499,
+        "title": "Update weblink to text(s) and remove Bibliography from EIP-1",
+        "user": {
+          "login": "poojaranjan",
+          "id": 29681685,
+          "node_id": "MDQ6VXNlcjI5NjgxNjg1",
+          "avatar_url": "https://avatars.githubusercontent.com/u/29681685?v=4",
+          "gravatar_id": "",
+          "url": "https://api.github.com/users/poojaranjan",
+          "html_url": "https://github.com/poojaranjan",
+          "followers_url": "https://api.github.com/users/poojaranjan/followers",
+          "following_url": "https://api.github.com/users/poojaranjan/following{/other_user}",
+          "gists_url": "https://api.github.com/users/poojaranjan/gists{/gist_id}",
+          "starred_url": "https://api.github.com/users/poojaranjan/starred{/owner}{/repo}",
+          "subscriptions_url": "https://api.github.com/users/poojaranjan/subscriptions",
+          "organizations_url": "https://api.github.com/users/poojaranjan/orgs",
+          "repos_url": "https://api.github.com/users/poojaranjan/repos",
+          "events_url": "https://api.github.com/users/poojaranjan/events{/privacy}",
+          "received_events_url": "https://api.github.com/users/poojaranjan/received_events",
+          "type": "User",
+          "site_admin": false
+        },
+        "labels": [],
+        "state": "closed",
+        "locked": false,
+        "assignee": null,
+        "assignees": [],
+        "milestone": null,
+        "comments": 2,
+        "created_at": "2021-11-25T17:55:44Z",
+        "updated_at": "2021-12-06T03:33:32Z",
+        "closed_at": "2021-12-06T03:33:32Z",
+        "author_association": "CONTRIBUTOR",
+        "active_lock_reason": null,
+        "draft": false,
+        "pull_request": {
+          "url": "https://api.github.com/repos/ethereum/EIPs/pulls/4499",
+          "html_url": "https://github.com/ethereum/EIPs/pull/4499",
+          "diff_url": "https://github.com/ethereum/EIPs/pull/4499.diff",
+          "patch_url": "https://github.com/ethereum/EIPs/pull/4499.patch",
+          "merged_at": "2021-12-06T03:33:32Z"
+        },
+        "body": "Updated texts to add web links wherever required to remove the \"Bibliography\" section. \r\n eg.  \r\n[formal specification] -> [formal specification](https://github.com/ethereum/yellowpaper)\r\n\r\nSome of the links were redundant and hence couldn't be added to the current version of EIP-1.",
+        "closed_by": {
+          "login": "lightclient",
+          "id": 14004106,
+          "node_id": "MDQ6VXNlcjE0MDA0MTA2",
+          "avatar_url": "https://avatars.githubusercontent.com/u/14004106?v=4",
+          "gravatar_id": "",
+          "url": "https://api.github.com/users/lightclient",
+          "html_url": "https://github.com/lightclient",
+          "followers_url": "https://api.github.com/users/lightclient/followers",
+          "following_url": "https://api.github.com/users/lightclient/following{/other_user}",
+          "gists_url": "https://api.github.com/users/lightclient/gists{/gist_id}",
+          "starred_url": "https://api.github.com/users/lightclient/starred{/owner}{/repo}",
+          "subscriptions_url": "https://api.github.com/users/lightclient/subscriptions",
+          "organizations_url": "https://api.github.com/users/lightclient/orgs",
+          "repos_url": "https://api.github.com/users/lightclient/repos",
+          "events_url": "https://api.github.com/users/lightclient/events{/privacy}",
+          "received_events_url": "https://api.github.com/users/lightclient/received_events",
+          "type": "User",
+          "site_admin": false
+        },
+        "reactions": {
+          "url": "https://api.github.com/repos/ethereum/EIPs/issues/4499/reactions",
+          "total_count": 0,
+          "+1": 0,
+          "-1": 0,
+          "laugh": 0,
+          "hooray": 0,
+          "confused": 0,
+          "heart": 0,
+          "rocket": 0,
+          "eyes": 0
+        },
+        "timeline_url": "https://api.github.com/repos/ethereum/EIPs/issues/4499/timeline",
+        "performed_via_github_app": null
+      }
+    }
+  },
+  {
+    "req": {
+      "url": "https://api.github.com/repos/ethereum/EIPs/issues/4499/labels",
+      "method": "PUT"
+    },
+    "res": {
+      "status": 200,
+      "data": [
+        {
+          "id": 3683553869,
+          "node_id": "LA_kwDOAq426M7bjpJN",
+          "url": "https://api.github.com/repos/ethereum/EIPs/labels/updateEIP",
+          "name": "updateEIP",
+          "color": "ededed",
+          "default": false,
+          "description": null
+        }
+      ]
+    }
   }
 ]

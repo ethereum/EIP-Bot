@@ -1,6 +1,6 @@
 import { isDefined } from "src/domain";
 import { requirePr } from "#/assertions";
-import { requestReview } from "src/infra";
+import { github } from "src/infra";
 
 /**
  * Attempts to request a review and returns a list of unchanged users
@@ -13,7 +13,7 @@ import { requestReview } from "src/infra";
 export const requestReviewers = async (reviewers: string[]) => {
   const pr = await requirePr();
   const requestReviewer = async (reviewer: string) => {
-    const res = await requestReview(pr, reviewer);
+    const res = await github.requestReview(pr, reviewer);
     return !res && reviewer;
   };
 

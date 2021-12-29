@@ -1,5 +1,5 @@
 import { getOctokit } from "@actions/github";
-import { EIPCategory, EipStatus, EIPTypes } from "./Constants";
+import { ChangeTypes, EIPCategory, EipStatus, EIPTypes } from "./Constants";
 import { FrontMatterResult } from "front-matter";
 import { PromiseValue } from "type-fest";
 import { CriticalError } from "src/domain/exceptions";
@@ -22,6 +22,12 @@ export type File = Files[number];
 export type CommitFiles = CompareCommits["base_commit"]["files"];
 export type CommitFile = UnArrayify<NonNullable<CommitFiles>>;
 export type Repo = PromiseValue<ReturnType<Github["repos"]["get"]>>["data"];
+export type GithubSelf = PromiseValue<
+  ReturnType<Github["users"]["getAuthenticated"]>
+>["data"];
+export type IssueComments = PromiseValue<
+  ReturnType<Github["issues"]["listComments"]>
+>["data"];
 
 // This was extracted directly from Octokit repo
 // node_modules/@octokit/openapi-types/generated/types.ts : 7513 - 7553
@@ -100,6 +106,22 @@ export type ERRORS = {
   };
 };
 
+type LeafsToBoolean<O> = {
+  [K in keyof O]: O[K] extends Record<any, any>
+    ? Required<LeafsToBoolean<O[K]>>
+    : boolean | null;
+};
+
+/**
+ * this type is used to define filter definitions for different change types; the
+ * type of a change should be distinguishable by the errors alone. Each leaf
+ * can be either true, false, or null where
+ * - true: an error exists for this leaf
+ * - false: an error does not exist for this leaf
+ * - null: either
+ * */
+export type ERRORS_TYPE_FILTER = LeafsToBoolean<ERRORS>;
+
 export const encodings = [
   "ascii",
   "utf8",
@@ -122,7 +144,8 @@ export type TestResults = { errors: ERRORS } & {
 export enum MockMethods {
   get = "GET",
   post = "POST",
-  patch = "PATCH"
+  patch = "PATCH",
+  put = "PUT"
 }
 
 export type MockRecord = {
@@ -143,7 +166,7 @@ export enum NodeEnvs {
   production = "production"
 }
 
-export function isMockMethod(method): asserts method is MockMethods {
+export function requireMockMethod(method): asserts method is MockMethods {
   if (!Object.values(MockMethods).includes(method)) {
     throw new CriticalError(`method ${method} is not a supported mock method`);
   } else {
@@ -151,15 +174,22 @@ export function isMockMethod(method): asserts method is MockMethods {
   }
 }
 
-export type Results = {
+export type Result = {
   filename: string;
   successMessage?: string;
   errors?: string[];
   mentions?: string[];
-}[];
+  type: ChangeTypes;
+};
+
+export type Results = Result[];
 
 export type PropsValue<T extends (...args: any[]) => any> = T extends (
   ...args: infer Props
 ) => any
   ? Props
   : never;
+
+export type MockedFunctionObject<
+  Obj extends Record<string, (...args: any[]) => any>
+> = { [key in keyof Obj]?: jest.MockedFunction<Obj[key]> };

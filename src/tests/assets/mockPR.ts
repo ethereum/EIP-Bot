@@ -2,7 +2,7 @@ import { getOctokit } from "@actions/github";
 import nock from "nock";
 import {
   GITHUB_TOKEN,
-  isMockMethod,
+  requireMockMethod,
   MockMethods,
   MockRecord,
   NodeEnvs,
@@ -42,10 +42,16 @@ export const mockPR = async (pullNumber: SavedRecord) => {
     switch (req.method) {
       case "GET":
         scope.get(wildcard).reply(res.status, res.data);
+        break
       case "POST":
         scope.post(wildcard).reply(res.status, res.data);
+        break
       case "PATCH":
         scope.patch(wildcard).reply(res.status, res.data);
+        break
+      case MockMethods.put:
+        scope.put(wildcard).reply(res.status, res.data);
+        break
     }
   }
 
@@ -116,6 +122,8 @@ export const setMockContext = async (mockEnv?: NodeJS.ProcessEnv) => {
     number: parseInt(env.PULL_NUMBER || "") || 0
   };
 
+  // context.issue.number = pr.number
+
   context.payload.repository = {
     // @ts-ignore
     name: env.REPO_NAME,
@@ -148,7 +156,7 @@ const fetchAndCreateRecord = async (
   const res = await github({
     method,
     url,
-    body
+    ...JSON.parse(body || "{}")
   }).catch((err) => {
     nock.disableNetConnect();
     return err;
@@ -159,10 +167,10 @@ const fetchAndCreateRecord = async (
   const fileName = `records/${process.env.PULL_NUMBER?.replace("_", "/")}.json`;
   const mockedRecord: MockRecord[] = (await import("./" + fileName)).default;
 
-  isMockMethod(method);
+  requireMockMethod(method);
   const handleResData = (res) => {
     const status = res.status;
-    if ([HttpStatus.OK].includes(status)) {
+    if ([HttpStatus.OK, HttpStatus.CREATED].includes(status)) {
       // when successful it returns the response in a res.data format
       return res.data;
     }

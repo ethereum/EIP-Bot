@@ -1,5 +1,5 @@
-import { TestResults } from "src/domain";
-import { intersection, set } from "lodash";
+import { isDefined, TestResults } from "src/domain";
+import _, { intersection, set } from "lodash";
 
 export const OR = (...args: [boolean, ...boolean[]]) => args.includes(true);
 export const AND = (...args: [boolean, ...boolean[]]) => !args.includes(false);
@@ -47,5 +47,33 @@ export const getAllTruthyObjectPaths = (obj: object) => {
     );
   }
 
-  return rKeys(obj).toString().split(",").filter(Boolean) as string[];
+  return rKeys(obj).toString().split(",").filter(isDefined);
+};
+
+export const getAllFalseObjectPaths = (obj: object) => {
+  function rKeys(o: object, path?: string) {
+    if (typeof o !== "object" || _.isNull(o)) {
+      if (o === false) return path;
+      return;
+    }
+    return Object.keys(o).map((key) =>
+      rKeys(o[key], path ? [path, key].join(".") : key)
+    );
+  }
+
+  return rKeys(obj).toString().split(",").filter(isDefined);
+};
+
+export const getAllNullObjectPaths = (obj: object) => {
+  function rKeys(o: object, path?: string) {
+    if (typeof o !== "object") {
+      if (_.isNull(o)) return path;
+      return;
+    }
+    return Object.keys(o).map((key) =>
+      rKeys(o[key], path ? [path, key].join(".") : key)
+    );
+  }
+
+  return rKeys(obj).toString().split(",").filter(isDefined);
 };

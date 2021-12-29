@@ -5,8 +5,9 @@ import {
   requirePr,
   requirePullNumber
 } from "#/assertions";
-import { postComment } from "#/components";
+import { PullRequestUseCases } from "#/pull_request/use_cases";
 import {
+  ChangeTypes,
   isNockDisallowedNetConnect,
   isNockNoMatchingRequest,
   isProd,
@@ -17,9 +18,10 @@ import { uniq } from "lodash";
 import { requestReviewers } from "#/approvals";
 import { processError } from "src/domain/exceptions";
 import { multiLineString } from "#/utils";
-import { testFile } from "#/main/test_file";
-import { purifyTestResults } from "#/main/purify_test_results";
-import { getCommentMessage } from "#/main/get_comment_message";
+import { testFile } from "#/main/modules/test_file";
+import { purifyTestResults } from "#/main/modules/purify_test_results";
+import { getCommentMessage } from "#/main/modules/get_comment_message";
+import _ from "lodash";
 
 export const _main_ = async () => {
   // Verify correct environment and request context
@@ -40,13 +42,15 @@ export const _main_ = async () => {
         gracefulTermination: (message) => {
           results.push({
             filename: file.filename,
-            successMessage: message
+            successMessage: message,
+            type: ChangeTypes.ambiguous
           });
         },
         requirementViolation: (message) => {
           results.push({
             filename: file.filename,
-            errors: [message]
+            errors: [message],
+            type: ChangeTypes.ambiguous
           });
         },
         unexpectedError: (message, data) => {
@@ -54,19 +58,24 @@ export const _main_ = async () => {
           message = `An unexpected error occurred (cc @alita-moore): ${message}`;
           results.push({
             filename: file.filename,
-            errors: [message]
+            errors: [message],
+            type: ChangeTypes.ambiguous
           });
         }
       });
     }
   }
 
+  // updates labels to be as expected
+  const expectedLabels = _.uniq(_.map(results, "type"));
+  await PullRequestUseCases.updateLabels(expectedLabels)
+
   if (!results.filter((res) => res.errors).length) {
     const commentMessage = getCommentMessage(
       results,
       "All tests passed; auto-merging..."
     );
-    await postComment(commentMessage);
+    await PullRequestUseCases.postComment(commentMessage);
     console.log(commentMessage);
     return;
   }
@@ -75,7 +84,7 @@ export const _main_ = async () => {
 
   // to avoid annoying people, it's best to only do this while running prod
   if (isProd()) {
-    await postComment(commentMessage);
+    await PullRequestUseCases.postComment(commentMessage);
     await requestReviewers(
       uniq(results.flatMap((res) => res.mentions).filter(Boolean) as string[])
     );
@@ -102,7 +111,7 @@ export const _main = (_main_: () => Promise<undefined | void>) => async () => {
     console.log(message);
 
     if (isProd) {
-      await postComment(message);
+      await PullRequestUseCases.postComment(message);
     }
 
     setFailed(message);

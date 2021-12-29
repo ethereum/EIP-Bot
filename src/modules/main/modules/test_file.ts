@@ -29,6 +29,7 @@ export const testFile = async (file: File): Promise<TestResults> => {
       requirementViolation: (message) => {
         errors.fileErrors.filePreexistingError = message;
       }
+      // all other types will throw the exception
     });
 
     errors.approvalErrors.isEditorApprovedError = await assertEIPEditorApproval(

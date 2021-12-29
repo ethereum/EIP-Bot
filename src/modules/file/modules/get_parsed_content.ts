@@ -1,7 +1,7 @@
 import { ContentFile, ParsedContent, requireEncoding } from "src/domain";
-import { getRepoFilenameContent } from "src/infra";
 import { UnexpectedError } from "src/domain/exceptions";
 import frontmatter from "front-matter";
+import { github } from "src/infra/github";
 
 export const getParsedContent = async (
   filename: string,
@@ -14,7 +14,7 @@ export const getParsedContent = async (
   };
 
   // Collect the file contents at the given sha reference frame
-  const data = await getRepoFilenameContent(filename, sha).then(
+  const data = await github.getRepoFilenameContent(filename, sha).then(
     (res) => res as ContentFile
   );
 

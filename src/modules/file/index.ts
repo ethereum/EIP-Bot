@@ -1,7 +1,7 @@
 import { FileDiffInfra } from "#/file/modules/file_diff_infra";
 import { requireFilenameEipNum, requirePr } from "#/assertions";
 import { PropsValue } from "src/domain";
-import { getParsedContent } from "#/utils/get_parsed_content";
+import { getParsedContent } from "#/file/modules/get_parsed_content";
 
 const _FileDiffInfra_ = new FileDiffInfra(
   requireFilenameEipNum,

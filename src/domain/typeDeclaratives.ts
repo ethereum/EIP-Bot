@@ -1,17 +1,18 @@
 import _ from "lodash";
 import { AND, OR } from "#/utils";
-import { Encodings, encodings } from "src/domain";
+import { ChangeTypes, Encodings, encodings } from "src/domain";
 import { RequirementViolation, UnexpectedError } from "src/domain/exceptions";
 import { Opaque } from "type-fest";
 
 /** includes a check for NaN and general falsey */
 export const isDefined = <T>(
-  maybeDefined: T | null | undefined | typeof NaN | [] | {}
+  maybeDefined: T | null | undefined | typeof NaN | [] | {} | ""
 ): maybeDefined is T => {
   return !OR(
     _.isUndefined(maybeDefined),
     _.isNull(maybeDefined),
     _.isNaN(maybeDefined),
+    maybeDefined === "",
     AND(
       OR(_.isObject(maybeDefined), _.isArray(maybeDefined)),
       _.isEmpty(maybeDefined)
@@ -50,3 +51,7 @@ export const isFileNotFound = (err: any): err is FileNotFound => {
     err.response?.data?.message === "Not Found"
   );
 };
+
+export const isChangeType = (str: string): str is ChangeTypes => {
+  return Object.values(ChangeTypes).includes(str as any)
+}

@@ -1,4 +1,4 @@
-import { NodeEnvs } from "../domain/Types";
+import { NodeEnvs } from "../../domain/Types";
 import { CriticalError } from "src/domain/exceptions";
 
 export const __MAIN__ = async (debugEnv?: NodeJS.ProcessEnv) => {

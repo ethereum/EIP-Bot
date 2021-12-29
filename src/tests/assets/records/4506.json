@@ -676,5 +676,130 @@
         "performed_via_github_app": null
       }
     }
+  },
+  {
+    "req": {
+      "url": "https://api.github.com/repos/ethereum/EIPs/issues/4506",
+      "method": "GET"
+    },
+    "res": {
+      "status": 200,
+      "data": {
+        "url": "https://api.github.com/repos/ethereum/EIPs/issues/4506",
+        "repository_url": "https://api.github.com/repos/ethereum/EIPs",
+        "labels_url": "https://api.github.com/repos/ethereum/EIPs/issues/4506/labels{/name}",
+        "comments_url": "https://api.github.com/repos/ethereum/EIPs/issues/4506/comments",
+        "events_url": "https://api.github.com/repos/ethereum/EIPs/issues/4506/events",
+        "html_url": "https://github.com/ethereum/EIPs/pull/4506",
+        "id": 1065493711,
+        "node_id": "PR_kwDOAq426M4vGcIy",
+        "number": 4506,
+        "title": "EIP-3448: Include references & examples and bump status to Review",
+        "user": {
+          "login": "pinkiebell",
+          "id": 40266861,
+          "node_id": "MDQ6VXNlcjQwMjY2ODYx",
+          "avatar_url": "https://avatars.githubusercontent.com/u/40266861?v=4",
+          "gravatar_id": "",
+          "url": "https://api.github.com/users/pinkiebell",
+          "html_url": "https://github.com/pinkiebell",
+          "followers_url": "https://api.github.com/users/pinkiebell/followers",
+          "following_url": "https://api.github.com/users/pinkiebell/following{/other_user}",
+          "gists_url": "https://api.github.com/users/pinkiebell/gists{/gist_id}",
+          "starred_url": "https://api.github.com/users/pinkiebell/starred{/owner}{/repo}",
+          "subscriptions_url": "https://api.github.com/users/pinkiebell/subscriptions",
+          "organizations_url": "https://api.github.com/users/pinkiebell/orgs",
+          "repos_url": "https://api.github.com/users/pinkiebell/repos",
+          "events_url": "https://api.github.com/users/pinkiebell/events{/privacy}",
+          "received_events_url": "https://api.github.com/users/pinkiebell/received_events",
+          "type": "User",
+          "site_admin": false
+        },
+        "labels": [],
+        "state": "closed",
+        "locked": false,
+        "assignee": null,
+        "assignees": [],
+        "milestone": null,
+        "comments": 4,
+        "created_at": "2021-11-29T00:50:51Z",
+        "updated_at": "2021-12-07T18:36:51Z",
+        "closed_at": "2021-12-07T16:46:21Z",
+        "author_association": "CONTRIBUTOR",
+        "active_lock_reason": null,
+        "draft": false,
+        "pull_request": {
+          "url": "https://api.github.com/repos/ethereum/EIPs/pulls/4506",
+          "html_url": "https://github.com/ethereum/EIPs/pull/4506",
+          "diff_url": "https://github.com/ethereum/EIPs/pull/4506.diff",
+          "patch_url": "https://github.com/ethereum/EIPs/pull/4506.patch",
+          "merged_at": "2021-12-07T16:46:21Z"
+        },
+        "body": null,
+        "closed_by": {
+          "login": "alita-moore",
+          "id": 26529820,
+          "node_id": "MDQ6VXNlcjI2NTI5ODIw",
+          "avatar_url": "https://avatars.githubusercontent.com/u/26529820?v=4",
+          "gravatar_id": "",
+          "url": "https://api.github.com/users/alita-moore",
+          "html_url": "https://github.com/alita-moore",
+          "followers_url": "https://api.github.com/users/alita-moore/followers",
+          "following_url": "https://api.github.com/users/alita-moore/following{/other_user}",
+          "gists_url": "https://api.github.com/users/alita-moore/gists{/gist_id}",
+          "starred_url": "https://api.github.com/users/alita-moore/starred{/owner}{/repo}",
+          "subscriptions_url": "https://api.github.com/users/alita-moore/subscriptions",
+          "organizations_url": "https://api.github.com/users/alita-moore/orgs",
+          "repos_url": "https://api.github.com/users/alita-moore/repos",
+          "events_url": "https://api.github.com/users/alita-moore/events{/privacy}",
+          "received_events_url": "https://api.github.com/users/alita-moore/received_events",
+          "type": "User",
+          "site_admin": false
+        },
+        "reactions": {
+          "url": "https://api.github.com/repos/ethereum/EIPs/issues/4506/reactions",
+          "total_count": 0,
+          "+1": 0,
+          "-1": 0,
+          "laugh": 0,
+          "hooray": 0,
+          "confused": 0,
+          "heart": 0,
+          "rocket": 0,
+          "eyes": 0
+        },
+        "timeline_url": "https://api.github.com/repos/ethereum/EIPs/issues/4506/timeline",
+        "performed_via_github_app": null
+      }
+    }
+  },
+  {
+    "req": {
+      "url": "https://api.github.com/repos/ethereum/EIPs/issues/4506/labels",
+      "method": "PUT"
+    },
+    "res": {
+      "status": 200,
+      "data": [
+        {
+          "id": 3683476114,
+          "node_id": "LA_kwDOAq426M7bjWKS",
+          "url": "https://api.github.com/repos/ethereum/EIPs/labels/statusChange",
+          "name": "statusChange",
+          "color": "ededed",
+          "default": false,
+          "description": null
+        },
+        {
+          "id": 3683476115,
+          "node_id": "LA_kwDOAq426M7bjWKT",
+          "url": "https://api.github.com/repos/ethereum/EIPs/labels/ambiguous",
+          "name": "ambiguous",
+          "color": "ededed",
+          "default": false,
+          "description": null
+        }
+      ]
+    }
   }
 ]

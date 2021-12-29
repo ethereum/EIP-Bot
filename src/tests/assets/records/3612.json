@@ -1019,5 +1019,174 @@
         }
       ]
     }
+  },
+  {
+    "req": {
+      "url": "https://api.github.com/repos/ethereum/EIPs/issues/3612",
+      "method": "GET"
+    },
+    "res": {
+      "status": 200,
+      "data": {
+        "url": "https://api.github.com/repos/ethereum/EIPs/issues/3612",
+        "repository_url": "https://api.github.com/repos/ethereum/EIPs",
+        "labels_url": "https://api.github.com/repos/ethereum/EIPs/issues/3612/labels{/name}",
+        "comments_url": "https://api.github.com/repos/ethereum/EIPs/issues/3612/comments",
+        "events_url": "https://api.github.com/repos/ethereum/EIPs/issues/3612/events",
+        "html_url": "https://github.com/ethereum/EIPs/pull/3612",
+        "id": 920656398,
+        "node_id": "MDExOlB1bGxSZXF1ZXN0NjY5NzczMDA1",
+        "number": 3612,
+        "title": "Fix BLS sigs / BLS curve naming confusion",
+        "user": {
+          "login": "veorq",
+          "id": 3204810,
+          "node_id": "MDQ6VXNlcjMyMDQ4MTA=",
+          "avatar_url": "https://avatars.githubusercontent.com/u/3204810?v=4",
+          "gravatar_id": "",
+          "url": "https://api.github.com/users/veorq",
+          "html_url": "https://github.com/veorq",
+          "followers_url": "https://api.github.com/users/veorq/followers",
+          "following_url": "https://api.github.com/users/veorq/following{/other_user}",
+          "gists_url": "https://api.github.com/users/veorq/gists{/gist_id}",
+          "starred_url": "https://api.github.com/users/veorq/starred{/owner}{/repo}",
+          "subscriptions_url": "https://api.github.com/users/veorq/subscriptions",
+          "organizations_url": "https://api.github.com/users/veorq/orgs",
+          "repos_url": "https://api.github.com/users/veorq/repos",
+          "events_url": "https://api.github.com/users/veorq/events{/privacy}",
+          "received_events_url": "https://api.github.com/users/veorq/received_events",
+          "type": "User",
+          "site_admin": false
+        },
+        "labels": [],
+        "state": "closed",
+        "locked": false,
+        "assignee": null,
+        "assignees": [],
+        "milestone": null,
+        "comments": 1,
+        "created_at": "2021-06-14T18:10:00Z",
+        "updated_at": "2021-08-22T08:39:46Z",
+        "closed_at": "2021-06-17T08:33:02Z",
+        "author_association": "CONTRIBUTOR",
+        "active_lock_reason": null,
+        "draft": false,
+        "pull_request": {
+          "url": "https://api.github.com/repos/ethereum/EIPs/pulls/3612",
+          "html_url": "https://github.com/ethereum/EIPs/pull/3612",
+          "diff_url": "https://github.com/ethereum/EIPs/pull/3612.diff",
+          "patch_url": "https://github.com/ethereum/EIPs/pull/3612.patch",
+          "merged_at": "2021-06-17T08:33:02Z"
+        },
+        "body": "",
+        "closed_by": {
+          "login": "MicahZoltu",
+          "id": 886059,
+          "node_id": "MDQ6VXNlcjg4NjA1OQ==",
+          "avatar_url": "https://avatars.githubusercontent.com/u/886059?v=4",
+          "gravatar_id": "",
+          "url": "https://api.github.com/users/MicahZoltu",
+          "html_url": "https://github.com/MicahZoltu",
+          "followers_url": "https://api.github.com/users/MicahZoltu/followers",
+          "following_url": "https://api.github.com/users/MicahZoltu/following{/other_user}",
+          "gists_url": "https://api.github.com/users/MicahZoltu/gists{/gist_id}",
+          "starred_url": "https://api.github.com/users/MicahZoltu/starred{/owner}{/repo}",
+          "subscriptions_url": "https://api.github.com/users/MicahZoltu/subscriptions",
+          "organizations_url": "https://api.github.com/users/MicahZoltu/orgs",
+          "repos_url": "https://api.github.com/users/MicahZoltu/repos",
+          "events_url": "https://api.github.com/users/MicahZoltu/events{/privacy}",
+          "received_events_url": "https://api.github.com/users/MicahZoltu/received_events",
+          "type": "User",
+          "site_admin": false
+        },
+        "reactions": {
+          "url": "https://api.github.com/repos/ethereum/EIPs/issues/3612/reactions",
+          "total_count": 0,
+          "+1": 0,
+          "-1": 0,
+          "laugh": 0,
+          "hooray": 0,
+          "confused": 0,
+          "heart": 0,
+          "rocket": 0,
+          "eyes": 0
+        },
+        "timeline_url": "https://api.github.com/repos/ethereum/EIPs/issues/3612/timeline",
+        "performed_via_github_app": null
+      }
+    }
+  },
+  {
+    "req": {
+      "url": "https://api.github.com/repos/ethereum/EIPs/issues/3612/labels",
+      "method": "PUT"
+    },
+    "res": {
+      "status": 200,
+      "data": [
+        {
+          "id": 3683553869,
+          "node_id": "LA_kwDOAq426M7bjpJN",
+          "url": "https://api.github.com/repos/ethereum/EIPs/labels/updateEIP",
+          "name": "updateEIP",
+          "color": "ededed",
+          "default": false,
+          "description": null
+        }
+      ]
+    }
+  },
+  {
+    "req": {
+      "url": "https://api.github.com/repos/ethereum/EIPs/issues/3612/comments",
+      "method": "POST"
+    },
+    "res": {
+      "status": 201,
+      "data": {
+        "url": "https://api.github.com/repos/ethereum/EIPs/issues/comments/1002807213",
+        "html_url": "https://github.com/ethereum/EIPs/pull/3612#issuecomment-1002807213",
+        "issue_url": "https://api.github.com/repos/ethereum/EIPs/issues/3612",
+        "id": 1002807213,
+        "node_id": "IC_kwDOAq426M47xZ-t",
+        "user": {
+          "login": "eth-bot",
+          "id": 85952233,
+          "node_id": "MDQ6VXNlcjg1OTUyMjMz",
+          "avatar_url": "https://avatars.githubusercontent.com/u/85952233?u=4bd48cf9823a6934cd8e010fce8a22bc19b17a02&v=4",
+          "gravatar_id": "",
+          "url": "https://api.github.com/users/eth-bot",
+          "html_url": "https://github.com/eth-bot",
+          "followers_url": "https://api.github.com/users/eth-bot/followers",
+          "following_url": "https://api.github.com/users/eth-bot/following{/other_user}",
+          "gists_url": "https://api.github.com/users/eth-bot/gists{/gist_id}",
+          "starred_url": "https://api.github.com/users/eth-bot/starred{/owner}{/repo}",
+          "subscriptions_url": "https://api.github.com/users/eth-bot/subscriptions",
+          "organizations_url": "https://api.github.com/users/eth-bot/orgs",
+          "repos_url": "https://api.github.com/users/eth-bot/repos",
+          "events_url": "https://api.github.com/users/eth-bot/events{/privacy}",
+          "received_events_url": "https://api.github.com/users/eth-bot/received_events",
+          "type": "User",
+          "site_admin": false
+        },
+        "created_at": "2021-12-29T23:06:58Z",
+        "updated_at": "2021-12-29T23:06:58Z",
+        "author_association": "COLLABORATOR",
+        "body": "All tests passed; auto-merging...\n---\n## (pass) eip-2333.md\n| classification |\n| ------------- |\n| `updateEIP` |\n- passed!\n## (pass) eip-2334.md\n| classification |\n| ------------- |\n| `updateEIP` |\n- passed!",
+        "reactions": {
+          "url": "https://api.github.com/repos/ethereum/EIPs/issues/comments/1002807213/reactions",
+          "total_count": 0,
+          "+1": 0,
+          "-1": 0,
+          "laugh": 0,
+          "hooray": 0,
+          "confused": 0,
+          "heart": 0,
+          "rocket": 0,
+          "eyes": 0
+        },
+        "performed_via_github_app": null
+      }
+    }
   }
 ]

@@ -894,5 +894,193 @@
         }
       ]
     }
+  },
+  {
+    "req": {
+      "url": "https://api.github.com/repos/ethereum/EIPs/issues/3581",
+      "method": "GET"
+    },
+    "res": {
+      "status": 200,
+      "data": {
+        "url": "https://api.github.com/repos/ethereum/EIPs/issues/3581",
+        "repository_url": "https://api.github.com/repos/ethereum/EIPs",
+        "labels_url": "https://api.github.com/repos/ethereum/EIPs/issues/3581/labels{/name}",
+        "comments_url": "https://api.github.com/repos/ethereum/EIPs/issues/3581/comments",
+        "events_url": "https://api.github.com/repos/ethereum/EIPs/issues/3581/events",
+        "html_url": "https://github.com/ethereum/EIPs/pull/3581",
+        "id": 895124943,
+        "node_id": "MDExOlB1bGxSZXF1ZXN0NjQ3Mzg2MjQx",
+        "number": 3581,
+        "title": "Bump nokogiri from 1.10.9 to 1.11.4",
+        "user": {
+          "login": "dependabot[bot]",
+          "id": 49699333,
+          "node_id": "MDM6Qm90NDk2OTkzMzM=",
+          "avatar_url": "https://avatars.githubusercontent.com/in/29110?v=4",
+          "gravatar_id": "",
+          "url": "https://api.github.com/users/dependabot%5Bbot%5D",
+          "html_url": "https://github.com/apps/dependabot",
+          "followers_url": "https://api.github.com/users/dependabot%5Bbot%5D/followers",
+          "following_url": "https://api.github.com/users/dependabot%5Bbot%5D/following{/other_user}",
+          "gists_url": "https://api.github.com/users/dependabot%5Bbot%5D/gists{/gist_id}",
+          "starred_url": "https://api.github.com/users/dependabot%5Bbot%5D/starred{/owner}{/repo}",
+          "subscriptions_url": "https://api.github.com/users/dependabot%5Bbot%5D/subscriptions",
+          "organizations_url": "https://api.github.com/users/dependabot%5Bbot%5D/orgs",
+          "repos_url": "https://api.github.com/users/dependabot%5Bbot%5D/repos",
+          "events_url": "https://api.github.com/users/dependabot%5Bbot%5D/events{/privacy}",
+          "received_events_url": "https://api.github.com/users/dependabot%5Bbot%5D/received_events",
+          "type": "Bot",
+          "site_admin": false
+        },
+        "labels": [
+          {
+            "id": 1652436489,
+            "node_id": "MDU6TGFiZWwxNjUyNDM2NDg5",
+            "url": "https://api.github.com/repos/ethereum/EIPs/labels/dependencies",
+            "name": "dependencies",
+            "color": "0366d6",
+            "default": false,
+            "description": "Pull requests that update a dependency file"
+          },
+          {
+            "id": 2328627851,
+            "node_id": "MDU6TGFiZWwyMzI4NjI3ODUx",
+            "url": "https://api.github.com/repos/ethereum/EIPs/labels/stale",
+            "name": "stale",
+            "color": "000000",
+            "default": false,
+            "description": ""
+          }
+        ],
+        "state": "closed",
+        "locked": false,
+        "assignee": null,
+        "assignees": [],
+        "milestone": null,
+        "comments": 8,
+        "created_at": "2021-05-19T08:04:10Z",
+        "updated_at": "2021-08-17T23:02:55Z",
+        "closed_at": "2021-08-17T23:02:55Z",
+        "author_association": "CONTRIBUTOR",
+        "active_lock_reason": null,
+        "draft": false,
+        "pull_request": {
+          "url": "https://api.github.com/repos/ethereum/EIPs/pulls/3581",
+          "html_url": "https://github.com/ethereum/EIPs/pull/3581",
+          "diff_url": "https://github.com/ethereum/EIPs/pull/3581.diff",
+          "patch_url": "https://github.com/ethereum/EIPs/pull/3581.patch",
+          "merged_at": "2021-08-17T23:02:55Z"
+        },
+        "body": "Bumps [nokogiri](https://github.com/sparklemotion/nokogiri) from 1.10.9 to 1.11.4.\n<details>\n<summary>Release notes</summary>\n<p><em>Sourced from <a href=\"https://github.com/sparklemotion/nokogiri/releases\">nokogiri's releases</a>.</em></p>\n<blockquote>\n<h2>1.11.4 / 2021-05-14</h2>\n<h3>Security</h3>\n<p>[CRuby] Vendored libxml2 upgraded to v2.9.12 which addresses:</p>\n<ul>\n<li><a href=\"https://security.archlinux.org/CVE-2019-20388\">CVE-2019-20388</a></li>\n<li><a href=\"https://security.archlinux.org/CVE-2020-24977\">CVE-2020-24977</a></li>\n<li><a href=\"https://security.archlinux.org/CVE-2021-3517\">CVE-2021-3517</a></li>\n<li><a href=\"https://security.archlinux.org/CVE-2021-3518\">CVE-2021-3518</a></li>\n<li><a href=\"https://security.archlinux.org/CVE-2021-3537\">CVE-2021-3537</a></li>\n<li><a href=\"https://security.archlinux.org/CVE-2021-3541\">CVE-2021-3541</a></li>\n</ul>\n<p>Note that two additional CVEs were addressed upstream but are not relevant to this release. <a href=\"https://security.archlinux.org/CVE-2021-3516\">CVE-2021-3516</a> via <code>xmllint</code> is not present in Nokogiri, and <a href=\"https://security.archlinux.org/CVE-2020-7595\">CVE-2020-7595</a> has been patched in Nokogiri since v1.10.8 (see <a href=\"https://github-redirect.dependabot.com/sparklemotion/nokogiri/issues/1992\">#1992</a>).</p>\n<p>Please see <a href=\"https://github.com/sparklemotion/nokogiri/security/advisories/GHSA-7rrm-v45f-jp64\">nokogiri/GHSA-7rrm-v45f-jp64 </a> or <a href=\"https://github-redirect.dependabot.com/sparklemotion/nokogiri/issues/2233\">#2233</a> for a more complete analysis of these CVEs and patches.</p>\n<h3>Dependencies</h3>\n<ul>\n<li>[CRuby] vendored libxml2 is updated from 2.9.10 to 2.9.12. (Note that 2.9.11 was skipped because it was superseded by 2.9.12 a few hours after its release.)</li>\n</ul>\n<h2>1.11.3 / 2021-04-07</h2>\n<h3>Fixed</h3>\n<ul>\n<li>[CRuby] Passing non-<code>Node</code> objects to <code>Document#root=</code> now raises an <code>ArgumentError</code> exception. Previously this likely segfaulted. [<a href=\"https://github-redirect.dependabot.com/sparklemotion/nokogiri/issues/1900\">#1900</a>]</li>\n<li>[JRuby] Passing non-<code>Node</code> objects to <code>Document#root=</code> now raises an <code>ArgumentError</code> exception. Previously this raised a <code>TypeError</code> exception.</li>\n<li>[CRuby] arm64/aarch64 systems (like Apple's M1) can now compile libxml2 and libxslt from source (though we continue to strongly advise users to install the native gems for the best possible experience)</li>\n</ul>\n<h2>1.11.2 / 2021-03-11</h2>\n<h3>Fixed</h3>\n<ul>\n<li>[CRuby] <code>NodeSet</code> may now safely contain <code>Node</code> objects from multiple documents. Previously the GC lifecycle of the parent <code>Document</code> objects could lead to nodes being GCed while still in scope. [<a href=\"https://github-redirect.dependabot.com/sparklemotion/nokogiri/issues/1952#issuecomment-770856928\">#1952</a>]</li>\n<li>[CRuby] Patch libxml2 to avoid &quot;huge input lookup&quot; errors on large CDATA elements. (See upstream <a href=\"https://gitlab.gnome.org/GNOME/libxml2/-/issues/200\">GNOME/libxml2#200</a> and <a href=\"https://gitlab.gnome.org/GNOME/libxml2/-/merge_requests/100\">GNOME/libxml2!100</a>.) [<a href=\"https://github-redirect.dependabot.com/sparklemotion/nokogiri/issues/2132\">#2132</a>].</li>\n<li>[CRuby+Windows] Enable Nokogumbo (and other downstream gems) to compile and link against <code>nokogiri.so</code> by including <code>LDFLAGS</code> in <code>Nokogiri::VERSION_INFO</code>. [<a href=\"https://github-redirect.dependabot.com/sparklemotion/nokogiri/issues/2167\">#2167</a>]</li>\n<li>[CRuby] <code>{XML,HTML}::Document.parse</code> now invokes <code>#initialize</code> exactly once. Previously <code>#initialize</code> was invoked twice on each object.</li>\n<li>[JRuby] <code>{XML,HTML}::Document.parse</code> now invokes <code>#initialize</code> exactly once. Previously <code>#initialize</code> was not called, which was a problem for subclassing such as done by <code>Loofah</code>.</li>\n</ul>\n<h3>Improved</h3>\n<ul>\n<li>Reduce the number of object allocations needed when parsing an HTML::DocumentFragment. [<a href=\"https://github-redirect.dependabot.com/sparklemotion/nokogiri/issues/2087\">#2087</a>] (Thanks, <a href=\"https://github.com/ashmaroli\"><code>@​ashmaroli</code></a>!)</li>\n<li>[JRuby] Update the algorithm used to calculate <code>Node#line</code> to be wrong less-often. The underlying parser, Xerces, does not track line numbers, and so we've always used a hacky solution for this method. [<a href=\"https://github-redirect.dependabot.com/sparklemotion/nokogiri/issues/1223\">#1223</a>, <a href=\"https://github-redirect.dependabot.com/sparklemotion/nokogiri/issues/2177\">#2177</a>]</li>\n<li>Introduce <code>--enable-system-libraries</code> and <code>--disable-system-libraries</code> flags to <code>extconf.rb</code>. These flags provide the same functionality as <code>--use-system-libraries</code> and the <code>NOKOGIRI_USE_SYSTEM_LIBRARIES</code> environment variable, but are more idiomatic. [<a href=\"https://github-redirect.dependabot.com/sparklemotion/nokogiri/issues/2193\">#2193</a>] (Thanks, <a href=\"https://github.com/eregon\"><code>@​eregon</code></a>!)</li>\n<li>[TruffleRuby] <code>--disable-static</code> is now the default on TruffleRuby when the packaged libraries are used. This is more flexible and compiles faster. (Note, though, that the default on TR is still to use system libraries.) [<a href=\"https://github-redirect.dependabot.com/sparklemotion/nokogiri/issues/2191#issuecomment-780724627\">#2191</a>, <a href=\"https://github-redirect.dependabot.com/sparklemotion/nokogiri/issues/2193\">#2193</a>] (Thanks, <a href=\"https://github.com/eregon\"><code>@​eregon</code></a>!)</li>\n</ul>\n<!-- raw HTML omitted -->\n</blockquote>\n<p>... (truncated)</p>\n</details>\n<details>\n<summary>Changelog</summary>\n<p><em>Sourced from <a href=\"https://github.com/sparklemotion/nokogiri/blob/main/CHANGELOG.md\">nokogiri's changelog</a>.</em></p>\n<blockquote>\n<h2>1.11.4 / 2021-05-14</h2>\n<h3>Security</h3>\n<p>[CRuby] Vendored libxml2 upgraded to v2.9.12 which addresses:</p>\n<ul>\n<li><a href=\"https://security.archlinux.org/CVE-2019-20388\">CVE-2019-20388</a></li>\n<li><a href=\"https://security.archlinux.org/CVE-2020-24977\">CVE-2020-24977</a></li>\n<li><a href=\"https://security.archlinux.org/CVE-2021-3517\">CVE-2021-3517</a></li>\n<li><a href=\"https://security.archlinux.org/CVE-2021-3518\">CVE-2021-3518</a></li>\n<li><a href=\"https://security.archlinux.org/CVE-2021-3537\">CVE-2021-3537</a></li>\n<li><a href=\"https://security.archlinux.org/CVE-2021-3541\">CVE-2021-3541</a></li>\n</ul>\n<p>Note that two additional CVEs were addressed upstream but are not relevant to this release. <a href=\"https://security.archlinux.org/CVE-2021-3516\">CVE-2021-3516</a> via <code>xmllint</code> is not present in Nokogiri, and <a href=\"https://security.archlinux.org/CVE-2020-7595\">CVE-2020-7595</a> has been patched in Nokogiri since v1.10.8 (see <a href=\"https://github-redirect.dependabot.com/sparklemotion/nokogiri/issues/1992\">#1992</a>).</p>\n<p>Please see <a href=\"https://github.com/sparklemotion/nokogiri/security/advisories/GHSA-7rrm-v45f-jp64\">nokogiri/GHSA-7rrm-v45f-jp64 </a> or <a href=\"https://github-redirect.dependabot.com/sparklemotion/nokogiri/issues/2233\">#2233</a> for a more complete analysis of these CVEs and patches.</p>\n<h3>Dependencies</h3>\n<ul>\n<li>[CRuby] vendored libxml2 is updated from 2.9.10 to 2.9.12. (Note that 2.9.11 was skipped because it was superseded by 2.9.12 a few hours after its release.)</li>\n</ul>\n<h2>1.11.3 / 2021-04-07</h2>\n<h3>Fixed</h3>\n<ul>\n<li>[CRuby] Passing non-<code>Node</code> objects to <code>Document#root=</code> now raises an <code>ArgumentError</code> exception. Previously this likely segfaulted. [<a href=\"https://github-redirect.dependabot.com/sparklemotion/nokogiri/issues/1900\">#1900</a>]</li>\n<li>[JRuby] Passing non-<code>Node</code> objects to <code>Document#root=</code> now raises an <code>ArgumentError</code> exception. Previously this raised a <code>TypeError</code> exception.</li>\n<li>[CRuby] arm64/aarch64 systems (like Apple's M1) can now compile libxml2 and libxslt from source (though we continue to strongly advise users to install the native gems for the best possible experience)</li>\n</ul>\n<h2>1.11.2 / 2021-03-11</h2>\n<h3>Fixed</h3>\n<ul>\n<li>[CRuby] <code>NodeSet</code> may now safely contain <code>Node</code> objects from multiple documents. Previously the GC lifecycle of the parent <code>Document</code> objects could lead to nodes being GCed while still in scope. [<a href=\"https://github-redirect.dependabot.com/sparklemotion/nokogiri/issues/1952#issuecomment-770856928\">#1952</a>]</li>\n<li>[CRuby] Patch libxml2 to avoid &quot;huge input lookup&quot; errors on large CDATA elements. (See upstream <a href=\"https://gitlab.gnome.org/GNOME/libxml2/-/issues/200\">GNOME/libxml2#200</a> and <a href=\"https://gitlab.gnome.org/GNOME/libxml2/-/merge_requests/100\">GNOME/libxml2!100</a>.) [<a href=\"https://github-redirect.dependabot.com/sparklemotion/nokogiri/issues/2132\">#2132</a>].</li>\n<li>[CRuby+Windows] Enable Nokogumbo (and other downstream gems) to compile and link against <code>nokogiri.so</code> by including <code>LDFLAGS</code> in <code>Nokogiri::VERSION_INFO</code>. [<a href=\"https://github-redirect.dependabot.com/sparklemotion/nokogiri/issues/2167\">#2167</a>]</li>\n<li>[CRuby] <code>{XML,HTML}::Document.parse</code> now invokes <code>#initialize</code> exactly once. Previously <code>#initialize</code> was invoked twice on each object.</li>\n<li>[JRuby] <code>{XML,HTML}::Document.parse</code> now invokes <code>#initialize</code> exactly once. Previously <code>#initialize</code> was not called, which was a problem for subclassing such as done by <code>Loofah</code>.</li>\n</ul>\n<h3>Improved</h3>\n<ul>\n<li>Reduce the number of object allocations needed when parsing an <code>HTML::DocumentFragment</code>. [<a href=\"https://github-redirect.dependabot.com/sparklemotion/nokogiri/issues/2087\">#2087</a>] (Thanks, <a href=\"https://github.com/ashmaroli\"><code>@​ashmaroli</code></a>!)</li>\n<li>[JRuby] Update the algorithm used to calculate <code>Node#line</code> to be wrong less-often. The underlying parser, Xerces, does not track line numbers, and so we've always used a hacky solution for this method. [<a href=\"https://github-redirect.dependabot.com/sparklemotion/nokogiri/issues/1223\">#1223</a>, <a href=\"https://github-redirect.dependabot.com/sparklemotion/nokogiri/issues/2177\">#2177</a>]</li>\n<li>Introduce <code>--enable-system-libraries</code> and <code>--disable-system-libraries</code> flags to <code>extconf.rb</code>. These flags provide the same functionality as <code>--use-system-libraries</code> and the <code>NOKOGIRI_USE_SYSTEM_LIBRARIES</code> environment variable, but are more idiomatic. [<a href=\"https://github-redirect.dependabot.com/sparklemotion/nokogiri/issues/2193\">#2193</a>] (Thanks, <a href=\"https://github.com/eregon\"><code>@​eregon</code></a>!)</li>\n<li>[TruffleRuby] <code>--disable-static</code> is now the default on TruffleRuby when the packaged libraries are used. This is more flexible and compiles faster. (Note, though, that the default on TR is still to use system libraries.) [<a href=\"https://github-redirect.dependabot.com/sparklemotion/nokogiri/issues/2191#issuecomment-780724627\">#2191</a>, <a href=\"https://github-redirect.dependabot.com/sparklemotion/nokogiri/issues/2193\">#2193</a>] (Thanks, <a href=\"https://github.com/eregon\"><code>@​eregon</code></a>!)</li>\n</ul>\n<!-- raw HTML omitted -->\n</blockquote>\n<p>... (truncated)</p>\n</details>\n<details>\n<summary>Commits</summary>\n<ul>\n<li><a href=\"https://github.com/sparklemotion/nokogiri/commit/9d69b44ed3357b8069856083d39ee418cd10109b\"><code>9d69b44</code></a> version bump to v1.11.4</li>\n<li><a href=\"https://github.com/sparklemotion/nokogiri/commit/058e87fdfda2cc2f309df098d18fe8856e785fcc\"><code>058e87f</code></a> update CHANGELOG with complete CVE information</li>\n<li><a href=\"https://github.com/sparklemotion/nokogiri/commit/92852514a0d4621961deb6ce249441ff5140358f\"><code>9285251</code></a> Merge pull request <a href=\"https://github-redirect.dependabot.com/sparklemotion/nokogiri/issues/2234\">#2234</a> from sparklemotion/2233-upgrade-to-libxml-2-9-12</li>\n<li><a href=\"https://github.com/sparklemotion/nokogiri/commit/5436f6120f883e9f185d48b992f39118a4897760\"><code>5436f61</code></a> update CHANGELOG</li>\n<li><a href=\"https://github.com/sparklemotion/nokogiri/commit/761d320af2872c61b91f7b147cf57481566e3c67\"><code>761d320</code></a> patch: renumber libxml2 patches</li>\n<li><a href=\"https://github.com/sparklemotion/nokogiri/commit/889ee2a9cb1e190bfa664cbf3552585f4d0a09a7\"><code>889ee2a</code></a> test: update behavior of namespaces in HTML</li>\n<li><a href=\"https://github.com/sparklemotion/nokogiri/commit/9751d852c005606447dac7bb17f1a56593014583\"><code>9751d85</code></a> test: remove low-value HTML::SAX::PushParser encoding test</li>\n<li><a href=\"https://github.com/sparklemotion/nokogiri/commit/9fcb7d25eabfab5e701d882e72ecab3b2ea6b13c\"><code>9fcb7d2</code></a> test: adjust xpath gc test to libxml2's max recursion depth</li>\n<li><a href=\"https://github.com/sparklemotion/nokogiri/commit/1c99019f5f1bee23e4bff6cf72871f470097f7b2\"><code>1c99019</code></a> patch: backport libxslt configure.ac change for libxml2 config</li>\n<li><a href=\"https://github.com/sparklemotion/nokogiri/commit/82a253fe7c5bdfab5fbe4c1b0c536b5ce4c72ac3\"><code>82a253f</code></a> patch: fix isnan/isinf patch to apply cleanly to libxml 2.9.12</li>\n<li>Additional commits viewable in <a href=\"https://github.com/sparklemotion/nokogiri/compare/v1.10.9...v1.11.4\">compare view</a></li>\n</ul>\n</details>\n<br />\n\n\n[![Dependabot compatibility score](https://dependabot-badges.githubapp.com/badges/compatibility_score?dependency-name=nokogiri&package-manager=bundler&previous-version=1.10.9&new-version=1.11.4)](https://docs.github.com/en/github/managing-security-vulnerabilities/about-dependabot-security-updates#about-compatibility-scores)\n\nDependabot will resolve any conflicts with this PR as long as you don't alter it yourself. You can also trigger a rebase manually by commenting `@dependabot rebase`.\n\n[//]: # (dependabot-automerge-start)\n[//]: # (dependabot-automerge-end)\n\n---\n\n<details>\n<summary>Dependabot commands and options</summary>\n<br />\n\nYou can trigger Dependabot actions by commenting on this PR:\n- `@dependabot rebase` will rebase this PR\n- `@dependabot recreate` will recreate this PR, overwriting any edits that have been made to it\n- `@dependabot merge` will merge this PR after your CI passes on it\n- `@dependabot squash and merge` will squash and merge this PR after your CI passes on it\n- `@dependabot cancel merge` will cancel a previously requested merge and block automerging\n- `@dependabot reopen` will reopen this PR if it is closed\n- `@dependabot close` will close this PR and stop Dependabot recreating it. You can achieve the same result by closing it manually\n- `@dependabot ignore this major version` will close this PR and stop Dependabot creating any more for this major version (unless you reopen the PR or upgrade to it yourself)\n- `@dependabot ignore this minor version` will close this PR and stop Dependabot creating any more for this minor version (unless you reopen the PR or upgrade to it yourself)\n- `@dependabot ignore this dependency` will close this PR and stop Dependabot creating any more for this dependency (unless you reopen the PR or upgrade to it yourself)\n- `@dependabot use these labels` will set the current labels as the default for future PRs for this repo and language\n- `@dependabot use these reviewers` will set the current reviewers as the default for future PRs for this repo and language\n- `@dependabot use these assignees` will set the current assignees as the default for future PRs for this repo and language\n- `@dependabot use this milestone` will set the current milestone as the default for future PRs for this repo and language\n\nYou can disable automated security fix PRs for this repo from the [Security Alerts page](https://github.com/ethereum/EIPs/network/alerts).\n\n</details>",
+        "closed_by": {
+          "login": "MicahZoltu",
+          "id": 886059,
+          "node_id": "MDQ6VXNlcjg4NjA1OQ==",
+          "avatar_url": "https://avatars.githubusercontent.com/u/886059?v=4",
+          "gravatar_id": "",
+          "url": "https://api.github.com/users/MicahZoltu",
+          "html_url": "https://github.com/MicahZoltu",
+          "followers_url": "https://api.github.com/users/MicahZoltu/followers",
+          "following_url": "https://api.github.com/users/MicahZoltu/following{/other_user}",
+          "gists_url": "https://api.github.com/users/MicahZoltu/gists{/gist_id}",
+          "starred_url": "https://api.github.com/users/MicahZoltu/starred{/owner}{/repo}",
+          "subscriptions_url": "https://api.github.com/users/MicahZoltu/subscriptions",
+          "organizations_url": "https://api.github.com/users/MicahZoltu/orgs",
+          "repos_url": "https://api.github.com/users/MicahZoltu/repos",
+          "events_url": "https://api.github.com/users/MicahZoltu/events{/privacy}",
+          "received_events_url": "https://api.github.com/users/MicahZoltu/received_events",
+          "type": "User",
+          "site_admin": false
+        },
+        "reactions": {
+          "url": "https://api.github.com/repos/ethereum/EIPs/issues/3581/reactions",
+          "total_count": 0,
+          "+1": 0,
+          "-1": 0,
+          "laugh": 0,
+          "hooray": 0,
+          "confused": 0,
+          "heart": 0,
+          "rocket": 0,
+          "eyes": 0
+        },
+        "timeline_url": "https://api.github.com/repos/ethereum/EIPs/issues/3581/timeline",
+        "performed_via_github_app": null
+      }
+    }
+  },
+  {
+    "req": {
+      "url": "https://api.github.com/repos/ethereum/EIPs/issues/3581/labels",
+      "method": "PUT"
+    },
+    "res": {
+      "status": 200,
+      "data": [
+        {
+          "id": 3683476115,
+          "node_id": "LA_kwDOAq426M7bjWKT",
+          "url": "https://api.github.com/repos/ethereum/EIPs/labels/ambiguous",
+          "name": "ambiguous",
+          "color": "ededed",
+          "default": false,
+          "description": null
+        }
+      ]
+    }
+  },
+  {
+    "req": {
+      "url": "https://api.github.com/repos/ethereum/EIPs/issues/3581/comments",
+      "method": "POST"
+    },
+    "res": {
+      "status": 201,
+      "data": {
+        "url": "https://api.github.com/repos/ethereum/EIPs/issues/comments/1002807315",
+        "html_url": "https://github.com/ethereum/EIPs/pull/3581#issuecomment-1002807315",
+        "issue_url": "https://api.github.com/repos/ethereum/EIPs/issues/3581",
+        "id": 1002807315,
+        "node_id": "IC_kwDOAq426M47xaAT",
+        "user": {
+          "login": "eth-bot",
+          "id": 85952233,
+          "node_id": "MDQ6VXNlcjg1OTUyMjMz",
+          "avatar_url": "https://avatars.githubusercontent.com/u/85952233?u=4bd48cf9823a6934cd8e010fce8a22bc19b17a02&v=4",
+          "gravatar_id": "",
+          "url": "https://api.github.com/users/eth-bot",
+          "html_url": "https://github.com/eth-bot",
+          "followers_url": "https://api.github.com/users/eth-bot/followers",
+          "following_url": "https://api.github.com/users/eth-bot/following{/other_user}",
+          "gists_url": "https://api.github.com/users/eth-bot/gists{/gist_id}",
+          "starred_url": "https://api.github.com/users/eth-bot/starred{/owner}{/repo}",
+          "subscriptions_url": "https://api.github.com/users/eth-bot/subscriptions",
+          "organizations_url": "https://api.github.com/users/eth-bot/orgs",
+          "repos_url": "https://api.github.com/users/eth-bot/repos",
+          "events_url": "https://api.github.com/users/eth-bot/events{/privacy}",
+          "received_events_url": "https://api.github.com/users/eth-bot/received_events",
+          "type": "User",
+          "site_admin": false
+        },
+        "created_at": "2021-12-29T23:07:22Z",
+        "updated_at": "2021-12-29T23:07:22Z",
+        "author_association": "COLLABORATOR",
+        "body": "All tests passed; auto-merging...\n---\n## (pass) Gemfile.lock\n| classification |\n| ------------- |\n| `ambiguous` |\n- file Gemfile.lock is not a valid filename, but this error has been ignored due to editor approvals",
+        "reactions": {
+          "url": "https://api.github.com/repos/ethereum/EIPs/issues/comments/1002807315/reactions",
+          "total_count": 0,
+          "+1": 0,
+          "-1": 0,
+          "laugh": 0,
+          "hooray": 0,
+          "confused": 0,
+          "heart": 0,
+          "rocket": 0,
+          "eyes": 0
+        },
+        "performed_via_github_app": null
+      }
+    }
   }
 ]

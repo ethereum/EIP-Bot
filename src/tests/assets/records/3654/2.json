@@ -684,5 +684,148 @@
         "performed_via_github_app": null
       }
     }
+  },
+  {
+    "req": {
+      "url": "https://api.github.com/repos/ethereum/EIPs/contents/EIPS%2Feip-2228.md?ref=0caa338fe88fb931a02556c9cb5758e044b6c91d",
+      "method": "GET"
+    },
+    "res": {
+      "status": 200,
+      "data": {
+        "name": "eip-2228.md",
+        "path": "EIPS/eip-2228.md",
+        "sha": "29eb2571df49f503b83129ced1d5c9d8cf5f7997",
+        "size": 5093,
+        "url": "https://api.github.com/repos/ethereum/EIPs/contents/EIPS/eip-2228.md?ref=0caa338fe88fb931a02556c9cb5758e044b6c91d",
+        "html_url": "https://github.com/ethereum/EIPs/blob/0caa338fe88fb931a02556c9cb5758e044b6c91d/EIPS/eip-2228.md",
+        "git_url": "https://api.github.com/repos/ethereum/EIPs/git/blobs/29eb2571df49f503b83129ced1d5c9d8cf5f7997",
+        "download_url": "https://raw.githubusercontent.com/ethereum/EIPs/0caa338fe88fb931a02556c9cb5758e044b6c91d/EIPS/eip-2228.md",
+        "type": "file",
+        "content": "LS0tCmVpcDogMjIyOAp0aXRsZTogQ2Fub25pY2FsaXplIHRoZSBuYW1lIG9m\nIG5ldHdvcmsgSUQgMSBhbmQgY2hhaW4gSUQgMQphdXRob3I6IFdpbGxpYW0g\nRW50cmlrZW4gKEBmdWxsZGVjZW50KQpkaXNjdXNzaW9ucy10bzogaHR0cHM6\nLy9naXRodWIuY29tL2V0aGVyZXVtL0VJUHMvaXNzdWVzLzIyMjgKc3RhdHVz\nOiBMYXN0IENhbGwKcmV2aWV3LXBlcmlvZC1lbmQ6IDIwMjEtMDctMTQKdHlw\nZTogSW5mb3JtYXRpb25hbApjcmVhdGVkOiAyMDE5LTA4LTA0Ci0tLQoKIyMg\nU2ltcGxlIFN1bW1hcnkKClRoZSBFdGhlcmV1bSBuZXR3b3JrIHdpdGggbmV0\nd29yayBJRCAxIGFuZCBjaGFpbiBJRCAxIGlzIG5hbWVkIEV0aGVyZXVtIE1h\naW5uZXQuCgojIyBBYnN0cmFjdAoKVGhlIG5hbWUgZm9yIHRoZSBFdGhlcmV1\nbSBuZXR3b3JrIHdpdGggbmV0d29yayBJRCAxIGFuZCBjaGFpbiBJRCAxIHNo\nYWxsIGJlIEV0aGVyZXVtIE1haW5uZXQgb3IganVzdCBNYWlubmV0LiBUaGlz\nIGlzIGEgcHJvcGVyIG5vdW4uCgpUaGlzIHN0YW5kYXJkIHNwZWNpZmllcyB0\naGUgbmFtZSBmb3IgdGhpcyBuZXR3b3JrIGFuZCBwcm92aWRlcyByZWZlcmVu\nY2UgZXhhbXBsZXMgaW4gYW4gZWZmb3J0IHRvIHN0YW5kYXJkaXplIHRoZSB3\nb3JkIGNob2ljZSBhbmQgcHJvdmlkZSBhIGNvbW1vbiBsYW5ndWFnZSBmb3Ig\ndXNlIHRvIHJlZmVyIHRvIHRoaXMgbmV0d29yay4KCiMjIE1vdGl2YXRpb24K\nClRoZSBFdGhlcmV1bSBuZXR3b3JrIHdpdGggbmV0d29yayBJRCAxIGFuZCBj\naGFpbiBJRCAxIGlzIHJlZmVyZW5jZWQgdXNpbmcgc2V2ZXJhbCBjb25mbGlj\ndGluZyBuYW1lcyBhY3Jvc3MgRUlQcywgY2xpZW50IGltcGxlbWVudGF0aW9u\ncywgYW5kIGluZm9ybWF0aW9uIHB1Ymxpc2hlZCBvbiB0aGUgaW50ZXJuZXQg\nYXQgbGFyZ2UuIEluIHNldmVyYWwgbG9jYXRpb25zLCBldmVuIGRvY3VtZW50\ncyB3cml0dGVuIGJ5IHRoZSBzYW1lIGF1dGhvciB1c2UgaW5jb25zaXN0ZW50\nIG5hbWVzIHRvIHJlZmVyIHRvIHRoZSBFdGhlcmV1bSBuZXR3b3JrIHdpdGgg\nbmV0d29yayBJRCAxIGFuZCBjaGFpbiBJRCAxLiBOYW1lcyBpbiB1c2UgYXQg\ndGhlIHRpbWUgb2YgdGhpcyB3cml0aW5nIGluY2x1ZGU6CgoqICJtYWluIG5l\ndCIKKiAibWFpbm5ldCIKKiAiTWFpbiBuZXQiCiogIk1haW5uZXQiCgojIyBT\ncGVjaWZpY2F0aW9uCgpUaGUgbmV0d29yayBuYW1lIGZvciBuZXR3b3JrIElE\nIDEgYW5kIGNoYWluIElEIDEgc2hhbGwgYmUgRXRoZXJldW0gTWFpbm5ldCwg\nb3IganVzdCBNYWlubmV0IGlmIHRoZSBjb250ZXh0IGlzIGtub3duIHRvIGJl\nIGRpc2N1c3NpbmcgRXRoZXJldW0gbmV0d29ya3MuIFRoaXMgSVMgYSBwcm9w\nZXIgbm91bi4gU2V2ZXJhbCBleGFtcGxlcyBhcmUgZ2l2ZW4gYmVsb3cgd2hp\nY2ggZGlmZmVyZW50aWF0ZSBiZXR3ZWVuIHVzYWdlIG9mIHRoZSBuYW1lIG9m\nIHRoZSBuZXR3b3JrIHZlcnN1cyBhIGRlc2NyaXB0aXZlIHJlZmVyZW5jZSB0\nbyB0aGUgbmV0d29yay4KCkFueSBuYW1lIG9yIHdvcmQgc3R5bGluZyAoaS5l\nLiBjYXBpdGFsaXphdGlvbiBvZiB0aGUgbGV0dGVycykgb2YgdGhlIG5ldHdv\ncmsgd2hpY2ggaXMgaW5jb25zaXN0ZW50IHdpdGggdGhlIHRlc3QgY2FzZXMg\nY2l0ZWQgYmVsb3cgc2hhbGwgTk9UIGJlIHVzZWQuCgojIyMgVHJhZGVtYXJr\nIG5vdGUKCiJFdGhlcmV1bSIgaXMgdHJhZGVtYXJrZWQgYnkgdGhlIEV0aGVy\nZXVtIEZvdW5kYXRpb24uIEZvciBtb3JlIGluZm9ybWF0aW9uIG9uIHlvdXIg\nb2JsaWdhdGlvbnMgd2hlbiBtZW50aW9uaW5nICJFdGhlcmV1bSIsIGFuZCBw\nb3NzaWJseSAiRXRoZXJldW0gTWFpbm5ldCIsIHNlZToKCiogVVNQVE8gcmVn\naXN0cmF0aW9uIG51bWJlciA1MTEwNTc5IGJ5IEV0aGVyZXVtIEZvdW5kYXRp\nb24KKiBUaGUgbm90ZSAieW91IG11c3Qgbm90IHVzZSBbdGhpcyBtYXJrXSB3\naXRob3V0IHRoZSBwcmlvciB3cml0dGVuIHBlcm1pc3Npb24gb2YgdGhlIEZv\ndW5kYXRpb24iIG9uIHRoZSBFdGhlcmV1bSBGb3VuZGF0aW9uIHdlYnNpdGUs\nIFRlcm1zIG9mIFVzZSBwYWdlCgojIyBSYXRpb25hbGUKCkNob29zaW5nIGNv\nbW1vbiB3b3JkIHVzZSBwcm9tb3RlcyBpbnRlcm9wZXJhYmlsaXR5IG9mIGlt\ncGxlbWVudGF0aW9ucyBhbmQgaW5jcmVhc2VzIGN1c3RvbWVyIGF3YXJlbmVz\ncy4gQWxzbywgaXQgYWRkcyBhIHNlbnNlIG9mIHByb2Zlc3Npb25hbGlzbSB3\naGVuIGN1c3RvbWVycyBzZWUgdGhlIHNhbWUgd29yZCBhbmQgd29yZCBzdHls\naW5nIChpLmUuIGNhcGl0YWxpemF0aW9uIG9mIGxldHRlcnMpIGFjcm9zcyBk\naWZmZXJlbnQgaW1wbGVtZW50YXRpb25zLgoKQW55Ym9keSB0aGF0IGhhcyB0\ncmF2ZWxsZWQgdG8gY2VydGFpbiBjb3VudHJpZXMgYW5kIHNlZW4gYW4gIklQ\naG9uZSBbc2ljXSIgcmVwYWlyIHN0b3JlIHNob3VsZCBpbW1lZGlhdGVseSBy\nZWNvZ25pemUgdGhhdCB0aGlzIGlzIG9mZi1icmFuZCBhbmQgdW5vZmZpY2lh\nbC4gTGlrZXdpc2UsIHRoZSBhc3R1dGUgY3VzdG9tZXIgb2YgRXRoZXJldW0g\nc2hvdWxkIHJlY29nbml6ZSBpZiB0aGV5IHNlZSB0aGUgbmV0d29yayByZWZl\ncnJlZCB0byB1c2luZyBpbmNvbnNpc3RlbnQgbmFtZXMgaW4gZGlmZmVyZW50\nIHNvZnR3YXJlLCBzbyBsZXQncyBhdm9pZCB0aGlzLgoKIyMgQmFja3dhcmRz\nIENvbXBhdGliaWxpdHkKCi0gTWV0YU1hc2sgcHJldmlvdXNseSB1c2VkICJN\nYWluIEV0aGVyZXVtIE5ldHdvcmsiIGluIHRoZSBhY2NvdW50IG5ldHdvcmsg\nY2hvb3Nlci4gTWV0YU1hc2sgaGFzIGJlZW4gdXBkYXRlZCBjb25zaXN0ZW50\nIHdpdGggdGhpcyBFSVAuCgotIFJlZmVyZW5jZXMgdG8gTWFpbm5ldCB0aGF0\nIGFyZSBpbmNvbnNpc3RlbnQgd2l0aCB0aGlzIHNwZWNpZmljYXRpb24gYXJl\nIG1hZGUgaW46IFtFSVAtMl0oLi9laXAtMi5tZCksIFtFSVAtNzc5XSguL2Vp\ncC03NzkubWQpLCBbRUlQLTE1MF0oLi9laXAtMTUwLm1kKSwgW0VJUC0xNTVd\nKC4vZWlwLTE1NS5tZCksIFtFSVAtMTYxXSguL2VpcC0xNjEubWQpLCBbRUlQ\nLTE3MF0oLi9laXAtMTcwLm1kKSwgW0VJUC0xOTBdKC4vZWlwLTE5MC5tZCks\nIFtFSVAtMjI1XSguL2VpcC0yMjUubWQpLCBbRUlQLTEwMTNdKC4vZWlwLTEw\nMTMubWQpLCBbRUlQLTE2NzldKC4vZWlwLTE2NzkubWQpLCBbRUlQLTE3MTZd\nKC4vZWlwLTE3MTYubWQpLCBbRUlQLTIwMjhdKC4vZWlwLTIwMjgubWQpLCBb\nRUlQLTIyMDBdKC4vZWlwLTIyMDAubWQpLCBhbmQgW0VJUC0yMzg3XSguL2Vp\ncC0yMzg3Lm1kKS4gRm9yIGNvbnNpc3RlbmN5LCB3ZSByZWNvbW1lbmQgdGhl\nIGVkaXRvciB3aWxsIHVwZGF0ZSBFSVBzIHRvIGNvbnNpc3RlbnRseSB1c2Ug\ndGhlIG5hbWUgYXMgc3BlY2lmaWVkIGluIHRoaXMgRUlQLgoKIyMgVGVzdCBD\nYXNlcwoKIyMjIEV4YW1wbGVzIHJlZmVyZW5jaW5nIHRoZSBuYW1lIG9mIHRo\nZSBuZXR3b3JrIOKchQoKPiBUaGUgY29udHJhY3Qgd2FzIGRlcGxveWVkIHRv\nIEV0aGVyZXVtIE1haW5uZXQuCgo+IEV0aGVyZXVtIHJ1bnMgbWFueSBhcHBs\naWNhdGlvbnMsIHRoaXMgRGFwcCB3YXMgZGVwbG95ZWQgdG8gTWFpbm5ldC4K\nCk5vIHNwZWNpZmljYXRpb24gaXMgbWFkZSBvbiB3aGV0aGVyIERhcHAsIGRh\ncHAsIGRBcHAsIGV0Yy4gaXMgcHJlZmVycmVkLgoKPiBTV0lUQ0ggVE8gTUFJ\nTk5FVAoKVGhpcyBleGFtcGxlIHNob3dzIGEgdXNlciBpbnRlcmZhY2Ugd2hp\nY2ggaXMgaW4gdXBwZXJjYXNlLiBUbyBiZSBzZW1hbnRpY2FsbHkgY29ycmVj\ndCwgdGhpcyBjb3VsZCBiZSB3cml0dGVuIGluIEhUTUwgYXMgYDxzcGFuIHN0\neWxlPSJ0ZXh0LXRyYW5zZm9ybTogdXBwZXJjYXNlIj5Td2l0Y2ggdG8gTWFp\nbm5ldDwvc3Bhbj5gLgoKPiBzd2l0Y2ggdG8gbWFpbm5ldAoKVGhpcyBleGFt\ncGxlIHNob3dzIGEgdXNlciBpbnRlcmZhY2Ugd2hpY2ggaXMgaW4gbG93ZXJj\nYXNlLiBUbyBiZSBzZW1hbnRpY2FsbHkgY29ycmVjdCwgdGhpcyBjb3VsZCBi\nZSB3cml0dGVuIGluIEhUTUwgYXMgYDxzcGFuIHN0eWxlPSJ0ZXh0LXRyYW5z\nZm9ybTogbG93ZXJjYXNlIj5Td2l0Y2ggdG8gTWFpbm5ldDwvc3Bhbj5gLgoK\nIyMjIEV4YW1wbGVzIHJlZmVyZW5jaW5nIHRoZSBuZXR3b3JrIGluIGEgZGVz\nY3JpcHRpdmUgd2F5IOKchQoKPiBNYWlubmV0IGhhcyAjIyMgdGltZXMgdGhl\nIG51bWJlciBvZiB0cmFuc2FjdGlvbnMgYXMgdGhlIHRlc3QgbmV0d29ya3Mu\nCgojIyMgRXhhbXBsZXMgb2Ygb3RoZXIgY29ycmVjdCB3b3JkIHVzYWdlIOKc\nhQoKPiBUaGUgbWFpbiBuZXR3b3JrIG9uIEV0aGVyZXVtIGlzIE1haW5uZXQK\nClRoaXMgc2hvd3MgdGhhdCAibWFpbiIgaXMgdXNlZCBhcyBhIGRlc2NyaXB0\naXZlIHdvcmQsIGJ1dCBNYWlubmV0IGlzIHRoZSBzcGVjaWZpYyBuZXR3b3Jr\nIHdoaWNoIGlzIGhhdmluZyBuZXR3b3JrIElEIDEgYW5kIGNoYWluIElEIDEu\nCgojIyMgRXhhbXBsZXMgb2YgcG9vciB3b3JkIGNob2ljZSAoYXZvaWQgdGhp\ncykg4p2MCgo+IERlcGxveSB5b3VyIGNvbnRyYWN0IHRvIHRoZSBFdGhlcmV1\nbSBtYWluIG5ldHdvcmsuCgpUaGlzIGlzIHJlZmVycmluZyB0byBhICJtYWlu\nIiBuZXR3b3JrIHdoaWNoIGlzIGNvbnRleHQtZGVwZW5kZW50LiBJZiB5b3Ug\nd2VyZSByZWFkaW5nIHRoaXMgdGV4dCBvbiBhIHBhZ2UgYWJvdXQgRXRoZXJl\ndW0gQ2xhc3NpYywgdGhleSB3b3VsZCBiZSByZWZlcnJpbmcgdG8gbmV0d29y\nayBJRCAyIGFuZCBjaGFpbiBJRCA2Mi4gVGhlcmVmb3JlIHRoaXMgd29yZCB1\nc2FnZSBpcyBsZXNzIGNyaXNwLiBEbyBOT1QgdXNlIHdvcmRpbmcgbGlrZSB0\naGlzLgoKPiBDb25uZWN0IHRvIG1haW5uZXQuCgpUaGVzZSB3b3JkcyBsaXRl\ncmFsbHkgbWVhbiBub3RoaW5nLiBUaGUgbG93ZXJjYXNlLCBub3QtcHJvcGVy\nLW5vdW4gd29yZCAibWFpbm5ldCIgaXMgbm90IGEgcGxhaW4gRW5nbGlzaCB3\nb3JkIGFuZCBpdCBzaG91bGQgbm90IGJlIGluIGFueSBkaWN0aW9uYXJ5LiBE\nbyBOT1QgdXNlIHdvcmRpbmcgbGlrZSB0aGlzLgoKIyMgQ29weXJpZ2h0CgpD\nb3B5cmlnaHQgYW5kIHJlbGF0ZWQgcmlnaHRzIHdhaXZlZCB2aWEgW0NDMF0o\naHR0cHM6Ly9jcmVhdGl2ZWNvbW1vbnMub3JnL3B1YmxpY2RvbWFpbi96ZXJv\nLzEuMC8pLgo=\n",
+        "encoding": "base64",
+        "_links": {
+          "self": "https://api.github.com/repos/ethereum/EIPs/contents/EIPS/eip-2228.md?ref=0caa338fe88fb931a02556c9cb5758e044b6c91d",
+          "git": "https://api.github.com/repos/ethereum/EIPs/git/blobs/29eb2571df49f503b83129ced1d5c9d8cf5f7997",
+          "html": "https://github.com/ethereum/EIPs/blob/0caa338fe88fb931a02556c9cb5758e044b6c91d/EIPS/eip-2228.md"
+        }
+      }
+    }
+  },
+  {
+    "req": {
+      "url": "https://api.github.com/repos/ethereum/EIPs/issues/3654",
+      "method": "GET"
+    },
+    "res": {
+      "status": 200,
+      "data": {
+        "url": "https://api.github.com/repos/ethereum/EIPs/issues/3654",
+        "repository_url": "https://api.github.com/repos/ethereum/EIPs",
+        "labels_url": "https://api.github.com/repos/ethereum/EIPs/issues/3654/labels{/name}",
+        "comments_url": "https://api.github.com/repos/ethereum/EIPs/issues/3654/comments",
+        "events_url": "https://api.github.com/repos/ethereum/EIPs/issues/3654/events",
+        "html_url": "https://github.com/ethereum/EIPs/pull/3654",
+        "id": 944644166,
+        "node_id": "MDExOlB1bGxSZXF1ZXN0NjkwMDkzMTQ4",
+        "number": 3654,
+        "title": "Promote EIP to final",
+        "user": {
+          "login": "fulldecent",
+          "id": 382183,
+          "node_id": "MDQ6VXNlcjM4MjE4Mw==",
+          "avatar_url": "https://avatars.githubusercontent.com/u/382183?v=4",
+          "gravatar_id": "",
+          "url": "https://api.github.com/users/fulldecent",
+          "html_url": "https://github.com/fulldecent",
+          "followers_url": "https://api.github.com/users/fulldecent/followers",
+          "following_url": "https://api.github.com/users/fulldecent/following{/other_user}",
+          "gists_url": "https://api.github.com/users/fulldecent/gists{/gist_id}",
+          "starred_url": "https://api.github.com/users/fulldecent/starred{/owner}{/repo}",
+          "subscriptions_url": "https://api.github.com/users/fulldecent/subscriptions",
+          "organizations_url": "https://api.github.com/users/fulldecent/orgs",
+          "repos_url": "https://api.github.com/users/fulldecent/repos",
+          "events_url": "https://api.github.com/users/fulldecent/events{/privacy}",
+          "received_events_url": "https://api.github.com/users/fulldecent/received_events",
+          "type": "User",
+          "site_admin": false
+        },
+        "labels": [],
+        "state": "closed",
+        "locked": false,
+        "assignee": null,
+        "assignees": [],
+        "milestone": null,
+        "comments": 7,
+        "created_at": "2021-07-14T17:24:28Z",
+        "updated_at": "2021-07-25T05:51:09Z",
+        "closed_at": "2021-07-22T08:41:03Z",
+        "author_association": "CONTRIBUTOR",
+        "active_lock_reason": null,
+        "draft": false,
+        "pull_request": {
+          "url": "https://api.github.com/repos/ethereum/EIPs/pulls/3654",
+          "html_url": "https://github.com/ethereum/EIPs/pull/3654",
+          "diff_url": "https://github.com/ethereum/EIPs/pull/3654.diff",
+          "patch_url": "https://github.com/ethereum/EIPs/pull/3654.patch",
+          "merged_at": "2021-07-22T08:41:03Z"
+        },
+        "body": "Passed Last Call period without any changes",
+        "closed_by": {
+          "login": "MicahZoltu",
+          "id": 886059,
+          "node_id": "MDQ6VXNlcjg4NjA1OQ==",
+          "avatar_url": "https://avatars.githubusercontent.com/u/886059?v=4",
+          "gravatar_id": "",
+          "url": "https://api.github.com/users/MicahZoltu",
+          "html_url": "https://github.com/MicahZoltu",
+          "followers_url": "https://api.github.com/users/MicahZoltu/followers",
+          "following_url": "https://api.github.com/users/MicahZoltu/following{/other_user}",
+          "gists_url": "https://api.github.com/users/MicahZoltu/gists{/gist_id}",
+          "starred_url": "https://api.github.com/users/MicahZoltu/starred{/owner}{/repo}",
+          "subscriptions_url": "https://api.github.com/users/MicahZoltu/subscriptions",
+          "organizations_url": "https://api.github.com/users/MicahZoltu/orgs",
+          "repos_url": "https://api.github.com/users/MicahZoltu/repos",
+          "events_url": "https://api.github.com/users/MicahZoltu/events{/privacy}",
+          "received_events_url": "https://api.github.com/users/MicahZoltu/received_events",
+          "type": "User",
+          "site_admin": false
+        },
+        "reactions": {
+          "url": "https://api.github.com/repos/ethereum/EIPs/issues/3654/reactions",
+          "total_count": 0,
+          "+1": 0,
+          "-1": 0,
+          "laugh": 0,
+          "hooray": 0,
+          "confused": 0,
+          "heart": 0,
+          "rocket": 0,
+          "eyes": 0
+        },
+        "timeline_url": "https://api.github.com/repos/ethereum/EIPs/issues/3654/timeline",
+        "performed_via_github_app": null
+      }
+    }
+  },
+  {
+    "req": {
+      "url": "https://api.github.com/repos/ethereum/EIPs/issues/3654/labels",
+      "method": "PUT"
+    },
+    "res": {
+      "status": 200,
+      "data": [
+        {
+          "id": 3683476114,
+          "node_id": "LA_kwDOAq426M7bjWKS",
+          "url": "https://api.github.com/repos/ethereum/EIPs/labels/statusChange",
+          "name": "statusChange",
+          "color": "ededed",
+          "default": false,
+          "description": null
+        }
+      ]
+    }
   }
 ]

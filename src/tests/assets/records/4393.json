@@ -1804,5 +1804,131 @@
         }
       ]
     }
+  },
+  {
+    "req": {
+      "url": "https://api.github.com/repos/ethereum/EIPs/issues/4393",
+      "method": "GET"
+    },
+    "res": {
+      "status": 200,
+      "data": {
+        "url": "https://api.github.com/repos/ethereum/EIPs/issues/4393",
+        "repository_url": "https://api.github.com/repos/ethereum/EIPs",
+        "labels_url": "https://api.github.com/repos/ethereum/EIPs/issues/4393/labels{/name}",
+        "comments_url": "https://api.github.com/repos/ethereum/EIPs/issues/4393/comments",
+        "events_url": "https://api.github.com/repos/ethereum/EIPs/issues/4393/events",
+        "html_url": "https://github.com/ethereum/EIPs/pull/4393",
+        "id": 1035612018,
+        "node_id": "PR_kwDOAq426M4tplzX",
+        "number": 4393,
+        "title": "Eip micropayments standard for nfts and multi tokens",
+        "user": {
+          "login": "julesl23",
+          "id": 83922737,
+          "node_id": "MDQ6VXNlcjgzOTIyNzM3",
+          "avatar_url": "https://avatars.githubusercontent.com/u/83922737?v=4",
+          "gravatar_id": "",
+          "url": "https://api.github.com/users/julesl23",
+          "html_url": "https://github.com/julesl23",
+          "followers_url": "https://api.github.com/users/julesl23/followers",
+          "following_url": "https://api.github.com/users/julesl23/following{/other_user}",
+          "gists_url": "https://api.github.com/users/julesl23/gists{/gist_id}",
+          "starred_url": "https://api.github.com/users/julesl23/starred{/owner}{/repo}",
+          "subscriptions_url": "https://api.github.com/users/julesl23/subscriptions",
+          "organizations_url": "https://api.github.com/users/julesl23/orgs",
+          "repos_url": "https://api.github.com/users/julesl23/repos",
+          "events_url": "https://api.github.com/users/julesl23/events{/privacy}",
+          "received_events_url": "https://api.github.com/users/julesl23/received_events",
+          "type": "User",
+          "site_admin": false
+        },
+        "labels": [
+          {
+            "id": 533004111,
+            "node_id": "MDU6TGFiZWw1MzMwMDQxMTE=",
+            "url": "https://api.github.com/repos/ethereum/EIPs/labels/waiting:%20response%20from%20author",
+            "name": "waiting: response from author",
+            "color": "ffc6c8",
+            "default": false,
+            "description": ""
+          }
+        ],
+        "state": "closed",
+        "locked": false,
+        "assignee": null,
+        "assignees": [],
+        "milestone": null,
+        "comments": 18,
+        "created_at": "2021-10-25T22:02:03Z",
+        "updated_at": "2021-12-21T17:27:18Z",
+        "closed_at": "2021-12-21T17:27:18Z",
+        "author_association": "CONTRIBUTOR",
+        "active_lock_reason": null,
+        "draft": false,
+        "pull_request": {
+          "url": "https://api.github.com/repos/ethereum/EIPs/pulls/4393",
+          "html_url": "https://github.com/ethereum/EIPs/pull/4393",
+          "diff_url": "https://github.com/ethereum/EIPs/pull/4393.diff",
+          "patch_url": "https://github.com/ethereum/EIPs/pull/4393.patch",
+          "merged_at": "2021-12-21T17:27:18Z"
+        },
+        "body": "Hi,\r\n\r\nPlease find my new submission for an EIP. My email address is _jlai@fabstir.com_ if you wish to contact me via email.\r\n\r\nKind regards,\r\nJules Lai",
+        "closed_by": {
+          "login": "eth-bot",
+          "id": 85952233,
+          "node_id": "MDQ6VXNlcjg1OTUyMjMz",
+          "avatar_url": "https://avatars.githubusercontent.com/u/85952233?v=4",
+          "gravatar_id": "",
+          "url": "https://api.github.com/users/eth-bot",
+          "html_url": "https://github.com/eth-bot",
+          "followers_url": "https://api.github.com/users/eth-bot/followers",
+          "following_url": "https://api.github.com/users/eth-bot/following{/other_user}",
+          "gists_url": "https://api.github.com/users/eth-bot/gists{/gist_id}",
+          "starred_url": "https://api.github.com/users/eth-bot/starred{/owner}{/repo}",
+          "subscriptions_url": "https://api.github.com/users/eth-bot/subscriptions",
+          "organizations_url": "https://api.github.com/users/eth-bot/orgs",
+          "repos_url": "https://api.github.com/users/eth-bot/repos",
+          "events_url": "https://api.github.com/users/eth-bot/events{/privacy}",
+          "received_events_url": "https://api.github.com/users/eth-bot/received_events",
+          "type": "User",
+          "site_admin": false
+        },
+        "reactions": {
+          "url": "https://api.github.com/repos/ethereum/EIPs/issues/4393/reactions",
+          "total_count": 0,
+          "+1": 0,
+          "-1": 0,
+          "laugh": 0,
+          "hooray": 0,
+          "confused": 0,
+          "heart": 0,
+          "rocket": 0,
+          "eyes": 0
+        },
+        "timeline_url": "https://api.github.com/repos/ethereum/EIPs/issues/4393/timeline",
+        "performed_via_github_app": null
+      }
+    }
+  },
+  {
+    "req": {
+      "url": "https://api.github.com/repos/ethereum/EIPs/issues/4393/labels",
+      "method": "PUT"
+    },
+    "res": {
+      "status": 200,
+      "data": [
+        {
+          "id": 3683476115,
+          "node_id": "LA_kwDOAq426M7bjWKT",
+          "url": "https://api.github.com/repos/ethereum/EIPs/labels/ambiguous",
+          "name": "ambiguous",
+          "color": "ededed",
+          "default": false,
+          "description": null
+        }
+      ]
+    }
   }
 ]

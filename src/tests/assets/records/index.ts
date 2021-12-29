@@ -1,4 +1,4 @@
-import { isMockMethod, MockRecord } from "src/domain";
+import { requireMockMethod, MockRecord } from "src/domain";
 import { CriticalError } from "src/domain/exceptions";
 
 export enum SavedRecord {
@@ -159,7 +159,7 @@ export function assertSavedRecord(
 
 const assertMethods = (records: { default: MockRecord[] }) => {
   records.default.map(
-    (record) => record.req?.method && isMockMethod(record.req.method)
+    (record) => record.req?.method && requireMockMethod(record.req.method)
   );
 };
 export const getMockRecords = async () => {
