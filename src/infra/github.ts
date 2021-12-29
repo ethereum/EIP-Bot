@@ -1,15 +1,15 @@
 import { context, getOctokit } from "@actions/github";
-import { ContentData, GITHUB_TOKEN, isDefined, PR } from "src/domain";
+import { ContentData, GITHUB_TOKEN, GithubSelf, isDefined, IssueComments, PR } from "src/domain";
 
-export const getEventName = () => {
+const getEventName = () => {
   return context.eventName;
 };
 
-export const getPullNumber = () => {
+const getPullNumber = () => {
   return context.payload?.pull_request?.number;
 };
 
-export const getPullRequestFromNumber = (pullNumber: number) => {
+const getPullRequestFromNumber = (pullNumber: number) => {
   const github = getOctokit(GITHUB_TOKEN).rest;
 
   return github.pulls
@@ -23,7 +23,7 @@ export const getPullRequestFromNumber = (pullNumber: number) => {
     });
 };
 
-export const getPullRequestReviews = async (pullNumber: number) => {
+const getPullRequestReviews = async (pullNumber: number) => {
   const Github = getOctokit(GITHUB_TOKEN).rest;
   const { data: reviews } = await Github.pulls.listReviews({
     owner: context.repo.owner,
@@ -33,7 +33,7 @@ export const getPullRequestReviews = async (pullNumber: number) => {
   return reviews;
 };
 
-export const getPullRequestFiles = (pullNumber: number) => {
+const getPullRequestFiles = (pullNumber: number) => {
   const Github = getOctokit(GITHUB_TOKEN).rest;
   return Github.pulls
     .listFiles({
@@ -44,7 +44,7 @@ export const getPullRequestFiles = (pullNumber: number) => {
     .then((res) => res.data);
 };
 
-export const getRepoFilenameContent = (
+const getRepoFilenameContent = (
   filename: string,
   sha: string
 ): Promise<ContentData> => {
@@ -59,7 +59,7 @@ export const getRepoFilenameContent = (
     .then((res) => res.data);
 };
 
-export const requestReview = (pr: PR, reviewer: string) => {
+const requestReview = (pr: PR, reviewer: string) => {
   const Github = getOctokit(GITHUB_TOKEN).rest;
   return (
     Github.pulls
@@ -74,7 +74,7 @@ export const requestReview = (pr: PR, reviewer: string) => {
   );
 };
 
-export const resolveUserByEmail = async (email: string) => {
+const resolveUserByEmail = async (email: string) => {
   const Github = getOctokit(GITHUB_TOKEN).rest;
 
   // @ts-ignore
@@ -110,3 +110,63 @@ export const resolveUserByEmail = async (email: string) => {
 
   return;
 };
+
+const getSelf = (): Promise<GithubSelf> => {
+  const Github = getOctokit(GITHUB_TOKEN).rest;
+  return Github.users.getAuthenticated().then(res => {
+    return res.data
+  })
+}
+
+const getContextIssueComments = (): Promise<IssueComments> => {
+  const Github = getOctokit(GITHUB_TOKEN).rest;
+  return Github.issues.listComments({
+    owner: context.repo.owner,
+    repo: context.repo.repo,
+    issue_number: context.issue.number
+  }).then(res => res.data);
+}
+
+const updateComment = (commentId: number, message: string): Promise<any> => {
+  const Github = getOctokit(GITHUB_TOKEN).rest;
+  return Github.issues
+    .updateComment({
+      owner: context.repo.owner,
+      repo: context.repo.repo,
+      comment_id: commentId,
+      body: message
+    })
+    .catch((err) => {
+      if (err?.request?.body) {
+        err.request.body = JSON.parse(err.request.body).body;
+      }
+      throw err;
+    });
+}
+
+const createCommentOnContext = (message: string): Promise<any> => {
+  const Github = getOctokit(GITHUB_TOKEN).rest;
+  return Github.issues.createComment({
+    owner: context.repo.owner,
+    repo: context.repo.repo,
+    issue_number: context.issue.number,
+    body: message
+  })
+}
+
+export const github = {
+  getSelf,
+  resolveUserByEmail,
+  requestReview,
+  getRepoFilenameContent,
+  getPullRequestFiles,
+  getPullRequestReviews,
+  getPullRequestFromNumber,
+  getPullNumber,
+  getEventName,
+  getContextIssueComments,
+  updateComment,
+  createCommentOnContext
+}
+
+export type GithubInfra = typeof github

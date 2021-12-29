@@ -1,8 +1,8 @@
-import { getPullNumber } from "src/infra";
 import { CriticalError } from "src/domain/exceptions";
+import { github } from "src/infra";
 
 export const requirePullNumber = () => {
-  const pullNumber = getPullNumber();
+  const pullNumber = github.getPullNumber();
 
   if (!pullNumber) {
     throw new CriticalError(

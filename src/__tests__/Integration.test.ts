@@ -4,12 +4,14 @@ import { envFactory } from "src/tests/factories/envFactory";
 import { __MAIN_MOCK__, mockPR } from "src/tests/assets/mockPR";
 import { EIPCategory, EIPTypeOrCategoryToResolver, EIPTypes } from "src/domain";
 import { assertDefined } from "src/domain/typeDeclaratives";
-import { getPullRequestFiles } from "src/infra";
+import { github } from "src/infra";
 import { RequireFilenameEIPNum } from "#/assertions/require_filename_eip_num";
 import { getApprovals } from "#/approvals";
-import { getParsedContent } from "#/utils/get_parsed_content";
+import { getParsedContent } from "#/file/modules/get_parsed_content";
 import { Exceptions } from "src/domain/exceptions";
 import { getSetFailedMock, initGeneralTestEnv } from "src/tests/testutils";
+
+const getPullRequestFiles = github.getPullRequestFiles;
 
 describe("integration testing edgecases associated with editors", () => {
   initGeneralTestEnv();
@@ -31,14 +33,7 @@ describe("integration testing edgecases associated with editors", () => {
           "@micahzoltu, @lighclient"
       });
 
-      // to be used later to check for mentions (postComment was an arbitrary choice)
-      jest.mock("#/components", () => ({
-        ...jest.requireActual("#/components"),
-        postComment: jest.fn().mockImplementation(() => {})
-      }));
-
       await __MAIN_MOCK__();
-
       const Domain = await import("src/domain");
 
       // collect the call
@@ -57,12 +52,7 @@ describe("integration testing edgecases associated with editors", () => {
           "@micahzoltu, @lighclient"
       });
 
-      jest.mock("src/domain", () => ({
-        ...jest.requireActual("src/domain")
-      }));
-
       await __MAIN_MOCK__();
-
       expect(setFailedMock).not.toBeCalled();
     });
   });

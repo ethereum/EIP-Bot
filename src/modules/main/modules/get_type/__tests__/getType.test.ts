@@ -1,4 +1,4 @@
-import { __Filters__, getType } from "#/main/get_type";
+import { __Filters__, getType } from "#/main/modules/get_type";
 import _ from "lodash";
 import __ from "underscore";
 import { testResultsFactory } from "src/tests/factories/testResultsFactory";

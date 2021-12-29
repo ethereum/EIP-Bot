@@ -1,5 +1,5 @@
 import { getOctokit } from "@actions/github";
-import { EIPCategory, EipStatus, EIPTypes } from "./Constants";
+import { ChangeTypes, EIPCategory, EipStatus, EIPTypes } from "./Constants";
 import { FrontMatterResult } from "front-matter";
 import { PromiseValue } from "type-fest";
 import { CriticalError } from "src/domain/exceptions";
@@ -22,6 +22,8 @@ export type File = Files[number];
 export type CommitFiles = CompareCommits["base_commit"]["files"];
 export type CommitFile = UnArrayify<NonNullable<CommitFiles>>;
 export type Repo = PromiseValue<ReturnType<Github["repos"]["get"]>>["data"];
+export type GithubSelf = PromiseValue<ReturnType<Github["users"]["getAuthenticated"]>>["data"]
+export type IssueComments = PromiseValue<ReturnType<Github["issues"]["listComments"]>>["data"]
 
 // This was extracted directly from Octokit repo
 // node_modules/@octokit/openapi-types/generated/types.ts : 7513 - 7553
@@ -172,6 +174,7 @@ export type Result = {
   successMessage?: string;
   errors?: string[];
   mentions?: string[];
+  type: ChangeTypes
 };
 
 export type Results = Result[];

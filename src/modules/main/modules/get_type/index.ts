@@ -5,9 +5,9 @@ import {
   isDefined,
   TestResults
 } from "src/domain";
-import { newEIPFile } from "#/main/get_type/new_eip_file";
-import { statusChange } from "#/main/get_type/status_change";
-import { updateEIP } from "#/main/get_type/update_eip";
+import { newEIPFile } from "#/main/modules/get_type/new_eip_file";
+import { statusChange } from "#/main/modules/get_type/status_change";
+import { updateEIP } from "#/main/modules/get_type/update_eip";
 import _ from "lodash";
 import { getAllFalseObjectPaths, getAllTruthyObjectPaths, multiLineString } from "#/utils";
 import { getLogs } from "./logs";

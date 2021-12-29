@@ -12,7 +12,7 @@ import {
   PR
 } from "src/domain";
 import { IFileDiff } from "#/file/domain/types";
-import { resolveUserByEmail } from "src/infra";
+import { github } from "src/infra";
 
 export class FileDiffInfra implements IFileDiff {
   constructor(
@@ -88,7 +88,7 @@ export class FileDiffInfra implements IFileDiff {
         return author.toLowerCase();
       } else {
         // Email address
-        const queriedUser = await resolveUserByEmail(author);
+        const queriedUser = await github.resolveUserByEmail(author);
         if (!queriedUser) return;
         return queriedUser.toLowerCase();
       }

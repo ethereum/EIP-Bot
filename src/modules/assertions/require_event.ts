@@ -1,9 +1,9 @@
 import { EVENTS } from "src/domain";
-import { getEventName } from "src/infra";
 import { CriticalError } from "src/domain/exceptions";
+import { github } from "src/infra";
 
 export const requireEvent = () => {
-  const event = getEventName();
+  const event = github.getEventName();
 
   const isPullRequestReview = event === EVENTS.pullRequestReview;
   const isPullRequestTarget = event === EVENTS.pullRequestTarget;

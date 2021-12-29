@@ -1,2 +1,2 @@
-export * from "./get_approvals";
-export * from "./request_reviewers";
+export * from "./modules/get_approvals";
+export * from "./modules/request_reviewers";

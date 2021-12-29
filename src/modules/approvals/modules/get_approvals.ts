@@ -1,12 +1,12 @@
 import { requirePr } from "#/assertions";
-import { getPullRequestReviews } from "src/infra";
+import { github } from "src/infra";
 
 /**
  * @returns the approvals of the pull request in context
  */
 export const getApprovals = async () => {
   const pr = await requirePr();
-  const reviews = await getPullRequestReviews(pr.number);
+  const reviews = await github.getPullRequestReviews(pr.number);
 
   // Starting with set to prevent repeats
   const approvals: Set<string> = new Set();

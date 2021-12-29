@@ -1,6 +1,6 @@
-import { getPullRequestFiles } from "src/infra";
 import { Files, PR } from "src/domain";
 import { RequirementViolation } from "src/domain/exceptions";
+import { github } from "src/infra/github";
 
 /**
  * compares the diff between the base commit of the PR and
@@ -9,7 +9,7 @@ import { RequirementViolation } from "src/domain/exceptions";
  * @returns {File}
  */
 export const requireFiles = async (pr: PR): Promise<Files> => {
-  const files = await getPullRequestFiles(pr.number);
+  const files = await github.getPullRequestFiles(pr.number);
 
   if (!files?.length) {
     throw new RequirementViolation(

@@ -1,10 +1,9 @@
 import { Context } from "@actions/github/lib/context";
 import actions from "@actions/github";
-import { omitBy, set } from "lodash";
+import _, { set } from "lodash";
 import nock from "nock";
 import MockedEnv from "mocked-env";
 import * as core from "@actions/core";
-import _ from "lodash";
 
 export const getAllTruthyObjectPaths = (obj: object) => {
   function rKeys(o: object, path?: string) {
@@ -148,18 +147,21 @@ export const getSetFailedMock = () => {
   return setFailedMock;
 };
 
-export const convertTrueToStringOnLeafs = (_obj: Record<string, object | (boolean | null)>, setNull = false): Record<string, string | undefined> => {
-  const obj = _.cloneDeep(_obj)
+export const convertTrueToStringOnLeafs = (
+  _obj: Record<string, object | (boolean | null)>,
+  setNull = false
+): Record<string, string | undefined> => {
+  const obj = _.cloneDeep(_obj);
   const paths = getAllPaths(obj);
   for (const path of paths) {
     const value = _.get(obj, path);
     if (value === true) {
-      _.set(obj, path, "required")
+      _.set(obj, path, "required");
     } else if (setNull && _.isNull(value)) {
-      _.set(obj, path, "optional")
+      _.set(obj, path, "optional");
     } else {
-      _.unset(obj, path)
+      _.unset(obj, path);
     }
   }
-  return obj as any
-}
+  return obj as any;
+};

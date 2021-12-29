@@ -1,7 +1,7 @@
 require("module-alias/register");
 import { main } from "./main";
 import { NodeEnvs } from "src/domain";
-import { __MAIN__ } from "./utils/Debug";
+import { __MAIN__ } from "#/utils/debug";
 import { __MAIN_MOCK__ } from "src/tests/assets/mockPR";
 
 const isDebug =
