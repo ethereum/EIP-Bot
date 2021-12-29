@@ -21,6 +21,7 @@ import { multiLineString } from "#/utils";
 import { testFile } from "#/main/modules/test_file";
 import { purifyTestResults } from "#/main/modules/purify_test_results";
 import { getCommentMessage } from "#/main/modules/get_comment_message";
+import _ from "lodash";
 
 export const _main_ = async () => {
   // Verify correct environment and request context
@@ -65,7 +66,9 @@ export const _main_ = async () => {
     }
   }
 
-  // const labels = _.uniq(_.map(results, "type"));
+  // updates labels to be as expected
+  const expectedLabels = _.uniq(_.map(results, "type"));
+  await PullRequestUseCases.updateLabels(expectedLabels)
 
   if (!results.filter((res) => res.errors).length) {
     const commentMessage = getCommentMessage(

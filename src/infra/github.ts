@@ -1,5 +1,15 @@
 import { context, getOctokit } from "@actions/github";
-import { ContentData, GITHUB_TOKEN, GithubSelf, isDefined, IssueComments, PR } from "src/domain";
+import {
+  ChangeTypes,
+  ContentData,
+  GITHUB_TOKEN,
+  GithubSelf,
+  isChangeType,
+  isDefined,
+  IssueComments,
+  PR
+} from "src/domain";
+import _ from "lodash";
 
 const getEventName = () => {
   return context.eventName;
@@ -154,6 +164,36 @@ const createCommentOnContext = (message: string): Promise<any> => {
   })
 }
 
+const getContextLabels = async (): Promise<ChangeTypes[]> => {
+  const Github = getOctokit(GITHUB_TOKEN).rest;
+  const { data: issue } = await Github.issues.get({
+    owner: context.repo.owner,
+    repo: context.repo.repo,
+    issue_number: context.issue.number
+  })
+
+  const labels = issue.labels;
+
+  return labels.map(label => {
+    if (typeof label === "string") {
+      return label
+    }
+    return label.name
+  // this will make it so that the only labels considered are ChangeTypes
+  }).filter(isDefined).filter(isChangeType)
+}
+
+const setLabels = async (labels: string[]): Promise<void> => {
+  const Github = getOctokit(GITHUB_TOKEN).rest;
+  Github.issues.setLabels({
+    owner: context.repo.owner,
+    repo: context.repo.repo,
+    // @ts-expect-error the expected type is (string[] & {name: string}[]) | undefined
+    // but string[] and {name: string}[] cannot simultaneously coincide
+    labels
+  })
+}
+
 export const github = {
   getSelf,
   resolveUserByEmail,
@@ -166,7 +206,9 @@ export const github = {
   getEventName,
   getContextIssueComments,
   updateComment,
-  createCommentOnContext
+  createCommentOnContext,
+  getContextLabels,
+  setLabels
 }
 
 export type GithubInfra = typeof github

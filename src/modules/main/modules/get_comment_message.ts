@@ -6,9 +6,10 @@ export const getCommentMessage = (results: Results, header?: string) => {
 
   comment.push(header || COMMENT_HEADER);
   comment.push("---");
-  for (const { filename, errors, successMessage } of results) {
+  for (const { filename, errors, successMessage, type } of results) {
     if (!errors) {
       comment.push(`## (pass) ${filename}`);
+      comment.push(`Change Type: ${type}`)
       const message = `- ` + (successMessage || "passed!");
       comment.push(message);
       continue;

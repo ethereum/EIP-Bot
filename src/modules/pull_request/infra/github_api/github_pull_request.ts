@@ -1,8 +1,11 @@
 import { IGithubPullRequest } from "#/pull_request/domain/types";
 import { GithubInfra } from "src/infra";
+import { ChangeTypes } from "src/domain";
+import _ from "lodash";
+import { PullRequestGithubApiLogs } from "#/pull_request/infra/github_api/log";
 
 export class GithubPullRequest implements IGithubPullRequest {
-  constructor(public github: GithubInfra) {}
+  constructor(public github: GithubInfra, public logs: PullRequestGithubApiLogs) {}
 
   async postComment(message: string) {
     const me = await this.github.getSelf();
@@ -19,5 +22,23 @@ export class GithubPullRequest implements IGithubPullRequest {
     }
 
     await this.github.createCommentOnContext(message);
+  }
+
+  async updateLabels(labels: ChangeTypes[]) {
+    const current = await this.github.getContextLabels();
+    const diff = _.xor(labels, current);
+
+    if (_.isEmpty(diff)) {
+      return this.logs.labelsMatch(current, labels)
+    }
+
+    const toRemove = _.intersection(current, diff);
+    const toAdd = _.intersection(labels, diff);
+    this.logs.labelsToBeChanged(current, labels, toAdd, toRemove);
+
+    // this just removes previous labels and sets new ones so the bifurcation
+    // above is not actually useful; I did this way because it's simpler and
+    // (at present) achieves the same goal
+    await this.github.setLabels(labels)
   }
 }

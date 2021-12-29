@@ -3,6 +3,7 @@ import { ChangeTypes, EIPCategory, EipStatus, EIPTypes } from "./Constants";
 import { FrontMatterResult } from "front-matter";
 import { PromiseValue } from "type-fest";
 import { CriticalError } from "src/domain/exceptions";
+import { GithubInfra } from "src/infra";
 
 export type Github = ReturnType<typeof getOctokit>["rest"];
 
@@ -184,3 +185,5 @@ export type PropsValue<T extends (...args: any[]) => any> = T extends (
 ) => any
   ? Props
   : never;
+
+export type MockedFunctionObject<Obj extends Record<string, (...args: any[]) => any>> = {[key in keyof Obj]?: jest.MockedFunction<Obj[key]>}
