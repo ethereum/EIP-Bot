@@ -3,7 +3,6 @@ import { ChangeTypes, EIPCategory, EipStatus, EIPTypes } from "./Constants";
 import { FrontMatterResult } from "front-matter";
 import { PromiseValue } from "type-fest";
 import { CriticalError } from "src/domain/exceptions";
-import { GithubInfra } from "src/infra";
 
 export type Github = ReturnType<typeof getOctokit>["rest"];
 
@@ -23,8 +22,12 @@ export type File = Files[number];
 export type CommitFiles = CompareCommits["base_commit"]["files"];
 export type CommitFile = UnArrayify<NonNullable<CommitFiles>>;
 export type Repo = PromiseValue<ReturnType<Github["repos"]["get"]>>["data"];
-export type GithubSelf = PromiseValue<ReturnType<Github["users"]["getAuthenticated"]>>["data"]
-export type IssueComments = PromiseValue<ReturnType<Github["issues"]["listComments"]>>["data"]
+export type GithubSelf = PromiseValue<
+  ReturnType<Github["users"]["getAuthenticated"]>
+>["data"];
+export type IssueComments = PromiseValue<
+  ReturnType<Github["issues"]["listComments"]>
+>["data"];
 
 // This was extracted directly from Octokit repo
 // node_modules/@octokit/openapi-types/generated/types.ts : 7513 - 7553
@@ -175,7 +178,7 @@ export type Result = {
   successMessage?: string;
   errors?: string[];
   mentions?: string[];
-  type: ChangeTypes
+  type: ChangeTypes;
 };
 
 export type Results = Result[];
@@ -186,4 +189,6 @@ export type PropsValue<T extends (...args: any[]) => any> = T extends (
   ? Props
   : never;
 
-export type MockedFunctionObject<Obj extends Record<string, (...args: any[]) => any>> = {[key in keyof Obj]?: jest.MockedFunction<Obj[key]>}
+export type MockedFunctionObject<
+  Obj extends Record<string, (...args: any[]) => any>
+> = { [key in keyof Obj]?: jest.MockedFunction<Obj[key]> };
