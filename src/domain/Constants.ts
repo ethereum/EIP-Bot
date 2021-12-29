@@ -220,6 +220,13 @@ export enum EVENTS {
   pullRequestReview = "pull_request_review"
 }
 
+export enum ChangeTypes {
+  newEIPFile = "newEIPFile",
+  statusChange = "statusChange",
+  updateEIP = "updateEIP",
+  ambiguous = "ambiguous"
+}
+
 /**
  *  A collection of error strings, although confusing the error strings are
  *  define if an error exists and undefined if not; i.e.

@@ -100,6 +100,22 @@ export type ERRORS = {
   };
 };
 
+type LeafsToBoolean<O> = {
+  [K in keyof O]: O[K] extends Record<any, any>
+    ? Required<LeafsToBoolean<O[K]>>
+    : boolean | null;
+};
+
+/**
+ * this type is used to define filter definitions for different change types; the
+ * type of a change should be distinguishable by the errors alone. Each leaf
+ * can be either true, false, or null where
+ * - true: an error exists for this leaf
+ * - false: an error does not exist for this leaf
+ * - null: either
+ * */
+export type ERRORS_TYPE_FILTER = LeafsToBoolean<ERRORS>;
+
 export const encodings = [
   "ascii",
   "utf8",
@@ -151,12 +167,14 @@ export function isMockMethod(method): asserts method is MockMethods {
   }
 }
 
-export type Results = {
+export type Result = {
   filename: string;
   successMessage?: string;
   errors?: string[];
   mentions?: string[];
-}[];
+};
+
+export type Results = Result[];
 
 export type PropsValue<T extends (...args: any[]) => any> = T extends (
   ...args: infer Props

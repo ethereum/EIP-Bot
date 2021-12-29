@@ -22,6 +22,7 @@
     "@types/faker": "^5.5.7",
     "@types/lodash": "^4.14.173",
     "@types/nock": "^11.1.0",
+    "@types/underscore": "^1.11.4",
     "depcheck": "^1.4.2",
     "dotenv": "^10.0.0",
     "email-addresses": "^5.0.0",
@@ -32,7 +33,8 @@
     "nock": "^13.1.1",
     "prettier": "^2.4.1",
     "tsconfig-paths-jest": "^0.0.1",
-    "type-fest": "^2.5.4"
+    "type-fest": "^2.5.4",
+    "underscore": "^1.13.2"
   },
   "devDependencies": {
     "@babel/preset-env": "^7.15.6",

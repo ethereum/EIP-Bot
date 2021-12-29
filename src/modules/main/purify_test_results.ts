@@ -1,4 +1,4 @@
-import { TestResults } from "src/domain";
+import { Result, TestResults } from "src/domain";
 import {
   editorApprovalPurifier,
   EIP1Purifier,
@@ -8,7 +8,7 @@ import {
 import { getAllTruthyObjectPaths, innerJoinAncestors } from "#/utils";
 import { get } from "lodash";
 
-export const purifyTestResults = async (dirtyTestResults: TestResults) => {
+export const purifyTestResults = async (dirtyTestResults: TestResults): Promise<Result> => {
   // Apply independent purifiers
   const primedPurifiers = [
     statusChangeAllowedPurifier(dirtyTestResults),
@@ -27,7 +27,8 @@ export const purifyTestResults = async (dirtyTestResults: TestResults) => {
     console.log(`${testResults.fileDiff.base.name} passed!`);
     return {
       filename: testResults.fileDiff.base.name
-    };
+    }
+    ;
   }
 
   return {
