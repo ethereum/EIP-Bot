@@ -1261,5 +1261,131 @@
         }
       }
     }
+  },
+  {
+    "req": {
+      "url": "https://api.github.com/repos/ethereum/EIPs/issues/3676",
+      "method": "GET"
+    },
+    "res": {
+      "status": 200,
+      "data": {
+        "url": "https://api.github.com/repos/ethereum/EIPs/issues/3676",
+        "repository_url": "https://api.github.com/repos/ethereum/EIPs",
+        "labels_url": "https://api.github.com/repos/ethereum/EIPs/issues/3676/labels{/name}",
+        "comments_url": "https://api.github.com/repos/ethereum/EIPs/issues/3676/comments",
+        "events_url": "https://api.github.com/repos/ethereum/EIPs/issues/3676/events",
+        "html_url": "https://github.com/ethereum/EIPs/pull/3676",
+        "id": 950805251,
+        "node_id": "MDExOlB1bGxSZXF1ZXN0Njk1Mjk2MzE5",
+        "number": 3676,
+        "title": "Move 2982 to Last Call",
+        "user": {
+          "login": "djrtwo",
+          "id": 1433595,
+          "node_id": "MDQ6VXNlcjE0MzM1OTU=",
+          "avatar_url": "https://avatars.githubusercontent.com/u/1433595?v=4",
+          "gravatar_id": "",
+          "url": "https://api.github.com/users/djrtwo",
+          "html_url": "https://github.com/djrtwo",
+          "followers_url": "https://api.github.com/users/djrtwo/followers",
+          "following_url": "https://api.github.com/users/djrtwo/following{/other_user}",
+          "gists_url": "https://api.github.com/users/djrtwo/gists{/gist_id}",
+          "starred_url": "https://api.github.com/users/djrtwo/starred{/owner}{/repo}",
+          "subscriptions_url": "https://api.github.com/users/djrtwo/subscriptions",
+          "organizations_url": "https://api.github.com/users/djrtwo/orgs",
+          "repos_url": "https://api.github.com/users/djrtwo/repos",
+          "events_url": "https://api.github.com/users/djrtwo/events{/privacy}",
+          "received_events_url": "https://api.github.com/users/djrtwo/received_events",
+          "type": "User",
+          "site_admin": false
+        },
+        "labels": [
+          {
+            "id": 533004111,
+            "node_id": "MDU6TGFiZWw1MzMwMDQxMTE=",
+            "url": "https://api.github.com/repos/ethereum/EIPs/labels/waiting:%20response%20from%20author",
+            "name": "waiting: response from author",
+            "color": "ffc6c8",
+            "default": false,
+            "description": ""
+          }
+        ],
+        "state": "closed",
+        "locked": false,
+        "assignee": null,
+        "assignees": [],
+        "milestone": null,
+        "comments": 7,
+        "created_at": "2021-07-22T15:43:48Z",
+        "updated_at": "2021-11-18T20:30:52Z",
+        "closed_at": "2021-08-27T01:51:03Z",
+        "author_association": "CONTRIBUTOR",
+        "active_lock_reason": null,
+        "draft": false,
+        "pull_request": {
+          "url": "https://api.github.com/repos/ethereum/EIPs/pulls/3676",
+          "html_url": "https://github.com/ethereum/EIPs/pull/3676",
+          "diff_url": "https://github.com/ethereum/EIPs/pull/3676.diff",
+          "patch_url": "https://github.com/ethereum/EIPs/pull/3676.patch",
+          "merged_at": "2021-08-27T01:51:03Z"
+        },
+        "body": "Also removed a stale \"TBD\"",
+        "closed_by": {
+          "login": "eth-bot",
+          "id": 85952233,
+          "node_id": "MDQ6VXNlcjg1OTUyMjMz",
+          "avatar_url": "https://avatars.githubusercontent.com/u/85952233?v=4",
+          "gravatar_id": "",
+          "url": "https://api.github.com/users/eth-bot",
+          "html_url": "https://github.com/eth-bot",
+          "followers_url": "https://api.github.com/users/eth-bot/followers",
+          "following_url": "https://api.github.com/users/eth-bot/following{/other_user}",
+          "gists_url": "https://api.github.com/users/eth-bot/gists{/gist_id}",
+          "starred_url": "https://api.github.com/users/eth-bot/starred{/owner}{/repo}",
+          "subscriptions_url": "https://api.github.com/users/eth-bot/subscriptions",
+          "organizations_url": "https://api.github.com/users/eth-bot/orgs",
+          "repos_url": "https://api.github.com/users/eth-bot/repos",
+          "events_url": "https://api.github.com/users/eth-bot/events{/privacy}",
+          "received_events_url": "https://api.github.com/users/eth-bot/received_events",
+          "type": "User",
+          "site_admin": false
+        },
+        "reactions": {
+          "url": "https://api.github.com/repos/ethereum/EIPs/issues/3676/reactions",
+          "total_count": 0,
+          "+1": 0,
+          "-1": 0,
+          "laugh": 0,
+          "hooray": 0,
+          "confused": 0,
+          "heart": 0,
+          "rocket": 0,
+          "eyes": 0
+        },
+        "timeline_url": "https://api.github.com/repos/ethereum/EIPs/issues/3676/timeline",
+        "performed_via_github_app": null
+      }
+    }
+  },
+  {
+    "req": {
+      "url": "https://api.github.com/repos/ethereum/EIPs/issues/3676/labels",
+      "method": "PUT"
+    },
+    "res": {
+      "status": 200,
+      "data": [
+        {
+          "id": 3683553869,
+          "node_id": "LA_kwDOAq426M7bjpJN",
+          "url": "https://api.github.com/repos/ethereum/EIPs/labels/updateEIP",
+          "name": "updateEIP",
+          "color": "ededed",
+          "default": false,
+          "description": null
+        }
+      ]
+    }
   }
 ]

@@ -37,7 +37,7 @@ export class GithubPullRequest implements IGithubPullRequest {
     this.logs.labelsToBeChanged(current, labels, toAdd, toRemove);
 
     // this just removes previous labels and sets new ones so the bifurcation
-    // above is not actually useful; I did this way because it's simpler and
+    // above is not actually useful; I did this because it's simpler and
     // (at present) achieves the same goal
     await this.github.setLabels(labels)
   }

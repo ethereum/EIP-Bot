@@ -819,5 +819,121 @@
         "performed_via_github_app": null
       }
     }
+  },
+  {
+    "req": {
+      "url": "https://api.github.com/repos/ethereum/EIPs/issues/3623",
+      "method": "GET"
+    },
+    "res": {
+      "status": 200,
+      "data": {
+        "url": "https://api.github.com/repos/ethereum/EIPs/issues/3623",
+        "repository_url": "https://api.github.com/repos/ethereum/EIPs",
+        "labels_url": "https://api.github.com/repos/ethereum/EIPs/issues/3623/labels{/name}",
+        "comments_url": "https://api.github.com/repos/ethereum/EIPs/issues/3623/comments",
+        "events_url": "https://api.github.com/repos/ethereum/EIPs/issues/3623/events",
+        "html_url": "https://github.com/ethereum/EIPs/pull/3623",
+        "id": 927194693,
+        "node_id": "MDExOlB1bGxSZXF1ZXN0Njc1Mzg4MTE2",
+        "number": 3623,
+        "title": "fix misprint eip-3554.md",
+        "user": {
+          "login": "spirinvladimir",
+          "id": 2780401,
+          "node_id": "MDQ6VXNlcjI3ODA0MDE=",
+          "avatar_url": "https://avatars.githubusercontent.com/u/2780401?v=4",
+          "gravatar_id": "",
+          "url": "https://api.github.com/users/spirinvladimir",
+          "html_url": "https://github.com/spirinvladimir",
+          "followers_url": "https://api.github.com/users/spirinvladimir/followers",
+          "following_url": "https://api.github.com/users/spirinvladimir/following{/other_user}",
+          "gists_url": "https://api.github.com/users/spirinvladimir/gists{/gist_id}",
+          "starred_url": "https://api.github.com/users/spirinvladimir/starred{/owner}{/repo}",
+          "subscriptions_url": "https://api.github.com/users/spirinvladimir/subscriptions",
+          "organizations_url": "https://api.github.com/users/spirinvladimir/orgs",
+          "repos_url": "https://api.github.com/users/spirinvladimir/repos",
+          "events_url": "https://api.github.com/users/spirinvladimir/events{/privacy}",
+          "received_events_url": "https://api.github.com/users/spirinvladimir/received_events",
+          "type": "User",
+          "site_admin": false
+        },
+        "labels": [],
+        "state": "closed",
+        "locked": false,
+        "assignee": null,
+        "assignees": [],
+        "milestone": null,
+        "comments": 5,
+        "created_at": "2021-06-22T12:46:41Z",
+        "updated_at": "2021-10-24T19:32:25Z",
+        "closed_at": "2021-07-27T17:10:53Z",
+        "author_association": "CONTRIBUTOR",
+        "active_lock_reason": null,
+        "draft": false,
+        "pull_request": {
+          "url": "https://api.github.com/repos/ethereum/EIPs/pulls/3623",
+          "html_url": "https://github.com/ethereum/EIPs/pull/3623",
+          "diff_url": "https://github.com/ethereum/EIPs/pull/3623.diff",
+          "patch_url": "https://github.com/ethereum/EIPs/pull/3623.patch",
+          "merged_at": "2021-07-27T17:10:53Z"
+        },
+        "body": "fix misprint",
+        "closed_by": {
+          "login": "eth-bot",
+          "id": 85952233,
+          "node_id": "MDQ6VXNlcjg1OTUyMjMz",
+          "avatar_url": "https://avatars.githubusercontent.com/u/85952233?v=4",
+          "gravatar_id": "",
+          "url": "https://api.github.com/users/eth-bot",
+          "html_url": "https://github.com/eth-bot",
+          "followers_url": "https://api.github.com/users/eth-bot/followers",
+          "following_url": "https://api.github.com/users/eth-bot/following{/other_user}",
+          "gists_url": "https://api.github.com/users/eth-bot/gists{/gist_id}",
+          "starred_url": "https://api.github.com/users/eth-bot/starred{/owner}{/repo}",
+          "subscriptions_url": "https://api.github.com/users/eth-bot/subscriptions",
+          "organizations_url": "https://api.github.com/users/eth-bot/orgs",
+          "repos_url": "https://api.github.com/users/eth-bot/repos",
+          "events_url": "https://api.github.com/users/eth-bot/events{/privacy}",
+          "received_events_url": "https://api.github.com/users/eth-bot/received_events",
+          "type": "User",
+          "site_admin": false
+        },
+        "reactions": {
+          "url": "https://api.github.com/repos/ethereum/EIPs/issues/3623/reactions",
+          "total_count": 0,
+          "+1": 0,
+          "-1": 0,
+          "laugh": 0,
+          "hooray": 0,
+          "confused": 0,
+          "heart": 0,
+          "rocket": 0,
+          "eyes": 0
+        },
+        "timeline_url": "https://api.github.com/repos/ethereum/EIPs/issues/3623/timeline",
+        "performed_via_github_app": null
+      }
+    }
+  },
+  {
+    "req": {
+      "url": "https://api.github.com/repos/ethereum/EIPs/issues/3623/labels",
+      "method": "PUT"
+    },
+    "res": {
+      "status": 200,
+      "data": [
+        {
+          "id": 3683553869,
+          "node_id": "LA_kwDOAq426M7bjpJN",
+          "url": "https://api.github.com/repos/ethereum/EIPs/labels/updateEIP",
+          "name": "updateEIP",
+          "color": "ededed",
+          "default": false,
+          "description": null
+        }
+      ]
+    }
   }
 ]

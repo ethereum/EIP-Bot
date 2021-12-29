@@ -1202,5 +1202,121 @@
         "performed_via_github_app": null
       }
     }
+  },
+  {
+    "req": {
+      "url": "https://api.github.com/repos/ethereum/EIPs/issues/3767",
+      "method": "GET"
+    },
+    "res": {
+      "status": 200,
+      "data": {
+        "url": "https://api.github.com/repos/ethereum/EIPs/issues/3767",
+        "repository_url": "https://api.github.com/repos/ethereum/EIPs",
+        "labels_url": "https://api.github.com/repos/ethereum/EIPs/issues/3767/labels{/name}",
+        "comments_url": "https://api.github.com/repos/ethereum/EIPs/issues/3767/comments",
+        "events_url": "https://api.github.com/repos/ethereum/EIPs/issues/3767/events",
+        "html_url": "https://github.com/ethereum/EIPs/pull/3767",
+        "id": 978711838,
+        "node_id": "MDExOlB1bGxSZXF1ZXN0NzE5MjUyNzQ1",
+        "number": 3767,
+        "title": "Update eip-2315.md",
+        "user": {
+          "login": "gcolvin",
+          "id": 16827129,
+          "node_id": "MDQ6VXNlcjE2ODI3MTI5",
+          "avatar_url": "https://avatars.githubusercontent.com/u/16827129?v=4",
+          "gravatar_id": "",
+          "url": "https://api.github.com/users/gcolvin",
+          "html_url": "https://github.com/gcolvin",
+          "followers_url": "https://api.github.com/users/gcolvin/followers",
+          "following_url": "https://api.github.com/users/gcolvin/following{/other_user}",
+          "gists_url": "https://api.github.com/users/gcolvin/gists{/gist_id}",
+          "starred_url": "https://api.github.com/users/gcolvin/starred{/owner}{/repo}",
+          "subscriptions_url": "https://api.github.com/users/gcolvin/subscriptions",
+          "organizations_url": "https://api.github.com/users/gcolvin/orgs",
+          "repos_url": "https://api.github.com/users/gcolvin/repos",
+          "events_url": "https://api.github.com/users/gcolvin/events{/privacy}",
+          "received_events_url": "https://api.github.com/users/gcolvin/received_events",
+          "type": "User",
+          "site_admin": false
+        },
+        "labels": [],
+        "state": "closed",
+        "locked": false,
+        "assignee": null,
+        "assignees": [],
+        "milestone": null,
+        "comments": 13,
+        "created_at": "2021-08-25T04:53:03Z",
+        "updated_at": "2021-12-29T19:09:52Z",
+        "closed_at": "2021-08-28T18:41:12Z",
+        "author_association": "CONTRIBUTOR",
+        "active_lock_reason": null,
+        "draft": false,
+        "pull_request": {
+          "url": "https://api.github.com/repos/ethereum/EIPs/pulls/3767",
+          "html_url": "https://github.com/ethereum/EIPs/pull/3767",
+          "diff_url": "https://github.com/ethereum/EIPs/pull/3767.diff",
+          "patch_url": "https://github.com/ethereum/EIPs/pull/3767.patch",
+          "merged_at": "2021-08-28T18:41:12Z"
+        },
+        "body": "*",
+        "closed_by": {
+          "login": "eth-bot",
+          "id": 85952233,
+          "node_id": "MDQ6VXNlcjg1OTUyMjMz",
+          "avatar_url": "https://avatars.githubusercontent.com/u/85952233?v=4",
+          "gravatar_id": "",
+          "url": "https://api.github.com/users/eth-bot",
+          "html_url": "https://github.com/eth-bot",
+          "followers_url": "https://api.github.com/users/eth-bot/followers",
+          "following_url": "https://api.github.com/users/eth-bot/following{/other_user}",
+          "gists_url": "https://api.github.com/users/eth-bot/gists{/gist_id}",
+          "starred_url": "https://api.github.com/users/eth-bot/starred{/owner}{/repo}",
+          "subscriptions_url": "https://api.github.com/users/eth-bot/subscriptions",
+          "organizations_url": "https://api.github.com/users/eth-bot/orgs",
+          "repos_url": "https://api.github.com/users/eth-bot/repos",
+          "events_url": "https://api.github.com/users/eth-bot/events{/privacy}",
+          "received_events_url": "https://api.github.com/users/eth-bot/received_events",
+          "type": "User",
+          "site_admin": false
+        },
+        "reactions": {
+          "url": "https://api.github.com/repos/ethereum/EIPs/issues/3767/reactions",
+          "total_count": 0,
+          "+1": 0,
+          "-1": 0,
+          "laugh": 0,
+          "hooray": 0,
+          "confused": 0,
+          "heart": 0,
+          "rocket": 0,
+          "eyes": 0
+        },
+        "timeline_url": "https://api.github.com/repos/ethereum/EIPs/issues/3767/timeline",
+        "performed_via_github_app": null
+      }
+    }
+  },
+  {
+    "req": {
+      "url": "https://api.github.com/repos/ethereum/EIPs/issues/3767/labels",
+      "method": "PUT"
+    },
+    "res": {
+      "status": 200,
+      "data": [
+        {
+          "id": 3683553869,
+          "node_id": "LA_kwDOAq426M7bjpJN",
+          "url": "https://api.github.com/repos/ethereum/EIPs/labels/updateEIP",
+          "name": "updateEIP",
+          "color": "ededed",
+          "default": false,
+          "description": null
+        }
+      ]
+    }
   }
 ]

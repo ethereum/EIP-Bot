@@ -2,21 +2,21 @@ import { ERRORS_TYPE_FILTER } from "src/domain";
 
 export const updateEIP: ERRORS_TYPE_FILTER = {
   fileErrors: {
-    validFilenameError: false,
+    validFilenameError: null,
     filePreexistingError: false
   },
   headerErrors: {
-    matchingEIPNumError: false,
-    constantEIPNumError: false,
+    matchingEIPNumError: null,
+    constantEIPNumError: null,
     constantStatusError: false,
-    validStatusError: false
+    validStatusError: null
   },
   authorErrors: {
-    hasAuthorsError: false
+    hasAuthorsError: null
   },
   approvalErrors: {
-    isAuthorApprovedError: false,
-    isEditorApprovedError: false,
-    enoughEditorApprovalsForEIP1Error: false
+    isAuthorApprovedError: null,
+    isEditorApprovedError: null,
+    enoughEditorApprovalsForEIP1Error: null
   }
 }

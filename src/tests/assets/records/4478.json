@@ -883,5 +883,121 @@
         "performed_via_github_app": null
       }
     }
+  },
+  {
+    "req": {
+      "url": "https://api.github.com/repos/ethereum/EIPs/issues/4478",
+      "method": "GET"
+    },
+    "res": {
+      "status": 200,
+      "data": {
+        "url": "https://api.github.com/repos/ethereum/EIPs/issues/4478",
+        "repository_url": "https://api.github.com/repos/ethereum/EIPs",
+        "labels_url": "https://api.github.com/repos/ethereum/EIPs/issues/4478/labels{/name}",
+        "comments_url": "https://api.github.com/repos/ethereum/EIPs/issues/4478/comments",
+        "events_url": "https://api.github.com/repos/ethereum/EIPs/issues/4478/events",
+        "html_url": "https://github.com/ethereum/EIPs/pull/4478",
+        "id": 1060906596,
+        "node_id": "PR_kwDOAq426M4u4_Vb",
+        "number": 4478,
+        "title": "EIP-722: Allow everyone migrate token URI",
+        "user": {
+          "login": "tvd12",
+          "id": 6251901,
+          "node_id": "MDQ6VXNlcjYyNTE5MDE=",
+          "avatar_url": "https://avatars.githubusercontent.com/u/6251901?v=4",
+          "gravatar_id": "",
+          "url": "https://api.github.com/users/tvd12",
+          "html_url": "https://github.com/tvd12",
+          "followers_url": "https://api.github.com/users/tvd12/followers",
+          "following_url": "https://api.github.com/users/tvd12/following{/other_user}",
+          "gists_url": "https://api.github.com/users/tvd12/gists{/gist_id}",
+          "starred_url": "https://api.github.com/users/tvd12/starred{/owner}{/repo}",
+          "subscriptions_url": "https://api.github.com/users/tvd12/subscriptions",
+          "organizations_url": "https://api.github.com/users/tvd12/orgs",
+          "repos_url": "https://api.github.com/users/tvd12/repos",
+          "events_url": "https://api.github.com/users/tvd12/events{/privacy}",
+          "received_events_url": "https://api.github.com/users/tvd12/received_events",
+          "type": "User",
+          "site_admin": false
+        },
+        "labels": [],
+        "state": "closed",
+        "locked": false,
+        "assignee": null,
+        "assignees": [],
+        "milestone": null,
+        "comments": 13,
+        "created_at": "2021-11-23T07:17:03Z",
+        "updated_at": "2021-11-24T01:04:50Z",
+        "closed_at": "2021-11-23T07:34:55Z",
+        "author_association": "CONTRIBUTOR",
+        "active_lock_reason": null,
+        "draft": false,
+        "pull_request": {
+          "url": "https://api.github.com/repos/ethereum/EIPs/pulls/4478",
+          "html_url": "https://github.com/ethereum/EIPs/pull/4478",
+          "diff_url": "https://github.com/ethereum/EIPs/pull/4478.diff",
+          "patch_url": "https://github.com/ethereum/EIPs/pull/4478.patch",
+          "merged_at": "2021-11-23T07:34:55Z"
+        },
+        "body": "### Introduction\r\n\r\nHi, I see, I see almost NFT applications are using ERC721, so after the NFT start-up trend, there will be many companies that run out of capital and dissolve. At that time they will shutdown their servers and many of the images associated with the NFT will be inaccessible. Should we need create a contract that allows the holder to update the image URI.",
+        "closed_by": {
+          "login": "eth-bot",
+          "id": 85952233,
+          "node_id": "MDQ6VXNlcjg1OTUyMjMz",
+          "avatar_url": "https://avatars.githubusercontent.com/u/85952233?v=4",
+          "gravatar_id": "",
+          "url": "https://api.github.com/users/eth-bot",
+          "html_url": "https://github.com/eth-bot",
+          "followers_url": "https://api.github.com/users/eth-bot/followers",
+          "following_url": "https://api.github.com/users/eth-bot/following{/other_user}",
+          "gists_url": "https://api.github.com/users/eth-bot/gists{/gist_id}",
+          "starred_url": "https://api.github.com/users/eth-bot/starred{/owner}{/repo}",
+          "subscriptions_url": "https://api.github.com/users/eth-bot/subscriptions",
+          "organizations_url": "https://api.github.com/users/eth-bot/orgs",
+          "repos_url": "https://api.github.com/users/eth-bot/repos",
+          "events_url": "https://api.github.com/users/eth-bot/events{/privacy}",
+          "received_events_url": "https://api.github.com/users/eth-bot/received_events",
+          "type": "User",
+          "site_admin": false
+        },
+        "reactions": {
+          "url": "https://api.github.com/repos/ethereum/EIPs/issues/4478/reactions",
+          "total_count": 0,
+          "+1": 0,
+          "-1": 0,
+          "laugh": 0,
+          "hooray": 0,
+          "confused": 0,
+          "heart": 0,
+          "rocket": 0,
+          "eyes": 0
+        },
+        "timeline_url": "https://api.github.com/repos/ethereum/EIPs/issues/4478/timeline",
+        "performed_via_github_app": null
+      }
+    }
+  },
+  {
+    "req": {
+      "url": "https://api.github.com/repos/ethereum/EIPs/issues/4478/labels",
+      "method": "PUT"
+    },
+    "res": {
+      "status": 200,
+      "data": [
+        {
+          "id": 3683476115,
+          "node_id": "LA_kwDOAq426M7bjWKT",
+          "url": "https://api.github.com/repos/ethereum/EIPs/labels/ambiguous",
+          "name": "ambiguous",
+          "color": "ededed",
+          "default": false,
+          "description": null
+        }
+      ]
+    }
   }
 ]

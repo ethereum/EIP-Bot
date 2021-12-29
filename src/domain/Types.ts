@@ -144,7 +144,8 @@ export type TestResults = { errors: ERRORS } & {
 export enum MockMethods {
   get = "GET",
   post = "POST",
-  patch = "PATCH"
+  patch = "PATCH",
+  put = "PUT"
 }
 
 export type MockRecord = {
@@ -165,7 +166,7 @@ export enum NodeEnvs {
   production = "production"
 }
 
-export function isMockMethod(method): asserts method is MockMethods {
+export function requireMockMethod(method): asserts method is MockMethods {
   if (!Object.values(MockMethods).includes(method)) {
     throw new CriticalError(`method ${method} is not a supported mock method`);
   } else {
