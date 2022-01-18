@@ -208,7 +208,7 @@ const addLabels = async (labels: string[]): Promise<void> => {
 
   // makes it easy to maintain the integration tests and the
   // responses from this are not used
-  if (isMock() || isTest) return;
+  if (isMock() || isTest()) return;
 
   // because of a weird type issue
   const { addLabels: _addLabels } = Github.issues;
@@ -226,7 +226,7 @@ const removeLabels = async (labels: string[]) => {
 
   // makes it easy to maintain the integration tests and the
   // responses from this are not used
-  if (isMock() || isTest) return;
+  if (isMock() || isTest()) return;
 
   await Promise.all(
     // this will submit a max of three requests which is not enough to
