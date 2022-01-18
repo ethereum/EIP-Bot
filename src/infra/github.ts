@@ -7,9 +7,10 @@ import {
   isChangeType,
   isDefined,
   IssueComments,
-  PR
+  isTest,
+  PR,
+  isMock
 } from "src/domain";
-import _ from "lodash";
 
 const getEventName = () => {
   return context.eventName;
@@ -123,19 +124,21 @@ const resolveUserByEmail = async (email: string) => {
 
 const getSelf = (): Promise<GithubSelf> => {
   const Github = getOctokit(GITHUB_TOKEN).rest;
-  return Github.users.getAuthenticated().then(res => {
-    return res.data
-  })
-}
+  return Github.users.getAuthenticated().then((res) => {
+    return res.data;
+  });
+};
 
 const getContextIssueComments = (): Promise<IssueComments> => {
   const Github = getOctokit(GITHUB_TOKEN).rest;
-  return Github.issues.listComments({
-    owner: context.repo.owner,
-    repo: context.repo.repo,
-    issue_number: context.issue.number
-  }).then(res => res.data);
-}
+  return Github.issues
+    .listComments({
+      owner: context.repo.owner,
+      repo: context.repo.repo,
+      issue_number: context.issue.number
+    })
+    .then((res) => res.data);
+};
 
 const updateComment = (commentId: number, message: string): Promise<any> => {
   const Github = getOctokit(GITHUB_TOKEN).rest;
@@ -152,7 +155,7 @@ const updateComment = (commentId: number, message: string): Promise<any> => {
       }
       throw err;
     });
-}
+};
 
 const createCommentOnContext = (message: string): Promise<any> => {
   const Github = getOctokit(GITHUB_TOKEN).rest;
@@ -161,8 +164,8 @@ const createCommentOnContext = (message: string): Promise<any> => {
     repo: context.repo.repo,
     issue_number: context.issue.number,
     body: message
-  })
-}
+  });
+};
 
 const getContextLabels = async (): Promise<ChangeTypes[]> => {
   const Github = getOctokit(GITHUB_TOKEN).rest;
@@ -170,30 +173,74 @@ const getContextLabels = async (): Promise<ChangeTypes[]> => {
     owner: context.repo.owner,
     repo: context.repo.repo,
     issue_number: context.issue.number
-  })
+  });
 
   const labels = issue.labels;
 
-  return labels.map(label => {
-    if (typeof label === "string") {
-      return label
-    }
-    return label.name
-  // this will make it so that the only labels considered are ChangeTypes
-  }).filter(isDefined).filter(isChangeType)
-}
+  return labels
+    .map((label) => {
+      if (typeof label === "string") {
+        return label;
+      }
+      return label.name;
+      // this will make it so that the only labels considered are ChangeTypes
+    })
+    .filter(isDefined)
+    .filter(isChangeType);
+};
 
 const setLabels = async (labels: string[]): Promise<void> => {
   const Github = getOctokit(GITHUB_TOKEN).rest;
-  await Github.issues.setLabels({
+  await Github.issues
+    .setLabels({
+      owner: context.repo.owner,
+      repo: context.repo.repo,
+      issue_number: context.issue.number,
+      // @ts-expect-error the expected type is (string[] & {name: string}[]) | undefined
+      // but string[] and {name: string}[] cannot simultaneously coincide
+      labels
+    })
+    .then((res) => res);
+};
+
+const addLabels = async (labels: string[]): Promise<void> => {
+  const Github = getOctokit(GITHUB_TOKEN).rest;
+
+  // makes it easy to maintain the integration tests and the
+  // responses from this are not used
+  if (isMock() || isTest) return;
+
+  // because of a weird type issue
+  const { addLabels: _addLabels } = Github.issues;
+
+  await _addLabels({
     owner: context.repo.owner,
     repo: context.repo.repo,
     issue_number: context.issue.number,
-    // @ts-expect-error the expected type is (string[] & {name: string}[]) | undefined
-    // but string[] and {name: string}[] cannot simultaneously coincide
     labels
-  }).then(res => res)
-}
+  });
+};
+
+const removeLabels = async (labels: string[]) => {
+  const Github = getOctokit(GITHUB_TOKEN).rest;
+
+  // makes it easy to maintain the integration tests and the
+  // responses from this are not used
+  if (isMock() || isTest) return;
+
+  await Promise.all(
+    // this will submit a max of three requests which is not enough to
+    // rate limit
+    labels.map((label) =>
+      Github.issues.removeLabel({
+        owner: context.repo.owner,
+        repo: context.repo.repo,
+        issue_number: context.issue.number,
+        name: label
+      })
+    )
+  );
+};
 
 export const github = {
   getSelf,
@@ -209,7 +256,9 @@ export const github = {
   updateComment,
   createCommentOnContext,
   getContextLabels,
-  setLabels
-}
+  setLabels,
+  addLabels,
+  removeLabels
+};
 
-export type GithubInfra = typeof github
+export type GithubInfra = typeof github;
