@@ -6,7 +6,8 @@ describe("eip1 purifier", () => {
     const testResults = testResultsFactory({
       errors: {
         headerErrors: {
-          validStatusError: "eip1 can be whatever status b/c of editor approvals"
+          validStatusError:
+            "eip1 can be whatever status b/c of editor approvals"
         },
         approvalErrors: {
           enoughEditorApprovalsForEIP1Error: "...",
@@ -29,21 +30,24 @@ describe("eip1 purifier", () => {
     });
     const purified = EIP1Purifier(testResults);
     expect(purified.errors.headerErrors.validStatusError).toBeUndefined();
-    expect(purified.errors.approvalErrors.isAuthorApprovedError).toBeUndefined();
+    expect(
+      purified.errors.approvalErrors.isAuthorApprovedError
+    ).toBeUndefined();
     expect(
       purified.errors.approvalErrors.isEditorApprovedError
     ).toBeUndefined();
+    expect(purified.errors.authorErrors.hasAuthorsError).toBeUndefined();
     expect(
-      purified.errors.authorErrors.hasAuthorsError
-    ).toBeUndefined()
-    expect(purified.errors.approvalErrors.enoughEditorApprovalsForEIP1Error).toBeDefined()
+      purified.errors.approvalErrors.enoughEditorApprovalsForEIP1Error
+    ).toBeDefined();
   });
 
   it("should purify itself if not eip 1", () => {
     const testResults = testResultsFactory({
       errors: {
         headerErrors: {
-          validStatusError: "eip1 can be whatever status b/c of editor approvals"
+          validStatusError:
+            "eip1 can be whatever status b/c of editor approvals"
         },
         approvalErrors: {
           enoughEditorApprovalsForEIP1Error: "...",
@@ -67,12 +71,10 @@ describe("eip1 purifier", () => {
     const purified = EIP1Purifier(testResults);
     expect(purified.errors.headerErrors.validStatusError).toBeDefined();
     expect(purified.errors.approvalErrors.isAuthorApprovedError).toBeDefined();
+    expect(purified.errors.approvalErrors.isEditorApprovedError).toBeDefined();
+    expect(purified.errors.authorErrors.hasAuthorsError).toBeDefined();
     expect(
-      purified.errors.approvalErrors.isEditorApprovedError
-    ).toBeDefined();
-    expect(
-      purified.errors.authorErrors.hasAuthorsError
-    ).toBeDefined()
-    expect(purified.errors.approvalErrors.enoughEditorApprovalsForEIP1Error).toBeUndefined()
+      purified.errors.approvalErrors.enoughEditorApprovalsForEIP1Error
+    ).toBeUndefined();
   });
 });

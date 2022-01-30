@@ -14,7 +14,7 @@ export const EIP1Purifier = (testResults: TestResults) => {
     errors.approvalErrors.isEditorApprovedError = undefined;
     // eip-1 must be reviewed by multiple editors, so we can allowed it to be
     // any status without saying so
-    errors.headerErrors.validStatusError = undefined
+    errors.headerErrors.validStatusError = undefined;
   } else {
     errors.approvalErrors.enoughEditorApprovalsForEIP1Error = undefined;
   }

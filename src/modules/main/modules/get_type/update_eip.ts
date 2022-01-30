@@ -19,4 +19,4 @@ export const updateEIP: ERRORS_TYPE_FILTER = {
     isEditorApprovedError: null,
     enoughEditorApprovalsForEIP1Error: null
   }
-}
+};

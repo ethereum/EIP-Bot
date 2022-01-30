@@ -5,7 +5,10 @@ import _ from "lodash";
 import { PullRequestGithubApiLogs } from "#/pull_request/infra/github_api/log";
 
 export class GithubPullRequest implements IGithubPullRequest {
-  constructor(public github: GithubInfra, public logs: PullRequestGithubApiLogs) {}
+  constructor(
+    public github: GithubInfra,
+    public logs: PullRequestGithubApiLogs
+  ) {}
 
   async postComment(message: string) {
     const me = await this.github.getSelf();
@@ -27,11 +30,11 @@ export class GithubPullRequest implements IGithubPullRequest {
   async updateLabels(labels: ChangeTypes[]) {
     const currentRaw = await this.github.getContextLabels();
     // filters out unrelated tags so it doesn't change those
-    const current = _.intersection(currentRaw, Object.values(ChangeTypes))
+    const current = _.intersection(currentRaw, Object.values(ChangeTypes));
     const diff = _.xor(labels, currentRaw);
 
     if (_.isEmpty(diff)) {
-      return this.logs.labelsMatch(current, labels)
+      return this.logs.labelsMatch(current, labels);
     }
 
     const toRemove = _.intersection(current, diff);
@@ -40,11 +43,11 @@ export class GithubPullRequest implements IGithubPullRequest {
     this.logs.labelsToBeChanged(current, labels, toAdd, toRemove);
 
     if (isDefined(toRemove)) {
-      await this.github.removeLabels(toRemove)
+      await this.github.removeLabels(toRemove);
     }
 
     if (isDefined(toAdd)) {
-      await this.github.addLabels(toAdd)
+      await this.github.addLabels(toAdd);
     }
   }
 }

@@ -1,4 +1,4 @@
-import { requireMockMethod, MockRecord } from "src/domain";
+import { MockRecord, requireMockMethod } from "src/domain";
 import { CriticalError } from "src/domain/exceptions";
 
 export enum SavedRecord {

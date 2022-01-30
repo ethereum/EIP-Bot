@@ -14,9 +14,9 @@ export const getParsedContent = async (
   };
 
   // Collect the file contents at the given sha reference frame
-  const data = await github.getRepoFilenameContent(filename, sha).then(
-    (res) => res as ContentFile
-  );
+  const data = await github
+    .getRepoFilenameContent(filename, sha)
+    .then((res) => res as ContentFile);
 
   // Assert type assumptions
   if (!data?.content) {

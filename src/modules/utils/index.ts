@@ -2,7 +2,7 @@ import { isDefined, TestResults } from "src/domain";
 import _, { intersection, set } from "lodash";
 
 export const OR = (...args: [boolean, ...boolean[]]) => args.includes(true);
-export const AND = (...args: [boolean, ...boolean[]]) => _.every(args, Boolean)
+export const AND = (...args: [boolean, ...boolean[]]) => _.every(args, Boolean);
 
 export const multiLineString =
   (joinWith = " ") =>
@@ -10,12 +10,14 @@ export const multiLineString =
     args.filter(isDefined).join(joinWith);
 
 export class MultiLineString {
-  public message = ""
+  public message = "";
+
   constructor(initialValue: string = "") {
-    this.message = initialValue
+    this.message = initialValue;
   }
+
   addLine(line: string) {
-    this.message += `\n${line}`
+    this.message += `\n${line}`;
   }
 }
 

@@ -6,10 +6,10 @@ import {
   GithubSelf,
   isChangeType,
   isDefined,
+  isMock,
   IssueComments,
   isTest,
-  PR,
-  isMock
+  PR
 } from "src/domain";
 
 const getEventName = () => {

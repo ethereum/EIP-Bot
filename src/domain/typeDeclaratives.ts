@@ -53,11 +53,14 @@ export const isFileNotFound = (err: any): err is FileNotFound => {
 };
 
 export const isChangeType = (str: string): str is ChangeTypes => {
-  return Object.values(ChangeTypes).includes(str as any)
-}
+  return Object.values(ChangeTypes).includes(str as any);
+};
 
-export type GithubHandle = Opaque<string>
-export function assertGithubHandle(maybeHandle: string): asserts maybeHandle is GithubHandle {
+export type GithubHandle = Opaque<string>;
+
+export function assertGithubHandle(
+  maybeHandle: string
+): asserts maybeHandle is GithubHandle {
   if (!GITHUB_HANDLE.test(maybeHandle)) {
     throw new CriticalError(
       `${maybeHandle} is not a correctly formatted github handle`
@@ -65,6 +68,4 @@ export function assertGithubHandle(maybeHandle: string): asserts maybeHandle is 
   }
 }
 
-export function declareType<T>(input: any): asserts input is T {
-
-}
+export function declareType<T>(input: any): asserts input is T {}

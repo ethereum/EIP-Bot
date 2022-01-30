@@ -5,8 +5,8 @@ import { Logs } from "../infra/github_api/log";
 
 const PullRequest = new GithubPullRequest(github, Logs);
 
-export const updateLabels = castTo<(expectedLabels: ChangeTypes[]) => Promise<void>>(
-  (args) => {
-    return PullRequest.updateLabels(args);
-  }
-);
+export const updateLabels = castTo<
+  (expectedLabels: ChangeTypes[]) => Promise<void>
+>((args) => {
+  return PullRequest.updateLabels(args);
+});

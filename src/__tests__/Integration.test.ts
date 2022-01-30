@@ -250,12 +250,15 @@ describe("integration testing edgecases associated with editors", () => {
       });
 
       const Exceptions = await import("src/domain/exceptions");
-      const requirementViolationMock = jest.spyOn(Exceptions, "RequirementViolation")
+      const requirementViolationMock = jest.spyOn(
+        Exceptions,
+        "RequirementViolation"
+      );
 
       await __MAIN_MOCK__();
       expect(setFailedMock).toBeCalled();
 
-      expect(requirementViolationMock).not.toBeCalled()
-    })
-  })
+      expect(requirementViolationMock).not.toBeCalled();
+    });
+  });
 });

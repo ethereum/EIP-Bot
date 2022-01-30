@@ -9,7 +9,11 @@ import { newEIPFile } from "#/main/modules/get_type/new_eip_file";
 import { statusChange } from "#/main/modules/get_type/status_change";
 import { updateEIP } from "#/main/modules/get_type/update_eip";
 import _ from "lodash";
-import { getAllFalseObjectPaths, getAllTruthyObjectPaths, multiLineString } from "#/utils";
+import {
+  getAllFalseObjectPaths,
+  getAllTruthyObjectPaths,
+  multiLineString
+} from "#/utils";
 import { getLogs } from "./logs";
 import { UnexpectedError } from "src/domain/exceptions";
 
@@ -22,7 +26,7 @@ const Filters = {
 };
 
 // for tests
-export const __Filters__ = Filters
+export const __Filters__ = Filters;
 
 export const getType = (result: TestResults): ChangeTypes => {
   const results = _.reduce(
@@ -53,7 +57,7 @@ export const getType = (result: TestResults): ChangeTypes => {
         "this change meets the criteria for more than one type, which",
         `should never happen || [${results.join(", ")}]`
       )
-    )
+    );
   }
 
   // this captures all edgecases
