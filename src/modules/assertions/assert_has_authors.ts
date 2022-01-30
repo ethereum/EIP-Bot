@@ -3,7 +3,8 @@ import { IAssertHasAuthors } from "#/assertions/Domain/types";
 import { multiLineString } from "#/utils";
 
 export class AssertHasAuthors implements IAssertHasAuthors {
-  constructor(){}
+  constructor() {}
+
   assertHasAuthors = (file: FileDiff) => {
     // take from base to avoid people adding themselves and being able to approve
     const authors = file.base.authors && [...file.base.authors];

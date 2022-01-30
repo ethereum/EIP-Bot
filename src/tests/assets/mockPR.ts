@@ -2,11 +2,11 @@ import { getOctokit } from "@actions/github";
 import nock from "nock";
 import {
   GITHUB_TOKEN,
-  requireMockMethod,
   MockMethods,
   MockRecord,
   NodeEnvs,
-  PR
+  PR,
+  requireMockMethod
 } from "src/domain";
 import { assertSavedRecord, getMockRecords, SavedRecord } from "./records";
 import * as fs from "fs";
@@ -42,16 +42,16 @@ export const mockPR = async (pullNumber: SavedRecord) => {
     switch (req.method) {
       case "GET":
         scope.get(wildcard).reply(res.status, res.data);
-        break
+        break;
       case "POST":
         scope.post(wildcard).reply(res.status, res.data);
-        break
+        break;
       case "PATCH":
         scope.patch(wildcard).reply(res.status, res.data);
-        break
+        break;
       case MockMethods.put:
         scope.put(wildcard).reply(res.status, res.data);
-        break
+        break;
     }
   }
 

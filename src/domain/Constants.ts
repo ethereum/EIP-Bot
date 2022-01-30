@@ -1,11 +1,7 @@
 import { Opaque } from "type-fest";
 import { ERRORS, Maybe, NodeEnvs } from "./Types";
 import { AND } from "#/utils";
-import {
-  CriticalError,
-  RequirementViolation,
-  UnexpectedError
-} from "src/domain/exceptions";
+import { CriticalError, RequirementViolation, UnexpectedError } from "src/domain/exceptions";
 import { assertGithubHandle, GithubHandle } from "./typeDeclaratives";
 import _ from "lodash";
 

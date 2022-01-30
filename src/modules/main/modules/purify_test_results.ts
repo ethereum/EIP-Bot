@@ -9,7 +9,9 @@ import { getAllTruthyObjectPaths, innerJoinAncestors } from "#/utils";
 import { get } from "lodash";
 import { getType } from "./get_type";
 
-export const purifyTestResults = async (dirtyTestResults: TestResults): Promise<Result> => {
+export const purifyTestResults = async (
+  dirtyTestResults: TestResults
+): Promise<Result> => {
   // Apply independent purifiers
   const primedPurifiers = [
     statusChangeAllowedPurifier(dirtyTestResults),

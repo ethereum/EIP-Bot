@@ -62,7 +62,7 @@ describe("update labels", () => {
       githubRepoMock.getContextLabels?.mockResolvedValueOnce([
         ChangeTypes.newEIPFile,
         ChangeTypes.ambiguous,
-        ...otherLabels as any
+        ...(otherLabels as any)
       ]);
 
       // i.e. adds statusChange and removes ambiguous
@@ -74,15 +74,15 @@ describe("update labels", () => {
       expect(githubRepoMock.addLabels).toBeCalled();
       expect(githubRepoMock.removeLabels).toBeCalled();
 
-      expect(githubRepoMock.addLabels?.mock.calls[0]![0].length).toEqual(1)
-      expect(githubRepoMock.removeLabels?.mock.calls[0]![0].length).toEqual(1)
+      expect(githubRepoMock.addLabels?.mock.calls[0]![0].length).toEqual(1);
+      expect(githubRepoMock.removeLabels?.mock.calls[0]![0].length).toEqual(1);
     });
 
     it("adds and does not remove when appropriate", async () => {
       githubRepoMock.getContextLabels?.mockResolvedValueOnce([
         ChangeTypes.newEIPFile,
         ChangeTypes.ambiguous,
-        ...otherLabels as any
+        ...(otherLabels as any)
       ]);
 
       // i.e. adds statusChange
@@ -95,14 +95,14 @@ describe("update labels", () => {
       expect(githubRepoMock.addLabels).toBeCalled();
       expect(githubRepoMock.removeLabels).not.toBeCalled();
 
-      expect(githubRepoMock.addLabels?.mock.calls[0]![0].length).toEqual(1)
+      expect(githubRepoMock.addLabels?.mock.calls[0]![0].length).toEqual(1);
     });
 
     it("removes and does not add when appropriate", async () => {
       githubRepoMock.getContextLabels?.mockResolvedValueOnce([
         ChangeTypes.newEIPFile,
         ChangeTypes.ambiguous,
-        ...otherLabels as any
+        ...(otherLabels as any)
       ]);
 
       // i.e. removes ambiguous
@@ -111,14 +111,14 @@ describe("update labels", () => {
       expect(githubRepoMock.addLabels).not.toBeCalled();
       expect(githubRepoMock.removeLabels).toBeCalled();
 
-      expect(githubRepoMock.removeLabels?.mock.calls[0]![0].length).toEqual(1)
+      expect(githubRepoMock.removeLabels?.mock.calls[0]![0].length).toEqual(1);
     });
 
     it("does not add or remove when appropriate", async () => {
       githubRepoMock.getContextLabels?.mockResolvedValueOnce([
         ChangeTypes.newEIPFile,
         ChangeTypes.ambiguous,
-        ...otherLabels as any
+        ...(otherLabels as any)
       ]);
 
       // i.e. changes nothing
@@ -130,13 +130,13 @@ describe("update labels", () => {
       expect(githubRepoMock.addLabels).not.toBeCalled();
       expect(githubRepoMock.removeLabels).not.toBeCalled();
     });
-  }
+  };
 
   describe("add and remove testing no added fields", () => {
-    genAddRemoveTests([])
+    genAddRemoveTests([]);
   });
 
   describe("add and remove testing with added non-standard labels", () => {
-    genAddRemoveTests(["field1,", "field4", "field5"])
+    genAddRemoveTests(["field1,", "field4", "field5"]);
   });
 });
