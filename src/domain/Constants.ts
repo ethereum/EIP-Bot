@@ -1,5 +1,4 @@
 import { Opaque } from "type-fest";
-import { GITHUB_HANDLE } from "./Regex";
 import { ERRORS, Maybe, NodeEnvs } from "./Types";
 import { AND } from "#/utils";
 import {
@@ -7,6 +6,8 @@ import {
   RequirementViolation,
   UnexpectedError
 } from "src/domain/exceptions";
+import { assertGithubHandle, GithubHandle } from "./typeDeclaratives";
+import _ from "lodash";
 
 // this is meant to be a public key associated with a orphaned account;
 // it is encoded / decoded here because github will invalidate it if it knows
@@ -27,13 +28,12 @@ export const COMMENT_HEADER =
   "Hi! I'm a bot, and I wanted to automerge your PR, but couldn't because of the following issue(s):\n\n";
 export const GITHUB_TOKEN = process.env.GITHUB_TOKEN || PUBLIC_GITHUB_KEY;
 
-const editorStringToArray = (str?: string) =>
+const handleStringToArray = (str?: string) =>
   str && str.split(",").map((str) => str.trim());
-type Editor = Opaque<string>;
 
 export function assertEditorsFormat(
   maybeEditors: string[] | undefined | ""
-): asserts maybeEditors is [Editor, ...Editor[]] {
+): asserts maybeEditors is [GithubHandle, ...GithubHandle[]] {
   if (!maybeEditors || !maybeEditors.length) {
     console.log(
       [
@@ -42,10 +42,10 @@ export function assertEditorsFormat(
         `\tCORE_EDITORS: ${process.env.CORE_EDITORS}`,
         `these were then parsed to become`,
         `\tERC_EDITORS: ${JSON.stringify(
-          editorStringToArray(process.env.ERC_EDITORS)
+          handleStringToArray(process.env.ERC_EDITORS)
         )}`,
         `\tCORE_EDITORS: ${JSON.stringify(
-          editorStringToArray(process.env.CORE_EDITORS)
+          handleStringToArray(process.env.CORE_EDITORS)
         )}`
       ].join("\n")
     );
@@ -53,18 +53,32 @@ export function assertEditorsFormat(
   }
 
   for (const maybeEditor of maybeEditors) {
-    if (!GITHUB_HANDLE.test(maybeEditor)) {
-      throw new CriticalError(
-        `${maybeEditor} is not a correctly formatted editor github handle`
-      );
-    }
+    assertGithubHandle(maybeEditor);
+  }
+}
+
+export function assertMaintainersFormat(
+  maybeMaintainers: string[] | undefined | ""
+): asserts maybeMaintainers is [GithubHandle, ...GithubHandle[]] {
+  if (_.isNil(maybeMaintainers) || _.isEmpty(maybeMaintainers)) {
+    console.log(`MAINTAINERS: ${process.env.MAINTAINERS}`);
+    throw new CriticalError("at least one maintainer must be provided");
+  }
+
+  for (const maybeMaintainer of maybeMaintainers) {
+    assertGithubHandle(maybeMaintainer);
   }
 }
 
 const getEditors = (envEditors?: string) => {
-  const editors = editorStringToArray(envEditors);
+  const editors = handleStringToArray(envEditors);
   assertEditorsFormat(editors);
   return editors;
+};
+const getMaintainers = (envMaintainers?: string) => {
+  const maintainers = handleStringToArray(envMaintainers);
+  assertMaintainersFormat(maintainers);
+  return maintainers;
 };
 /** don't use this directly, use `requireCoreEditors` instead */
 export const CORE_EDITORS = () => getEditors(process.env.CORE_EDITORS);
@@ -81,9 +95,13 @@ export const META_EDITORS = () => getEditors(process.env.META_EDITORS);
 /** don't use this directly, use `requireERCEditors` instead */
 export const INFORMATIONAL_EDITORS = () =>
   getEditors(process.env.INFORMATIONAL_EDITORS);
-
-/** what is used to `.join(..)` the mentions */
-export const MENTIONS_SEPARATOR = " ";
+/**
+ * dont' use this directly, it can explode and break error handling,
+ * so use `getMaintainersString` instead where relevant
+ * */
+export const MAINTAINERS = () => {
+  return getMaintainers(process.env.MAINTAINERS);
+};
 
 export enum FrontMatterAttributes {
   status = "status",

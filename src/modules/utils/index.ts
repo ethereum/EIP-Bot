@@ -2,12 +2,22 @@ import { isDefined, TestResults } from "src/domain";
 import _, { intersection, set } from "lodash";
 
 export const OR = (...args: [boolean, ...boolean[]]) => args.includes(true);
-export const AND = (...args: [boolean, ...boolean[]]) => !args.includes(false);
+export const AND = (...args: [boolean, ...boolean[]]) => _.every(args, Boolean)
 
 export const multiLineString =
   (joinWith = " ") =>
   (...args: [string, ...string[]]) =>
-    args.join(joinWith);
+    args.filter(isDefined).join(joinWith);
+
+export class MultiLineString {
+  public message = ""
+  constructor(initialValue: string = "") {
+    this.message = initialValue
+  }
+  addLine(line: string) {
+    this.message += `\n${line}`
+  }
+}
 
 export const ANY = (states: any[]) => states.filter(Boolean).length > 0;
 

@@ -11,17 +11,20 @@ import {
   isNockDisallowedNetConnect,
   isNockNoMatchingRequest,
   isProd,
-  NodeEnvs,
+  MAINTAINERS,
   Results
 } from "src/domain";
-import { uniq } from "lodash";
+import _, { uniq } from "lodash";
 import { requestReviewers } from "#/approvals";
-import { processError } from "src/domain/exceptions";
+import {
+  getMaintainersString,
+  getUnhandledErrorMessage,
+  processError
+} from "src/domain/exceptions";
 import { multiLineString } from "#/utils";
 import { testFile } from "#/main/modules/test_file";
 import { purifyTestResults } from "#/main/modules/purify_test_results";
 import { getCommentMessage } from "#/main/modules/get_comment_message";
-import _ from "lodash";
 
 export const _main_ = async () => {
   // Verify correct environment and request context
@@ -55,7 +58,9 @@ export const _main_ = async () => {
         },
         unexpectedError: (message, data) => {
           console.log(JSON.stringify(data, null, 2));
-          message = `An unexpected error occurred (cc @alita-moore): ${message}`;
+          message = `An unexpected error occurred (cc ${MAINTAINERS().join(
+            ", "
+          )}): ${message}`;
           results.push({
             filename: file.filename,
             errors: [message],
@@ -68,7 +73,7 @@ export const _main_ = async () => {
 
   // updates labels to be as expected
   const expectedLabels = _.uniq(_.map(results, "type"));
-  await PullRequestUseCases.updateLabels(expectedLabels)
+  await PullRequestUseCases.updateLabels(expectedLabels);
 
   if (!results.filter((res) => res.errors).length) {
     const commentMessage = getCommentMessage(
@@ -95,28 +100,47 @@ export const _main_ = async () => {
 };
 
 export const _main = (_main_: () => Promise<undefined | void>) => async () => {
-  const isProd = process.env.NODE_ENV === NodeEnvs.production;
-
   try {
     return await _main_();
   } catch (error: any) {
-    if (isNockDisallowedNetConnect(error) || isNockNoMatchingRequest(error)) {
-      throw error;
-    }
-    const message = multiLineString("\n")(
-      `A critical exception has occurred (cc @alita-moore):`,
-      `\tMessage: ${error.error || error.message?.toLowerCase()}`,
-      error.data && `\tData:\n${JSON.stringify(error.data, null, 2)}`
-    );
-    console.log(message);
+    await processError(error, {
+      critical: async (errMessage, data) => {
+        const message = multiLineString("\n")(
+          `A critical exception has occurred:`,
+          `\tMessage: ${errMessage.toLowerCase()}`,
+          data && `\tData:\n${JSON.stringify(data, null, 2)}`,
+          getMaintainersString()
+        );
 
-    if (isProd) {
-      await PullRequestUseCases.postComment(message);
-    }
+        console.log(message);
+        if (isProd()) {
+          await PullRequestUseCases.postComment(message);
+        }
 
-    setFailed(message);
+        setFailed(message);
+        throw message;
+      },
+      unhandled: async (error: any) => {
+        // useful for making sure that auto-mocking can function (dev tool)
+        if (
+          isNockDisallowedNetConnect(error) ||
+          isNockNoMatchingRequest(error)
+        ) {
+          throw error;
+        }
 
-    throw message;
+        const message =
+          getUnhandledErrorMessage(error) + getMaintainersString();
+
+        console.log(message);
+        if (isProd()) {
+          await PullRequestUseCases.postComment(message);
+        }
+
+        setFailed(message);
+        throw message;
+      }
+    });
   }
 };
 

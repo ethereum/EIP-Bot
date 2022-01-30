@@ -5,9 +5,6 @@ inputs:
     description: |-
       The Github token to be used. This is optional because if it's not provided the bot will use a token from a brand new account not associated with any repositories and the key is gone
     required: false
-  MERGE_ENABLED:
-    description: if true then the bot merge abilities are enabled, otherwise the bot will not merge
-    required: false
   CORE_EDITORS:
     description: a list of editors in the following format "@github_username,@..." to be mentioned for core eip changes
     required: true
@@ -26,9 +23,12 @@ inputs:
   INFORMATIONAL_EDITORS:
     description: a list of editors in the following format "@github_username,@..." to be mentioned for INFORMATIONAL type changes
     required: true
+  MAINTAINERS:
+    required: true
+    description: a list of users or users or gorups in the following format "@github_username,@..."; these users will be called when the bot experiences an unexpected failure
 
 runs:
   using: "composite"
   steps:
-    - run: cd ${{github.action_path}} && yarn install && yarn build && ERC_EDITORS=${{ inputs.ERC_EDITORS }} CORE_EDITORS=${{ inputs.CORE_EDITORS }} NETWORKING_EDITORS=${{ inputs.NETWORKING_EDITORS }} INTERFACE_EDITORS=${{ inputs.INTERFACE_EDITORS }} META_EDITORS=${{ inputs.META_EDITORS }} INFORMATIONAL_EDITORS=${{ inputs.INFORMATIONAL_EDITORS }} GITHUB_TOKEN=${{ inputs.GITHUB-TOKEN }} MERGE_ENABLED=${{ inputs.MERGE_ENABLED }} NODE_ENV=production node build/src/index.js
+    - run: cd ${{github.action_path}} && yarn install && yarn build && ERC_EDITORS=${{ inputs.ERC_EDITORS }} CORE_EDITORS=${{ inputs.CORE_EDITORS }} NETWORKING_EDITORS=${{ inputs.NETWORKING_EDITORS }} INTERFACE_EDITORS=${{ inputs.INTERFACE_EDITORS }} META_EDITORS=${{ inputs.META_EDITORS }} INFORMATIONAL_EDITORS=${{ inputs.INFORMATIONAL_EDITORS }} GITHUB_TOKEN=${{ inputs.GITHUB-TOKEN }} MAINTAINERS=${{ inputs.MAINTAINERS }} NODE_ENV=production node build/src/index.js
       shell: bash
