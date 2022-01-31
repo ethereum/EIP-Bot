@@ -139,7 +139,15 @@ export enum SavedRecord {
    */
   PR4506 = "4506",
   /**
-   * @summary this pull request was approved by an editor but it still said that it was not
+   * @summary: this pull request was approved by an editor but it still said that it was not
+   *
+   * @description: 
+   * The bug here was a result of the fact that github limits the number of
+   * responses it can return. At the time of this pull request the max number of
+   * reviews that could be returned was 30. But there were closer to 60 on the
+   * pull request. So when the bot requested reviews, it got back a truncated
+   * list that lacked the editor's approval. To fix this I built in a mechanism
+   * to get all reviews (no matter how many) and I increased the max to 100.
    */
   PR4361 = "4361"
 }
