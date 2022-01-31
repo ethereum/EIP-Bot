@@ -801,5 +801,221 @@
         }
       ]
     }
+  },
+  {
+    "req": {
+      "url": "https://api.github.com/repos/ethereum/EIPs/pulls/4506/reviews?per_page=100&page=1",
+      "method": "GET"
+    },
+    "res": {
+      "status": 200,
+      "data": [
+        {
+          "id": 817843715,
+          "node_id": "PRR_kwDOAq426M4wv04D",
+          "user": {
+            "login": "chee-chyuan",
+            "id": 60590919,
+            "node_id": "MDQ6VXNlcjYwNTkwOTE5",
+            "avatar_url": "https://avatars.githubusercontent.com/u/60590919?u=11297a5e82358d34a81e006ada0f68955b4495bf&v=4",
+            "gravatar_id": "",
+            "url": "https://api.github.com/users/chee-chyuan",
+            "html_url": "https://github.com/chee-chyuan",
+            "followers_url": "https://api.github.com/users/chee-chyuan/followers",
+            "following_url": "https://api.github.com/users/chee-chyuan/following{/other_user}",
+            "gists_url": "https://api.github.com/users/chee-chyuan/gists{/gist_id}",
+            "starred_url": "https://api.github.com/users/chee-chyuan/starred{/owner}{/repo}",
+            "subscriptions_url": "https://api.github.com/users/chee-chyuan/subscriptions",
+            "organizations_url": "https://api.github.com/users/chee-chyuan/orgs",
+            "repos_url": "https://api.github.com/users/chee-chyuan/repos",
+            "events_url": "https://api.github.com/users/chee-chyuan/events{/privacy}",
+            "received_events_url": "https://api.github.com/users/chee-chyuan/received_events",
+            "type": "User",
+            "site_admin": false
+          },
+          "body": "would you mind removing Simple Summary and adding it to the preamble as description ?",
+          "state": "CHANGES_REQUESTED",
+          "html_url": "https://github.com/ethereum/EIPs/pull/4506#pullrequestreview-817843715",
+          "pull_request_url": "https://api.github.com/repos/ethereum/EIPs/pulls/4506",
+          "author_association": "NONE",
+          "_links": {
+            "html": {
+              "href": "https://github.com/ethereum/EIPs/pull/4506#pullrequestreview-817843715"
+            },
+            "pull_request": {
+              "href": "https://api.github.com/repos/ethereum/EIPs/pulls/4506"
+            }
+          },
+          "submitted_at": "2021-11-29T14:07:08Z",
+          "commit_id": "23c85ee9628090968ee56e7d52951064bde490bb"
+        },
+        {
+          "id": 823514292,
+          "node_id": "PRR_kwDOAq426M4xFdS0",
+          "user": {
+            "login": "lightclient",
+            "id": 14004106,
+            "node_id": "MDQ6VXNlcjE0MDA0MTA2",
+            "avatar_url": "https://avatars.githubusercontent.com/u/14004106?u=17bd7e09ec0361a4b4431c6ff715a79d7de94f44&v=4",
+            "gravatar_id": "",
+            "url": "https://api.github.com/users/lightclient",
+            "html_url": "https://github.com/lightclient",
+            "followers_url": "https://api.github.com/users/lightclient/followers",
+            "following_url": "https://api.github.com/users/lightclient/following{/other_user}",
+            "gists_url": "https://api.github.com/users/lightclient/gists{/gist_id}",
+            "starred_url": "https://api.github.com/users/lightclient/starred{/owner}{/repo}",
+            "subscriptions_url": "https://api.github.com/users/lightclient/subscriptions",
+            "organizations_url": "https://api.github.com/users/lightclient/orgs",
+            "repos_url": "https://api.github.com/users/lightclient/repos",
+            "events_url": "https://api.github.com/users/lightclient/events{/privacy}",
+            "received_events_url": "https://api.github.com/users/lightclient/received_events",
+            "type": "User",
+            "site_admin": false
+          },
+          "body": "",
+          "state": "COMMENTED",
+          "html_url": "https://github.com/ethereum/EIPs/pull/4506#pullrequestreview-823514292",
+          "pull_request_url": "https://api.github.com/repos/ethereum/EIPs/pulls/4506",
+          "author_association": "MEMBER",
+          "_links": {
+            "html": {
+              "href": "https://github.com/ethereum/EIPs/pull/4506#pullrequestreview-823514292"
+            },
+            "pull_request": {
+              "href": "https://api.github.com/repos/ethereum/EIPs/pulls/4506"
+            }
+          },
+          "submitted_at": "2021-12-06T03:54:27Z",
+          "commit_id": "74de423d2d2cf691a2865cc3c47e1b04dfbc2be0"
+        },
+        {
+          "id": 823514822,
+          "node_id": "PRR_kwDOAq426M4xFdbG",
+          "user": {
+            "login": "lightclient",
+            "id": 14004106,
+            "node_id": "MDQ6VXNlcjE0MDA0MTA2",
+            "avatar_url": "https://avatars.githubusercontent.com/u/14004106?u=17bd7e09ec0361a4b4431c6ff715a79d7de94f44&v=4",
+            "gravatar_id": "",
+            "url": "https://api.github.com/users/lightclient",
+            "html_url": "https://github.com/lightclient",
+            "followers_url": "https://api.github.com/users/lightclient/followers",
+            "following_url": "https://api.github.com/users/lightclient/following{/other_user}",
+            "gists_url": "https://api.github.com/users/lightclient/gists{/gist_id}",
+            "starred_url": "https://api.github.com/users/lightclient/starred{/owner}{/repo}",
+            "subscriptions_url": "https://api.github.com/users/lightclient/subscriptions",
+            "organizations_url": "https://api.github.com/users/lightclient/orgs",
+            "repos_url": "https://api.github.com/users/lightclient/repos",
+            "events_url": "https://api.github.com/users/lightclient/events{/privacy}",
+            "received_events_url": "https://api.github.com/users/lightclient/received_events",
+            "type": "User",
+            "site_admin": false
+          },
+          "body": "",
+          "state": "CHANGES_REQUESTED",
+          "html_url": "https://github.com/ethereum/EIPs/pull/4506#pullrequestreview-823514822",
+          "pull_request_url": "https://api.github.com/repos/ethereum/EIPs/pulls/4506",
+          "author_association": "MEMBER",
+          "_links": {
+            "html": {
+              "href": "https://github.com/ethereum/EIPs/pull/4506#pullrequestreview-823514822"
+            },
+            "pull_request": {
+              "href": "https://api.github.com/repos/ethereum/EIPs/pulls/4506"
+            }
+          },
+          "submitted_at": "2021-12-06T03:56:16Z",
+          "commit_id": "74de423d2d2cf691a2865cc3c47e1b04dfbc2be0"
+        },
+        {
+          "id": 823786312,
+          "node_id": "PRR_kwDOAq426M4xGftI",
+          "user": {
+            "login": "pinkiebell",
+            "id": 40266861,
+            "node_id": "MDQ6VXNlcjQwMjY2ODYx",
+            "avatar_url": "https://avatars.githubusercontent.com/u/40266861?u=f8b9d3b7a89ded9632eeaabb4e9c3fb70144f440&v=4",
+            "gravatar_id": "",
+            "url": "https://api.github.com/users/pinkiebell",
+            "html_url": "https://github.com/pinkiebell",
+            "followers_url": "https://api.github.com/users/pinkiebell/followers",
+            "following_url": "https://api.github.com/users/pinkiebell/following{/other_user}",
+            "gists_url": "https://api.github.com/users/pinkiebell/gists{/gist_id}",
+            "starred_url": "https://api.github.com/users/pinkiebell/starred{/owner}{/repo}",
+            "subscriptions_url": "https://api.github.com/users/pinkiebell/subscriptions",
+            "organizations_url": "https://api.github.com/users/pinkiebell/orgs",
+            "repos_url": "https://api.github.com/users/pinkiebell/repos",
+            "events_url": "https://api.github.com/users/pinkiebell/events{/privacy}",
+            "received_events_url": "https://api.github.com/users/pinkiebell/received_events",
+            "type": "User",
+            "site_admin": false
+          },
+          "body": "",
+          "state": "COMMENTED",
+          "html_url": "https://github.com/ethereum/EIPs/pull/4506#pullrequestreview-823786312",
+          "pull_request_url": "https://api.github.com/repos/ethereum/EIPs/pulls/4506",
+          "author_association": "CONTRIBUTOR",
+          "_links": {
+            "html": {
+              "href": "https://github.com/ethereum/EIPs/pull/4506#pullrequestreview-823786312"
+            },
+            "pull_request": {
+              "href": "https://api.github.com/repos/ethereum/EIPs/pulls/4506"
+            }
+          },
+          "submitted_at": "2021-12-06T10:36:29Z",
+          "commit_id": "3f92a3258760e90a671861d9f16fbd9f72240cc1"
+        },
+        {
+          "id": 825526382,
+          "node_id": "PRR_kwDOAq426M4xNIhu",
+          "user": {
+            "login": "lightclient",
+            "id": 14004106,
+            "node_id": "MDQ6VXNlcjE0MDA0MTA2",
+            "avatar_url": "https://avatars.githubusercontent.com/u/14004106?u=17bd7e09ec0361a4b4431c6ff715a79d7de94f44&v=4",
+            "gravatar_id": "",
+            "url": "https://api.github.com/users/lightclient",
+            "html_url": "https://github.com/lightclient",
+            "followers_url": "https://api.github.com/users/lightclient/followers",
+            "following_url": "https://api.github.com/users/lightclient/following{/other_user}",
+            "gists_url": "https://api.github.com/users/lightclient/gists{/gist_id}",
+            "starred_url": "https://api.github.com/users/lightclient/starred{/owner}{/repo}",
+            "subscriptions_url": "https://api.github.com/users/lightclient/subscriptions",
+            "organizations_url": "https://api.github.com/users/lightclient/orgs",
+            "repos_url": "https://api.github.com/users/lightclient/repos",
+            "events_url": "https://api.github.com/users/lightclient/events{/privacy}",
+            "received_events_url": "https://api.github.com/users/lightclient/received_events",
+            "type": "User",
+            "site_admin": false
+          },
+          "body": "",
+          "state": "APPROVED",
+          "html_url": "https://github.com/ethereum/EIPs/pull/4506#pullrequestreview-825526382",
+          "pull_request_url": "https://api.github.com/repos/ethereum/EIPs/pulls/4506",
+          "author_association": "MEMBER",
+          "_links": {
+            "html": {
+              "href": "https://github.com/ethereum/EIPs/pull/4506#pullrequestreview-825526382"
+            },
+            "pull_request": {
+              "href": "https://api.github.com/repos/ethereum/EIPs/pulls/4506"
+            }
+          },
+          "submitted_at": "2021-12-07T16:37:59Z",
+          "commit_id": "3f92a3258760e90a671861d9f16fbd9f72240cc1"
+        }
+      ]
+    }
+  },
+  {
+    "req": {
+      "url": "https://api.github.com/repos/ethereum/EIPs/pulls/4506/reviews?per_page=100&page=2",
+      "method": "GET"
+    },
+    "res": {
+      "status": 200,
+      "data": []
+    }
   }
 ]

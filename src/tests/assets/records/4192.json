@@ -851,5 +851,15 @@
         }
       ]
     }
+  },
+  {
+    "req": {
+      "url": "https://api.github.com/repos/ethereum/EIPs/pulls/4192/reviews?per_page=100&page=1",
+      "method": "GET"
+    },
+    "res": {
+      "status": 200,
+      "data": []
+    }
   }
 ]

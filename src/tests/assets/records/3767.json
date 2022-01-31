@@ -1318,5 +1318,65 @@
         }
       ]
     }
+  },
+  {
+    "req": {
+      "url": "https://api.github.com/repos/ethereum/EIPs/pulls/3767/reviews?per_page=100&page=1",
+      "method": "GET"
+    },
+    "res": {
+      "status": 200,
+      "data": [
+        {
+          "id": 741014342,
+          "node_id": "MDE3OlB1bGxSZXF1ZXN0UmV2aWV3NzQxMDE0MzQy",
+          "user": {
+            "login": "MicahZoltu",
+            "id": 886059,
+            "node_id": "MDQ6VXNlcjg4NjA1OQ==",
+            "avatar_url": "https://avatars.githubusercontent.com/u/886059?u=408de357d90aae9b9ffc956970b8fd4eec642060&v=4",
+            "gravatar_id": "",
+            "url": "https://api.github.com/users/MicahZoltu",
+            "html_url": "https://github.com/MicahZoltu",
+            "followers_url": "https://api.github.com/users/MicahZoltu/followers",
+            "following_url": "https://api.github.com/users/MicahZoltu/following{/other_user}",
+            "gists_url": "https://api.github.com/users/MicahZoltu/gists{/gist_id}",
+            "starred_url": "https://api.github.com/users/MicahZoltu/starred{/owner}{/repo}",
+            "subscriptions_url": "https://api.github.com/users/MicahZoltu/subscriptions",
+            "organizations_url": "https://api.github.com/users/MicahZoltu/orgs",
+            "repos_url": "https://api.github.com/users/MicahZoltu/repos",
+            "events_url": "https://api.github.com/users/MicahZoltu/events{/privacy}",
+            "received_events_url": "https://api.github.com/users/MicahZoltu/received_events",
+            "type": "User",
+            "site_admin": false
+          },
+          "body": "All opcode references in the specification must be accompanied by their respective number with the format `REVERT (0xfe)`.  You can choose to only use this style for the first reference in the specification section, or for all of them, but it must be included in the first reference to each opcode.\r\n\r\n----\r\n\r\nFor the new opcodes (BEGINSUB, JUMPSUB, RETURNSUB), I recommend just picking some unused ones for now.  We can always change them prior to final, but having a straw man for people to argue against has value in aiding discussion, prototype implementation, etc.\r\n\r\n----\r\n\r\nEIP dependencies should be included in the frontmatter with:\r\n```md\r\nrequires: 3540\r\n```\r\n\r\n----\r\n\r\n`[EVM Object Format (EOF)](https://eips.ethereum.org/EIPS/eip-3540)` needs to change to `[EIP-3540](./eip-3540.md)`.  I wouldn't be opposed to `[EIP-3540: EVM Object Format (EOF)](./eip-3540.md)` either if you like having the title present (I do think the title adds value).  The key is that the link should be relative, and the EIP number should be included in the link title in its proper format (`EIP-####`).\r\n\r\n----\r\n\r\nExternal link to closed EVMOne pull request should be removed.  If this EIP depends on a standardized change, then that should be an EIP itself.  If the EVMOne change is just an example of a necessary change that clients will need to make, then I recommend briefly describing the necessary change here.\r\n\r\n----\r\n\r\nReference to 615 in the Rationale and 3337 in the Backward compatibility should both be removed, or those EIPs should be moved to Review prior to this EIP moving to review.  I recommend just removing the links though, as neither add meaningful value in a world where they don't make it to final (which is the world we should be authoring in if they remain in stages lower than this EIP).\r\n\r\n----\r\n\r\nThe Implementation section is no longer a standard EIP section.  It was replaced with the optional Reference Implementation section which should contain either an inline implementation or pseudocode implementation, or a link to `../assets/3767/*` which contains a reference implementation.  If you want to track implementation progress later in the process, https://github.com/ethereum/execution-specs is the appropriate place to do so.\r\n\r\n----\r\n\r\nThe Costs and Codes section should be a subsection of the Specification.  It is impossible to implement this EIP in a consensus compatible way without gas costs, so it should go there.  Also, EIPs should not \"suggest\", they should assert.  My recommendation is to just put the gas costs in the ## Specification section directly along with each opcode's definition and then in the ## Rationale section you can describe your reasoning and methodology for each.\r\n\r\n----\r\n\r\nTODO, Appendix, and References sections are not standard EIP sections and should be removed.  EIPs are not the appropriate place to discuss future works or pass around acknowledgements.  They should be purely technical standards.  I strongly encourage all EIP authors to draft a separate document somewhere like hackmd or similar that tracks things that aren't explicitly related to the standard.  This includes collections of links, references, various external implementations, etc.",
+          "state": "CHANGES_REQUESTED",
+          "html_url": "https://github.com/ethereum/EIPs/pull/3767#pullrequestreview-741014342",
+          "pull_request_url": "https://api.github.com/repos/ethereum/EIPs/pulls/3767",
+          "author_association": "COLLABORATOR",
+          "_links": {
+            "html": {
+              "href": "https://github.com/ethereum/EIPs/pull/3767#pullrequestreview-741014342"
+            },
+            "pull_request": {
+              "href": "https://api.github.com/repos/ethereum/EIPs/pulls/3767"
+            }
+          },
+          "submitted_at": "2021-08-28T11:11:56Z",
+          "commit_id": "cb6a602dcee5e6b15c60d7d298ab991062a73129"
+        }
+      ]
+    }
+  },
+  {
+    "req": {
+      "url": "https://api.github.com/repos/ethereum/EIPs/pulls/3767/reviews?per_page=100&page=2",
+      "method": "GET"
+    },
+    "res": {
+      "status": 200,
+      "data": []
+    }
   }
 ]

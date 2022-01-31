@@ -21,6 +21,7 @@ type Env = {
   EVENT_TYPE: EVENTS;
   CORE_EDITORS: string;
   ERC_EDITORS: string;
+  MAINTAINERS: string;
 };
 
 const _envFactory =
@@ -70,5 +71,6 @@ export const envFactory = _envFactory({
   ]]: `@${EIPTypeOrCategoryToResolver[EIPTypes.informational].replace(
     "_",
     "-"
-  )}, @test, @editors`
+  )}, @test, @editors`,
+  MAINTAINERS: "@maintainers"
 });

@@ -9,8 +9,10 @@ import {
   isMock,
   IssueComments,
   isTest,
-  PR
+  PR,
+  Review
 } from "src/domain";
+import _ from "lodash";
 
 const getEventName = () => {
   return context.eventName;
@@ -34,14 +36,29 @@ const getPullRequestFromNumber = (pullNumber: number) => {
     });
 };
 
-const getPullRequestReviews = async (pullNumber: number) => {
+/**
+ * this recurses through github pages of reviews until none are left; it is
+ * meant to avoid losing data if there's more data than can be retrieved in one
+ * request
+ * */
+const getPullRequestReviews = async (
+  pullNumber: number,
+  page = 1
+): Promise<Review[]> => {
   const Github = getOctokit(GITHUB_TOKEN).rest;
-  const { data: reviews } = await Github.pulls.listReviews({
+  const { data: reviews }: { data: Review[] } = await Github.pulls.listReviews({
     owner: context.repo.owner,
     repo: context.repo.repo,
-    pull_number: pullNumber
+    pull_number: pullNumber,
+    per_page: 100,
+    page
   });
-  return reviews;
+  if (_.isEmpty(reviews)) {
+    return reviews;
+  }
+  return getPullRequestReviews(pullNumber, page + 1).then((res) =>
+    reviews.concat(res)
+  );
 };
 
 const getPullRequestFiles = (pullNumber: number) => {

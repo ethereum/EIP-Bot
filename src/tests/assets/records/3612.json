@@ -1188,5 +1188,377 @@
         "performed_via_github_app": null
       }
     }
+  },
+  {
+    "req": {
+      "url": "https://api.github.com/repos/ethereum/EIPs/pulls/3612/reviews?per_page=100&page=1",
+      "method": "GET"
+    },
+    "res": {
+      "status": 200,
+      "data": [
+        {
+          "id": 683710747,
+          "node_id": "MDE3OlB1bGxSZXF1ZXN0UmV2aWV3NjgzNzEwNzQ3",
+          "user": {
+            "login": "CarlBeek",
+            "id": 12530043,
+            "node_id": "MDQ6VXNlcjEyNTMwMDQz",
+            "avatar_url": "https://avatars.githubusercontent.com/u/12530043?v=4",
+            "gravatar_id": "",
+            "url": "https://api.github.com/users/CarlBeek",
+            "html_url": "https://github.com/CarlBeek",
+            "followers_url": "https://api.github.com/users/CarlBeek/followers",
+            "following_url": "https://api.github.com/users/CarlBeek/following{/other_user}",
+            "gists_url": "https://api.github.com/users/CarlBeek/gists{/gist_id}",
+            "starred_url": "https://api.github.com/users/CarlBeek/starred{/owner}{/repo}",
+            "subscriptions_url": "https://api.github.com/users/CarlBeek/subscriptions",
+            "organizations_url": "https://api.github.com/users/CarlBeek/orgs",
+            "repos_url": "https://api.github.com/users/CarlBeek/repos",
+            "events_url": "https://api.github.com/users/CarlBeek/events{/privacy}",
+            "received_events_url": "https://api.github.com/users/CarlBeek/received_events",
+            "type": "User",
+            "site_admin": false
+          },
+          "body": "Thanks @veorq\r\n\r\nI agree it is important to be precise with which \"BLS\" is being referred to and I appreciate the effort to be clear with \"CFRG draft\" terminology, but I don't agree with all of your phrasing.",
+          "state": "CHANGES_REQUESTED",
+          "html_url": "https://github.com/ethereum/EIPs/pull/3612#pullrequestreview-683710747",
+          "pull_request_url": "https://api.github.com/repos/ethereum/EIPs/pulls/3612",
+          "author_association": "CONTRIBUTOR",
+          "_links": {
+            "html": {
+              "href": "https://github.com/ethereum/EIPs/pull/3612#pullrequestreview-683710747"
+            },
+            "pull_request": {
+              "href": "https://api.github.com/repos/ethereum/EIPs/pulls/3612"
+            }
+          },
+          "submitted_at": "2021-06-15T09:17:11Z",
+          "commit_id": "113af4eb75935bcc784ff5a8c548f2a136b84f76"
+        },
+        {
+          "id": 683775866,
+          "node_id": "MDE3OlB1bGxSZXF1ZXN0UmV2aWV3NjgzNzc1ODY2",
+          "user": {
+            "login": "veorq",
+            "id": 3204810,
+            "node_id": "MDQ6VXNlcjMyMDQ4MTA=",
+            "avatar_url": "https://avatars.githubusercontent.com/u/3204810?u=cc580bb522b5d445c60015b343019cf440c77af6&v=4",
+            "gravatar_id": "",
+            "url": "https://api.github.com/users/veorq",
+            "html_url": "https://github.com/veorq",
+            "followers_url": "https://api.github.com/users/veorq/followers",
+            "following_url": "https://api.github.com/users/veorq/following{/other_user}",
+            "gists_url": "https://api.github.com/users/veorq/gists{/gist_id}",
+            "starred_url": "https://api.github.com/users/veorq/starred{/owner}{/repo}",
+            "subscriptions_url": "https://api.github.com/users/veorq/subscriptions",
+            "organizations_url": "https://api.github.com/users/veorq/orgs",
+            "repos_url": "https://api.github.com/users/veorq/repos",
+            "events_url": "https://api.github.com/users/veorq/events{/privacy}",
+            "received_events_url": "https://api.github.com/users/veorq/received_events",
+            "type": "User",
+            "site_admin": false
+          },
+          "body": "",
+          "state": "COMMENTED",
+          "html_url": "https://github.com/ethereum/EIPs/pull/3612#pullrequestreview-683775866",
+          "pull_request_url": "https://api.github.com/repos/ethereum/EIPs/pulls/3612",
+          "author_association": "CONTRIBUTOR",
+          "_links": {
+            "html": {
+              "href": "https://github.com/ethereum/EIPs/pull/3612#pullrequestreview-683775866"
+            },
+            "pull_request": {
+              "href": "https://api.github.com/repos/ethereum/EIPs/pulls/3612"
+            }
+          },
+          "submitted_at": "2021-06-15T09:30:00Z",
+          "commit_id": "113af4eb75935bcc784ff5a8c548f2a136b84f76"
+        },
+        {
+          "id": 683780792,
+          "node_id": "MDE3OlB1bGxSZXF1ZXN0UmV2aWV3NjgzNzgwNzky",
+          "user": {
+            "login": "veorq",
+            "id": 3204810,
+            "node_id": "MDQ6VXNlcjMyMDQ4MTA=",
+            "avatar_url": "https://avatars.githubusercontent.com/u/3204810?u=cc580bb522b5d445c60015b343019cf440c77af6&v=4",
+            "gravatar_id": "",
+            "url": "https://api.github.com/users/veorq",
+            "html_url": "https://github.com/veorq",
+            "followers_url": "https://api.github.com/users/veorq/followers",
+            "following_url": "https://api.github.com/users/veorq/following{/other_user}",
+            "gists_url": "https://api.github.com/users/veorq/gists{/gist_id}",
+            "starred_url": "https://api.github.com/users/veorq/starred{/owner}{/repo}",
+            "subscriptions_url": "https://api.github.com/users/veorq/subscriptions",
+            "organizations_url": "https://api.github.com/users/veorq/orgs",
+            "repos_url": "https://api.github.com/users/veorq/repos",
+            "events_url": "https://api.github.com/users/veorq/events{/privacy}",
+            "received_events_url": "https://api.github.com/users/veorq/received_events",
+            "type": "User",
+            "site_admin": false
+          },
+          "body": "",
+          "state": "COMMENTED",
+          "html_url": "https://github.com/ethereum/EIPs/pull/3612#pullrequestreview-683780792",
+          "pull_request_url": "https://api.github.com/repos/ethereum/EIPs/pulls/3612",
+          "author_association": "CONTRIBUTOR",
+          "_links": {
+            "html": {
+              "href": "https://github.com/ethereum/EIPs/pull/3612#pullrequestreview-683780792"
+            },
+            "pull_request": {
+              "href": "https://api.github.com/repos/ethereum/EIPs/pulls/3612"
+            }
+          },
+          "submitted_at": "2021-06-15T09:35:00Z",
+          "commit_id": "113af4eb75935bcc784ff5a8c548f2a136b84f76"
+        },
+        {
+          "id": 684190423,
+          "node_id": "MDE3OlB1bGxSZXF1ZXN0UmV2aWV3Njg0MTkwNDIz",
+          "user": {
+            "login": "veorq",
+            "id": 3204810,
+            "node_id": "MDQ6VXNlcjMyMDQ4MTA=",
+            "avatar_url": "https://avatars.githubusercontent.com/u/3204810?u=cc580bb522b5d445c60015b343019cf440c77af6&v=4",
+            "gravatar_id": "",
+            "url": "https://api.github.com/users/veorq",
+            "html_url": "https://github.com/veorq",
+            "followers_url": "https://api.github.com/users/veorq/followers",
+            "following_url": "https://api.github.com/users/veorq/following{/other_user}",
+            "gists_url": "https://api.github.com/users/veorq/gists{/gist_id}",
+            "starred_url": "https://api.github.com/users/veorq/starred{/owner}{/repo}",
+            "subscriptions_url": "https://api.github.com/users/veorq/subscriptions",
+            "organizations_url": "https://api.github.com/users/veorq/orgs",
+            "repos_url": "https://api.github.com/users/veorq/repos",
+            "events_url": "https://api.github.com/users/veorq/events{/privacy}",
+            "received_events_url": "https://api.github.com/users/veorq/received_events",
+            "type": "User",
+            "site_admin": false
+          },
+          "body": "",
+          "state": "COMMENTED",
+          "html_url": "https://github.com/ethereum/EIPs/pull/3612#pullrequestreview-684190423",
+          "pull_request_url": "https://api.github.com/repos/ethereum/EIPs/pulls/3612",
+          "author_association": "CONTRIBUTOR",
+          "_links": {
+            "html": {
+              "href": "https://github.com/ethereum/EIPs/pull/3612#pullrequestreview-684190423"
+            },
+            "pull_request": {
+              "href": "https://api.github.com/repos/ethereum/EIPs/pulls/3612"
+            }
+          },
+          "submitted_at": "2021-06-15T15:50:45Z",
+          "commit_id": "888d25ed9054bdc85a704151b3a5324815beefd0"
+        },
+        {
+          "id": 684194421,
+          "node_id": "MDE3OlB1bGxSZXF1ZXN0UmV2aWV3Njg0MTk0NDIx",
+          "user": {
+            "login": "veorq",
+            "id": 3204810,
+            "node_id": "MDQ6VXNlcjMyMDQ4MTA=",
+            "avatar_url": "https://avatars.githubusercontent.com/u/3204810?u=cc580bb522b5d445c60015b343019cf440c77af6&v=4",
+            "gravatar_id": "",
+            "url": "https://api.github.com/users/veorq",
+            "html_url": "https://github.com/veorq",
+            "followers_url": "https://api.github.com/users/veorq/followers",
+            "following_url": "https://api.github.com/users/veorq/following{/other_user}",
+            "gists_url": "https://api.github.com/users/veorq/gists{/gist_id}",
+            "starred_url": "https://api.github.com/users/veorq/starred{/owner}{/repo}",
+            "subscriptions_url": "https://api.github.com/users/veorq/subscriptions",
+            "organizations_url": "https://api.github.com/users/veorq/orgs",
+            "repos_url": "https://api.github.com/users/veorq/repos",
+            "events_url": "https://api.github.com/users/veorq/events{/privacy}",
+            "received_events_url": "https://api.github.com/users/veorq/received_events",
+            "type": "User",
+            "site_admin": false
+          },
+          "body": "",
+          "state": "COMMENTED",
+          "html_url": "https://github.com/ethereum/EIPs/pull/3612#pullrequestreview-684194421",
+          "pull_request_url": "https://api.github.com/repos/ethereum/EIPs/pulls/3612",
+          "author_association": "CONTRIBUTOR",
+          "_links": {
+            "html": {
+              "href": "https://github.com/ethereum/EIPs/pull/3612#pullrequestreview-684194421"
+            },
+            "pull_request": {
+              "href": "https://api.github.com/repos/ethereum/EIPs/pulls/3612"
+            }
+          },
+          "submitted_at": "2021-06-15T15:54:21Z",
+          "commit_id": "17242295ce1be1ad573ac7b972cf2d7b35d9e737"
+        },
+        {
+          "id": 684194647,
+          "node_id": "MDE3OlB1bGxSZXF1ZXN0UmV2aWV3Njg0MTk0NjQ3",
+          "user": {
+            "login": "veorq",
+            "id": 3204810,
+            "node_id": "MDQ6VXNlcjMyMDQ4MTA=",
+            "avatar_url": "https://avatars.githubusercontent.com/u/3204810?u=cc580bb522b5d445c60015b343019cf440c77af6&v=4",
+            "gravatar_id": "",
+            "url": "https://api.github.com/users/veorq",
+            "html_url": "https://github.com/veorq",
+            "followers_url": "https://api.github.com/users/veorq/followers",
+            "following_url": "https://api.github.com/users/veorq/following{/other_user}",
+            "gists_url": "https://api.github.com/users/veorq/gists{/gist_id}",
+            "starred_url": "https://api.github.com/users/veorq/starred{/owner}{/repo}",
+            "subscriptions_url": "https://api.github.com/users/veorq/subscriptions",
+            "organizations_url": "https://api.github.com/users/veorq/orgs",
+            "repos_url": "https://api.github.com/users/veorq/repos",
+            "events_url": "https://api.github.com/users/veorq/events{/privacy}",
+            "received_events_url": "https://api.github.com/users/veorq/received_events",
+            "type": "User",
+            "site_admin": false
+          },
+          "body": "",
+          "state": "COMMENTED",
+          "html_url": "https://github.com/ethereum/EIPs/pull/3612#pullrequestreview-684194647",
+          "pull_request_url": "https://api.github.com/repos/ethereum/EIPs/pulls/3612",
+          "author_association": "CONTRIBUTOR",
+          "_links": {
+            "html": {
+              "href": "https://github.com/ethereum/EIPs/pull/3612#pullrequestreview-684194647"
+            },
+            "pull_request": {
+              "href": "https://api.github.com/repos/ethereum/EIPs/pulls/3612"
+            }
+          },
+          "submitted_at": "2021-06-15T15:54:33Z",
+          "commit_id": "17242295ce1be1ad573ac7b972cf2d7b35d9e737"
+        },
+        {
+          "id": 684405485,
+          "node_id": "MDE3OlB1bGxSZXF1ZXN0UmV2aWV3Njg0NDA1NDg1",
+          "user": {
+            "login": "axic",
+            "id": 20340,
+            "node_id": "MDQ6VXNlcjIwMzQw",
+            "avatar_url": "https://avatars.githubusercontent.com/u/20340?v=4",
+            "gravatar_id": "",
+            "url": "https://api.github.com/users/axic",
+            "html_url": "https://github.com/axic",
+            "followers_url": "https://api.github.com/users/axic/followers",
+            "following_url": "https://api.github.com/users/axic/following{/other_user}",
+            "gists_url": "https://api.github.com/users/axic/gists{/gist_id}",
+            "starred_url": "https://api.github.com/users/axic/starred{/owner}{/repo}",
+            "subscriptions_url": "https://api.github.com/users/axic/subscriptions",
+            "organizations_url": "https://api.github.com/users/axic/orgs",
+            "repos_url": "https://api.github.com/users/axic/repos",
+            "events_url": "https://api.github.com/users/axic/events{/privacy}",
+            "received_events_url": "https://api.github.com/users/axic/received_events",
+            "type": "User",
+            "site_admin": false
+          },
+          "body": "",
+          "state": "COMMENTED",
+          "html_url": "https://github.com/ethereum/EIPs/pull/3612#pullrequestreview-684405485",
+          "pull_request_url": "https://api.github.com/repos/ethereum/EIPs/pulls/3612",
+          "author_association": "MEMBER",
+          "_links": {
+            "html": {
+              "href": "https://github.com/ethereum/EIPs/pull/3612#pullrequestreview-684405485"
+            },
+            "pull_request": {
+              "href": "https://api.github.com/repos/ethereum/EIPs/pulls/3612"
+            }
+          },
+          "submitted_at": "2021-06-15T19:26:03Z",
+          "commit_id": "17242295ce1be1ad573ac7b972cf2d7b35d9e737"
+        },
+        {
+          "id": 684739096,
+          "node_id": "MDE3OlB1bGxSZXF1ZXN0UmV2aWV3Njg0NzM5MDk2",
+          "user": {
+            "login": "veorq",
+            "id": 3204810,
+            "node_id": "MDQ6VXNlcjMyMDQ4MTA=",
+            "avatar_url": "https://avatars.githubusercontent.com/u/3204810?u=cc580bb522b5d445c60015b343019cf440c77af6&v=4",
+            "gravatar_id": "",
+            "url": "https://api.github.com/users/veorq",
+            "html_url": "https://github.com/veorq",
+            "followers_url": "https://api.github.com/users/veorq/followers",
+            "following_url": "https://api.github.com/users/veorq/following{/other_user}",
+            "gists_url": "https://api.github.com/users/veorq/gists{/gist_id}",
+            "starred_url": "https://api.github.com/users/veorq/starred{/owner}{/repo}",
+            "subscriptions_url": "https://api.github.com/users/veorq/subscriptions",
+            "organizations_url": "https://api.github.com/users/veorq/orgs",
+            "repos_url": "https://api.github.com/users/veorq/repos",
+            "events_url": "https://api.github.com/users/veorq/events{/privacy}",
+            "received_events_url": "https://api.github.com/users/veorq/received_events",
+            "type": "User",
+            "site_admin": false
+          },
+          "body": "",
+          "state": "COMMENTED",
+          "html_url": "https://github.com/ethereum/EIPs/pull/3612#pullrequestreview-684739096",
+          "pull_request_url": "https://api.github.com/repos/ethereum/EIPs/pulls/3612",
+          "author_association": "CONTRIBUTOR",
+          "_links": {
+            "html": {
+              "href": "https://github.com/ethereum/EIPs/pull/3612#pullrequestreview-684739096"
+            },
+            "pull_request": {
+              "href": "https://api.github.com/repos/ethereum/EIPs/pulls/3612"
+            }
+          },
+          "submitted_at": "2021-06-16T05:34:13Z",
+          "commit_id": "71e0b41a9d8692f5a340a7e6575c9f969a8a7176"
+        },
+        {
+          "id": 684862905,
+          "node_id": "MDE3OlB1bGxSZXF1ZXN0UmV2aWV3Njg0ODYyOTA1",
+          "user": {
+            "login": "CarlBeek",
+            "id": 12530043,
+            "node_id": "MDQ6VXNlcjEyNTMwMDQz",
+            "avatar_url": "https://avatars.githubusercontent.com/u/12530043?v=4",
+            "gravatar_id": "",
+            "url": "https://api.github.com/users/CarlBeek",
+            "html_url": "https://github.com/CarlBeek",
+            "followers_url": "https://api.github.com/users/CarlBeek/followers",
+            "following_url": "https://api.github.com/users/CarlBeek/following{/other_user}",
+            "gists_url": "https://api.github.com/users/CarlBeek/gists{/gist_id}",
+            "starred_url": "https://api.github.com/users/CarlBeek/starred{/owner}{/repo}",
+            "subscriptions_url": "https://api.github.com/users/CarlBeek/subscriptions",
+            "organizations_url": "https://api.github.com/users/CarlBeek/orgs",
+            "repos_url": "https://api.github.com/users/CarlBeek/repos",
+            "events_url": "https://api.github.com/users/CarlBeek/events{/privacy}",
+            "received_events_url": "https://api.github.com/users/CarlBeek/received_events",
+            "type": "User",
+            "site_admin": false
+          },
+          "body": "",
+          "state": "APPROVED",
+          "html_url": "https://github.com/ethereum/EIPs/pull/3612#pullrequestreview-684862905",
+          "pull_request_url": "https://api.github.com/repos/ethereum/EIPs/pulls/3612",
+          "author_association": "CONTRIBUTOR",
+          "_links": {
+            "html": {
+              "href": "https://github.com/ethereum/EIPs/pull/3612#pullrequestreview-684862905"
+            },
+            "pull_request": {
+              "href": "https://api.github.com/repos/ethereum/EIPs/pulls/3612"
+            }
+          },
+          "submitted_at": "2021-06-16T08:16:57Z",
+          "commit_id": "71e0b41a9d8692f5a340a7e6575c9f969a8a7176"
+        }
+      ]
+    }
+  },
+  {
+    "req": {
+      "url": "https://api.github.com/repos/ethereum/EIPs/pulls/3612/reviews?per_page=100&page=2",
+      "method": "GET"
+    },
+    "res": {
+      "status": 200,
+      "data": []
+    }
   }
 ]

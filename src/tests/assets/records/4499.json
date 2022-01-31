@@ -795,5 +795,104 @@
         }
       ]
     }
+  },
+  {
+    "req": {
+      "url": "https://api.github.com/repos/ethereum/EIPs/pulls/4499/reviews?per_page=100&page=1",
+      "method": "GET"
+    },
+    "res": {
+      "status": 200,
+      "data": [
+        {
+          "id": 816232749,
+          "node_id": "PRR_kwDOAq426M4wprkt",
+          "user": {
+            "login": "MicahZoltu",
+            "id": 886059,
+            "node_id": "MDQ6VXNlcjg4NjA1OQ==",
+            "avatar_url": "https://avatars.githubusercontent.com/u/886059?u=408de357d90aae9b9ffc956970b8fd4eec642060&v=4",
+            "gravatar_id": "",
+            "url": "https://api.github.com/users/MicahZoltu",
+            "html_url": "https://github.com/MicahZoltu",
+            "followers_url": "https://api.github.com/users/MicahZoltu/followers",
+            "following_url": "https://api.github.com/users/MicahZoltu/following{/other_user}",
+            "gists_url": "https://api.github.com/users/MicahZoltu/gists{/gist_id}",
+            "starred_url": "https://api.github.com/users/MicahZoltu/starred{/owner}{/repo}",
+            "subscriptions_url": "https://api.github.com/users/MicahZoltu/subscriptions",
+            "organizations_url": "https://api.github.com/users/MicahZoltu/orgs",
+            "repos_url": "https://api.github.com/users/MicahZoltu/repos",
+            "events_url": "https://api.github.com/users/MicahZoltu/events{/privacy}",
+            "received_events_url": "https://api.github.com/users/MicahZoltu/received_events",
+            "type": "User",
+            "site_admin": false
+          },
+          "body": "",
+          "state": "APPROVED",
+          "html_url": "https://github.com/ethereum/EIPs/pull/4499#pullrequestreview-816232749",
+          "pull_request_url": "https://api.github.com/repos/ethereum/EIPs/pulls/4499",
+          "author_association": "COLLABORATOR",
+          "_links": {
+            "html": {
+              "href": "https://github.com/ethereum/EIPs/pull/4499#pullrequestreview-816232749"
+            },
+            "pull_request": {
+              "href": "https://api.github.com/repos/ethereum/EIPs/pulls/4499"
+            }
+          },
+          "submitted_at": "2021-11-25T18:11:58Z",
+          "commit_id": "b99cfca5f0c40e4b5d859a74c235e915ac55993d"
+        },
+        {
+          "id": 823507399,
+          "node_id": "PRR_kwDOAq426M4xFbnH",
+          "user": {
+            "login": "lightclient",
+            "id": 14004106,
+            "node_id": "MDQ6VXNlcjE0MDA0MTA2",
+            "avatar_url": "https://avatars.githubusercontent.com/u/14004106?u=17bd7e09ec0361a4b4431c6ff715a79d7de94f44&v=4",
+            "gravatar_id": "",
+            "url": "https://api.github.com/users/lightclient",
+            "html_url": "https://github.com/lightclient",
+            "followers_url": "https://api.github.com/users/lightclient/followers",
+            "following_url": "https://api.github.com/users/lightclient/following{/other_user}",
+            "gists_url": "https://api.github.com/users/lightclient/gists{/gist_id}",
+            "starred_url": "https://api.github.com/users/lightclient/starred{/owner}{/repo}",
+            "subscriptions_url": "https://api.github.com/users/lightclient/subscriptions",
+            "organizations_url": "https://api.github.com/users/lightclient/orgs",
+            "repos_url": "https://api.github.com/users/lightclient/repos",
+            "events_url": "https://api.github.com/users/lightclient/events{/privacy}",
+            "received_events_url": "https://api.github.com/users/lightclient/received_events",
+            "type": "User",
+            "site_admin": false
+          },
+          "body": "",
+          "state": "APPROVED",
+          "html_url": "https://github.com/ethereum/EIPs/pull/4499#pullrequestreview-823507399",
+          "pull_request_url": "https://api.github.com/repos/ethereum/EIPs/pulls/4499",
+          "author_association": "MEMBER",
+          "_links": {
+            "html": {
+              "href": "https://github.com/ethereum/EIPs/pull/4499#pullrequestreview-823507399"
+            },
+            "pull_request": {
+              "href": "https://api.github.com/repos/ethereum/EIPs/pulls/4499"
+            }
+          },
+          "submitted_at": "2021-12-06T03:31:06Z",
+          "commit_id": "b99cfca5f0c40e4b5d859a74c235e915ac55993d"
+        }
+      ]
+    }
+  },
+  {
+    "req": {
+      "url": "https://api.github.com/repos/ethereum/EIPs/pulls/4499/reviews?per_page=100&page=2",
+      "method": "GET"
+    },
+    "res": {
+      "status": 200,
+      "data": []
+    }
   }
 ]

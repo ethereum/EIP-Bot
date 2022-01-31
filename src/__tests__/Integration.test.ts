@@ -261,4 +261,16 @@ describe("integration testing edgecases associated with editors", () => {
       expect(requirementViolationMock).not.toBeCalled();
     });
   });
+
+  describe("Pull 4361", () => {
+    it("should succeed", async () => {
+      process.env = envFactory({
+        PULL_NUMBER: SavedRecord.PR4361,
+        ERC_EDITORS: "@lightclient,@axic"
+      });
+
+      await __MAIN_MOCK__();
+      expect(setFailedMock).not.toBeCalled();
+    })
+  })
 });

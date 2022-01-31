@@ -935,5 +935,65 @@
         }
       ]
     }
+  },
+  {
+    "req": {
+      "url": "https://api.github.com/repos/ethereum/EIPs/pulls/3623/reviews?per_page=100&page=1",
+      "method": "GET"
+    },
+    "res": {
+      "status": 200,
+      "data": [
+        {
+          "id": 716170550,
+          "node_id": "MDE3OlB1bGxSZXF1ZXN0UmV2aWV3NzE2MTcwNTUw",
+          "user": {
+            "login": "MadeofTin",
+            "id": 1226869,
+            "node_id": "MDQ6VXNlcjEyMjY4Njk=",
+            "avatar_url": "https://avatars.githubusercontent.com/u/1226869?u=6942f4e04aea97350089307f2d3636432bbaa3e9&v=4",
+            "gravatar_id": "",
+            "url": "https://api.github.com/users/MadeofTin",
+            "html_url": "https://github.com/MadeofTin",
+            "followers_url": "https://api.github.com/users/MadeofTin/followers",
+            "following_url": "https://api.github.com/users/MadeofTin/following{/other_user}",
+            "gists_url": "https://api.github.com/users/MadeofTin/gists{/gist_id}",
+            "starred_url": "https://api.github.com/users/MadeofTin/starred{/owner}{/repo}",
+            "subscriptions_url": "https://api.github.com/users/MadeofTin/subscriptions",
+            "organizations_url": "https://api.github.com/users/MadeofTin/orgs",
+            "repos_url": "https://api.github.com/users/MadeofTin/repos",
+            "events_url": "https://api.github.com/users/MadeofTin/events{/privacy}",
+            "received_events_url": "https://api.github.com/users/MadeofTin/received_events",
+            "type": "User",
+            "site_admin": false
+          },
+          "body": "",
+          "state": "APPROVED",
+          "html_url": "https://github.com/ethereum/EIPs/pull/3623#pullrequestreview-716170550",
+          "pull_request_url": "https://api.github.com/repos/ethereum/EIPs/pulls/3623",
+          "author_association": "CONTRIBUTOR",
+          "_links": {
+            "html": {
+              "href": "https://github.com/ethereum/EIPs/pull/3623#pullrequestreview-716170550"
+            },
+            "pull_request": {
+              "href": "https://api.github.com/repos/ethereum/EIPs/pulls/3623"
+            }
+          },
+          "submitted_at": "2021-07-27T17:05:25Z",
+          "commit_id": "1642c1e700d881c5878bb4bd0ebc461724541e18"
+        }
+      ]
+    }
+  },
+  {
+    "req": {
+      "url": "https://api.github.com/repos/ethereum/EIPs/pulls/3623/reviews?per_page=100&page=2",
+      "method": "GET"
+    },
+    "res": {
+      "status": 200,
+      "data": []
+    }
   }
 ]

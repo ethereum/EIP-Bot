@@ -867,5 +867,65 @@
         }
       ]
     }
+  },
+  {
+    "req": {
+      "url": "https://api.github.com/repos/ethereum/EIPs/pulls/3654/reviews?per_page=100&page=1",
+      "method": "GET"
+    },
+    "res": {
+      "status": 200,
+      "data": [
+        {
+          "id": 706946210,
+          "node_id": "MDE3OlB1bGxSZXF1ZXN0UmV2aWV3NzA2OTQ2MjEw",
+          "user": {
+            "login": "MicahZoltu",
+            "id": 886059,
+            "node_id": "MDQ6VXNlcjg4NjA1OQ==",
+            "avatar_url": "https://avatars.githubusercontent.com/u/886059?u=408de357d90aae9b9ffc956970b8fd4eec642060&v=4",
+            "gravatar_id": "",
+            "url": "https://api.github.com/users/MicahZoltu",
+            "html_url": "https://github.com/MicahZoltu",
+            "followers_url": "https://api.github.com/users/MicahZoltu/followers",
+            "following_url": "https://api.github.com/users/MicahZoltu/following{/other_user}",
+            "gists_url": "https://api.github.com/users/MicahZoltu/gists{/gist_id}",
+            "starred_url": "https://api.github.com/users/MicahZoltu/starred{/owner}{/repo}",
+            "subscriptions_url": "https://api.github.com/users/MicahZoltu/subscriptions",
+            "organizations_url": "https://api.github.com/users/MicahZoltu/orgs",
+            "repos_url": "https://api.github.com/users/MicahZoltu/repos",
+            "events_url": "https://api.github.com/users/MicahZoltu/events{/privacy}",
+            "received_events_url": "https://api.github.com/users/MicahZoltu/received_events",
+            "type": "User",
+            "site_admin": false
+          },
+          "body": "",
+          "state": "APPROVED",
+          "html_url": "https://github.com/ethereum/EIPs/pull/3654#pullrequestreview-706946210",
+          "pull_request_url": "https://api.github.com/repos/ethereum/EIPs/pulls/3654",
+          "author_association": "COLLABORATOR",
+          "_links": {
+            "html": {
+              "href": "https://github.com/ethereum/EIPs/pull/3654#pullrequestreview-706946210"
+            },
+            "pull_request": {
+              "href": "https://api.github.com/repos/ethereum/EIPs/pulls/3654"
+            }
+          },
+          "submitted_at": "2021-07-15T05:49:01Z",
+          "commit_id": "8aca1212d7e716c9c47f8b39efec86795961d4cb"
+        }
+      ]
+    }
+  },
+  {
+    "req": {
+      "url": "https://api.github.com/repos/ethereum/EIPs/pulls/3654/reviews?per_page=100&page=2",
+      "method": "GET"
+    },
+    "res": {
+      "status": 200,
+      "data": []
+    }
   }
 ]

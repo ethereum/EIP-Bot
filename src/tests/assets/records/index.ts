@@ -137,7 +137,11 @@ export enum SavedRecord {
    * of the path (assets/eip-3448/MetaProxyFactory.sol) so the code had no way
    * of knowing.
    */
-  PR4506 = "4506"
+  PR4506 = "4506",
+  /**
+   * @summary this pull request was approved by an editor but it still said that it was not
+   */
+  PR4361 = "4361"
 }
 
 /**
@@ -180,6 +184,7 @@ export const getMockRecords = async () => {
   const PR4393 = await import("./4393.json");
   const PR4499 = await import("./4499.json");
   const PR4506 = await import("./4506.json");
+  const PR4361 = await import("./4361.json");
 
   assertMethods(PR3767);
   assertMethods(PR3676);
@@ -197,6 +202,7 @@ export const getMockRecords = async () => {
   assertMethods(PR4478);
   assertMethods(PR4393);
   assertMethods(PR4506);
+  assertMethods(PR4361);
 
   const Records: { [k in keyof typeof SavedRecord]: MockRecord[] } = {
     PR3596: PR3596.default,
@@ -215,7 +221,8 @@ export const getMockRecords = async () => {
     PR4478: PR4478.default,
     PR4393: PR4393.default,
     PR4499: PR4499.default,
-    PR4506: PR4506.default
+    PR4506: PR4506.default,
+    PR4361: PR4361.default
   };
   return Records;
 };
