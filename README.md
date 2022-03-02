@@ -5,12 +5,13 @@ This Github Actions integrated bot lints EIPs and provides feedback for authors;
 # Usage
 
 ```yml
-on: [pull_request_target]
+on: [pull_request_target, issue_comment]
 
 jobs:
   auto_merge_bot:
     runs-on: ubuntu-latest
     name: EIP Auto-Merge Bot
+    if: ${{ (github.event_name == 'issue_comment' && github.event.issue.pull_request && github.event.comment.body.includes('@eth-bot')) || (github.event_name == 'pull_request_target') }}
     steps:
       - name: Checkout
         uses: actions/checkout@v2
