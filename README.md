@@ -226,3 +226,5 @@ In addition to the above use case and string eradication it centralizes the stri
 # Contributors
 
 - @alita-moore
+- @MicahZoltu
+- @Pandapip1
