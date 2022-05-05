@@ -4,7 +4,8 @@ import {
   requireFiles,
   requirePr,
   requirePullNumber,
-  require_cc0
+  require_cc0,
+  require_created_at
 } from "#/assertions";
 import { PullRequestUseCases } from "#/pull_request/use_cases";
 import {
