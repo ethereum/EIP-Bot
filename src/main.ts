@@ -38,6 +38,9 @@ export const _main_ = async () => {
   
   // exit bot if no cc0 waiver
   require_cc0(); 
+  
+  // warn to include in the preamble the created_at date
+  require_created_at();
 
   // Collect the changes made in the given PR from base <-> head for eip files
   const files = await requireFiles(pr);
