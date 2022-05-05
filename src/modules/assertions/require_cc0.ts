@@ -15,7 +15,8 @@ import _ from "lodash";
 export const  checkCC0 = () => {
         
 	const github = getOctokit(GITHUB_TOKEN).rest;
-	if !(((context.payload?.pull_request?.body).endsWith("Copyright and related rights waived via [CC0](https://creativecommons.org/publicdomain/zero/1.0/).")) || ((context.payload?.pull_request?.body).endsWith("Copyright and related rights waived via [CC0](https://creativecommons.org/publicdomain/zero/1.0/).\n"))) {
+  const copyrightRegex = /^[\s\S]*## Copyright\n*Copyright and related rights waived via \[CC0\]\(.+\)\.\n*$/g;
+	if (context.payload?.pull_request?.body && copyrightRegex.test(context.payload?.pull_request?.body)) {
 		console.log(`Critical error: CC0 Copyright must be the last thing in the EIP.`);
 		System.exit(1);
 	}	
