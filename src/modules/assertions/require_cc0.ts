@@ -16,7 +16,7 @@ export const  checkCC0 = () => {
         
 	const github = getOctokit(GITHUB_TOKEN).rest;
 	if !((context.payload?.pull_request?.body).search("CC0")) {
-		console.log(`Critical error: No CC0 waiver detected`);
+		console.log(`Critical error: CC0 Copyright must be the last thing in the EIP.`);
 		System.exit(1);
 	}	
 
