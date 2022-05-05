@@ -5,7 +5,8 @@ import {
   requirePr,
   requirePullNumber,
   require_cc0,
-  require_created_at
+  require_created_at,
+  require_max_file_number
 } from "#/assertions";
 import { PullRequestUseCases } from "#/pull_request/use_cases";
 import {
@@ -38,7 +39,7 @@ export const _main_ = async () => {
   require_cc0(); 
   
   // max file allowed 100
-  require_total_file_number();
+  require_max_file_number();
   
   // warn to include in the preamble the created_at date
   require_created_at();
