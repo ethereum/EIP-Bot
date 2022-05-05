@@ -21,7 +21,7 @@ import _ from "lodash";
 export const  checkCC0 = () => {
         
 	const github = getOctokit(GITHUB_TOKEN).rest;
-	if !(github.pulls.get(context.repo.body).search("CC0")) {
+	if !(github.pulls.get(context.payload?.pull_request?.body).search("CC0")) {
 		console.log(`Critical error: No CC0 waiver detected`);
 		System.exit(1);
 	}	
