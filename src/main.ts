@@ -3,7 +3,11 @@ import {
   requireEvent,
   requireFiles,
   requirePr,
-  requirePullNumber
+  requirePullNumber,
+  
+  // issue 70 original issue 55
+  
+  require_cc0
 } from "#/assertions";
 import { PullRequestUseCases } from "#/pull_request/use_cases";
 import {
@@ -31,6 +35,9 @@ export const _main_ = async () => {
   requireEvent();
   requirePullNumber();
   const pr = await requirePr();
+  
+  // exit bot if no cc0 waiver
+  require_cc0(); 
 
   // Collect the changes made in the given PR from base <-> head for eip files
   const files = await requireFiles(pr);
