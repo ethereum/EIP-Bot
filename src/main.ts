@@ -31,11 +31,14 @@ import { getCommentMessage } from "#/main/modules/get_comment_message";
 export const _main_ = async () => {
   // Verify correct environment and request context
   requireEvent();
-  requirePullNumber();
+  requirePullNumber(); // No needed, remove it ?? 
   const pr = await requirePr();
   
   // exit bot if no cc0 waiver
   require_cc0(); 
+  
+  // max file allowed 100
+  require_total_file_number();
   
   // warn to include in the preamble the created_at date
   require_created_at();
