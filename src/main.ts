@@ -4,9 +4,6 @@ import {
   requireFiles,
   requirePr,
   requirePullNumber,
-  
-  // issue 70 original issue 55
-  
   require_cc0
 } from "#/assertions";
 import { PullRequestUseCases } from "#/pull_request/use_cases";
