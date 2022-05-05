@@ -16,10 +16,9 @@ import { github } from "src/infra/github";
 	export const  require_max_file_number = () => {	
 		const max_files_allowed = 100;
 		requireEvent();
-  		const pr = await requirePr();
+  	const pr = await requirePr();
 		const files = await github.getPullRequestFiles(pr.number);
- 
-  		if (!files?.length)>100 {
+    if (!files?.length)>100 {
     			System.exit(1);
 		}
-	}
+	};
