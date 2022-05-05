@@ -1,9 +1,3 @@
-// Issue #70, Originally from #55
-// Require CC0 waiver 
-// Creator: SamWilsn
-
-// to be included when merged in /src/modules/assertions
-
 import { context, getOctokit } from "@actions/github";
 import { setFailed } from "@actions/core";
 import {
