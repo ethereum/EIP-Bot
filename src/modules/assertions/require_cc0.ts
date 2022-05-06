@@ -10,7 +10,7 @@ import _ from "lodash";
 
 // BOT will fail if no CC0 detected in PR body
 // Just after: Verify correct environment and request context in main.ts, if no CC0 is detected, 
-// BOT will fail and comment: "error: No CC0 waiver detected" 
+// BOT will fail and comment: "error: No CC0 waiver detected".
 
 export const  checkCC0 = () => {
         
