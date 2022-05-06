@@ -1,10 +1,3 @@
-// Issue #65, Originally from #55
-// Immediately before merging (IMO, ideally in the merge commit itself) set the created date in the preamble.
-// Creator: SamWilsn
-// Alternative solution: warn author to include created_at date
-
-// to be included when merged in /src/modules/assertions 
-
 import { context, getOctokit } from "@actions/github";
 import {
   GITHUB_TOKEN,
