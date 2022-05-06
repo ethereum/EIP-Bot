@@ -35,11 +35,11 @@ export const _main_ = async () => {
   requirePullNumber(); // No needed, remove it ?? 
   const pr = await requirePr();
   
-  // exit bot if no cc0 waiver
-  require_cc0(); 
-  
   // max file allowed 100
   require_max_file_number();
+  
+  // exit bot if no cc0 waiver
+  require_cc0(); 
   
   // warn to include in the preamble the created_at date
   require_created_at();
