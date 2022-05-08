@@ -14,17 +14,13 @@ import {
 } from "src/domain";
 import _ from "lodash";
 
-// BOT will fail if file .sol is detected in PR body
-// Just after: Verify correct environment and request context in main.ts, if no CC0 is detected,
-// BOT will fail and comment: "Warning: please replace http:/.../file.sol reference for incoding" 
+// BOT will fail and comment: Please replace external link http://.../file.sol for inline code reference.. 
 
-
-
-export const  checkc_file_sol_reference = () => {
+export const  check_file_sol_reference = () => {
   const github = getOctokit(GITHUB_TOKEN).rest;
   const sol_file_Regex = /http:\/\/\S+.sol/g;
   if (sol_file_Regex.test(context.payload?.pull_request?.body) {
-    console.log(`Please replace external link  http://.../file.sol for proper inline code reference..`);
+    console.log(`EIP-BOT is terminating. Please replace external link http://.../file.sol for inline code reference..`);
     System.exit(1);
   }
 }; 
