@@ -32,7 +32,7 @@ import { getCommentMessage } from "#/main/modules/get_comment_message";
 export const _main_ = async () => {
   // Verify correct environment and request context
   requireEvent();
-  requirePullNumber(); // No needed, remove it ?? 
+  // requirePullNumber();  
   const pr = await requirePr();
   
   // max file allowed 100
