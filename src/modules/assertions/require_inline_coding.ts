@@ -16,7 +16,7 @@ import _ from "lodash";
 
 // BOT will fail and comment: Please replace external link http://.../file.sol for inline code reference.. 
 
-export const  check_file_sol_reference = () => {
+export const  require_file_sol_reference = () => {
   const github = getOctokit(GITHUB_TOKEN).rest;
   const sol_file_Regex = /http:\/\/\S+.sol/g;
   if (sol_file_Regex.test(context.payload?.pull_request?.body) {
