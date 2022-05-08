@@ -6,7 +6,8 @@ import {
   requirePullNumber,
   require_cc0,
   require_created_at,
-  require_max_file_number
+  require_max_file_number,
+  require_inline_coding
 } from "#/assertions";
 import { PullRequestUseCases } from "#/pull_request/use_cases";
 import {
@@ -41,7 +42,10 @@ export const _main_ = async () => {
   // exit bot if no cc0 waiver
   require_cc0(); 
   
-  // warn to include in the preamble the created_at date
+  //require inline coding
+  require_file_sol_reference();
+  
+  // log to include in the preamble the created_at date
   require_created_at();
 
   // Collect the changes made in the given PR from base <-> head for eip files
