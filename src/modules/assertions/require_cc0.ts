@@ -21,7 +21,7 @@ export const  checkCC0 = () => {
   // If body is null there is no license, EIP-BOT must exit(1). let me know if you agree with it..
   
   if (body === null) return;
-  if (context.payload?.pull_request?.body && copyrightRegex.test(context.payload?.pull_request?.body)) {
+  if (context.payload?.pull_request?.body && !(copyrightRegex.test(context.payload?.pull_request?.body))) {
     console.log(`Critical error: CC0 Copyright must be the last thing in the EIP.  The file should end with:\n## Copyright\nCopyright and related rights waived via [CC0](../LICENSE.md).`);
     System.exit(1);  
      
