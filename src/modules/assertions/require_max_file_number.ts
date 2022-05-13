@@ -13,7 +13,7 @@ import { github } from "src/infra/github";
 //rate limit might be exceeded
  
 
-export const  require_max_file_number = () => {	
+export const  requireMaxFileNumber = () => {	
 	const max_files_allowed = 100;
 	requireEvent();
   const pr = await requirePr();
