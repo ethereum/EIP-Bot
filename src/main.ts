@@ -4,9 +4,9 @@ import {
   requireFiles,
   requirePr,
   requirePullNumber,
-  require_cc0,
-  require_created_at,
-  require_max_file_number
+  requireCC0,
+  requireCreatedAt,
+  requireMaxFileNumber
 } from "#/assertions";
 import { PullRequestUseCases } from "#/pull_request/use_cases";
 import {
@@ -35,14 +35,11 @@ export const _main_ = async () => {
 
   const pr = await requirePr();
   
-  // max file allowed 100
-  require_max_file_number();
+  requireMaxFileNumber();
   
-  // exit bot if no cc0 waiver
-  require_cc0(); 
+  requireCC0(); 
   
-  // warn to include in the preamble the created_at date
-  require_created_at();
+  requireCreatedAt();
 
   // Collect the changes made in the given PR from base <-> head for eip files
   const files = await requireFiles(pr);
