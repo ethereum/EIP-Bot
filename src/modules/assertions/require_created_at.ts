@@ -6,7 +6,7 @@ import {
   Review
 } from "src/domain";
 	
-export const getCreatedAt = () => { 
+export const requireCreatedAt = () => { 
   const github = getOctokit(GITHUB_TOKEN).rest;
   const createRegex = /^[\s\S]*created:  \d\d\d\d-\d\d-\d\d\n?/g;
   if !(createRegex.test(context.payload?.pull_request?.body)) {
