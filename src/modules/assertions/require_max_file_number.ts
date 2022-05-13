@@ -10,9 +10,6 @@ import {
 import { Files, PR } from "src/domain";
 import { github } from "src/infra/github";
 
-//rate limit might be exceeded
- 
-
 export const  requireMaxFileNumber = () => {	
 	const max_files_allowed = 100;
 	requireEvent();
