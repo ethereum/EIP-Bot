@@ -2,7 +2,8 @@ import { setFailed } from "@actions/core";
 import {
   requireEvent,
   requireFiles,
-  requirePr
+  requirePr,
+  requireCC0
 } from "#/assertions";
 import { PullRequestUseCases } from "#/pull_request/use_cases";
 import {
