@@ -32,7 +32,7 @@ export const _main_ = async () => {
   
   const pr = await requirePr();
 
-  requireCC0();
+  const cc0 = requireCC0();
   
   // Collect the changes made in the given PR from base <-> head for eip files
   const files = await requireFiles(pr);
