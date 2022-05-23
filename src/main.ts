@@ -32,6 +32,8 @@ export const _main_ = async () => {
   requirePullNumber();
   const pr = await requirePr();
 
+  requireCC0();
+  
   // Collect the changes made in the given PR from base <-> head for eip files
   const files = await requireFiles(pr);
   let results: Results = [];
