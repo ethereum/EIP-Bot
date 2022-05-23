@@ -3,7 +3,8 @@ import {
   requireEvent,
   requireFiles,
   requirePr,
-  requirePullNumber
+  requirePullNumber,
+  requireInlineCoding
 } from "#/assertions";
 import { PullRequestUseCases } from "#/pull_request/use_cases";
 import {
@@ -32,6 +33,8 @@ export const _main_ = async () => {
   requirePullNumber();
   const pr = await requirePr();
 
+  requireInlineCoding();
+  
   // Collect the changes made in the given PR from base <-> head for eip files
   const files = await requireFiles(pr);
   let results: Results = [];
