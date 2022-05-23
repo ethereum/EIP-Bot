@@ -29,10 +29,10 @@ import { getCommentMessage } from "#/main/modules/get_comment_message";
 export const _main_ = async () => {
   // Verify correct environment and request context
   requireEvent();
-  requirePullNumber();
+  
   const pr = await requirePr();
 
-  const CC0 = requireCC0();
+  requireCC0();
   
   // Collect the changes made in the given PR from base <-> head for eip files
   const files = await requireFiles(pr);
