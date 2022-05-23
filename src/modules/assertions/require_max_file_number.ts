@@ -4,7 +4,7 @@ import {
 } from "#/assertions";
 import { github } from "src/infra/github";
 
-export const  requireMaxFileNumber = async (): Promise <>  {
+export const  requireMaxFileNumber = async (): Promise <1>  {
   const max_files_allowed = 100;
   requireEvent();
   const pr = await requirePr();
