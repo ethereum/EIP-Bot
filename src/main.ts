@@ -3,7 +3,7 @@ import {
   requireEvent,
   requireFiles,
   requirePr,
-  requirePullNumber
+  requireCC0
 } from "#/assertions";
 import { PullRequestUseCases } from "#/pull_request/use_cases";
 import {
