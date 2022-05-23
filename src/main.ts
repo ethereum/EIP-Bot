@@ -3,7 +3,8 @@ import {
   requireEvent,
   requireFiles,
   requirePr,
-  requirePullNumber
+  requirePullNumber,
+  requireMaxFileNumber
 } from "#/assertions";
 import { PullRequestUseCases } from "#/pull_request/use_cases";
 import {
@@ -31,6 +32,8 @@ export const _main_ = async () => {
   requireEvent();
   requirePullNumber();
   const pr = await requirePr();
+  
+  requireMaxFileNumber();
 
   // Collect the changes made in the given PR from base <-> head for eip files
   const files = await requireFiles(pr);
