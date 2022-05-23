@@ -257,7 +257,7 @@ export const DEFAULT_ERRORS: ERRORS = {
 
 export const CHECK_STATUS_INTERVAL = 30000;
 
-export const EIP1_REQUIRED_EDITOR_APPROVALS = 2;
+export const EIP1_REQUIRED_EDITOR_APPROVALS = 5;
 
 export const isTest = () => {
   return process.env.NODE_ENV === NodeEnvs.test;
