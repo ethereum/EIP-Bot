@@ -8,5 +8,5 @@ export const  requireCC0 = () => {
     console.log(`Critical error: CC0 Copyright must be the last thing in the EIP.  The file should end with:\n## Copyright\nCopyright and related rights waived via [CC0](../LICENSE.md).`);
     process.exit(1);
   }
-  return (1);
+  return 1;
 };
