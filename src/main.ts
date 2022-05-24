@@ -3,7 +3,6 @@ import {
   requireEvent,
   requireFiles,
   requirePr,
-  requirePullNumber,
   requireInlineCoding
 } from "#/assertions";
 import { PullRequestUseCases } from "#/pull_request/use_cases";
@@ -30,7 +29,7 @@ import { getCommentMessage } from "#/main/modules/get_comment_message";
 export const _main_ = async () => {
   // Verify correct environment and request context
   requireEvent();
-  requirePullNumber();
+
   const pr = await requirePr();
 
   requireInlineCoding();
