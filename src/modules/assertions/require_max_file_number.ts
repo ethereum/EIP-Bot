@@ -4,7 +4,7 @@ import {
 } from "#/assertions";
 import { github } from "src/infra/github";
 
-export const  requireMaxFileNumber = async (): Promise <1>  => {
+export const  requireMaxFileNumber = async () => {
   const max_files_allowed = 100;
   requireEvent();
   const pr = await requirePr();
@@ -13,5 +13,4 @@ export const  requireMaxFileNumber = async (): Promise <1>  => {
     console.log(`Critical error: Number of PR Files > ${max_files_allowed}`);
     process.exit(1);
   }
-  return 1;
 };
