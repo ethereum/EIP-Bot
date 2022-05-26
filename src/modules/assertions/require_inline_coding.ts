@@ -6,7 +6,7 @@ export const  requireInlineCoding = () => {
   const prBodyString = JSON.stringify(context.payload?.pull_request?.body);
   if (!(prBodyString) || (prBodyString.length === 0)) {return 0;}
   if (solfileRegex.test(prBodyString)) {
-    console.log(`EIP-BOT is terminating. Please replace external link http://.../file.sol: ${solfileRegex.match(prBodyString)} for inline code reference..`);
+    console.log(`EIP-BOT is terminating. Please replace external link http://.../file.sol: ${prBodyString.match(solfileRegex)} for inline code reference..`);
     process.exit(1);
   }
   return 1;
