@@ -1,7 +1,4 @@
-import {
-  requireEvent,
-  requirePr
-} from "#/assertions";
+import { requireEvent } from "#/assertions";
 import { PR } from "src/domain";
 import { github } from "src/infra/github";
 
