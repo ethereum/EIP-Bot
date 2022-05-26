@@ -11,4 +11,3 @@ export const  requireInlineCoding = () => {
   }
   return 1;
 };
-
