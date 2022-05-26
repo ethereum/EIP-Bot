@@ -32,7 +32,7 @@ export const _main_ = async () => {
 
   const pr = await requirePr();
   
-  requireMaxFileNumber();
+  requireMaxFileNumber(pr);
 
   // Collect the changes made in the given PR from base <-> head for eip files
   const files = await requireFiles(pr);
