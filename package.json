@@ -70,3 +70,14 @@
   },
   "homepage": "https://github.com/alita-moore/EIP-Bot#readme"
 }
+{
+  "private": true,
+  "dependencies": {
+    "autoprefixer": "^6.5.4"
+  },
+  "browserslist": [
+    "last 1 version",
+    "> 1%",
+    "IE 10"
+  ]
+}
