@@ -70,11 +70,4 @@
   },
   "homepage": "https://github.com/alita-moore/EIP-Bot#readme"
 
-
- 
-  "browserslist": [
-    "last 1 version",
-    "> 1%",
-    "IE 10"
-  ]
 }
