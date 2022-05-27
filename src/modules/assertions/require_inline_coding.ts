@@ -1,10 +1,10 @@
-//import { context } from "@actions/github";
+import { context } from "@actions/github";
 import _ from "lodash";
 export const  requireInlineCoding = () => {
-  /* test
-  const solfileRegex = /http:\/\/\S+.sol/g;
-  const prBodyString = (JSON.stringify(context.payload?.pull_request?.body) != null) ? JSON.stringify(context.payload?.pull_request?.body) : [];
-  if prBodyString != null {
+  
+  //const solfileRegex = /http:\/\/\S+.sol/g;
+  const prBodyString = (context.payload?.pull_request?.body != null) ? JSON.stringify(context.payload?.pull_request?.body) : [];
+  /*if prBodyString != null {
     const prBodyRegexMatches = (prBodyString.match(solfileRegex) !=null) ? prBodyString.match(solfileRegex) : []; 
     if (!(prBodyString) || (prBodyString.length === 0)) {return 0;}
     if (prBodyRegexMatches != null) {
