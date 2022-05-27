@@ -11,7 +11,8 @@ export const  requireInlineCoding = () => {
       for (let i = 0; i < prBodyRegexMatches.length; i++) {
         console.log(`EIP-BOT is terminating. Please replace external link http://.../file.sol: ${prBodyRegexMatches[i]} for inline code reference..`);
       }*/
-      process.exit(1);
+      //process.exit(1);
+    return 0;
     //} 
   }
   return 1;
