@@ -2,7 +2,7 @@ import { context } from "@actions/github";
 import _ from "lodash";
 export const  requireInlineCoding = () => {
   const solfileRegex = /http:\/\/\S+.sol/g;
-  If (context.payload?.pull_request?.body != null) {
+  if (context.payload?.pull_request?.body != null) {
    const prBodyString= JSON.stringify(context.payload?.pull_request?.body);
    const prBodyRegexMatches = prBodyString.match(solfileRegex) !=null ? prBodyString.match(solfileRegex) : []; 
    if (!(prBodyString) || (prBodyString.length === 0)) {return 0;}
