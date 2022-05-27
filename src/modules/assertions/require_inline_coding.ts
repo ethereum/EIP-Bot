@@ -7,13 +7,13 @@ export const  requireInlineCoding = () => {
   const prBodyRegexMatches = (prBodyString != null ) ? prBodyString.match(solfileRegex) : null ; 
   
   if (!(prBodyString) || (prBodyString.length === 0)) {return 0;}
-  /*  if (prBodyRegexMatches != null) {
-      for (let i = 0; i < prBodyRegexMatches.length; i++) {
+  if (prBodyRegexMatches != null) {
+     /* for (let i = 0; i < prBodyRegexMatches.length; i++) {
         console.log(`EIP-BOT is terminating. Please replace external link http://.../file.sol: ${prBodyRegexMatches[i]} for inline code reference..`);
       }*/
-      //process.exit(1);
-  //  return 0;
-    //} 
+     process.exit(1);
+    
+   } 
   //}
   return 1;
 };
