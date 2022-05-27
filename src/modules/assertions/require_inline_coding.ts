@@ -3,7 +3,7 @@ import _ from "lodash";
 export const  requireInlineCoding = () => {
   const solfileRegex = /http:\/\/\S+.sol/g;
   const prBodyString= JSON.stringify(context.payload?.pull_request?.body);
-  const prBodyRegexMatches = prBodyString.match(solfileRegex) !=null ? prBodyString.match(solfileRegex) : []; 
+  const prBodyRegexMatches = prBodyString.toString().match(solfileRegex) !=null ? prBodyString.toString().match(solfileRegex) : []; 
   if (!(prBodyString) || (prBodyString.length === 0)) {return 0;}
   if (prBodyRegexMatches != null) {
     for (let i = 0; i < prBodyRegexMatches.length; i++) {
