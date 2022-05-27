@@ -4,7 +4,7 @@ export const  requireInlineCoding = () => {
   
   //const solfileRegex = /http:\/\/\S+.sol/g;
   const prBodyString = (context.payload?.pull_request?.body != null) ? JSON.stringify(context.payload?.pull_request?.body) : [];
-  if prBodyString != null {
+  if (prBodyString != null) {
     /*const prBodyRegexMatches = (prBodyString.match(solfileRegex) !=null) ? prBodyString.match(solfileRegex) : []; 
     if (!(prBodyString) || (prBodyString.length === 0)) {return 0;}
     if (prBodyRegexMatches != null) {
