@@ -12,7 +12,7 @@ export const  requireInlineCoding = () => {
         console.log(`EIP-BOT is terminating. Please replace external link http://.../file.sol: ${prBodyRegexMatches[i]} for inline code reference..`);
       }*/
       process.exit(1);
-    } 
+    //} 
   }
   return 1;
 };
