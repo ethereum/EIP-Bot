@@ -19,7 +19,7 @@ const getEventName = () => {
 };
 
 const getPullNumber = () => {
-  return context.payload?.pull_request?.number || process.env.PR_NUMBER;
+  return parseInt(context.payload?.pull_request?.number || process.env.PR_NUMBER);
 };
 
 const getPullRequestFromNumber = (pullNumber: number) => {
