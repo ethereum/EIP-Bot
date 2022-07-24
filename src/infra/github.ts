@@ -19,10 +19,7 @@ const getEventName = () => {
 };
 
 const getPullNumber = () => {
-  const result = /refs\/pull\/(\d+)\/merge/g.exec(process.env.GITHUB_REF);
-  if (!result) throw new Error("Reference not found.");
-  const [, pullRequestId] = result;
-  return pullRequestId;
+  return context.payload?.pull_request?.number || process.env.PR_NUMBER;
 };
 
 const getPullRequestFromNumber = (pullNumber: number) => {
