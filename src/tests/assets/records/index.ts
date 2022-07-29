@@ -166,10 +166,8 @@ export const getMockRecords = async () => {
   const PR3654_1 = await import("./3654/1.json");
   const PR3654_2 = await import("./3654/2.json");
   const PR3623 = await import("./3623.json");
-  const PR3581 = await import("./3581.json");
   const PR4189 = await import("./4189.json");
   const PR4478 = await import("./4478.json");
-  const PR4393 = await import("./4393.json");
   const PR4499 = await import("./4499.json");
   const PR4506 = await import("./4506.json");
   const PR4361 = await import("./4361.json");
