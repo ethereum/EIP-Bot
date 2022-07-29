@@ -12,7 +12,6 @@ export enum SavedRecord {
    * The fix to this bug was considering EIP_EDITORS to be dynamic based on the eip / file
    * at hand. So if an editor is an author they won't be consider an editor for that test.
    * */
-  PR3670 = "3670",
   PR3596 = "3596",
   /** **SHOULD PASS**
    *
@@ -182,7 +181,6 @@ export const getMockRecords = async () => {
   const PR3768_1 = await import("./3768/1.json");
   const PR3768_2 = await import("./3768/2.json");
   const PR3596 = await import("./3596.json");
-  const PR3670 = await import("./3670.json");
   const PR3654_1 = await import("./3654/1.json");
   const PR3654_2 = await import("./3654/2.json");
   const PR3623 = await import("./3623.json");
@@ -201,7 +199,6 @@ export const getMockRecords = async () => {
   assertMethods(PR3768_1);
   assertMethods(PR3768_2);
   assertMethods(PR3596);
-  assertMethods(PR3670);
   assertMethods(PR3654_1);
   assertMethods(PR3654_2);
   assertMethods(PR3623);
@@ -214,7 +211,6 @@ export const getMockRecords = async () => {
 
   const Records: { [k in keyof typeof SavedRecord]: MockRecord[] } = {
     PR3596: PR3596.default,
-    PR3670: PR3670.default,
     PR3654_1: PR3654_1.default,
     PR3654_2: PR3654_2.default,
     PR3767: PR3767.default,
