@@ -5,6 +5,9 @@ inputs:
     description: |-
       The Github token to be used. This is optional because if it's not provided the bot will use a token from a brand new account not associated with any repositories and the key is gone
     required: false
+  PR_NUMBER:
+    description: The Pull Request number
+    required: false
   CORE_EDITORS:
     description: a list of editors in the following format "@github_username,@..." to be mentioned for core eip changes
     required: true
