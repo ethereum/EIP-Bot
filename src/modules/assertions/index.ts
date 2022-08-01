@@ -30,6 +30,7 @@ export * from "./assert_constant_eip_number";
 export * from "./assert_valid_status";
 export * from "./assert_eip_editor_approval";
 export * from "./assert_constant_status";
+export * from "./require_max_file_number";
 
 const _RequireAuthors = new RequireAuthors();
 export const requireAuthors = castTo<typeof _RequireAuthors.requireAuthors>(
