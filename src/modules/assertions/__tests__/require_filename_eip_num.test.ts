@@ -101,6 +101,14 @@ describe("requireFilenameEipNum", () => {
         );
       });
 
+      it("should not explode with graceful if there's only one editor approval", async () => {
+        // this should return the name of one editor
+        getApprovals.mockResolvedValue(["@test3"]);
+        await _RequireFilenameEIPNum.attemptEditorApprovalGracefulTermination(
+          "test"
+        );
+      });
+
       it("should not explode with graceful if there's no editor approval", async () => {
         // this should return the name of one non-editor
         getApprovals.mockResolvedValue(["@test2"]);
