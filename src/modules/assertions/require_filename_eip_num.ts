@@ -108,7 +108,7 @@ export class RequireFilenameEIPNum implements IRequireFilenameEIPNum {
     const approvals = await this.getApprovals();
 
     const isEditorApproved =
-      _.intersection(editorApprovals, approvals).length !== 0;
+      _.intersection(editorApprovals, approvals).length >= 2;
     if (isEditorApproved) {
       throw new GracefulTermination(
         multiLineString(" ")(

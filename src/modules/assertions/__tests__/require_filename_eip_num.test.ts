@@ -46,7 +46,7 @@ describe("requireFilenameEipNum", () => {
   _RequireFilenameEIPNum.attemptAssetGracefulTermination = attemptAsset;
 
   beforeEach(async () => {
-    requireEIPEditors.mockReturnValue(["@test"]);
+    requireEIPEditors.mockReturnValue(["@test","@test3"]);
     getPullRequestFiles.mockResolvedValue(FileFactory());
     requirePr.mockResolvedValue(await PRFactory());
     // no approvals
@@ -87,8 +87,8 @@ describe("requireFilenameEipNum", () => {
   describe("graceful termination routes", () => {
     describe("editor approval", () => {
       it("should explode with graceful termination with editor approval", async () => {
-        // this should return the name of one of the editors
-        getApprovals.mockResolvedValue(["@test"]);
+        // this should return the names of two of the editors
+        getApprovals.mockResolvedValue(["@test","@test3"]);
         await expectErrorWithHandler(
           () =>
             _RequireFilenameEIPNum.attemptEditorApprovalGracefulTermination(
@@ -101,8 +101,16 @@ describe("requireFilenameEipNum", () => {
         );
       });
 
+      it("should not explode with graceful if there's only one editor approval", async () => {
+        // this should return the name of one editor
+        getApprovals.mockResolvedValue(["@test3"]);
+        await _RequireFilenameEIPNum.attemptEditorApprovalGracefulTermination(
+          "test"
+        );
+      });
+
       it("should not explode with graceful if there's no editor approval", async () => {
-        // this should return the name of one of the editors
+        // this should return the name of one non-editor
         getApprovals.mockResolvedValue(["@test2"]);
         await _RequireFilenameEIPNum.attemptEditorApprovalGracefulTermination(
           "test"
