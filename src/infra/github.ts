@@ -20,7 +20,7 @@ const getEventName = () => {
 };
 
 const getPullNumber = () => {
-  return context.payload?.pull_request?.number || parseInt(core.getInput('PR_NUMBER', { required: true }), 10);
+  return context.payload?.pull_request?.number || parseInt(process.env.PR_NUMBER, 10);
 };
 
 const getPullRequestFromNumber = (pullNumber: number) => {
