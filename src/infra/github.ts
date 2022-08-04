@@ -1,4 +1,3 @@
-import * as core from "@actions/core";
 import { context, getOctokit } from "@actions/github";
 import {
   ChangeTypes,
@@ -20,7 +19,7 @@ const getEventName = () => {
 };
 
 const getPullNumber = () => {
-  return context.payload?.pull_request?.number || parseInt(process.env.PR_NUMBER, 10);
+  return context.payload?.pull_request?.number || parseInt(process.env.PR_NUMBER as string, 10);
 };
 
 const getPullRequestFromNumber = (pullNumber: number) => {
