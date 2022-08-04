@@ -153,7 +153,7 @@ const getContextIssueComments = (): Promise<IssueComments> => {
     .listComments({
       owner: context.repo.owner,
       repo: context.repo.repo,
-      issue_number: context.issue.number
+      issue_number: getPullNumber()
     })
     .then((res) => res.data);
 };
@@ -180,7 +180,7 @@ const createCommentOnContext = (message: string): Promise<any> => {
   return Github.issues.createComment({
     owner: context.repo.owner,
     repo: context.repo.repo,
-    issue_number: context.issue.number,
+    issue_number: getPullNumber(),
     body: message
   });
 };
@@ -190,7 +190,7 @@ const getContextLabels = async (): Promise<ChangeTypes[]> => {
   const { data: issue } = await Github.issues.get({
     owner: context.repo.owner,
     repo: context.repo.repo,
-    issue_number: context.issue.number
+    issue_number: getPullNumber()
   });
 
   const labels = issue.labels;
@@ -213,7 +213,7 @@ const setLabels = async (labels: string[]): Promise<void> => {
     .setLabels({
       owner: context.repo.owner,
       repo: context.repo.repo,
-      issue_number: context.issue.number,
+      issue_number: getPullNumber(),
       // @ts-expect-error the expected type is (string[] & {name: string}[]) | undefined
       // but string[] and {name: string}[] cannot simultaneously coincide
       labels
@@ -234,7 +234,7 @@ const addLabels = async (labels: string[]): Promise<void> => {
   await _addLabels({
     owner: context.repo.owner,
     repo: context.repo.repo,
-    issue_number: context.issue.number,
+    issue_number: getPullNumber(),
     labels
   });
 };
@@ -253,7 +253,7 @@ const removeLabels = async (labels: string[]) => {
       Github.issues.removeLabel({
         owner: context.repo.owner,
         repo: context.repo.repo,
-        issue_number: context.issue.number,
+        issue_number: getPullNumber(),
         name: label
       })
     )
