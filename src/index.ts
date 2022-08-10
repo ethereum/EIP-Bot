@@ -18,7 +18,7 @@ const defaultEnv = {
   NODE_ENV: "production"
 };
 
-for (property in defaultEnv) {
+for (let property in defaultEnv) {
   if (!process.env[property]) {
     process.env[property] = defaultEnv[property];
   }
