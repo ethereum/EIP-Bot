@@ -7,7 +7,6 @@ import {
   assertConstantStatus,
   assertFilenameAndFileNumbersMatch,
   assertValidStatus,
-  requireEvent,
   requireFiles,
   requirePr,
   requirePullNumber
@@ -33,18 +32,6 @@ describe("Requires", () => {
   afterEach(() => {
     clearContext(context);
     getOctokit.mockClear();
-  });
-
-  describe("requireEvent", () => {
-    it("should accept event type pull_request_target", () => {
-      const event = requireEvent();
-      expect(event).toBe(context.eventName);
-    });
-
-    it("should throw and error if event is not expected type", async () => {
-      context.eventName = "";
-      await expectError(requireEvent);
-    });
   });
 
   describe("requirePullNumber", () => {

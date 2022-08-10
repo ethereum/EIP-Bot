@@ -1,6 +1,5 @@
 import { setFailed } from "@actions/core";
 import {
-  requireEvent,
   requireFiles,
   requirePr
 } from "#/assertions";
@@ -26,9 +25,6 @@ import { purifyTestResults } from "#/main/modules/purify_test_results";
 import { getCommentMessage } from "#/main/modules/get_comment_message";
 
 export const _main_ = async () => {
-  // Verify correct environment and request context
-  requireEvent();
-
   const pr = await requirePr();
 
   // Collect the changes made in the given PR from base <-> head for eip files
