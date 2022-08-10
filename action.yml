@@ -31,5 +31,7 @@ inputs:
     description: a list of users or users or gorups in the following format "@github_username,@..."; these users will be called when the bot experiences an unexpected failure
 
 runs:
-  using: node16
-  main: build/src/index.js
+  using: "composite"
+  steps:
+    - run: cd ${{github.action_path}} && yarn install && yarn build && ERC_EDITORS=${{ inputs.ERC_EDITORS }} CORE_EDITORS=${{ inputs.CORE_EDITORS }} NETWORKING_EDITORS=${{ inputs.NETWORKING_EDITORS }} INTERFACE_EDITORS=${{ inputs.INTERFACE_EDITORS }} META_EDITORS=${{ inputs.META_EDITORS }} INFORMATIONAL_EDITORS=${{ inputs.INFORMATIONAL_EDITORS }} GITHUB_TOKEN=${{ inputs.GITHUB-TOKEN }} MAINTAINERS=${{ inputs.MAINTAINERS }} PR_NUMBER=${{ inputs.PR_NUMBER }} NODE_ENV=production node build/src/index.js
+      shell: bash
