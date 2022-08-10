@@ -164,12 +164,12 @@ describe("requireEditors", () => {
         // this should be ignored for eip 1
         category: EIPCategory.erc,
         status: EipStatus.living,
-        eip: 1234
+        filenameEipNum: 1234
       },
       head: {
         // only the status should be considered,
         status: EipStatus.draft,
-        eip: 1234
+        filenameEipNum: 1234
       }
     });
 
