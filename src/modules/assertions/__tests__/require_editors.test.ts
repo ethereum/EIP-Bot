@@ -10,7 +10,7 @@ import {
 } from "src/domain/Constants";
 import { expectError, mockGithubContext } from "src/tests/testutils";
 import { RequireEditors as _RequireEditors } from "#/assertions/require_editors";
-import { CORE_EDITORS, ERC_EDITORS, FileDiff } from "src/domain";
+import { CORE_EDITORS, ERC_EDITORS, FileDiff, EipStatus } from "src/domain";
 import { FileDiffFactory } from "src/tests/factories/fileDiffFactory";
 
 describe("_requireEIPEditors", () => {
@@ -158,16 +158,18 @@ describe("requireEditors", () => {
     });
   });
 
-  it("should ignore category and return all editors if eip 1", async () => {
+  it("should ignore category and return all editors if status is living", async () => {
     const fileDiff = FileDiffFactory({
       base: {
         // this should be ignored for eip 1
         category: EIPCategory.erc,
-        filenameEipNum: 1
+        status: EipStatus.living,
+        filenameEipNum: 1234
       },
       head: {
-        // only the base eip num should be considered
-        filenameEipNum: 2
+        // only the status should be considered,
+        status: EipStatus.draft,
+        filenameEipNum: 1234
       }
     });
 
