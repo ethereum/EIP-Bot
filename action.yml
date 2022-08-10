@@ -46,3 +46,4 @@ runs:
         MAINTAINERS: ${{ inputs.MAINTAINERS }}
         PR_NUMBER: ${{ inputs.PR_NUMBER }}
         NODE_ENV: production
+
