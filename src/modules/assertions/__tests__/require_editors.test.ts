@@ -10,7 +10,7 @@ import {
 } from "src/domain/Constants";
 import { expectError, mockGithubContext } from "src/tests/testutils";
 import { RequireEditors as _RequireEditors } from "#/assertions/require_editors";
-import { CORE_EDITORS, ERC_EDITORS, FileDiff, EIPStatus } from "src/domain";
+import { CORE_EDITORS, ERC_EDITORS, FileDiff, EipStatus } from "src/domain";
 import { FileDiffFactory } from "src/tests/factories/fileDiffFactory";
 
 describe("_requireEIPEditors", () => {
