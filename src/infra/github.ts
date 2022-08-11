@@ -13,6 +13,8 @@ import {
   Review
 } from "src/domain";
 import _ from "lodash";
+import { RequestError } from "@octokit/request-error";
+import * as path from "path";
 
 const getEventName = () => {
   return context.eventName;
@@ -77,14 +79,40 @@ const getRepoFilenameContent = (
   sha: string
 ): Promise<ContentData> => {
   const Github = getOctokit(GITHUB_TOKEN).rest;
-  return Github.repos
-    .getContent({
-      owner: context.repo.owner,
-      repo: context.repo.repo,
-      path: filename,
-      ref: sha
-    })
-    .then((res) => res.data);
+  try {
+    return Github.repos
+      .getContent({
+        owner: context.repo.owner,
+        repo: context.repo.repo,
+        path: filename,
+        ref: sha
+      })
+      .then((res) => res.data);
+  } catch (err) {
+    if (err instanceof RequestError) {
+      if (err.status == 404) {
+        return new Promise((resolve) => resolve({
+          type: "file",
+          size: 0,
+          name: path.basename(filename),
+          path: filename,
+          content: "",
+          encoding: "utf-8",
+          sha: sha,
+          url: "",
+          git_url: null,
+          html_url: null,
+          download_url: null,
+          _links: {
+            git: null,
+            html: null,
+            self: ""
+          }
+        }));;
+      }
+    }
+    throw err;
+  }
 };
 
 const requestReview = (pr: PR, reviewer: string) => {

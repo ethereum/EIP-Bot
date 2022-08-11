@@ -33,7 +33,7 @@ inputs:
 runs:
   using: composite
   steps:
-    - run: node ${{github.action_path}}/build/src/index.js
+    - run: node --trace-warnings ${{github.action_path}}/build/src/index.js
       shell: bash
       env:
         ERC_EDITORS: ${{ inputs.ERC_EDITORS }}
