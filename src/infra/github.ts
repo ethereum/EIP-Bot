@@ -16,26 +16,24 @@ import _ from "lodash";
 import { RequestError } from "@octokit/request-error";
 import * as path from "path";
 
-const getEventName = () => {
+async function getEventName() {
   return context.eventName;
 };
 
-const getPullNumber = () => {
+async function getPullNumber() {
   return context.payload?.pull_request?.number || parseInt(process.env.PR_NUMBER as string, 10);
 };
 
-const getPullRequestFromNumber = (pullNumber: number) => {
+async function getPullRequestFromNumber(pullNumber: number): Promise<PR> {
   const github = getOctokit(GITHUB_TOKEN).rest;
 
-  return github.pulls
+  const res = await github.pulls
     .get({
       repo: context.repo.repo,
       owner: context.repo.owner,
       pull_number: pullNumber
-    })
-    .then((res) => {
-      return res.data;
     });
+  return res.data;
 };
 
 /**
@@ -43,10 +41,10 @@ const getPullRequestFromNumber = (pullNumber: number) => {
  * meant to avoid losing data if there's more data than can be retrieved in one
  * request
  * */
-const getPullRequestReviews = async (
+async function getPullRequestReviews(
   pullNumber: number,
-  page = 1
-): Promise<Review[]> => {
+  page: number = 1
+): Promise<Review[]> {
   const Github = getOctokit(GITHUB_TOKEN).rest;
   const { data: reviews }: { data: Review[] } = await Github.pulls.listReviews({
     owner: context.repo.owner,
@@ -63,35 +61,36 @@ const getPullRequestReviews = async (
   );
 };
 
-const getPullRequestFiles = (pullNumber: number) => {
+async function getPullRequestFiles(pullNumber: number) {
   const Github = getOctokit(GITHUB_TOKEN).rest;
-  return Github.pulls
+  const res = await Github.pulls
     .listFiles({
       pull_number: pullNumber,
       repo: context.repo.repo,
       owner: context.repo.owner
-    })
-    .then((res) => res.data);
+    });
+  return res.data;
 };
 
-const getRepoFilenameContent = (
+async function getRepoFilenameContent(
   filename: string,
   sha: string
-): Promise<ContentData> => {
+): Promise<ContentData> {
   const Github = getOctokit(GITHUB_TOKEN).rest;
   try {
-    return Github.repos
+    const res = await Github.repos
       .getContent({
         owner: context.repo.owner,
         repo: context.repo.repo,
         path: filename,
         ref: sha
-      })
-      .then((res) => res.data);
+      });
+    return res.data;
   } catch (err) {
+    console.trace(err);
     if (err instanceof RequestError) {
       if (err.status == 404) {
-        return new Promise((resolve) => resolve({
+        return {
           type: "file",
           size: 0,
           name: path.basename(filename),
@@ -108,14 +107,14 @@ const getRepoFilenameContent = (
             html: null,
             self: ""
           }
-        }));;
+        };
       }
     }
     throw err;
   }
 };
 
-const requestReview = (pr: PR, reviewer: string) => {
+async function requestReview(pr: PR, reviewer: string) {
   const Github = getOctokit(GITHUB_TOKEN).rest;
   return (
     Github.pulls
@@ -130,7 +129,7 @@ const requestReview = (pr: PR, reviewer: string) => {
   );
 };
 
-const resolveUserByEmail = async (email: string) => {
+async function resolveUserByEmail(email: string) {
   const Github = getOctokit(GITHUB_TOKEN).rest;
 
   // @ts-ignore
@@ -167,57 +166,57 @@ const resolveUserByEmail = async (email: string) => {
   return;
 };
 
-const getSelf = (): Promise<GithubSelf> => {
+async function getSelf(): Promise<GithubSelf> {
   const Github = getOctokit(GITHUB_TOKEN).rest;
-  return Github.users.getAuthenticated().then((res) => {
-    return res.data;
-  });
+  const res = await Github.users.getAuthenticated();
+  return res.data;
 };
 
-const getContextIssueComments = (): Promise<IssueComments> => {
+async function getContextIssueComments(): Promise<IssueComments> {
   const Github = getOctokit(GITHUB_TOKEN).rest;
-  return Github.issues
+  const res = await Github.issues
     .listComments({
       owner: context.repo.owner,
       repo: context.repo.repo,
-      issue_number: getPullNumber()
-    })
-    .then((res) => res.data);
-};
-
-const updateComment = (commentId: number, message: string): Promise<any> => {
-  const Github = getOctokit(GITHUB_TOKEN).rest;
-  return Github.issues
-    .updateComment({
-      owner: context.repo.owner,
-      repo: context.repo.repo,
-      comment_id: commentId,
-      body: message
-    })
-    .catch((err) => {
-      if (err?.request?.body) {
-        err.request.body = JSON.parse(err.request.body).body;
-      }
-      throw err;
+      issue_number: await getPullNumber()
     });
+  return res.data;
 };
 
-const createCommentOnContext = (message: string): Promise<any> => {
+async function updateComment(commentId: number, message: string): Promise<any> {
+  const Github = getOctokit(GITHUB_TOKEN).rest;
+  try {
+    return await Github.issues
+      .updateComment({
+        owner: context.repo.owner,
+        repo: context.repo.repo,
+        comment_id: commentId,
+        body: message
+      });
+  } catch (err: any) {
+    if (err?.request?.body) {
+      err.request.body = JSON.parse(err.request.body).body;
+    }
+    throw err;
+  }
+};
+
+async function createCommentOnContext(message: string): Promise<any> {
   const Github = getOctokit(GITHUB_TOKEN).rest;
   return Github.issues.createComment({
     owner: context.repo.owner,
     repo: context.repo.repo,
-    issue_number: getPullNumber(),
+    issue_number: await getPullNumber(),
     body: message
   });
 };
 
-const getContextLabels = async (): Promise<ChangeTypes[]> => {
+async function getContextLabels(): Promise<ChangeTypes[]> {
   const Github = getOctokit(GITHUB_TOKEN).rest;
   const { data: issue } = await Github.issues.get({
     owner: context.repo.owner,
     repo: context.repo.repo,
-    issue_number: getPullNumber()
+    issue_number: await getPullNumber()
   });
 
   const labels = issue.labels;
@@ -234,13 +233,13 @@ const getContextLabels = async (): Promise<ChangeTypes[]> => {
     .filter(isChangeType);
 };
 
-const setLabels = async (labels: string[]): Promise<void> => {
+async function setLabels(labels: string[]): Promise<void> {
   const Github = getOctokit(GITHUB_TOKEN).rest;
   await Github.issues
     .setLabels({
       owner: context.repo.owner,
       repo: context.repo.repo,
-      issue_number: getPullNumber(),
+      issue_number: await getPullNumber(),
       // @ts-expect-error the expected type is (string[] & {name: string}[]) | undefined
       // but string[] and {name: string}[] cannot simultaneously coincide
       labels
@@ -248,7 +247,7 @@ const setLabels = async (labels: string[]): Promise<void> => {
     .then((res) => res);
 };
 
-const addLabels = async (labels: string[]): Promise<void> => {
+async function addLabels(labels: string[]): Promise<void> {
   const Github = getOctokit(GITHUB_TOKEN).rest;
 
   // makes it easy to maintain the integration tests and the
@@ -261,12 +260,12 @@ const addLabels = async (labels: string[]): Promise<void> => {
   await _addLabels({
     owner: context.repo.owner,
     repo: context.repo.repo,
-    issue_number: getPullNumber(),
+    issue_number: await getPullNumber(),
     labels
   });
 };
 
-const removeLabels = async (labels: string[]) => {
+async function removeLabels(labels: string[]) {
   const Github = getOctokit(GITHUB_TOKEN).rest;
 
   // makes it easy to maintain the integration tests and the
@@ -276,11 +275,11 @@ const removeLabels = async (labels: string[]) => {
   await Promise.all(
     // this will submit a max of three requests which is not enough to
     // rate limit
-    labels.map((label) =>
-      Github.issues.removeLabel({
+    labels.map(async (label) =>
+      await Github.issues.removeLabel({
         owner: context.repo.owner,
         repo: context.repo.repo,
-        issue_number: getPullNumber(),
+        issue_number: await getPullNumber(),
         name: label
       })
     )
