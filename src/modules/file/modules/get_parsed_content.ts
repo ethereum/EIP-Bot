@@ -19,11 +19,6 @@ export const getParsedContent = async (
     .then((res) => res as ContentFile);
 
   // Assert type assumptions
-  if (!data?.content) {
-    throw new UnexpectedError(
-      `requested file ${filename} at ref sha ${sha} contains no content`
-    );
-  }
   if (!data?.path) {
     throw new UnexpectedError(
       `requested file ${filename} at ref sha ${sha} has no path`
@@ -33,6 +28,14 @@ export const getParsedContent = async (
     throw new UnexpectedError(
       `requested file ${filename} at ref sha ${sha} has no name`
     );
+  }
+  if (!data?.content) {
+    console.warn(`requested file ${filename} at ref sha ${sha} contains no content`);
+    return {
+      path: data.path,
+      name: data.name,
+      content: frontmatter('')
+    };
   }
 
   // Return parsed information
