@@ -4,7 +4,7 @@ import { CriticalError } from "src/domain/exceptions";
 import { github } from "src/infra";
 
 export const requirePr = async (): Promise<PR> => {
-  const prNum = requirePullNumber();
+  const prNum = await requirePullNumber();
   const pr = await github.getPullRequestFromNumber(prNum);
 
   if (pr.merged && process.env.NODE_ENV !== "development") {
