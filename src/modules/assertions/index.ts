@@ -21,7 +21,6 @@ import { AssertEIP1EditorApprovals } from "#/assertions/assert_eip1_editor_appro
 import { github } from "src/infra";
 
 export * from "./require_pull_number";
-export * from "./require_event";
 export * from "./require_pr";
 export * from "./assert_is_approved_by_authors";
 export * from "./require_files";

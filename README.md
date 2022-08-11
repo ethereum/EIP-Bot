@@ -222,9 +222,3 @@ But comparisons are maintained
 ```
 
 In addition to the above use case and string eradication it centralizes the strings to be matched so they can be easily changed. So, making life much easier if you wanted to change the names of statuses on an EIP.
-
-# Contributors
-
-- @alita-moore
-- @MicahZoltu
-- @Pandapip1

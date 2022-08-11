@@ -1,4 +1,4 @@
-import { EIPCategory, EIPTypes, FileDiff } from "src/domain";
+import { EIPCategory, EIPTypes, FileDiff, EipStatus } from "src/domain";
 import { IRequireEditors } from "#/assertions/Domain/types";
 import _ from "lodash";
 import { RequirementViolation } from "src/domain/exceptions";
@@ -58,7 +58,7 @@ export class RequireEditors implements IRequireEditors {
       NETWORKING_EDITORS
     } = this;
 
-    if (!fileDiff || fileDiff.base.filenameEipNum === 1) {
+    if (!fileDiff || fileDiff.base.status === EipStatus.living) {
       // if no fileDiff is provided (meaning it's a new file) then return all editors
       return this._requireEIPEditors(
         _.concat(

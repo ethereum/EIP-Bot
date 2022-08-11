@@ -1,0 +1,38 @@
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  deploy:
+    name: Build and Deploy
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout
+        uses: actions/checkout@2541b1294d2704b0964813337f33b291d3f8596b
+        with:
+          persist-credentials: false
+          fetch-depth: 0
+      
+      - name: Setup
+        uses: actions/setup-node@094c36e88e2a3ffdf4d3a5bb935088ac39a46acc
+        with:
+          node-version: 16
+      
+      - name: Install
+        run: yarn install --immutable --immutable-cache --check-cache
+
+      - name: Build
+        run: yarn run build
+      
+      - name: Remove Gitignore
+        run: rm .gitignore
+      
+      - name: Commit & Push changes
+        uses: actions-js/push@5f565701a8b9f9aa6b7efc25f28994eabfcf5312
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          message: Submit Build
+          branch: dist
+          force: true

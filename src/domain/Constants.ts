@@ -221,7 +221,8 @@ export enum EipStatus {
   withdrawn = "withdrawn",
   lastCall = "last call",
   review = "review",
-  final = "final"
+  final = "final",
+  living = "living"
 }
 
 export enum FileStatus {
