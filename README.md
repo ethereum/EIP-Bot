@@ -5,24 +5,66 @@ This Github Actions integrated bot lints EIPs and provides feedback for authors;
 # Usage
 
 ```yml
-on: [pull_request_target]
+on:
+  workflow_run:
+    workflows:
+      - Auto Review Bot Trigger
+    types:
+      - completed
 
+name: Auto Review Bot
 jobs:
-  auto_merge_bot:
+  auto-review-bot:
     runs-on: ubuntu-latest
-    name: EIP Auto-Merge Bot
+    name: Run
     steps:
-      - name: Checkout
-        uses: actions/checkout@v2
-      - name: Setup Node.js Environment
-        uses: actions/setup-node@v2
+      - name: Fetch PR Number
+        uses: dawidd6/action-download-artifact@6765a42d86407a3d532749069ac03705ad82ebc6
         with:
-          node-version: "14"
-      - name: auto-merge-bot
-        uses: ethereum/EIP-Bot@<commit hash> # master
-        id: auto-merge-bot
+          name: pr-number
+          workflow: auto-review-trigger.yml
+          run_id: ${{ github.event.workflow_run.id }}
+
+      - name: Save PR Number
+        id: save-pr-number
+        run: echo "::set-output name=pr::$(cat pr-number.txt)"
+
+      - name: Checkout
+        uses: actions/checkout@2541b1294d2704b0964813337f33b291d3f8596b
+        with:
+          repository: ethereum/EIPs # Default, but best to be explicit here
+          ref: master
+
+      - name: Setup Node.js Environment
+        uses: actions/setup-node@2fddd8803e2f5c9604345a0b591c3020ee971a93
+        with:
+          node-version: 16
+
+      - name: Auto Review Bot
+        id: auto-review-bot
+        uses: ethereum/EIP-Bot@1e1bb6a58e02d28e9afa9462b00a518d9b47860e # dist
         with:
           GITHUB-TOKEN: ${{ secrets.TOKEN }}
+          PR_NUMBER: ${{ steps.save-pr-number.outputs.pr }}
+          CORE_EDITORS: '@MicahZoltu,@lightclient,@axic,@gcolvin,@SamWilsn,@Pandapip1'
+          ERC_EDITORS: '@lightclient,@axic,@SamWilsn,@Pandapip1'
+          NETWORKING_EDITORS: '@MicahZoltu,@lightclient,@axic,@SamWilsn'
+          INTERFACE_EDITORS: '@lightclient,@axic,@SamWilsn,@Pandapip1'
+          META_EDITORS: '@lightclient,@axic,@gcolvin,@SamWilsn,@Pandapip1'
+          INFORMATIONAL_EDITORS: '@lightclient,@axic,@gcolvin,@SamWilsn,@Pandapip1'
+          MAINTAINERS: '@alita-moore,@mryalamanchi'
+
+      - name: Enable Auto-Merge
+        uses: reitermarkus/automerge@a25ea0de41019ad13380d22e01db8f5638f1bcdc
+        with:
+          token: ${{ secrets.TOKEN }}
+          pull-request: ${{ steps.save-pr-number.outputs.pr }}
+
+      - name: Submit Approval
+        uses: hmarr/auto-approve-action@24ec4c8cc344fe1cdde70ff37e55ace9e848a1d8
+        with:
+          github-token: ${{ secrets.TOKEN }}
+          pull-request-number: ${{ steps.save-pr-number.outputs.pr }}
 ```
 
 # Contributing
@@ -41,12 +83,12 @@ These practices are applied to make things easier to understand. If you're not c
 
 ### Testing
 
-This bot employees two types of tests
+This bot employs two types of tests
 
 - functional
 - integration
 
-A functional test if your standard unit test. Take a small function and test its behavior thoroughly. You don't need anything more than jest to do this, and your code should be organized such that the sub functions are abstracted and tested. It also uses dependency injection for this reason (it's typically easier to mock that way). Everything should have unit tests.
+A functional test is your standard unit test. Take a small function and test its behavior thoroughly. You don't need anything more than jest to do this, and your code should be organized such that the sub functions are abstracted and tested. It also uses dependency injection for this reason (it's typically easier to mock that way). Everything should have unit tests.
 
 An integration test is a test that considers the behavior as a whole. In this bot, we mock a network response from the github api using `nock`. When you do this for every network request you're able to get a snapshot and test the whole's behavior. All integration tests were once bugs that were fixed, so if you implement a feature you don't need to add an integration test. It's easier to manage this way, and it serves the purpose of reducing code regression. Integration tests tend to be brittle because of the number of different facets. So the code uses several homebrewed tools to maximize reliability.
 
