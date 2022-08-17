@@ -66,10 +66,6 @@ export const _main_ = async () => {
     }
   }
 
-  // updates labels to be as expected
-  const expectedLabels = _.uniq(_.map(results, "type"));
-  await PullRequestUseCases.updateLabels(expectedLabels);
-
   if (!results.filter((res) => res.errors).length) {
     const commentMessage = getCommentMessage(
       results,
