@@ -83,12 +83,12 @@ These practices are applied to make things easier to understand. If you're not c
 
 ### Testing
 
-This bot employees two types of tests
+This bot employs two types of tests
 
 - functional
 - integration
 
-A functional test if your standard unit test. Take a small function and test its behavior thoroughly. You don't need anything more than jest to do this, and your code should be organized such that the sub functions are abstracted and tested. It also uses dependency injection for this reason (it's typically easier to mock that way). Everything should have unit tests.
+A functional test is your standard unit test. Take a small function and test its behavior thoroughly. You don't need anything more than jest to do this, and your code should be organized such that the sub functions are abstracted and tested. It also uses dependency injection for this reason (it's typically easier to mock that way). Everything should have unit tests.
 
 An integration test is a test that considers the behavior as a whole. In this bot, we mock a network response from the github api using `nock`. When you do this for every network request you're able to get a snapshot and test the whole's behavior. All integration tests were once bugs that were fixed, so if you implement a feature you don't need to add an integration test. It's easier to manage this way, and it serves the purpose of reducing code regression. Integration tests tend to be brittle because of the number of different facets. So the code uses several homebrewed tools to maximize reliability.
 
