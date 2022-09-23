@@ -131,7 +131,7 @@ GITHUB_REPOSITORY = <your login>/EIPs
 `npm run mock` is a tool built for writing integration tests, but it can also be used to develop. `npm run mock` uses the saved network data of previous pull requests and states of those pull requests. Try this by mocking [pull 3670](https://github.com/ethereum/EIPs/pull/3670)..
 
 1. Clone this repo
-2. Setup your local enviornment (requires node > 14.x): `npm install`
+2. Setup your local environment (requires node > 14.x): `npm install`
 3. Create a .env variable in the root dir with the following information:
 
 ```
@@ -169,12 +169,12 @@ npm ERR! A complete log of this run can be found in:
 npm ERR!     /Users/alitamoore/.npm/_logs/2021-07-25T06_43_54_229Z-debug.log
 ```
 
-In this case, an error was expected because the bug in question was if the editors were mentioned if a status error occured (if the status wasn't one of the allowed types)
+In this case, an error was expected because the bug in question was if the editors were mentioned if a status error occurred (if the status wasn't one of the allowed types)
 
 ### Troubleshooting
 
 - <i>When I run it, I'm getting unexplainable errors with my github requests.</i>
-  - Github limits the number requests from a given IP, this may be avoidable if you only use the `octokit` but a VPN also works just fine
+  - Github limits the number of requests from a given IP, this may be avoidable if you only use the `octokit` but a VPN also works just fine
 
 ## Code Style Guidelines (in no particular order)
 
@@ -185,7 +185,7 @@ This repo is a living repo, and it will grow with the EIP drafting and editing p
 3. Avoid abstraction
 4. Use [enums](https://www.sohamkamani.com/javascript/enums/) as much as possible
 
-## Explanations of Style Guidenlines
+## Explanations of Style Guidelines
 
 A couple things to keep in mind if you end up making changes to this
 
@@ -197,7 +197,7 @@ Sometimes [Octokit types](https://www.npmjs.com/package/@octokit/types) can be d
 
 #### 2. <ins>Make clean and clear error messages</ins>
 
-This bot has a single goal: catch simple mistakes automatically and save the editors time. So clear error messages that allow the PR author to change it themselves is very important.
+This bot has a single goal: catch simple mistakes automatically and save the editors time. So clear error messages that allow the PR author to change it themselves are very important.
 
 #### 3. <ins>Avoid Abstraction</ins>
 
@@ -240,7 +240,7 @@ enum EnumFoo {
 type Foo = "BAR" | "BAZ";
 ```
 
-Inline declaraion is maintained
+Inline declaration is maintained
 
 ```typescript
 const foo: EnumFoo;
