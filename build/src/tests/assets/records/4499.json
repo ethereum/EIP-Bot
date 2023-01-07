@@ -1,0 +1,898 @@
+[
+    {
+        "req": {
+            "url": "https://api.github.com/repos/ethereum/EIPs/pulls/4499",
+            "method": "GET"
+        },
+        "res": {
+            "status": 200,
+            "data": {
+                "url": "https://api.github.com/repos/ethereum/EIPs/pulls/4499",
+                "id": 789039616,
+                "node_id": "PR_kwDOAq426M4vB8oA",
+                "html_url": "https://github.com/ethereum/EIPs/pull/4499",
+                "diff_url": "https://github.com/ethereum/EIPs/pull/4499.diff",
+                "patch_url": "https://github.com/ethereum/EIPs/pull/4499.patch",
+                "issue_url": "https://api.github.com/repos/ethereum/EIPs/issues/4499",
+                "number": 4499,
+                "state": "open",
+                "locked": false,
+                "title": "Update weblink to text(s) and remove Bibliography from EIP-1",
+                "user": {
+                    "login": "poojaranjan",
+                    "id": 29681685,
+                    "node_id": "MDQ6VXNlcjI5NjgxNjg1",
+                    "avatar_url": "https://avatars.githubusercontent.com/u/29681685?v=4",
+                    "gravatar_id": "",
+                    "url": "https://api.github.com/users/poojaranjan",
+                    "html_url": "https://github.com/poojaranjan",
+                    "followers_url": "https://api.github.com/users/poojaranjan/followers",
+                    "following_url": "https://api.github.com/users/poojaranjan/following{/other_user}",
+                    "gists_url": "https://api.github.com/users/poojaranjan/gists{/gist_id}",
+                    "starred_url": "https://api.github.com/users/poojaranjan/starred{/owner}{/repo}",
+                    "subscriptions_url": "https://api.github.com/users/poojaranjan/subscriptions",
+                    "organizations_url": "https://api.github.com/users/poojaranjan/orgs",
+                    "repos_url": "https://api.github.com/users/poojaranjan/repos",
+                    "events_url": "https://api.github.com/users/poojaranjan/events{/privacy}",
+                    "received_events_url": "https://api.github.com/users/poojaranjan/received_events",
+                    "type": "User",
+                    "site_admin": false
+                },
+                "body": "Updated texts to add web links wherever required to remove the \"Bibliography\" section. \r\n eg.  \r\n[formal specification] -> [formal specification](https://github.com/ethereum/yellowpaper)\r\n\r\nSome of the links were redundant and hence couldn't be added to the current version of EIP-1.",
+                "created_at": "2021-11-25T17:55:44Z",
+                "updated_at": "2021-11-26T12:27:50Z",
+                "closed_at": null,
+                "merged_at": null,
+                "merge_commit_sha": "79c82d65c7d0623a71b535816c7bf345db7c7488",
+                "assignee": null,
+                "assignees": [],
+                "requested_reviewers": [],
+                "requested_teams": [],
+                "labels": [],
+                "milestone": null,
+                "draft": false,
+                "commits_url": "https://api.github.com/repos/ethereum/EIPs/pulls/4499/commits",
+                "review_comments_url": "https://api.github.com/repos/ethereum/EIPs/pulls/4499/comments",
+                "review_comment_url": "https://api.github.com/repos/ethereum/EIPs/pulls/comments{/number}",
+                "comments_url": "https://api.github.com/repos/ethereum/EIPs/issues/4499/comments",
+                "statuses_url": "https://api.github.com/repos/ethereum/EIPs/statuses/b99cfca5f0c40e4b5d859a74c235e915ac55993d",
+                "head": {
+                    "label": "poojaranjan:E5",
+                    "ref": "E5",
+                    "sha": "b99cfca5f0c40e4b5d859a74c235e915ac55993d",
+                    "user": {
+                        "login": "poojaranjan",
+                        "id": 29681685,
+                        "node_id": "MDQ6VXNlcjI5NjgxNjg1",
+                        "avatar_url": "https://avatars.githubusercontent.com/u/29681685?v=4",
+                        "gravatar_id": "",
+                        "url": "https://api.github.com/users/poojaranjan",
+                        "html_url": "https://github.com/poojaranjan",
+                        "followers_url": "https://api.github.com/users/poojaranjan/followers",
+                        "following_url": "https://api.github.com/users/poojaranjan/following{/other_user}",
+                        "gists_url": "https://api.github.com/users/poojaranjan/gists{/gist_id}",
+                        "starred_url": "https://api.github.com/users/poojaranjan/starred{/owner}{/repo}",
+                        "subscriptions_url": "https://api.github.com/users/poojaranjan/subscriptions",
+                        "organizations_url": "https://api.github.com/users/poojaranjan/orgs",
+                        "repos_url": "https://api.github.com/users/poojaranjan/repos",
+                        "events_url": "https://api.github.com/users/poojaranjan/events{/privacy}",
+                        "received_events_url": "https://api.github.com/users/poojaranjan/received_events",
+                        "type": "User",
+                        "site_admin": false
+                    },
+                    "repo": {
+                        "id": 180483709,
+                        "node_id": "MDEwOlJlcG9zaXRvcnkxODA0ODM3MDk=",
+                        "name": "Ethereum-EIPs",
+                        "full_name": "poojaranjan/Ethereum-EIPs",
+                        "private": false,
+                        "owner": {
+                            "login": "poojaranjan",
+                            "id": 29681685,
+                            "node_id": "MDQ6VXNlcjI5NjgxNjg1",
+                            "avatar_url": "https://avatars.githubusercontent.com/u/29681685?v=4",
+                            "gravatar_id": "",
+                            "url": "https://api.github.com/users/poojaranjan",
+                            "html_url": "https://github.com/poojaranjan",
+                            "followers_url": "https://api.github.com/users/poojaranjan/followers",
+                            "following_url": "https://api.github.com/users/poojaranjan/following{/other_user}",
+                            "gists_url": "https://api.github.com/users/poojaranjan/gists{/gist_id}",
+                            "starred_url": "https://api.github.com/users/poojaranjan/starred{/owner}{/repo}",
+                            "subscriptions_url": "https://api.github.com/users/poojaranjan/subscriptions",
+                            "organizations_url": "https://api.github.com/users/poojaranjan/orgs",
+                            "repos_url": "https://api.github.com/users/poojaranjan/repos",
+                            "events_url": "https://api.github.com/users/poojaranjan/events{/privacy}",
+                            "received_events_url": "https://api.github.com/users/poojaranjan/received_events",
+                            "type": "User",
+                            "site_admin": false
+                        },
+                        "html_url": "https://github.com/poojaranjan/Ethereum-EIPs",
+                        "description": "The Ethereum Improvement Proposal repository",
+                        "fork": true,
+                        "url": "https://api.github.com/repos/poojaranjan/Ethereum-EIPs",
+                        "forks_url": "https://api.github.com/repos/poojaranjan/Ethereum-EIPs/forks",
+                        "keys_url": "https://api.github.com/repos/poojaranjan/Ethereum-EIPs/keys{/key_id}",
+                        "collaborators_url": "https://api.github.com/repos/poojaranjan/Ethereum-EIPs/collaborators{/collaborator}",
+                        "teams_url": "https://api.github.com/repos/poojaranjan/Ethereum-EIPs/teams",
+                        "hooks_url": "https://api.github.com/repos/poojaranjan/Ethereum-EIPs/hooks",
+                        "issue_events_url": "https://api.github.com/repos/poojaranjan/Ethereum-EIPs/issues/events{/number}",
+                        "events_url": "https://api.github.com/repos/poojaranjan/Ethereum-EIPs/events",
+                        "assignees_url": "https://api.github.com/repos/poojaranjan/Ethereum-EIPs/assignees{/user}",
+                        "branches_url": "https://api.github.com/repos/poojaranjan/Ethereum-EIPs/branches{/branch}",
+                        "tags_url": "https://api.github.com/repos/poojaranjan/Ethereum-EIPs/tags",
+                        "blobs_url": "https://api.github.com/repos/poojaranjan/Ethereum-EIPs/git/blobs{/sha}",
+                        "git_tags_url": "https://api.github.com/repos/poojaranjan/Ethereum-EIPs/git/tags{/sha}",
+                        "git_refs_url": "https://api.github.com/repos/poojaranjan/Ethereum-EIPs/git/refs{/sha}",
+                        "trees_url": "https://api.github.com/repos/poojaranjan/Ethereum-EIPs/git/trees{/sha}",
+                        "statuses_url": "https://api.github.com/repos/poojaranjan/Ethereum-EIPs/statuses/{sha}",
+                        "languages_url": "https://api.github.com/repos/poojaranjan/Ethereum-EIPs/languages",
+                        "stargazers_url": "https://api.github.com/repos/poojaranjan/Ethereum-EIPs/stargazers",
+                        "contributors_url": "https://api.github.com/repos/poojaranjan/Ethereum-EIPs/contributors",
+                        "subscribers_url": "https://api.github.com/repos/poojaranjan/Ethereum-EIPs/subscribers",
+                        "subscription_url": "https://api.github.com/repos/poojaranjan/Ethereum-EIPs/subscription",
+                        "commits_url": "https://api.github.com/repos/poojaranjan/Ethereum-EIPs/commits{/sha}",
+                        "git_commits_url": "https://api.github.com/repos/poojaranjan/Ethereum-EIPs/git/commits{/sha}",
+                        "comments_url": "https://api.github.com/repos/poojaranjan/Ethereum-EIPs/comments{/number}",
+                        "issue_comment_url": "https://api.github.com/repos/poojaranjan/Ethereum-EIPs/issues/comments{/number}",
+                        "contents_url": "https://api.github.com/repos/poojaranjan/Ethereum-EIPs/contents/{+path}",
+                        "compare_url": "https://api.github.com/repos/poojaranjan/Ethereum-EIPs/compare/{base}...{head}",
+                        "merges_url": "https://api.github.com/repos/poojaranjan/Ethereum-EIPs/merges",
+                        "archive_url": "https://api.github.com/repos/poojaranjan/Ethereum-EIPs/{archive_format}{/ref}",
+                        "downloads_url": "https://api.github.com/repos/poojaranjan/Ethereum-EIPs/downloads",
+                        "issues_url": "https://api.github.com/repos/poojaranjan/Ethereum-EIPs/issues{/number}",
+                        "pulls_url": "https://api.github.com/repos/poojaranjan/Ethereum-EIPs/pulls{/number}",
+                        "milestones_url": "https://api.github.com/repos/poojaranjan/Ethereum-EIPs/milestones{/number}",
+                        "notifications_url": "https://api.github.com/repos/poojaranjan/Ethereum-EIPs/notifications{?since,all,participating}",
+                        "labels_url": "https://api.github.com/repos/poojaranjan/Ethereum-EIPs/labels{/name}",
+                        "releases_url": "https://api.github.com/repos/poojaranjan/Ethereum-EIPs/releases{/id}",
+                        "deployments_url": "https://api.github.com/repos/poojaranjan/Ethereum-EIPs/deployments",
+                        "created_at": "2019-04-10T02:13:56Z",
+                        "updated_at": "2021-08-10T10:22:48Z",
+                        "pushed_at": "2021-11-25T17:50:26Z",
+                        "git_url": "git://github.com/poojaranjan/Ethereum-EIPs.git",
+                        "ssh_url": "git@github.com:poojaranjan/Ethereum-EIPs.git",
+                        "clone_url": "https://github.com/poojaranjan/Ethereum-EIPs.git",
+                        "svn_url": "https://github.com/poojaranjan/Ethereum-EIPs",
+                        "homepage": "http://eips.ethereum.org/",
+                        "size": 21545,
+                        "stargazers_count": 1,
+                        "watchers_count": 1,
+                        "language": "HTML",
+                        "has_issues": false,
+                        "has_projects": true,
+                        "has_downloads": true,
+                        "has_wiki": false,
+                        "has_pages": false,
+                        "forks_count": 1,
+                        "mirror_url": null,
+                        "archived": false,
+                        "disabled": false,
+                        "open_issues_count": 0,
+                        "license": null,
+                        "allow_forking": true,
+                        "is_template": false,
+                        "topics": [],
+                        "visibility": "public",
+                        "forks": 1,
+                        "open_issues": 0,
+                        "watchers": 1,
+                        "default_branch": "master"
+                    }
+                },
+                "base": {
+                    "label": "ethereum:master",
+                    "ref": "master",
+                    "sha": "5fe97b9980e260d053688dd086463e4e3a0fc51f",
+                    "user": {
+                        "login": "ethereum",
+                        "id": 6250754,
+                        "node_id": "MDEyOk9yZ2FuaXphdGlvbjYyNTA3NTQ=",
+                        "avatar_url": "https://avatars.githubusercontent.com/u/6250754?v=4",
+                        "gravatar_id": "",
+                        "url": "https://api.github.com/users/ethereum",
+                        "html_url": "https://github.com/ethereum",
+                        "followers_url": "https://api.github.com/users/ethereum/followers",
+                        "following_url": "https://api.github.com/users/ethereum/following{/other_user}",
+                        "gists_url": "https://api.github.com/users/ethereum/gists{/gist_id}",
+                        "starred_url": "https://api.github.com/users/ethereum/starred{/owner}{/repo}",
+                        "subscriptions_url": "https://api.github.com/users/ethereum/subscriptions",
+                        "organizations_url": "https://api.github.com/users/ethereum/orgs",
+                        "repos_url": "https://api.github.com/users/ethereum/repos",
+                        "events_url": "https://api.github.com/users/ethereum/events{/privacy}",
+                        "received_events_url": "https://api.github.com/users/ethereum/received_events",
+                        "type": "Organization",
+                        "site_admin": false
+                    },
+                    "repo": {
+                        "id": 44971752,
+                        "node_id": "MDEwOlJlcG9zaXRvcnk0NDk3MTc1Mg==",
+                        "name": "EIPs",
+                        "full_name": "ethereum/EIPs",
+                        "private": false,
+                        "owner": {
+                            "login": "ethereum",
+                            "id": 6250754,
+                            "node_id": "MDEyOk9yZ2FuaXphdGlvbjYyNTA3NTQ=",
+                            "avatar_url": "https://avatars.githubusercontent.com/u/6250754?v=4",
+                            "gravatar_id": "",
+                            "url": "https://api.github.com/users/ethereum",
+                            "html_url": "https://github.com/ethereum",
+                            "followers_url": "https://api.github.com/users/ethereum/followers",
+                            "following_url": "https://api.github.com/users/ethereum/following{/other_user}",
+                            "gists_url": "https://api.github.com/users/ethereum/gists{/gist_id}",
+                            "starred_url": "https://api.github.com/users/ethereum/starred{/owner}{/repo}",
+                            "subscriptions_url": "https://api.github.com/users/ethereum/subscriptions",
+                            "organizations_url": "https://api.github.com/users/ethereum/orgs",
+                            "repos_url": "https://api.github.com/users/ethereum/repos",
+                            "events_url": "https://api.github.com/users/ethereum/events{/privacy}",
+                            "received_events_url": "https://api.github.com/users/ethereum/received_events",
+                            "type": "Organization",
+                            "site_admin": false
+                        },
+                        "html_url": "https://github.com/ethereum/EIPs",
+                        "description": "The Ethereum Improvement Proposal repository",
+                        "fork": false,
+                        "url": "https://api.github.com/repos/ethereum/EIPs",
+                        "forks_url": "https://api.github.com/repos/ethereum/EIPs/forks",
+                        "keys_url": "https://api.github.com/repos/ethereum/EIPs/keys{/key_id}",
+                        "collaborators_url": "https://api.github.com/repos/ethereum/EIPs/collaborators{/collaborator}",
+                        "teams_url": "https://api.github.com/repos/ethereum/EIPs/teams",
+                        "hooks_url": "https://api.github.com/repos/ethereum/EIPs/hooks",
+                        "issue_events_url": "https://api.github.com/repos/ethereum/EIPs/issues/events{/number}",
+                        "events_url": "https://api.github.com/repos/ethereum/EIPs/events",
+                        "assignees_url": "https://api.github.com/repos/ethereum/EIPs/assignees{/user}",
+                        "branches_url": "https://api.github.com/repos/ethereum/EIPs/branches{/branch}",
+                        "tags_url": "https://api.github.com/repos/ethereum/EIPs/tags",
+                        "blobs_url": "https://api.github.com/repos/ethereum/EIPs/git/blobs{/sha}",
+                        "git_tags_url": "https://api.github.com/repos/ethereum/EIPs/git/tags{/sha}",
+                        "git_refs_url": "https://api.github.com/repos/ethereum/EIPs/git/refs{/sha}",
+                        "trees_url": "https://api.github.com/repos/ethereum/EIPs/git/trees{/sha}",
+                        "statuses_url": "https://api.github.com/repos/ethereum/EIPs/statuses/{sha}",
+                        "languages_url": "https://api.github.com/repos/ethereum/EIPs/languages",
+                        "stargazers_url": "https://api.github.com/repos/ethereum/EIPs/stargazers",
+                        "contributors_url": "https://api.github.com/repos/ethereum/EIPs/contributors",
+                        "subscribers_url": "https://api.github.com/repos/ethereum/EIPs/subscribers",
+                        "subscription_url": "https://api.github.com/repos/ethereum/EIPs/subscription",
+                        "commits_url": "https://api.github.com/repos/ethereum/EIPs/commits{/sha}",
+                        "git_commits_url": "https://api.github.com/repos/ethereum/EIPs/git/commits{/sha}",
+                        "comments_url": "https://api.github.com/repos/ethereum/EIPs/comments{/number}",
+                        "issue_comment_url": "https://api.github.com/repos/ethereum/EIPs/issues/comments{/number}",
+                        "contents_url": "https://api.github.com/repos/ethereum/EIPs/contents/{+path}",
+                        "compare_url": "https://api.github.com/repos/ethereum/EIPs/compare/{base}...{head}",
+                        "merges_url": "https://api.github.com/repos/ethereum/EIPs/merges",
+                        "archive_url": "https://api.github.com/repos/ethereum/EIPs/{archive_format}{/ref}",
+                        "downloads_url": "https://api.github.com/repos/ethereum/EIPs/downloads",
+                        "issues_url": "https://api.github.com/repos/ethereum/EIPs/issues{/number}",
+                        "pulls_url": "https://api.github.com/repos/ethereum/EIPs/pulls{/number}",
+                        "milestones_url": "https://api.github.com/repos/ethereum/EIPs/milestones{/number}",
+                        "notifications_url": "https://api.github.com/repos/ethereum/EIPs/notifications{?since,all,participating}",
+                        "labels_url": "https://api.github.com/repos/ethereum/EIPs/labels{/name}",
+                        "releases_url": "https://api.github.com/repos/ethereum/EIPs/releases{/id}",
+                        "deployments_url": "https://api.github.com/repos/ethereum/EIPs/deployments",
+                        "created_at": "2015-10-26T13:57:23Z",
+                        "updated_at": "2021-11-27T02:31:42Z",
+                        "pushed_at": "2021-11-26T13:40:15Z",
+                        "git_url": "git://github.com/ethereum/EIPs.git",
+                        "ssh_url": "git@github.com:ethereum/EIPs.git",
+                        "clone_url": "https://github.com/ethereum/EIPs.git",
+                        "svn_url": "https://github.com/ethereum/EIPs",
+                        "homepage": "https://eips.ethereum.org/",
+                        "size": 21543,
+                        "stargazers_count": 7885,
+                        "watchers_count": 7885,
+                        "language": "Solidity",
+                        "has_issues": true,
+                        "has_projects": true,
+                        "has_downloads": true,
+                        "has_wiki": false,
+                        "has_pages": true,
+                        "forks_count": 2976,
+                        "mirror_url": null,
+                        "archived": false,
+                        "disabled": false,
+                        "open_issues_count": 478,
+                        "license": null,
+                        "allow_forking": true,
+                        "is_template": false,
+                        "topics": [],
+                        "visibility": "public",
+                        "forks": 2976,
+                        "open_issues": 478,
+                        "watchers": 7885,
+                        "default_branch": "master"
+                    }
+                },
+                "_links": {
+                    "self": {
+                        "href": "https://api.github.com/repos/ethereum/EIPs/pulls/4499"
+                    },
+                    "html": {
+                        "href": "https://github.com/ethereum/EIPs/pull/4499"
+                    },
+                    "issue": {
+                        "href": "https://api.github.com/repos/ethereum/EIPs/issues/4499"
+                    },
+                    "comments": {
+                        "href": "https://api.github.com/repos/ethereum/EIPs/issues/4499/comments"
+                    },
+                    "review_comments": {
+                        "href": "https://api.github.com/repos/ethereum/EIPs/pulls/4499/comments"
+                    },
+                    "review_comment": {
+                        "href": "https://api.github.com/repos/ethereum/EIPs/pulls/comments{/number}"
+                    },
+                    "commits": {
+                        "href": "https://api.github.com/repos/ethereum/EIPs/pulls/4499/commits"
+                    },
+                    "statuses": {
+                        "href": "https://api.github.com/repos/ethereum/EIPs/statuses/b99cfca5f0c40e4b5d859a74c235e915ac55993d"
+                    }
+                },
+                "author_association": "CONTRIBUTOR",
+                "auto_merge": null,
+                "active_lock_reason": null,
+                "merged": false,
+                "mergeable": true,
+                "rebaseable": true,
+                "mergeable_state": "blocked",
+                "merged_by": null,
+                "comments": 1,
+                "review_comments": 0,
+                "maintainer_can_modify": true,
+                "commits": 1,
+                "additions": 7,
+                "deletions": 27,
+                "changed_files": 1
+            }
+        }
+    },
+    {
+        "req": {
+            "url": "https://api.github.com/repos/ethereum/EIPs/pulls/4499/files",
+            "method": "GET"
+        },
+        "res": {
+            "status": 200,
+            "data": [
+                {
+                    "sha": "37e3d791edb7b15dee83820279819800dd1a7524",
+                    "filename": "EIPS/eip-1.md",
+                    "status": "modified",
+                    "additions": 7,
+                    "deletions": 27,
+                    "changes": 34,
+                    "blob_url": "https://github.com/ethereum/EIPs/blob/b99cfca5f0c40e4b5d859a74c235e915ac55993d/EIPS/eip-1.md",
+                    "raw_url": "https://github.com/ethereum/EIPs/raw/b99cfca5f0c40e4b5d859a74c235e915ac55993d/EIPS/eip-1.md",
+                    "contents_url": "https://api.github.com/repos/ethereum/EIPs/contents/EIPS/eip-1.md?ref=b99cfca5f0c40e4b5d859a74c235e915ac55993d",
+                    "patch": "@@ -21,10 +21,10 @@ For Ethereum implementers, EIPs are a convenient way to track the progress of th\n \n There are three types of EIP:\n \n-- A **Standards Track EIP** describes any change that affects most or all Ethereum implementations, such as—a change to the network protocol, a change in block or transaction validity rules, proposed application standards/conventions, or any change or addition that affects the interoperability of applications using Ethereum. Standards Track EIPs consist of three parts—a design document, an implementation, and (if warranted) an update to the [formal specification]. Furthermore, Standards Track EIPs can be broken down into the following categories:\n+- A **Standards Track EIP** describes any change that affects most or all Ethereum implementations, such as—a change to the network protocol, a change in block or transaction validity rules, proposed application standards/conventions, or any change or addition that affects the interoperability of applications using Ethereum. Standards Track EIPs consist of three parts—a design document, an implementation, and (if warranted) an update to the [formal specification](https://github.com/ethereum/yellowpaper). Furthermore, Standards Track EIPs can be broken down into the following categories:\n   - **Core**: improvements requiring a consensus fork (e.g. [EIP-5](./eip-5.md), [EIP-101](./eip-101.md)), as well as changes that are not necessarily consensus critical but may be relevant to [“core dev” discussions](https://github.com/ethereum/pm) (for example, [EIP-90], and the miner/node strategy changes 2, 3, and 4 of [EIP-86](./eip-86.md)).\n-  - **Networking**: includes improvements around [devp2p] ([EIP-8](./eip-8.md)) and [Light Ethereum Subprotocol], as well as proposed improvements to network protocol specifications of [whisper] and [swarm].\n-  - **Interface**: includes improvements around client [API/RPC] specifications and standards, and also certain language-level standards like method names ([EIP-6](./eip-6.md)) and [contract ABIs]. The label “interface” aligns with the [interfaces repo] and discussion should primarily occur in that repository before an EIP is submitted to the EIPs repository.\n+  - **Networking**: includes improvements around [devp2p](https://github.com/ethereum/wiki/wiki/%C3%90%CE%9EVp2p-Wire-Protocol) ([EIP-8](./eip-8.md)) and [Light Ethereum Subprotocol](https://github.com/ethereum/wiki/wiki/Light-client-protocol), as well as proposed improvements to network protocol specifications of [whisper](https://github.com/ethereum/go-ethereum/wiki/Whisper-Overview) and [swarm](https://github.com/ethereum/go-ethereum/pull/2959).\n+  - **Interface**: includes improvements around client [API/RPC](https://github.com/ethereum/wiki/wiki/JSON-RPC) specifications and standards, and also certain language-level standards like method names ([EIP-6](./eip-6.md)) and [contract ABIs](https://github.com/ethereum/wiki/wiki/Ethereum-Contract-ABI). The label “interface” aligns with the [interfaces repo] and discussion should primarily occur in that repository before an EIP is submitted to the EIPs repository.\n   - **ERC**: application-level standards and conventions, including contract standards such as token standards ([ERC-20](./eip-20.md)), name registries ([ERC-137](./eip-137.md)), URI schemes, library/package formats, and wallet formats.\n \n - A **Meta EIP** describes a process surrounding Ethereum or proposes a change to (or an event in) a process. Process EIPs are like Standards Track EIPs but apply to areas other than the Ethereum protocol itself. They may propose an implementation, but not to Ethereum's codebase; they often require community consensus; unlike Informational EIPs, they are more than recommendations, and users are typically not free to ignore them. Examples include procedures, guidelines, changes to the decision-making process, and changes to the tools or environment used in Ethereum development. Any meta-EIP is also considered a Process EIP.\n@@ -109,7 +109,7 @@ Each EIP should have the following parts:\n \n ## EIP Formats and Templates\n \n-EIPs should be written in [markdown] format. There is a [template](https://github.com/ethereum/EIPs/blob/master/eip-template.md) to follow.\n+EIPs should be written in [markdown](https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet) format. There is a [template](https://github.com/ethereum/EIPs/blob/master/eip-template.md) to follow.\n \n ## EIP Header Preamble\n \n@@ -229,9 +229,9 @@ If the EIP isn't ready, the editor will send it back to the author for revision,\n \n Once the EIP is ready for the repository, the EIP editor will:\n \n-- Assign an EIP number (generally the PR number or, if preferred by the author, the Issue # if there was discussion in the Issues section of this repository about this EIP)\n+- Assign an EIP number (generally the PR number or, if preferred by the author, the Issue # if there was discussion in [the Issues section of this repository](https://github.com/ethereum/EIPs/issues) about this EIP)\n \n-- Merge the corresponding pull request\n+- Merge the corresponding [pull request](https://github.com/ethereum/EIPs/pulls)\n \n - Send a message back to the EIP author with the next step.\n \n@@ -253,27 +253,7 @@ EIPs are encouraged to follow [RFC 2119](https://www.ietf.org/rfc/rfc2119.txt) f\n \n ## History\n \n-This document was derived heavily from [Bitcoin's BIP-0001] written by Amir Taaki which in turn was derived from [Python's PEP-0001]. In many places text was simply copied and modified. Although the PEP-0001 text was written by Barry Warsaw, Jeremy Hylton, and David Goodger, they are not responsible for its use in the Ethereum Improvement Process, and should not be bothered with technical questions specific to Ethereum or the EIP. Please direct all comments to the EIP editors.\n-\n-### Bibliography\n-\n-[devp2p]: https://github.com/ethereum/wiki/wiki/%C3%90%CE%9EVp2p-Wire-Protocol\n-[Light Ethereum Subprotocol]: https://github.com/ethereum/wiki/wiki/Light-client-protocol\n-[whisper]: https://github.com/ethereum/go-ethereum/wiki/Whisper-Overview\n-[swarm]: https://github.com/ethereum/go-ethereum/pull/2959\n-[API/RPC]: https://github.com/ethereum/wiki/wiki/JSON-RPC\n-[contract ABIs]: https://github.com/ethereum/wiki/wiki/Ethereum-Contract-ABI\n-[interfaces repo]: https://github.com/ethereum/interfaces\n-[the Ethereum subreddit]: https://www.reddit.com/r/ethereum/\n-[one of the Ethereum Gitter chat rooms]: https://gitter.im/ethereum/\n-[pull request]: https://github.com/ethereum/EIPs/pulls\n-[formal specification]: https://github.com/ethereum/yellowpaper\n-[the Issues section of this repository]: https://github.com/ethereum/EIPs/issues\n-[markdown]: https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet\n-[Bitcoin's BIP-0001]: https://github.com/bitcoin/bips\n-[Python's PEP-0001]: https://www.python.org/dev/peps/\n-[the Ethereum Magicians forum]: https://ethereum-magicians.org/\n-[AllCoreDevs agenda GitHub Issue]: https://github.com/ethereum/pm/issues\n+This document was derived heavily from [Bitcoin's BIP-0001](https://github.com/bitcoin/bips) written by Amir Taaki which in turn was derived from [Python's PEP-0001](https://www.python.org/dev/peps/). In many places text was simply copied and modified. Although the PEP-0001 text was written by Barry Warsaw, Jeremy Hylton, and David Goodger, they are not responsible for its use in the Ethereum Improvement Process, and should not be bothered with technical questions specific to Ethereum or the EIP. Please direct all comments to the EIP editors.\n \n ## Copyright\n "
+                }
+            ]
+        }
+    },
+    {
+        "req": {
+            "url": "https://api.github.com/repos/ethereum/EIPs/contents/EIPS%2Feip-1.md?ref=b99cfca5f0c40e4b5d859a74c235e915ac55993d",
+            "method": "GET"
+        },
+        "res": {
+            "status": 200,
+            "data": {
+                "name": "eip-1.md",
+                "path": "EIPS/eip-1.md",
+                "sha": "37e3d791edb7b15dee83820279819800dd1a7524",
+                "size": 21760,
+                "url": "https://api.github.com/repos/ethereum/EIPs/contents/EIPS/eip-1.md?ref=b99cfca5f0c40e4b5d859a74c235e915ac55993d",
+                "html_url": "https://github.com/ethereum/EIPs/blob/b99cfca5f0c40e4b5d859a74c235e915ac55993d/EIPS/eip-1.md",
+                "git_url": "https://api.github.com/repos/ethereum/EIPs/git/blobs/37e3d791edb7b15dee83820279819800dd1a7524",
+                "download_url": "https://raw.githubusercontent.com/ethereum/EIPs/b99cfca5f0c40e4b5d859a74c235e915ac55993d/EIPS/eip-1.md",
+                "type": "file",
+                "content": "LS0tCmVpcDogMQp0aXRsZTogRUlQIFB1cnBvc2UgYW5kIEd1aWRlbGluZXMK\nc3RhdHVzOiBMaXZpbmcKdHlwZTogTWV0YQphdXRob3I6IE1hcnRpbiBCZWN6\nZSA8bWJAZXRoZXJldW0ub3JnPiwgSHVkc29uIEphbWVzb24gPGh1ZHNvbkBl\ndGhlcmV1bS5vcmc+LCBldCBhbC4KY3JlYXRlZDogMjAxNS0xMC0yNwotLS0K\nCiMjIFdoYXQgaXMgYW4gRUlQPwoKRUlQIHN0YW5kcyBmb3IgRXRoZXJldW0g\nSW1wcm92ZW1lbnQgUHJvcG9zYWwuIEFuIEVJUCBpcyBhIGRlc2lnbiBkb2N1\nbWVudCBwcm92aWRpbmcgaW5mb3JtYXRpb24gdG8gdGhlIEV0aGVyZXVtIGNv\nbW11bml0eSwgb3IgZGVzY3JpYmluZyBhIG5ldyBmZWF0dXJlIGZvciBFdGhl\ncmV1bSBvciBpdHMgcHJvY2Vzc2VzIG9yIGVudmlyb25tZW50LiBUaGUgRUlQ\nIHNob3VsZCBwcm92aWRlIGEgY29uY2lzZSB0ZWNobmljYWwgc3BlY2lmaWNh\ndGlvbiBvZiB0aGUgZmVhdHVyZSBhbmQgYSByYXRpb25hbGUgZm9yIHRoZSBm\nZWF0dXJlLiBUaGUgRUlQIGF1dGhvciBpcyByZXNwb25zaWJsZSBmb3IgYnVp\nbGRpbmcgY29uc2Vuc3VzIHdpdGhpbiB0aGUgY29tbXVuaXR5IGFuZCBkb2N1\nbWVudGluZyBkaXNzZW50aW5nIG9waW5pb25zLgoKIyMgRUlQIFJhdGlvbmFs\nZQoKV2UgaW50ZW5kIEVJUHMgdG8gYmUgdGhlIHByaW1hcnkgbWVjaGFuaXNt\ncyBmb3IgcHJvcG9zaW5nIG5ldyBmZWF0dXJlcywgZm9yIGNvbGxlY3Rpbmcg\nY29tbXVuaXR5IHRlY2huaWNhbCBpbnB1dCBvbiBhbiBpc3N1ZSwgYW5kIGZv\nciBkb2N1bWVudGluZyB0aGUgZGVzaWduIGRlY2lzaW9ucyB0aGF0IGhhdmUg\nZ29uZSBpbnRvIEV0aGVyZXVtLiBCZWNhdXNlIHRoZSBFSVBzIGFyZSBtYWlu\ndGFpbmVkIGFzIHRleHQgZmlsZXMgaW4gYSB2ZXJzaW9uZWQgcmVwb3NpdG9y\neSwgdGhlaXIgcmV2aXNpb24gaGlzdG9yeSBpcyB0aGUgaGlzdG9yaWNhbCBy\nZWNvcmQgb2YgdGhlIGZlYXR1cmUgcHJvcG9zYWwuCgpGb3IgRXRoZXJldW0g\naW1wbGVtZW50ZXJzLCBFSVBzIGFyZSBhIGNvbnZlbmllbnQgd2F5IHRvIHRy\nYWNrIHRoZSBwcm9ncmVzcyBvZiB0aGVpciBpbXBsZW1lbnRhdGlvbi4gSWRl\nYWxseSBlYWNoIGltcGxlbWVudGF0aW9uIG1haW50YWluZXIgd291bGQgbGlz\ndCB0aGUgRUlQcyB0aGF0IHRoZXkgaGF2ZSBpbXBsZW1lbnRlZC4gVGhpcyB3\naWxsIGdpdmUgZW5kIHVzZXJzIGEgY29udmVuaWVudCB3YXkgdG8ga25vdyB0\naGUgY3VycmVudCBzdGF0dXMgb2YgYSBnaXZlbiBpbXBsZW1lbnRhdGlvbiBv\nciBsaWJyYXJ5LgoKIyMgRUlQIFR5cGVzCgpUaGVyZSBhcmUgdGhyZWUgdHlw\nZXMgb2YgRUlQOgoKLSBBICoqU3RhbmRhcmRzIFRyYWNrIEVJUCoqIGRlc2Ny\naWJlcyBhbnkgY2hhbmdlIHRoYXQgYWZmZWN0cyBtb3N0IG9yIGFsbCBFdGhl\ncmV1bSBpbXBsZW1lbnRhdGlvbnMsIHN1Y2ggYXPigJRhIGNoYW5nZSB0byB0\naGUgbmV0d29yayBwcm90b2NvbCwgYSBjaGFuZ2UgaW4gYmxvY2sgb3IgdHJh\nbnNhY3Rpb24gdmFsaWRpdHkgcnVsZXMsIHByb3Bvc2VkIGFwcGxpY2F0aW9u\nIHN0YW5kYXJkcy9jb252ZW50aW9ucywgb3IgYW55IGNoYW5nZSBvciBhZGRp\ndGlvbiB0aGF0IGFmZmVjdHMgdGhlIGludGVyb3BlcmFiaWxpdHkgb2YgYXBw\nbGljYXRpb25zIHVzaW5nIEV0aGVyZXVtLiBTdGFuZGFyZHMgVHJhY2sgRUlQ\ncyBjb25zaXN0IG9mIHRocmVlIHBhcnRz4oCUYSBkZXNpZ24gZG9jdW1lbnQs\nIGFuIGltcGxlbWVudGF0aW9uLCBhbmQgKGlmIHdhcnJhbnRlZCkgYW4gdXBk\nYXRlIHRvIHRoZSBbZm9ybWFsIHNwZWNpZmljYXRpb25dKGh0dHBzOi8vZ2l0\naHViLmNvbS9ldGhlcmV1bS95ZWxsb3dwYXBlcikuIEZ1cnRoZXJtb3JlLCBT\ndGFuZGFyZHMgVHJhY2sgRUlQcyBjYW4gYmUgYnJva2VuIGRvd24gaW50byB0\naGUgZm9sbG93aW5nIGNhdGVnb3JpZXM6CiAgLSAqKkNvcmUqKjogaW1wcm92\nZW1lbnRzIHJlcXVpcmluZyBhIGNvbnNlbnN1cyBmb3JrIChlLmcuIFtFSVAt\nNV0oLi9laXAtNS5tZCksIFtFSVAtMTAxXSguL2VpcC0xMDEubWQpKSwgYXMg\nd2VsbCBhcyBjaGFuZ2VzIHRoYXQgYXJlIG5vdCBuZWNlc3NhcmlseSBjb25z\nZW5zdXMgY3JpdGljYWwgYnV0IG1heSBiZSByZWxldmFudCB0byBb4oCcY29y\nZSBkZXbigJ0gZGlzY3Vzc2lvbnNdKGh0dHBzOi8vZ2l0aHViLmNvbS9ldGhl\ncmV1bS9wbSkgKGZvciBleGFtcGxlLCBbRUlQLTkwXSwgYW5kIHRoZSBtaW5l\nci9ub2RlIHN0cmF0ZWd5IGNoYW5nZXMgMiwgMywgYW5kIDQgb2YgW0VJUC04\nNl0oLi9laXAtODYubWQpKS4KICAtICoqTmV0d29ya2luZyoqOiBpbmNsdWRl\ncyBpbXByb3ZlbWVudHMgYXJvdW5kIFtkZXZwMnBdKGh0dHBzOi8vZ2l0aHVi\nLmNvbS9ldGhlcmV1bS93aWtpL3dpa2kvJUMzJTkwJUNFJTlFVnAycC1XaXJl\nLVByb3RvY29sKSAoW0VJUC04XSguL2VpcC04Lm1kKSkgYW5kIFtMaWdodCBF\ndGhlcmV1bSBTdWJwcm90b2NvbF0oaHR0cHM6Ly9naXRodWIuY29tL2V0aGVy\nZXVtL3dpa2kvd2lraS9MaWdodC1jbGllbnQtcHJvdG9jb2wpLCBhcyB3ZWxs\nIGFzIHByb3Bvc2VkIGltcHJvdmVtZW50cyB0byBuZXR3b3JrIHByb3RvY29s\nIHNwZWNpZmljYXRpb25zIG9mIFt3aGlzcGVyXShodHRwczovL2dpdGh1Yi5j\nb20vZXRoZXJldW0vZ28tZXRoZXJldW0vd2lraS9XaGlzcGVyLU92ZXJ2aWV3\nKSBhbmQgW3N3YXJtXShodHRwczovL2dpdGh1Yi5jb20vZXRoZXJldW0vZ28t\nZXRoZXJldW0vcHVsbC8yOTU5KS4KICAtICoqSW50ZXJmYWNlKio6IGluY2x1\nZGVzIGltcHJvdmVtZW50cyBhcm91bmQgY2xpZW50IFtBUEkvUlBDXShodHRw\nczovL2dpdGh1Yi5jb20vZXRoZXJldW0vd2lraS93aWtpL0pTT04tUlBDKSBz\ncGVjaWZpY2F0aW9ucyBhbmQgc3RhbmRhcmRzLCBhbmQgYWxzbyBjZXJ0YWlu\nIGxhbmd1YWdlLWxldmVsIHN0YW5kYXJkcyBsaWtlIG1ldGhvZCBuYW1lcyAo\nW0VJUC02XSguL2VpcC02Lm1kKSkgYW5kIFtjb250cmFjdCBBQklzXShodHRw\nczovL2dpdGh1Yi5jb20vZXRoZXJldW0vd2lraS93aWtpL0V0aGVyZXVtLUNv\nbnRyYWN0LUFCSSkuIFRoZSBsYWJlbCDigJxpbnRlcmZhY2XigJ0gYWxpZ25z\nIHdpdGggdGhlIFtpbnRlcmZhY2VzIHJlcG9dIGFuZCBkaXNjdXNzaW9uIHNo\nb3VsZCBwcmltYXJpbHkgb2NjdXIgaW4gdGhhdCByZXBvc2l0b3J5IGJlZm9y\nZSBhbiBFSVAgaXMgc3VibWl0dGVkIHRvIHRoZSBFSVBzIHJlcG9zaXRvcnku\nCiAgLSAqKkVSQyoqOiBhcHBsaWNhdGlvbi1sZXZlbCBzdGFuZGFyZHMgYW5k\nIGNvbnZlbnRpb25zLCBpbmNsdWRpbmcgY29udHJhY3Qgc3RhbmRhcmRzIHN1\nY2ggYXMgdG9rZW4gc3RhbmRhcmRzIChbRVJDLTIwXSguL2VpcC0yMC5tZCkp\nLCBuYW1lIHJlZ2lzdHJpZXMgKFtFUkMtMTM3XSguL2VpcC0xMzcubWQpKSwg\nVVJJIHNjaGVtZXMsIGxpYnJhcnkvcGFja2FnZSBmb3JtYXRzLCBhbmQgd2Fs\nbGV0IGZvcm1hdHMuCgotIEEgKipNZXRhIEVJUCoqIGRlc2NyaWJlcyBhIHBy\nb2Nlc3Mgc3Vycm91bmRpbmcgRXRoZXJldW0gb3IgcHJvcG9zZXMgYSBjaGFu\nZ2UgdG8gKG9yIGFuIGV2ZW50IGluKSBhIHByb2Nlc3MuIFByb2Nlc3MgRUlQ\ncyBhcmUgbGlrZSBTdGFuZGFyZHMgVHJhY2sgRUlQcyBidXQgYXBwbHkgdG8g\nYXJlYXMgb3RoZXIgdGhhbiB0aGUgRXRoZXJldW0gcHJvdG9jb2wgaXRzZWxm\nLiBUaGV5IG1heSBwcm9wb3NlIGFuIGltcGxlbWVudGF0aW9uLCBidXQgbm90\nIHRvIEV0aGVyZXVtJ3MgY29kZWJhc2U7IHRoZXkgb2Z0ZW4gcmVxdWlyZSBj\nb21tdW5pdHkgY29uc2Vuc3VzOyB1bmxpa2UgSW5mb3JtYXRpb25hbCBFSVBz\nLCB0aGV5IGFyZSBtb3JlIHRoYW4gcmVjb21tZW5kYXRpb25zLCBhbmQgdXNl\ncnMgYXJlIHR5cGljYWxseSBub3QgZnJlZSB0byBpZ25vcmUgdGhlbS4gRXhh\nbXBsZXMgaW5jbHVkZSBwcm9jZWR1cmVzLCBndWlkZWxpbmVzLCBjaGFuZ2Vz\nIHRvIHRoZSBkZWNpc2lvbi1tYWtpbmcgcHJvY2VzcywgYW5kIGNoYW5nZXMg\ndG8gdGhlIHRvb2xzIG9yIGVudmlyb25tZW50IHVzZWQgaW4gRXRoZXJldW0g\nZGV2ZWxvcG1lbnQuIEFueSBtZXRhLUVJUCBpcyBhbHNvIGNvbnNpZGVyZWQg\nYSBQcm9jZXNzIEVJUC4KCi0gQW4gKipJbmZvcm1hdGlvbmFsIEVJUCoqIGRl\nc2NyaWJlcyBhbiBFdGhlcmV1bSBkZXNpZ24gaXNzdWUsIG9yIHByb3ZpZGVz\nIGdlbmVyYWwgZ3VpZGVsaW5lcyBvciBpbmZvcm1hdGlvbiB0byB0aGUgRXRo\nZXJldW0gY29tbXVuaXR5LCBidXQgZG9lcyBub3QgcHJvcG9zZSBhIG5ldyBm\nZWF0dXJlLiBJbmZvcm1hdGlvbmFsIEVJUHMgZG8gbm90IG5lY2Vzc2FyaWx5\nIHJlcHJlc2VudCBFdGhlcmV1bSBjb21tdW5pdHkgY29uc2Vuc3VzIG9yIGEg\ncmVjb21tZW5kYXRpb24sIHNvIHVzZXJzIGFuZCBpbXBsZW1lbnRlcnMgYXJl\nIGZyZWUgdG8gaWdub3JlIEluZm9ybWF0aW9uYWwgRUlQcyBvciBmb2xsb3cg\ndGhlaXIgYWR2aWNlLgoKSXQgaXMgaGlnaGx5IHJlY29tbWVuZGVkIHRoYXQg\nYSBzaW5nbGUgRUlQIGNvbnRhaW4gYSBzaW5nbGUga2V5IHByb3Bvc2FsIG9y\nIG5ldyBpZGVhLiBUaGUgbW9yZSBmb2N1c2VkIHRoZSBFSVAsIHRoZSBtb3Jl\nIHN1Y2Nlc3NmdWwgaXQgdGVuZHMgdG8gYmUuIEEgY2hhbmdlIHRvIG9uZSBj\nbGllbnQgZG9lc24ndCByZXF1aXJlIGFuIEVJUDsgYSBjaGFuZ2UgdGhhdCBh\nZmZlY3RzIG11bHRpcGxlIGNsaWVudHMsIG9yIGRlZmluZXMgYSBzdGFuZGFy\nZCBmb3IgbXVsdGlwbGUgYXBwcyB0byB1c2UsIGRvZXMuCgpBbiBFSVAgbXVz\ndCBtZWV0IGNlcnRhaW4gbWluaW11bSBjcml0ZXJpYS4gSXQgbXVzdCBiZSBh\nIGNsZWFyIGFuZCBjb21wbGV0ZSBkZXNjcmlwdGlvbiBvZiB0aGUgcHJvcG9z\nZWQgZW5oYW5jZW1lbnQuIFRoZSBlbmhhbmNlbWVudCBtdXN0IHJlcHJlc2Vu\ndCBhIG5ldCBpbXByb3ZlbWVudC4gVGhlIHByb3Bvc2VkIGltcGxlbWVudGF0\naW9uLCBpZiBhcHBsaWNhYmxlLCBtdXN0IGJlIHNvbGlkIGFuZCBtdXN0IG5v\ndCBjb21wbGljYXRlIHRoZSBwcm90b2NvbCB1bmR1bHkuCgojIyMgU3BlY2lh\nbCByZXF1aXJlbWVudHMgZm9yIENvcmUgRUlQcwoKSWYgYSAqKkNvcmUqKiBF\nSVAgbWVudGlvbnMgb3IgcHJvcG9zZXMgY2hhbmdlcyB0byB0aGUgRVZNIChF\ndGhlcmV1bSBWaXJ0dWFsIE1hY2hpbmUpLCBpdCBzaG91bGQgcmVmZXIgdG8g\ndGhlIGluc3RydWN0aW9ucyBieSB0aGVpciBtbmVtb25pY3MgYW5kIGRlZmlu\nZSB0aGUgb3Bjb2RlcyBvZiB0aG9zZSBtbmVtb25pY3MgYXQgbGVhc3Qgb25j\nZS4gQSBwcmVmZXJyZWQgd2F5IGlzIHRoZSBmb2xsb3dpbmc6CmBgYApSRVZF\nUlQgKDB4ZmUpCmBgYAoKIyMgRUlQIFdvcmsgRmxvdwoKIyMjIFNoZXBoZXJk\naW5nIGFuIEVJUAoKUGFydGllcyBpbnZvbHZlZCBpbiB0aGUgcHJvY2VzcyBh\ncmUgeW91LCB0aGUgY2hhbXBpb24gb3IgKkVJUCBhdXRob3IqLCB0aGUgWypF\nSVAgZWRpdG9ycypdKCNlaXAtZWRpdG9ycyksIGFuZCB0aGUgWypFdGhlcmV1\nbSBDb3JlIERldmVsb3BlcnMqXShodHRwczovL2dpdGh1Yi5jb20vZXRoZXJl\ndW0vcG0pLgoKQmVmb3JlIHlvdSBiZWdpbiB3cml0aW5nIGEgZm9ybWFsIEVJ\nUCwgeW91IHNob3VsZCB2ZXQgeW91ciBpZGVhLiBBc2sgdGhlIEV0aGVyZXVt\nIGNvbW11bml0eSBmaXJzdCBpZiBhbiBpZGVhIGlzIG9yaWdpbmFsIHRvIGF2\nb2lkIHdhc3RpbmcgdGltZSBvbiBzb21ldGhpbmcgdGhhdCB3aWxsIGJlIHJl\namVjdGVkIGJhc2VkIG9uIHByaW9yIHJlc2VhcmNoLiBJdCBpcyB0aHVzIHJl\nY29tbWVuZGVkIHRvIG9wZW4gYSBkaXNjdXNzaW9uIHRocmVhZCBvbiBbdGhl\nIEV0aGVyZXVtIE1hZ2ljaWFucyBmb3J1bV0oaHR0cHM6Ly9ldGhlcmV1bS1t\nYWdpY2lhbnMub3JnLykgdG8gZG8gdGhpcy4gCgpPbmNlIHRoZSBpZGVhIGhh\ncyBiZWVuIHZldHRlZCwgeW91ciBuZXh0IHJlc3BvbnNpYmlsaXR5IHdpbGwg\nYmUgdG8gcHJlc2VudCAoYnkgbWVhbnMgb2YgYW4gRUlQKSB0aGUgaWRlYSB0\nbyB0aGUgcmV2aWV3ZXJzIGFuZCBhbGwgaW50ZXJlc3RlZCBwYXJ0aWVzLCBp\nbnZpdGUgZWRpdG9ycywgZGV2ZWxvcGVycywgYW5kIHRoZSBjb21tdW5pdHkg\ndG8gZ2l2ZSBmZWVkYmFjayBvbiB0aGUgYWZvcmVtZW50aW9uZWQgY2hhbm5l\nbHMuIFlvdSBzaG91bGQgdHJ5IGFuZCBnYXVnZSB3aGV0aGVyIHRoZSBpbnRl\ncmVzdCBpbiB5b3VyIEVJUCBpcyBjb21tZW5zdXJhdGUgd2l0aCBib3RoIHRo\nZSB3b3JrIGludm9sdmVkIGluIGltcGxlbWVudGluZyBpdCBhbmQgaG93IG1h\nbnkgcGFydGllcyB3aWxsIGhhdmUgdG8gY29uZm9ybSB0byBpdC4gRm9yIGV4\nYW1wbGUsIHRoZSB3b3JrIHJlcXVpcmVkIGZvciBpbXBsZW1lbnRpbmcgYSBD\nb3JlIEVJUCB3aWxsIGJlIG11Y2ggZ3JlYXRlciB0aGFuIGZvciBhbiBFUkMg\nYW5kIHRoZSBFSVAgd2lsbCBuZWVkIHN1ZmZpY2llbnQgaW50ZXJlc3QgZnJv\nbSB0aGUgRXRoZXJldW0gY2xpZW50IHRlYW1zLiBOZWdhdGl2ZSBjb21tdW5p\ndHkgZmVlZGJhY2sgd2lsbCBiZSB0YWtlbiBpbnRvIGNvbnNpZGVyYXRpb24g\nYW5kIG1heSBwcmV2ZW50IHlvdXIgRUlQIGZyb20gbW92aW5nIHBhc3QgdGhl\nIERyYWZ0IHN0YWdlLgoKIyMjIENvcmUgRUlQcwoKRm9yIENvcmUgRUlQcywg\nZ2l2ZW4gdGhhdCB0aGV5IHJlcXVpcmUgY2xpZW50IGltcGxlbWVudGF0aW9u\ncyB0byBiZSBjb25zaWRlcmVkICoqRmluYWwqKiAoc2VlICJFSVBzIFByb2Nl\nc3MiIGJlbG93KSwgeW91IHdpbGwgbmVlZCB0byBlaXRoZXIgcHJvdmlkZSBh\nbiBpbXBsZW1lbnRhdGlvbiBmb3IgY2xpZW50cyBvciBjb252aW5jZSBjbGll\nbnRzIHRvIGltcGxlbWVudCB5b3VyIEVJUC4gCgpUaGUgYmVzdCB3YXkgdG8g\nZ2V0IGNsaWVudCBpbXBsZW1lbnRlcnMgdG8gcmV2aWV3IHlvdXIgRUlQIGlz\nIHRvIHByZXNlbnQgaXQgb24gYW4gQWxsQ29yZURldnMgY2FsbC4gWW91IGNh\nbiByZXF1ZXN0IHRvIGRvIHNvIGJ5IHBvc3RpbmcgYSBjb21tZW50IGxpbmtp\nbmcgeW91ciBFSVAgb24gYW4gW0FsbENvcmVEZXZzIGFnZW5kYSBHaXRIdWIg\nSXNzdWVdKGh0dHBzOi8vZ2l0aHViLmNvbS9ldGhlcmV1bS9wbS9pc3N1ZXMp\nLiAgCgpUaGUgQWxsQ29yZURldnMgY2FsbCBzZXJ2ZSBhcyBhIHdheSBmb3Ig\nY2xpZW50IGltcGxlbWVudGVycyB0byBkbyB0aHJlZSB0aGluZ3MuIEZpcnN0\nLCB0byBkaXNjdXNzIHRoZSB0ZWNobmljYWwgbWVyaXRzIG9mIEVJUHMuIFNl\nY29uZCwgdG8gZ2F1Z2Ugd2hhdCBvdGhlciBjbGllbnRzIHdpbGwgYmUgaW1w\nbGVtZW50aW5nLiBUaGlyZCwgdG8gY29vcmRpbmF0ZSBFSVAgaW1wbGVtZW50\nYXRpb24gZm9yIG5ldHdvcmsgdXBncmFkZXMuCgpUaGVzZSBjYWxscyBnZW5l\ncmFsbHkgcmVzdWx0IGluIGEgInJvdWdoIGNvbnNlbnN1cyIgYXJvdW5kIHdo\nYXQgRUlQcyBzaG91bGQgYmUgaW1wbGVtZW50ZWQuIFRoaXMgInJvdWdoIGNv\nbnNlbnN1cyIgcmVzdHMgb24gdGhlIGFzc3VtcHRpb25zIHRoYXQgRUlQcyBh\ncmUgbm90IGNvbnRlbnRpb3VzIGVub3VnaCB0byBjYXVzZSBhIG5ldHdvcmsg\nc3BsaXQgYW5kIHRoYXQgdGhleSBhcmUgdGVjaG5pY2FsbHkgc291bmQuCgo6\nd2FybmluZzogVGhlIEVJUHMgcHJvY2VzcyBhbmQgQWxsQ29yZURldnMgY2Fs\nbCB3ZXJlIG5vdCBkZXNpZ25lZCB0byBhZGRyZXNzIGNvbnRlbnRpb3VzIG5v\nbi10ZWNobmljYWwgaXNzdWVzLCBidXQsIGR1ZSB0byB0aGUgbGFjayBvZiBv\ndGhlciB3YXlzIHRvIGFkZHJlc3MgdGhlc2UsIG9mdGVuIGVuZCB1cCBlbnRh\nbmdsZWQgaW4gdGhlbS4gVGhpcyBwdXRzIHRoZSBidXJkZW4gb24gY2xpZW50\nIGltcGxlbWVudGVycyB0byB0cnkgYW5kIGdhdWdlIGNvbW11bml0eSBzZW50\naW1lbnQsIHdoaWNoIGhpbmRlcnMgdGhlIHRlY2huaWNhbCBjb29yZGluYXRp\nb24gZnVuY3Rpb24gb2YgRUlQcyBhbmQgQWxsQ29yZURldnMgY2FsbHMuIElm\nIHlvdSBhcmUgc2hlcGhlcmRpbmcgYW4gRUlQLCB5b3UgY2FuIG1ha2UgdGhl\nIHByb2Nlc3Mgb2YgYnVpbGRpbmcgY29tbXVuaXR5IGNvbnNlbnN1cyBlYXNp\nZXIgYnkgbWFraW5nIHN1cmUgdGhhdCBbdGhlIEV0aGVyZXVtIE1hZ2ljaWFu\ncyBmb3J1bV0oaHR0cHM6Ly9ldGhlcmV1bS1tYWdpY2lhbnMub3JnLykgdGhy\nZWFkIGZvciB5b3VyIEVJUCBpbmNsdWRlcyBvciBsaW5rcyB0byBhcyBtdWNo\nIG9mIHRoZSBjb21tdW5pdHkgZGlzY3Vzc2lvbiBhcyBwb3NzaWJsZSBhbmQg\ndGhhdCB2YXJpb3VzIHN0YWtlaG9sZGVycyBhcmUgd2VsbC1yZXByZXNlbnRl\nZC4KCipJbiBzaG9ydCwgeW91ciByb2xlIGFzIHRoZSBjaGFtcGlvbiBpcyB0\nbyB3cml0ZSB0aGUgRUlQIHVzaW5nIHRoZSBzdHlsZSBhbmQgZm9ybWF0IGRl\nc2NyaWJlZCBiZWxvdywgc2hlcGhlcmQgdGhlIGRpc2N1c3Npb25zIGluIHRo\nZSBhcHByb3ByaWF0ZSBmb3J1bXMsIGFuZCBidWlsZCBjb21tdW5pdHkgY29u\nc2Vuc3VzIGFyb3VuZCB0aGUgaWRlYS4qIAoKIyMjIEVJUCBQcm9jZXNzIAoK\nVGhlIGZvbGxvd2luZyBpcyB0aGUgc3RhbmRhcmRpemF0aW9uIHByb2Nlc3Mg\nZm9yIGFsbCBFSVBzIGluIGFsbCB0cmFja3M6CgohW0VJUCBTdGF0dXMgRGlh\nZ3JhbV0oLi4vYXNzZXRzL2VpcC0xL0VJUC1wcm9jZXNzLXVwZGF0ZS5qcGcp\nCgoqKklkZWEqKiAtIEFuIGlkZWEgdGhhdCBpcyBwcmUtZHJhZnQuIFRoaXMg\naXMgbm90IHRyYWNrZWQgd2l0aGluIHRoZSBFSVAgUmVwb3NpdG9yeS4KCioq\nRHJhZnQqKiAtIFRoZSBmaXJzdCBmb3JtYWxseSB0cmFja2VkIHN0YWdlIG9m\nIGFuIEVJUCBpbiBkZXZlbG9wbWVudC4gQW4gRUlQIGlzIG1lcmdlZCBieSBh\nbiBFSVAgRWRpdG9yIGludG8gdGhlIEVJUCByZXBvc2l0b3J5IHdoZW4gcHJv\ncGVybHkgZm9ybWF0dGVkLgoKKipSZXZpZXcqKiAtIEFuIEVJUCBBdXRob3Ig\nbWFya3MgYW4gRUlQIGFzIHJlYWR5IGZvciBhbmQgcmVxdWVzdGluZyBQZWVy\nIFJldmlldy4KCioqTGFzdCBDYWxsKiogLSBUaGlzIGlzIHRoZSBmaW5hbCBy\nZXZpZXcgd2luZG93IGZvciBhbiBFSVAgYmVmb3JlIG1vdmluZyB0byBgRmlu\nYWxgLiBBbiBFSVAgZWRpdG9yIHdpbGwgYXNzaWduIGBMYXN0IENhbGxgIHN0\nYXR1cyBhbmQgc2V0IGEgcmV2aWV3IGVuZCBkYXRlIChgbGFzdC1jYWxsLWRl\nYWRsaW5lYCksIHR5cGljYWxseSAxNCBkYXlzIGxhdGVyLgoKSWYgdGhpcyBw\nZXJpb2QgcmVzdWx0cyBpbiBuZWNlc3Nhcnkgbm9ybWF0aXZlIGNoYW5nZXMg\naXQgd2lsbCByZXZlcnQgdGhlIEVJUCB0byBgUmV2aWV3YC4KCioqRmluYWwq\nKiAtIFRoaXMgRUlQIHJlcHJlc2VudHMgdGhlIGZpbmFsIHN0YW5kYXJkLiBB\nIEZpbmFsIEVJUCBleGlzdHMgaW4gYSBzdGF0ZSBvZiBmaW5hbGl0eSBhbmQg\nc2hvdWxkIG9ubHkgYmUgdXBkYXRlZCB0byBjb3JyZWN0IGVycmF0YSBhbmQg\nYWRkIG5vbi1ub3JtYXRpdmUgY2xhcmlmaWNhdGlvbnMuCgoqKlN0YWduYW50\nKiogLSBBbnkgRUlQIGluIGBEcmFmdGAgb3IgYFJldmlld2Agb3IgYExhc3Qg\nQ2FsbGAgaWYgaW5hY3RpdmUgZm9yIGEgcGVyaW9kIG9mIDYgbW9udGhzIG9y\nIGdyZWF0ZXIgaXMgbW92ZWQgdG8gYFN0YWduYW50YC4gQW4gRUlQIG1heSBi\nZSByZXN1cnJlY3RlZCBmcm9tIHRoaXMgc3RhdGUgYnkgQXV0aG9ycyBvciBF\nSVAgRWRpdG9ycyB0aHJvdWdoIG1vdmluZyBpdCBiYWNrIHRvIGBEcmFmdGAg\nb3IgaXQncyBlYXJsaWVyIHN0YXR1cy4gSWYgbm90IHJlc3VycmVjdGVkLCBh\nIHByb3Bvc2FsIG1heSBzdGF5IGZvcmV2ZXIgaW4gdGhlIHRoaXMgc3RhdHVz\nLiAKCj4qRUlQIEF1dGhvcnMgYXJlIG5vdGlmaWVkIG9mIGFueSBhbGdvcml0\naG1pYyBjaGFuZ2UgdG8gdGhlIHN0YXR1cyBvZiB0aGVpciBFSVAqCgoqKldp\ndGhkcmF3bioqIC0gVGhlIEVJUCBBdXRob3IocykgaGF2ZSB3aXRoZHJhd24g\ndGhlIHByb3Bvc2VkIEVJUC4gVGhpcyBzdGF0ZSBoYXMgZmluYWxpdHkgYW5k\nIGNhbiBubyBsb25nZXIgYmUgcmVzdXJyZWN0ZWQgdXNpbmcgdGhpcyBFSVAg\nbnVtYmVyLiBJZiB0aGUgaWRlYSBpcyBwdXJzdWVkIGF0IGxhdGVyIGRhdGUg\naXQgaXMgY29uc2lkZXJlZCBhIG5ldyBwcm9wb3NhbC4KCioqTGl2aW5nKiog\nLSBBIHNwZWNpYWwgc3RhdHVzIGZvciBFSVBzIHRoYXQgYXJlIGRlc2lnbmVk\nIHRvIGJlIGNvbnRpbnVhbGx5IHVwZGF0ZWQgYW5kIG5vdCByZWFjaCBhIHN0\nYXRlIG9mIGZpbmFsaXR5LiBUaGlzIGluY2x1ZGVzIG1vc3Qgbm90YWJseSBF\nSVAtMS4KCiMjIFdoYXQgYmVsb25ncyBpbiBhIHN1Y2Nlc3NmdWwgRUlQPwoK\nRWFjaCBFSVAgc2hvdWxkIGhhdmUgdGhlIGZvbGxvd2luZyBwYXJ0czoKCi0g\nUHJlYW1ibGUgLSBSRkMgODIyIHN0eWxlIGhlYWRlcnMgY29udGFpbmluZyBt\nZXRhZGF0YSBhYm91dCB0aGUgRUlQLCBpbmNsdWRpbmcgdGhlIEVJUCBudW1i\nZXIsIGEgc2hvcnQgZGVzY3JpcHRpdmUgdGl0bGUgKGxpbWl0ZWQgdG8gYSBt\nYXhpbXVtIG9mIDQ0IGNoYXJhY3RlcnMpLCBhIGRlc2NyaXB0aW9uIChsaW1p\ndGVkIHRvIGEgbWF4aW11bSBvZiAxNDAgY2hhcmFjdGVycyksIGFuZCB0aGUg\nYXV0aG9yIGRldGFpbHMuIElycmVzcGVjdGl2ZSBvZiB0aGUgY2F0ZWdvcnks\nIHRoZSB0aXRsZSBhbmQgZGVzY3JpcHRpb24gc2hvdWxkIG5vdCBpbmNsdWRl\nIEVJUCBudW1iZXIuIFNlZSBbYmVsb3ddKC4vZWlwLTEubWQjZWlwLWhlYWRl\nci1wcmVhbWJsZSkgZm9yIGRldGFpbHMuCi0gQWJzdHJhY3QgLSBBYnN0cmFj\ndCBpcyBhIG11bHRpLXNlbnRlbmNlIChzaG9ydCBwYXJhZ3JhcGgpIHRlY2hu\naWNhbCBzdW1tYXJ5LiBUaGlzIHNob3VsZCBiZSBhIHZlcnkgdGVyc2UgYW5k\nIGh1bWFuLXJlYWRhYmxlIHZlcnNpb24gb2YgdGhlIHNwZWNpZmljYXRpb24g\nc2VjdGlvbi4gU29tZW9uZSBzaG91bGQgYmUgYWJsZSB0byByZWFkIG9ubHkg\ndGhlIGFic3RyYWN0IHRvIGdldCB0aGUgZ2lzdCBvZiB3aGF0IHRoaXMgc3Bl\nY2lmaWNhdGlvbiBkb2VzLgotIE1vdGl2YXRpb24gKCpvcHRpb25hbCkgLSBB\nIG1vdGl2YXRpb24gc2VjdGlvbiBpcyBjcml0aWNhbCBmb3IgRUlQcyB0aGF0\nIHdhbnQgdG8gY2hhbmdlIHRoZSBFdGhlcmV1bSBwcm90b2NvbC4gSXQgc2hv\ndWxkIGNsZWFybHkgZXhwbGFpbiB3aHkgdGhlIGV4aXN0aW5nIHByb3RvY29s\nIHNwZWNpZmljYXRpb24gaXMgaW5hZGVxdWF0ZSB0byBhZGRyZXNzIHRoZSBw\ncm9ibGVtIHRoYXQgdGhlIEVJUCBzb2x2ZXMuIEVJUCBzdWJtaXNzaW9ucyB3\naXRob3V0IHN1ZmZpY2llbnQgbW90aXZhdGlvbiBtYXkgYmUgcmVqZWN0ZWQg\nb3V0cmlnaHQuCi0gU3BlY2lmaWNhdGlvbiAtIFRoZSB0ZWNobmljYWwgc3Bl\nY2lmaWNhdGlvbiBzaG91bGQgZGVzY3JpYmUgdGhlIHN5bnRheCBhbmQgc2Vt\nYW50aWNzIG9mIGFueSBuZXcgZmVhdHVyZS4gVGhlIHNwZWNpZmljYXRpb24g\nc2hvdWxkIGJlIGRldGFpbGVkIGVub3VnaCB0byBhbGxvdyBjb21wZXRpbmcs\nIGludGVyb3BlcmFibGUgaW1wbGVtZW50YXRpb25zIGZvciBhbnkgb2YgdGhl\nIGN1cnJlbnQgRXRoZXJldW0gcGxhdGZvcm1zIChjcHAtZXRoZXJldW0sIGdv\nLWV0aGVyZXVtLCBwYXJpdHksIGV0aGVyZXVtSiwgZXRoZXJldW1qcy1saWIs\nIFthbmQgb3RoZXJzXShodHRwczovL2dpdGh1Yi5jb20vZXRoZXJldW0vd2lr\naS93aWtpL0NsaWVudHMpLgotIFJhdGlvbmFsZSAtIFRoZSByYXRpb25hbGUg\nZmxlc2hlcyBvdXQgdGhlIHNwZWNpZmljYXRpb24gYnkgZGVzY3JpYmluZyB3\naGF0IG1vdGl2YXRlZCB0aGUgZGVzaWduIGFuZCB3aHkgcGFydGljdWxhciBk\nZXNpZ24gZGVjaXNpb25zIHdlcmUgbWFkZS4gSXQgc2hvdWxkIGRlc2NyaWJl\nIGFsdGVybmF0ZSBkZXNpZ25zIHRoYXQgd2VyZSBjb25zaWRlcmVkIGFuZCBy\nZWxhdGVkIHdvcmssIGUuZy4gaG93IHRoZSBmZWF0dXJlIGlzIHN1cHBvcnRl\nZCBpbiBvdGhlciBsYW5ndWFnZXMuIFRoZSByYXRpb25hbGUgbWF5IGFsc28g\ncHJvdmlkZSBldmlkZW5jZSBvZiBjb25zZW5zdXMgd2l0aGluIHRoZSBjb21t\ndW5pdHksIGFuZCBzaG91bGQgZGlzY3VzcyBpbXBvcnRhbnQgb2JqZWN0aW9u\ncyBvciBjb25jZXJucyByYWlzZWQgZHVyaW5nIGRpc2N1c3Npb24uCi0gQmFj\na3dhcmRzIENvbXBhdGliaWxpdHkgLSBBbGwgRUlQcyB0aGF0IGludHJvZHVj\nZSBiYWNrd2FyZHMgaW5jb21wYXRpYmlsaXRpZXMgbXVzdCBpbmNsdWRlIGEg\nc2VjdGlvbiBkZXNjcmliaW5nIHRoZXNlIGluY29tcGF0aWJpbGl0aWVzIGFu\nZCB0aGVpciBzZXZlcml0eS4gVGhlIEVJUCBtdXN0IGV4cGxhaW4gaG93IHRo\nZSBhdXRob3IgcHJvcG9zZXMgdG8gZGVhbCB3aXRoIHRoZXNlIGluY29tcGF0\naWJpbGl0aWVzLiBFSVAgc3VibWlzc2lvbnMgd2l0aG91dCBhIHN1ZmZpY2ll\nbnQgYmFja3dhcmRzIGNvbXBhdGliaWxpdHkgdHJlYXRpc2UgbWF5IGJlIHJl\namVjdGVkIG91dHJpZ2h0LgotIFRlc3QgQ2FzZXMgLSBUZXN0IGNhc2VzIGZv\nciBhbiBpbXBsZW1lbnRhdGlvbiBhcmUgbWFuZGF0b3J5IGZvciBFSVBzIHRo\nYXQgYXJlIGFmZmVjdGluZyBjb25zZW5zdXMgY2hhbmdlcy4gVGVzdHMgc2hv\ndWxkIGVpdGhlciBiZSBpbmxpbmVkIGluIHRoZSBFSVAgYXMgZGF0YSAoc3Vj\naCBhcyBpbnB1dC9leHBlY3RlZCBvdXRwdXQgcGFpcnMsIG9yIGluY2x1ZGVk\nIGluIGAuLi9hc3NldHMvZWlwLSMjIy88ZmlsZW5hbWU+YC4KLSBSZWZlcmVu\nY2UgSW1wbGVtZW50YXRpb24gLSBBbiBvcHRpb25hbCBzZWN0aW9uIHRoYXQg\nY29udGFpbnMgYSByZWZlcmVuY2UvZXhhbXBsZSBpbXBsZW1lbnRhdGlvbiB0\naGF0IHBlb3BsZSBjYW4gdXNlIHRvIGFzc2lzdCBpbiB1bmRlcnN0YW5kaW5n\nIG9yIGltcGxlbWVudGluZyB0aGlzIHNwZWNpZmljYXRpb24uCi0gU2VjdXJp\ndHkgQ29uc2lkZXJhdGlvbnMgLSBBbGwgRUlQcyBtdXN0IGNvbnRhaW4gYSBz\nZWN0aW9uIHRoYXQgZGlzY3Vzc2VzIHRoZSBzZWN1cml0eSBpbXBsaWNhdGlv\nbnMvY29uc2lkZXJhdGlvbnMgcmVsZXZhbnQgdG8gdGhlIHByb3Bvc2VkIGNo\nYW5nZS4gSW5jbHVkZSBpbmZvcm1hdGlvbiB0aGF0IG1pZ2h0IGJlIGltcG9y\ndGFudCBmb3Igc2VjdXJpdHkgZGlzY3Vzc2lvbnMsIHN1cmZhY2VzIHJpc2tz\nIGFuZCBjYW4gYmUgdXNlZCB0aHJvdWdob3V0IHRoZSBsaWZlLWN5Y2xlIG9m\nIHRoZSBwcm9wb3NhbC4gRS5nLiBpbmNsdWRlIHNlY3VyaXR5LXJlbGV2YW50\nIGRlc2lnbiBkZWNpc2lvbnMsIGNvbmNlcm5zLCBpbXBvcnRhbnQgZGlzY3Vz\nc2lvbnMsIGltcGxlbWVudGF0aW9uLXNwZWNpZmljIGd1aWRhbmNlIGFuZCBw\naXRmYWxscywgYW4gb3V0bGluZSBvZiB0aHJlYXRzIGFuZCByaXNrcyBhbmQg\naG93IHRoZXkgYXJlIGJlaW5nIGFkZHJlc3NlZC4gRUlQIHN1Ym1pc3Npb25z\nIG1pc3NpbmcgdGhlICJTZWN1cml0eSBDb25zaWRlcmF0aW9ucyIgc2VjdGlv\nbiB3aWxsIGJlIHJlamVjdGVkLiBBbiBFSVAgY2Fubm90IHByb2NlZWQgdG8g\nc3RhdHVzICJGaW5hbCIgd2l0aG91dCBhIFNlY3VyaXR5IENvbnNpZGVyYXRp\nb25zIGRpc2N1c3Npb24gZGVlbWVkIHN1ZmZpY2llbnQgYnkgdGhlIHJldmll\nd2Vycy4KLSBDb3B5cmlnaHQgV2FpdmVyIC0gQWxsIEVJUHMgbXVzdCBiZSBp\nbiB0aGUgcHVibGljIGRvbWFpbi4gU2VlIHRoZSBib3R0b20gb2YgdGhpcyBF\nSVAgZm9yIGFuIGV4YW1wbGUgY29weXJpZ2h0IHdhaXZlci4KCiMjIEVJUCBG\nb3JtYXRzIGFuZCBUZW1wbGF0ZXMKCkVJUHMgc2hvdWxkIGJlIHdyaXR0ZW4g\naW4gW21hcmtkb3duXShodHRwczovL2dpdGh1Yi5jb20vYWRhbS1wL21hcmtk\nb3duLWhlcmUvd2lraS9NYXJrZG93bi1DaGVhdHNoZWV0KSBmb3JtYXQuIFRo\nZXJlIGlzIGEgW3RlbXBsYXRlXShodHRwczovL2dpdGh1Yi5jb20vZXRoZXJl\ndW0vRUlQcy9ibG9iL21hc3Rlci9laXAtdGVtcGxhdGUubWQpIHRvIGZvbGxv\ndy4KCiMjIEVJUCBIZWFkZXIgUHJlYW1ibGUKCkVhY2ggRUlQIG11c3QgYmVn\naW4gd2l0aCBhbiBbUkZDIDgyMl0oaHR0cHM6Ly93d3cuaWV0Zi5vcmcvcmZj\nL3JmYzgyMi50eHQpIHN0eWxlIGhlYWRlciBwcmVhbWJsZSwgcHJlY2VkZWQg\nYW5kIGZvbGxvd2VkIGJ5IHRocmVlIGh5cGhlbnMgKGAtLS1gKS4gVGhpcyBo\nZWFkZXIgaXMgYWxzbyB0ZXJtZWQgWyJmcm9udCBtYXR0ZXIiIGJ5IEpla3ls\nbF0oaHR0cHM6Ly9qZWt5bGxyYi5jb20vZG9jcy9mcm9udC1tYXR0ZXIvKS4g\nVGhlIGhlYWRlcnMgbXVzdCBhcHBlYXIgaW4gdGhlIGZvbGxvd2luZyBvcmRl\nci4KCmAgZWlwOmAgKkVJUCBudW1iZXIqICh0aGlzIGlzIGRldGVybWluZWQg\nYnkgdGhlIEVJUCBlZGl0b3IpCgpgIHRpdGxlOmAgKlRoZSBFSVAgdGl0bGUg\naXMgYSBmZXcgd29yZHMsIG5vdCBhIGNvbXBsZXRlIHNlbnRlbmNlKgoKYCBk\nZXNjcmlwdGlvbjpgICpEZXNjcmlwdGlvbiBpcyBvbmUgZnVsbCAoc2hvcnQp\nIHNlbnRlbmNlKgoKYCBhdXRob3I6YCAqVGhlIGxpc3Qgb2YgdGhlIGF1dGhv\ncidzIG9yIGF1dGhvcnMnIG5hbWUocykgYW5kL29yIHVzZXJuYW1lKHMpLCBv\nciBuYW1lKHMpIGFuZCBlbWFpbChzKS4gRGV0YWlscyBhcmUgYmVsb3cuKgoK\nYCBkaXNjdXNzaW9ucy10bzpgICpUaGUgdXJsIHBvaW50aW5nIHRvIHRoZSBv\nZmZpY2lhbCBkaXNjdXNzaW9uIHRocmVhZCoKCmAgc3RhdHVzOmAgKkRyYWZ0\nLCBSZXZpZXcsIExhc3QgQ2FsbCwgRmluYWwsIFN0YWduYW50LCBXaXRoZHJh\nd24sIExpdmluZyoKCmAgbGFzdC1jYWxsLWRlYWRsaW5lOmAgKlRoZSBkYXRl\nIGxhc3QgY2FsbCBwZXJpb2QgZW5kcyBvbiogKE9wdGlvbmFsIGZpZWxkLCBv\nbmx5IG5lZWRlZCB3aGVuIHN0YXR1cyBpcyBgTGFzdCBDYWxsYCkKCmAgdHlw\nZTpgICpPbmUgb2YgYFN0YW5kYXJkcyBUcmFja2AsIGBNZXRhYCwgb3IgYElu\nZm9ybWF0aW9uYWxgKgoKYCBjYXRlZ29yeTpgICpPbmUgb2YgYENvcmVgLCBg\nTmV0d29ya2luZ2AsIGBJbnRlcmZhY2VgLCBvciBgRVJDYCogKE9wdGlvbmFs\nIGZpZWxkLCBvbmx5IG5lZWRlZCBmb3IgYFN0YW5kYXJkcyBUcmFja2AgRUlQ\ncykKCmAgY3JlYXRlZDpgICpEYXRlIHRoZSBFSVAgd2FzIGNyZWF0ZWQgb24q\nCgpgIHJlcXVpcmVzOmAgKkVJUCBudW1iZXIocykqIChPcHRpb25hbCBmaWVs\nZCkKCmAgd2l0aGRyYXdhbC1yZWFzb246YCAqQSBzZW50ZW5jZSBleHBsYWlu\naW5nIHdoeSB0aGUgRUlQIHdhcyB3aXRoZHJhd24uKiAoT3B0aW9uYWwgZmll\nbGQsIG9ubHkgbmVlZGVkIHdoZW4gc3RhdHVzIGlzIGBXaXRoZHJhd25gKQoK\nSGVhZGVycyB0aGF0IHBlcm1pdCBsaXN0cyBtdXN0IHNlcGFyYXRlIGVsZW1l\nbnRzIHdpdGggY29tbWFzLgoKSGVhZGVycyByZXF1aXJpbmcgZGF0ZXMgd2ls\nbCBhbHdheXMgZG8gc28gaW4gdGhlIGZvcm1hdCBvZiBJU08gODYwMSAoeXl5\neS1tbS1kZCkuCgojIyMjIGBhdXRob3JgIGhlYWRlcgoKVGhlIGBhdXRob3Jg\nIGhlYWRlciBsaXN0cyB0aGUgbmFtZXMsIGVtYWlsIGFkZHJlc3NlcyBvciB1\nc2VybmFtZXMgb2YgdGhlIGF1dGhvcnMvb3duZXJzIG9mIHRoZSBFSVAuIFRo\nb3NlIHdobyBwcmVmZXIgYW5vbnltaXR5IG1heSB1c2UgYSB1c2VybmFtZSBv\nbmx5LCBvciBhIGZpcnN0IG5hbWUgYW5kIGEgdXNlcm5hbWUuIFRoZSBmb3Jt\nYXQgb2YgdGhlIGBhdXRob3JgIGhlYWRlciB2YWx1ZSBtdXN0IGJlOgoKPiBS\nYW5kb20gSi4gVXNlciAmbHQ7YWRkcmVzc0Bkb20uYWluJmd0OwoKb3IKCj4g\nUmFuZG9tIEouIFVzZXIgKEB1c2VybmFtZSkKCmlmIHRoZSBlbWFpbCBhZGRy\nZXNzIG9yIEdpdEh1YiB1c2VybmFtZSBpcyBpbmNsdWRlZCwgYW5kCgo+IFJh\nbmRvbSBKLiBVc2VyCgppZiB0aGUgZW1haWwgYWRkcmVzcyBpcyBub3QgZ2l2\nZW4uCgpJdCBpcyBub3QgcG9zc2libGUgdG8gdXNlIGJvdGggYW4gZW1haWwg\nYW5kIGEgR2l0SHViIHVzZXJuYW1lIGF0IHRoZSBzYW1lIHRpbWUuIElmIGlt\ncG9ydGFudCB0byBpbmNsdWRlIGJvdGgsIG9uZSBjb3VsZCBpbmNsdWRlIHRo\nZWlyIG5hbWUgdHdpY2UsIG9uY2Ugd2l0aCB0aGUgR2l0SHViIHVzZXJuYW1l\nLCBhbmQgb25jZSB3aXRoIHRoZSBlbWFpbC4KCkF0IGxlYXN0IG9uZSBhdXRo\nb3IgbXVzdCB1c2UgYSBHaXRIdWIgdXNlcm5hbWUsIGluIG9yZGVyIHRvIGdl\ndCBub3RpZmllZCBvbiBjaGFuZ2UgcmVxdWVzdHMgYW5kIGhhdmUgdGhlIGNh\ncGFiaWxpdHkgdG8gYXBwcm92ZSBvciByZWplY3QgdGhlbS4KCiMjIyMgYGRp\nc2N1c3Npb25zLXRvYCBoZWFkZXIKCldoaWxlIGFuIEVJUCBpcyBhIGRyYWZ0\nLCBhIGBkaXNjdXNzaW9ucy10b2AgaGVhZGVyIHdpbGwgaW5kaWNhdGUgdGhl\nIFVSTCB3aGVyZSB0aGUgRUlQIGlzIGJlaW5nIGRpc2N1c3NlZC4KClRoZSBw\ncmVmZXJyZWQgZGlzY3Vzc2lvbiBVUkwgaXMgYSB0b3BpYyBvbiBbRXRoZXJl\ndW0gTWFnaWNpYW5zXShodHRwczovL2V0aGVyZXVtLW1hZ2ljaWFucy5vcmcv\nKS4gVGhlIFVSTCBjYW5ub3QgcG9pbnQgdG8gR2l0aHViIHB1bGwgcmVxdWVz\ndHMsIGFueSBVUkwgd2hpY2ggaXMgZXBoZW1lcmFsLCBhbmQgYW55IFVSTCB3\naGljaCBjYW4gZ2V0IGxvY2tlZCBvdmVyIHRpbWUgKGkuZS4gUmVkZGl0IHRv\ncGljcykuCgojIyMjIGB0eXBlYCBoZWFkZXIKClRoZSBgdHlwZWAgaGVhZGVy\nIHNwZWNpZmllcyB0aGUgdHlwZSBvZiBFSVA6IFN0YW5kYXJkcyBUcmFjaywg\nTWV0YSwgb3IgSW5mb3JtYXRpb25hbC4gSWYgdGhlIHRyYWNrIGlzIFN0YW5k\nYXJkcyBwbGVhc2UgaW5jbHVkZSB0aGUgc3ViY2F0ZWdvcnkgKGNvcmUsIG5l\ndHdvcmtpbmcsIGludGVyZmFjZSwgb3IgRVJDKS4KCiMjIyMgYGNhdGVnb3J5\nYCBoZWFkZXIKClRoZSBgY2F0ZWdvcnlgIGhlYWRlciBzcGVjaWZpZXMgdGhl\nIEVJUCdzIGNhdGVnb3J5LiBUaGlzIGlzIHJlcXVpcmVkIGZvciBzdGFuZGFy\nZHMtdHJhY2sgRUlQcyBvbmx5LgoKIyMjIyBgY3JlYXRlZGAgaGVhZGVyCgpU\naGUgYGNyZWF0ZWRgIGhlYWRlciByZWNvcmRzIHRoZSBkYXRlIHRoYXQgdGhl\nIEVJUCB3YXMgYXNzaWduZWQgYSBudW1iZXIuIEJvdGggaGVhZGVycyBzaG91\nbGQgYmUgaW4geXl5eS1tbS1kZCBmb3JtYXQsIGUuZy4gMjAwMS0wOC0xNC4K\nCiMjIyMgYHJlcXVpcmVzYCBoZWFkZXIKCkVJUHMgbWF5IGhhdmUgYSBgcmVx\ndWlyZXNgIGhlYWRlciwgaW5kaWNhdGluZyB0aGUgRUlQIG51bWJlcnMgdGhh\ndCB0aGlzIEVJUCBkZXBlbmRzIG9uLgoKIyMgTGlua2luZyB0byBvdGhlciBF\nSVBzCgpSZWZlcmVuY2VzIHRvIG90aGVyIEVJUHMgc2hvdWxkIGZvbGxvdyB0\naGUgZm9ybWF0IGBFSVAtTmAgd2hlcmUgYE5gIGlzIHRoZSBFSVAgbnVtYmVy\nIHlvdSBhcmUgcmVmZXJyaW5nIHRvLiAgRWFjaCBFSVAgdGhhdCBpcyByZWZl\ncmVuY2VkIGluIGFuIEVJUCAqKk1VU1QqKiBiZSBhY2NvbXBhbmllZCBieSBh\nIHJlbGF0aXZlIG1hcmtkb3duIGxpbmsgdGhlIGZpcnN0IHRpbWUgaXQgaXMg\ncmVmZXJlbmNlZCwgYW5kICoqTUFZKiogYmUgYWNjb21wYW5pZWQgYnkgYSBs\naW5rIG9uIHN1YnNlcXVlbnQgcmVmZXJlbmNlcy4gIFRoZSBsaW5rICoqTVVT\nVCoqIGFsd2F5cyBiZSBkb25lIHZpYSByZWxhdGl2ZSBwYXRocyBzbyB0aGF0\nIHRoZSBsaW5rcyB3b3JrIGluIHRoaXMgR2l0SHViIHJlcG9zaXRvcnksIGZv\ncmtzIG9mIHRoaXMgcmVwb3NpdG9yeSwgdGhlIG1haW4gRUlQcyBzaXRlLCBt\naXJyb3JzIG9mIHRoZSBtYWluIEVJUCBzaXRlLCBldGMuICBGb3IgZXhhbXBs\nZSwgeW91IHdvdWxkIGxpbmsgdG8gdGhpcyBFSVAgd2l0aCBgW0VJUC0xXSgu\nL2VpcC0xLm1kKWAuCgojIyBBdXhpbGlhcnkgRmlsZXMKCkltYWdlcywgZGlh\nZ3JhbXMgYW5kIGF1eGlsaWFyeSBmaWxlcyBzaG91bGQgYmUgaW5jbHVkZWQg\naW4gYSBzdWJkaXJlY3Rvcnkgb2YgdGhlIGBhc3NldHNgIGZvbGRlciBmb3Ig\ndGhhdCBFSVAgYXMgZm9sbG93czogYGFzc2V0cy9laXAtTmAgKHdoZXJlICoq\nTioqIGlzIHRvIGJlIHJlcGxhY2VkIHdpdGggdGhlIEVJUCBudW1iZXIpLiBX\naGVuIGxpbmtpbmcgdG8gYW4gaW1hZ2UgaW4gdGhlIEVJUCwgdXNlIHJlbGF0\naXZlIGxpbmtzIHN1Y2ggYXMgYC4uL2Fzc2V0cy9laXAtMS9pbWFnZS5wbmdg\nLgoKIyMgVHJhbnNmZXJyaW5nIEVJUCBPd25lcnNoaXAKCkl0IG9jY2FzaW9u\nYWxseSBiZWNvbWVzIG5lY2Vzc2FyeSB0byB0cmFuc2ZlciBvd25lcnNoaXAg\nb2YgRUlQcyB0byBhIG5ldyBjaGFtcGlvbi4gSW4gZ2VuZXJhbCwgd2UnZCBs\naWtlIHRvIHJldGFpbiB0aGUgb3JpZ2luYWwgYXV0aG9yIGFzIGEgY28tYXV0\naG9yIG9mIHRoZSB0cmFuc2ZlcnJlZCBFSVAsIGJ1dCB0aGF0J3MgcmVhbGx5\nIHVwIHRvIHRoZSBvcmlnaW5hbCBhdXRob3IuIEEgZ29vZCByZWFzb24gdG8g\ndHJhbnNmZXIgb3duZXJzaGlwIGlzIGJlY2F1c2UgdGhlIG9yaWdpbmFsIGF1\ndGhvciBubyBsb25nZXIgaGFzIHRoZSB0aW1lIG9yIGludGVyZXN0IGluIHVw\nZGF0aW5nIGl0IG9yIGZvbGxvd2luZyB0aHJvdWdoIHdpdGggdGhlIEVJUCBw\ncm9jZXNzLCBvciBoYXMgZmFsbGVuIG9mZiB0aGUgZmFjZSBvZiB0aGUgJ25l\ndCAoaS5lLiBpcyB1bnJlYWNoYWJsZSBvciBpc24ndCByZXNwb25kaW5nIHRv\nIGVtYWlsKS4gQSBiYWQgcmVhc29uIHRvIHRyYW5zZmVyIG93bmVyc2hpcCBp\ncyBiZWNhdXNlIHlvdSBkb24ndCBhZ3JlZSB3aXRoIHRoZSBkaXJlY3Rpb24g\nb2YgdGhlIEVJUC4gV2UgdHJ5IHRvIGJ1aWxkIGNvbnNlbnN1cyBhcm91bmQg\nYW4gRUlQLCBidXQgaWYgdGhhdCdzIG5vdCBwb3NzaWJsZSwgeW91IGNhbiBh\nbHdheXMgc3VibWl0IGEgY29tcGV0aW5nIEVJUC4KCklmIHlvdSBhcmUgaW50\nZXJlc3RlZCBpbiBhc3N1bWluZyBvd25lcnNoaXAgb2YgYW4gRUlQLCBzZW5k\nIGEgbWVzc2FnZSBhc2tpbmcgdG8gdGFrZSBvdmVyLCBhZGRyZXNzZWQgdG8g\nYm90aCB0aGUgb3JpZ2luYWwgYXV0aG9yIGFuZCB0aGUgRUlQIGVkaXRvci4g\nSWYgdGhlIG9yaWdpbmFsIGF1dGhvciBkb2Vzbid0IHJlc3BvbmQgdG8gdGhl\nIGVtYWlsIGluIGEgdGltZWx5IG1hbm5lciwgdGhlIEVJUCBlZGl0b3Igd2ls\nbCBtYWtlIGEgdW5pbGF0ZXJhbCBkZWNpc2lvbiAoaXQncyBub3QgbGlrZSBz\ndWNoIGRlY2lzaW9ucyBjYW4ndCBiZSByZXZlcnNlZCA6KSkuCgojIyBFSVAg\nRWRpdG9ycwoKVGhlIGN1cnJlbnQgRUlQIGVkaXRvcnMgYXJlCgotIEFsZXgg\nQmVyZWdzemFzemkgKEBheGljKQotIE1hdHQgR2FybmV0dCAoQGxpZ2h0Y2xp\nZW50KQotIE1pY2FoIFpvbHR1IChATWljYWhab2x0dSkKLSBHcmVnIENvbHZp\nbiAoQGdjb2x2aW4pCgpFbWVyaXR1cyBFSVAgZWRpdG9ycyBhcmUgCgotIENh\nc2V5IERldHJpbyAoQGNkZXRyaW8pCi0gTmljayBKb2huc29uIChAYXJhY2hu\naWQpCi0gVml0YWxpayBCdXRlcmluIChAdmJ1dGVyaW4pCi0gSHVkc29uIEph\nbWVzb24gKEBTb3VwdGFjdWxhcikKLSBOaWNrIFNhdmVycyAoQG5pY2tzYXZl\ncnMpCi0gTWFydGluIEJlY3plIChAd2FuZGVyZXIpCgojIyBFSVAgRWRpdG9y\nIFJlc3BvbnNpYmlsaXRpZXMKCkZvciBlYWNoIG5ldyBFSVAgdGhhdCBjb21l\ncyBpbiwgYW4gZWRpdG9yIGRvZXMgdGhlIGZvbGxvd2luZzoKCi0gUmVhZCB0\naGUgRUlQIHRvIGNoZWNrIGlmIGl0IGlzIHJlYWR5OiBzb3VuZCBhbmQgY29t\ncGxldGUuIFRoZSBpZGVhcyBtdXN0IG1ha2UgdGVjaG5pY2FsIHNlbnNlLCBl\ndmVuIGlmIHRoZXkgZG9uJ3Qgc2VlbSBsaWtlbHkgdG8gZ2V0IHRvIGZpbmFs\nIHN0YXR1cy4KLSBUaGUgdGl0bGUgc2hvdWxkIGFjY3VyYXRlbHkgZGVzY3Jp\nYmUgdGhlIGNvbnRlbnQuCi0gQ2hlY2sgdGhlIEVJUCBmb3IgbGFuZ3VhZ2Ug\nKHNwZWxsaW5nLCBncmFtbWFyLCBzZW50ZW5jZSBzdHJ1Y3R1cmUsIGV0Yy4p\nLCBtYXJrdXAgKEdpdEh1YiBmbGF2b3JlZCBNYXJrZG93biksIGNvZGUgc3R5\nbGUKCklmIHRoZSBFSVAgaXNuJ3QgcmVhZHksIHRoZSBlZGl0b3Igd2lsbCBz\nZW5kIGl0IGJhY2sgdG8gdGhlIGF1dGhvciBmb3IgcmV2aXNpb24sIHdpdGgg\nc3BlY2lmaWMgaW5zdHJ1Y3Rpb25zLgoKT25jZSB0aGUgRUlQIGlzIHJlYWR5\nIGZvciB0aGUgcmVwb3NpdG9yeSwgdGhlIEVJUCBlZGl0b3Igd2lsbDoKCi0g\nQXNzaWduIGFuIEVJUCBudW1iZXIgKGdlbmVyYWxseSB0aGUgUFIgbnVtYmVy\nIG9yLCBpZiBwcmVmZXJyZWQgYnkgdGhlIGF1dGhvciwgdGhlIElzc3VlICMg\naWYgdGhlcmUgd2FzIGRpc2N1c3Npb24gaW4gW3RoZSBJc3N1ZXMgc2VjdGlv\nbiBvZiB0aGlzIHJlcG9zaXRvcnldKGh0dHBzOi8vZ2l0aHViLmNvbS9ldGhl\ncmV1bS9FSVBzL2lzc3VlcykgYWJvdXQgdGhpcyBFSVApCgotIE1lcmdlIHRo\nZSBjb3JyZXNwb25kaW5nIFtwdWxsIHJlcXVlc3RdKGh0dHBzOi8vZ2l0aHVi\nLmNvbS9ldGhlcmV1bS9FSVBzL3B1bGxzKQoKLSBTZW5kIGEgbWVzc2FnZSBi\nYWNrIHRvIHRoZSBFSVAgYXV0aG9yIHdpdGggdGhlIG5leHQgc3RlcC4KCk1h\nbnkgRUlQcyBhcmUgd3JpdHRlbiBhbmQgbWFpbnRhaW5lZCBieSBkZXZlbG9w\nZXJzIHdpdGggd3JpdGUgYWNjZXNzIHRvIHRoZSBFdGhlcmV1bSBjb2RlYmFz\nZS4gVGhlIEVJUCBlZGl0b3JzIG1vbml0b3IgRUlQIGNoYW5nZXMsIGFuZCBj\nb3JyZWN0IGFueSBzdHJ1Y3R1cmUsIGdyYW1tYXIsIHNwZWxsaW5nLCBvciBt\nYXJrdXAgbWlzdGFrZXMgd2Ugc2VlLgoKVGhlIGVkaXRvcnMgZG9uJ3QgcGFz\ncyBqdWRnbWVudCBvbiBFSVBzLiBXZSBtZXJlbHkgZG8gdGhlIGFkbWluaXN0\ncmF0aXZlICYgZWRpdG9yaWFsIHBhcnQuCgojIyBTdHlsZSBHdWlkZQoKIyMj\nIEVJUCBudW1iZXJzCgpXaGVuIHJlZmVycmluZyB0byBhbiBFSVAgYnkgbnVt\nYmVyLCBpdCBzaG91bGQgYmUgd3JpdHRlbiBpbiB0aGUgaHlwaGVuYXRlZCBm\nb3JtIGBFSVAtWGAgd2hlcmUgYFhgIGlzIHRoZSBFSVAncyBhc3NpZ25lZCBu\ndW1iZXIuCgojIyMgUkZDIDIxMTkKCkVJUHMgYXJlIGVuY291cmFnZWQgdG8g\nZm9sbG93IFtSRkMgMjExOV0oaHR0cHM6Ly93d3cuaWV0Zi5vcmcvcmZjL3Jm\nYzIxMTkudHh0KSBmb3IgdGVybWlub2xvZ3kgYW5kIHRvIGluc2VydCB0aGUg\nZm9sbG93aW5nIGF0IHRoZSBiZWdpbm5pbmcgb2YgdGhlIFNwZWNpZmljYXRp\nb24gc2VjdGlvbjoKCj4gVGhlIGtleSB3b3JkcyDigJxNVVNU4oCdLCDigJxN\nVVNUIE5PVOKAnSwg4oCcUkVRVUlSRUTigJ0sIOKAnFNIQUxM4oCdLCDigJxT\nSEFMTCBOT1TigJ0sIOKAnFNIT1VMROKAnSwg4oCcU0hPVUxEIE5PVOKAnSwg\n4oCcUkVDT01NRU5ERUTigJ0sIOKAnE1BWeKAnSwgYW5kIOKAnE9QVElPTkFM\n4oCdIGluIHRoaXMgZG9jdW1lbnQgYXJlIHRvIGJlIGludGVycHJldGVkIGFz\nIGRlc2NyaWJlZCBpbiBSRkMgMjExOS4KCiMjIEhpc3RvcnkKClRoaXMgZG9j\ndW1lbnQgd2FzIGRlcml2ZWQgaGVhdmlseSBmcm9tIFtCaXRjb2luJ3MgQklQ\nLTAwMDFdKGh0dHBzOi8vZ2l0aHViLmNvbS9iaXRjb2luL2JpcHMpIHdyaXR0\nZW4gYnkgQW1pciBUYWFraSB3aGljaCBpbiB0dXJuIHdhcyBkZXJpdmVkIGZy\nb20gW1B5dGhvbidzIFBFUC0wMDAxXShodHRwczovL3d3dy5weXRob24ub3Jn\nL2Rldi9wZXBzLykuIEluIG1hbnkgcGxhY2VzIHRleHQgd2FzIHNpbXBseSBj\nb3BpZWQgYW5kIG1vZGlmaWVkLiBBbHRob3VnaCB0aGUgUEVQLTAwMDEgdGV4\ndCB3YXMgd3JpdHRlbiBieSBCYXJyeSBXYXJzYXcsIEplcmVteSBIeWx0b24s\nIGFuZCBEYXZpZCBHb29kZ2VyLCB0aGV5IGFyZSBub3QgcmVzcG9uc2libGUg\nZm9yIGl0cyB1c2UgaW4gdGhlIEV0aGVyZXVtIEltcHJvdmVtZW50IFByb2Nl\nc3MsIGFuZCBzaG91bGQgbm90IGJlIGJvdGhlcmVkIHdpdGggdGVjaG5pY2Fs\nIHF1ZXN0aW9ucyBzcGVjaWZpYyB0byBFdGhlcmV1bSBvciB0aGUgRUlQLiBQ\nbGVhc2UgZGlyZWN0IGFsbCBjb21tZW50cyB0byB0aGUgRUlQIGVkaXRvcnMu\nCgojIyBDb3B5cmlnaHQKCkNvcHlyaWdodCBhbmQgcmVsYXRlZCByaWdodHMg\nd2FpdmVkIHZpYSBbQ0MwXShodHRwczovL2NyZWF0aXZlY29tbW9ucy5vcmcv\ncHVibGljZG9tYWluL3plcm8vMS4wLykuCg==\n",
+                "encoding": "base64",
+                "_links": {
+                    "self": "https://api.github.com/repos/ethereum/EIPs/contents/EIPS/eip-1.md?ref=b99cfca5f0c40e4b5d859a74c235e915ac55993d",
+                    "git": "https://api.github.com/repos/ethereum/EIPs/git/blobs/37e3d791edb7b15dee83820279819800dd1a7524",
+                    "html": "https://github.com/ethereum/EIPs/blob/b99cfca5f0c40e4b5d859a74c235e915ac55993d/EIPS/eip-1.md"
+                }
+            }
+        }
+    },
+    {
+        "req": {
+            "url": "https://api.github.com/repos/ethereum/EIPs/contents/EIPS%2Feip-1.md?ref=5fe97b9980e260d053688dd086463e4e3a0fc51f",
+            "method": "GET"
+        },
+        "res": {
+            "status": 200,
+            "data": {
+                "name": "eip-1.md",
+                "path": "EIPS/eip-1.md",
+                "sha": "20652648ce6a7ed5cbe90a2bb1ac346cf884897a",
+                "size": 22312,
+                "url": "https://api.github.com/repos/ethereum/EIPs/contents/EIPS/eip-1.md?ref=5fe97b9980e260d053688dd086463e4e3a0fc51f",
+                "html_url": "https://github.com/ethereum/EIPs/blob/5fe97b9980e260d053688dd086463e4e3a0fc51f/EIPS/eip-1.md",
+                "git_url": "https://api.github.com/repos/ethereum/EIPs/git/blobs/20652648ce6a7ed5cbe90a2bb1ac346cf884897a",
+                "download_url": "https://raw.githubusercontent.com/ethereum/EIPs/5fe97b9980e260d053688dd086463e4e3a0fc51f/EIPS/eip-1.md",
+                "type": "file",
+                "content": "LS0tCmVpcDogMQp0aXRsZTogRUlQIFB1cnBvc2UgYW5kIEd1aWRlbGluZXMK\nc3RhdHVzOiBMaXZpbmcKdHlwZTogTWV0YQphdXRob3I6IE1hcnRpbiBCZWN6\nZSA8bWJAZXRoZXJldW0ub3JnPiwgSHVkc29uIEphbWVzb24gPGh1ZHNvbkBl\ndGhlcmV1bS5vcmc+LCBldCBhbC4KY3JlYXRlZDogMjAxNS0xMC0yNwotLS0K\nCiMjIFdoYXQgaXMgYW4gRUlQPwoKRUlQIHN0YW5kcyBmb3IgRXRoZXJldW0g\nSW1wcm92ZW1lbnQgUHJvcG9zYWwuIEFuIEVJUCBpcyBhIGRlc2lnbiBkb2N1\nbWVudCBwcm92aWRpbmcgaW5mb3JtYXRpb24gdG8gdGhlIEV0aGVyZXVtIGNv\nbW11bml0eSwgb3IgZGVzY3JpYmluZyBhIG5ldyBmZWF0dXJlIGZvciBFdGhl\ncmV1bSBvciBpdHMgcHJvY2Vzc2VzIG9yIGVudmlyb25tZW50LiBUaGUgRUlQ\nIHNob3VsZCBwcm92aWRlIGEgY29uY2lzZSB0ZWNobmljYWwgc3BlY2lmaWNh\ndGlvbiBvZiB0aGUgZmVhdHVyZSBhbmQgYSByYXRpb25hbGUgZm9yIHRoZSBm\nZWF0dXJlLiBUaGUgRUlQIGF1dGhvciBpcyByZXNwb25zaWJsZSBmb3IgYnVp\nbGRpbmcgY29uc2Vuc3VzIHdpdGhpbiB0aGUgY29tbXVuaXR5IGFuZCBkb2N1\nbWVudGluZyBkaXNzZW50aW5nIG9waW5pb25zLgoKIyMgRUlQIFJhdGlvbmFs\nZQoKV2UgaW50ZW5kIEVJUHMgdG8gYmUgdGhlIHByaW1hcnkgbWVjaGFuaXNt\ncyBmb3IgcHJvcG9zaW5nIG5ldyBmZWF0dXJlcywgZm9yIGNvbGxlY3Rpbmcg\nY29tbXVuaXR5IHRlY2huaWNhbCBpbnB1dCBvbiBhbiBpc3N1ZSwgYW5kIGZv\nciBkb2N1bWVudGluZyB0aGUgZGVzaWduIGRlY2lzaW9ucyB0aGF0IGhhdmUg\nZ29uZSBpbnRvIEV0aGVyZXVtLiBCZWNhdXNlIHRoZSBFSVBzIGFyZSBtYWlu\ndGFpbmVkIGFzIHRleHQgZmlsZXMgaW4gYSB2ZXJzaW9uZWQgcmVwb3NpdG9y\neSwgdGhlaXIgcmV2aXNpb24gaGlzdG9yeSBpcyB0aGUgaGlzdG9yaWNhbCBy\nZWNvcmQgb2YgdGhlIGZlYXR1cmUgcHJvcG9zYWwuCgpGb3IgRXRoZXJldW0g\naW1wbGVtZW50ZXJzLCBFSVBzIGFyZSBhIGNvbnZlbmllbnQgd2F5IHRvIHRy\nYWNrIHRoZSBwcm9ncmVzcyBvZiB0aGVpciBpbXBsZW1lbnRhdGlvbi4gSWRl\nYWxseSBlYWNoIGltcGxlbWVudGF0aW9uIG1haW50YWluZXIgd291bGQgbGlz\ndCB0aGUgRUlQcyB0aGF0IHRoZXkgaGF2ZSBpbXBsZW1lbnRlZC4gVGhpcyB3\naWxsIGdpdmUgZW5kIHVzZXJzIGEgY29udmVuaWVudCB3YXkgdG8ga25vdyB0\naGUgY3VycmVudCBzdGF0dXMgb2YgYSBnaXZlbiBpbXBsZW1lbnRhdGlvbiBv\nciBsaWJyYXJ5LgoKIyMgRUlQIFR5cGVzCgpUaGVyZSBhcmUgdGhyZWUgdHlw\nZXMgb2YgRUlQOgoKLSBBICoqU3RhbmRhcmRzIFRyYWNrIEVJUCoqIGRlc2Ny\naWJlcyBhbnkgY2hhbmdlIHRoYXQgYWZmZWN0cyBtb3N0IG9yIGFsbCBFdGhl\ncmV1bSBpbXBsZW1lbnRhdGlvbnMsIHN1Y2ggYXPigJRhIGNoYW5nZSB0byB0\naGUgbmV0d29yayBwcm90b2NvbCwgYSBjaGFuZ2UgaW4gYmxvY2sgb3IgdHJh\nbnNhY3Rpb24gdmFsaWRpdHkgcnVsZXMsIHByb3Bvc2VkIGFwcGxpY2F0aW9u\nIHN0YW5kYXJkcy9jb252ZW50aW9ucywgb3IgYW55IGNoYW5nZSBvciBhZGRp\ndGlvbiB0aGF0IGFmZmVjdHMgdGhlIGludGVyb3BlcmFiaWxpdHkgb2YgYXBw\nbGljYXRpb25zIHVzaW5nIEV0aGVyZXVtLiBTdGFuZGFyZHMgVHJhY2sgRUlQ\ncyBjb25zaXN0IG9mIHRocmVlIHBhcnRz4oCUYSBkZXNpZ24gZG9jdW1lbnQs\nIGFuIGltcGxlbWVudGF0aW9uLCBhbmQgKGlmIHdhcnJhbnRlZCkgYW4gdXBk\nYXRlIHRvIHRoZSBbZm9ybWFsIHNwZWNpZmljYXRpb25dLiBGdXJ0aGVybW9y\nZSwgU3RhbmRhcmRzIFRyYWNrIEVJUHMgY2FuIGJlIGJyb2tlbiBkb3duIGlu\ndG8gdGhlIGZvbGxvd2luZyBjYXRlZ29yaWVzOgogIC0gKipDb3JlKio6IGlt\ncHJvdmVtZW50cyByZXF1aXJpbmcgYSBjb25zZW5zdXMgZm9yayAoZS5nLiBb\nRUlQLTVdKC4vZWlwLTUubWQpLCBbRUlQLTEwMV0oLi9laXAtMTAxLm1kKSks\nIGFzIHdlbGwgYXMgY2hhbmdlcyB0aGF0IGFyZSBub3QgbmVjZXNzYXJpbHkg\nY29uc2Vuc3VzIGNyaXRpY2FsIGJ1dCBtYXkgYmUgcmVsZXZhbnQgdG8gW+KA\nnGNvcmUgZGV24oCdIGRpc2N1c3Npb25zXShodHRwczovL2dpdGh1Yi5jb20v\nZXRoZXJldW0vcG0pIChmb3IgZXhhbXBsZSwgW0VJUC05MF0sIGFuZCB0aGUg\nbWluZXIvbm9kZSBzdHJhdGVneSBjaGFuZ2VzIDIsIDMsIGFuZCA0IG9mIFtF\nSVAtODZdKC4vZWlwLTg2Lm1kKSkuCiAgLSAqKk5ldHdvcmtpbmcqKjogaW5j\nbHVkZXMgaW1wcm92ZW1lbnRzIGFyb3VuZCBbZGV2cDJwXSAoW0VJUC04XSgu\nL2VpcC04Lm1kKSkgYW5kIFtMaWdodCBFdGhlcmV1bSBTdWJwcm90b2NvbF0s\nIGFzIHdlbGwgYXMgcHJvcG9zZWQgaW1wcm92ZW1lbnRzIHRvIG5ldHdvcmsg\ncHJvdG9jb2wgc3BlY2lmaWNhdGlvbnMgb2YgW3doaXNwZXJdIGFuZCBbc3dh\ncm1dLgogIC0gKipJbnRlcmZhY2UqKjogaW5jbHVkZXMgaW1wcm92ZW1lbnRz\nIGFyb3VuZCBjbGllbnQgW0FQSS9SUENdIHNwZWNpZmljYXRpb25zIGFuZCBz\ndGFuZGFyZHMsIGFuZCBhbHNvIGNlcnRhaW4gbGFuZ3VhZ2UtbGV2ZWwgc3Rh\nbmRhcmRzIGxpa2UgbWV0aG9kIG5hbWVzIChbRUlQLTZdKC4vZWlwLTYubWQp\nKSBhbmQgW2NvbnRyYWN0IEFCSXNdLiBUaGUgbGFiZWwg4oCcaW50ZXJmYWNl\n4oCdIGFsaWducyB3aXRoIHRoZSBbaW50ZXJmYWNlcyByZXBvXSBhbmQgZGlz\nY3Vzc2lvbiBzaG91bGQgcHJpbWFyaWx5IG9jY3VyIGluIHRoYXQgcmVwb3Np\ndG9yeSBiZWZvcmUgYW4gRUlQIGlzIHN1Ym1pdHRlZCB0byB0aGUgRUlQcyBy\nZXBvc2l0b3J5LgogIC0gKipFUkMqKjogYXBwbGljYXRpb24tbGV2ZWwgc3Rh\nbmRhcmRzIGFuZCBjb252ZW50aW9ucywgaW5jbHVkaW5nIGNvbnRyYWN0IHN0\nYW5kYXJkcyBzdWNoIGFzIHRva2VuIHN0YW5kYXJkcyAoW0VSQy0yMF0oLi9l\naXAtMjAubWQpKSwgbmFtZSByZWdpc3RyaWVzIChbRVJDLTEzN10oLi9laXAt\nMTM3Lm1kKSksIFVSSSBzY2hlbWVzLCBsaWJyYXJ5L3BhY2thZ2UgZm9ybWF0\ncywgYW5kIHdhbGxldCBmb3JtYXRzLgoKLSBBICoqTWV0YSBFSVAqKiBkZXNj\ncmliZXMgYSBwcm9jZXNzIHN1cnJvdW5kaW5nIEV0aGVyZXVtIG9yIHByb3Bv\nc2VzIGEgY2hhbmdlIHRvIChvciBhbiBldmVudCBpbikgYSBwcm9jZXNzLiBQ\ncm9jZXNzIEVJUHMgYXJlIGxpa2UgU3RhbmRhcmRzIFRyYWNrIEVJUHMgYnV0\nIGFwcGx5IHRvIGFyZWFzIG90aGVyIHRoYW4gdGhlIEV0aGVyZXVtIHByb3Rv\nY29sIGl0c2VsZi4gVGhleSBtYXkgcHJvcG9zZSBhbiBpbXBsZW1lbnRhdGlv\nbiwgYnV0IG5vdCB0byBFdGhlcmV1bSdzIGNvZGViYXNlOyB0aGV5IG9mdGVu\nIHJlcXVpcmUgY29tbXVuaXR5IGNvbnNlbnN1czsgdW5saWtlIEluZm9ybWF0\naW9uYWwgRUlQcywgdGhleSBhcmUgbW9yZSB0aGFuIHJlY29tbWVuZGF0aW9u\ncywgYW5kIHVzZXJzIGFyZSB0eXBpY2FsbHkgbm90IGZyZWUgdG8gaWdub3Jl\nIHRoZW0uIEV4YW1wbGVzIGluY2x1ZGUgcHJvY2VkdXJlcywgZ3VpZGVsaW5l\ncywgY2hhbmdlcyB0byB0aGUgZGVjaXNpb24tbWFraW5nIHByb2Nlc3MsIGFu\nZCBjaGFuZ2VzIHRvIHRoZSB0b29scyBvciBlbnZpcm9ubWVudCB1c2VkIGlu\nIEV0aGVyZXVtIGRldmVsb3BtZW50LiBBbnkgbWV0YS1FSVAgaXMgYWxzbyBj\nb25zaWRlcmVkIGEgUHJvY2VzcyBFSVAuCgotIEFuICoqSW5mb3JtYXRpb25h\nbCBFSVAqKiBkZXNjcmliZXMgYW4gRXRoZXJldW0gZGVzaWduIGlzc3VlLCBv\nciBwcm92aWRlcyBnZW5lcmFsIGd1aWRlbGluZXMgb3IgaW5mb3JtYXRpb24g\ndG8gdGhlIEV0aGVyZXVtIGNvbW11bml0eSwgYnV0IGRvZXMgbm90IHByb3Bv\nc2UgYSBuZXcgZmVhdHVyZS4gSW5mb3JtYXRpb25hbCBFSVBzIGRvIG5vdCBu\nZWNlc3NhcmlseSByZXByZXNlbnQgRXRoZXJldW0gY29tbXVuaXR5IGNvbnNl\nbnN1cyBvciBhIHJlY29tbWVuZGF0aW9uLCBzbyB1c2VycyBhbmQgaW1wbGVt\nZW50ZXJzIGFyZSBmcmVlIHRvIGlnbm9yZSBJbmZvcm1hdGlvbmFsIEVJUHMg\nb3IgZm9sbG93IHRoZWlyIGFkdmljZS4KCkl0IGlzIGhpZ2hseSByZWNvbW1l\nbmRlZCB0aGF0IGEgc2luZ2xlIEVJUCBjb250YWluIGEgc2luZ2xlIGtleSBw\ncm9wb3NhbCBvciBuZXcgaWRlYS4gVGhlIG1vcmUgZm9jdXNlZCB0aGUgRUlQ\nLCB0aGUgbW9yZSBzdWNjZXNzZnVsIGl0IHRlbmRzIHRvIGJlLiBBIGNoYW5n\nZSB0byBvbmUgY2xpZW50IGRvZXNuJ3QgcmVxdWlyZSBhbiBFSVA7IGEgY2hh\nbmdlIHRoYXQgYWZmZWN0cyBtdWx0aXBsZSBjbGllbnRzLCBvciBkZWZpbmVz\nIGEgc3RhbmRhcmQgZm9yIG11bHRpcGxlIGFwcHMgdG8gdXNlLCBkb2VzLgoK\nQW4gRUlQIG11c3QgbWVldCBjZXJ0YWluIG1pbmltdW0gY3JpdGVyaWEuIEl0\nIG11c3QgYmUgYSBjbGVhciBhbmQgY29tcGxldGUgZGVzY3JpcHRpb24gb2Yg\ndGhlIHByb3Bvc2VkIGVuaGFuY2VtZW50LiBUaGUgZW5oYW5jZW1lbnQgbXVz\ndCByZXByZXNlbnQgYSBuZXQgaW1wcm92ZW1lbnQuIFRoZSBwcm9wb3NlZCBp\nbXBsZW1lbnRhdGlvbiwgaWYgYXBwbGljYWJsZSwgbXVzdCBiZSBzb2xpZCBh\nbmQgbXVzdCBub3QgY29tcGxpY2F0ZSB0aGUgcHJvdG9jb2wgdW5kdWx5LgoK\nIyMjIFNwZWNpYWwgcmVxdWlyZW1lbnRzIGZvciBDb3JlIEVJUHMKCklmIGEg\nKipDb3JlKiogRUlQIG1lbnRpb25zIG9yIHByb3Bvc2VzIGNoYW5nZXMgdG8g\ndGhlIEVWTSAoRXRoZXJldW0gVmlydHVhbCBNYWNoaW5lKSwgaXQgc2hvdWxk\nIHJlZmVyIHRvIHRoZSBpbnN0cnVjdGlvbnMgYnkgdGhlaXIgbW5lbW9uaWNz\nIGFuZCBkZWZpbmUgdGhlIG9wY29kZXMgb2YgdGhvc2UgbW5lbW9uaWNzIGF0\nIGxlYXN0IG9uY2UuIEEgcHJlZmVycmVkIHdheSBpcyB0aGUgZm9sbG93aW5n\nOgpgYGAKUkVWRVJUICgweGZlKQpgYGAKCiMjIEVJUCBXb3JrIEZsb3cKCiMj\nIyBTaGVwaGVyZGluZyBhbiBFSVAKClBhcnRpZXMgaW52b2x2ZWQgaW4gdGhl\nIHByb2Nlc3MgYXJlIHlvdSwgdGhlIGNoYW1waW9uIG9yICpFSVAgYXV0aG9y\nKiwgdGhlIFsqRUlQIGVkaXRvcnMqXSgjZWlwLWVkaXRvcnMpLCBhbmQgdGhl\nIFsqRXRoZXJldW0gQ29yZSBEZXZlbG9wZXJzKl0oaHR0cHM6Ly9naXRodWIu\nY29tL2V0aGVyZXVtL3BtKS4KCkJlZm9yZSB5b3UgYmVnaW4gd3JpdGluZyBh\nIGZvcm1hbCBFSVAsIHlvdSBzaG91bGQgdmV0IHlvdXIgaWRlYS4gQXNrIHRo\nZSBFdGhlcmV1bSBjb21tdW5pdHkgZmlyc3QgaWYgYW4gaWRlYSBpcyBvcmln\naW5hbCB0byBhdm9pZCB3YXN0aW5nIHRpbWUgb24gc29tZXRoaW5nIHRoYXQg\nd2lsbCBiZSByZWplY3RlZCBiYXNlZCBvbiBwcmlvciByZXNlYXJjaC4gSXQg\naXMgdGh1cyByZWNvbW1lbmRlZCB0byBvcGVuIGEgZGlzY3Vzc2lvbiB0aHJl\nYWQgb24gW3RoZSBFdGhlcmV1bSBNYWdpY2lhbnMgZm9ydW1dKGh0dHBzOi8v\nZXRoZXJldW0tbWFnaWNpYW5zLm9yZy8pIHRvIGRvIHRoaXMuIAoKT25jZSB0\naGUgaWRlYSBoYXMgYmVlbiB2ZXR0ZWQsIHlvdXIgbmV4dCByZXNwb25zaWJp\nbGl0eSB3aWxsIGJlIHRvIHByZXNlbnQgKGJ5IG1lYW5zIG9mIGFuIEVJUCkg\ndGhlIGlkZWEgdG8gdGhlIHJldmlld2VycyBhbmQgYWxsIGludGVyZXN0ZWQg\ncGFydGllcywgaW52aXRlIGVkaXRvcnMsIGRldmVsb3BlcnMsIGFuZCB0aGUg\nY29tbXVuaXR5IHRvIGdpdmUgZmVlZGJhY2sgb24gdGhlIGFmb3JlbWVudGlv\nbmVkIGNoYW5uZWxzLiBZb3Ugc2hvdWxkIHRyeSBhbmQgZ2F1Z2Ugd2hldGhl\nciB0aGUgaW50ZXJlc3QgaW4geW91ciBFSVAgaXMgY29tbWVuc3VyYXRlIHdp\ndGggYm90aCB0aGUgd29yayBpbnZvbHZlZCBpbiBpbXBsZW1lbnRpbmcgaXQg\nYW5kIGhvdyBtYW55IHBhcnRpZXMgd2lsbCBoYXZlIHRvIGNvbmZvcm0gdG8g\naXQuIEZvciBleGFtcGxlLCB0aGUgd29yayByZXF1aXJlZCBmb3IgaW1wbGVt\nZW50aW5nIGEgQ29yZSBFSVAgd2lsbCBiZSBtdWNoIGdyZWF0ZXIgdGhhbiBm\nb3IgYW4gRVJDIGFuZCB0aGUgRUlQIHdpbGwgbmVlZCBzdWZmaWNpZW50IGlu\ndGVyZXN0IGZyb20gdGhlIEV0aGVyZXVtIGNsaWVudCB0ZWFtcy4gTmVnYXRp\ndmUgY29tbXVuaXR5IGZlZWRiYWNrIHdpbGwgYmUgdGFrZW4gaW50byBjb25z\naWRlcmF0aW9uIGFuZCBtYXkgcHJldmVudCB5b3VyIEVJUCBmcm9tIG1vdmlu\nZyBwYXN0IHRoZSBEcmFmdCBzdGFnZS4KCiMjIyBDb3JlIEVJUHMKCkZvciBD\nb3JlIEVJUHMsIGdpdmVuIHRoYXQgdGhleSByZXF1aXJlIGNsaWVudCBpbXBs\nZW1lbnRhdGlvbnMgdG8gYmUgY29uc2lkZXJlZCAqKkZpbmFsKiogKHNlZSAi\nRUlQcyBQcm9jZXNzIiBiZWxvdyksIHlvdSB3aWxsIG5lZWQgdG8gZWl0aGVy\nIHByb3ZpZGUgYW4gaW1wbGVtZW50YXRpb24gZm9yIGNsaWVudHMgb3IgY29u\ndmluY2UgY2xpZW50cyB0byBpbXBsZW1lbnQgeW91ciBFSVAuIAoKVGhlIGJl\nc3Qgd2F5IHRvIGdldCBjbGllbnQgaW1wbGVtZW50ZXJzIHRvIHJldmlldyB5\nb3VyIEVJUCBpcyB0byBwcmVzZW50IGl0IG9uIGFuIEFsbENvcmVEZXZzIGNh\nbGwuIFlvdSBjYW4gcmVxdWVzdCB0byBkbyBzbyBieSBwb3N0aW5nIGEgY29t\nbWVudCBsaW5raW5nIHlvdXIgRUlQIG9uIGFuIFtBbGxDb3JlRGV2cyBhZ2Vu\nZGEgR2l0SHViIElzc3VlXShodHRwczovL2dpdGh1Yi5jb20vZXRoZXJldW0v\ncG0vaXNzdWVzKS4gIAoKVGhlIEFsbENvcmVEZXZzIGNhbGwgc2VydmUgYXMg\nYSB3YXkgZm9yIGNsaWVudCBpbXBsZW1lbnRlcnMgdG8gZG8gdGhyZWUgdGhp\nbmdzLiBGaXJzdCwgdG8gZGlzY3VzcyB0aGUgdGVjaG5pY2FsIG1lcml0cyBv\nZiBFSVBzLiBTZWNvbmQsIHRvIGdhdWdlIHdoYXQgb3RoZXIgY2xpZW50cyB3\naWxsIGJlIGltcGxlbWVudGluZy4gVGhpcmQsIHRvIGNvb3JkaW5hdGUgRUlQ\nIGltcGxlbWVudGF0aW9uIGZvciBuZXR3b3JrIHVwZ3JhZGVzLgoKVGhlc2Ug\nY2FsbHMgZ2VuZXJhbGx5IHJlc3VsdCBpbiBhICJyb3VnaCBjb25zZW5zdXMi\nIGFyb3VuZCB3aGF0IEVJUHMgc2hvdWxkIGJlIGltcGxlbWVudGVkLiBUaGlz\nICJyb3VnaCBjb25zZW5zdXMiIHJlc3RzIG9uIHRoZSBhc3N1bXB0aW9ucyB0\naGF0IEVJUHMgYXJlIG5vdCBjb250ZW50aW91cyBlbm91Z2ggdG8gY2F1c2Ug\nYSBuZXR3b3JrIHNwbGl0IGFuZCB0aGF0IHRoZXkgYXJlIHRlY2huaWNhbGx5\nIHNvdW5kLgoKOndhcm5pbmc6IFRoZSBFSVBzIHByb2Nlc3MgYW5kIEFsbENv\ncmVEZXZzIGNhbGwgd2VyZSBub3QgZGVzaWduZWQgdG8gYWRkcmVzcyBjb250\nZW50aW91cyBub24tdGVjaG5pY2FsIGlzc3VlcywgYnV0LCBkdWUgdG8gdGhl\nIGxhY2sgb2Ygb3RoZXIgd2F5cyB0byBhZGRyZXNzIHRoZXNlLCBvZnRlbiBl\nbmQgdXAgZW50YW5nbGVkIGluIHRoZW0uIFRoaXMgcHV0cyB0aGUgYnVyZGVu\nIG9uIGNsaWVudCBpbXBsZW1lbnRlcnMgdG8gdHJ5IGFuZCBnYXVnZSBjb21t\ndW5pdHkgc2VudGltZW50LCB3aGljaCBoaW5kZXJzIHRoZSB0ZWNobmljYWwg\nY29vcmRpbmF0aW9uIGZ1bmN0aW9uIG9mIEVJUHMgYW5kIEFsbENvcmVEZXZz\nIGNhbGxzLiBJZiB5b3UgYXJlIHNoZXBoZXJkaW5nIGFuIEVJUCwgeW91IGNh\nbiBtYWtlIHRoZSBwcm9jZXNzIG9mIGJ1aWxkaW5nIGNvbW11bml0eSBjb25z\nZW5zdXMgZWFzaWVyIGJ5IG1ha2luZyBzdXJlIHRoYXQgW3RoZSBFdGhlcmV1\nbSBNYWdpY2lhbnMgZm9ydW1dKGh0dHBzOi8vZXRoZXJldW0tbWFnaWNpYW5z\nLm9yZy8pIHRocmVhZCBmb3IgeW91ciBFSVAgaW5jbHVkZXMgb3IgbGlua3Mg\ndG8gYXMgbXVjaCBvZiB0aGUgY29tbXVuaXR5IGRpc2N1c3Npb24gYXMgcG9z\nc2libGUgYW5kIHRoYXQgdmFyaW91cyBzdGFrZWhvbGRlcnMgYXJlIHdlbGwt\ncmVwcmVzZW50ZWQuCgoqSW4gc2hvcnQsIHlvdXIgcm9sZSBhcyB0aGUgY2hh\nbXBpb24gaXMgdG8gd3JpdGUgdGhlIEVJUCB1c2luZyB0aGUgc3R5bGUgYW5k\nIGZvcm1hdCBkZXNjcmliZWQgYmVsb3csIHNoZXBoZXJkIHRoZSBkaXNjdXNz\naW9ucyBpbiB0aGUgYXBwcm9wcmlhdGUgZm9ydW1zLCBhbmQgYnVpbGQgY29t\nbXVuaXR5IGNvbnNlbnN1cyBhcm91bmQgdGhlIGlkZWEuKiAKCiMjIyBFSVAg\nUHJvY2VzcyAKClRoZSBmb2xsb3dpbmcgaXMgdGhlIHN0YW5kYXJkaXphdGlv\nbiBwcm9jZXNzIGZvciBhbGwgRUlQcyBpbiBhbGwgdHJhY2tzOgoKIVtFSVAg\nU3RhdHVzIERpYWdyYW1dKC4uL2Fzc2V0cy9laXAtMS9FSVAtcHJvY2Vzcy11\ncGRhdGUuanBnKQoKKipJZGVhKiogLSBBbiBpZGVhIHRoYXQgaXMgcHJlLWRy\nYWZ0LiBUaGlzIGlzIG5vdCB0cmFja2VkIHdpdGhpbiB0aGUgRUlQIFJlcG9z\naXRvcnkuCgoqKkRyYWZ0KiogLSBUaGUgZmlyc3QgZm9ybWFsbHkgdHJhY2tl\nZCBzdGFnZSBvZiBhbiBFSVAgaW4gZGV2ZWxvcG1lbnQuIEFuIEVJUCBpcyBt\nZXJnZWQgYnkgYW4gRUlQIEVkaXRvciBpbnRvIHRoZSBFSVAgcmVwb3NpdG9y\neSB3aGVuIHByb3Blcmx5IGZvcm1hdHRlZC4KCioqUmV2aWV3KiogLSBBbiBF\nSVAgQXV0aG9yIG1hcmtzIGFuIEVJUCBhcyByZWFkeSBmb3IgYW5kIHJlcXVl\nc3RpbmcgUGVlciBSZXZpZXcuCgoqKkxhc3QgQ2FsbCoqIC0gVGhpcyBpcyB0\naGUgZmluYWwgcmV2aWV3IHdpbmRvdyBmb3IgYW4gRUlQIGJlZm9yZSBtb3Zp\nbmcgdG8gYEZpbmFsYC4gQW4gRUlQIGVkaXRvciB3aWxsIGFzc2lnbiBgTGFz\ndCBDYWxsYCBzdGF0dXMgYW5kIHNldCBhIHJldmlldyBlbmQgZGF0ZSAoYGxh\nc3QtY2FsbC1kZWFkbGluZWApLCB0eXBpY2FsbHkgMTQgZGF5cyBsYXRlci4K\nCklmIHRoaXMgcGVyaW9kIHJlc3VsdHMgaW4gbmVjZXNzYXJ5IG5vcm1hdGl2\nZSBjaGFuZ2VzIGl0IHdpbGwgcmV2ZXJ0IHRoZSBFSVAgdG8gYFJldmlld2Au\nCgoqKkZpbmFsKiogLSBUaGlzIEVJUCByZXByZXNlbnRzIHRoZSBmaW5hbCBz\ndGFuZGFyZC4gQSBGaW5hbCBFSVAgZXhpc3RzIGluIGEgc3RhdGUgb2YgZmlu\nYWxpdHkgYW5kIHNob3VsZCBvbmx5IGJlIHVwZGF0ZWQgdG8gY29ycmVjdCBl\ncnJhdGEgYW5kIGFkZCBub24tbm9ybWF0aXZlIGNsYXJpZmljYXRpb25zLgoK\nKipTdGFnbmFudCoqIC0gQW55IEVJUCBpbiBgRHJhZnRgIG9yIGBSZXZpZXdg\nIG9yIGBMYXN0IENhbGxgIGlmIGluYWN0aXZlIGZvciBhIHBlcmlvZCBvZiA2\nIG1vbnRocyBvciBncmVhdGVyIGlzIG1vdmVkIHRvIGBTdGFnbmFudGAuIEFu\nIEVJUCBtYXkgYmUgcmVzdXJyZWN0ZWQgZnJvbSB0aGlzIHN0YXRlIGJ5IEF1\ndGhvcnMgb3IgRUlQIEVkaXRvcnMgdGhyb3VnaCBtb3ZpbmcgaXQgYmFjayB0\nbyBgRHJhZnRgIG9yIGl0J3MgZWFybGllciBzdGF0dXMuIElmIG5vdCByZXN1\ncnJlY3RlZCwgYSBwcm9wb3NhbCBtYXkgc3RheSBmb3JldmVyIGluIHRoZSB0\naGlzIHN0YXR1cy4gCgo+KkVJUCBBdXRob3JzIGFyZSBub3RpZmllZCBvZiBh\nbnkgYWxnb3JpdGhtaWMgY2hhbmdlIHRvIHRoZSBzdGF0dXMgb2YgdGhlaXIg\nRUlQKgoKKipXaXRoZHJhd24qKiAtIFRoZSBFSVAgQXV0aG9yKHMpIGhhdmUg\nd2l0aGRyYXduIHRoZSBwcm9wb3NlZCBFSVAuIFRoaXMgc3RhdGUgaGFzIGZp\nbmFsaXR5IGFuZCBjYW4gbm8gbG9uZ2VyIGJlIHJlc3VycmVjdGVkIHVzaW5n\nIHRoaXMgRUlQIG51bWJlci4gSWYgdGhlIGlkZWEgaXMgcHVyc3VlZCBhdCBs\nYXRlciBkYXRlIGl0IGlzIGNvbnNpZGVyZWQgYSBuZXcgcHJvcG9zYWwuCgoq\nKkxpdmluZyoqIC0gQSBzcGVjaWFsIHN0YXR1cyBmb3IgRUlQcyB0aGF0IGFy\nZSBkZXNpZ25lZCB0byBiZSBjb250aW51YWxseSB1cGRhdGVkIGFuZCBub3Qg\ncmVhY2ggYSBzdGF0ZSBvZiBmaW5hbGl0eS4gVGhpcyBpbmNsdWRlcyBtb3N0\nIG5vdGFibHkgRUlQLTEuCgojIyBXaGF0IGJlbG9uZ3MgaW4gYSBzdWNjZXNz\nZnVsIEVJUD8KCkVhY2ggRUlQIHNob3VsZCBoYXZlIHRoZSBmb2xsb3dpbmcg\ncGFydHM6CgotIFByZWFtYmxlIC0gUkZDIDgyMiBzdHlsZSBoZWFkZXJzIGNv\nbnRhaW5pbmcgbWV0YWRhdGEgYWJvdXQgdGhlIEVJUCwgaW5jbHVkaW5nIHRo\nZSBFSVAgbnVtYmVyLCBhIHNob3J0IGRlc2NyaXB0aXZlIHRpdGxlIChsaW1p\ndGVkIHRvIGEgbWF4aW11bSBvZiA0NCBjaGFyYWN0ZXJzKSwgYSBkZXNjcmlw\ndGlvbiAobGltaXRlZCB0byBhIG1heGltdW0gb2YgMTQwIGNoYXJhY3RlcnMp\nLCBhbmQgdGhlIGF1dGhvciBkZXRhaWxzLiBJcnJlc3BlY3RpdmUgb2YgdGhl\nIGNhdGVnb3J5LCB0aGUgdGl0bGUgYW5kIGRlc2NyaXB0aW9uIHNob3VsZCBu\nb3QgaW5jbHVkZSBFSVAgbnVtYmVyLiBTZWUgW2JlbG93XSguL2VpcC0xLm1k\nI2VpcC1oZWFkZXItcHJlYW1ibGUpIGZvciBkZXRhaWxzLgotIEFic3RyYWN0\nIC0gQWJzdHJhY3QgaXMgYSBtdWx0aS1zZW50ZW5jZSAoc2hvcnQgcGFyYWdy\nYXBoKSB0ZWNobmljYWwgc3VtbWFyeS4gVGhpcyBzaG91bGQgYmUgYSB2ZXJ5\nIHRlcnNlIGFuZCBodW1hbi1yZWFkYWJsZSB2ZXJzaW9uIG9mIHRoZSBzcGVj\naWZpY2F0aW9uIHNlY3Rpb24uIFNvbWVvbmUgc2hvdWxkIGJlIGFibGUgdG8g\ncmVhZCBvbmx5IHRoZSBhYnN0cmFjdCB0byBnZXQgdGhlIGdpc3Qgb2Ygd2hh\ndCB0aGlzIHNwZWNpZmljYXRpb24gZG9lcy4KLSBNb3RpdmF0aW9uICgqb3B0\naW9uYWwpIC0gQSBtb3RpdmF0aW9uIHNlY3Rpb24gaXMgY3JpdGljYWwgZm9y\nIEVJUHMgdGhhdCB3YW50IHRvIGNoYW5nZSB0aGUgRXRoZXJldW0gcHJvdG9j\nb2wuIEl0IHNob3VsZCBjbGVhcmx5IGV4cGxhaW4gd2h5IHRoZSBleGlzdGlu\nZyBwcm90b2NvbCBzcGVjaWZpY2F0aW9uIGlzIGluYWRlcXVhdGUgdG8gYWRk\ncmVzcyB0aGUgcHJvYmxlbSB0aGF0IHRoZSBFSVAgc29sdmVzLiBFSVAgc3Vi\nbWlzc2lvbnMgd2l0aG91dCBzdWZmaWNpZW50IG1vdGl2YXRpb24gbWF5IGJl\nIHJlamVjdGVkIG91dHJpZ2h0LgotIFNwZWNpZmljYXRpb24gLSBUaGUgdGVj\naG5pY2FsIHNwZWNpZmljYXRpb24gc2hvdWxkIGRlc2NyaWJlIHRoZSBzeW50\nYXggYW5kIHNlbWFudGljcyBvZiBhbnkgbmV3IGZlYXR1cmUuIFRoZSBzcGVj\naWZpY2F0aW9uIHNob3VsZCBiZSBkZXRhaWxlZCBlbm91Z2ggdG8gYWxsb3cg\nY29tcGV0aW5nLCBpbnRlcm9wZXJhYmxlIGltcGxlbWVudGF0aW9ucyBmb3Ig\nYW55IG9mIHRoZSBjdXJyZW50IEV0aGVyZXVtIHBsYXRmb3JtcyAoY3BwLWV0\naGVyZXVtLCBnby1ldGhlcmV1bSwgcGFyaXR5LCBldGhlcmV1bUosIGV0aGVy\nZXVtanMtbGliLCBbYW5kIG90aGVyc10oaHR0cHM6Ly9naXRodWIuY29tL2V0\naGVyZXVtL3dpa2kvd2lraS9DbGllbnRzKS4KLSBSYXRpb25hbGUgLSBUaGUg\ncmF0aW9uYWxlIGZsZXNoZXMgb3V0IHRoZSBzcGVjaWZpY2F0aW9uIGJ5IGRl\nc2NyaWJpbmcgd2hhdCBtb3RpdmF0ZWQgdGhlIGRlc2lnbiBhbmQgd2h5IHBh\ncnRpY3VsYXIgZGVzaWduIGRlY2lzaW9ucyB3ZXJlIG1hZGUuIEl0IHNob3Vs\nZCBkZXNjcmliZSBhbHRlcm5hdGUgZGVzaWducyB0aGF0IHdlcmUgY29uc2lk\nZXJlZCBhbmQgcmVsYXRlZCB3b3JrLCBlLmcuIGhvdyB0aGUgZmVhdHVyZSBp\ncyBzdXBwb3J0ZWQgaW4gb3RoZXIgbGFuZ3VhZ2VzLiBUaGUgcmF0aW9uYWxl\nIG1heSBhbHNvIHByb3ZpZGUgZXZpZGVuY2Ugb2YgY29uc2Vuc3VzIHdpdGhp\nbiB0aGUgY29tbXVuaXR5LCBhbmQgc2hvdWxkIGRpc2N1c3MgaW1wb3J0YW50\nIG9iamVjdGlvbnMgb3IgY29uY2VybnMgcmFpc2VkIGR1cmluZyBkaXNjdXNz\naW9uLgotIEJhY2t3YXJkcyBDb21wYXRpYmlsaXR5IC0gQWxsIEVJUHMgdGhh\ndCBpbnRyb2R1Y2UgYmFja3dhcmRzIGluY29tcGF0aWJpbGl0aWVzIG11c3Qg\naW5jbHVkZSBhIHNlY3Rpb24gZGVzY3JpYmluZyB0aGVzZSBpbmNvbXBhdGli\naWxpdGllcyBhbmQgdGhlaXIgc2V2ZXJpdHkuIFRoZSBFSVAgbXVzdCBleHBs\nYWluIGhvdyB0aGUgYXV0aG9yIHByb3Bvc2VzIHRvIGRlYWwgd2l0aCB0aGVz\nZSBpbmNvbXBhdGliaWxpdGllcy4gRUlQIHN1Ym1pc3Npb25zIHdpdGhvdXQg\nYSBzdWZmaWNpZW50IGJhY2t3YXJkcyBjb21wYXRpYmlsaXR5IHRyZWF0aXNl\nIG1heSBiZSByZWplY3RlZCBvdXRyaWdodC4KLSBUZXN0IENhc2VzIC0gVGVz\ndCBjYXNlcyBmb3IgYW4gaW1wbGVtZW50YXRpb24gYXJlIG1hbmRhdG9yeSBm\nb3IgRUlQcyB0aGF0IGFyZSBhZmZlY3RpbmcgY29uc2Vuc3VzIGNoYW5nZXMu\nIFRlc3RzIHNob3VsZCBlaXRoZXIgYmUgaW5saW5lZCBpbiB0aGUgRUlQIGFz\nIGRhdGEgKHN1Y2ggYXMgaW5wdXQvZXhwZWN0ZWQgb3V0cHV0IHBhaXJzLCBv\nciBpbmNsdWRlZCBpbiBgLi4vYXNzZXRzL2VpcC0jIyMvPGZpbGVuYW1lPmAu\nCi0gUmVmZXJlbmNlIEltcGxlbWVudGF0aW9uIC0gQW4gb3B0aW9uYWwgc2Vj\ndGlvbiB0aGF0IGNvbnRhaW5zIGEgcmVmZXJlbmNlL2V4YW1wbGUgaW1wbGVt\nZW50YXRpb24gdGhhdCBwZW9wbGUgY2FuIHVzZSB0byBhc3Npc3QgaW4gdW5k\nZXJzdGFuZGluZyBvciBpbXBsZW1lbnRpbmcgdGhpcyBzcGVjaWZpY2F0aW9u\nLgotIFNlY3VyaXR5IENvbnNpZGVyYXRpb25zIC0gQWxsIEVJUHMgbXVzdCBj\nb250YWluIGEgc2VjdGlvbiB0aGF0IGRpc2N1c3NlcyB0aGUgc2VjdXJpdHkg\naW1wbGljYXRpb25zL2NvbnNpZGVyYXRpb25zIHJlbGV2YW50IHRvIHRoZSBw\ncm9wb3NlZCBjaGFuZ2UuIEluY2x1ZGUgaW5mb3JtYXRpb24gdGhhdCBtaWdo\ndCBiZSBpbXBvcnRhbnQgZm9yIHNlY3VyaXR5IGRpc2N1c3Npb25zLCBzdXJm\nYWNlcyByaXNrcyBhbmQgY2FuIGJlIHVzZWQgdGhyb3VnaG91dCB0aGUgbGlm\nZS1jeWNsZSBvZiB0aGUgcHJvcG9zYWwuIEUuZy4gaW5jbHVkZSBzZWN1cml0\neS1yZWxldmFudCBkZXNpZ24gZGVjaXNpb25zLCBjb25jZXJucywgaW1wb3J0\nYW50IGRpc2N1c3Npb25zLCBpbXBsZW1lbnRhdGlvbi1zcGVjaWZpYyBndWlk\nYW5jZSBhbmQgcGl0ZmFsbHMsIGFuIG91dGxpbmUgb2YgdGhyZWF0cyBhbmQg\ncmlza3MgYW5kIGhvdyB0aGV5IGFyZSBiZWluZyBhZGRyZXNzZWQuIEVJUCBz\ndWJtaXNzaW9ucyBtaXNzaW5nIHRoZSAiU2VjdXJpdHkgQ29uc2lkZXJhdGlv\nbnMiIHNlY3Rpb24gd2lsbCBiZSByZWplY3RlZC4gQW4gRUlQIGNhbm5vdCBw\ncm9jZWVkIHRvIHN0YXR1cyAiRmluYWwiIHdpdGhvdXQgYSBTZWN1cml0eSBD\nb25zaWRlcmF0aW9ucyBkaXNjdXNzaW9uIGRlZW1lZCBzdWZmaWNpZW50IGJ5\nIHRoZSByZXZpZXdlcnMuCi0gQ29weXJpZ2h0IFdhaXZlciAtIEFsbCBFSVBz\nIG11c3QgYmUgaW4gdGhlIHB1YmxpYyBkb21haW4uIFNlZSB0aGUgYm90dG9t\nIG9mIHRoaXMgRUlQIGZvciBhbiBleGFtcGxlIGNvcHlyaWdodCB3YWl2ZXIu\nCgojIyBFSVAgRm9ybWF0cyBhbmQgVGVtcGxhdGVzCgpFSVBzIHNob3VsZCBi\nZSB3cml0dGVuIGluIFttYXJrZG93bl0gZm9ybWF0LiBUaGVyZSBpcyBhIFt0\nZW1wbGF0ZV0oaHR0cHM6Ly9naXRodWIuY29tL2V0aGVyZXVtL0VJUHMvYmxv\nYi9tYXN0ZXIvZWlwLXRlbXBsYXRlLm1kKSB0byBmb2xsb3cuCgojIyBFSVAg\nSGVhZGVyIFByZWFtYmxlCgpFYWNoIEVJUCBtdXN0IGJlZ2luIHdpdGggYW4g\nW1JGQyA4MjJdKGh0dHBzOi8vd3d3LmlldGYub3JnL3JmYy9yZmM4MjIudHh0\nKSBzdHlsZSBoZWFkZXIgcHJlYW1ibGUsIHByZWNlZGVkIGFuZCBmb2xsb3dl\nZCBieSB0aHJlZSBoeXBoZW5zIChgLS0tYCkuIFRoaXMgaGVhZGVyIGlzIGFs\nc28gdGVybWVkIFsiZnJvbnQgbWF0dGVyIiBieSBKZWt5bGxdKGh0dHBzOi8v\namVreWxscmIuY29tL2RvY3MvZnJvbnQtbWF0dGVyLykuIFRoZSBoZWFkZXJz\nIG11c3QgYXBwZWFyIGluIHRoZSBmb2xsb3dpbmcgb3JkZXIuCgpgIGVpcDpg\nICpFSVAgbnVtYmVyKiAodGhpcyBpcyBkZXRlcm1pbmVkIGJ5IHRoZSBFSVAg\nZWRpdG9yKQoKYCB0aXRsZTpgICpUaGUgRUlQIHRpdGxlIGlzIGEgZmV3IHdv\ncmRzLCBub3QgYSBjb21wbGV0ZSBzZW50ZW5jZSoKCmAgZGVzY3JpcHRpb246\nYCAqRGVzY3JpcHRpb24gaXMgb25lIGZ1bGwgKHNob3J0KSBzZW50ZW5jZSoK\nCmAgYXV0aG9yOmAgKlRoZSBsaXN0IG9mIHRoZSBhdXRob3IncyBvciBhdXRo\nb3JzJyBuYW1lKHMpIGFuZC9vciB1c2VybmFtZShzKSwgb3IgbmFtZShzKSBh\nbmQgZW1haWwocykuIERldGFpbHMgYXJlIGJlbG93LioKCmAgZGlzY3Vzc2lv\nbnMtdG86YCAqVGhlIHVybCBwb2ludGluZyB0byB0aGUgb2ZmaWNpYWwgZGlz\nY3Vzc2lvbiB0aHJlYWQqCgpgIHN0YXR1czpgICpEcmFmdCwgUmV2aWV3LCBM\nYXN0IENhbGwsIEZpbmFsLCBTdGFnbmFudCwgV2l0aGRyYXduLCBMaXZpbmcq\nCgpgIGxhc3QtY2FsbC1kZWFkbGluZTpgICpUaGUgZGF0ZSBsYXN0IGNhbGwg\ncGVyaW9kIGVuZHMgb24qIChPcHRpb25hbCBmaWVsZCwgb25seSBuZWVkZWQg\nd2hlbiBzdGF0dXMgaXMgYExhc3QgQ2FsbGApCgpgIHR5cGU6YCAqT25lIG9m\nIGBTdGFuZGFyZHMgVHJhY2tgLCBgTWV0YWAsIG9yIGBJbmZvcm1hdGlvbmFs\nYCoKCmAgY2F0ZWdvcnk6YCAqT25lIG9mIGBDb3JlYCwgYE5ldHdvcmtpbmdg\nLCBgSW50ZXJmYWNlYCwgb3IgYEVSQ2AqIChPcHRpb25hbCBmaWVsZCwgb25s\neSBuZWVkZWQgZm9yIGBTdGFuZGFyZHMgVHJhY2tgIEVJUHMpCgpgIGNyZWF0\nZWQ6YCAqRGF0ZSB0aGUgRUlQIHdhcyBjcmVhdGVkIG9uKgoKYCByZXF1aXJl\nczpgICpFSVAgbnVtYmVyKHMpKiAoT3B0aW9uYWwgZmllbGQpCgpgIHdpdGhk\ncmF3YWwtcmVhc29uOmAgKkEgc2VudGVuY2UgZXhwbGFpbmluZyB3aHkgdGhl\nIEVJUCB3YXMgd2l0aGRyYXduLiogKE9wdGlvbmFsIGZpZWxkLCBvbmx5IG5l\nZWRlZCB3aGVuIHN0YXR1cyBpcyBgV2l0aGRyYXduYCkKCkhlYWRlcnMgdGhh\ndCBwZXJtaXQgbGlzdHMgbXVzdCBzZXBhcmF0ZSBlbGVtZW50cyB3aXRoIGNv\nbW1hcy4KCkhlYWRlcnMgcmVxdWlyaW5nIGRhdGVzIHdpbGwgYWx3YXlzIGRv\nIHNvIGluIHRoZSBmb3JtYXQgb2YgSVNPIDg2MDEgKHl5eXktbW0tZGQpLgoK\nIyMjIyBgYXV0aG9yYCBoZWFkZXIKClRoZSBgYXV0aG9yYCBoZWFkZXIgbGlz\ndHMgdGhlIG5hbWVzLCBlbWFpbCBhZGRyZXNzZXMgb3IgdXNlcm5hbWVzIG9m\nIHRoZSBhdXRob3JzL293bmVycyBvZiB0aGUgRUlQLiBUaG9zZSB3aG8gcHJl\nZmVyIGFub255bWl0eSBtYXkgdXNlIGEgdXNlcm5hbWUgb25seSwgb3IgYSBm\naXJzdCBuYW1lIGFuZCBhIHVzZXJuYW1lLiBUaGUgZm9ybWF0IG9mIHRoZSBg\nYXV0aG9yYCBoZWFkZXIgdmFsdWUgbXVzdCBiZToKCj4gUmFuZG9tIEouIFVz\nZXIgJmx0O2FkZHJlc3NAZG9tLmFpbiZndDsKCm9yCgo+IFJhbmRvbSBKLiBV\nc2VyIChAdXNlcm5hbWUpCgppZiB0aGUgZW1haWwgYWRkcmVzcyBvciBHaXRI\ndWIgdXNlcm5hbWUgaXMgaW5jbHVkZWQsIGFuZAoKPiBSYW5kb20gSi4gVXNl\ncgoKaWYgdGhlIGVtYWlsIGFkZHJlc3MgaXMgbm90IGdpdmVuLgoKSXQgaXMg\nbm90IHBvc3NpYmxlIHRvIHVzZSBib3RoIGFuIGVtYWlsIGFuZCBhIEdpdEh1\nYiB1c2VybmFtZSBhdCB0aGUgc2FtZSB0aW1lLiBJZiBpbXBvcnRhbnQgdG8g\naW5jbHVkZSBib3RoLCBvbmUgY291bGQgaW5jbHVkZSB0aGVpciBuYW1lIHR3\naWNlLCBvbmNlIHdpdGggdGhlIEdpdEh1YiB1c2VybmFtZSwgYW5kIG9uY2Ug\nd2l0aCB0aGUgZW1haWwuCgpBdCBsZWFzdCBvbmUgYXV0aG9yIG11c3QgdXNl\nIGEgR2l0SHViIHVzZXJuYW1lLCBpbiBvcmRlciB0byBnZXQgbm90aWZpZWQg\nb24gY2hhbmdlIHJlcXVlc3RzIGFuZCBoYXZlIHRoZSBjYXBhYmlsaXR5IHRv\nIGFwcHJvdmUgb3IgcmVqZWN0IHRoZW0uCgojIyMjIGBkaXNjdXNzaW9ucy10\nb2AgaGVhZGVyCgpXaGlsZSBhbiBFSVAgaXMgYSBkcmFmdCwgYSBgZGlzY3Vz\nc2lvbnMtdG9gIGhlYWRlciB3aWxsIGluZGljYXRlIHRoZSBVUkwgd2hlcmUg\ndGhlIEVJUCBpcyBiZWluZyBkaXNjdXNzZWQuCgpUaGUgcHJlZmVycmVkIGRp\nc2N1c3Npb24gVVJMIGlzIGEgdG9waWMgb24gW0V0aGVyZXVtIE1hZ2ljaWFu\nc10oaHR0cHM6Ly9ldGhlcmV1bS1tYWdpY2lhbnMub3JnLykuIFRoZSBVUkwg\nY2Fubm90IHBvaW50IHRvIEdpdGh1YiBwdWxsIHJlcXVlc3RzLCBhbnkgVVJM\nIHdoaWNoIGlzIGVwaGVtZXJhbCwgYW5kIGFueSBVUkwgd2hpY2ggY2FuIGdl\ndCBsb2NrZWQgb3ZlciB0aW1lIChpLmUuIFJlZGRpdCB0b3BpY3MpLgoKIyMj\nIyBgdHlwZWAgaGVhZGVyCgpUaGUgYHR5cGVgIGhlYWRlciBzcGVjaWZpZXMg\ndGhlIHR5cGUgb2YgRUlQOiBTdGFuZGFyZHMgVHJhY2ssIE1ldGEsIG9yIElu\nZm9ybWF0aW9uYWwuIElmIHRoZSB0cmFjayBpcyBTdGFuZGFyZHMgcGxlYXNl\nIGluY2x1ZGUgdGhlIHN1YmNhdGVnb3J5IChjb3JlLCBuZXR3b3JraW5nLCBp\nbnRlcmZhY2UsIG9yIEVSQykuCgojIyMjIGBjYXRlZ29yeWAgaGVhZGVyCgpU\naGUgYGNhdGVnb3J5YCBoZWFkZXIgc3BlY2lmaWVzIHRoZSBFSVAncyBjYXRl\nZ29yeS4gVGhpcyBpcyByZXF1aXJlZCBmb3Igc3RhbmRhcmRzLXRyYWNrIEVJ\nUHMgb25seS4KCiMjIyMgYGNyZWF0ZWRgIGhlYWRlcgoKVGhlIGBjcmVhdGVk\nYCBoZWFkZXIgcmVjb3JkcyB0aGUgZGF0ZSB0aGF0IHRoZSBFSVAgd2FzIGFz\nc2lnbmVkIGEgbnVtYmVyLiBCb3RoIGhlYWRlcnMgc2hvdWxkIGJlIGluIHl5\neXktbW0tZGQgZm9ybWF0LCBlLmcuIDIwMDEtMDgtMTQuCgojIyMjIGByZXF1\naXJlc2AgaGVhZGVyCgpFSVBzIG1heSBoYXZlIGEgYHJlcXVpcmVzYCBoZWFk\nZXIsIGluZGljYXRpbmcgdGhlIEVJUCBudW1iZXJzIHRoYXQgdGhpcyBFSVAg\nZGVwZW5kcyBvbi4KCiMjIExpbmtpbmcgdG8gb3RoZXIgRUlQcwoKUmVmZXJl\nbmNlcyB0byBvdGhlciBFSVBzIHNob3VsZCBmb2xsb3cgdGhlIGZvcm1hdCBg\nRUlQLU5gIHdoZXJlIGBOYCBpcyB0aGUgRUlQIG51bWJlciB5b3UgYXJlIHJl\nZmVycmluZyB0by4gIEVhY2ggRUlQIHRoYXQgaXMgcmVmZXJlbmNlZCBpbiBh\nbiBFSVAgKipNVVNUKiogYmUgYWNjb21wYW5pZWQgYnkgYSByZWxhdGl2ZSBt\nYXJrZG93biBsaW5rIHRoZSBmaXJzdCB0aW1lIGl0IGlzIHJlZmVyZW5jZWQs\nIGFuZCAqKk1BWSoqIGJlIGFjY29tcGFuaWVkIGJ5IGEgbGluayBvbiBzdWJz\nZXF1ZW50IHJlZmVyZW5jZXMuICBUaGUgbGluayAqKk1VU1QqKiBhbHdheXMg\nYmUgZG9uZSB2aWEgcmVsYXRpdmUgcGF0aHMgc28gdGhhdCB0aGUgbGlua3Mg\nd29yayBpbiB0aGlzIEdpdEh1YiByZXBvc2l0b3J5LCBmb3JrcyBvZiB0aGlz\nIHJlcG9zaXRvcnksIHRoZSBtYWluIEVJUHMgc2l0ZSwgbWlycm9ycyBvZiB0\naGUgbWFpbiBFSVAgc2l0ZSwgZXRjLiAgRm9yIGV4YW1wbGUsIHlvdSB3b3Vs\nZCBsaW5rIHRvIHRoaXMgRUlQIHdpdGggYFtFSVAtMV0oLi9laXAtMS5tZClg\nLgoKIyMgQXV4aWxpYXJ5IEZpbGVzCgpJbWFnZXMsIGRpYWdyYW1zIGFuZCBh\ndXhpbGlhcnkgZmlsZXMgc2hvdWxkIGJlIGluY2x1ZGVkIGluIGEgc3ViZGly\nZWN0b3J5IG9mIHRoZSBgYXNzZXRzYCBmb2xkZXIgZm9yIHRoYXQgRUlQIGFz\nIGZvbGxvd3M6IGBhc3NldHMvZWlwLU5gICh3aGVyZSAqKk4qKiBpcyB0byBi\nZSByZXBsYWNlZCB3aXRoIHRoZSBFSVAgbnVtYmVyKS4gV2hlbiBsaW5raW5n\nIHRvIGFuIGltYWdlIGluIHRoZSBFSVAsIHVzZSByZWxhdGl2ZSBsaW5rcyBz\ndWNoIGFzIGAuLi9hc3NldHMvZWlwLTEvaW1hZ2UucG5nYC4KCiMjIFRyYW5z\nZmVycmluZyBFSVAgT3duZXJzaGlwCgpJdCBvY2Nhc2lvbmFsbHkgYmVjb21l\ncyBuZWNlc3NhcnkgdG8gdHJhbnNmZXIgb3duZXJzaGlwIG9mIEVJUHMgdG8g\nYSBuZXcgY2hhbXBpb24uIEluIGdlbmVyYWwsIHdlJ2QgbGlrZSB0byByZXRh\naW4gdGhlIG9yaWdpbmFsIGF1dGhvciBhcyBhIGNvLWF1dGhvciBvZiB0aGUg\ndHJhbnNmZXJyZWQgRUlQLCBidXQgdGhhdCdzIHJlYWxseSB1cCB0byB0aGUg\nb3JpZ2luYWwgYXV0aG9yLiBBIGdvb2QgcmVhc29uIHRvIHRyYW5zZmVyIG93\nbmVyc2hpcCBpcyBiZWNhdXNlIHRoZSBvcmlnaW5hbCBhdXRob3Igbm8gbG9u\nZ2VyIGhhcyB0aGUgdGltZSBvciBpbnRlcmVzdCBpbiB1cGRhdGluZyBpdCBv\nciBmb2xsb3dpbmcgdGhyb3VnaCB3aXRoIHRoZSBFSVAgcHJvY2Vzcywgb3Ig\naGFzIGZhbGxlbiBvZmYgdGhlIGZhY2Ugb2YgdGhlICduZXQgKGkuZS4gaXMg\ndW5yZWFjaGFibGUgb3IgaXNuJ3QgcmVzcG9uZGluZyB0byBlbWFpbCkuIEEg\nYmFkIHJlYXNvbiB0byB0cmFuc2ZlciBvd25lcnNoaXAgaXMgYmVjYXVzZSB5\nb3UgZG9uJ3QgYWdyZWUgd2l0aCB0aGUgZGlyZWN0aW9uIG9mIHRoZSBFSVAu\nIFdlIHRyeSB0byBidWlsZCBjb25zZW5zdXMgYXJvdW5kIGFuIEVJUCwgYnV0\nIGlmIHRoYXQncyBub3QgcG9zc2libGUsIHlvdSBjYW4gYWx3YXlzIHN1Ym1p\ndCBhIGNvbXBldGluZyBFSVAuCgpJZiB5b3UgYXJlIGludGVyZXN0ZWQgaW4g\nYXNzdW1pbmcgb3duZXJzaGlwIG9mIGFuIEVJUCwgc2VuZCBhIG1lc3NhZ2Ug\nYXNraW5nIHRvIHRha2Ugb3ZlciwgYWRkcmVzc2VkIHRvIGJvdGggdGhlIG9y\naWdpbmFsIGF1dGhvciBhbmQgdGhlIEVJUCBlZGl0b3IuIElmIHRoZSBvcmln\naW5hbCBhdXRob3IgZG9lc24ndCByZXNwb25kIHRvIHRoZSBlbWFpbCBpbiBh\nIHRpbWVseSBtYW5uZXIsIHRoZSBFSVAgZWRpdG9yIHdpbGwgbWFrZSBhIHVu\naWxhdGVyYWwgZGVjaXNpb24gKGl0J3Mgbm90IGxpa2Ugc3VjaCBkZWNpc2lv\nbnMgY2FuJ3QgYmUgcmV2ZXJzZWQgOikpLgoKIyMgRUlQIEVkaXRvcnMKClRo\nZSBjdXJyZW50IEVJUCBlZGl0b3JzIGFyZQoKLSBBbGV4IEJlcmVnc3phc3pp\nIChAYXhpYykKLSBNYXR0IEdhcm5ldHQgKEBsaWdodGNsaWVudCkKLSBNaWNh\naCBab2x0dSAoQE1pY2FoWm9sdHUpCi0gR3JlZyBDb2x2aW4gKEBnY29sdmlu\nKQoKRW1lcml0dXMgRUlQIGVkaXRvcnMgYXJlIAoKLSBDYXNleSBEZXRyaW8g\nKEBjZGV0cmlvKQotIE5pY2sgSm9obnNvbiAoQGFyYWNobmlkKQotIFZpdGFs\naWsgQnV0ZXJpbiAoQHZidXRlcmluKQotIEh1ZHNvbiBKYW1lc29uIChAU291\ncHRhY3VsYXIpCi0gTmljayBTYXZlcnMgKEBuaWNrc2F2ZXJzKQotIE1hcnRp\nbiBCZWN6ZSAoQHdhbmRlcmVyKQoKIyMgRUlQIEVkaXRvciBSZXNwb25zaWJp\nbGl0aWVzCgpGb3IgZWFjaCBuZXcgRUlQIHRoYXQgY29tZXMgaW4sIGFuIGVk\naXRvciBkb2VzIHRoZSBmb2xsb3dpbmc6CgotIFJlYWQgdGhlIEVJUCB0byBj\naGVjayBpZiBpdCBpcyByZWFkeTogc291bmQgYW5kIGNvbXBsZXRlLiBUaGUg\naWRlYXMgbXVzdCBtYWtlIHRlY2huaWNhbCBzZW5zZSwgZXZlbiBpZiB0aGV5\nIGRvbid0IHNlZW0gbGlrZWx5IHRvIGdldCB0byBmaW5hbCBzdGF0dXMuCi0g\nVGhlIHRpdGxlIHNob3VsZCBhY2N1cmF0ZWx5IGRlc2NyaWJlIHRoZSBjb250\nZW50LgotIENoZWNrIHRoZSBFSVAgZm9yIGxhbmd1YWdlIChzcGVsbGluZywg\nZ3JhbW1hciwgc2VudGVuY2Ugc3RydWN0dXJlLCBldGMuKSwgbWFya3VwIChH\naXRIdWIgZmxhdm9yZWQgTWFya2Rvd24pLCBjb2RlIHN0eWxlCgpJZiB0aGUg\nRUlQIGlzbid0IHJlYWR5LCB0aGUgZWRpdG9yIHdpbGwgc2VuZCBpdCBiYWNr\nIHRvIHRoZSBhdXRob3IgZm9yIHJldmlzaW9uLCB3aXRoIHNwZWNpZmljIGlu\nc3RydWN0aW9ucy4KCk9uY2UgdGhlIEVJUCBpcyByZWFkeSBmb3IgdGhlIHJl\ncG9zaXRvcnksIHRoZSBFSVAgZWRpdG9yIHdpbGw6CgotIEFzc2lnbiBhbiBF\nSVAgbnVtYmVyIChnZW5lcmFsbHkgdGhlIFBSIG51bWJlciBvciwgaWYgcHJl\nZmVycmVkIGJ5IHRoZSBhdXRob3IsIHRoZSBJc3N1ZSAjIGlmIHRoZXJlIHdh\ncyBkaXNjdXNzaW9uIGluIHRoZSBJc3N1ZXMgc2VjdGlvbiBvZiB0aGlzIHJl\ncG9zaXRvcnkgYWJvdXQgdGhpcyBFSVApCgotIE1lcmdlIHRoZSBjb3JyZXNw\nb25kaW5nIHB1bGwgcmVxdWVzdAoKLSBTZW5kIGEgbWVzc2FnZSBiYWNrIHRv\nIHRoZSBFSVAgYXV0aG9yIHdpdGggdGhlIG5leHQgc3RlcC4KCk1hbnkgRUlQ\ncyBhcmUgd3JpdHRlbiBhbmQgbWFpbnRhaW5lZCBieSBkZXZlbG9wZXJzIHdp\ndGggd3JpdGUgYWNjZXNzIHRvIHRoZSBFdGhlcmV1bSBjb2RlYmFzZS4gVGhl\nIEVJUCBlZGl0b3JzIG1vbml0b3IgRUlQIGNoYW5nZXMsIGFuZCBjb3JyZWN0\nIGFueSBzdHJ1Y3R1cmUsIGdyYW1tYXIsIHNwZWxsaW5nLCBvciBtYXJrdXAg\nbWlzdGFrZXMgd2Ugc2VlLgoKVGhlIGVkaXRvcnMgZG9uJ3QgcGFzcyBqdWRn\nbWVudCBvbiBFSVBzLiBXZSBtZXJlbHkgZG8gdGhlIGFkbWluaXN0cmF0aXZl\nICYgZWRpdG9yaWFsIHBhcnQuCgojIyBTdHlsZSBHdWlkZQoKIyMjIEVJUCBu\ndW1iZXJzCgpXaGVuIHJlZmVycmluZyB0byBhbiBFSVAgYnkgbnVtYmVyLCBp\ndCBzaG91bGQgYmUgd3JpdHRlbiBpbiB0aGUgaHlwaGVuYXRlZCBmb3JtIGBF\nSVAtWGAgd2hlcmUgYFhgIGlzIHRoZSBFSVAncyBhc3NpZ25lZCBudW1iZXIu\nCgojIyMgUkZDIDIxMTkKCkVJUHMgYXJlIGVuY291cmFnZWQgdG8gZm9sbG93\nIFtSRkMgMjExOV0oaHR0cHM6Ly93d3cuaWV0Zi5vcmcvcmZjL3JmYzIxMTku\ndHh0KSBmb3IgdGVybWlub2xvZ3kgYW5kIHRvIGluc2VydCB0aGUgZm9sbG93\naW5nIGF0IHRoZSBiZWdpbm5pbmcgb2YgdGhlIFNwZWNpZmljYXRpb24gc2Vj\ndGlvbjoKCj4gVGhlIGtleSB3b3JkcyDigJxNVVNU4oCdLCDigJxNVVNUIE5P\nVOKAnSwg4oCcUkVRVUlSRUTigJ0sIOKAnFNIQUxM4oCdLCDigJxTSEFMTCBO\nT1TigJ0sIOKAnFNIT1VMROKAnSwg4oCcU0hPVUxEIE5PVOKAnSwg4oCcUkVD\nT01NRU5ERUTigJ0sIOKAnE1BWeKAnSwgYW5kIOKAnE9QVElPTkFM4oCdIGlu\nIHRoaXMgZG9jdW1lbnQgYXJlIHRvIGJlIGludGVycHJldGVkIGFzIGRlc2Ny\naWJlZCBpbiBSRkMgMjExOS4KCiMjIEhpc3RvcnkKClRoaXMgZG9jdW1lbnQg\nd2FzIGRlcml2ZWQgaGVhdmlseSBmcm9tIFtCaXRjb2luJ3MgQklQLTAwMDFd\nIHdyaXR0ZW4gYnkgQW1pciBUYWFraSB3aGljaCBpbiB0dXJuIHdhcyBkZXJp\ndmVkIGZyb20gW1B5dGhvbidzIFBFUC0wMDAxXS4gSW4gbWFueSBwbGFjZXMg\ndGV4dCB3YXMgc2ltcGx5IGNvcGllZCBhbmQgbW9kaWZpZWQuIEFsdGhvdWdo\nIHRoZSBQRVAtMDAwMSB0ZXh0IHdhcyB3cml0dGVuIGJ5IEJhcnJ5IFdhcnNh\ndywgSmVyZW15IEh5bHRvbiwgYW5kIERhdmlkIEdvb2RnZXIsIHRoZXkgYXJl\nIG5vdCByZXNwb25zaWJsZSBmb3IgaXRzIHVzZSBpbiB0aGUgRXRoZXJldW0g\nSW1wcm92ZW1lbnQgUHJvY2VzcywgYW5kIHNob3VsZCBub3QgYmUgYm90aGVy\nZWQgd2l0aCB0ZWNobmljYWwgcXVlc3Rpb25zIHNwZWNpZmljIHRvIEV0aGVy\nZXVtIG9yIHRoZSBFSVAuIFBsZWFzZSBkaXJlY3QgYWxsIGNvbW1lbnRzIHRv\nIHRoZSBFSVAgZWRpdG9ycy4KCiMjIyBCaWJsaW9ncmFwaHkKCltkZXZwMnBd\nOiBodHRwczovL2dpdGh1Yi5jb20vZXRoZXJldW0vd2lraS93aWtpLyVDMyU5\nMCVDRSU5RVZwMnAtV2lyZS1Qcm90b2NvbApbTGlnaHQgRXRoZXJldW0gU3Vi\ncHJvdG9jb2xdOiBodHRwczovL2dpdGh1Yi5jb20vZXRoZXJldW0vd2lraS93\naWtpL0xpZ2h0LWNsaWVudC1wcm90b2NvbApbd2hpc3Blcl06IGh0dHBzOi8v\nZ2l0aHViLmNvbS9ldGhlcmV1bS9nby1ldGhlcmV1bS93aWtpL1doaXNwZXIt\nT3ZlcnZpZXcKW3N3YXJtXTogaHR0cHM6Ly9naXRodWIuY29tL2V0aGVyZXVt\nL2dvLWV0aGVyZXVtL3B1bGwvMjk1OQpbQVBJL1JQQ106IGh0dHBzOi8vZ2l0\naHViLmNvbS9ldGhlcmV1bS93aWtpL3dpa2kvSlNPTi1SUEMKW2NvbnRyYWN0\nIEFCSXNdOiBodHRwczovL2dpdGh1Yi5jb20vZXRoZXJldW0vd2lraS93aWtp\nL0V0aGVyZXVtLUNvbnRyYWN0LUFCSQpbaW50ZXJmYWNlcyByZXBvXTogaHR0\ncHM6Ly9naXRodWIuY29tL2V0aGVyZXVtL2ludGVyZmFjZXMKW3RoZSBFdGhl\ncmV1bSBzdWJyZWRkaXRdOiBodHRwczovL3d3dy5yZWRkaXQuY29tL3IvZXRo\nZXJldW0vCltvbmUgb2YgdGhlIEV0aGVyZXVtIEdpdHRlciBjaGF0IHJvb21z\nXTogaHR0cHM6Ly9naXR0ZXIuaW0vZXRoZXJldW0vCltwdWxsIHJlcXVlc3Rd\nOiBodHRwczovL2dpdGh1Yi5jb20vZXRoZXJldW0vRUlQcy9wdWxscwpbZm9y\nbWFsIHNwZWNpZmljYXRpb25dOiBodHRwczovL2dpdGh1Yi5jb20vZXRoZXJl\ndW0veWVsbG93cGFwZXIKW3RoZSBJc3N1ZXMgc2VjdGlvbiBvZiB0aGlzIHJl\ncG9zaXRvcnldOiBodHRwczovL2dpdGh1Yi5jb20vZXRoZXJldW0vRUlQcy9p\nc3N1ZXMKW21hcmtkb3duXTogaHR0cHM6Ly9naXRodWIuY29tL2FkYW0tcC9t\nYXJrZG93bi1oZXJlL3dpa2kvTWFya2Rvd24tQ2hlYXRzaGVldApbQml0Y29p\nbidzIEJJUC0wMDAxXTogaHR0cHM6Ly9naXRodWIuY29tL2JpdGNvaW4vYmlw\ncwpbUHl0aG9uJ3MgUEVQLTAwMDFdOiBodHRwczovL3d3dy5weXRob24ub3Jn\nL2Rldi9wZXBzLwpbdGhlIEV0aGVyZXVtIE1hZ2ljaWFucyBmb3J1bV06IGh0\ndHBzOi8vZXRoZXJldW0tbWFnaWNpYW5zLm9yZy8KW0FsbENvcmVEZXZzIGFn\nZW5kYSBHaXRIdWIgSXNzdWVdOiBodHRwczovL2dpdGh1Yi5jb20vZXRoZXJl\ndW0vcG0vaXNzdWVzCgojIyBDb3B5cmlnaHQKCkNvcHlyaWdodCBhbmQgcmVs\nYXRlZCByaWdodHMgd2FpdmVkIHZpYSBbQ0MwXShodHRwczovL2NyZWF0aXZl\nY29tbW9ucy5vcmcvcHVibGljZG9tYWluL3plcm8vMS4wLykuCg==\n",
+                "encoding": "base64",
+                "_links": {
+                    "self": "https://api.github.com/repos/ethereum/EIPs/contents/EIPS/eip-1.md?ref=5fe97b9980e260d053688dd086463e4e3a0fc51f",
+                    "git": "https://api.github.com/repos/ethereum/EIPs/git/blobs/20652648ce6a7ed5cbe90a2bb1ac346cf884897a",
+                    "html": "https://github.com/ethereum/EIPs/blob/5fe97b9980e260d053688dd086463e4e3a0fc51f/EIPS/eip-1.md"
+                }
+            }
+        }
+    },
+    {
+        "req": {
+            "url": "https://api.github.com/search/users?q=mb%40ethereum.org",
+            "method": "GET"
+        },
+        "res": {
+            "status": 200,
+            "data": {
+                "total_count": 0,
+                "incomplete_results": false,
+                "items": []
+            }
+        }
+    },
+    {
+        "req": {
+            "url": "https://api.github.com/search/users?q=hudson%40ethereum.org",
+            "method": "GET"
+        },
+        "res": {
+            "status": 200,
+            "data": {
+                "total_count": 0,
+                "incomplete_results": false,
+                "items": []
+            }
+        }
+    },
+    {
+        "req": {
+            "url": "https://api.github.com/search/users?q=mb%40ethereum.org%20in%3Aemail",
+            "method": "GET"
+        },
+        "res": {
+            "status": 200,
+            "data": {
+                "total_count": 0,
+                "incomplete_results": false,
+                "items": []
+            }
+        }
+    },
+    {
+        "req": {
+            "url": "https://api.github.com/search/users?q=hudson%40ethereum.org%20in%3Aemail",
+            "method": "GET"
+        },
+        "res": {
+            "status": 200,
+            "data": {
+                "total_count": 0,
+                "incomplete_results": false,
+                "items": []
+            }
+        }
+    },
+    {
+        "req": {
+            "url": "https://api.github.com/repos/ethereum/EIPs/pulls/4499/reviews",
+            "method": "GET"
+        },
+        "res": {
+            "status": 200,
+            "data": [
+                {
+                    "id": 816232749,
+                    "node_id": "PRR_kwDOAq426M4wprkt",
+                    "user": {
+                        "login": "MicahZoltu",
+                        "id": 886059,
+                        "node_id": "MDQ6VXNlcjg4NjA1OQ==",
+                        "avatar_url": "https://avatars.githubusercontent.com/u/886059?u=408de357d90aae9b9ffc956970b8fd4eec642060&v=4",
+                        "gravatar_id": "",
+                        "url": "https://api.github.com/users/MicahZoltu",
+                        "html_url": "https://github.com/MicahZoltu",
+                        "followers_url": "https://api.github.com/users/MicahZoltu/followers",
+                        "following_url": "https://api.github.com/users/MicahZoltu/following{/other_user}",
+                        "gists_url": "https://api.github.com/users/MicahZoltu/gists{/gist_id}",
+                        "starred_url": "https://api.github.com/users/MicahZoltu/starred{/owner}{/repo}",
+                        "subscriptions_url": "https://api.github.com/users/MicahZoltu/subscriptions",
+                        "organizations_url": "https://api.github.com/users/MicahZoltu/orgs",
+                        "repos_url": "https://api.github.com/users/MicahZoltu/repos",
+                        "events_url": "https://api.github.com/users/MicahZoltu/events{/privacy}",
+                        "received_events_url": "https://api.github.com/users/MicahZoltu/received_events",
+                        "type": "User",
+                        "site_admin": false
+                    },
+                    "body": "",
+                    "state": "APPROVED",
+                    "html_url": "https://github.com/ethereum/EIPs/pull/4499#pullrequestreview-816232749",
+                    "pull_request_url": "https://api.github.com/repos/ethereum/EIPs/pulls/4499",
+                    "author_association": "COLLABORATOR",
+                    "_links": {
+                        "html": {
+                            "href": "https://github.com/ethereum/EIPs/pull/4499#pullrequestreview-816232749"
+                        },
+                        "pull_request": {
+                            "href": "https://api.github.com/repos/ethereum/EIPs/pulls/4499"
+                        }
+                    },
+                    "submitted_at": "2021-11-25T18:11:58Z",
+                    "commit_id": "b99cfca5f0c40e4b5d859a74c235e915ac55993d"
+                }
+            ]
+        }
+    },
+    {
+        "req": {
+            "url": "https://api.github.com/user",
+            "method": "GET"
+        },
+        "res": {
+            "status": 200,
+            "data": {
+                "login": "eth-bot",
+                "id": 85952233,
+                "node_id": "MDQ6VXNlcjg1OTUyMjMz",
+                "avatar_url": "https://avatars.githubusercontent.com/u/85952233?v=4",
+                "gravatar_id": "",
+                "url": "https://api.github.com/users/eth-bot",
+                "html_url": "https://github.com/eth-bot",
+                "followers_url": "https://api.github.com/users/eth-bot/followers",
+                "following_url": "https://api.github.com/users/eth-bot/following{/other_user}",
+                "gists_url": "https://api.github.com/users/eth-bot/gists{/gist_id}",
+                "starred_url": "https://api.github.com/users/eth-bot/starred{/owner}{/repo}",
+                "subscriptions_url": "https://api.github.com/users/eth-bot/subscriptions",
+                "organizations_url": "https://api.github.com/users/eth-bot/orgs",
+                "repos_url": "https://api.github.com/users/eth-bot/repos",
+                "events_url": "https://api.github.com/users/eth-bot/events{/privacy}",
+                "received_events_url": "https://api.github.com/users/eth-bot/received_events",
+                "type": "User",
+                "site_admin": false,
+                "name": null,
+                "company": null,
+                "blog": "",
+                "location": null,
+                "email": null,
+                "hireable": null,
+                "bio": null,
+                "twitter_username": null,
+                "public_repos": 0,
+                "public_gists": 0,
+                "followers": 18,
+                "following": 0,
+                "created_at": "2021-06-15T15:27:49Z",
+                "updated_at": "2021-09-06T08:13:22Z"
+            }
+        }
+    },
+    {
+        "req": {
+            "url": "https://api.github.com/repos/ethereum/EIPs/issues/4499/comments",
+            "method": "GET"
+        },
+        "res": {
+            "status": 200,
+            "data": [
+                {
+                    "url": "https://api.github.com/repos/ethereum/EIPs/issues/comments/979392368",
+                    "html_url": "https://github.com/ethereum/EIPs/pull/4499#issuecomment-979392368",
+                    "issue_url": "https://api.github.com/repos/ethereum/EIPs/issues/4499",
+                    "id": 979392368,
+                    "node_id": "IC_kwDOAq426M46YFdw",
+                    "user": {
+                        "login": "eth-bot",
+                        "id": 85952233,
+                        "node_id": "MDQ6VXNlcjg1OTUyMjMz",
+                        "avatar_url": "https://avatars.githubusercontent.com/u/85952233?v=4",
+                        "gravatar_id": "",
+                        "url": "https://api.github.com/users/eth-bot",
+                        "html_url": "https://github.com/eth-bot",
+                        "followers_url": "https://api.github.com/users/eth-bot/followers",
+                        "following_url": "https://api.github.com/users/eth-bot/following{/other_user}",
+                        "gists_url": "https://api.github.com/users/eth-bot/gists{/gist_id}",
+                        "starred_url": "https://api.github.com/users/eth-bot/starred{/owner}{/repo}",
+                        "subscriptions_url": "https://api.github.com/users/eth-bot/subscriptions",
+                        "organizations_url": "https://api.github.com/users/eth-bot/orgs",
+                        "repos_url": "https://api.github.com/users/eth-bot/repos",
+                        "events_url": "https://api.github.com/users/eth-bot/events{/privacy}",
+                        "received_events_url": "https://api.github.com/users/eth-bot/received_events",
+                        "type": "User",
+                        "site_admin": false
+                    },
+                    "created_at": "2021-11-25T17:56:38Z",
+                    "updated_at": "2021-11-25T17:56:38Z",
+                    "author_association": "COLLABORATOR",
+                    "body": "Hi! I'm a bot, and I wanted to automerge your PR, but couldn't because of the following issue(s):\n\n\n---\n## (fail) EIPS/eip-1.md\n- eip-1.md has no identifiable authors who can approve the PR (only considering the base version)",
+                    "reactions": {
+                        "url": "https://api.github.com/repos/ethereum/EIPs/issues/comments/979392368/reactions",
+                        "total_count": 0,
+                        "+1": 0,
+                        "-1": 0,
+                        "laugh": 0,
+                        "hooray": 0,
+                        "confused": 0,
+                        "heart": 0,
+                        "rocket": 0,
+                        "eyes": 0
+                    },
+                    "performed_via_github_app": null
+                }
+            ]
+        }
+    },
+    {
+        "req": {
+            "url": "https://api.github.com/repos/ethereum/EIPs/issues/comments/979392368",
+            "method": "PATCH"
+        },
+        "res": {
+            "status": 200,
+            "data": {
+                "url": "https://api.github.com/repos/ethereum/EIPs/issues/comments/979392368",
+                "html_url": "https://github.com/ethereum/EIPs/pull/4499#issuecomment-979392368",
+                "issue_url": "https://api.github.com/repos/ethereum/EIPs/issues/4499",
+                "id": 979392368,
+                "node_id": "IC_kwDOAq426M46YFdw",
+                "user": {
+                    "login": "eth-bot",
+                    "id": 85952233,
+                    "node_id": "MDQ6VXNlcjg1OTUyMjMz",
+                    "avatar_url": "https://avatars.githubusercontent.com/u/85952233?v=4",
+                    "gravatar_id": "",
+                    "url": "https://api.github.com/users/eth-bot",
+                    "html_url": "https://github.com/eth-bot",
+                    "followers_url": "https://api.github.com/users/eth-bot/followers",
+                    "following_url": "https://api.github.com/users/eth-bot/following{/other_user}",
+                    "gists_url": "https://api.github.com/users/eth-bot/gists{/gist_id}",
+                    "starred_url": "https://api.github.com/users/eth-bot/starred{/owner}{/repo}",
+                    "subscriptions_url": "https://api.github.com/users/eth-bot/subscriptions",
+                    "organizations_url": "https://api.github.com/users/eth-bot/orgs",
+                    "repos_url": "https://api.github.com/users/eth-bot/repos",
+                    "events_url": "https://api.github.com/users/eth-bot/events{/privacy}",
+                    "received_events_url": "https://api.github.com/users/eth-bot/received_events",
+                    "type": "User",
+                    "site_admin": false
+                },
+                "created_at": "2021-11-25T17:56:38Z",
+                "updated_at": "2021-11-29T07:11:23Z",
+                "author_association": "COLLABORATOR",
+                "body": "Hi! I'm a bot, and I wanted to automerge your PR, but couldn't because of the following issue(s):\n\n\n---\n## (fail) eip-1.md\n- eip-1.md has no identifiable authors who can approve the PR (only considering the base version)\n- Changes to EIP 1 require at least 2 unique approvals from editors; there's currently 1 approvals; the remaining editors are @lightclient, @arachnid, @cdetrio, @souptacular, @vbuterin, @nicksavers, @wanderer, @gcolvin, @axic",
+                "reactions": {
+                    "url": "https://api.github.com/repos/ethereum/EIPs/issues/comments/979392368/reactions",
+                    "total_count": 0,
+                    "+1": 0,
+                    "-1": 0,
+                    "laugh": 0,
+                    "hooray": 0,
+                    "confused": 0,
+                    "heart": 0,
+                    "rocket": 0,
+                    "eyes": 0
+                },
+                "performed_via_github_app": null
+            }
+        }
+    },
+    {
+        "req": {
+            "url": "https://api.github.com/repos/ethereum/EIPs/issues/4499",
+            "method": "GET"
+        },
+        "res": {
+            "status": 200,
+            "data": {
+                "url": "https://api.github.com/repos/ethereum/EIPs/issues/4499",
+                "repository_url": "https://api.github.com/repos/ethereum/EIPs",
+                "labels_url": "https://api.github.com/repos/ethereum/EIPs/issues/4499/labels{/name}",
+                "comments_url": "https://api.github.com/repos/ethereum/EIPs/issues/4499/comments",
+                "events_url": "https://api.github.com/repos/ethereum/EIPs/issues/4499/events",
+                "html_url": "https://github.com/ethereum/EIPs/pull/4499",
+                "id": 1063834724,
+                "node_id": "PR_kwDOAq426M4vB8oA",
+                "number": 4499,
+                "title": "Update weblink to text(s) and remove Bibliography from EIP-1",
+                "user": {
+                    "login": "poojaranjan",
+                    "id": 29681685,
+                    "node_id": "MDQ6VXNlcjI5NjgxNjg1",
+                    "avatar_url": "https://avatars.githubusercontent.com/u/29681685?v=4",
+                    "gravatar_id": "",
+                    "url": "https://api.github.com/users/poojaranjan",
+                    "html_url": "https://github.com/poojaranjan",
+                    "followers_url": "https://api.github.com/users/poojaranjan/followers",
+                    "following_url": "https://api.github.com/users/poojaranjan/following{/other_user}",
+                    "gists_url": "https://api.github.com/users/poojaranjan/gists{/gist_id}",
+                    "starred_url": "https://api.github.com/users/poojaranjan/starred{/owner}{/repo}",
+                    "subscriptions_url": "https://api.github.com/users/poojaranjan/subscriptions",
+                    "organizations_url": "https://api.github.com/users/poojaranjan/orgs",
+                    "repos_url": "https://api.github.com/users/poojaranjan/repos",
+                    "events_url": "https://api.github.com/users/poojaranjan/events{/privacy}",
+                    "received_events_url": "https://api.github.com/users/poojaranjan/received_events",
+                    "type": "User",
+                    "site_admin": false
+                },
+                "labels": [],
+                "state": "closed",
+                "locked": false,
+                "assignee": null,
+                "assignees": [],
+                "milestone": null,
+                "comments": 2,
+                "created_at": "2021-11-25T17:55:44Z",
+                "updated_at": "2021-12-06T03:33:32Z",
+                "closed_at": "2021-12-06T03:33:32Z",
+                "author_association": "CONTRIBUTOR",
+                "active_lock_reason": null,
+                "draft": false,
+                "pull_request": {
+                    "url": "https://api.github.com/repos/ethereum/EIPs/pulls/4499",
+                    "html_url": "https://github.com/ethereum/EIPs/pull/4499",
+                    "diff_url": "https://github.com/ethereum/EIPs/pull/4499.diff",
+                    "patch_url": "https://github.com/ethereum/EIPs/pull/4499.patch",
+                    "merged_at": "2021-12-06T03:33:32Z"
+                },
+                "body": "Updated texts to add web links wherever required to remove the \"Bibliography\" section. \r\n eg.  \r\n[formal specification] -> [formal specification](https://github.com/ethereum/yellowpaper)\r\n\r\nSome of the links were redundant and hence couldn't be added to the current version of EIP-1.",
+                "closed_by": {
+                    "login": "lightclient",
+                    "id": 14004106,
+                    "node_id": "MDQ6VXNlcjE0MDA0MTA2",
+                    "avatar_url": "https://avatars.githubusercontent.com/u/14004106?v=4",
+                    "gravatar_id": "",
+                    "url": "https://api.github.com/users/lightclient",
+                    "html_url": "https://github.com/lightclient",
+                    "followers_url": "https://api.github.com/users/lightclient/followers",
+                    "following_url": "https://api.github.com/users/lightclient/following{/other_user}",
+                    "gists_url": "https://api.github.com/users/lightclient/gists{/gist_id}",
+                    "starred_url": "https://api.github.com/users/lightclient/starred{/owner}{/repo}",
+                    "subscriptions_url": "https://api.github.com/users/lightclient/subscriptions",
+                    "organizations_url": "https://api.github.com/users/lightclient/orgs",
+                    "repos_url": "https://api.github.com/users/lightclient/repos",
+                    "events_url": "https://api.github.com/users/lightclient/events{/privacy}",
+                    "received_events_url": "https://api.github.com/users/lightclient/received_events",
+                    "type": "User",
+                    "site_admin": false
+                },
+                "reactions": {
+                    "url": "https://api.github.com/repos/ethereum/EIPs/issues/4499/reactions",
+                    "total_count": 0,
+                    "+1": 0,
+                    "-1": 0,
+                    "laugh": 0,
+                    "hooray": 0,
+                    "confused": 0,
+                    "heart": 0,
+                    "rocket": 0,
+                    "eyes": 0
+                },
+                "timeline_url": "https://api.github.com/repos/ethereum/EIPs/issues/4499/timeline",
+                "performed_via_github_app": null
+            }
+        }
+    },
+    {
+        "req": {
+            "url": "https://api.github.com/repos/ethereum/EIPs/issues/4499/labels",
+            "method": "PUT"
+        },
+        "res": {
+            "status": 200,
+            "data": [
+                {
+                    "id": 3683553869,
+                    "node_id": "LA_kwDOAq426M7bjpJN",
+                    "url": "https://api.github.com/repos/ethereum/EIPs/labels/updateEIP",
+                    "name": "updateEIP",
+                    "color": "ededed",
+                    "default": false,
+                    "description": null
+                }
+            ]
+        }
+    },
+    {
+        "req": {
+            "url": "https://api.github.com/repos/ethereum/EIPs/pulls/4499/reviews?per_page=100&page=1",
+            "method": "GET"
+        },
+        "res": {
+            "status": 200,
+            "data": [
+                {
+                    "id": 816232749,
+                    "node_id": "PRR_kwDOAq426M4wprkt",
+                    "user": {
+                        "login": "MicahZoltu",
+                        "id": 886059,
+                        "node_id": "MDQ6VXNlcjg4NjA1OQ==",
+                        "avatar_url": "https://avatars.githubusercontent.com/u/886059?u=408de357d90aae9b9ffc956970b8fd4eec642060&v=4",
+                        "gravatar_id": "",
+                        "url": "https://api.github.com/users/MicahZoltu",
+                        "html_url": "https://github.com/MicahZoltu",
+                        "followers_url": "https://api.github.com/users/MicahZoltu/followers",
+                        "following_url": "https://api.github.com/users/MicahZoltu/following{/other_user}",
+                        "gists_url": "https://api.github.com/users/MicahZoltu/gists{/gist_id}",
+                        "starred_url": "https://api.github.com/users/MicahZoltu/starred{/owner}{/repo}",
+                        "subscriptions_url": "https://api.github.com/users/MicahZoltu/subscriptions",
+                        "organizations_url": "https://api.github.com/users/MicahZoltu/orgs",
+                        "repos_url": "https://api.github.com/users/MicahZoltu/repos",
+                        "events_url": "https://api.github.com/users/MicahZoltu/events{/privacy}",
+                        "received_events_url": "https://api.github.com/users/MicahZoltu/received_events",
+                        "type": "User",
+                        "site_admin": false
+                    },
+                    "body": "",
+                    "state": "APPROVED",
+                    "html_url": "https://github.com/ethereum/EIPs/pull/4499#pullrequestreview-816232749",
+                    "pull_request_url": "https://api.github.com/repos/ethereum/EIPs/pulls/4499",
+                    "author_association": "COLLABORATOR",
+                    "_links": {
+                        "html": {
+                            "href": "https://github.com/ethereum/EIPs/pull/4499#pullrequestreview-816232749"
+                        },
+                        "pull_request": {
+                            "href": "https://api.github.com/repos/ethereum/EIPs/pulls/4499"
+                        }
+                    },
+                    "submitted_at": "2021-11-25T18:11:58Z",
+                    "commit_id": "b99cfca5f0c40e4b5d859a74c235e915ac55993d"
+                },
+                {
+                    "id": 823507399,
+                    "node_id": "PRR_kwDOAq426M4xFbnH",
+                    "user": {
+                        "login": "lightclient",
+                        "id": 14004106,
+                        "node_id": "MDQ6VXNlcjE0MDA0MTA2",
+                        "avatar_url": "https://avatars.githubusercontent.com/u/14004106?u=17bd7e09ec0361a4b4431c6ff715a79d7de94f44&v=4",
+                        "gravatar_id": "",
+                        "url": "https://api.github.com/users/lightclient",
+                        "html_url": "https://github.com/lightclient",
+                        "followers_url": "https://api.github.com/users/lightclient/followers",
+                        "following_url": "https://api.github.com/users/lightclient/following{/other_user}",
+                        "gists_url": "https://api.github.com/users/lightclient/gists{/gist_id}",
+                        "starred_url": "https://api.github.com/users/lightclient/starred{/owner}{/repo}",
+                        "subscriptions_url": "https://api.github.com/users/lightclient/subscriptions",
+                        "organizations_url": "https://api.github.com/users/lightclient/orgs",
+                        "repos_url": "https://api.github.com/users/lightclient/repos",
+                        "events_url": "https://api.github.com/users/lightclient/events{/privacy}",
+                        "received_events_url": "https://api.github.com/users/lightclient/received_events",
+                        "type": "User",
+                        "site_admin": false
+                    },
+                    "body": "",
+                    "state": "APPROVED",
+                    "html_url": "https://github.com/ethereum/EIPs/pull/4499#pullrequestreview-823507399",
+                    "pull_request_url": "https://api.github.com/repos/ethereum/EIPs/pulls/4499",
+                    "author_association": "MEMBER",
+                    "_links": {
+                        "html": {
+                            "href": "https://github.com/ethereum/EIPs/pull/4499#pullrequestreview-823507399"
+                        },
+                        "pull_request": {
+                            "href": "https://api.github.com/repos/ethereum/EIPs/pulls/4499"
+                        }
+                    },
+                    "submitted_at": "2021-12-06T03:31:06Z",
+                    "commit_id": "b99cfca5f0c40e4b5d859a74c235e915ac55993d"
+                }
+            ]
+        }
+    },
+    {
+        "req": {
+            "url": "https://api.github.com/repos/ethereum/EIPs/pulls/4499/reviews?per_page=100&page=2",
+            "method": "GET"
+        },
+        "res": {
+            "status": 200,
+            "data": []
+        }
+    }
+]

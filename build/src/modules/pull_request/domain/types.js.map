@@ -1,0 +1,1 @@
+{"version":3,"file":"types.js","sourceRoot":"","sources":["../../../../../src/modules/pull_request/domain/types.ts"],"names":[],"mappings":"","sourcesContent":["import { ChangeTypes } from \"src/domain\";\n\nexport interface IGithubPullRequest {\n  postComment: (string) => Promise<void>;\n  updateLabels: (labels: ChangeTypes[]) => Promise<void>;\n}\n"]}

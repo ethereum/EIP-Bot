@@ -1,0 +1,1 @@
+{"version":3,"file":"index.js","sourceRoot":"","sources":["../../../../src/modules/approvals/index.ts"],"names":[],"mappings":";;;;;;;;;;;;AAAA,0DAAwC;AACxC,8DAA4C","sourcesContent":["export * from \"./modules/get_approvals\";\nexport * from \"./modules/request_reviewers\";\n"]}
